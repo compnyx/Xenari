@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import shutil
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
@@ -66,3 +67,59 @@ def test_doctor_health_check():
     assert "audit: ok" in report
     assert "lookup: ok" in report
     assert "speak: ok" in report
+
+
+def test_mutation_previews_do_not_write(tmp_path):
+    db_path = tmp_path / "xenari.db"
+    shutil.copy2(REPO / "xenari.db", db_path)
+    x = Xenari(db_path)
+
+    ok, messages = x.db.add_root(
+        "testroot",
+        "xaz",
+        "temporary test root",
+        category="Tests",
+        dry_run=True,
+    )
+    assert ok
+    assert any("DRY RUN" in message for message in messages)
+    assert x.db.lookup("testroot") is None
+
+    ok, report = x.db.describe_remove_root("fatyih")
+    assert ok
+    assert "Remove preview for fatyih" in report
+    assert "English mappings:" in report
+
+    ok, report = x.db.describe_english_mapping("danger-test", "fatyih", context_note="test")
+    assert ok
+    assert "Map preview: danger-test -> fatyih" in report
+    assert x.db.lookup("danger-test") is None
+
+
+def test_remove_cleans_dependent_rows(tmp_path):
+    db_path = tmp_path / "xenari.db"
+    shutil.copy2(REPO / "xenari.db", db_path)
+    x = Xenari(db_path)
+
+    assert x.db.add_root("tempone", "xaz", "temporary one", category="Tests")[0]
+    assert x.db.add_root("temptwo", "xoz", "temporary two", category="Tests")[0]
+    x.db.conn.execute(
+        "INSERT INTO compounds (compound_root, component_root, position) VALUES (?, ?, ?)",
+        ("xaz", "xoz", 1),
+    )
+    x.db.conn.execute(
+        "INSERT INTO semantic_relations (root_a, root_b, relation, notes) VALUES (?, ?, ?, ?)",
+        ("xaz", "xoz", "test", "temporary"),
+    )
+    x.db.conn.commit()
+
+    assert x.db.remove_root("xoz")
+    assert x.db.lookup("temptwo") is None
+    assert x.db.conn.execute(
+        "SELECT COUNT(*) FROM compounds WHERE compound_root = ? OR component_root = ?",
+        ("xoz", "xoz"),
+    ).fetchone()[0] == 0
+    assert x.db.conn.execute(
+        "SELECT COUNT(*) FROM semantic_relations WHERE root_a = ? OR root_b = ?",
+        ("xoz", "xoz"),
+    ).fetchone()[0] == 0

@@ -27,12 +27,14 @@ python3 xenari_tool.py speak "I love you" --evidential witnessed
 python3 xenari_tool.py search "soul"
 python3 xenari_tool.py audit
 python3 xenari_tool.py doctor
+python3 xenari_tool.py sync
 ```
 
 Regenerate JSON after DB edits:
 
 ```bash
-python3 scripts/export_json.py
+python3 xenari_tool.py sync
+python3 xenari_tool.py sync --site
 ```
 
 Run regression tests after tool or parser changes:
@@ -64,3 +66,23 @@ validator failures.
 
 `doctor` is the compact release-gate check for common phrase generation,
 critical lookups, and actionable audit failures.
+
+## Mutating The DB
+
+DB mutation commands preview by default and require `--yes` to write:
+
+```bash
+python3 xenari_tool.py add byte qevk "byte" --dry-run
+python3 xenari_tool.py add byte qevk "byte" --yes
+python3 xenari_tool.py map perilous fatyih "dangerous adjective" --yes
+python3 xenari_tool.py remove oldroot --dry-run
+python3 xenari_tool.py remove oldroot --yes
+```
+
+After any DB mutation, run:
+
+```bash
+python3 xenari_tool.py sync --site
+python3 xenari_tool.py doctor
+pytest -q
+```

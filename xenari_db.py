@@ -195,7 +195,8 @@ class XenariDB:
     def add_root(self, english: str, root: str, meaning: str,
                  category: str = "Uncategorized",
                  source: str = None, notes: str = None,
-                 extra_english_keys: List[str] = None) -> Tuple[bool, List[str]]:
+                 extra_english_keys: List[str] = None,
+                 dry_run: bool = False) -> Tuple[bool, List[str]]:
         """Add a root + english mapping. Returns (success, messages)."""
         key = english.lower().strip()
         msgs = []
@@ -253,6 +254,10 @@ class XenariDB:
         for pi in phon_issues:
             msgs.append(f"Phonotactic warning: {pi}")
 
+        if dry_run:
+            msgs.append(f"DRY RUN: would add {root} — {meaning} (for '{english}') in [{category}]")
+            return True, msgs
+
         # Insert
         ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
         src = source or "tool"
@@ -303,11 +308,87 @@ class XenariDB:
         if not row:
             print(f"root '{root}' not found")
             return False
+        self.conn.execute("DELETE FROM compounds WHERE compound_root = ? OR component_root = ?", (root, root))
+        self.conn.execute("DELETE FROM semantic_relations WHERE root_a = ? OR root_b = ?", (root, root))
         self.conn.execute("DELETE FROM english_map WHERE root_id = ?", (row["id"],))
         self.conn.execute("DELETE FROM roots WHERE id = ?", (row["id"],))
         self.conn.commit()
         print(f"Removed: {root} ({row['meaning']})")
         return True
+
+    def describe_remove_root(self, root: str) -> Tuple[bool, str]:
+        """Preview the rows affected by removing a root."""
+        row = self.conn.execute("SELECT id, root, meaning, category FROM roots WHERE root = ?", (root,)).fetchone()
+        if not row:
+            return False, f"root '{root}' not found"
+
+        mappings = self.conn.execute(
+            "SELECT english_key, context_note FROM english_map WHERE root_id = ? ORDER BY english_key",
+            (row["id"],)
+        ).fetchall()
+        compounds = self.conn.execute(
+            """SELECT compound_root, component_root, position
+               FROM compounds
+               WHERE compound_root = ? OR component_root = ?
+               ORDER BY compound_root, position""",
+            (root, root)
+        ).fetchall()
+        relations = self.conn.execute(
+            """SELECT root_a, root_b, relation, notes
+               FROM semantic_relations
+               WHERE root_a = ? OR root_b = ?
+               ORDER BY relation, root_a, root_b""",
+            (root, root)
+        ).fetchall()
+
+        lines = [
+            f"Remove preview for {row['root']} — {row['meaning']} [{row['category']}]",
+            f"English mappings: {len(mappings)}",
+        ]
+        for mapping in mappings[:20]:
+            note = f" ({mapping['context_note']})" if mapping["context_note"] else ""
+            lines.append(f"  - {mapping['english_key']}{note}")
+        if len(mappings) > 20:
+            lines.append(f"  ... {len(mappings) - 20} more")
+
+        lines.append(f"Compound rows: {len(compounds)}")
+        for compound in compounds[:20]:
+            lines.append(f"  - {compound['compound_root']} uses {compound['component_root']} at {compound['position']}")
+        if len(compounds) > 20:
+            lines.append(f"  ... {len(compounds) - 20} more")
+
+        lines.append(f"Semantic relations: {len(relations)}")
+        for relation in relations[:20]:
+            note = f" ({relation['notes']})" if relation["notes"] else ""
+            lines.append(f"  - {relation['root_a']} {relation['relation']} {relation['root_b']}{note}")
+        if len(relations) > 20:
+            lines.append(f"  ... {len(relations) - 20} more")
+
+        return True, "\n".join(lines)
+
+    def describe_english_mapping(self, english_key: str, root: str, context_note: str = None) -> Tuple[bool, str]:
+        """Preview adding an English mapping to an existing root."""
+        row = self.conn.execute("SELECT id, root, meaning FROM roots WHERE root = ?", (root,)).fetchone()
+        if not row:
+            return False, f"root '{root}' not found"
+        key = english_key.lower().strip()
+        existing = self.conn.execute(
+            """SELECT r.root, r.meaning
+               FROM english_map e JOIN roots r ON r.id = e.root_id
+               WHERE e.english_key = ?
+               ORDER BY r.root""",
+            (key,)
+        ).fetchall()
+        lines = [f"Map preview: {key} -> {root} — {row['meaning']}"]
+        if context_note:
+            lines.append(f"Context note: {context_note}")
+        if existing:
+            lines.append(f"Existing mappings for '{key}':")
+            for item in existing:
+                lines.append(f"  - {item['root']} — {item['meaning']}")
+        else:
+            lines.append(f"No existing mappings for '{key}'.")
+        return True, "\n".join(lines)
 
     def add_english_mapping(self, english_key: str, root: str, context_note: str = None) -> bool:
         """Add an english→root mapping to an existing root."""

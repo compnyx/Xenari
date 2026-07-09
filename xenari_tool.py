@@ -12,6 +12,7 @@ Usage:
   python xenari_tool.py speak "you are cute" --evidential inferred
   python xenari_tool.py gloss "fuck it we ball"
   python xenari_tool.py doctor
+  python xenari_tool.py sync --site
   python xenari_tool.py export-js
 
 Import:
@@ -804,6 +805,25 @@ class Xenari:
             self._load_from_db()
         return ok
 
+    def sync_exports(self, include_site: bool = False) -> str:
+        """Regenerate derived JSON exports from the canonical DB."""
+        repo = Path(__file__).resolve().parent
+        json_text = self.db.export_json()
+        out_paths = [repo / "data" / "xenari-dict.json"]
+        if include_site:
+            site = Path("/home/computment/nyx-site")
+            out_paths.extend([
+                site / "src" / "data" / "xenari-dict.json",
+                site / "public" / "xenari-dict-data.json",
+            ])
+
+        lines = []
+        for path in out_paths:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(json_text, encoding="utf-8")
+            lines.append(f"wrote {path}")
+        return "\n".join(lines)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Xenari Tool v4 — DB-powered, for Nyx")
@@ -811,13 +831,16 @@ def main():
         "lookup", "info", "validate", "doctor",
         "compound", "speak", "gloss",
         "export-js", "export-json", "export-md",
-        "stats", "audit", "add", "remove", "search", "categories", "map",
+        "stats", "audit", "sync", "add", "remove", "search", "categories", "map",
     ])
     parser.add_argument("args", nargs="*")
     parser.add_argument("--tense", default="auto", choices=["auto", "past", "future", "habitual", "potential", "imperative"])
     parser.add_argument("--evidential", default="auto", choices=["auto", "witnessed", "inferred", "reported", "assumed", "mirative"])
     parser.add_argument("--category", default=None)
     parser.add_argument("--notes", default=None)
+    parser.add_argument("--yes", action="store_true", help="confirm mutating DB operations")
+    parser.add_argument("--dry-run", action="store_true", help="preview a mutating operation without writing")
+    parser.add_argument("--site", action="store_true", help="sync exports into nyx-site dictionary paths too")
     args = parser.parse_args()
 
     x = Xenari()
@@ -890,6 +913,12 @@ def main():
                 print("Usage: audit [limit]")
                 sys.exit(1)
         print(x.db.audit(limit=limit))
+    elif args.command == "sync":
+        print(x.sync_exports(include_site=args.site))
+        ok, report = x.doctor()
+        print(report)
+        if not ok:
+            sys.exit(1)
     elif args.command == "categories":
         for name, count in x.db.categories():
             print(f"  {name}: {count}")
@@ -907,12 +936,30 @@ def main():
         if not args.args:
             print("Usage: remove <root>")
             sys.exit(1)
+        ok, report = x.db.describe_remove_root(args.args[0])
+        print(report)
+        if not ok:
+            sys.exit(1)
+        if args.dry_run or not args.yes:
+            if not args.dry_run:
+                print("Refusing to remove without --yes. Re-run with --yes after reading the preview.")
+                sys.exit(1)
+            sys.exit(0)
         x.db.remove_root(args.args[0])
     elif args.command == "map":
         if len(args.args) < 2:
             print("Usage: map <english-key> <root> [context note]")
             sys.exit(1)
         note = " ".join(args.args[2:]) if len(args.args) > 2 else None
+        ok, report = x.db.describe_english_mapping(args.args[0], args.args[1], context_note=note)
+        print(report)
+        if not ok:
+            sys.exit(1)
+        if args.dry_run or not args.yes:
+            if not args.dry_run:
+                print("Refusing to map without --yes. Re-run with --yes after reading the preview.")
+                sys.exit(1)
+            sys.exit(0)
         x.db.add_english_mapping(args.args[0], args.args[1], context_note=note)
     elif args.command == "add":
         if len(args.args) < 2:
@@ -924,9 +971,15 @@ def main():
         root = args.args[1].strip()
         meaning = " ".join(args.args[2:]).strip() if len(args.args) > 2 else english
         cat = args.category or x.db._guess_category(english, meaning)
-        ok, msgs = x.db.add_root(english, root, meaning, category=cat, notes=args.notes)
+        dry_run = args.dry_run or not args.yes
+        ok, msgs = x.db.add_root(english, root, meaning, category=cat, notes=args.notes, dry_run=dry_run)
         for m in msgs:
             print(m)
+        if dry_run:
+            if ok and not args.dry_run:
+                print("Refusing to add without --yes. Re-run with --yes after reading the preview.")
+                sys.exit(1)
+            sys.exit(0 if ok else 1)
         if ok:
             x2 = Xenari()
             r = x2.lookup(english)
