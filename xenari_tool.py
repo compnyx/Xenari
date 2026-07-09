@@ -359,7 +359,7 @@ class Xenari:
         exact_phrases = {
             "you little bitch": "mex krengk frem",
             "the alien sees me": f"ra neq ka vi qex ta toq vi sa {e}",
-            "the alien is dangerous": f"ra fatwih ka vi qex ta zux vi sa {e}",
+            "the alien is dangerous": f"ra fatyih ka vi qex ta zux vi sa {e}",
             "the hat is red": f"ra rlis ka nu brid ta zux nu sa {e}",
             "my hat blows off": f"ra neq po brid ka vi cuq ta qruq vi sa {e}",
             "the figure's hat blows off": f"ra vi loco po brid ka vi cuq ta qruq vi sa {e}",

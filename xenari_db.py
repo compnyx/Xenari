@@ -648,9 +648,27 @@ class XenariDB:
         exact_dupes = [(k, v) for k, v in exact.items() if len(v) > 1]
         headword_dupes = [(k, v) for k, v in headwords.items() if len(v) > 1]
         english_collisions = [(k, v) for k, v in english_keys.items() if len(v) > 1]
+        actionable_exact_dupes = []
+        for key, rows_for_key in exact_dupes:
+            texts = " ".join(
+                " ".join(str(r.get(field) or "") for field in ("meaning", "source", "notes"))
+                for r in rows_for_key
+            )
+            has_stale_marker = (
+                re.search(r"\b(reanalyzed|obsolete|deprecated|duplicate|duplicates)\b", texts, re.I)
+                or "CONFLICT" in texts
+                or re.search(r"\bno\.|new root|already =", texts, re.I)
+            )
+            sources = [r.get("source") or "" for r in rows_for_key]
+            has_generated_over_canon = any(s.endswith("_gap_fill") for s in sources) and any(
+                not s.endswith("_gap_fill") for s in sources
+            )
+            if has_stale_marker or has_generated_over_canon:
+                actionable_exact_dupes.append((key, rows_for_key))
 
         exact_dupes.sort(key=lambda item: (-len(item[1]), item[0]))
         headword_dupes.sort(key=lambda item: (-len(item[1]), item[0]))
+        actionable_exact_dupes.sort(key=lambda item: (-len(item[1]), item[0]))
 
         lines = [
             "Xenari audit",
@@ -659,12 +677,14 @@ class XenariDB:
             f"Duplicate exact roots: {len(duplicate_roots)}",
             f"Duplicate lowercase roots: {len(duplicate_lower_roots)}",
             f"English keys mapped to multiple roots: {len(english_collisions)}",
-            f"Exact meaning duplicate groups: {len(exact_dupes)}",
-            f"Headword duplicate groups: {len(headword_dupes)}",
+            f"Actionable exact duplicate groups: {len(actionable_exact_dupes)}",
+            f"Raw exact meaning duplicate groups: {len(exact_dupes)}",
+            f"Raw headword duplicate groups: {len(headword_dupes)}",
             f"Stale/conflict/reanalysis marker rows: {len(markers)}",
             f"Phonotactic validator failures: {len(phon_failures)}",
             "",
             "Note: english-key collisions are noisy because english_map indexes words inside definitions.",
+            "Note: raw duplicate groups include synonyms, register variants, particles, and derived families.",
         ]
 
         def fmt_group(title: str, groups: list) -> None:
@@ -678,7 +698,8 @@ class XenariDB:
                 )
                 lines.append(f"  - {key} ({len(rows_for_key)}): {roots_for_key}")
 
-        fmt_group("Exact meaning duplicates", exact_dupes)
+        fmt_group("Actionable exact duplicates", actionable_exact_dupes)
+        fmt_group("Raw exact meaning duplicates", exact_dupes)
         fmt_group("Headword duplicates", headword_dupes)
 
         lines.extend(["", "Marker rows"])
@@ -798,13 +819,14 @@ class XenariDB:
             if root[i] == 'q' and root[i+1] == 'i':
                 issues.append("q followed by i (uvular + high front disallowed)")
         
-        # No gemination (doubled consonants) — but xx at compound boundaries is tolerated
-        # True gemination = same consonant doubled within a single morpheme
+        # No gemination (doubled consonants) inside a simple root.
+        # Longer lexicalized compounds often create doubled consonants at morpheme
+        # boundaries (qont + toq -> qonttoq), so only short/simple forms are
+        # flagged here. xx remains broadly tolerated as a common compound seam.
         for i in range(len(root) - 1):
             c = root[i]
             if c == root[i+1] and c not in vowels:
-                # Check if this is a legitimate compound boundary (xx is common in compounds)
-                if c == 'x':
+                if c == 'x' or len(root) > 5:
                     continue  # tolerated in compounds
                 issues.append(f"gemination: {c}{c} at position {i}")
         

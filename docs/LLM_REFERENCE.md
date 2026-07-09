@@ -102,7 +102,7 @@ I see the alien.
 Predicates use `ra` like objects.
 
 ```text
-ra fatwih ka vi qex ta zux vi sa xo
+ra fatyih ka vi qex ta zux vi sa xo
 The alien is dangerous.
 ```
 

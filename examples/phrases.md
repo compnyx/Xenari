@@ -18,7 +18,7 @@ you little bitch. / direct vocative insult.
 ```
 
 ```text
-ra fatwih ka vi qex ta zux vi sa xo
+ra fatyih ka vi qex ta zux vi sa xo
 the alien is dangerous.
 ```
 
