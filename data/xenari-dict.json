@@ -1066,7 +1066,8 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
-      "dignity"
+      "dignity",
+      "self-worth"
     ]
   },
   {
@@ -1128,6 +1129,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "falsehoods",
       "lies"
     ]
   },
@@ -1152,6 +1154,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "endure",
       "survive"
     ]
   },
@@ -3862,7 +3865,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "gay"
+      "gay",
+      "homosexual",
+      "joyful"
     ]
   },
   {
@@ -4534,6 +4539,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "forceful",
       "violent"
     ]
   },
@@ -4654,7 +4660,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "extreme"
+      "extreme",
+      "intense"
     ]
   },
   {
@@ -5290,7 +5297,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "fishy"
+      "fishy",
+      "suspicious"
     ]
   },
   {
@@ -5602,6 +5610,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "invisible",
       "unseen"
     ]
   },
@@ -6070,6 +6079,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from wilf; validator issues: invalid character 'w' at position 0",
     "english_keys": [
+      "marvelous",
       "wonderful"
     ]
   },
@@ -6130,7 +6140,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from ciwuw; validator issues: invalid character 'w' at position 2, invalid character 'w' at position 4",
     "english_keys": [
-      "stern"
+      "severe",
+      "stern",
+      "strict"
     ]
   },
   {
@@ -6274,7 +6286,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "shy"
+      "reserved",
+      "shy",
+      "timid"
     ]
   },
   {
@@ -6298,7 +6312,10 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "given"
+      "given",
+      "granted",
+      "provided",
+      "stated"
     ]
   },
   {
@@ -6322,6 +6339,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "rather",
       "somewhat"
     ]
   },
@@ -6334,7 +6352,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "tentatively"
+      "hesitantly",
+      "tentatively",
+      "uncertainly"
     ]
   },
   {
@@ -6346,6 +6366,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "noticeably",
+      "openly",
       "visibly"
     ]
   },
@@ -6358,7 +6380,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "gigantic"
+      "enormous",
+      "gigantic",
+      "huge"
     ]
   },
   {
@@ -6370,7 +6394,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "petrified"
+      "petrified",
+      "terrified"
     ]
   },
   {
@@ -6382,7 +6407,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "circular"
+      "circular",
+      "ring-shaped",
+      "round"
     ]
   },
   {
@@ -6406,7 +6433,10 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "brutal"
+      "brutal",
+      "cruel",
+      "harsh",
+      "savage"
     ]
   },
   {
@@ -6430,6 +6460,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "schedule",
       "slate"
     ]
   },
@@ -6442,6 +6473,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "firmly",
       "securely"
     ]
   },
@@ -6454,7 +6486,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "remarkably"
+      "notably",
+      "remarkably",
+      "unusually"
     ]
   },
   {
@@ -6466,7 +6500,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "chunky"
+      "chunky",
+      "thick"
     ]
   },
   {
@@ -6478,7 +6513,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "countless"
+      "countless",
+      "innumerable"
     ]
   },
   {
@@ -6490,7 +6526,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "aged"
+      "aged",
+      "old"
     ]
   },
   {
@@ -6502,6 +6539,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "incapable",
       "unable"
     ]
   },
@@ -6538,7 +6576,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "errant"
+      "errant",
+      "misguided",
+      "straying"
     ]
   },
   {
@@ -6562,6 +6602,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "surprising",
       "unexpected"
     ]
   },
@@ -6610,7 +6651,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "miserable"
+      "miserable",
+      "wretched"
     ]
   },
   {
@@ -6622,7 +6664,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "pathetic"
+      "pathetic",
+      "pitiful"
     ]
   },
   {
@@ -6634,7 +6677,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "intensive"
+      "concentrated",
+      "intensive",
+      "thorough"
     ]
   },
   {
@@ -6646,6 +6691,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "fearless",
       "undaunted"
     ]
   },
@@ -6682,7 +6728,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "feeble"
+      "feeble",
+      "weak"
     ]
   },
   {
@@ -6706,7 +6753,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "cautious"
+      "careful",
+      "cautious",
+      "wary"
     ]
   },
   {
@@ -6718,7 +6767,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "resolute"
+      "determined",
+      "resolute",
+      "unwavering"
     ]
   },
   {
@@ -6730,7 +6781,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "reluctantly"
+      "hesitantly",
+      "reluctantly",
+      "unwillingly"
     ]
   },
   {
@@ -6766,7 +6819,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "additional"
+      "additional",
+      "extra",
+      "supplementary"
     ]
   },
   {
@@ -6778,7 +6833,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "crewed"
+      "crewed",
+      "manned",
+      "staffed"
     ]
   },
   {
@@ -6790,6 +6847,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "gaseous",
+      "misty",
       "vaporous"
     ]
   },
@@ -6814,7 +6873,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "astonishing"
+      "amazing",
+      "astonishing",
+      "surprising"
     ]
   },
   {
@@ -6838,6 +6899,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "internal",
       "intramural"
     ]
   },
@@ -6850,6 +6912,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "smallest",
       "tiniest"
     ]
   },
@@ -6862,7 +6925,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "bothered"
+      "annoyed",
+      "bothered",
+      "troubled"
     ]
   },
   {
@@ -6886,7 +6951,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "considerable"
+      "considerable",
+      "significant",
+      "substantial"
     ]
   },
   {
@@ -6898,7 +6965,10 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "general"
+      "common",
+      "general",
+      "overall",
+      "widespread"
     ]
   },
   {
@@ -6910,7 +6980,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "however"
+      "however",
+      "nevertheless",
+      "yet"
     ]
   },
   {
@@ -7203,6 +7275,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "gallery",
       "museum"
     ]
   },
@@ -7239,6 +7312,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "platform",
       "stage"
     ]
   },
@@ -7299,7 +7373,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "actor"
+      "actor",
+      "performer"
     ]
   },
   {
@@ -7395,6 +7470,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "performance",
       "play"
     ]
   },
@@ -7977,7 +8053,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "queen"
+      "queen",
+      "ruler-female"
     ]
   },
   {
@@ -7989,7 +8066,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "drone"
+      "drone",
+      "worker-male"
     ]
   },
   {
@@ -8458,7 +8536,8 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
-      "chickens"
+      "chickens",
+      "fowl"
     ]
   },
   {
@@ -9432,6 +9511,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "blood-insect",
       "mosquito"
     ]
   },
@@ -9558,7 +9638,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "hive"
+      "hive",
+      "nest"
     ]
   },
   {
@@ -10292,7 +10373,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "beak"
+      "beak",
+      "mouth-parts"
     ]
   },
   {
@@ -10316,7 +10398,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "antenna"
+      "antenna",
+      "feeler"
     ]
   },
   {
@@ -10583,6 +10666,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "mid-body",
       "thorax"
     ]
   },
@@ -12197,7 +12281,8 @@
     "timestamp": "2026-07-08 14:59:27",
     "notes": null,
     "english_keys": [
-      "yeah"
+      "yeah",
+      "yes"
     ]
   },
   {
@@ -12306,7 +12391,8 @@
     "timestamp": "2026-07-08 14:59:27",
     "notes": null,
     "english_keys": [
-      "nah"
+      "nah",
+      "no"
     ]
   },
   {
@@ -12719,7 +12805,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "part"
+      "part",
+      "portion"
     ]
   },
   {
@@ -13023,7 +13110,9 @@
     "source": "",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "some"
+    ]
   },
   {
     "id": 68,
@@ -13048,6 +13137,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "flank",
       "side"
     ]
   },
@@ -13243,6 +13333,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "dimension",
       "size"
     ]
   },
@@ -13726,7 +13817,8 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "conditional"
+      "conditional",
+      "if"
     ]
   },
   {
@@ -13904,7 +13996,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "color"
+      "color",
+      "hue"
     ]
   },
   {
@@ -13939,7 +14032,10 @@
     "source": "",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "all",
+      "every"
+    ]
   },
   {
     "id": 78,
@@ -14335,6 +14431,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "center",
       "middle"
     ]
   },
@@ -14408,7 +14505,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "amount"
+      "amount",
+      "quantity"
     ]
   },
   {
@@ -14694,7 +14792,8 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "below"
+      "below",
+      "down"
     ]
   },
   {
@@ -14719,7 +14818,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "center"
+      "center",
+      "point"
     ]
   },
   {
@@ -14949,6 +15049,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "method",
+      "path",
       "way"
     ]
   },
@@ -14997,7 +15099,8 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "together"
+      "together",
+      "with"
     ]
   },
   {
@@ -16286,6 +16389,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "cocaine",
       "coke"
     ]
   },
@@ -16346,7 +16450,8 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
-      "bullets"
+      "bullets",
+      "projectile"
     ]
   },
   {
@@ -16358,6 +16463,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "abduction",
       "kidnapping"
     ]
   },
@@ -16395,7 +16501,8 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
-      "meth"
+      "meth",
+      "methamphetamine"
     ]
   },
   {
@@ -16506,6 +16613,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "beheaded",
       "decapitated"
     ]
   },
@@ -16579,6 +16687,7 @@
     "timestamp": "2026-07-08T15:56:50.119039",
     "notes": null,
     "english_keys": [
+      "hitman",
       "sicario",
       "sicarios"
     ]
@@ -16677,6 +16786,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "firearm",
       "guns"
     ]
   },
@@ -16727,6 +16837,7 @@
     "timestamp": "2026-07-08T15:56:50.119039",
     "notes": null,
     "english_keys": [
+      "cannabis",
       "marijuana"
     ]
   },
@@ -16969,6 +17080,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "handgun",
       "pistol",
       "pistols"
     ]
@@ -18144,6 +18256,8 @@
     "timestamp": "2026-07-08T14:31:48.910797+00:00",
     "notes": null,
     "english_keys": [
+      "brightness",
+      "light",
       "light;",
       "this;"
     ]
@@ -19135,7 +19249,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "dirt"
+      "dirt",
+      "soil"
     ]
   },
   {
@@ -19393,7 +19508,8 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
-      "bummed"
+      "bummed",
+      "disappointed"
     ]
   },
   {
@@ -19453,6 +19569,7 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
+      "angry",
       "pissed"
     ]
   },
@@ -19638,7 +19755,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "baby"
+      "baby",
+      "infant"
     ]
   },
   {
@@ -19961,7 +20079,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "ancestor"
+      "ancestor",
+      "forebear"
     ]
   },
   {
@@ -20059,7 +20178,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "descendant"
+      "descendant",
+      "heir"
     ]
   },
   {
@@ -20243,6 +20363,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "below",
       "underneath"
     ]
   },
@@ -20255,7 +20376,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from kewo; validator issues: invalid character 'w' at position 2",
     "english_keys": [
-      "as"
+      "as",
+      "like"
     ]
   },
   {
@@ -20267,7 +20389,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "mid"
+      "center",
+      "mid",
+      "middle"
     ]
   },
   {
@@ -20399,6 +20523,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "however",
       "though"
     ]
   },
@@ -20434,7 +20559,10 @@
     "source": "xenari-lexicon.md",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "each",
+      "every"
+    ]
   },
   {
     "id": 227,
@@ -20475,6 +20603,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "from",
       "source"
     ]
   },
@@ -20512,7 +20641,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "certainly"
+      "certainly",
+      "sure"
     ]
   },
   {
@@ -20614,6 +20744,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "one",
       "single"
     ]
   },
@@ -20652,7 +20783,9 @@
     "source": "",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "least"
+    ]
   },
   {
     "id": 245,
@@ -20698,7 +20831,9 @@
     "source": "",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "less"
+    ]
   },
   {
     "id": 191,
@@ -20769,7 +20904,9 @@
     "source": "",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "but"
+    ]
   },
   {
     "id": 154,
@@ -20830,7 +20967,10 @@
     "source": "bee_movie_gap_fill",
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "extremely",
+      "very"
+    ]
   },
   {
     "id": 212,
@@ -20943,7 +21083,9 @@
     "source": "",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "most"
+    ]
   },
   {
     "id": 285,
@@ -20954,7 +21096,8 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "comparative"
+      "comparative",
+      "more"
     ]
   },
   {
@@ -21137,7 +21280,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "enough"
+      "enough",
+      "sufficient"
     ]
   },
   {
@@ -21255,7 +21399,9 @@
     "source": "",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "or"
+    ]
   },
   {
     "id": 263,
@@ -21339,7 +21485,10 @@
     "source": "xenari-lexicon.md",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "also",
+      "too"
+    ]
   },
   {
     "id": 194,
@@ -21413,7 +21562,9 @@
     "source": "xenari-lexicon.md",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "three"
+    ]
   },
   {
     "id": 268,
@@ -21587,6 +21738,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "all",
       "whole"
     ]
   },
@@ -21610,7 +21762,9 @@
     "source": "xenari-lexicon.md",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "where"
+    ]
   },
   {
     "id": 173,
@@ -21714,7 +21868,9 @@
     "source": "bee_movie_gap_fill",
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "because"
+    ]
   },
   {
     "id": 2077,
@@ -21737,6 +21893,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "prefer",
       "rather"
     ]
   },
@@ -21749,6 +21906,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "fairly",
       "quite"
     ]
   },
@@ -21900,7 +22058,10 @@
     "source": "bee_movie_gap_fill",
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "again",
+      "repeatedly"
+    ]
   },
   {
     "id": 218,
@@ -22024,7 +22185,8 @@
     "notes": null,
     "english_keys": [
       "collective",
-      "group"
+      "group",
+      "many"
     ]
   },
   {
@@ -22077,7 +22239,9 @@
     "source": "",
     "timestamp": null,
     "notes": null,
-    "english_keys": []
+    "english_keys": [
+      "and"
+    ]
   },
   {
     "id": 207,
@@ -22234,6 +22398,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "as",
       "like",
       "similarity"
     ]
@@ -22491,6 +22656,7 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
+      "underclothing",
       "underwear"
     ]
   },
@@ -23287,7 +23453,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "effect"
+      "consequence",
+      "effect",
+      "result"
     ]
   },
   {
@@ -23299,7 +23467,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from waftxqors; validator issues: invalid character 'w' at position 0",
     "english_keys": [
-      "cross"
+      "cross",
+      "intersection"
     ]
   },
   {
@@ -23335,7 +23504,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "instinctively"
+      "instinctively",
+      "naturally"
     ]
   },
   {
@@ -23455,7 +23625,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "clusters"
+      "bunches",
+      "clusters",
+      "groupings"
     ]
   },
   {
@@ -23503,6 +23675,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from cowmxe; validator issues: invalid character 'w' at position 2",
     "english_keys": [
+      "spray",
       "squirt"
     ]
   },
@@ -23575,7 +23748,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "isolate"
+      "isolate",
+      "separate"
     ]
   },
   {
@@ -23659,6 +23833,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "adaptation",
       "adjustment"
     ]
   },
@@ -23671,6 +23846,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "flourishing",
+      "prospering",
       "thriving"
     ]
   },
@@ -23875,7 +24052,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "handheld"
+      "handheld",
+      "portable"
     ]
   },
   {
@@ -24379,6 +24557,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "difficulty",
       "trouble"
     ]
   },
@@ -24415,7 +24594,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "flare"
+      "flare",
+      "light"
     ]
   },
   {
@@ -24691,7 +24871,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "magic"
+      "magic",
+      "sorcery"
     ]
   },
   {
@@ -24967,6 +25148,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "flair",
+      "manner",
       "style"
     ]
   },
@@ -25087,6 +25270,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "consider",
+      "esteem",
       "regard"
     ]
   },
@@ -25471,6 +25656,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "incantation",
       "spell"
     ]
   },
@@ -64411,7 +64597,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "rebel"
+      "rebel",
+      "resist"
     ]
   },
   {
@@ -64448,7 +64635,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "citizen"
+      "citizen",
+      "member"
     ]
   },
   {
@@ -64485,7 +64673,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "defeat"
+      "defeat",
+      "loss"
     ]
   },
   {
@@ -64497,6 +64686,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "assault",
       "attack"
     ]
   },
@@ -64509,7 +64699,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "culture"
+      "culture",
+      "customs"
     ]
   },
   {
@@ -64521,6 +64712,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "community",
       "society"
     ]
   },
@@ -64557,6 +64749,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "triumph",
       "victory"
     ]
   },
@@ -64569,6 +64762,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "arm",
       "weapon"
     ]
   },
@@ -64581,7 +64775,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "defend"
+      "defend",
+      "protect"
     ]
   },
   {
@@ -64605,6 +64800,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "country",
       "nation"
     ]
   },
@@ -64727,7 +64923,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "soldier"
+      "soldier",
+      "warrior"
     ]
   },
   {
@@ -64739,6 +64936,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "harmony",
       "peace"
     ]
   },
@@ -64751,7 +64949,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "surrender"
+      "surrender",
+      "yield"
     ]
   },
   {
@@ -64775,7 +64974,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "battle"
+      "battle",
+      "engagement"
     ]
   },
   {
@@ -64787,6 +64987,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "battle",
       "fight"
     ]
   },
@@ -64824,6 +65025,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "chamber",
       "room"
     ]
   },
@@ -64836,6 +65038,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "boundary",
       "fence"
     ]
   },
@@ -64897,7 +65100,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "garden"
+      "garden",
+      "yard"
     ]
   },
   {
@@ -65122,6 +65326,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "road",
       "street"
     ]
   },
@@ -65270,7 +65475,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "bridge"
+      "bridge",
+      "crossing"
     ]
   },
   {
@@ -65539,7 +65745,8 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
-      "couch"
+      "couch",
+      "sofa"
     ]
   },
   {
@@ -66020,6 +66227,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "collective",
       "jury"
     ]
   },
@@ -66032,6 +66240,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "advocate",
       "attorney"
     ]
   },
@@ -66069,7 +66278,8 @@
     "notes": null,
     "english_keys": [
       "detective",
-      "detectives"
+      "detectives",
+      "investigator"
     ]
   },
   {
@@ -66081,7 +66291,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "evidence"
+      "evidence",
+      "proof"
     ]
   },
   {
@@ -66130,7 +66341,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "objection"
+      "objection",
+      "protest"
     ]
   },
   {
@@ -66154,6 +66366,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "judgment",
       "verdict"
     ]
   },
@@ -66287,6 +66500,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "punishment",
       "sentence"
     ]
   },
@@ -66311,6 +66525,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "intermediary",
       "liaison"
     ]
   },
@@ -66335,6 +66550,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "lawful",
       "legal"
     ]
   },
@@ -66371,7 +66587,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "arrest"
+      "arrest",
+      "detain"
     ]
   },
   {
@@ -66875,6 +67092,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "ill",
       "sick"
     ]
   },
@@ -66976,7 +67194,8 @@
     "timestamp": "2026-07-08T15:56:50.119039",
     "notes": null,
     "english_keys": [
-      "drunk"
+      "drunk",
+      "intoxicated"
     ]
   },
   {
@@ -67000,7 +67219,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "medicine"
+      "medicine",
+      "remedy"
     ]
   },
   {
@@ -67205,6 +67425,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "disease",
       "illness"
     ]
   },
@@ -67398,6 +67619,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "cure",
       "heal"
     ]
   },
@@ -67410,7 +67632,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "cure"
+      "cure",
+      "treatment"
     ]
   },
   {
@@ -67434,6 +67657,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "contaminate",
       "infect"
     ]
   },
@@ -67776,6 +68000,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "perception",
       "sense"
     ]
   },
@@ -67788,6 +68013,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "endurance",
       "patience"
     ]
   },
@@ -67872,6 +68098,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "humiliation",
       "shame"
     ]
   },
@@ -67896,6 +68123,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "culpability",
       "guilt"
     ]
   },
@@ -68007,7 +68235,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "cowardice"
+      "cowardice",
+      "fearfulness"
     ]
   },
   {
@@ -68115,7 +68344,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "ignorance"
+      "ignorance",
+      "unknowing"
     ]
   },
   {
@@ -68539,7 +68769,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "opinion"
+      "opinion",
+      "view"
     ]
   },
   {
@@ -68611,7 +68842,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "duty"
+      "duty",
+      "obligation"
     ]
   },
   {
@@ -68635,6 +68867,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "answer",
       "solution"
     ]
   },
@@ -68719,6 +68952,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "sagacity",
       "wisdom"
     ]
   },
@@ -68815,7 +69049,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "honor"
+      "honor",
+      "respect"
     ]
   },
   {
@@ -68864,6 +69099,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "folly",
       "foolishness"
     ]
   },
@@ -68876,6 +69112,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "retaliation",
       "revenge"
     ]
   },
@@ -68936,6 +69173,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "inquiry",
       "question"
     ]
   },
@@ -68972,7 +69210,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "anger"
+      "anger",
+      "wrath"
     ]
   },
   {
@@ -69044,7 +69283,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "gluttony"
+      "gluttony",
+      "overconsumption"
     ]
   },
   {
@@ -69104,6 +69344,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "envy",
       "jealousy"
     ]
   },
@@ -69116,6 +69357,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "astonishment",
       "surprise"
     ]
   },
@@ -69140,7 +69382,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "emotion"
+      "emotion",
+      "feeling"
     ]
   },
   {
@@ -69262,6 +69505,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "entitlements",
       "rights"
     ]
   },
@@ -69682,6 +69926,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "expectation",
       "hope"
     ]
   },
@@ -69694,7 +69939,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "pride"
+      "pride",
+      "self-worth"
     ]
   },
   {
@@ -69706,6 +69952,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "avarice",
       "greed"
     ]
   },
@@ -69754,7 +70001,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "forgiveness"
+      "forgiveness",
+      "pardon"
     ]
   },
   {
@@ -69778,6 +70026,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "difficulty",
       "problem"
     ]
   },
@@ -69790,7 +70039,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "knowledge"
+      "knowledge",
+      "learning"
     ]
   },
   {
@@ -69802,7 +70052,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "belief"
+      "belief",
+      "conviction"
     ]
   },
   {
@@ -69814,7 +70065,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "sadness"
+      "sadness",
+      "sorrow"
     ]
   },
   {
@@ -69826,6 +70078,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "hypothesis",
       "theory"
     ]
   },
@@ -69912,7 +70165,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "idea"
+      "idea",
+      "thought"
     ]
   },
   {
@@ -70009,6 +70263,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "compassion",
       "mercy"
     ]
   },
@@ -70141,6 +70396,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "bravery",
       "courage"
     ]
   },
@@ -70165,7 +70421,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "feeling"
+      "feeling",
+      "sensation"
     ]
   },
   {
@@ -70410,6 +70667,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "essence",
       "spirit"
     ]
   },
@@ -70507,7 +70765,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "disgust"
+      "disgust",
+      "revulsion"
     ]
   },
   {
@@ -70826,7 +71085,8 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
-      "chasing"
+      "chasing",
+      "pursue"
     ]
   },
   {
@@ -70850,6 +71110,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "perspiring",
       "sweating"
     ]
   },
@@ -70862,7 +71123,8 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
-      "chased"
+      "chased",
+      "pursued"
     ]
   },
   {
@@ -70874,6 +71136,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "ascending",
       "rising"
     ]
   },
@@ -72861,7 +73124,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "combination"
+      "combination",
+      "mixture"
     ]
   },
   {
@@ -73137,7 +73401,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from wa; validator issues: invalid character 'w' at position 0",
     "english_keys": [
-      "boxes"
+      "boxes",
+      "containers"
     ]
   },
   {
@@ -73281,7 +73546,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "cab"
+      "cab",
+      "carriage",
+      "taxi"
     ]
   },
   {
@@ -73329,7 +73596,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from kowuswi; validator issues: invalid character 'w' at position 2, invalid character 'w' at position 5",
     "english_keys": [
-      "dish"
+      "dish",
+      "meal",
+      "plate"
     ]
   },
   {
@@ -73341,7 +73610,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "chum"
+      "chum",
+      "companion"
     ]
   },
   {
@@ -73401,7 +73671,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "castle"
+      "castle",
+      "fortress"
     ]
   },
   {
@@ -73437,7 +73708,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "pole"
+      "pole",
+      "rod",
+      "staff"
     ]
   },
   {
@@ -73569,7 +73842,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "chopper"
+      "chopper",
+      "cutter",
+      "helicopter"
     ]
   },
   {
@@ -73593,7 +73868,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "cattle"
+      "cattle",
+      "cows",
+      "livestock"
     ]
   },
   {
@@ -73821,7 +74098,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "inn"
+      "inn",
+      "lodging",
+      "tavern"
     ]
   },
   {
@@ -73869,7 +74148,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "carpet"
+      "carpet",
+      "rug"
     ]
   },
   {
@@ -73881,7 +74161,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "airport"
+      "airport",
+      "flying-port"
     ]
   },
   {
@@ -74061,6 +74342,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from frewi; validator issues: invalid character 'w' at position 3",
     "english_keys": [
+      "robber",
       "thief"
     ]
   },
@@ -74157,7 +74439,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "inception"
+      "beginning",
+      "inception",
+      "origin"
     ]
   },
   {
@@ -74193,6 +74477,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "cart",
+      "tram",
       "trolley"
     ]
   },
@@ -74205,7 +74491,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "dentist"
+      "dentist",
+      "tooth-healer"
     ]
   },
   {
@@ -74253,7 +74540,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "sub"
+      "below",
+      "sub",
+      "submarine"
     ]
   },
   {
@@ -74853,7 +75142,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "duct"
+      "duct",
+      "passage",
+      "tube"
     ]
   },
   {
@@ -74865,7 +75156,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "stuff"
+      "material",
+      "stuff",
+      "things"
     ]
   },
   {
@@ -74877,7 +75170,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from leqfslaw; validator issues: invalid character 'w' at position 7",
     "english_keys": [
-      "envelope"
+      "envelope",
+      "wrapper"
     ]
   },
   {
@@ -74901,7 +75195,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "staircase"
+      "staircase",
+      "stairs"
     ]
   },
   {
@@ -74913,6 +75208,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from wesuk; validator issues: invalid character 'w' at position 0",
     "english_keys": [
+      "den",
+      "hideout",
       "lair"
     ]
   },
@@ -74961,6 +75258,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "labyrinth",
       "maze"
     ]
   },
@@ -74973,7 +75271,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "football"
+      "football",
+      "sport-ball"
     ]
   },
   {
@@ -75165,7 +75464,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "barrier"
+      "barrier",
+      "obstruction",
+      "wall"
     ]
   },
   {
@@ -75201,7 +75502,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "mic"
+      "mic",
+      "microphone"
     ]
   },
   {
@@ -75225,7 +75527,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "candelabra"
+      "candelabra",
+      "candle-holder"
     ]
   },
   {
@@ -75549,6 +75852,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "marionette",
       "puppet"
     ]
   },
@@ -75621,7 +75925,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "country"
+      "country",
+      "land",
+      "nation"
     ]
   },
   {
@@ -75753,7 +76059,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "market"
+      "market",
+      "marketplace"
     ]
   },
   {
@@ -76053,6 +76360,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from wukarn; validator issues: invalid character 'w' at position 0",
     "english_keys": [
+      "crisis",
       "emergency"
     ]
   },
@@ -76113,6 +76421,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "backdrop",
       "background"
     ]
   },
@@ -76233,6 +76542,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "column",
       "pillar"
     ]
   },
@@ -76365,7 +76675,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "gulls"
+      "gulls",
+      "seagulls"
     ]
   },
   {
@@ -76521,7 +76832,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "breaker"
+      "breaker",
+      "switch"
     ]
   },
   {
@@ -76557,7 +76869,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "regulations"
+      "regulations",
+      "rules"
     ]
   },
   {
@@ -76569,7 +76882,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "documents"
+      "documents",
+      "records"
     ]
   },
   {
@@ -76617,7 +76931,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "projects"
+      "projects",
+      "undertakings"
     ]
   },
   {
@@ -76629,7 +76944,10 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "figures"
+      "figures",
+      "numbers",
+      "persons",
+      "shapes"
     ]
   },
   {
@@ -76641,6 +76959,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "debris",
       "detritus"
     ]
   },
@@ -76653,7 +76972,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "shade"
+      "shade",
+      "shadow"
     ]
   },
   {
@@ -76677,6 +76997,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "corridors",
       "halls"
     ]
   },
@@ -76773,7 +77094,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "decks"
+      "decks",
+      "floors"
     ]
   },
   {
@@ -76785,7 +77107,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "globes"
+      "globes",
+      "spheres"
     ]
   },
   {
@@ -76797,7 +77120,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "remnant"
+      "remnant",
+      "trace"
     ]
   },
   {
@@ -76809,7 +77133,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "burrows"
+      "burrows",
+      "tunnels"
     ]
   },
   {
@@ -76821,7 +77146,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "contents"
+      "contents",
+      "held"
     ]
   },
   {
@@ -76833,6 +77159,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "bands",
       "swaths"
     ]
   },
@@ -76857,7 +77184,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "prop"
+      "prop",
+      "support"
     ]
   },
   {
@@ -76869,7 +77197,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "forth"
+      "forth",
+      "forward",
+      "onward"
     ]
   },
   {
@@ -76881,7 +77211,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "components"
+      "components",
+      "constituents",
+      "parts"
     ]
   },
   {
@@ -76905,7 +77237,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "bin"
+      "bin",
+      "container",
+      "receptacle"
     ]
   },
   {
@@ -76917,6 +77251,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "robbers",
+      "stealers",
       "thieves"
     ]
   },
@@ -76953,7 +77289,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "container"
+      "container",
+      "receptacle",
+      "vessel"
     ]
   },
   {
@@ -76977,7 +77315,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "efforts"
+      "attempts",
+      "efforts",
+      "exertions"
     ]
   },
   {
@@ -77001,7 +77341,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "personnel"
+      "employees",
+      "personnel",
+      "staff"
     ]
   },
   {
@@ -77013,7 +77355,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "configuration"
+      "arrangement",
+      "configuration",
+      "layout"
     ]
   },
   {
@@ -77049,6 +77393,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "by",
       "per"
     ]
   },
@@ -77061,6 +77406,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "particles",
       "specks"
     ]
   },
@@ -77085,6 +77431,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "trace",
       "wisp"
     ]
   },
@@ -77133,6 +77480,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "customs",
       "practices"
     ]
   },
@@ -77145,6 +77493,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "sample",
       "specimen"
     ]
   },
@@ -77157,7 +77506,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "arcs"
+      "arcs",
+      "bows"
     ]
   },
   {
@@ -77181,6 +77531,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "connection",
+      "link",
       "linkage"
     ]
   },
@@ -77241,6 +77593,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "hollows",
+      "receptacles",
       "sockets"
     ]
   },
@@ -77253,6 +77607,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "cost",
       "expense"
     ]
   },
@@ -77265,7 +77620,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "brow"
+      "brow",
+      "forehead"
     ]
   },
   {
@@ -79020,7 +79376,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "delay"
+      "delay",
+      "postponement"
     ]
   },
   {
@@ -79032,7 +79389,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "begin"
+      "begin",
+      "start"
     ]
   },
   {
@@ -79116,6 +79474,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "commence",
       "start"
     ]
   },
@@ -79484,7 +79843,8 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "below"
+      "below",
+      "under"
     ]
   },
   {
@@ -79652,7 +80012,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "afternoon"
+      "afternoon",
+      "mid-day"
     ]
   },
   {
@@ -79688,7 +80049,8 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "above"
+      "above",
+      "over"
     ]
   },
   {
@@ -79762,7 +80124,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "hurry"
+      "hurry",
+      "rush"
     ]
   },
   {
@@ -80474,7 +80837,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "sugar"
+      "sugar",
+      "sweetness"
     ]
   },
   {
@@ -81038,7 +81402,9 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "rum"
+      "alcohol",
+      "rum",
+      "spirits"
     ]
   },
   {
@@ -81194,7 +81560,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "bean"
+      "bean",
+      "legume"
     ]
   },
   {
@@ -81834,7 +82201,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "potato"
+      "potato",
+      "tuber"
     ]
   },
   {
@@ -81930,6 +82298,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "grain",
       "rice"
     ]
   },
@@ -81942,7 +82311,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "cinnamon"
+      "cinnamon",
+      "spice"
     ]
   },
   {
@@ -82515,6 +82885,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "sliding",
       "slippery"
     ]
   },
@@ -82672,7 +83043,8 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
-      "blonde"
+      "blonde",
+      "fair-haired"
     ]
   },
   {
@@ -82768,7 +83140,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "cloudy"
+      "cloudy",
+      "overcast"
     ]
   },
   {
@@ -82816,7 +83189,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "dusty"
+      "dusty",
+      "powder-covered"
     ]
   },
   {
@@ -82888,7 +83262,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "fuzzy"
+      "fuzzy",
+      "soft-haired"
     ]
   },
   {
@@ -82900,6 +83275,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "disgusting",
       "gross"
     ]
   },
@@ -82924,7 +83300,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "busy"
+      "busy",
+      "occupied"
     ]
   },
   {
@@ -82936,6 +83313,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "also",
       "also:",
       "box",
       "doos",
@@ -83035,7 +83413,8 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
-      "cracked"
+      "cracked",
+      "fractured"
     ]
   },
   {
@@ -83047,6 +83426,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "famished",
       "hungry"
     ]
   },
@@ -83071,6 +83451,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "foolish",
       "stupid"
     ]
   },
@@ -83095,7 +83476,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "rich"
+      "rich",
+      "wealthy"
     ]
   },
   {
@@ -83107,6 +83489,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "developed",
       "mature"
     ]
   },
@@ -83119,7 +83502,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "dangerous"
+      "dangerous",
+      "perilous"
     ]
   },
   {
@@ -83131,7 +83515,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "fool"
+      "fool",
+      "idiot"
     ]
   },
   {
@@ -83155,7 +83540,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "fluffy"
+      "fluffy",
+      "soft-full"
     ]
   },
   {
@@ -83299,6 +83685,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "briny",
       "salty"
     ]
   },
@@ -83419,6 +83806,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "idle",
       "lazy"
     ]
   },
@@ -83455,7 +83843,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "important"
+      "important",
+      "significant"
     ]
   },
   {
@@ -83467,6 +83856,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "frightening",
       "scary"
     ]
   },
@@ -83491,7 +83881,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "easy"
+      "easy",
+      "simple"
     ]
   },
   {
@@ -83563,6 +83954,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "alike",
       "similar"
     ]
   },
@@ -83575,6 +83967,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "burning",
       "hot"
     ]
   },
@@ -83707,6 +84100,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "breezy",
       "windy"
     ]
   },
@@ -83719,6 +84113,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "odd",
       "strange"
     ]
   },
@@ -83767,6 +84162,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "hot-tasting",
       "spicy"
     ]
   },
@@ -83947,6 +84343,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "drowsy",
       "sleepy"
     ]
   },
@@ -83959,7 +84356,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "asleep"
+      "asleep",
+      "sleeping"
     ]
   },
   {
@@ -83971,6 +84369,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "bending",
       "flexible"
     ]
   },
@@ -84007,7 +84406,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "common"
+      "common",
+      "ordinary"
     ]
   },
   {
@@ -84091,7 +84491,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "soft"
+      "soft",
+      "yielding"
     ]
   },
   {
@@ -84127,7 +84528,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "amazing"
+      "amazing",
+      "wonderful"
     ]
   },
   {
@@ -84334,6 +84736,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "genuine",
       "real"
     ]
   },
@@ -84358,6 +84761,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "excellent",
       "fantastic"
     ]
   },
@@ -84370,7 +84774,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "greasy"
+      "greasy",
+      "oily"
     ]
   },
   {
@@ -84382,6 +84787,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "afraid",
       "scared"
     ]
   },
@@ -84406,7 +84812,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "insane"
+      "insane",
+      "mad"
     ]
   },
   {
@@ -84418,7 +84825,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "normal"
+      "normal",
+      "usual"
     ]
   },
   {
@@ -84490,7 +84898,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "rare"
+      "rare",
+      "uncommon"
     ]
   },
   {
@@ -84502,7 +84911,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "awake"
+      "awake",
+      "conscious"
     ]
   },
   {
@@ -84598,6 +85008,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "unfortunate",
       "unlucky"
     ]
   },
@@ -84730,6 +85141,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "destitute",
       "poor"
     ]
   },
@@ -84910,6 +85322,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "uncanny",
       "weird"
     ]
   },
@@ -84946,6 +85359,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "anxious",
       "nervous"
     ]
   },
@@ -85006,6 +85420,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "clever",
       "smart"
     ]
   },
@@ -85128,6 +85543,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "strain",
       "tension"
     ]
   },
@@ -85176,6 +85592,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "current",
       "modern"
     ]
   },
@@ -85261,6 +85678,7 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
+      "self-centered",
       "selfish"
     ]
   },
@@ -85286,6 +85704,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "rigid",
       "stiff"
     ]
   },
@@ -85502,6 +85921,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "parched",
       "thirsty"
     ]
   },
@@ -85514,7 +85934,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "alive"
+      "alive",
+      "living"
     ]
   },
   {
@@ -85550,6 +85971,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "blended",
       "mixed"
     ]
   },
@@ -85562,7 +85984,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "pure"
+      "pure",
+      "unmixed"
     ]
   },
   {
@@ -85574,6 +85997,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "cutting",
       "sharp"
     ]
   },
@@ -85778,6 +86202,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "enormous",
       "massive"
     ]
   },
@@ -85850,7 +86275,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "tired"
+      "tired",
+      "weary"
     ]
   },
   {
@@ -85874,7 +86300,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "muddy"
+      "muddy",
+      "wet-earth"
     ]
   },
   {
@@ -86006,6 +86433,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "resilient",
       "tough"
     ]
   },
@@ -86151,6 +86579,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "prepared",
       "ready"
     ]
   },
@@ -86211,7 +86640,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "fake"
+      "fake",
+      "false"
     ]
   },
   {
@@ -86247,6 +86677,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "sagely",
       "wise"
     ]
   },
@@ -86343,7 +86774,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "disgusting"
+      "disgusting",
+      "repulsive"
     ]
   },
   {
@@ -86355,7 +86787,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "dumb"
+      "dumb",
+      "stupid"
     ]
   },
   {
@@ -86379,7 +86812,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "foggy"
+      "foggy",
+      "misty"
     ]
   },
   {
@@ -86391,7 +86825,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "clean"
+      "clean",
+      "pure"
     ]
   },
   {
@@ -86441,6 +86876,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "reflective",
       "shiny"
     ]
   },
@@ -86453,7 +86889,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "dirty"
+      "dirty",
+      "soiled"
     ]
   },
   {
@@ -86621,6 +87058,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "fortunate",
       "lucky"
     ]
   },
@@ -86657,7 +87095,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "crazy"
+      "crazy",
+      "insane"
     ]
   },
   {
@@ -86693,7 +87132,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "alone"
+      "alone",
+      "solitary"
     ]
   },
   {
@@ -86705,6 +87145,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "dreadful",
       "horrible"
     ]
   },
@@ -86717,6 +87158,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "adhering",
       "sticky"
     ]
   },
@@ -86729,7 +87171,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "difficult"
+      "difficult",
+      "hard"
     ]
   },
   {
@@ -86814,7 +87257,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "clever"
+      "clever",
+      "cunning"
     ]
   },
   {
@@ -86826,7 +87270,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "giant"
+      "giant",
+      "towering"
     ]
   },
   {
@@ -86899,6 +87344,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "frail",
       "weak"
     ]
   },
@@ -87751,7 +88197,9 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
-      "booty"
+      "booty",
+      "buttocks",
+      "rear"
     ]
   },
   {
@@ -88827,7 +89275,8 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
-      "deceive"
+      "deceive",
+      "mislead"
     ]
   },
   {
@@ -88839,6 +89288,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "menace",
       "threat",
       "threatened"
     ]
@@ -88888,6 +89338,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "gesture",
       "wave"
     ]
   },
@@ -88900,7 +89351,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "gossip"
+      "gossip",
+      "rumor-talk"
     ]
   },
   {
@@ -88960,7 +89412,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "greet"
+      "greet",
+      "welcome"
     ]
   },
   {
@@ -89224,6 +89677,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "shouted",
       "yelled"
     ]
   },
@@ -89248,6 +89702,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "accuse",
       "blame"
     ]
   },
@@ -89356,7 +89811,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "boo"
+      "boo",
+      "disapprove"
     ]
   },
   {
@@ -89467,6 +89923,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "grieve",
       "mourn"
     ]
   },
@@ -89527,6 +89984,7 @@
     "timestamp": "2026-07-08T15:55:58.071540",
     "notes": null,
     "english_keys": [
+      "beg",
       "plead",
       "pleading"
     ]
@@ -89540,6 +89998,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "hearsay",
       "rumor"
     ]
   },
@@ -90063,6 +90522,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "agree-gesture",
       "nod"
     ]
   },
@@ -90147,7 +90607,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "cheer"
+      "cheer",
+      "support"
     ]
   },
   {
@@ -90183,7 +90644,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "introduce"
+      "introduce",
+      "present"
     ]
   },
   {
@@ -90195,7 +90657,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "shrug"
+      "shrug",
+      "uncertain-gesture"
     ]
   },
   {
@@ -90207,6 +90670,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "applaud",
       "clap"
     ]
   },
@@ -90316,7 +90780,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "parade"
+      "parade",
+      "procession"
     ]
   },
   {
@@ -90472,6 +90937,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "celebration",
       "party"
     ]
   },
@@ -90629,7 +91095,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "forbid"
+      "forbid",
+      "prohibit"
     ]
   },
   {
@@ -90810,6 +91277,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "allow",
       "permit"
     ]
   },
@@ -90883,6 +91351,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "greeting",
       "welcome"
     ]
   },
@@ -93376,6 +93845,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "automaton",
       "robot"
     ]
   },
@@ -93561,7 +94031,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "switch"
+      "switch",
+      "toggle"
     ]
   },
   {
@@ -93585,6 +94056,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "apparatus",
       "device"
     ]
   },
@@ -96535,7 +97007,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "stairs"
+      "stairs",
+      "steps"
     ]
   },
   {
@@ -97782,7 +98255,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "boss"
+      "boss",
+      "employer"
     ]
   },
   {
@@ -97794,6 +98268,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "riches",
       "wealth"
     ]
   },
@@ -97806,6 +98281,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "laborer",
       "worker"
     ]
   },
@@ -97818,7 +98294,8 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
-      "declined"
+      "declined",
+      "rejected"
     ]
   },
   {
@@ -97878,6 +98355,7 @@
     "timestamp": "2026-07-08T15:56:50.119039",
     "notes": null,
     "english_keys": [
+      "confiscate",
       "seize",
       "seized"
     ]
@@ -97903,6 +98381,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "costly",
       "expensive"
     ]
   },
@@ -98011,7 +98490,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "cheap"
+      "cheap",
+      "inexpensive"
     ]
   },
   {
@@ -98109,6 +98589,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "levy",
       "tax"
     ]
   },
@@ -98133,7 +98614,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "business"
+      "business",
+      "commerce"
     ]
   },
   {
@@ -98145,7 +98627,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "company"
+      "company",
+      "firm"
     ]
   },
   {
@@ -98217,6 +98700,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "destitution",
       "poverty"
     ]
   },
@@ -98229,7 +98713,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
-      "bargain"
+      "bargain",
+      "deal"
     ]
   },
   {
@@ -98241,6 +98726,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "gain",
       "profit"
     ]
   },
@@ -98266,6 +98752,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "deficit",
       "loss"
     ]
   },
@@ -98278,6 +98765,7 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": null,
     "english_keys": [
+      "employ",
       "hire"
     ]
   },
@@ -100906,7 +101394,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "elegant"
+      "elegant",
+      "refined"
     ]
   },
   {
@@ -100942,7 +101431,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "held"
+      "grasped",
+      "held",
+      "kept"
     ]
   },
   {
@@ -100966,7 +101457,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "speak"
+      "speak",
+      "talk"
     ]
   },
   {
@@ -101314,7 +101806,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "knocking"
+      "knocking",
+      "striking"
     ]
   },
   {
@@ -101350,6 +101843,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "kick",
       "kicks"
     ]
   },
@@ -101470,7 +101964,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "dilapidated"
+      "decayed",
+      "dilapidated",
+      "ruined"
     ]
   },
   {
@@ -101506,6 +102002,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from wuyqmo; validator issues: invalid character 'w' at position 0",
     "english_keys": [
+      "desire",
       "wish"
     ]
   },
@@ -101542,6 +102039,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "push",
       "pushes"
     ]
   },
@@ -101770,6 +102268,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "approach",
       "approaches"
     ]
   },
@@ -101818,7 +102317,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "concern"
+      "concern",
+      "worry"
     ]
   },
   {
@@ -102238,6 +102738,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "zap",
       "zaps"
     ]
   },
@@ -102370,7 +102871,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from wakl; validator issues: invalid character 'w' at position 0",
     "english_keys": [
-      "bloat"
+      "bloat",
+      "swell"
     ]
   },
   {
@@ -102406,7 +102908,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "speaking"
+      "speaking",
+      "talking"
     ]
   },
   {
@@ -102478,6 +102981,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "climb",
       "mount"
     ]
   },
@@ -102586,6 +103090,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "desires",
       "wishes"
     ]
   },
@@ -102598,6 +103103,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "reach",
       "reaches"
     ]
   },
@@ -102658,6 +103164,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "acquire",
       "gain"
     ]
   },
@@ -102934,6 +103441,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "handle",
+      "manage",
       "manages"
     ]
   },
@@ -103006,7 +103515,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "gaze"
+      "gaze",
+      "stare"
     ]
   },
   {
@@ -103210,7 +103720,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "glad"
+      "glad",
+      "happy",
+      "pleased"
     ]
   },
   {
@@ -103222,6 +103734,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
+      "massage",
       "rub"
     ]
   },
@@ -103282,7 +103795,9 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "crosses"
+      "cross",
+      "crosses",
+      "traverse"
     ]
   },
   {
@@ -103378,6 +103893,7 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from waherahr; validator issues: invalid character 'w' at position 0",
     "english_keys": [
+      "flip",
       "flips"
     ]
   },
@@ -103438,7 +103954,8 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": "QC repair 2026-07-08T23:29:26: renamed from zuznewt; validator issues: invalid character 'w' at position 5",
     "english_keys": [
-      "chosen"
+      "chosen",
+      "selected"
     ]
   },
   {
@@ -103462,7 +103979,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "labored"
+      "labored",
+      "strained"
     ]
   },
   {
@@ -103474,7 +103992,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "enveloping"
+      "enveloping",
+      "surrounding"
     ]
   },
   {
@@ -103486,7 +104005,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "incorporated"
+      "included",
+      "incorporated",
+      "integrated"
     ]
   },
   {
@@ -103498,7 +104019,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "strains"
+      "strains",
+      "struggles"
     ]
   },
   {
@@ -103534,7 +104056,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "flaring"
+      "flaring",
+      "spreading"
     ]
   },
   {
@@ -103546,7 +104069,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "dwindling"
+      "decreasing",
+      "dwindling",
+      "fading"
     ]
   },
   {
@@ -103594,7 +104119,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "catalogued"
+      "catalogued",
+      "indexed"
     ]
   },
   {
@@ -103606,7 +104132,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "collides"
+      "collides",
+      "strikes"
     ]
   },
   {
@@ -103630,7 +104157,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "absorbed"
+      "absorbed",
+      "engrossed"
     ]
   },
   {
@@ -103642,7 +104170,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "rearranging"
+      "rearranging",
+      "reordering"
     ]
   },
   {
@@ -103654,6 +104183,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "floats",
       "hovers"
     ]
   },
@@ -103678,6 +104208,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "interrupted",
       "punctuated"
     ]
   },
@@ -103702,6 +104233,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "flourish",
+      "prosper",
       "thrive"
     ]
   },
@@ -103726,6 +104259,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "emptied",
       "gutted"
     ]
   },
@@ -103738,7 +104272,10 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "fulfill"
+      "accomplish",
+      "complete",
+      "fulfill",
+      "satisfy"
     ]
   },
   {
@@ -103762,7 +104299,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "jammed"
+      "blocked",
+      "jammed",
+      "stuck"
     ]
   },
   {
@@ -103774,7 +104313,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "looting"
+      "looting",
+      "plundering"
     ]
   },
   {
@@ -103786,6 +104326,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "rearranges",
       "shuffles"
     ]
   },
@@ -103822,7 +104363,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "blown"
+      "blown",
+      "inflated"
     ]
   },
   {
@@ -103858,7 +104400,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "enroll"
+      "enroll",
+      "join",
+      "register"
     ]
   },
   {
@@ -103870,6 +104414,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "decipher",
+      "decode",
       "decrypt"
     ]
   },
@@ -103882,7 +104428,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "protecting"
+      "guarding",
+      "protecting",
+      "shielding"
     ]
   },
   {
@@ -103894,6 +104442,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "guiding",
       "steering"
     ]
   },
@@ -103906,7 +104455,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "instructed"
+      "directed",
+      "instructed",
+      "ordered"
     ]
   },
   {
@@ -103954,6 +104505,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "resolve",
       "solve"
     ]
   },
@@ -103966,7 +104518,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "applied"
+      "applied",
+      "relevant"
     ]
   },
   {
@@ -103978,7 +104531,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "appointed"
+      "appointed",
+      "assigned",
+      "designated"
     ]
   },
   {
@@ -104002,6 +104557,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "halting",
       "stopping"
     ]
   },
@@ -104014,7 +104570,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "declines"
+      "declines",
+      "decreases",
+      "refuses"
     ]
   },
   {
@@ -104026,6 +104584,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "growing",
       "increasing"
     ]
   },
@@ -104038,6 +104597,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "imitating",
       "mimicking"
     ]
   },
@@ -104074,7 +104634,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "confirmed"
+      "confirmed",
+      "established",
+      "verified"
     ]
   },
   {
@@ -104086,7 +104648,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "beckons"
+      "beckons",
+      "summons"
     ]
   },
   {
@@ -104098,7 +104661,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "intended"
+      "intended",
+      "meant",
+      "planned"
     ]
   },
   {
@@ -104122,7 +104687,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "containing"
+      "containing",
+      "enclosing",
+      "holding"
     ]
   },
   {
@@ -104146,7 +104713,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "disengages"
+      "disconnects",
+      "disengages",
+      "releases"
     ]
   },
   {
@@ -104158,6 +104727,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "authored",
+      "inscribed",
       "wrote"
     ]
   },
@@ -104170,6 +104741,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "diminishes",
+      "lessens",
       "subsides"
     ]
   },
@@ -104182,7 +104755,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "listed"
+      "enumerated",
+      "listed",
+      "recorded"
     ]
   },
   {
@@ -104206,6 +104781,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "controlled",
       "dominated"
     ]
   },
@@ -104218,6 +104794,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "spinning",
       "whirling"
     ]
   },
@@ -104230,7 +104807,8 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "compress"
+      "compress",
+      "squeeze"
     ]
   },
   {
@@ -104254,7 +104832,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "resolve"
+      "determination",
+      "resolve",
+      "settle"
     ]
   },
   {
@@ -104266,7 +104846,9 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
-      "constructed"
+      "built",
+      "constructed",
+      "erected"
     ]
   },
   {
@@ -104278,6 +104860,7 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "accelerated",
       "sped"
     ]
   },
@@ -104809,6 +105392,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "enigmatic",
       "mysterious"
     ]
   },
@@ -104845,6 +105429,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "frolicsome",
       "playful"
     ]
   },
@@ -104857,6 +105442,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "elliptical",
       "oval"
     ]
   },
@@ -104881,7 +105467,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "informed"
+      "informed",
+      "knowledgeable"
     ]
   },
   {
@@ -104893,7 +105480,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "fancy"
+      "decorative",
+      "fancy",
+      "ornate"
     ]
   },
   {
@@ -104905,7 +105494,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "alternate"
+      "alternate",
+      "other",
+      "rotating"
     ]
   },
   {
@@ -104929,6 +105520,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "corroded",
+      "oxidized",
       "rusty"
     ]
   },
@@ -104941,7 +105534,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "shabby"
+      "dingy",
+      "shabby",
+      "worn"
     ]
   },
   {
@@ -104965,7 +105560,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "magnificent"
+      "grand",
+      "magnificent",
+      "splendid"
     ]
   },
   {
@@ -104989,6 +105586,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "faint",
       "subtle"
     ]
   },
@@ -105013,6 +105611,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "incredible",
       "unbelievable"
     ]
   },
@@ -105025,6 +105624,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "decayed",
+      "shriveled",
       "withered"
     ]
   },
@@ -105049,7 +105650,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "exotic"
+      "exotic",
+      "foreign",
+      "unusual"
     ]
   },
   {
@@ -105073,6 +105676,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "authorized",
       "official"
     ]
   },
@@ -105085,6 +105689,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "elegant",
       "graceful"
     ]
   },
@@ -105097,7 +105702,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "intimate"
+      "close",
+      "intimate",
+      "private"
     ]
   },
   {
@@ -105109,6 +105716,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "entranced",
       "hypnotized"
     ]
   },
@@ -105157,7 +105765,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "clad"
+      "clad",
+      "clothed",
+      "dressed"
     ]
   },
   {
@@ -105169,6 +105779,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "distrustful",
       "suspicious"
     ]
   },
@@ -105181,7 +105792,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "affirmative"
+      "affirmative",
+      "confirming"
     ]
   },
   {
@@ -105217,6 +105829,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "bare",
+      "severe",
       "stark"
     ]
   },
@@ -105229,7 +105843,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "exact"
+      "exact",
+      "precise"
     ]
   },
   {
@@ -105241,7 +105856,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "dumbfounded"
+      "dumbfounded",
+      "stunned"
     ]
   },
   {
@@ -105277,6 +105893,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "bent",
       "crooked"
     ]
   },
@@ -105289,6 +105906,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "faithful",
       "loyal"
     ]
   },
@@ -105313,7 +105931,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "charming"
+      "charming",
+      "delightful"
     ]
   },
   {
@@ -105325,6 +105944,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "foreboding",
       "ominous"
     ]
   },
@@ -105349,6 +105969,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "disgusting",
+      "foul",
       "vile"
     ]
   },
@@ -105361,7 +105983,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "ordinary"
+      "common",
+      "ordinary",
+      "unremarkable"
     ]
   },
   {
@@ -105385,6 +106009,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "affirmative",
+      "certain",
       "positive"
     ]
   },
@@ -105397,6 +106023,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "victorious",
       "winning"
     ]
   },
@@ -105409,6 +106036,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "menacing",
       "sinister"
     ]
   },
@@ -105421,7 +106049,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "bumpy"
+      "bumpy",
+      "uneven"
     ]
   },
   {
@@ -105469,6 +106098,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "ecological",
       "environmental"
     ]
   },
@@ -105481,7 +106111,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "appalled"
+      "appalled",
+      "dismayed",
+      "horrified"
     ]
   },
   {
@@ -105493,7 +106125,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "particular"
+      "particular",
+      "specific"
     ]
   },
   {
@@ -105505,6 +106138,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "enormous",
       "tremendous"
     ]
   },
@@ -105529,7 +106163,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "hind"
+      "back",
+      "hind",
+      "rear"
     ]
   },
   {
@@ -105877,6 +106513,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "briefly",
       "momentarily"
     ]
   },
@@ -105889,7 +106526,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "broadly"
+      "broadly",
+      "widely"
     ]
   },
   {
@@ -108349,7 +108987,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "knapsack"
+      "backpack",
+      "knapsack",
+      "rucksack"
     ]
   },
   {
@@ -108445,6 +109085,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "cloak",
+      "covering",
       "mantle"
     ]
   },
@@ -108505,7 +109147,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "kingdom"
+      "domain",
+      "kingdom",
+      "realm"
     ]
   },
   {
@@ -108529,7 +109173,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "harm"
+      "damage",
+      "harm",
+      "injury"
     ]
   },
   {
@@ -108553,6 +109199,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "chains",
+      "fetters",
       "shackles"
     ]
   },
@@ -108613,6 +109261,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "attendant",
       "steward"
     ]
   },
@@ -108661,7 +109310,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "quakes"
+      "quakes",
+      "tremors"
     ]
   },
   {
@@ -108673,7 +109323,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "dummy"
+      "dummy",
+      "fake",
+      "mannequin"
     ]
   },
   {
@@ -108829,7 +109481,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "heir"
+      "heir",
+      "inheritor"
     ]
   },
   {
@@ -108937,7 +109590,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "puzzle"
+      "enigma",
+      "puzzle",
+      "riddle"
     ]
   },
   {
@@ -109033,7 +109688,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "fellas"
+      "chaps",
+      "fellas",
+      "guys"
     ]
   },
   {
@@ -109081,7 +109738,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "infringement"
+      "infringement",
+      "violation"
     ]
   },
   {
@@ -109165,7 +109823,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "gull"
+      "gull",
+      "seabird"
     ]
   },
   {
@@ -109237,7 +109896,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "labyrinth"
+      "labyrinth",
+      "maze"
     ]
   },
   {
@@ -109273,6 +109933,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "ground",
       "terrain"
     ]
   },
@@ -109369,7 +110030,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "extraction"
+      "extraction",
+      "removal"
     ]
   },
   {
@@ -109381,6 +110043,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "opening",
       "vent"
     ]
   },
@@ -109465,7 +110128,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "folks"
+      "folks",
+      "people"
     ]
   },
   {
@@ -109609,6 +110273,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "anxieties",
+      "concerns",
       "worries"
     ]
   },
@@ -109741,7 +110407,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "rail"
+      "rail",
+      "track"
     ]
   },
   {
@@ -109885,7 +110552,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "bulge"
+      "bulge",
+      "protrusion"
     ]
   },
   {
@@ -109897,7 +110565,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "arrangement"
+      "arrangement",
+      "organization"
     ]
   },
   {
@@ -109921,6 +110590,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "cavity",
+      "hole",
       "pit"
     ]
   },
@@ -109945,7 +110616,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "license"
+      "license",
+      "permit"
     ]
   },
   {
@@ -109969,6 +110641,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "darling",
       "sweetie"
     ]
   },
@@ -110017,6 +110690,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "earthquake",
       "quake"
     ]
   },
@@ -110209,7 +110883,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "cess"
+      "cess",
+      "levy",
+      "tax"
     ]
   },
   {
@@ -110233,6 +110909,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "playthings",
       "toys"
     ]
   },
@@ -110293,6 +110970,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "refuse",
       "waste"
     ]
   },
@@ -110329,7 +111007,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "aid"
+      "aid",
+      "assistance",
+      "help"
     ]
   },
   {
@@ -110413,7 +111093,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "compounds"
+      "combinations",
+      "compounds",
+      "mixtures"
     ]
   },
   {
@@ -110497,7 +111179,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "sorts"
+      "kinds",
+      "sorts",
+      "types"
     ]
   },
   {
@@ -110533,6 +111217,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "father",
+      "lord",
       "sire"
     ]
   },
@@ -110569,7 +111255,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "dishes"
+      "dishes",
+      "plates",
+      "tableware"
     ]
   },
   {
@@ -110617,7 +111305,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "prompts"
+      "cues",
+      "prompts",
+      "signals"
     ]
   },
   {
@@ -110845,6 +111535,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "declaration",
       "statement"
     ]
   },
@@ -110857,6 +111548,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "stairs",
       "stairway"
     ]
   },
@@ -111073,7 +111765,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "basin"
+      "basin",
+      "bowl",
+      "catchment"
     ]
   },
   {
@@ -111217,7 +111911,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "stories"
+      "narratives",
+      "stories",
+      "tales"
     ]
   },
   {
@@ -111277,6 +111973,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "guardian",
       "keeper"
     ]
   },
@@ -111385,6 +112082,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "containing",
       "including"
     ]
   },
@@ -111421,6 +112119,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "among",
       "amongst"
     ]
   },
@@ -111481,6 +112180,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "compress",
       "squeeze"
     ]
   },
@@ -111505,6 +112205,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "squandering",
       "wasting"
     ]
   },
@@ -111649,6 +112350,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "frighten",
       "scare"
     ]
   },
@@ -111709,7 +112411,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "carried"
+      "carried",
+      "transported"
     ]
   },
   {
@@ -111721,7 +112424,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "advise"
+      "advise",
+      "counsel"
     ]
   },
   {
@@ -111865,7 +112569,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "bury"
+      "bury",
+      "inter"
     ]
   },
   {
@@ -111997,7 +112702,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "grabbed"
+      "grabbed",
+      "seized"
     ]
   },
   {
@@ -112033,7 +112739,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "favoring"
+      "favoring",
+      "preferring"
     ]
   },
   {
@@ -112117,7 +112824,9 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "produces"
+      "creates",
+      "produces",
+      "yields"
     ]
   },
   {
@@ -112153,6 +112862,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "overturn",
       "topple"
     ]
   },
@@ -112177,7 +112887,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "dig"
+      "dig",
+      "excavate"
     ]
   },
   {
@@ -112369,7 +113080,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "indicates"
+      "indicates",
+      "shows"
     ]
   },
   {
@@ -112381,6 +113093,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "allowing",
       "letting"
     ]
   },
@@ -112393,6 +113106,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "marry",
       "wed"
     ]
   },
@@ -112501,7 +113215,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "dodging"
+      "dodging",
+      "evading"
     ]
   },
   {
@@ -112561,6 +113276,7 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
+      "bestow",
       "grant"
     ]
   },
@@ -112597,7 +113313,8 @@
     "timestamp": "2026-07-08T21:06:05.724544+00:00",
     "notes": null,
     "english_keys": [
-      "deserve"
+      "deserve",
+      "merit"
     ]
   },
   {

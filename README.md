@@ -32,6 +32,12 @@ Regenerate JSON after DB edits:
 python3 scripts/export_json.py
 ```
 
+Run regression tests after tool or parser changes:
+
+```bash
+pytest -q
+```
+
 ## Canon Rules
 
 - `xenari.db` is canon.

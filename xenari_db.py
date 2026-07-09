@@ -12,7 +12,7 @@ Usage:
   db.lookup("hate")
   db.add_root("hate", "blun", "to hate, detest", category="Mental & Abstract")
   db.search("feed")
-  db.export_markdown()
+  db.export_markdown(Path("xenari-lexicon-export.md"))
 """
 
 import sqlite3
@@ -22,7 +22,6 @@ from pathlib import Path
 from typing import Optional, Dict, Tuple, List
 
 DB_PATH = Path(__file__).parent / "xenari.db"
-LEXICON_MD = Path(__file__).parent / "xenari-lexicon.md"
 
 
 class XenariDB:
@@ -529,9 +528,9 @@ class XenariDB:
 
     # ─── Export ─────────────────────────────────────────────────
 
-    def export_markdown(self, path: Optional[Path] = None) -> str:
-        """Generate a clean markdown lexicon from the DB."""
-        out_path = path or LEXICON_MD
+    def export_markdown(self, path: Path) -> str:
+        """Generate a clean markdown lexicon from the DB at an explicit path."""
+        out_path = Path(path)
         cats = self.categories()
 
         lines = [
@@ -698,10 +697,10 @@ class XenariDB:
 
     # ─── Migration from markdown ────────────────────────────────
 
-    def migrate_from_markdown(self, md_path: Optional[Path] = None):
-        """One-time migration: parse the old markdown lexicon into the DB.
+    def migrate_from_markdown(self, md_path: Path):
+        """Legacy one-time migration from an explicit archived markdown path.
         Only imports if the DB is empty."""
-        md = md_path or LEXICON_MD
+        md = Path(md_path)
         count = self.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0]
         if count > 0:
             print(f"DB already has {count} roots, skipping migration")
