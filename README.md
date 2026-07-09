@@ -106,6 +106,33 @@ python3 xenari_tool.py review --limit 20 --output xenari-qc-report.md
 The report combines doctor, parity, audit, lint, and curation queues. It never
 writes the database; `--output` only writes the Markdown report file.
 
+Use `gaps` when you want to harvest missing script vocabulary before coining
+anything:
+
+```bash
+python3 xenari_tool.py gaps scripts/movie.txt --output xenari-gap-harvest.md
+python3 xenari_tool.py gaps scripts/*.txt --limit 0 --phrase-min-count 1
+python3 xenari_tool.py gaps scripts/movie.txt --format json --output xenari-gap-harvest.json
+```
+
+`gaps` is a read-only vacuum pass over script text. It captures every unknown
+word that is not already covered by the DB/lexicon lookup, keeps raw forms and
+source contexts, and sorts candidates into review buckets:
+
+- lexical gaps
+- phrase gaps
+- sound effects
+- vocalizations
+- names and places
+- inflection variants
+- grammar-covered function words
+- extraction noise
+
+Sound effects and vocalizations are first-class lexical candidates, not junk.
+Use them for impact, ambience, body sounds, interjections, and emotion roots.
+`--phrase-min-count` controls repeated phrase sensitivity; use `1` when you want
+even one-off phrase candidates. `--limit 0` prints every candidate in Markdown.
+
 Use `lint` for softer review targets that need human judgment, such as
 phrase-like definitions, English-looking roots, and placeholder categories. Lint
 findings are not automatic cleanup failures.

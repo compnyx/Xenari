@@ -6,11 +6,13 @@ import sys
 from pathlib import Path
 
 from xenari_core import Xenari
+from xenari_gap import GapHarvester
 
 
 def main():
     epilog = """Common flows:
   inspect:   stats | doctor | workbench | review --output xenari-qc.md | audit 20 | lint 20
+  harvest:   gaps script.txt other-script.md --output xenari-gap-harvest.md
   find:      inspect fatyih | lookup love | search dangerous | near "soft light" | relations fatyih
   translate: translate "I love you" | translate "ra mex ka neq ta zrent sa xa"
   coin:      coin glimmer "soft unsteady light" | coin glimmer "soft unsteady light" --root zakglu --yes
@@ -25,7 +27,7 @@ def main():
     )
     parser.add_argument("command", choices=[
         "help", "lookup", "inspect", "info", "validate", "doctor", "workbench",
-        "review",
+        "review", "gaps",
         "compound", "speak", "gloss", "translate", "reverse",
         "export-js", "export-json", "export-md",
         "export", "stats", "audit", "lint", "curate", "meta", "sync",
@@ -53,6 +55,9 @@ def main():
     parser.add_argument("--site", action="store_true", help="sync exports into nyx-site dictionary paths too")
     parser.add_argument("--limit", type=int, default=20, help="result limit for search/lint/propose commands")
     parser.add_argument("--output", default=None, help="optional output path for export")
+    parser.add_argument("--format", choices=["markdown", "json"], default="markdown", help="output format for gaps")
+    parser.add_argument("--phrase-min-count", type=int, default=2, help="minimum repeated count for phrase gap candidates")
+    parser.add_argument("--max-phrase-words", type=int, default=5, help="maximum words per phrase gap candidate")
     args = parser.parse_args()
 
     x = Xenari()
@@ -123,6 +128,29 @@ def main():
             print(report)
         if not ok:
             sys.exit(1)
+    elif args.command == "gaps":
+        if not args.args:
+            print("Usage: gaps <script-file> [more-script-files...] [--output report.md] [--format markdown|json]")
+            sys.exit(1)
+        paths = [Path(value) for value in args.args]
+        missing = [str(path) for path in paths if not path.exists()]
+        if missing:
+            print("missing input file(s): " + ", ".join(missing))
+            sys.exit(1)
+        harvester = GapHarvester(x)
+        report = harvester.harvest_paths(
+            paths,
+            phrase_min_count=max(args.phrase_min_count, 1),
+            max_phrase_words=max(args.max_phrase_words, 2),
+        )
+        rendered = harvester.render_json(report) if args.format == "json" else harvester.render_markdown(report, limit=args.limit)
+        if args.output:
+            output = Path(args.output)
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_text(rendered, encoding="utf-8")
+            print(f"wrote {output}")
+        else:
+            print(rendered, end="")
     elif args.command == "compound":
         if not args.args:
             print("Usage: compound <word1> <word2> ...")

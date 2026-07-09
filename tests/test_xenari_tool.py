@@ -8,6 +8,7 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
 from xenari_tool import Xenari
+from xenari_gap import GapHarvester
 
 
 def load_fixtures():
@@ -223,6 +224,70 @@ def test_review_cli_writes_markdown_report(tmp_path):
     assert content.startswith("# Xenari QC Review Report")
     assert "## Audit" in content
     assert "## Safe Follow-up Commands" in content
+
+
+def test_gap_harvest_captures_words_phrases_sounds_and_names(tmp_path):
+    script = tmp_path / "script.txt"
+    script.write_text(
+        """NYX:
+Hello Varek.
+
+(WHIRR. WHOOSH. DRIP.)
+The rustglass elevator hums.
+The rustglass elevator hums.
+Her claws skittered across the floor.
+""",
+        encoding="utf-8",
+    )
+    x = Xenari(REPO / "xenari.db")
+    harvester = GapHarvester(x)
+    report = harvester.harvest_paths([script], phrase_min_count=2)
+    buckets = report["buckets"]
+
+    assert any(item["key"] == "whirr" for item in buckets["sound_effects"])
+    assert any(item["key"] == "whoosh" for item in buckets["sound_effects"])
+    assert any(item["key"] == "drip" for item in buckets["sound_effects"])
+    assert any(item["key"] == "varek" for item in buckets["names_places"])
+    assert any(item["key"] == "skittered" for item in buckets["lexical_gaps"])
+    assert any(item["key"] == "the rustglass" for item in buckets["phrase_gaps"])
+
+    markdown = harvester.render_markdown(report, limit=5)
+    assert "# Xenari Gap Harvest Report" in markdown
+    assert "## Sound Effects" in markdown
+    assert "## Phrase Gaps" in markdown
+    assert "script.txt:" in markdown
+
+
+def test_gaps_cli_writes_json_report(tmp_path):
+    script = tmp_path / "script.txt"
+    out = tmp_path / "gap-report.json"
+    script.write_text("MARA:\nShh. The rustglass door clicks.\nThe rustglass door clicks.\n", encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "xenari_tool.py",
+            "gaps",
+            str(script),
+            "--format",
+            "json",
+            "--output",
+            str(out),
+            "--phrase-min-count",
+            "2",
+        ],
+        cwd=REPO,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0
+    assert f"wrote {out}" in result.stdout
+    data = json.loads(out.read_text(encoding="utf-8"))
+    assert data["summary"]["documents"] == 1
+    assert any(item["key"] == "shh" for item in data["buckets"]["vocalizations"])
+    assert any(item["key"] == "the rustglass" for item in data["buckets"]["phrase_gaps"])
 
 
 def test_parity_and_coin_workflow_preview():
