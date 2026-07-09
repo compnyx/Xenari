@@ -38,6 +38,7 @@ def test_auto_translate_and_inspect_helpers():
     report = x.inspect_term("fatyih")
     assert "Root: fatyih" in report
     assert "dangerous" in report
+    assert "Review-near meanings:" in report
 
 
 def test_lookup_prefers_pronouns_and_synonyms():
@@ -108,6 +109,28 @@ def test_ranked_search_proposals_relations_lint_and_meta():
     assert ok
     assert "Xenari workbench" in workbench
     assert "Useful next commands:" in workbench
+    assert "translator parity: ok" in workbench
+
+
+def test_parity_and_coin_workflow_preview():
+    x = Xenari(REPO / "xenari.db")
+
+    ok, parity = x.parity()
+    assert ok
+    assert "forward: ok" in parity
+    assert "reverse: ok" in parity
+
+    ok, scout = x.coin_root("glimmer", "soft unsteady light", limit=3)
+    assert ok
+    assert "Coin root:" in scout
+    assert "Candidate roots:" in scout
+    assert "No write requested." in scout
+
+    root = x.db.propose_root("glimmer", "soft unsteady light", limit=1)[0]["root"]
+    ok, preview = x.coin_root("glimmer", "soft unsteady light", root=root, limit=3, dry_run=True)
+    assert ok
+    assert "DRY RUN" in preview
+    assert x.db.lookup("glimmer") is None
 
 
 def test_unified_export_and_reverse_helpers(tmp_path):

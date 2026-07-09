@@ -755,6 +755,21 @@ class XenariDB:
                 lines.append(f"  - {compound} — {comp_row['meaning']}")
         else:
             lines.append("  none")
+        head = self._audit_headword(row["meaning"])
+        near = [
+            item for item in self.near_meanings(head or row["meaning"], limit=6)
+            if item["root"] != root
+        ]
+        lines.append("Review-near meanings:")
+        if near:
+            for item in near[:5]:
+                lines.append(
+                    f"  - {item['root']} — {item['meaning']} "
+                    f"[{item['category']}] score={item.get('score', 0)}"
+                )
+            lines.append("  note: these are search hints, not curated semantic relations")
+        else:
+            lines.append("  none")
         return True, "\n".join(lines)
 
     def near_meanings(self, query: str, limit: int = 12) -> List[Dict]:
@@ -826,6 +841,13 @@ class XenariDB:
             lines.append("  none")
         for rel, missing in orphan_relations[:limit]:
             lines.append(f"  - {rel['root_a']} {rel['relation']} {rel['root_b']} (missing: {', '.join(missing)})")
+        lines.extend([
+            "",
+            "Suggested next commands",
+            "  python3 xenari_tool.py inspect <root>",
+            "  python3 xenari_tool.py coin <english> <meaning>",
+            "  python3 xenari_tool.py categories",
+        ])
         return "\n".join(lines)
 
     def get_synonyms(self, root: str) -> list:

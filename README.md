@@ -10,7 +10,11 @@ source of truth.
 
 - `xenari.db` - canonical SQLite lexicon database.
 - `xenari_db.py` - database wrapper for lookup, search, export, and validation.
-- `xenari_tool.py` - CLI/helper used to lookup, speak, gloss, and export Xenari.
+- `xenari_tool.py` - compatibility CLI/import entrypoint.
+- `xenari_core.py` - `Xenari` facade assembled from focused tool mixins.
+- `xenari_cli.py` - command-line interface.
+- `xenari_lookup.py`, `xenari_translate.py`, `xenari_export.py`,
+  `xenari_health.py`, `xenari_mutation.py` - focused helper modules.
 - `data/xenari-dict.json` - generated full JSON dictionary export.
 - `docs/LLM_REFERENCE.md` - compact grammar and usage reference for LLMs.
 - `examples/phrases.md` - known-good examples.
@@ -28,10 +32,12 @@ python3 xenari_tool.py speak "I love you" --evidential witnessed
 python3 xenari_tool.py translate "I love you"
 python3 xenari_tool.py translate "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py workbench
+python3 xenari_tool.py parity
 python3 xenari_tool.py search "soul"
 python3 xenari_tool.py near "dangerous"
 python3 xenari_tool.py relations fatyih
 python3 xenari_tool.py propose-root glimmer "soft unsteady light"
+python3 xenari_tool.py coin glimmer "soft unsteady light"
 python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py audit
 python3 xenari_tool.py lint
@@ -52,6 +58,7 @@ python3 xenari_tool.py export site
 Run regression tests after tool or parser changes:
 
 ```bash
+python3 xenari_tool.py parity
 pytest -q
 ```
 
@@ -92,12 +99,24 @@ Use `propose-root` before coining vocabulary:
 
 ```bash
 python3 xenari_tool.py propose-root glimmer "soft unsteady light" --limit 8
+python3 xenari_tool.py coin glimmer "soft unsteady light"
 python3 xenari_tool.py near "soft unsteady light"
 ```
 
 It suggests valid unused roots, shows near existing meanings, guesses category,
 and warns about close roots or Englishy/cognate smell before anything touches
 the DB.
+
+Use `coin` for the safer root-coining workflow. Without `--root`, it scouts
+near meanings and candidate roots. With `--root`, it previews the add. With
+`--yes`, it writes, syncs generated JSON, and runs `doctor`.
+
+```bash
+python3 xenari_tool.py coin glimmer "soft unsteady light" --limit 8
+python3 xenari_tool.py coin glimmer "soft unsteady light" --root zakglu --dry-run
+python3 xenari_tool.py coin glimmer "soft unsteady light" --root zakglu --yes
+python3 xenari_tool.py coin glimmer "soft unsteady light" --root zakglu --yes --site
+```
 
 Use `relations` to inspect semantic and compound links:
 
@@ -116,7 +135,8 @@ python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
 ```
 
 The browser translator and Python CLI share regression fixtures in
-`data/translator-fixtures.json`.
+`data/translator-fixtures.json`. Use `parity` for the Python side of that
+contract and `npm run test:xenari` in `nyx-site` for the browser side.
 
 ## Mutating The DB
 
