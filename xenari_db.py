@@ -195,6 +195,27 @@ class XenariDB:
         results.sort(key=lambda r: (-r["score"], len(r["root"]), r["root"]))
         return results[:limit]
 
+    def _root_shape_score(self, root: str) -> int:
+        """Score pronounceable root shapes for proposal ordering."""
+        score = 100
+        if 3 <= len(root) <= 5:
+            score += 18
+        elif len(root) == 6:
+            score += 8
+        else:
+            score -= 8
+        if "'" in root:
+            score -= 10
+        if re.search(r"[bcdfghjklmnpqrstvwxyz]{4,}", root):
+            score -= 18
+        if re.search(r"[aeiou]{2,}", root):
+            score -= 12
+        if root[0] in "qx":
+            score -= 3
+        if root[-1] in "aeou":
+            score += 4
+        return score
+
     def propose_root(self, english: str, meaning: str = "", limit: int = 8) -> List[Dict]:
         """Suggest unused root shapes and include safety notes for each."""
         key = english.lower().strip()
@@ -205,12 +226,12 @@ class XenariDB:
                   "pr", "tr", "kr", "fr", "sr", "zr", "cr", "xr", "qr", "ml", "gl", "br", "dr"]
         codas = ["p", "t", "k", "q", "f", "s", "z", "c", "x", "m", "n", "r", "l", "mp", "nt", "ngk", "nq", ""]
         seen = set()
-        suggestions = []
+        candidates = []
         idx = 0
         existing = self.conn.execute("SELECT root, meaning FROM roots").fetchall()
         english_bits = set(re.findall(r"[a-z]{3,}", key + " " + gloss))
 
-        while len(suggestions) < limit and idx < 300:
+        while len(candidates) < max(limit * 6, 40) and idx < 900:
             chunk = seed[idx % len(seed):] + seed[:idx % len(seed)]
             a = int(chunk[:2], 16)
             b = int(chunk[2:4], 16)
@@ -243,20 +264,26 @@ class XenariDB:
                     break
 
             notes = []
+            score = self._root_shape_score(root)
             if near:
                 notes.append("near: " + "; ".join(near))
+                score -= 20 + (5 * len(near))
             if any(bit in root or root in bit for bit in english_bits):
                 notes.append("englishy/cognate smell")
+                score -= 35
             if not notes:
                 notes.append("clean")
+                score += 20
 
-            suggestions.append({
+            candidates.append({
                 "root": root,
                 "meaning": gloss,
                 "category": self._guess_category(key, gloss),
                 "notes": notes,
+                "score": score,
             })
-        return suggestions
+        candidates.sort(key=lambda item: (-item["score"], len(item["root"]), item["root"]))
+        return candidates[:limit]
 
     def search_category(self, category: str) -> List[Dict]:
         """Get all roots in a category."""
@@ -560,7 +587,8 @@ class XenariDB:
             (["vulgar", "shit", "piss", "whore", "slut", "cunt"], "Vulgar & Profane"),
             (["nature", "weather", "rain", "cloud", "star", "moon", "forest",
               "mountain", "valley", "water", "fire", "wind", "ice", "dust", "sand",
-              "tree", "plant", "animal", "beast", "claw", "wing", "tail"],
+              "tree", "plant", "animal", "beast", "claw", "wing", "tail",
+              "light", "glimmer", "glow", "shine", "spark", "color", "colour"],
              "Elements & Nature"),
             (["body", "eat", "drink", "sleep", "walk", "run", "bite", "see",
               "hear", "breathe"], "Beings & Creatures"),
@@ -760,7 +788,7 @@ class XenariDB:
         for row in rows:
             meaning = row["meaning"].strip()
             head = self._audit_headword(meaning)
-            if len(head.split()) > 5 or re.search(r"[.!?]", meaning):
+            if len(head.split()) > 6 or re.search(r"[.!?]", meaning):
                 phrasey.append(row)
             if any(word in row["root"].lower() and len(row["root"]) > len(word) for word in english_words):
                 englishy.append(row)

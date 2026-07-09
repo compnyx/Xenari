@@ -82,6 +82,8 @@ def test_ranked_search_proposals_relations_lint_and_meta():
     assert len(proposals) == 3
     assert all(not x.db.has_root(item["root"]) for item in proposals)
     assert all(not x.db.validate_phonotactics(item["root"]) for item in proposals)
+    assert proposals[0]["score"] >= proposals[-1]["score"]
+    assert proposals[0]["category"] == "Elements & Nature"
 
     ok, report = x.db.relations_report("fatyih")
     assert ok
@@ -90,6 +92,11 @@ def test_ranked_search_proposals_relations_lint_and_meta():
 
     assert "Xenari lint" in x.db.lint(limit=3)
     assert "schema_version" in x.db.metadata_report()
+
+    ok, workbench = x.workbench(limit=2)
+    assert ok
+    assert "Xenari workbench" in workbench
+    assert "Useful next commands:" in workbench
 
 
 def test_unified_export_and_reverse_helpers(tmp_path):

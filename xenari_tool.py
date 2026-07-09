@@ -12,6 +12,7 @@ Usage:
   python xenari_tool.py speak "you are cute" --evidential inferred
   python xenari_tool.py gloss "fuck it we ball"
   python xenari_tool.py doctor
+  python xenari_tool.py workbench
   python xenari_tool.py propose-root "glimmer" "soft unsteady light"
   python xenari_tool.py relations fatyih
   python xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
@@ -827,6 +828,44 @@ class Xenari:
         lines.append("status: ok" if ok else "status: FAIL")
         return ok, "\n".join(lines)
 
+    def workbench(self, limit: int = 5) -> Tuple[bool, str]:
+        """Agent-friendly snapshot for deciding what to do next."""
+        ok, doctor_report = self.doctor()
+        audit = self.db.audit(limit=0)
+        lint = self.db.lint(limit=limit)
+        lines = [
+            "Xenari workbench",
+            self.db.stats(),
+            "",
+            "Release gate:",
+        ]
+        for line in doctor_report.splitlines()[3:]:
+            if line:
+                lines.append(f"  {line}")
+        lines.extend(["", "Audit counters:"])
+        for line in audit.splitlines():
+            if line.startswith((
+                "Actionable exact duplicate groups:",
+                "Stale/conflict/reanalysis marker rows:",
+                "Phonotactic validator failures:",
+                "Raw exact meaning duplicate groups:",
+                "Raw headword duplicate groups:",
+            )):
+                lines.append(f"  {line}")
+        lines.extend(["", "Lint preview:"])
+        for line in lint.splitlines()[: max(8, limit + 8)]:
+            lines.append(f"  {line}")
+        lines.extend([
+            "",
+            "Useful next commands:",
+            "  python3 xenari_tool.py search <english-or-root>",
+            "  python3 xenari_tool.py near <meaning>",
+            "  python3 xenari_tool.py propose-root <english> <meaning>",
+            "  python3 xenari_tool.py add <english> <root> <meaning> --dry-run",
+            "  python3 xenari_tool.py sync --site && pytest -q",
+        ])
+        return ok, "\n".join(lines)
+
     def _guess_category(self, english: str, meaning: str) -> str:
         """Pick the best existing section for a new root based on keywords."""
         text = (english + " " + meaning).lower()
@@ -934,9 +973,21 @@ class Xenari:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Xenari Tool v4 — DB-powered, for Nyx")
+    epilog = """Common flows:
+  inspect:   stats | doctor | workbench | audit 20 | lint 20
+  find:      lookup love | search dangerous | near "soft light" | relations fatyih
+  translate: speak "I love you" --evidential witnessed | reverse "ra mex ka neq ta zrent sa xa"
+  coin:      propose-root glimmer "soft unsteady light" --limit 8
+  mutate:    add/map/remove preview by default; write only with --yes
+  publish:   sync --site && pytest -q
+"""
+    parser = argparse.ArgumentParser(
+        description="Xenari Tool v4 — DB-powered, for Nyx",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=epilog,
+    )
     parser.add_argument("command", choices=[
-        "lookup", "info", "validate", "doctor",
+        "help", "lookup", "info", "validate", "doctor", "workbench",
         "compound", "speak", "gloss", "reverse",
         "export-js", "export-json", "export-md",
         "export", "stats", "audit", "lint", "meta", "sync",
@@ -956,7 +1007,9 @@ def main():
 
     x = Xenari()
 
-    if args.command == "lookup":
+    if args.command == "help":
+        parser.print_help()
+    elif args.command == "lookup":
         if not args.args:
             print("Usage: lookup <english word or phrase>")
             sys.exit(1)
@@ -991,6 +1044,11 @@ def main():
             sys.exit(1)
     elif args.command == "doctor":
         ok, report = x.doctor()
+        print(report)
+        if not ok:
+            sys.exit(1)
+    elif args.command == "workbench":
+        ok, report = x.workbench(limit=args.limit)
         print(report)
         if not ok:
             sys.exit(1)
@@ -1104,7 +1162,7 @@ def main():
                 print(f"  - {r['root']} — {r['meaning']} [{r['category']}] score={r.get('score', 0)}")
         print("Suggestions:")
         for item in suggestions:
-            print(f"  - {item['root']} [{item['category']}]: {'; '.join(item['notes'])}")
+            print(f"  - {item['root']} [{item['category']}] score={item.get('score', 0)}: {'; '.join(item['notes'])}")
     elif args.command == "remove":
         if not args.args:
             print("Usage: remove <root>")
