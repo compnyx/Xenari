@@ -35,6 +35,7 @@ def test_auto_translate_and_inspect_helpers():
 
     assert x.translate("I love you", evidential="assumed") == "ra mex ka neq ta zrent sa xo"
     assert x.translate("ra mex ka neq ta zrent sa xa") == "I love you"
+    assert x.translate("prax") == "hello"
 
     report = x.inspect_term("fatyih")
     assert "Root: fatyih" in report

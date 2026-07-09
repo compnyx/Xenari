@@ -19,6 +19,13 @@ class TranslatorMixin:
             evidential = "assumed"
         e = self.evidential_map.get(evidential, self.evidential_map["assumed"])
         exact_phrases = {
+            "hello": "prax",
+            "hey": "prax",
+            "hi": "prax",
+            "greetings": "prax",
+            "hello there": "prax",
+            "hey there": "prax",
+            "hi there": "prax",
             "you little bitch": "mex krengk frem",
             "the alien sees me": f"ra neq ka vi qex ta toq vi sa {e}",
             "the alien is dangerous": f"ra fatyih ka vi qex ta zux vi sa {e}",
@@ -328,6 +335,10 @@ class TranslatorMixin:
             return " ".join(words), i
 
         for sentence in sentences:
+            if sentence == "prax":
+                rendered.append("hello")
+                continue
+
             tokens = sentence.split()
             obj = subj = loc = verb = ""
             tense = "sa"
@@ -412,6 +423,8 @@ class TranslatorMixin:
         tokens = re.findall(r"[a-z']+", text.lower())
         if not tokens:
             return False
+        if tokens == ["prax"]:
+            return True
         particles = {
             "ra", "ka", "ta", "na", "fa", "mo", "vi", "nu", "sa", "lo", "ve",
             "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "po", "ha", "ngu",

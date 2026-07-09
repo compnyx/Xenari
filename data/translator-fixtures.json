@@ -1,6 +1,18 @@
 {
   "forward": [
     {
+      "english": "hello",
+      "xenari": "prax"
+    },
+    {
+      "english": "hey",
+      "xenari": "prax"
+    },
+    {
+      "english": "hi",
+      "xenari": "prax"
+    },
+    {
       "english": "I love you",
       "xenari": "ra mex ka neq ta zrent sa xo"
     },
@@ -34,6 +46,10 @@
     }
   ],
   "reverse": [
+    {
+      "xenari": "prax",
+      "english": "hello"
+    },
     {
       "xenari": "ra mex ka neq ta zrent sa xa",
       "english": "I love you"
