@@ -21,9 +21,12 @@ source of truth.
 ```bash
 python3 xenari_tool.py stats
 python3 xenari_tool.py lookup love
+python3 xenari_tool.py info fatyih
+python3 xenari_tool.py validate fatyih qip
 python3 xenari_tool.py speak "I love you" --evidential witnessed
 python3 xenari_tool.py search "soul"
 python3 xenari_tool.py audit
+python3 xenari_tool.py doctor
 ```
 
 Regenerate JSON after DB edits:
@@ -52,8 +55,12 @@ Use `audit` before and after lexicon cleanup:
 
 ```bash
 python3 xenari_tool.py audit 25
+python3 xenari_tool.py doctor
 ```
 
 It reports duplicate root strings, duplicate meanings/headwords, stale
 conflict/reanalysis markers, broad English-key collisions, and phonotactic
 validator failures.
+
+`doctor` is the compact release-gate check for common phrase generation,
+critical lookups, and actionable audit failures.

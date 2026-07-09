@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """
-Xenari Tool v3 — for Nyx to speak Xenari properly.
+Xenari Tool v4 — for Nyx to speak Xenari properly.
 Strict: only real roots, no hallucinations. Unknown words marked clearly.
 
 Usage:
   python xenari_tool.py lookup "big"
+  python xenari_tool.py info fatyih
+  python xenari_tool.py validate fatyih qip xqz
   python xenari_tool.py compound big daddy
   python xenari_tool.py speak "I want big daddy" --tense pres --evidential witnessed
   python xenari_tool.py speak "you are cute" --evidential inferred
   python xenari_tool.py gloss "fuck it we ball"
+  python xenari_tool.py doctor
   python xenari_tool.py export-js
 
 Import:
@@ -639,6 +642,82 @@ class Xenari:
     def stats(self) -> str:
         return f"Roots: {len(self.lexicon)} | English mappings: {len(self.english_to_root)}"
 
+    def validate_roots(self, roots: List[str]) -> Tuple[bool, str]:
+        """Validate one or more root forms and return (all_ok, report)."""
+        if not roots:
+            return False, "Usage: validate <root> [root...]"
+
+        lines = []
+        ok = True
+        for root in roots:
+            issues = self.db.validate_phonotactics(root)
+            if issues:
+                ok = False
+                lines.append(f"{root}: INVALID")
+                for issue in issues:
+                    lines.append(f"  - {issue}")
+            else:
+                lines.append(f"{root}: ok")
+        return ok, "\n".join(lines)
+
+    def doctor(self) -> Tuple[bool, str]:
+        """Run a compact health check for the canon DB and common tool behavior."""
+        phrase_cases = {
+            "I love you": "ra mex ka neq ta zrent sa xo",
+            "you little bitch": "mex krengk frem",
+            "I see the alien": "ra vi qex ka neq ta toq sa xo",
+            "the alien sees me": "ra neq ka vi qex ta toq vi sa xo",
+            "the alien is dangerous": "ra fatyih ka vi qex ta zux vi sa xo",
+            "the hat is red": "ra rlis ka nu brid ta zux nu sa xo",
+            "I approach the figure by the lake. The figure's hat blows off": (
+                "ra vi loco na nu qlon ka neq ta frig sa xo. "
+                "ra vi loco po brid ka vi cuq ta qruq vi sa xo"
+            ),
+        }
+        lookup_cases = {
+            "you": "mex",
+            "me": "neq",
+            "wrath": "nud",
+            "perilous": "fatyih",
+        }
+
+        lines = ["Xenari doctor", self.db.stats(), ""]
+        ok = True
+
+        audit = self.db.audit(limit=3)
+        for needle in (
+            "Actionable exact duplicate groups: 0",
+            "Stale/conflict/reanalysis marker rows: 0",
+            "Phonotactic validator failures: 0",
+        ):
+            if needle not in audit:
+                ok = False
+                lines.append(f"FAIL audit: missing {needle}")
+        if ok:
+            lines.append("audit: ok")
+
+        for english, expected in lookup_cases.items():
+            root, _meaning = self.lookup(english)
+            if root != expected:
+                ok = False
+                lines.append(f"FAIL lookup {english!r}: expected {expected}, got {root}")
+        if all(self.lookup(english)[0] == expected for english, expected in lookup_cases.items()):
+            lines.append("lookup: ok")
+
+        for english, expected in phrase_cases.items():
+            actual = self.speak(english, evidential="assumed")
+            if actual != expected:
+                ok = False
+                lines.append(f"FAIL speak {english!r}:")
+                lines.append(f"  expected: {expected}")
+                lines.append(f"  actual:   {actual}")
+        if all(self.speak(english, evidential="assumed") == expected for english, expected in phrase_cases.items()):
+            lines.append("speak: ok")
+
+        lines.append("")
+        lines.append("status: ok" if ok else "status: FAIL")
+        return ok, "\n".join(lines)
+
     def _guess_category(self, english: str, meaning: str) -> str:
         """Pick the best existing section for a new root based on keywords."""
         text = (english + " " + meaning).lower()
@@ -728,7 +807,12 @@ class Xenari:
 
 def main():
     parser = argparse.ArgumentParser(description="Xenari Tool v4 — DB-powered, for Nyx")
-    parser.add_argument("command", choices=["lookup", "compound", "speak", "gloss", "export-js", "export-json", "export-md", "stats", "audit", "add", "remove", "search", "categories", "map"])
+    parser.add_argument("command", choices=[
+        "lookup", "info", "validate", "doctor",
+        "compound", "speak", "gloss",
+        "export-js", "export-json", "export-md",
+        "stats", "audit", "add", "remove", "search", "categories", "map",
+    ])
     parser.add_argument("args", nargs="*")
     parser.add_argument("--tense", default="auto", choices=["auto", "past", "future", "habitual", "potential", "imperative"])
     parser.add_argument("--evidential", default="auto", choices=["auto", "witnessed", "inferred", "reported", "assumed", "mirative"])
@@ -740,10 +824,42 @@ def main():
 
     if args.command == "lookup":
         if not args.args:
-            print("Usage: lookup <english word>")
+            print("Usage: lookup <english word or phrase>")
             sys.exit(1)
-        root, meaning = x.lookup(args.args[0])
-        print(f"{root} — {meaning}" if root else "not found")
+        query = " ".join(args.args).strip()
+        root, meaning = x.lookup(query)
+        if root:
+            print(f"{root} — {meaning}")
+        elif len(args.args) > 1:
+            found = False
+            for word in args.args:
+                root, meaning = x.lookup(word)
+                if root:
+                    found = True
+                    print(f"{word}: {root} — {meaning}")
+                else:
+                    print(f"{word}: not found")
+            if not found:
+                sys.exit(1)
+        else:
+            print("not found")
+            sys.exit(1)
+    elif args.command == "info":
+        if not args.args:
+            print("Usage: info <xenari-root>")
+            sys.exit(1)
+        for root in args.args:
+            print(f"{root} — {x.info(root)}")
+    elif args.command == "validate":
+        ok, report = x.validate_roots(args.args)
+        print(report)
+        if not ok:
+            sys.exit(1)
+    elif args.command == "doctor":
+        ok, report = x.doctor()
+        print(report)
+        if not ok:
+            sys.exit(1)
     elif args.command == "compound":
         if not args.args:
             print("Usage: compound <word1> <word2> ...")

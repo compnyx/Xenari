@@ -66651,18 +66651,6 @@
     ]
   },
   {
-    "id": 1367,
-    "root": "byk",
-    "meaning": "byte",
-    "category": "Mathematics & Computation",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "byte"
-    ]
-  },
-  {
     "id": 1365,
     "root": "dat",
     "meaning": "data",
@@ -66864,6 +66852,18 @@
     "notes": null,
     "english_keys": [
       "angle"
+    ]
+  },
+  {
+    "id": 1367,
+    "root": "qevk",
+    "meaning": "byte",
+    "category": "Mathematics & Computation",
+    "source": "",
+    "timestamp": null,
+    "notes": "renamed from invalid byk during tool validator hardening",
+    "english_keys": [
+      "byte"
     ]
   },
   {

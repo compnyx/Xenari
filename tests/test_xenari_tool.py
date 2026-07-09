@@ -43,3 +43,26 @@ def test_audit_has_no_actionable_qc_failures():
     assert "Actionable exact duplicate groups: 0" in audit
     assert "Stale/conflict/reanalysis marker rows: 0" in audit
     assert "Phonotactic validator failures: 0" in audit
+
+
+def test_info_and_validation_helpers():
+    x = Xenari(REPO / "xenari.db")
+
+    assert "dangerous" in x.info("fatyih")
+    assert x.info("fatwih") == "unknown root"
+
+    ok, report = x.validate_roots(["fatyih", "qip", "xqz"])
+    assert not ok
+    assert "fatyih: ok" in report
+    assert "q followed by i" in report
+    assert "root must contain at least one vowel" in report
+
+
+def test_doctor_health_check():
+    x = Xenari(REPO / "xenari.db")
+
+    ok, report = x.doctor()
+    assert ok
+    assert "audit: ok" in report
+    assert "lookup: ok" in report
+    assert "speak: ok" in report

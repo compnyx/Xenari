@@ -87,14 +87,8 @@ class XenariDB:
         self.conn.close()
 
     def _auto_export(self):
-        """Auto-export JSON to nyx-site after DB changes."""
-        try:
-            import json as _json
-            json_str = self.export_json()
-            path = Path("/home/computment/nyx-site/src/data/xenari-dict.json")
-            path.write_text(json_str, encoding="utf-8")
-        except Exception:
-            pass  # don't fail the add/remove if export fails
+        """Deprecated: exports must be explicit so repo/site/live stay in sync."""
+        return
 
     # ─── Core lookups ───────────────────────────────────────────
 
@@ -809,6 +803,9 @@ class XenariDB:
         if not root:
             issues.append("empty root")
             return issues
+
+        if not any(c in vowels for c in root):
+            issues.append("root must contain at least one vowel")
         
         # Glottal stop cannot appear word-initially
         if root.startswith("'"):
