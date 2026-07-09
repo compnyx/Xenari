@@ -25,8 +25,14 @@ python3 xenari_tool.py info fatyih
 python3 xenari_tool.py validate fatyih qip
 python3 xenari_tool.py speak "I love you" --evidential witnessed
 python3 xenari_tool.py search "soul"
+python3 xenari_tool.py near "dangerous"
+python3 xenari_tool.py relations fatyih
+python3 xenari_tool.py propose-root glimmer "soft unsteady light"
+python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py audit
+python3 xenari_tool.py lint
 python3 xenari_tool.py doctor
+python3 xenari_tool.py meta
 python3 xenari_tool.py sync
 ```
 
@@ -35,6 +41,8 @@ Regenerate JSON after DB edits:
 ```bash
 python3 xenari_tool.py sync
 python3 xenari_tool.py sync --site
+python3 xenari_tool.py export json
+python3 xenari_tool.py export site
 ```
 
 Run regression tests after tool or parser changes:
@@ -67,6 +75,36 @@ validator failures.
 `doctor` is the compact release-gate check for common phrase generation,
 critical lookups, and actionable audit failures.
 
+Use `lint` for softer review targets that need human judgment, such as
+phrase-like definitions, English-looking roots, and placeholder categories. Lint
+findings are not automatic cleanup failures.
+
+Use `propose-root` before coining vocabulary:
+
+```bash
+python3 xenari_tool.py propose-root glimmer "soft unsteady light" --limit 8
+python3 xenari_tool.py near "soft unsteady light"
+```
+
+It suggests valid unused roots, shows near existing meanings, guesses category,
+and warns about close roots or Englishy/cognate smell before anything touches
+the DB.
+
+Use `relations` to inspect semantic and compound links:
+
+```bash
+python3 xenari_tool.py relations fatyih
+```
+
+Use `reverse` for a canon-side best-effort Xenari to English check:
+
+```bash
+python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
+```
+
+The browser translator and Python CLI share regression fixtures in
+`data/translator-fixtures.json`.
+
 ## Mutating The DB
 
 DB mutation commands preview by default and require `--yes` to write:
@@ -85,4 +123,13 @@ After any DB mutation, run:
 python3 xenari_tool.py sync --site
 python3 xenari_tool.py doctor
 pytest -q
+```
+
+## Metadata
+
+The DB contains a small `tool_meta` table for internal schema/tool metadata.
+Check it with:
+
+```bash
+python3 xenari_tool.py meta
 ```

@@ -18,6 +18,7 @@ Usage:
 import sqlite3
 import re
 import datetime
+import hashlib
 from pathlib import Path
 from typing import Optional, Dict, Tuple, List
 
@@ -80,7 +81,18 @@ class XenariDB:
 
             CREATE INDEX IF NOT EXISTS idx_rel_a ON semantic_relations(root_a);
             CREATE INDEX IF NOT EXISTS idx_rel_b ON semantic_relations(root_b);
+
+            CREATE TABLE IF NOT EXISTS tool_meta (
+                key         TEXT PRIMARY KEY,
+                value       TEXT NOT NULL,
+                updated_at  TEXT NOT NULL
+            );
         """)
+        self.conn.execute(
+            """INSERT OR IGNORE INTO tool_meta (key, value, updated_at)
+               VALUES (?, ?, ?)""",
+            ("schema_version", "2026-07-09.2", datetime.datetime.now().isoformat(timespec="seconds")),
+        )
         self.conn.commit()
 
     def close(self):
@@ -142,8 +154,9 @@ class XenariDB:
     # ─── Search ─────────────────────────────────────────────────
 
     def search(self, query: str, limit: int = 20) -> List[Dict]:
-        """Fuzzy search across roots, meanings, and english keys."""
-        q = f"%{query.lower()}%"
+        """Ranked search across roots, meanings, and english keys."""
+        clean = query.lower().strip()
+        q = f"%{clean}%"
         rows = self.conn.execute(
             """SELECT DISTINCT r.root, r.meaning, r.category,
                       GROUP_CONCAT(e.english_key, ', ') as english_keys
@@ -151,9 +164,99 @@ class XenariDB:
                LEFT JOIN english_map e ON e.root_id = r.id
                WHERE r.root LIKE ? OR r.meaning LIKE ? OR e.english_key LIKE ?
                GROUP BY r.id
-               LIMIT ?""", (q, q, q, limit)
+               LIMIT ?""", (q, q, q, max(limit * 5, 50))
         ).fetchall()
-        return [dict(r) for r in rows]
+        results = []
+        for row in rows:
+            item = dict(row)
+            keys = [k.strip().lower() for k in (item.get("english_keys") or "").split(",") if k.strip()]
+            root = item["root"].lower()
+            meaning = item["meaning"].lower()
+            head = self._audit_headword(item["meaning"])
+            score = 0
+            if clean in keys:
+                score += 100
+            if head == clean:
+                score += 85
+            if root == clean:
+                score += 80
+            if any(k.startswith(clean) for k in keys):
+                score += 55
+            if head.startswith(clean):
+                score += 45
+            if root.startswith(clean):
+                score += 40
+            if clean in meaning:
+                score += 20
+            if clean in root:
+                score += 15
+            item["score"] = score
+            results.append(item)
+        results.sort(key=lambda r: (-r["score"], len(r["root"]), r["root"]))
+        return results[:limit]
+
+    def propose_root(self, english: str, meaning: str = "", limit: int = 8) -> List[Dict]:
+        """Suggest unused root shapes and include safety notes for each."""
+        key = english.lower().strip()
+        gloss = meaning.strip() or key
+        seed = hashlib.sha256(f"{key}|{gloss}".encode("utf-8")).hexdigest()
+        vowels = "aeou"
+        onsets = ["p", "t", "k", "q", "f", "s", "z", "c", "x", "h", "m", "n", "r", "l", "y",
+                  "pr", "tr", "kr", "fr", "sr", "zr", "cr", "xr", "qr", "ml", "gl", "br", "dr"]
+        codas = ["p", "t", "k", "q", "f", "s", "z", "c", "x", "m", "n", "r", "l", "mp", "nt", "ngk", "nq", ""]
+        seen = set()
+        suggestions = []
+        idx = 0
+        existing = self.conn.execute("SELECT root, meaning FROM roots").fetchall()
+        english_bits = set(re.findall(r"[a-z]{3,}", key + " " + gloss))
+
+        while len(suggestions) < limit and idx < 300:
+            chunk = seed[idx % len(seed):] + seed[:idx % len(seed)]
+            a = int(chunk[:2], 16)
+            b = int(chunk[2:4], 16)
+            c = int(chunk[4:6], 16)
+            d = int(chunk[6:8], 16)
+            pattern = idx % 4
+            if pattern == 0:
+                root = onsets[a % len(onsets)] + vowels[b % len(vowels)] + codas[c % len(codas)]
+            elif pattern == 1:
+                root = onsets[a % len(onsets)] + vowels[b % len(vowels)] + codas[c % len(codas)] + vowels[d % len(vowels)]
+            elif pattern == 2:
+                root = onsets[a % len(onsets)] + vowels[b % len(vowels)] + onsets[c % len(onsets)] + vowels[d % len(vowels)]
+            else:
+                root = onsets[a % len(onsets)] + vowels[b % len(vowels)] + codas[c % len(codas)] + onsets[d % len(onsets)] + vowels[(a + d) % len(vowels)]
+            idx += 1
+
+            if root in seen or self.has_root(root):
+                continue
+            seen.add(root)
+            issues = self.validate_phonotactics(root)
+            if issues:
+                continue
+
+            near = []
+            for row in existing:
+                dist = self._edit_distance(root, row["root"])
+                if 0 < dist <= 2:
+                    near.append(f"{row['root']} ({row['meaning']})")
+                if len(near) >= 3:
+                    break
+
+            notes = []
+            if near:
+                notes.append("near: " + "; ".join(near))
+            if any(bit in root or root in bit for bit in english_bits):
+                notes.append("englishy/cognate smell")
+            if not notes:
+                notes.append("clean")
+
+            suggestions.append({
+                "root": root,
+                "meaning": gloss,
+                "category": self._guess_category(key, gloss),
+                "notes": notes,
+            })
+        return suggestions
 
     def search_category(self, category: str) -> List[Dict]:
         """Get all roots in a category."""
@@ -592,6 +695,110 @@ class XenariDB:
             (root, root)
         ).fetchall()
         return [dict(r) for r in rows]
+
+    def relations_report(self, root: str) -> Tuple[bool, str]:
+        """Summarize semantic and compound relationships for a root."""
+        row = self.lookup_root(root)
+        if not row:
+            return False, f"root '{root}' not found"
+        relations = self.get_relations(root)
+        parts = self.get_compound_parts(root)
+        compounds_using = self.find_compounds_using(root)
+        lines = [f"{root} — {row['meaning']} [{row['category']}]"]
+        lines.append("Relations:")
+        if not relations:
+            lines.append("  none")
+        for rel in relations:
+            other = rel["root_b"] if rel["root_a"] == root else rel["root_a"]
+            other_row = self.lookup_root(other) or {"meaning": "unknown"}
+            note = f" ({rel['notes']})" if rel["notes"] else ""
+            lines.append(f"  - {rel['relation']}: {other} — {other_row['meaning']}{note}")
+        lines.append("Compound parts:")
+        if parts:
+            for component, pos in parts:
+                comp_row = self.lookup_root(component) or {"meaning": "unknown"}
+                lines.append(f"  - {pos}: {component} — {comp_row['meaning']}")
+        else:
+            lines.append("  none")
+        lines.append("Compounds using this root:")
+        if compounds_using:
+            for compound in compounds_using:
+                comp_row = self.lookup_root(compound) or {"meaning": "unknown"}
+                lines.append(f"  - {compound} — {comp_row['meaning']}")
+        else:
+            lines.append("  none")
+        return True, "\n".join(lines)
+
+    def near_meanings(self, query: str, limit: int = 12) -> List[Dict]:
+        """Return ranked near matches for a proposed English meaning."""
+        return self.search(query, limit=limit)
+
+    def metadata_report(self) -> str:
+        rows = self.conn.execute("SELECT key, value, updated_at FROM tool_meta ORDER BY key").fetchall()
+        lines = ["Xenari metadata", f"DB path: {self.db_path}", self.stats()]
+        if not rows:
+            lines.append("tool_meta: empty")
+            return "\n".join(lines)
+        for row in rows:
+            lines.append(f"{row['key']}: {row['value']} ({row['updated_at']})")
+        return "\n".join(lines)
+
+    def lint(self, limit: int = 40) -> str:
+        """Heuristic lint for suspicious but not automatically wrong entries."""
+        rows = [dict(r) for r in self.conn.execute(
+            "SELECT root, meaning, category, source, notes FROM roots ORDER BY root"
+        ).fetchall()]
+        phrasey = []
+        englishy = []
+        stale_category = []
+        orphan_relations = []
+
+        english_words = {
+            "love", "hate", "danger", "alien", "figure", "lake", "mother", "father",
+            "computer", "byte", "file", "music", "window", "clock", "human",
+        }
+        for row in rows:
+            meaning = row["meaning"].strip()
+            head = self._audit_headword(meaning)
+            if len(head.split()) > 5 or re.search(r"[.!?]", meaning):
+                phrasey.append(row)
+            if any(word in row["root"].lower() and len(row["root"]) > len(word) for word in english_words):
+                englishy.append(row)
+            if row["category"] in {"Uncategorized", "New Roots (added via tool)"}:
+                stale_category.append(row)
+
+        for rel in self.conn.execute("SELECT root_a, root_b, relation FROM semantic_relations ORDER BY root_a, root_b").fetchall():
+            missing = [r for r in (rel["root_a"], rel["root_b"]) if not self.has_root(r)]
+            if missing:
+                orphan_relations.append((dict(rel), missing))
+
+        lines = [
+            "Xenari lint",
+            f"Phrase-like definitions: {len(phrasey)}",
+            f"Englishy-looking roots: {len(englishy)}",
+            f"Stale/placeholder categories: {len(stale_category)}",
+            f"Orphan semantic relations: {len(orphan_relations)}",
+        ]
+
+        def rows_section(title: str, items: list) -> None:
+            lines.extend(["", title])
+            if not items:
+                lines.append("  none")
+                return
+            for item in items[:limit]:
+                lines.append(f"  - {item['root']}[{item['category']}]: {item['meaning']}")
+            if len(items) > limit:
+                lines.append(f"  ... {len(items) - limit} more")
+
+        rows_section("Phrase-like definitions", phrasey)
+        rows_section("Englishy-looking roots", englishy)
+        rows_section("Stale/placeholder categories", stale_category)
+        lines.extend(["", "Orphan semantic relations"])
+        if not orphan_relations:
+            lines.append("  none")
+        for rel, missing in orphan_relations[:limit]:
+            lines.append(f"  - {rel['root_a']} {rel['relation']} {rel['root_b']} (missing: {', '.join(missing)})")
+        return "\n".join(lines)
 
     def get_synonyms(self, root: str) -> list:
         """Get synonym roots."""

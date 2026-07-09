@@ -12,6 +12,10 @@ Usage:
   python xenari_tool.py speak "you are cute" --evidential inferred
   python xenari_tool.py gloss "fuck it we ball"
   python xenari_tool.py doctor
+  python xenari_tool.py propose-root "glimmer" "soft unsteady light"
+  python xenari_tool.py relations fatyih
+  python xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
+  python xenari_tool.py export json
   python xenari_tool.py sync --site
   python xenari_tool.py export-js
 
@@ -617,6 +621,83 @@ class Xenari:
         xen = self.speak(english, tense, evidential)
         return f"{xen}\n  (rough) {english}"
 
+    def reverse(self, xenari: str) -> str:
+        """Best-effort Xenari → English for canonical OSV clauses."""
+        sentences = [s.strip() for s in re.split(r"[.!?]+", xenari) if s.strip()]
+        rendered = []
+        reverse_pronouns = {"neq": "I", "mex": "you", "zeq": "they", "leq": "he/she/it", "req": "they"}
+        preferred = {
+            "zrent": "love", "toq": "see", "zux": "is", "fatyih": "dangerous",
+            "qex": "alien", "loco": "figure", "qlon": "lake", "brid": "hat",
+            "cuq": "wind", "qruq": "blow", "frig": "approach", "rlis": "red",
+        }
+        case_particles = {"ra", "ka", "ta", "na", "fa", "mo"}
+        skip_particles = {"vi", "nu", "sa", "lo", "ve", "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "ha"}
+
+        def root_english(root: str, verb: bool = False) -> str:
+            if root in reverse_pronouns:
+                return reverse_pronouns[root]
+            if root in preferred:
+                return preferred[root]
+            meaning = self.lexicon.get(root, root)
+            head = self.db._audit_headword(meaning)
+            if verb and head.startswith("to "):
+                head = head[3:]
+            return head.split()[0] if head else root
+
+        def read_phrase(tokens: List[str], start: int) -> Tuple[str, int]:
+            words = []
+            i = start
+            possessor = None
+            while i < len(tokens) and tokens[i] not in case_particles:
+                tok = tokens[i]
+                if tok in skip_particles:
+                    i += 1
+                    continue
+                if tok == "po":
+                    possessor = words.pop() if words else None
+                    i += 1
+                    continue
+                words.append(root_english(tok))
+                i += 1
+            if possessor and words:
+                return f"{possessor}'s {' '.join(words)}", i
+            return " ".join(words), i
+
+        for sentence in sentences:
+            tokens = sentence.split()
+            obj = subj = loc = verb = ""
+            i = 0
+            while i < len(tokens):
+                tok = tokens[i]
+                if tok == "ra":
+                    obj, i = read_phrase(tokens, i + 1)
+                elif tok == "ka":
+                    subj, i = read_phrase(tokens, i + 1)
+                elif tok == "na":
+                    loc, i = read_phrase(tokens, i + 1)
+                elif tok == "ta":
+                    j = i + 1
+                    while j < len(tokens) and tokens[j] in skip_particles:
+                        j += 1
+                    verb = root_english(tokens[j], verb=True) if j < len(tokens) else ""
+                    i = j + 1
+                else:
+                    i += 1
+
+            if verb == "is":
+                text = " ".join(part for part in [subj, "is", obj] if part)
+            elif verb and obj and subj:
+                text = " ".join(part for part in [subj, verb, obj] if part)
+            elif verb and subj:
+                text = " ".join(part for part in [subj, verb] if part)
+            else:
+                text = " ".join(part for part in [subj, obj] if part)
+            if loc:
+                text = f"{text} in/at {loc}".strip()
+            rendered.append(text)
+        return ". ".join(rendered)
+
     # === EXPORT ===
 
     def export_js_dict(self) -> str:
@@ -634,6 +715,33 @@ class Xenari:
         for eng, root in sorted(self.english_to_root.items()):
             data[eng] = {"root": root, "gloss": self.lexicon.get(root, "")}
         return json.dumps(data, indent=2, ensure_ascii=False)
+
+    def export_format(self, fmt: str, output: Optional[Path] = None, include_site: bool = False) -> str:
+        """Unified export surface for generated dictionary artifacts."""
+        fmt = fmt.lower().strip()
+        if fmt in {"json", "dict"}:
+            text = self.db.export_json()
+            if output:
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_text(text, encoding="utf-8")
+                return f"wrote {output}"
+            return text
+        if fmt in {"js", "browser"}:
+            text = self.export_js_dict()
+            if output:
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_text(text, encoding="utf-8")
+                return f"wrote {output}"
+            return text
+        if fmt in {"md", "markdown"}:
+            out = output or Path("xenari-lexicon-export.md")
+            self.db.export_markdown(out)
+            return f"wrote {out}"
+        if fmt == "site":
+            return self.sync_exports(include_site=True)
+        if fmt == "repo":
+            return self.sync_exports(include_site=False)
+        raise ValueError(f"unknown export format: {fmt}")
 
     # === INFO ===
 
@@ -829,9 +937,10 @@ def main():
     parser = argparse.ArgumentParser(description="Xenari Tool v4 — DB-powered, for Nyx")
     parser.add_argument("command", choices=[
         "lookup", "info", "validate", "doctor",
-        "compound", "speak", "gloss",
+        "compound", "speak", "gloss", "reverse",
         "export-js", "export-json", "export-md",
-        "stats", "audit", "sync", "add", "remove", "search", "categories", "map",
+        "export", "stats", "audit", "lint", "meta", "sync",
+        "add", "remove", "search", "near", "relations", "propose-root", "categories", "map",
     ])
     parser.add_argument("args", nargs="*")
     parser.add_argument("--tense", default="auto", choices=["auto", "past", "future", "habitual", "potential", "imperative"])
@@ -841,6 +950,8 @@ def main():
     parser.add_argument("--yes", action="store_true", help="confirm mutating DB operations")
     parser.add_argument("--dry-run", action="store_true", help="preview a mutating operation without writing")
     parser.add_argument("--site", action="store_true", help="sync exports into nyx-site dictionary paths too")
+    parser.add_argument("--limit", type=int, default=20, help="result limit for search/lint/propose commands")
+    parser.add_argument("--output", default=None, help="optional output path for export")
     args = parser.parse_args()
 
     x = Xenari()
@@ -894,6 +1005,12 @@ def main():
     elif args.command == "gloss":
         sent = " ".join(args.args)
         print(x.gloss(sent, args.tense, args.evidential))
+    elif args.command == "reverse":
+        sent = " ".join(args.args)
+        if not sent:
+            print("Usage: reverse <xenari sentence>")
+            sys.exit(1)
+        print(x.reverse(sent))
     elif args.command == "export-js":
         print(x.export_js_dict())
     elif args.command == "export-json":
@@ -902,8 +1019,21 @@ def main():
         out = Path(args.args[0]) if args.args else Path("xenari-lexicon-export.md")
         x.db.export_markdown(out)
         print(f"Exported markdown lexicon to {out}")
+    elif args.command == "export":
+        if not args.args:
+            print("Usage: export <json|js|md|site|repo> [output-path]")
+            sys.exit(1)
+        fmt = args.args[0]
+        output = Path(args.output or args.args[1]) if args.output or len(args.args) > 1 else None
+        try:
+            print(x.export_format(fmt, output=output, include_site=args.site))
+        except ValueError as exc:
+            print(exc)
+            sys.exit(1)
     elif args.command == "stats":
         print(x.db.stats())
+    elif args.command == "meta":
+        print(x.db.metadata_report())
     elif args.command == "audit":
         limit = 40
         if args.args:
@@ -913,6 +1043,15 @@ def main():
                 print("Usage: audit [limit]")
                 sys.exit(1)
         print(x.db.audit(limit=limit))
+    elif args.command == "lint":
+        limit = args.limit
+        if args.args:
+            try:
+                limit = int(args.args[0])
+            except ValueError:
+                print("Usage: lint [limit]")
+                sys.exit(1)
+        print(x.db.lint(limit=limit))
     elif args.command == "sync":
         print(x.sync_exports(include_site=args.site))
         ok, report = x.doctor()
@@ -926,12 +1065,46 @@ def main():
         if not args.args:
             print("Usage: search <query>")
             sys.exit(1)
-        results = x.db.search(" ".join(args.args))
+        results = x.db.search(" ".join(args.args), limit=args.limit)
         if not results:
             print("no results")
         for r in results:
             keys = r.get("english_keys", "") or ""
-            print(f"  {r['root']} — {r['meaning']} [{r['category']}] {f'({keys})' if keys else ''}")
+            print(f"  {r['root']} — {r['meaning']} [{r['category']}] score={r.get('score', 0)} {f'({keys})' if keys else ''}")
+    elif args.command == "near":
+        if not args.args:
+            print("Usage: near <meaning/query>")
+            sys.exit(1)
+        results = x.db.near_meanings(" ".join(args.args), limit=args.limit)
+        if not results:
+            print("no near matches")
+        for r in results:
+            print(f"  {r['root']} — {r['meaning']} [{r['category']}] score={r.get('score', 0)}")
+    elif args.command == "relations":
+        if not args.args:
+            print("Usage: relations <root>")
+            sys.exit(1)
+        ok, report = x.db.relations_report(args.args[0])
+        print(report)
+        if not ok:
+            sys.exit(1)
+    elif args.command == "propose-root":
+        if not args.args:
+            print("Usage: propose-root <english-key> [meaning...]")
+            sys.exit(1)
+        english = args.args[0]
+        meaning = " ".join(args.args[1:]) if len(args.args) > 1 else english
+        suggestions = x.db.propose_root(english, meaning, limit=args.limit)
+        print(f"Root proposals for {english!r} — {meaning}")
+        print(f"Category guess: {x.db._guess_category(english, meaning)}")
+        near = x.db.near_meanings(english, limit=5)
+        if near:
+            print("Near existing meanings:")
+            for r in near:
+                print(f"  - {r['root']} — {r['meaning']} [{r['category']}] score={r.get('score', 0)}")
+        print("Suggestions:")
+        for item in suggestions:
+            print(f"  - {item['root']} [{item['category']}]: {'; '.join(item['notes'])}")
     elif args.command == "remove":
         if not args.args:
             print("Usage: remove <root>")

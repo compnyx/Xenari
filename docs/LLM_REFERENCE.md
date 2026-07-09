@@ -132,3 +132,6 @@ Full vocabulary lives outside this reference:
 - SQLite: `../xenari.db`
 - JSON: `../data/xenari-dict.json`
 - CLI search: `python3 ../xenari_tool.py search <query>`
+- CLI reverse check: `python3 ../xenari_tool.py reverse <xenari sentence>`
+- New root planning: `python3 ../xenari_tool.py propose-root <english> <meaning>`
+- Relation lookup: `python3 ../xenari_tool.py relations <root>`

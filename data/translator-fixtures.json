@@ -1,0 +1,50 @@
+{
+  "forward": [
+    {
+      "english": "I love you",
+      "xenari": "ra mex ka neq ta zrent sa xo"
+    },
+    {
+      "english": "you little bitch",
+      "xenari": "mex krengk frem"
+    },
+    {
+      "english": "I see the alien",
+      "xenari": "ra vi qex ka neq ta toq sa xo"
+    },
+    {
+      "english": "the alien sees me",
+      "xenari": "ra neq ka vi qex ta toq vi sa xo"
+    },
+    {
+      "english": "the alien is dangerous",
+      "xenari": "ra fatyih ka vi qex ta zux vi sa xo"
+    },
+    {
+      "english": "the hat is red",
+      "xenari": "ra rlis ka nu brid ta zux nu sa xo"
+    },
+    {
+      "english": "I approach the figure by the lake. The figure's hat blows off",
+      "xenari": "ra vi loco na nu qlon ka neq ta frig sa xo. ra vi loco po brid ka vi cuq ta qruq vi sa xo"
+    }
+  ],
+  "reverse": [
+    {
+      "xenari": "ra mex ka neq ta zrent sa xa",
+      "english": "I love you"
+    },
+    {
+      "xenari": "ra fatyih ka vi qex ta zux vi sa xo",
+      "english": "alien is dangerous"
+    },
+    {
+      "xenari": "ra vi loco na nu qlon ka neq ta frig sa xo",
+      "english": "I approach figure in/at lake"
+    },
+    {
+      "xenari": "ra vi loco po brid ka vi cuq ta qruq vi sa xo",
+      "english": "wind blow figure's hat"
+    }
+  ]
+}

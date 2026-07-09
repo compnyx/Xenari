@@ -1,6 +1,7 @@
 from pathlib import Path
 import sys
 import shutil
+import json
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
@@ -8,24 +9,24 @@ sys.path.insert(0, str(REPO))
 from xenari_tool import Xenari
 
 
+def load_fixtures():
+    return json.loads((REPO / "data" / "translator-fixtures.json").read_text(encoding="utf-8"))
+
+
 def test_known_phrase_generation():
     x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
 
-    cases = {
-        "I love you": "ra mex ka neq ta zrent sa xo",
-        "you little bitch": "mex krengk frem",
-        "I see the alien": "ra vi qex ka neq ta toq sa xo",
-        "the alien sees me": "ra neq ka vi qex ta toq vi sa xo",
-        "the alien is dangerous": "ra fatyih ka vi qex ta zux vi sa xo",
-        "the hat is red": "ra rlis ka nu brid ta zux nu sa xo",
-        "I approach the figure by the lake. The figure's hat blows off": (
-            "ra vi loco na nu qlon ka neq ta frig sa xo. "
-            "ra vi loco po brid ka vi cuq ta qruq vi sa xo"
-        ),
-    }
+    for case in fixtures["forward"]:
+        assert x.speak(case["english"], evidential="assumed") == case["xenari"]
 
-    for english, expected in cases.items():
-        assert x.speak(english, evidential="assumed") == expected
+
+def test_reverse_uses_shared_fixtures():
+    x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
+
+    for case in fixtures["reverse"]:
+        assert x.reverse(case["xenari"]) == case["english"]
 
 
 def test_lookup_prefers_pronouns_and_synonyms():
@@ -67,6 +68,39 @@ def test_doctor_health_check():
     assert "audit: ok" in report
     assert "lookup: ok" in report
     assert "speak: ok" in report
+
+
+def test_ranked_search_proposals_relations_lint_and_meta():
+    x = Xenari(REPO / "xenari.db")
+
+    search = x.db.search("dangerous", limit=5)
+    assert search
+    assert search[0]["root"] == "fatyih"
+    assert search[0]["score"] > 0
+
+    proposals = x.db.propose_root("glimmer", "soft unsteady light", limit=3)
+    assert len(proposals) == 3
+    assert all(not x.db.has_root(item["root"]) for item in proposals)
+    assert all(not x.db.validate_phonotactics(item["root"]) for item in proposals)
+
+    ok, report = x.db.relations_report("fatyih")
+    assert ok
+    assert "fatyih" in report
+    assert "Relations:" in report
+
+    assert "Xenari lint" in x.db.lint(limit=3)
+    assert "schema_version" in x.db.metadata_report()
+
+
+def test_unified_export_and_reverse_helpers(tmp_path):
+    x = Xenari(REPO / "xenari.db")
+
+    assert x.export_format("json").lstrip().startswith("[")
+    assert "const DICT" in x.export_format("js")
+
+    out = tmp_path / "lexicon.md"
+    assert "wrote" in x.export_format("md", output=out)
+    assert out.exists()
 
 
 def test_mutation_previews_do_not_write(tmp_path):
