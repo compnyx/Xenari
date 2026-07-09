@@ -10,11 +10,12 @@ from xenari_core import Xenari
 
 def main():
     epilog = """Common flows:
-  inspect:   stats | doctor | workbench | audit 20 | lint 20 | curate 20
+  inspect:   stats | doctor | workbench | audit 20 | lint 20 | curate --placeholder --limit 20
   find:      inspect fatyih | lookup love | search dangerous | near "soft light" | relations fatyih
   translate: translate "I love you" | translate "ra mex ka neq ta zrent sa xa"
   coin:      coin glimmer "soft unsteady light" | coin glimmer "soft unsteady light" --root zakglu --yes
-  mutate:    add/map/remove preview by default; write only with --yes
+  curate:    categorize --root anhthu | relate ROOT_A ROOT_B --relation synonym
+  mutate:    add/map/remove/categorize/relate preview by default; write only with --yes
   publish:   parity && sync --site && pytest -q
 """
     parser = argparse.ArgumentParser(
@@ -28,14 +29,24 @@ def main():
         "export-js", "export-json", "export-md",
         "export", "stats", "audit", "lint", "curate", "meta", "sync",
         "add", "remove", "search", "near", "relations", "propose-root", "coin",
-        "categories", "map", "parity",
+        "categories", "categorize", "map", "parity", "relate",
     ])
     parser.add_argument("args", nargs="*")
     parser.add_argument("--tense", default="auto", choices=["auto", "past", "future", "habitual", "potential", "imperative"])
     parser.add_argument("--evidential", default="auto", choices=["auto", "witnessed", "inferred", "reported", "assumed", "mirative"])
-    parser.add_argument("--category", default=None)
+    parser.add_argument(
+        "--category",
+        default=None,
+        help="category for add/coin, or source-category filter for categorize",
+    )
     parser.add_argument("--notes", default=None)
-    parser.add_argument("--root", default=None, help="selected root for coin workflow")
+    parser.add_argument("--root", default=None, help="selected root for coin or categorize workflow")
+    parser.add_argument("--placeholder", action="store_true", help="show only placeholder category curation")
+    parser.add_argument("--phrases", action="store_true", help="show only phrase-like definition curation")
+    parser.add_argument("--relations", action="store_true", help="show only relation candidate curation")
+    parser.add_argument("--relation", default=None, help="curator-selected semantic relation type")
+    parser.add_argument("--all", action="store_true", help="explicitly target every matching curation row")
+    parser.add_argument("--include-ambiguous", action="store_true", help="allow ambiguous category proposals")
     parser.add_argument("--yes", action="store_true", help="confirm mutating DB operations")
     parser.add_argument("--dry-run", action="store_true", help="preview a mutating operation without writing")
     parser.add_argument("--site", action="store_true", help="sync exports into nyx-site dictionary paths too")
@@ -170,9 +181,27 @@ def main():
             try:
                 limit = int(args.args[0])
             except ValueError:
-                print("Usage: curate [limit]")
+                print("Usage: curate [limit] [--placeholder|--phrases|--relations] [--limit N]")
                 sys.exit(1)
-        print(x.db.curation_report(limit=limit))
+        selected = args.placeholder or args.phrases or args.relations
+        print(x.db.curation_report(
+            limit=limit,
+            placeholder=args.placeholder or not selected,
+            phrases=args.phrases or not selected,
+            relations=args.relations or not selected,
+        ))
+    elif args.command == "categorize":
+        ok, report = x.db.categorize(
+            root=args.root,
+            category=args.category,
+            yes=args.yes and not args.dry_run,
+            all_rows=args.all,
+            include_ambiguous=args.include_ambiguous,
+            limit=args.limit,
+        )
+        print(report)
+        if not ok:
+            sys.exit(1)
     elif args.command == "sync":
         print(x.sync_exports(include_site=args.site))
         ok, report = x.doctor()
@@ -206,6 +235,20 @@ def main():
             print("Usage: relations <root>")
             sys.exit(1)
         ok, report = x.db.relations_report(args.args[0])
+        print(report)
+        if not ok:
+            sys.exit(1)
+    elif args.command == "relate":
+        if len(args.args) != 2 or not args.relation:
+            print("Usage: relate <root-a> <root-b> --relation <type> [--notes NOTE] [--dry-run|--yes]")
+            sys.exit(1)
+        ok, report = x.db.relate(
+            args.args[0],
+            args.args[1],
+            args.relation,
+            notes=args.notes,
+            yes=args.yes and not args.dry_run,
+        )
         print(report)
         if not ok:
             sys.exit(1)

@@ -2,6 +2,7 @@ from pathlib import Path
 import sys
 import shutil
 import json
+import subprocess
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
@@ -118,6 +119,86 @@ def test_ranked_search_proposals_relations_lint_and_meta():
     assert "translator parity: ok" in workbench
 
 
+def test_curation_sections_are_filterable_and_explain_hypotheses():
+    x = Xenari(REPO / "xenari.db")
+
+    placeholders = x.db.curation_report(
+        limit=8,
+        placeholder=True,
+        phrases=False,
+        relations=False,
+    )
+    assert "Placeholder category suggestions (grouped by suggestion)" in placeholders
+    assert "  Action & Motion:" in placeholders
+    assert "[high] (matched" in placeholders
+    assert "Phrase-like definition review" not in placeholders
+    assert "Relation candidate groups" not in placeholders
+
+    candidates = x.db.relation_candidates()
+    kinds = {candidate["kind"] for candidate in candidates}
+    assert kinds == {
+        "possible synonym",
+        "possible register variant",
+        "possible category clash",
+        "possible false friend",
+    }
+    relations = x.db.curation_report(
+        limit=1,
+        placeholder=False,
+        phrases=False,
+        relations=True,
+    )
+    assert "hypotheses, not facts" in relations
+    assert "possible synonym" in relations
+    assert "preview only: python3 xenari_tool.py relate" in relations
+
+
+def test_curate_cli_accepts_section_and_limit_flags():
+    result = subprocess.run(
+        [sys.executable, "xenari_tool.py", "curate", "--phrases", "--limit", "1"],
+        cwd=REPO,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0
+    assert "Phrase-like definition review" in result.stdout
+    assert "Placeholder category suggestions" not in result.stdout
+    assert "Relation candidate groups" not in result.stdout
+
+    categorize = subprocess.run(
+        [sys.executable, "xenari_tool.py", "categorize", "--root", "anhthu", "--limit", "1"],
+        cwd=REPO,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert categorize.returncode == 0
+    assert "Uncategorized -> Action & Motion" in categorize.stdout
+    assert "PREVIEW ONLY" in categorize.stdout
+
+    relate = subprocess.run(
+        [
+            sys.executable,
+            "xenari_tool.py",
+            "relate",
+            "brak",
+            "plonq",
+            "--relation",
+            "synonym",
+            "--dry-run",
+        ],
+        cwd=REPO,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert relate.returncode == 0
+    assert "curator assertion" in relate.stdout
+    assert "PREVIEW ONLY" in relate.stdout
+
+
 def test_parity_and_coin_workflow_preview():
     x = Xenari(REPO / "xenari.db")
 
@@ -175,6 +256,75 @@ def test_mutation_previews_do_not_write(tmp_path):
     assert ok
     assert "Map preview: danger-test -> fatyih" in report
     assert x.db.lookup("danger-test") is None
+
+
+def test_categorize_previews_guards_broad_writes_and_backs_up(tmp_path):
+    db_path = tmp_path / "xenari.db"
+    shutil.copy2(REPO / "xenari.db", db_path)
+    x = Xenari(db_path)
+
+    original = x.db.lookup_root("anhthu")["category"]
+    ok, preview = x.db.categorize(root="anhthu")
+    assert ok
+    assert "Uncategorized -> Action & Motion" in preview
+    assert "[high, eligible]" in preview
+    assert "PREVIEW ONLY" in preview
+    assert x.db.lookup_root("anhthu")["category"] == original
+
+    ok, guarded = x.db.categorize(yes=True, limit=1)
+    assert not ok
+    assert "Refusing broad write" in guarded
+    assert x.db.lookup_root("anhthu")["category"] == original
+
+    ok, written = x.db.categorize(root="anhthu", yes=True)
+    assert ok
+    assert "Wrote 1 category change" in written
+    assert x.db.lookup_root("anhthu")["category"] == "Action & Motion"
+    assert list(tmp_path.glob("xenari.db.*.categorize.bak"))
+
+    x.db.conn.execute(
+        """INSERT INTO roots (root, meaning, category, source)
+           VALUES ('xaz', 'friend carried by the wind', 'Uncategorized', 'test')"""
+    )
+    x.db.conn.commit()
+    proposal = x.db.category_proposals(root="xaz")[0]
+    assert proposal["confidence"] == "low"
+    assert proposal["ambiguous"]
+
+    ok, skipped = x.db.categorize(root="xaz", yes=True)
+    assert ok
+    assert "No eligible category changes" in skipped
+    assert x.db.lookup_root("xaz")["category"] == "Uncategorized"
+
+    ok, explicit = x.db.categorize(root="xaz", yes=True, include_ambiguous=True)
+    assert ok
+    assert "Wrote 1 category change" in explicit
+    assert x.db.lookup_root("xaz")["category"] == proposal["suggested_category"]
+
+
+def test_relate_is_preview_first_and_backs_up_explicit_writes(tmp_path):
+    db_path = tmp_path / "xenari.db"
+    shutil.copy2(REPO / "xenari.db", db_path)
+    x = Xenari(db_path)
+    roots = ("brak", "plonq")
+
+    ok, preview = x.db.relate(*roots, relation="synonym")
+    assert ok
+    assert "curator assertion" in preview
+    assert "PREVIEW ONLY" in preview
+    assert not x.db.conn.execute(
+        "SELECT 1 FROM semantic_relations WHERE root_a = ? AND root_b = ?",
+        roots,
+    ).fetchone()
+
+    ok, written = x.db.relate(*roots, relation="synonym", yes=True)
+    assert ok
+    assert "Wrote 1 semantic relation" in written
+    assert x.db.conn.execute(
+        "SELECT 1 FROM semantic_relations WHERE root_a = ? AND root_b = ? AND relation = 'synonym'",
+        roots,
+    ).fetchone()
+    assert list(tmp_path.glob("xenari.db.*.relate.bak"))
 
 
 def test_remove_cleans_dependent_rows(tmp_path):

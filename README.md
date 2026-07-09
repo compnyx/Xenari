@@ -41,7 +41,9 @@ python3 xenari_tool.py coin glimmer "soft unsteady light"
 python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py audit
 python3 xenari_tool.py lint
-python3 xenari_tool.py curate
+python3 xenari_tool.py curate --placeholder --limit 20
+python3 xenari_tool.py categorize --root anhthu
+python3 xenari_tool.py relate brak plonq --relation synonym --dry-run
 python3 xenari_tool.py doctor
 python3 xenari_tool.py meta
 python3 xenari_tool.py sync
@@ -99,11 +101,33 @@ findings are not automatic cleanup failures.
 Use `curate` for the deeper human-review queue:
 
 ```bash
+python3 xenari_tool.py curate --placeholder --limit 20
+python3 xenari_tool.py curate --phrases --limit 20
+python3 xenari_tool.py curate --relations --limit 20
 python3 xenari_tool.py curate 20
 ```
 
-It groups placeholder category suggestions, phrase-like definition review, and
-unlinked duplicate-headword groups that may deserve semantic relations.
+With no section flag, `curate` shows all three queues. Placeholder suggestions
+are grouped by proposed category and include confidence plus the matched reason.
+Relation candidates are hypotheses classified as possible synonyms, register
+variants, category clashes, or false friends. They are review aids, not facts.
+
+Use `categorize` to preview the same placeholder-category proposals. A write
+requires `--yes` and a root/category target, or explicit `--all`. Ambiguous rows
+are skipped unless `--include-ambiguous` is also present. `--limit` controls
+display only, not the rows written.
+
+```bash
+python3 xenari_tool.py categorize --root anhthu
+python3 xenari_tool.py categorize --root anhthu --yes
+python3 xenari_tool.py categorize --category Uncategorized --limit 20
+python3 xenari_tool.py categorize --category Uncategorized --yes
+python3 xenari_tool.py categorize --all --yes
+```
+
+Every `categorize --yes` write creates a timestamped SQLite backup beside the
+database before updating rows. Prefer root-level writes; review a category-wide
+preview before using a category target or `--all`.
 
 Use `propose-root` before coining vocabulary:
 
@@ -133,6 +157,18 @@ Use `relations` to inspect semantic and compound links:
 ```bash
 python3 xenari_tool.py inspect fatyih
 python3 xenari_tool.py relations fatyih
+```
+
+For a relation candidate, inspect both roots before recording anything. Curate
+only prints a `relate ... --dry-run` suggestion for synonym/register hypotheses
+with exactly two roots. `relate` previews by default, requires an explicit
+relation type, and creates a timestamped backup before a `--yes` write.
+
+```bash
+python3 xenari_tool.py relations brak
+python3 xenari_tool.py relations plonq
+python3 xenari_tool.py relate brak plonq --relation synonym --dry-run
+python3 xenari_tool.py relate brak plonq --relation synonym --notes "curator-reviewed" --yes
 ```
 
 Use `translate` for auto-direction translation, or `reverse` for an explicit

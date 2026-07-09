@@ -19,6 +19,7 @@ import sqlite3
 import re
 import datetime
 import hashlib
+import shlex
 from pathlib import Path
 from typing import Optional, Dict, Tuple, List
 
@@ -561,16 +562,8 @@ class XenariDB:
 
     # ─── Category helpers ───────────────────────────────────────
 
-    def _guess_category(self, english: str, meaning: str) -> str:
-        """Pick the best existing category for a new root."""
-        text = (english + " " + meaning).lower()
-
-        # Get existing categories from DB
-        existing_cats = [r["category"] for r in self.conn.execute(
-            "SELECT DISTINCT category FROM roots"
-        ).fetchall()]
-
-        rules = [
+    def _category_rules(self) -> list:
+        return [
             (["succubus", "feed", "brat", "horny", "goth", "kinky", "lewd", "submit",
               "dominant", "shameless", "needy", "clingy", "roleplay", "prad", "strem",
               "ngal", "zhrek", "ngrok", "zhem", "smek", "frez", "mben", "svet", "mrok"],
@@ -630,17 +623,69 @@ class XenariDB:
              "Core Vocabulary"),
         ]
 
-        for keywords, cat_name in rules:
-            if any(k in text for k in keywords):
-                if cat_name in existing_cats:
-                    return cat_name
-                # match against existing categories (fuzzy)
-                for ec in existing_cats:
-                    if cat_name.lower() in ec.lower() or ec.lower() in cat_name.lower():
-                        return ec
-                return cat_name
+    def _resolve_category_name(self, category: str, existing: set) -> str:
+        if category in existing:
+            return category
+        for existing_category in sorted(existing):
+            if (
+                category.lower() in existing_category.lower()
+                or existing_category.lower() in category.lower()
+            ):
+                return existing_category
+        return category
 
-        return "Uncategorized"
+    def _category_guess_details(self, english: str, meaning: str) -> Dict:
+        """Return a category hypothesis with confidence and matched evidence."""
+        english_clean = english.lower().strip()
+        text = f"{english_clean} {meaning.lower()}"
+        existing = {
+            row["category"]
+            for row in self.conn.execute("SELECT DISTINCT category FROM roots").fetchall()
+        }
+        matches = []
+        for keywords, category in self._category_rules():
+            matched = [
+                keyword for keyword in keywords
+                if re.search(rf"(?<![a-z]){re.escape(keyword)}", text)
+            ]
+            if matched:
+                resolved = self._resolve_category_name(category, existing)
+                matches.append((resolved, matched))
+
+        if not matches:
+            return {
+                "category": "Uncategorized",
+                "confidence": "none",
+                "reason": "no category keyword matched",
+                "ambiguous": True,
+            }
+
+        first_category, first_keywords = matches[0]
+        categories = list(dict.fromkeys(category for category, _keywords in matches))
+        exact = any(
+            english_clean == keyword or english_clean.rstrip("s") == keyword.rstrip("s")
+            for keyword in first_keywords
+        )
+        if len(categories) > 1:
+            return {
+                "category": first_category,
+                "confidence": "low",
+                "reason": (
+                    f"matched {', '.join(repr(k) for k in first_keywords[:3])}; "
+                    f"also matched {', '.join(categories[1:])}"
+                ),
+                "ambiguous": True,
+            }
+        return {
+            "category": first_category,
+            "confidence": "high" if exact else "medium",
+            "reason": f"matched {', '.join(repr(k) for k in first_keywords[:3])}",
+            "ambiguous": False,
+        }
+
+    def _guess_category(self, english: str, meaning: str) -> str:
+        """Pick the best existing category for a new root."""
+        return self._category_guess_details(english, meaning)["category"]
 
     # ─── Compounds ─────────────────────────────────────────────
 
@@ -741,6 +786,68 @@ class XenariDB:
             return True
         except sqlite3.IntegrityError:
             return False
+
+    def _backup_before_mutation(self, operation: str) -> Path:
+        """Create a consistent SQLite backup immediately before a curated write."""
+        timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+        backup_path = self.db_path.with_name(
+            f"{self.db_path.name}.{timestamp}.{operation}.bak"
+        )
+        self.conn.commit()
+        backup = sqlite3.connect(str(backup_path))
+        try:
+            self.conn.backup(backup)
+        finally:
+            backup.close()
+        return backup_path
+
+    def relate(
+        self,
+        root_a: str,
+        root_b: str,
+        relation: str,
+        notes: str = None,
+        yes: bool = False,
+    ) -> Tuple[bool, str]:
+        """Preview or explicitly record a curator-selected semantic relation."""
+        allowed = {"synonym", "antonym", "related", "derivation", "see_also", "register_variant"}
+        lines = [f"Semantic relation preview: {root_a} --{relation}--> {root_b}"]
+        if relation not in allowed:
+            lines.append(f"Unknown relation type. Choose one of: {', '.join(sorted(allowed))}")
+            return False, "\n".join(lines)
+        if root_a == root_b:
+            lines.append("A root cannot be related to itself.")
+            return False, "\n".join(lines)
+        rows = [self.lookup_root(root) for root in (root_a, root_b)]
+        if not all(rows):
+            missing = [root for root, row in zip((root_a, root_b), rows) if not row]
+            lines.append(f"Unknown root(s): {', '.join(missing)}")
+            return False, "\n".join(lines)
+        for row in rows:
+            lines.append(f"  - {row['root']}[{row['category']}]: {row['meaning']}")
+        if notes:
+            lines.append(f"Notes: {notes}")
+        lines.append("This relation is a curator assertion; the tool did not infer it as fact.")
+        existing = self.conn.execute(
+            """SELECT 1 FROM semantic_relations
+               WHERE ((root_a = ? AND root_b = ?) OR (root_a = ? AND root_b = ?))
+                 AND relation = ?""",
+            (root_a, root_b, root_b, root_a, relation),
+        ).fetchone()
+        if existing:
+            lines.append("Relation already exists.")
+            return True, "\n".join(lines)
+        if not yes:
+            lines.append("PREVIEW ONLY: no database write. Re-run with --yes to record this assertion.")
+            return True, "\n".join(lines)
+
+        backup_path = self._backup_before_mutation("relate")
+        if not self.add_relation(root_a, root_b, relation, notes=notes):
+            lines.append("Failed to write relation.")
+            return False, "\n".join(lines)
+        lines.append(f"Backup: {backup_path}")
+        lines.append("Wrote 1 semantic relation.")
+        return True, "\n".join(lines)
 
     def get_relations(self, root: str) -> list:
         """Get all semantic relations for a root."""
@@ -876,80 +983,271 @@ class XenariDB:
         ])
         return "\n".join(lines)
 
-    def curation_report(self, limit: int = 30) -> str:
-        """Human-review curation queue for categories, definitions, and relation gaps."""
-        rows = [dict(r) for r in self.conn.execute(
+    def _curation_rows(self) -> list:
+        return [dict(row) for row in self.conn.execute(
             """SELECT root, meaning, category, source, notes
                FROM roots
                ORDER BY category, root"""
         ).fetchall()]
-        placeholder_categories = []
-        phrase_definitions = []
-        relation_candidates = []
 
+    def category_proposals(self, root: str = None, category: str = None) -> list:
+        """Return placeholder-category hypotheses without changing the database."""
+        proposals = []
+        for row in self._curation_rows():
+            if row["category"] not in {"Uncategorized", "New Roots (added via tool)"}:
+                continue
+            if root and row["root"] != root:
+                continue
+            if category and row["category"] != category:
+                continue
+            head = self._audit_headword(row["meaning"])
+            english_hint = head or row["meaning"]
+            quoted = re.search(r"English '([^']+)'", row["meaning"], re.I)
+            if quoted:
+                english_hint = quoted.group(1)
+            details = self._category_guess_details(english_hint, row["meaning"])
+            proposals.append({
+                **row,
+                "suggested_category": details["category"],
+                "confidence": details["confidence"],
+                "reason": details["reason"],
+                "ambiguous": details["ambiguous"],
+            })
+        proposals.sort(key=lambda proposal: (proposal["suggested_category"], proposal["root"]))
+        return proposals
+
+    def phrase_definition_candidates(self) -> list:
+        candidates = []
+        for row in self._curation_rows():
+            head = self._audit_headword(row["meaning"])
+            if len(head.split()) > 6 or re.search(r"[.!?]", row["meaning"]):
+                candidates.append(row)
+        return candidates
+
+    def _relation_candidate_kind(self, head: str, group: list) -> Dict:
+        texts = [self._audit_normalize(row["meaning"]) for row in group]
+        categories = {row["category"].lower() for row in group}
+        combined = " ".join(
+            str(row.get(field) or "").lower()
+            for row in group
+            for field in ("meaning", "source", "notes", "category")
+        )
+        register_words = {
+            "archaic", "casual", "colloquial", "formal", "poetic", "slang",
+            "technical", "vulgar", "profane", "honorific", "register",
+        }
+        register_hits = sorted(word for word in register_words if word in combined)
+        if register_hits:
+            return {
+                "kind": "possible register variant",
+                "confidence": "medium",
+                "reason": f"shared headword with register marker(s): {', '.join(register_hits)}",
+                "relation": "register_variant",
+            }
+        if len(set(texts)) == 1:
+            if len(categories) > 1:
+                return {
+                    "kind": "possible category clash",
+                    "confidence": "high",
+                    "reason": "identical normalized definition appears in different categories",
+                    "relation": None,
+                }
+            return {
+                "kind": "possible synonym",
+                "confidence": "high",
+                "reason": "identical normalized definition in the same category",
+                "relation": "synonym",
+            }
+        qualifier_tokens = [set(text.split()) - set(head.split()) for text in texts]
+        overlap = set.intersection(*qualifier_tokens) if qualifier_tokens else set()
+        overlap -= {"a", "an", "and", "as", "of", "or", "the", "to"}
+        if len(categories) > 1 and overlap:
+            return {
+                "kind": "possible category clash",
+                "confidence": "medium",
+                "reason": "shared headword/qualifier but different categories",
+                "relation": None,
+            }
+        return {
+            "kind": "possible false friend",
+            "confidence": "medium",
+            "reason": "shared English headword but distinct qualifiers or category context",
+            "relation": None,
+        }
+
+    def relation_candidates(self) -> list:
+        """Return classified duplicate-headword hypotheses for human review."""
         by_head = {}
-        for row in rows:
+        for row in self._curation_rows():
             head = self._audit_headword(row["meaning"])
             if head:
                 by_head.setdefault(head, []).append(row)
-            if row["category"] in {"Uncategorized", "New Roots (added via tool)"}:
-                english_hint = head or row["meaning"]
-                quoted = re.search(r"English '([^']+)'", row["meaning"])
-                if quoted:
-                    english_hint = quoted.group(1)
-                guessed = self._guess_category(english_hint, row["meaning"])
-                placeholder_categories.append((row, guessed))
-            if len(head.split()) > 6 or re.search(r"[.!?]", row["meaning"]):
-                phrase_definitions.append(row)
-
+        candidates = []
         for head, group in by_head.items():
             if len(group) < 2:
                 continue
-            roots = {row["root"] for row in group}
-            rel_count = self.conn.execute(
-                f"""SELECT COUNT(*) FROM semantic_relations
-                    WHERE root_a IN ({','.join('?' for _ in roots)})
-                       OR root_b IN ({','.join('?' for _ in roots)})""",
+            roots = sorted({row["root"] for row in group})
+            placeholders = ",".join("?" for _ in roots)
+            linked = self.conn.execute(
+                f"""SELECT 1 FROM semantic_relations
+                    WHERE root_a IN ({placeholders}) AND root_b IN ({placeholders})
+                    LIMIT 1""",
                 tuple(roots) + tuple(roots),
-            ).fetchone()[0]
-            if rel_count == 0:
-                relation_candidates.append((head, group))
+            ).fetchone()
+            if linked:
+                continue
+            candidates.append({
+                "head": head,
+                "rows": group,
+                **self._relation_candidate_kind(head, group),
+            })
+        priority = {
+            "possible synonym": 0,
+            "possible register variant": 1,
+            "possible category clash": 2,
+            "possible false friend": 3,
+        }
+        candidates.sort(key=lambda item: (priority[item["kind"]], item["head"]))
+        return candidates
+
+    def categorize(
+        self,
+        root: str = None,
+        category: str = None,
+        yes: bool = False,
+        all_rows: bool = False,
+        include_ambiguous: bool = False,
+        limit: int = 20,
+    ) -> Tuple[bool, str]:
+        """Preview or apply guarded placeholder-category proposals."""
+        proposals = self.category_proposals(root=root, category=category)
+        lines = [
+            "Xenari category cleanup",
+            f"Matched placeholder rows: {len(proposals)}",
+            "The limit controls display only; writes apply every eligible targeted row.",
+        ]
+        if root and not proposals:
+            lines.append(f"No placeholder-category row found for root '{root}'.")
+            return False, "\n".join(lines)
+
+        eligible = []
+        for proposal in proposals:
+            changes = proposal["category"] != proposal["suggested_category"]
+            ambiguous = proposal["ambiguous"] or proposal["confidence"] in {"low", "none"}
+            if changes and (include_ambiguous or not ambiguous):
+                eligible.append(proposal)
+
+        shown = proposals[: max(limit, 0)]
+        for proposal in shown:
+            status = "ambiguous" if proposal["ambiguous"] else "eligible"
+            if proposal["category"] == proposal["suggested_category"]:
+                status = "no suggestion"
+            lines.append(
+                f"  - {proposal['root']}: {proposal['category']} -> {proposal['suggested_category']} "
+                f"[{proposal['confidence']}, {status}] ({proposal['reason']})"
+            )
+        if len(proposals) > len(shown):
+            lines.append(f"  ... {len(proposals) - len(shown)} more")
+        lines.append(f"Eligible changes: {len(eligible)}")
+
+        if not yes:
+            lines.append("PREVIEW ONLY: no database write. Use --yes with --root, --category, or --all.")
+            return True, "\n".join(lines)
+        if not (root or category or all_rows):
+            lines.append("Refusing broad write without --root, --category, or explicit --all.")
+            return False, "\n".join(lines)
+        if not eligible:
+            lines.append("No eligible category changes to write.")
+            return True, "\n".join(lines)
+
+        backup_path = self._backup_before_mutation("categorize")
+        with self.conn:
+            for proposal in eligible:
+                self.conn.execute(
+                    "UPDATE roots SET category = ? WHERE root = ? AND category = ?",
+                    (proposal["suggested_category"], proposal["root"], proposal["category"]),
+                )
+        lines.append(f"Backup: {backup_path}")
+        lines.append(f"Wrote {len(eligible)} category change(s).")
+        return True, "\n".join(lines)
+
+    def curation_report(
+        self,
+        limit: int = 30,
+        placeholder: bool = True,
+        phrases: bool = True,
+        relations: bool = True,
+    ) -> str:
+        """Human-review curation queue for categories, definitions, and relation gaps."""
+        placeholder_categories = self.category_proposals()
+        phrase_definitions = self.phrase_definition_candidates()
+        relation_candidates = self.relation_candidates()
 
         lines = [
             "Xenari curation report",
             f"Placeholder category rows: {len(placeholder_categories)}",
             f"Phrase-like definitions: {len(phrase_definitions)}",
             f"Unlinked duplicate-headword relation candidates: {len(relation_candidates)}",
-            "",
-            "Placeholder category suggestions",
         ]
-        if not placeholder_categories:
-            lines.append("  none")
-        for row, guessed in placeholder_categories[:limit]:
-            lines.append(f"  - {row['root']}: {row['meaning']} [{row['category']}] -> {guessed}")
-        if len(placeholder_categories) > limit:
-            lines.append(f"  ... {len(placeholder_categories) - limit} more")
 
-        lines.extend(["", "Phrase-like definition review"])
-        if not phrase_definitions:
-            lines.append("  none")
-        for row in phrase_definitions[:limit]:
-            lines.append(f"  - {row['root']}[{row['category']}]: {row['meaning']}")
-        if len(phrase_definitions) > limit:
-            lines.append(f"  ... {len(phrase_definitions) - limit} more")
+        if placeholder:
+            lines.extend(["", "Placeholder category suggestions (grouped by suggestion)"])
+            visible = placeholder_categories[: max(limit, 0)]
+            grouped = {}
+            for proposal in visible:
+                grouped.setdefault(proposal["suggested_category"], []).append(proposal)
+            if not grouped:
+                lines.append("  none")
+            for suggested in sorted(grouped):
+                lines.append(f"  {suggested}:")
+                for proposal in grouped[suggested]:
+                    lines.append(
+                        f"    - {proposal['root']}: {proposal['meaning']} "
+                        f"[{proposal['confidence']}] ({proposal['reason']})"
+                    )
+            if len(placeholder_categories) > len(visible):
+                lines.append(f"  ... {len(placeholder_categories) - len(visible)} more")
 
-        lines.extend(["", "Relation candidate groups"])
-        if not relation_candidates:
-            lines.append("  none")
-        for head, group in relation_candidates[:limit]:
-            joined = "; ".join(f"{row['root']}[{row['category']}]" for row in group[:6])
-            lines.append(f"  - {head}: {joined}")
-        if len(relation_candidates) > limit:
-            lines.append(f"  ... {len(relation_candidates) - limit} more")
+        if phrases:
+            lines.extend(["", "Phrase-like definition review"])
+            if not phrase_definitions:
+                lines.append("  none")
+            for row in phrase_definitions[:limit]:
+                lines.append(f"  - {row['root']}[{row['category']}]: {row['meaning']}")
+            if len(phrase_definitions) > limit:
+                lines.append(f"  ... {len(phrase_definitions) - limit} more")
+
+        if relations:
+            lines.extend(["", "Relation candidate groups (hypotheses, not facts)"])
+            if not relation_candidates:
+                lines.append("  none")
+            for candidate in relation_candidates[:limit]:
+                joined = "; ".join(
+                    f"{row['root']}[{row['category']}]: {row['meaning']}"
+                    for row in candidate["rows"][:6]
+                )
+                lines.append(
+                    f"  - {candidate['head']} [{candidate['kind']}, "
+                    f"confidence={candidate['confidence']}]: {candidate['reason']}"
+                )
+                lines.append(f"    {joined}")
+                if candidate["relation"] and len(candidate["rows"]) == 2:
+                    root_a, root_b = (row["root"] for row in candidate["rows"])
+                    lines.append(
+                        "    preview only: python3 xenari_tool.py relate "
+                        f"{shlex.quote(root_a)} {shlex.quote(root_b)} "
+                        f"--relation {candidate['relation']} --dry-run"
+                    )
+                else:
+                    roots = " ".join(row["root"] for row in candidate["rows"][:3])
+                    lines.append(f"    review first: {roots}")
+            if len(relation_candidates) > limit:
+                lines.append(f"  ... {len(relation_candidates) - limit} more")
 
         lines.extend([
             "",
             "Suggested next commands",
+            "  python3 xenari_tool.py categorize --root <root>",
             "  python3 xenari_tool.py inspect <root>",
             "  python3 xenari_tool.py relations <root>",
             "  python3 xenari_tool.py search <headword>",

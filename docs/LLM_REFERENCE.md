@@ -145,5 +145,14 @@ Full vocabulary lives outside this reference:
 - CLI search: `python3 ../xenari_tool.py search <query>`
 - CLI reverse check: `python3 ../xenari_tool.py reverse <xenari sentence>`
 - New root planning: `python3 ../xenari_tool.py coin <english> <meaning>`
-- Curation queue: `python3 ../xenari_tool.py curate 20`
+- Category curation: `python3 ../xenari_tool.py curate --placeholder --limit 20`
+- Definition curation: `python3 ../xenari_tool.py curate --phrases --limit 20`
+- Relation curation: `python3 ../xenari_tool.py curate --relations --limit 20`
+- Category cleanup preview: `python3 ../xenari_tool.py categorize --root <root>`
 - Relation lookup: `python3 ../xenari_tool.py relations <root>`
+
+`curate` output is heuristic. Category confidence/reasons and relation labels
+are review signals, not canon facts. `categorize` and `relate` do not write by
+default; inspect the affected roots and use `--yes` only for a curator-approved
+change. Category-wide or all-row cleanup requires explicit targeting, and
+ambiguous category proposals require `--include-ambiguous`.
