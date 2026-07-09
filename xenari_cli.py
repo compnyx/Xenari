@@ -10,7 +10,7 @@ from xenari_core import Xenari
 
 def main():
     epilog = """Common flows:
-  inspect:   stats | doctor | workbench | audit 20 | lint 20 | curate --placeholder --limit 20
+  inspect:   stats | doctor | workbench | review --output xenari-qc.md | audit 20 | lint 20
   find:      inspect fatyih | lookup love | search dangerous | near "soft light" | relations fatyih
   translate: translate "I love you" | translate "ra mex ka neq ta zrent sa xa"
   coin:      coin glimmer "soft unsteady light" | coin glimmer "soft unsteady light" --root zakglu --yes
@@ -25,6 +25,7 @@ def main():
     )
     parser.add_argument("command", choices=[
         "help", "lookup", "inspect", "info", "validate", "doctor", "workbench",
+        "review",
         "compound", "speak", "gloss", "translate", "reverse",
         "export-js", "export-json", "export-md",
         "export", "stats", "audit", "lint", "curate", "meta", "sync",
@@ -109,6 +110,17 @@ def main():
     elif args.command == "workbench":
         ok, report = x.workbench(limit=args.limit)
         print(report)
+        if not ok:
+            sys.exit(1)
+    elif args.command == "review":
+        ok, report = x.review_report(limit=args.limit)
+        if args.output:
+            output = Path(args.output)
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_text(report, encoding="utf-8")
+            print(f"wrote {output}")
+        else:
+            print(report)
         if not ok:
             sys.exit(1)
     elif args.command == "compound":

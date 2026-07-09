@@ -1,4 +1,5 @@
 import json
+import datetime
 from pathlib import Path
 from typing import List, Tuple
 
@@ -159,3 +160,68 @@ class HealthMixin:
             "  python3 xenari_tool.py sync --site && pytest -q",
         ])
         return ok and parity_ok, "\n".join(lines)
+
+    def review_report(self, limit: int = 10) -> Tuple[bool, str]:
+        """Build a read-only Markdown review artifact for human/Codex follow-up."""
+        doctor_ok, doctor_report = self.doctor()
+        parity_ok, parity_report = self.parity()
+        audit = self.db.audit(limit=limit)
+        lint = self.db.lint(limit=limit)
+        curation = self.db.curation_report(limit=limit)
+        ok = doctor_ok and parity_ok
+        generated = datetime.datetime.now().isoformat(timespec="seconds")
+
+        lines = [
+            "# Xenari QC Review Report",
+            "",
+            f"- Generated: `{generated}`",
+            f"- Mode: read-only; no database writes",
+            f"- Stats: `{self.db.stats()}`",
+            f"- Doctor: `{'ok' if doctor_ok else 'FAIL'}`",
+            f"- Translator parity: `{'ok' if parity_ok else 'FAIL'}`",
+            "",
+            "## Recommended Next Actions",
+            "",
+        ]
+        if ok:
+            lines.extend([
+                "- Keep canon unchanged unless a human reviews a curation target.",
+                "- Start with placeholder category proposals, then relation hypotheses.",
+                "- Use preview commands first; write commands require `--yes` and create backups.",
+            ])
+        else:
+            lines.extend([
+                "- Fix failed doctor/parity checks before any curation writes.",
+                "- Re-run `python3 xenari_tool.py doctor` and `python3 xenari_tool.py parity` after fixes.",
+            ])
+
+        sections = [
+            ("Doctor", doctor_report),
+            ("Translator Parity", parity_report),
+            ("Audit", audit),
+            ("Lint", lint),
+            ("Curation Queue", curation),
+        ]
+        for title, body in sections:
+            lines.extend([
+                "",
+                f"## {title}",
+                "",
+                "```text",
+                body,
+                "```",
+            ])
+        lines.extend([
+            "",
+            "## Safe Follow-up Commands",
+            "",
+            "```bash",
+            "python3 xenari_tool.py curate --placeholder --limit 20",
+            "python3 xenari_tool.py curate --relations --limit 20",
+            "python3 xenari_tool.py categorize --root <root>",
+            "python3 xenari_tool.py relate <root-a> <root-b> --relation <type> --dry-run",
+            "python3 xenari_tool.py doctor",
+            "pytest -q",
+            "```",
+        ])
+        return ok, "\n".join(lines)

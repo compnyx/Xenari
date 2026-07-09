@@ -32,6 +32,7 @@ python3 xenari_tool.py speak "I love you" --evidential witnessed
 python3 xenari_tool.py translate "I love you"
 python3 xenari_tool.py translate "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py workbench
+python3 xenari_tool.py review --output xenari-qc-report.md
 python3 xenari_tool.py parity
 python3 xenari_tool.py search "soul"
 python3 xenari_tool.py near "dangerous"
@@ -93,6 +94,17 @@ critical lookups, and actionable audit failures.
 `workbench` is the agent-friendly command to run before or after a change. It
 prints stats, doctor status, audit counters, a small lint preview, and the next
 commands that usually matter.
+
+Use `review` when you want a shareable, read-only Markdown artifact for a human
+or Codex follow-up:
+
+```bash
+python3 xenari_tool.py review --limit 10
+python3 xenari_tool.py review --limit 20 --output xenari-qc-report.md
+```
+
+The report combines doctor, parity, audit, lint, and curation queues. It never
+writes the database; `--output` only writes the Markdown report file.
 
 Use `lint` for softer review targets that need human judgment, such as
 phrase-like definitions, English-looking roots, and placeholder categories. Lint

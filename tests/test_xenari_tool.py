@@ -118,6 +118,13 @@ def test_ranked_search_proposals_relations_lint_and_meta():
     assert "Useful next commands:" in workbench
     assert "translator parity: ok" in workbench
 
+    ok, review = x.review_report(limit=1)
+    assert ok
+    assert review.startswith("# Xenari QC Review Report")
+    assert "Mode: read-only; no database writes" in review
+    assert "## Curation Queue" in review
+    assert "python3 xenari_tool.py curate --placeholder --limit 20" in review
+
 
 def test_curation_sections_are_filterable_and_explain_hypotheses():
     x = Xenari(REPO / "xenari.db")
@@ -197,6 +204,24 @@ def test_curate_cli_accepts_section_and_limit_flags():
     assert relate.returncode == 0
     assert "curator assertion" in relate.stdout
     assert "PREVIEW ONLY" in relate.stdout
+
+
+def test_review_cli_writes_markdown_report(tmp_path):
+    out = tmp_path / "xenari-qc.md"
+    result = subprocess.run(
+        [sys.executable, "xenari_tool.py", "review", "--limit", "1", "--output", str(out)],
+        cwd=REPO,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0
+    assert f"wrote {out}" in result.stdout
+    content = out.read_text(encoding="utf-8")
+    assert content.startswith("# Xenari QC Review Report")
+    assert "## Audit" in content
+    assert "## Safe Follow-up Commands" in content
 
 
 def test_parity_and_coin_workflow_preview():
