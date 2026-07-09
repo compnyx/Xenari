@@ -8,6 +8,21 @@ I love you.
 ```
 
 ```text
+ra neq ka mex ta zrent sa xa
+You love me.
+```
+
+```text
+ra mex ka neq ta zrent lo xa
+I loved you.
+```
+
+```text
+ra mex ka neq ta zrent sa xa ngu
+I do not love you.
+```
+
+```text
 ra mex ka neq ta zrent sa xo
 I love you. / assumed or narration-default evidential.
 ```
@@ -35,4 +50,9 @@ I approach the figure by/near the lake.
 ```text
 ra vi loco po brid ka vi cuq ta qruq vi sa xo
 The wind blows the figure's hat away.
+```
+
+```text
+ra neq po brid ka vi cuq ta qruq vi sa xo
+The wind blows my hat away.
 ```

@@ -277,7 +277,13 @@ class TranslatorMixin:
         """Best-effort Xenari → English for canonical OSV clauses."""
         sentences = [s.strip() for s in re.split(r"[.!?]+", xenari) if s.strip()]
         rendered = []
-        reverse_pronouns = {"neq": "I", "mex": "you", "zeq": "they", "leq": "he/she/it", "req": "they"}
+        reverse_pronouns = {
+            "neq": {"subj": "I", "obj": "me", "poss": "my"},
+            "mex": {"subj": "you", "obj": "you", "poss": "your"},
+            "zeq": {"subj": "they", "obj": "them", "poss": "their"},
+            "leq": {"subj": "he/she/it", "obj": "him/her/it", "poss": "his/her/its"},
+            "req": {"subj": "they", "obj": "them", "poss": "their"},
+        }
         preferred = {
             "zrent": "love", "toq": "see", "zux": "is", "fatyih": "dangerous",
             "qex": "alien", "loco": "figure", "qlon": "lake", "brid": "hat",
@@ -286,9 +292,10 @@ class TranslatorMixin:
         case_particles = {"ra", "ka", "ta", "na", "fa", "mo"}
         skip_particles = {"vi", "nu", "sa", "lo", "ve", "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "ha"}
 
-        def root_english(root: str, verb: bool = False) -> str:
+        def root_english(root: str, verb: bool = False, role: str = "plain") -> str:
             if root in reverse_pronouns:
-                return reverse_pronouns[root]
+                forms = reverse_pronouns[root]
+                return forms.get(role, forms["subj"])
             if root in preferred:
                 return preferred[root]
             meaning = self.lexicon.get(root, root)
@@ -297,8 +304,8 @@ class TranslatorMixin:
                 head = head[3:]
             return head.split()[0] if head else root
 
-        def read_phrase(tokens: List[str], start: int) -> Tuple[str, int]:
-            words = []
+        def read_phrase(tokens: List[str], start: int, role: str = "plain") -> Tuple[str, int]:
+            pieces = []
             i = start
             possessor = None
             while i < len(tokens) and tokens[i] not in case_particles:
@@ -307,25 +314,32 @@ class TranslatorMixin:
                     i += 1
                     continue
                 if tok == "po":
-                    possessor = words.pop() if words else None
+                    possessor = pieces.pop() if pieces else None
                     i += 1
                     continue
-                words.append(root_english(tok))
+                pieces.append({"root": tok, "text": root_english(tok, role=role)})
                 i += 1
+            words = [piece["text"] for piece in pieces]
             if possessor and words:
-                return f"{possessor}'s {' '.join(words)}", i
+                poss_text = root_english(possessor["root"], role="poss")
+                if poss_text == possessor["text"] and not poss_text.endswith("'s"):
+                    poss_text = f"{poss_text}'s"
+                return f"{poss_text} {' '.join(words)}", i
             return " ".join(words), i
 
         for sentence in sentences:
             tokens = sentence.split()
             obj = subj = loc = verb = ""
+            tense = "sa"
+            negated = False
+            question = False
             i = 0
             while i < len(tokens):
                 tok = tokens[i]
                 if tok == "ra":
-                    obj, i = read_phrase(tokens, i + 1)
+                    obj, i = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "ka":
-                    subj, i = read_phrase(tokens, i + 1)
+                    subj, i = read_phrase(tokens, i + 1, role="subj")
                 elif tok == "na":
                     loc, i = read_phrase(tokens, i + 1)
                 elif tok == "ta":
@@ -334,19 +348,62 @@ class TranslatorMixin:
                         j += 1
                     verb = root_english(tokens[j], verb=True) if j < len(tokens) else ""
                     i = j + 1
+                elif tok in {"sa", "lo", "ve", "du", "pe", "ko"}:
+                    tense = tok
+                    i += 1
+                elif tok == "ngu":
+                    negated = True
+                    i += 1
+                elif tok == "va":
+                    question = True
+                    i += 1
                 else:
                     i += 1
 
+            def render_verb(v: str) -> str:
+                if v == "is":
+                    if tense == "lo":
+                        return "was"
+                    if tense == "ve":
+                        return "will be"
+                    if negated:
+                        return "is not"
+                    return "is"
+                base = v
+                if tense == "lo":
+                    if base.endswith("e"):
+                        base = base + "d"
+                    elif base.endswith("y"):
+                        base = base[:-1] + "ied"
+                    else:
+                        base = base + "ed"
+                elif tense == "ve":
+                    base = "will " + base
+                elif tense == "du":
+                    base = "usually " + base
+                elif tense == "pe":
+                    base = "could " + base
+                if negated:
+                    if tense == "ve":
+                        return "will not " + base.removeprefix("will ")
+                    if tense == "lo":
+                        return "did not " + v
+                    aux = "do not" if subj in {"I", "you", "they"} else "does not"
+                    return aux + " " + v
+                return base
+
             if verb == "is":
-                text = " ".join(part for part in [subj, "is", obj] if part)
+                text = " ".join(part for part in [subj, render_verb(verb), obj] if part)
             elif verb and obj and subj:
-                text = " ".join(part for part in [subj, verb, obj] if part)
+                text = " ".join(part for part in [subj, render_verb(verb), obj] if part)
             elif verb and subj:
-                text = " ".join(part for part in [subj, verb] if part)
+                text = " ".join(part for part in [subj, render_verb(verb)] if part)
             else:
                 text = " ".join(part for part in [subj, obj] if part)
             if loc:
                 text = f"{text} in/at {loc}".strip()
+            if question:
+                text = f"{text}?"
             rendered.append(text)
         return ". ".join(rendered)
 

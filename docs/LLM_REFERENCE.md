@@ -18,6 +18,13 @@ ra mex ka neq ta zrent sa xa
 I love you. / I directly witnessed that I love you.
 ```
 
+Pronoun case is inferred by clause role when translating back to English:
+
+```text
+ra neq ka mex ta zrent sa xa
+You love me.
+```
+
 Core particles:
 
 - `ra` object or predicate marker
@@ -46,11 +53,8 @@ ra mex ka neq ta zrent sa xa
 I love you.
 ```
 
-Incorrect:
-
-```text
-ra vi mex ka vi neq ta zrent vi sa xa
-```
+Do not place animacy particles before pronouns, and do not add verb animacy
+agreement when the subject is a pronoun.
 
 ## Animacy
 
@@ -115,6 +119,13 @@ ra vi loco po brid ka vi cuq ta qruq vi sa xo
 The wind blows the figure's hat away.
 ```
 
+Pronoun possessors render as English possessive pronouns:
+
+```text
+ra neq po brid ka vi cuq ta qruq vi sa xo
+The wind blows my hat away.
+```
+
 ## Translation Guidance
 
 - Prefer the DB/tool for vocabulary lookup.
@@ -133,5 +144,6 @@ Full vocabulary lives outside this reference:
 - JSON: `../data/xenari-dict.json`
 - CLI search: `python3 ../xenari_tool.py search <query>`
 - CLI reverse check: `python3 ../xenari_tool.py reverse <xenari sentence>`
-- New root planning: `python3 ../xenari_tool.py propose-root <english> <meaning>`
+- New root planning: `python3 ../xenari_tool.py coin <english> <meaning>`
+- Curation queue: `python3 ../xenari_tool.py curate 20`
 - Relation lookup: `python3 ../xenari_tool.py relations <root>`

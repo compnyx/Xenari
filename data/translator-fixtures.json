@@ -5,6 +5,10 @@
       "xenari": "ra mex ka neq ta zrent sa xo"
     },
     {
+      "english": "you love me",
+      "xenari": "ra neq ka mex ta zrent sa xo"
+    },
+    {
       "english": "you little bitch",
       "xenari": "mex krengk frem"
     },
@@ -35,6 +39,22 @@
       "english": "I love you"
     },
     {
+      "xenari": "ra neq ka mex ta zrent sa xa",
+      "english": "you love me"
+    },
+    {
+      "xenari": "ra mex ka neq ta zrent lo xa",
+      "english": "I loved you"
+    },
+    {
+      "xenari": "ra mex ka neq ta zrent ve xa",
+      "english": "I will love you"
+    },
+    {
+      "xenari": "ra mex ka neq ta zrent sa xa ngu",
+      "english": "I do not love you"
+    },
+    {
       "xenari": "ra fatyih ka vi qex ta zux vi sa xo",
       "english": "alien is dangerous"
     },
@@ -45,6 +65,10 @@
     {
       "xenari": "ra vi loco po brid ka vi cuq ta qruq vi sa xo",
       "english": "wind blow figure's hat"
+    },
+    {
+      "xenari": "ra neq po brid ka vi cuq ta qruq vi sa xo",
+      "english": "wind blow my hat"
     }
   ]
 }

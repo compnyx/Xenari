@@ -150,6 +150,7 @@ class HealthMixin:
             "Useful next commands:",
             "  python3 xenari_tool.py search <english-or-root>",
             "  python3 xenari_tool.py near <meaning>",
+            "  python3 xenari_tool.py curate 20",
             "  python3 xenari_tool.py coin <english> <meaning>",
             "  python3 xenari_tool.py add <english> <root> <meaning> --dry-run",
             "  python3 xenari_tool.py parity",

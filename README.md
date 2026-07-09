@@ -41,6 +41,7 @@ python3 xenari_tool.py coin glimmer "soft unsteady light"
 python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py audit
 python3 xenari_tool.py lint
+python3 xenari_tool.py curate
 python3 xenari_tool.py doctor
 python3 xenari_tool.py meta
 python3 xenari_tool.py sync
@@ -95,6 +96,15 @@ Use `lint` for softer review targets that need human judgment, such as
 phrase-like definitions, English-looking roots, and placeholder categories. Lint
 findings are not automatic cleanup failures.
 
+Use `curate` for the deeper human-review queue:
+
+```bash
+python3 xenari_tool.py curate 20
+```
+
+It groups placeholder category suggestions, phrase-like definition review, and
+unlinked duplicate-headword groups that may deserve semantic relations.
+
 Use `propose-root` before coining vocabulary:
 
 ```bash
@@ -137,6 +147,8 @@ python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
 The browser translator and Python CLI share regression fixtures in
 `data/translator-fixtures.json`. Use `parity` for the Python side of that
 contract and `npm run test:xenari` in `nyx-site` for the browser side.
+The shared fixtures cover pronoun object case (`you love me`), pronoun
+possessives (`my hat`), and tense/negation reverse rendering.
 
 ## Mutating The DB
 

@@ -96,6 +96,8 @@ def test_ranked_search_proposals_relations_lint_and_meta():
     assert all(not x.db.validate_phonotactics(item["root"]) for item in proposals)
     assert proposals[0]["score"] >= proposals[-1]["score"]
     assert proposals[0]["category"] == "Elements & Nature"
+    assert not any("kgl" in item["root"] for item in proposals[:2])
+    assert x.db._guess_category("wrath", "hot sharp anger") == "Mental & Abstract"
 
     ok, report = x.db.relations_report("fatyih")
     assert ok
@@ -103,6 +105,10 @@ def test_ranked_search_proposals_relations_lint_and_meta():
     assert "Relations:" in report
 
     assert "Xenari lint" in x.db.lint(limit=3)
+    curation = x.db.curation_report(limit=3)
+    assert "Xenari curation report" in curation
+    assert "Placeholder category suggestions" in curation
+    assert "Relation candidate groups" in curation
     assert "schema_version" in x.db.metadata_report()
 
     ok, workbench = x.workbench(limit=2)

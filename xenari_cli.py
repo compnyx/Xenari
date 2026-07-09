@@ -10,7 +10,7 @@ from xenari_core import Xenari
 
 def main():
     epilog = """Common flows:
-  inspect:   stats | doctor | workbench | audit 20 | lint 20
+  inspect:   stats | doctor | workbench | audit 20 | lint 20 | curate 20
   find:      inspect fatyih | lookup love | search dangerous | near "soft light" | relations fatyih
   translate: translate "I love you" | translate "ra mex ka neq ta zrent sa xa"
   coin:      coin glimmer "soft unsteady light" | coin glimmer "soft unsteady light" --root zakglu --yes
@@ -26,7 +26,7 @@ def main():
         "help", "lookup", "inspect", "info", "validate", "doctor", "workbench",
         "compound", "speak", "gloss", "translate", "reverse",
         "export-js", "export-json", "export-md",
-        "export", "stats", "audit", "lint", "meta", "sync",
+        "export", "stats", "audit", "lint", "curate", "meta", "sync",
         "add", "remove", "search", "near", "relations", "propose-root", "coin",
         "categories", "map", "parity",
     ])
@@ -164,6 +164,15 @@ def main():
                 print("Usage: lint [limit]")
                 sys.exit(1)
         print(x.db.lint(limit=limit))
+    elif args.command == "curate":
+        limit = args.limit
+        if args.args:
+            try:
+                limit = int(args.args[0])
+            except ValueError:
+                print("Usage: curate [limit]")
+                sys.exit(1)
+        print(x.db.curation_report(limit=limit))
     elif args.command == "sync":
         print(x.sync_exports(include_site=args.site))
         ok, report = x.doctor()

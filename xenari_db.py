@@ -198,22 +198,38 @@ class XenariDB:
     def _root_shape_score(self, root: str) -> int:
         """Score pronounceable root shapes for proposal ordering."""
         score = 100
-        if 3 <= len(root) <= 5:
-            score += 18
+        if 4 <= len(root) <= 5:
+            score += 24
+        elif len(root) == 3:
+            score += 10
         elif len(root) == 6:
-            score += 8
+            score += 2
         else:
-            score -= 8
+            score -= 18
         if "'" in root:
             score -= 10
         if re.search(r"[bcdfghjklmnpqrstvwxyz]{4,}", root):
+            score -= 35
+        if re.search(r"[bcdfghjklmnpqrstvwxyz]{3,}", root):
             score -= 18
+        if re.search(r"([bcdfghjklmnpqrstvwxyz])\1", root):
+            score -= 26
+        if re.search(r"(kg|gk|cs|zs|sx|xq|qx|qg|gq|td|dt|bp|pb)", root):
+            score -= 12
+        if re.search(r"(kgl|glf|ngkr|nqk|mpq|ntq)", root):
+            score -= 35
         if re.search(r"[aeiou]{2,}", root):
             score -= 12
         if root[0] in "qx":
             score -= 3
+        if root in {"ra", "ka", "ta", "na", "fa", "mo", "vi", "nu", "sa", "lo", "ve", "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "po", "ha", "va"}:
+            score -= 80
         if root[-1] in "aeou":
             score += 4
+        if re.fullmatch(r"[bcdfghjklmnpqrstvwxyz]?[aeou][bcdfghjklmnpqrstvwxyz][aeou]?", root):
+            score += 8
+        if re.fullmatch(r"[bcdfghjklmnpqrstvwxyz]{1,2}[aeou][bcdfghjklmnpqrstvwxyz]{1,2}[aeou]", root):
+            score += 8
         return score
 
     def propose_root(self, english: str, meaning: str = "", limit: int = 8) -> List[Dict]:
@@ -265,9 +281,13 @@ class XenariDB:
 
             notes = []
             score = self._root_shape_score(root)
+            if re.search(r"([bcdfghjklmnpqrstvwxyz])\1", root):
+                notes.append("style: repeated consonant")
+            if re.search(r"[bcdfghjklmnpqrstvwxyz]{3,}", root) or re.search(r"(kgl|glf|ngkr|nqk|mpq|ntq)", root):
+                notes.append("style: crunchy cluster")
             if near:
                 notes.append("near: " + "; ".join(near))
-                score -= 20 + (5 * len(near))
+                score -= 30 + (10 * len(near))
             if any(bit in root or root in bit for bit in english_bits):
                 notes.append("englishy/cognate smell")
                 score -= 35
@@ -560,12 +580,13 @@ class XenariDB:
               "recipe", "ingredient", "meal", "snack", "taste", "simmer", "grill"],
              "Plants & Food"),
             (["music", "sing", "song", "drum", "flute", "instrument", "rhythm",
-              "melody", "beat", "harmony", "chorus"], "Arts & Culture"),
+              "melody", "beat", "harmony", "chorus", "boom", "sound", "noise"],
+             "Arts & Culture"),
             (["hate", "jealous", "grief", "nostalgia", "contempt", "awe", "bored",
               "excit", "disappoint", "shame", "pride", "guilt", "longing", "anxiety",
-              "seren", "rage", "melanchol", "hope", "despair", "envy", "grateful",
+              "seren", "rage", "anger", "angry", "wrath", "melanchol", "hope", "despair", "envy", "grateful",
               "resent", "lonely", "affection", "tenderness", "despise", "scorn",
-              "disdain"], "Mental & Abstract"),
+              "disdain", "solitude", "lonely", "alone"], "Mental & Abstract"),
             (["math", "number", "calculat", "add", "subtract", "multiply", "divide",
               "geometry", "angle", "logic", "algorithm", "data", "variable",
               "function", "loop", "boolean"], "Mathematics & Computation"),
@@ -575,6 +596,7 @@ class XenariDB:
              "Body Parts"),
             (["veil", "glamer", "essence", "vitality", "feeding pulse", "resonance"],
              "Cosmology & Reality"),
+            (["heaven", "heavens", "cosmos", "reality", "universe"], "Cosmology & Reality"),
             (["home", "bed", "curtain", "window", "closet", "picture", "art",
               "wall", "comfort"], "Home & Comfort"),
             (["family", "parent", "child", "sibling", "mother", "father", "kid", "kin"],
@@ -596,10 +618,12 @@ class XenariDB:
               "wheel", "shelter"], "Tools & Objects"),
             (["place", "time", "day", "night", "year", "hour", "home", "cave", "city"],
              "Place & Time"),
+            (["facility", "facilities", "building", "room", "site"], "Place & Time"),
             (["quality", "big", "small", "good", "bad", "dark", "bright", "hot",
               "cold", "fast", "slow"], "Qualities"),
             (["social", "talk", "speak", "friend", "enemy", "respect", "insult",
               "command", "ask"], "Social & Communication"),
+            (["activate", "activates", "move", "motion", "action", "act"], "Action & Motion"),
             (["abstract", "soul", "mind", "thought", "idea", "concept", "truth",
               "lie", "dream", "know", "remember"], "Mental & Abstract"),
             (["everyday", "want", "need", "go", "come", "make", "give", "take"],
@@ -608,6 +632,8 @@ class XenariDB:
 
         for keywords, cat_name in rules:
             if any(k in text for k in keywords):
+                if cat_name in existing_cats:
+                    return cat_name
                 # match against existing categories (fuzzy)
                 for ec in existing_cats:
                     if cat_name.lower() in ec.lower() or ec.lower() in cat_name.lower():
@@ -847,6 +873,86 @@ class XenariDB:
             "  python3 xenari_tool.py inspect <root>",
             "  python3 xenari_tool.py coin <english> <meaning>",
             "  python3 xenari_tool.py categories",
+        ])
+        return "\n".join(lines)
+
+    def curation_report(self, limit: int = 30) -> str:
+        """Human-review curation queue for categories, definitions, and relation gaps."""
+        rows = [dict(r) for r in self.conn.execute(
+            """SELECT root, meaning, category, source, notes
+               FROM roots
+               ORDER BY category, root"""
+        ).fetchall()]
+        placeholder_categories = []
+        phrase_definitions = []
+        relation_candidates = []
+
+        by_head = {}
+        for row in rows:
+            head = self._audit_headword(row["meaning"])
+            if head:
+                by_head.setdefault(head, []).append(row)
+            if row["category"] in {"Uncategorized", "New Roots (added via tool)"}:
+                english_hint = head or row["meaning"]
+                quoted = re.search(r"English '([^']+)'", row["meaning"])
+                if quoted:
+                    english_hint = quoted.group(1)
+                guessed = self._guess_category(english_hint, row["meaning"])
+                placeholder_categories.append((row, guessed))
+            if len(head.split()) > 6 or re.search(r"[.!?]", row["meaning"]):
+                phrase_definitions.append(row)
+
+        for head, group in by_head.items():
+            if len(group) < 2:
+                continue
+            roots = {row["root"] for row in group}
+            rel_count = self.conn.execute(
+                f"""SELECT COUNT(*) FROM semantic_relations
+                    WHERE root_a IN ({','.join('?' for _ in roots)})
+                       OR root_b IN ({','.join('?' for _ in roots)})""",
+                tuple(roots) + tuple(roots),
+            ).fetchone()[0]
+            if rel_count == 0:
+                relation_candidates.append((head, group))
+
+        lines = [
+            "Xenari curation report",
+            f"Placeholder category rows: {len(placeholder_categories)}",
+            f"Phrase-like definitions: {len(phrase_definitions)}",
+            f"Unlinked duplicate-headword relation candidates: {len(relation_candidates)}",
+            "",
+            "Placeholder category suggestions",
+        ]
+        if not placeholder_categories:
+            lines.append("  none")
+        for row, guessed in placeholder_categories[:limit]:
+            lines.append(f"  - {row['root']}: {row['meaning']} [{row['category']}] -> {guessed}")
+        if len(placeholder_categories) > limit:
+            lines.append(f"  ... {len(placeholder_categories) - limit} more")
+
+        lines.extend(["", "Phrase-like definition review"])
+        if not phrase_definitions:
+            lines.append("  none")
+        for row in phrase_definitions[:limit]:
+            lines.append(f"  - {row['root']}[{row['category']}]: {row['meaning']}")
+        if len(phrase_definitions) > limit:
+            lines.append(f"  ... {len(phrase_definitions) - limit} more")
+
+        lines.extend(["", "Relation candidate groups"])
+        if not relation_candidates:
+            lines.append("  none")
+        for head, group in relation_candidates[:limit]:
+            joined = "; ".join(f"{row['root']}[{row['category']}]" for row in group[:6])
+            lines.append(f"  - {head}: {joined}")
+        if len(relation_candidates) > limit:
+            lines.append(f"  ... {len(relation_candidates) - limit} more")
+
+        lines.extend([
+            "",
+            "Suggested next commands",
+            "  python3 xenari_tool.py inspect <root>",
+            "  python3 xenari_tool.py relations <root>",
+            "  python3 xenari_tool.py search <headword>",
         ])
         return "\n".join(lines)
 
