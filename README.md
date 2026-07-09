@@ -51,7 +51,3 @@ python3 xenari_tool.py audit 25
 It reports duplicate root strings, duplicate meanings/headwords, stale
 conflict/reanalysis markers, broad English-key collisions, and phonotactic
 validator failures.
-
-## Current Stats
-
-As packaged: 9313 roots, 10240 English mappings.
