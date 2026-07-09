@@ -101,12 +101,26 @@ class XenariDB:
 
     def lookup(self, english: str) -> Optional[Tuple[str, str]]:
         """english word → (root, meaning)"""
-        row = self.conn.execute(
+        key = english.lower().strip()
+        rows = self.conn.execute(
             """SELECT r.root, r.meaning FROM english_map e
                JOIN roots r ON r.id = e.root_id
-               WHERE e.english_key = ?""", (english.lower().strip(),)
-        ).fetchone()
+               WHERE e.english_key = ?""", (key,)
+        ).fetchall()
+        if not rows:
+            return None
+        row = max(rows, key=lambda r: self._lookup_score(key, r["meaning"]))
         return (row["root"], row["meaning"]) if row else None
+
+    def _lookup_score(self, key: str, meaning: str) -> int:
+        head = self._audit_headword(meaning)
+        if head == key:
+            return 4
+        if head.startswith(key + " "):
+            return 3
+        if key in re.split(r"[ /,;]+", head):
+            return 2
+        return 1
 
     def lookup_root(self, root: str) -> Optional[Dict]:
         """root → full row"""
@@ -560,6 +574,127 @@ class XenariDB:
             row["english_keys"] = [k["english_key"] for k in keys]
             roots.append(row)
         return json.dumps(roots, ensure_ascii=False, indent=2)
+
+    # ─── Audit ──────────────────────────────────────────────────
+
+    def _audit_normalize(self, text: str) -> str:
+        text = (text or "").lower().strip().replace("—", "-")
+        text = re.sub(r"\([^)]*\)", "", text)
+        text = re.sub(r"`[^`]*`", "", text)
+        text = re.sub(r"\b(already exists|already coined above)\b", "", text)
+        text = re.sub(r"[^a-z0-9!' ]+", " ", text)
+        text = re.sub(r"\s+", " ", text).strip()
+        return text
+
+    def _audit_headword(self, meaning: str) -> str:
+        head = (meaning or "").lower().strip().replace("—", "-")
+        head = re.sub(r"\([^)]*\)", "", head)
+        head = re.sub(r"`[^`]*`", "", head)
+        head = re.split(r"\s+-\s+|;|:|,", head)[0]
+        head = self._audit_normalize(head)
+        head = head.strip(" \"")
+        head = re.sub(r"^(to|a|an|the)\s+", "", head)
+        return re.sub(r"\s+", " ", head).strip()
+
+    def audit(self, limit: int = 40) -> str:
+        """Read-only lexicon audit for duplicates, stale markers, and validator failures."""
+        roots = [dict(r) for r in self.conn.execute(
+            "SELECT id, root, meaning, category, source, notes FROM roots ORDER BY root"
+        ).fetchall()]
+        maps = [dict(r) for r in self.conn.execute(
+            """SELECT e.english_key, r.root, r.meaning, r.category
+               FROM english_map e JOIN roots r ON r.id = e.root_id
+               ORDER BY e.english_key, r.root"""
+        ).fetchall()]
+
+        root_counts = {}
+        lower_root_counts = {}
+        exact = {}
+        headwords = {}
+        markers = []
+        phon_failures = []
+        english_keys = {}
+
+        for row in roots:
+            root = row["root"]
+            root_counts[root] = root_counts.get(root, 0) + 1
+            lower = root.lower()
+            lower_root_counts[lower] = lower_root_counts.get(lower, 0) + 1
+
+            norm = self._audit_normalize(row["meaning"])
+            if norm:
+                exact.setdefault(norm, []).append(row)
+
+            head = self._audit_headword(row["meaning"])
+            if head:
+                headwords.setdefault(head, []).append(row)
+
+            text = " ".join(str(row.get(k) or "") for k in ("meaning", "source", "notes"))
+            if (
+                re.search(r"\b(reanalyzed|obsolete|deprecated|duplicate|duplicates)\b", text, re.I)
+                or "CONFLICT" in text
+                or "already =" in text
+            ):
+                markers.append(row)
+
+            issues = self.validate_phonotactics(root)
+            if issues:
+                phon_failures.append((row, issues))
+
+        for row in maps:
+            english_keys.setdefault(row["english_key"].lower(), set()).add(row["root"])
+
+        duplicate_roots = [r for r, count in root_counts.items() if count > 1]
+        duplicate_lower_roots = [r for r, count in lower_root_counts.items() if count > 1]
+        exact_dupes = [(k, v) for k, v in exact.items() if len(v) > 1]
+        headword_dupes = [(k, v) for k, v in headwords.items() if len(v) > 1]
+        english_collisions = [(k, v) for k, v in english_keys.items() if len(v) > 1]
+
+        exact_dupes.sort(key=lambda item: (-len(item[1]), item[0]))
+        headword_dupes.sort(key=lambda item: (-len(item[1]), item[0]))
+
+        lines = [
+            "Xenari audit",
+            f"Roots: {len(roots)}",
+            f"English mappings: {len(maps)}",
+            f"Duplicate exact roots: {len(duplicate_roots)}",
+            f"Duplicate lowercase roots: {len(duplicate_lower_roots)}",
+            f"English keys mapped to multiple roots: {len(english_collisions)}",
+            f"Exact meaning duplicate groups: {len(exact_dupes)}",
+            f"Headword duplicate groups: {len(headword_dupes)}",
+            f"Stale/conflict/reanalysis marker rows: {len(markers)}",
+            f"Phonotactic validator failures: {len(phon_failures)}",
+            "",
+            "Note: english-key collisions are noisy because english_map indexes words inside definitions.",
+        ]
+
+        def fmt_group(title: str, groups: list) -> None:
+            lines.extend(["", title])
+            if not groups:
+                lines.append("  none")
+                return
+            for key, rows_for_key in groups[:limit]:
+                roots_for_key = "; ".join(
+                    f"{r['root']}[{r['category']}]: {r['meaning']}" for r in rows_for_key
+                )
+                lines.append(f"  - {key} ({len(rows_for_key)}): {roots_for_key}")
+
+        fmt_group("Exact meaning duplicates", exact_dupes)
+        fmt_group("Headword duplicates", headword_dupes)
+
+        lines.extend(["", "Marker rows"])
+        if not markers:
+            lines.append("  none")
+        for row in markers[:limit]:
+            lines.append(f"  - {row['root']}[{row['category']}]: {row['meaning']}")
+
+        lines.extend(["", "Phonotactic failures"])
+        if not phon_failures:
+            lines.append("  none")
+        for row, issues in phon_failures[:limit]:
+            lines.append(f"  - {row['root']}[{row['category']}]: {'; '.join(issues)}")
+
+        return "\n".join(lines)
 
     # ─── Migration from markdown ────────────────────────────────
 

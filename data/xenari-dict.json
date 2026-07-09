@@ -10880,14 +10880,13 @@
   {
     "id": 456,
     "root": "qleq",
-    "meaning": "tongue (already = taste — reanalyzed)",
+    "meaning": "taste, sense of taste",
     "category": "Body Parts",
     "source": "",
-    "timestamp": null,
+    "timestamp": "2026-07-09 16:44",
     "notes": null,
     "english_keys": [
-      "taste",
-      "tongue"
+      "taste"
     ]
   },
   {
@@ -13933,19 +13932,6 @@
     ]
   },
   {
-    "id": 77,
-    "root": "qant",
-    "meaning": "to count (qant already = many — reanalyzed)",
-    "category": "Core Vocabulary",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "already",
-      "count"
-    ]
-  },
-  {
     "id": 17,
     "root": "qantvi",
     "meaning": "all / every",
@@ -15174,20 +15160,6 @@
     ]
   },
   {
-    "id": 96,
-    "root": "xrelq",
-    "meaning": "east (where the sun rises — reanalyzed: xrel + q)",
-    "category": "Core Vocabulary",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "east",
-      "rises",
-      "sun"
-    ]
-  },
-  {
     "id": 97,
     "root": "xrenq",
     "meaning": "right",
@@ -15433,6 +15405,19 @@
     "notes": null,
     "english_keys": [
       "spaceship"
+    ]
+  },
+  {
+    "id": 1032,
+    "root": "clex",
+    "meaning": "glamer, magical disguise",
+    "category": "Cosmology & Reality",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "disguise",
+      "glamer"
     ]
   },
   {
@@ -16046,6 +16031,18 @@
     "notes": null,
     "english_keys": [
       "non-existence"
+    ]
+  },
+  {
+    "id": 1175,
+    "root": "qrong",
+    "meaning": "deep; the Deep, far infernal depth",
+    "category": "Cosmology & Reality",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "deep"
     ]
   },
   {
@@ -21081,6 +21078,19 @@
     ]
   },
   {
+    "id": 1170,
+    "root": "naxq",
+    "meaning": "yes, affirmation",
+    "category": "Function Words & Grammar",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "affirmation",
+      "yes"
+    ]
+  },
+  {
     "id": 259,
     "root": "ned",
     "meaning": "more-qty",
@@ -21182,6 +21192,19 @@
     "notes": null,
     "english_keys": [
       "yet"
+    ]
+  },
+  {
+    "id": 1034,
+    "root": "nguq",
+    "meaning": "no, refusal",
+    "category": "Function Words & Grammar",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "no",
+      "refusal"
     ]
   },
   {
@@ -21415,6 +21438,21 @@
     "notes": null,
     "english_keys": [
       "four"
+    ]
+  },
+  {
+    "id": 77,
+    "root": "qant",
+    "meaning": "many, much, countable multitude",
+    "category": "Function Words & Grammar",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "count",
+      "many",
+      "much",
+      "multitude"
     ]
   },
   {
@@ -37521,18 +37559,6 @@
     ]
   },
   {
-    "id": 7944,
-    "root": "krohxrex",
-    "meaning": "duplicate",
-    "category": "General Vocabulary",
-    "source": "multi_script_gap_fill",
-    "timestamp": "2026-07-08T21:13:23.218215+00:00",
-    "notes": null,
-    "english_keys": [
-      "duplicate"
-    ]
-  },
-  {
     "id": 9389,
     "root": "kromxix",
     "meaning": "calving",
@@ -51714,18 +51740,6 @@
     "notes": null,
     "english_keys": [
       "youdare"
-    ]
-  },
-  {
-    "id": 7954,
-    "root": "svax",
-    "meaning": "duplicates",
-    "category": "General Vocabulary",
-    "source": "multi_script_gap_fill",
-    "timestamp": "2026-07-08T21:13:23.218619+00:00",
-    "notes": null,
-    "english_keys": [
-      "duplicates"
     ]
   },
   {
@@ -67910,19 +67924,6 @@
     ]
   },
   {
-    "id": 1032,
-    "root": "clex",
-    "meaning": "to discover (already = glamer — reanalyzed: to uncover)",
-    "category": "Mental & Abstract",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "discover",
-      "glamer"
-    ]
-  },
-  {
     "id": 1038,
     "root": "clog",
     "meaning": "memory trace",
@@ -68168,14 +68169,15 @@
   {
     "id": 1024,
     "root": "flox",
-    "meaning": "profane (already = lure — reanalyzed)",
+    "meaning": "lure, seductive pull",
     "category": "Mental & Abstract",
     "source": "",
-    "timestamp": null,
+    "timestamp": "2026-07-09 16:44",
     "notes": null,
     "english_keys": [
       "lure",
-      "profane"
+      "pull",
+      "seductive"
     ]
   },
   {
@@ -68863,18 +68865,6 @@
     "notes": null,
     "english_keys": [
       "foolishness"
-    ]
-  },
-  {
-    "id": 1034,
-    "root": "nguq",
-    "meaning": "to doubt (already = no — reanalyzed: to say no to)",
-    "category": "Mental & Abstract",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "doubt"
     ]
   },
   {
@@ -69631,6 +69621,22 @@
     ]
   },
   {
+    "id": 1174,
+    "root": "qrez",
+    "meaning": "bad, corrupt, cursed; rejection/loss marker",
+    "category": "Mental & Abstract",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "bad",
+      "corrupt",
+      "cursed",
+      "loss",
+      "rejection"
+    ]
+  },
+  {
     "id": 1036,
     "root": "qru",
     "meaning": "to forget",
@@ -70357,20 +70363,6 @@
     "english_keys": [
       "change",
       "transformation"
-    ]
-  },
-  {
-    "id": 1029,
-    "root": "xroq",
-    "meaning": "sacred (already = feeding — reanalyzed: feeding is sacred)",
-    "category": "Mental & Abstract",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "feed",
-      "feeding",
-      "sacred"
     ]
   },
   {
@@ -79749,6 +79741,19 @@
     ]
   },
   {
+    "id": 96,
+    "root": "xrelq",
+    "meaning": "east, sunrise-direction",
+    "category": "Place & Time",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "east",
+      "sunrise-direction"
+    ]
+  },
+  {
     "id": 2067,
     "root": "yoscey",
     "meaning": "to hurry, rush",
@@ -88142,22 +88147,6 @@
     ]
   },
   {
-    "id": 1825,
-    "root": "pruq",
-    "meaning": "to drool (already = plant/tree. CONFLICT. → **qlexq** — already coined above)",
-    "category": "Sexual & Explicit",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "**qlexq**",
-      "conflict.",
-      "drool",
-      "plant",
-      "tree."
-    ]
-  },
-  {
     "id": 1870,
     "root": "qezzromkroxq",
     "meaning": "bad-head — head that was... not great (qez + zromkroxq = bad + blowjob)",
@@ -89651,19 +89640,6 @@
     ]
   },
   {
-    "id": 1169,
-    "root": "mlox",
-    "meaning": "to mock (already = resonance-deaf — reanalyzed)",
-    "category": "Social & Communication",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "mock",
-      "resonance-deaf"
-    ]
-  },
-  {
     "id": 1202,
     "root": "mlu",
     "meaning": "shout",
@@ -89733,18 +89709,6 @@
     "notes": null,
     "english_keys": [
       "refuse"
-    ]
-  },
-  {
-    "id": 1170,
-    "root": "naxq",
-    "meaning": "to bless (already = yes — reanalyzed)",
-    "category": "Social & Communication",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "bless"
     ]
   },
   {
@@ -90088,45 +90052,6 @@
     "notes": null,
     "english_keys": [
       "commander"
-    ]
-  },
-  {
-    "id": 1174,
-    "root": "qrez",
-    "meaning": "to curse (already = pact-breaker — reanalyzed)",
-    "category": "Social & Communication",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "curse",
-      "pact-breaker"
-    ]
-  },
-  {
-    "id": 1175,
-    "root": "qrong",
-    "meaning": "to discuss (already = the Deep — CONFLICT. new: **pronq**)",
-    "category": "Social & Communication",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "deep",
-      "discuss"
-    ]
-  },
-  {
-    "id": 1176,
-    "root": "qrox",
-    "meaning": "to warn (already = damn — reanalyzed)",
-    "category": "Social & Communication",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "damn",
-      "warn"
     ]
   },
   {
@@ -91551,6 +91476,20 @@
     ]
   },
   {
+    "id": 1169,
+    "root": "mlox",
+    "meaning": "resonance-deafness, inability to sense resonance or magic",
+    "category": "Succubus Culture & Feeding",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "magic-deaf",
+      "resonance-deaf",
+      "resonance-deafness"
+    ]
+  },
+  {
     "id": 1617,
     "root": "mloxvi",
     "meaning": "\"resonance-deaf-thing\" — you can't sense magic, you're blind to the world",
@@ -92043,11 +91982,11 @@
   },
   {
     "id": 1704,
-    "root": "ngolxrotdenial",
-    "meaning": "intervention denial — refusing to acknowledge the problem; soul-rot-denial — NOTE: `denial` is not a xenari root, reanalyzed: `ngolxrotngu'` — soul-rot-not, refusing to accept (ngol + xrot + ngu')",
+    "root": "ngolxrotngu'",
+    "meaning": "intervention denial — refusing to acknowledge soul-rot; soul-rot-not (ngol + xrot + ngu')",
     "category": "Succubus Culture & Feeding",
     "source": "",
-    "timestamp": null,
+    "timestamp": "2026-07-09 16:44",
     "notes": null,
     "english_keys": [
       "denial",
@@ -92680,6 +92619,19 @@
     "timestamp": null,
     "notes": null,
     "english_keys": []
+  },
+  {
+    "id": 1029,
+    "root": "xroq",
+    "meaning": "feeding, to feed; sacred succubus feeding",
+    "category": "Succubus Culture & Feeding",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "feed",
+      "feeding"
+    ]
   },
   {
     "id": 1639,
@@ -104665,6 +104617,19 @@
     "timestamp": null,
     "notes": null,
     "english_keys": []
+  },
+  {
+    "id": 1176,
+    "root": "qrox",
+    "meaning": "damn, vulgar warning-curse",
+    "category": "Vulgar & Profane",
+    "source": "",
+    "timestamp": "2026-07-09 16:44",
+    "notes": null,
+    "english_keys": [
+      "damn",
+      "warning-curse"
+    ]
   },
   {
     "id": 1774,

@@ -23,6 +23,7 @@ python3 xenari_tool.py stats
 python3 xenari_tool.py lookup love
 python3 xenari_tool.py speak "I love you" --evidential witnessed
 python3 xenari_tool.py search "soul"
+python3 xenari_tool.py audit
 ```
 
 Regenerate JSON after DB edits:
@@ -39,6 +40,18 @@ python3 scripts/export_json.py
   it.
 - Use `data/xenari-dict.json` or the SQLite DB for full vocabulary access.
 
+## Audit
+
+Use `audit` before and after lexicon cleanup:
+
+```bash
+python3 xenari_tool.py audit 25
+```
+
+It reports duplicate root strings, duplicate meanings/headwords, stale
+conflict/reanalysis markers, broad English-key collisions, and phonotactic
+validator failures.
+
 ## Current Stats
 
-As packaged: 9316 roots, 10242 English mappings.
+As packaged: 9313 roots, 10240 English mappings.
