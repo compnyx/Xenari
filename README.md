@@ -21,9 +21,12 @@ source of truth.
 ```bash
 python3 xenari_tool.py stats
 python3 xenari_tool.py lookup love
+python3 xenari_tool.py inspect fatyih
 python3 xenari_tool.py info fatyih
 python3 xenari_tool.py validate fatyih qip
 python3 xenari_tool.py speak "I love you" --evidential witnessed
+python3 xenari_tool.py translate "I love you"
+python3 xenari_tool.py translate "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py workbench
 python3 xenari_tool.py search "soul"
 python3 xenari_tool.py near "dangerous"
@@ -99,12 +102,16 @@ the DB.
 Use `relations` to inspect semantic and compound links:
 
 ```bash
+python3 xenari_tool.py inspect fatyih
 python3 xenari_tool.py relations fatyih
 ```
 
-Use `reverse` for a canon-side best-effort Xenari to English check:
+Use `translate` for auto-direction translation, or `reverse` for an explicit
+canon-side Xenari to English check:
 
 ```bash
+python3 xenari_tool.py translate "I love you"
+python3 xenari_tool.py translate "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
 ```
 

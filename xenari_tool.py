@@ -10,6 +10,8 @@ Usage:
   python xenari_tool.py compound big daddy
   python xenari_tool.py speak "I want big daddy" --tense pres --evidential witnessed
   python xenari_tool.py speak "you are cute" --evidential inferred
+  python xenari_tool.py translate "I love you"
+  python xenari_tool.py inspect fatyih
   python xenari_tool.py gloss "fuck it we ball"
   python xenari_tool.py doctor
   python xenari_tool.py workbench
@@ -699,6 +701,54 @@ class Xenari:
             rendered.append(text)
         return ". ".join(rendered)
 
+    def looks_xenari(self, text: str) -> bool:
+        """Heuristic direction detector for translate."""
+        tokens = re.findall(r"[a-z']+", text.lower())
+        if not tokens:
+            return False
+        particles = {
+            "ra", "ka", "ta", "na", "fa", "mo", "vi", "nu", "sa", "lo", "ve",
+            "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "po", "ha", "ngu",
+        }
+        known = sum(1 for token in tokens if token in particles or token in self.lexicon)
+        case_markers = sum(1 for token in tokens if token in {"ra", "ka", "ta"})
+        return case_markers >= 2 or (known / len(tokens) >= 0.7 and tokens[0] in particles)
+
+    def translate(self, text: str, tense: str = "auto", evidential: str = "auto") -> str:
+        """Auto-direction translation wrapper."""
+        if self.looks_xenari(text):
+            return self.reverse(text)
+        return self.speak(text, tense=tense, evidential=evidential)
+
+    def inspect_term(self, term: str, limit: int = 5) -> str:
+        """Combined lookup/root/search view for fast agent work."""
+        query = term.strip()
+        lines = [f"Inspect: {query}"]
+
+        root_row = self.db.lookup_root(query)
+        if root_row:
+            lines.append(f"Root: {root_row['root']} — {root_row['meaning']} [{root_row['category']}]")
+            ok, relations = self.db.relations_report(query)
+            if ok:
+                rel_lines = relations.splitlines()[1:]
+                lines.extend(rel_lines[: min(len(rel_lines), 10)])
+
+        root, meaning = self.lookup(query)
+        if root:
+            lines.append(f"English lookup: {query} -> {root} — {meaning}")
+
+        results = self.db.search(query, limit=limit)
+        if results:
+            lines.append("Search:")
+            for item in results:
+                lines.append(
+                    f"  - {item['root']} — {item['meaning']} "
+                    f"[{item['category']}] score={item.get('score', 0)}"
+                )
+        if len(lines) == 1:
+            lines.append("not found")
+        return "\n".join(lines)
+
     # === EXPORT ===
 
     def export_js_dict(self) -> str:
@@ -975,8 +1025,8 @@ class Xenari:
 def main():
     epilog = """Common flows:
   inspect:   stats | doctor | workbench | audit 20 | lint 20
-  find:      lookup love | search dangerous | near "soft light" | relations fatyih
-  translate: speak "I love you" --evidential witnessed | reverse "ra mex ka neq ta zrent sa xa"
+  find:      inspect fatyih | lookup love | search dangerous | near "soft light" | relations fatyih
+  translate: translate "I love you" | translate "ra mex ka neq ta zrent sa xa"
   coin:      propose-root glimmer "soft unsteady light" --limit 8
   mutate:    add/map/remove preview by default; write only with --yes
   publish:   sync --site && pytest -q
@@ -987,8 +1037,8 @@ def main():
         epilog=epilog,
     )
     parser.add_argument("command", choices=[
-        "help", "lookup", "info", "validate", "doctor", "workbench",
-        "compound", "speak", "gloss", "reverse",
+        "help", "lookup", "inspect", "info", "validate", "doctor", "workbench",
+        "compound", "speak", "gloss", "translate", "reverse",
         "export-js", "export-json", "export-md",
         "export", "stats", "audit", "lint", "meta", "sync",
         "add", "remove", "search", "near", "relations", "propose-root", "categories", "map",
@@ -1031,6 +1081,11 @@ def main():
         else:
             print("not found")
             sys.exit(1)
+    elif args.command == "inspect":
+        if not args.args:
+            print("Usage: inspect <english-or-root>")
+            sys.exit(1)
+        print(x.inspect_term(" ".join(args.args), limit=args.limit))
     elif args.command == "info":
         if not args.args:
             print("Usage: info <xenari-root>")
@@ -1063,6 +1118,12 @@ def main():
     elif args.command == "gloss":
         sent = " ".join(args.args)
         print(x.gloss(sent, args.tense, args.evidential))
+    elif args.command == "translate":
+        sent = " ".join(args.args)
+        if not sent:
+            print("Usage: translate <english-or-xenari>")
+            sys.exit(1)
+        print(x.translate(sent, args.tense, args.evidential))
     elif args.command == "reverse":
         sent = " ".join(args.args)
         if not sent:

@@ -29,6 +29,17 @@ def test_reverse_uses_shared_fixtures():
         assert x.reverse(case["xenari"]) == case["english"]
 
 
+def test_auto_translate_and_inspect_helpers():
+    x = Xenari(REPO / "xenari.db")
+
+    assert x.translate("I love you", evidential="assumed") == "ra mex ka neq ta zrent sa xo"
+    assert x.translate("ra mex ka neq ta zrent sa xa") == "I love you"
+
+    report = x.inspect_term("fatyih")
+    assert "Root: fatyih" in report
+    assert "dangerous" in report
+
+
 def test_lookup_prefers_pronouns_and_synonyms():
     x = Xenari(REPO / "xenari.db")
 
