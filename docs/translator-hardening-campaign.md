@@ -1,6 +1,6 @@
 # Xenari Translator Hardening Campaign
 
-Status: Loop 7 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
+Status: Loop 8 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
 
 ## Campaign guardrails
 
@@ -451,3 +451,25 @@ Final Loop 7 gate:
 - `pytest -q`: 34 passed
 - `python3 xenari_tool.py parity`: 115 forward and 27 reverse fixtures passed
 - `npm run test:xenari`: translator, 45-row drift, and page contracts passed; drift report has 44 matches, 1 recorded known mismatch, 0 unexpected
+
+## Loop 8 findings
+
+- Reusing the Loop 4 noun-phrase renderer for top-level reviewed clauses fixed noun-subject/noun-object transitive clauses, but initially exposed a stale Python tense table for `slammed`.
+- Plain transitive clauses like “The alien sees the dog.” had previously fallen to the generic parser and invented `ka neq`.
+- Elided-subject coordination like “I see the alien and run.” and “The dog sees the alien and runs.” needed a narrow connector seam that reuses the prior subject.
+- The browser and Python agreed after the splitter learned connector plus bare intransitive verbs and the Python tense list gained `slammed`/`waited`.
+
+## Loop 8 changes
+
+- Allowed the reviewed Loop 4 clause parser to handle simple top-level SVO/SV clauses without requiring modifier/possessive/quantity features.
+- Added `translate/translates/translated` to the reviewed simple transitive set so “The translator translates the sentence.” uses the existing `nrotm` root.
+- Added elided-subject coordination for reviewed bare intransitives after `and`/`but`/`or`/`yet`.
+- Added seven Loop 8 fixtures for noun-subject/noun-object transitives, elided-subject coordination, and translator/action wording.
+- Expanded the drift corpus from 45 to 52 sentences. It now reports 51 exact matches, the unchanged approved `they` mismatch, and zero unexpected differences.
+- No root, English mapping, DB row, or generated dictionary changed.
+
+Final Loop 8 gate:
+
+- `pytest -q`: 35 passed
+- `python3 xenari_tool.py parity`: 122 forward and 27 reverse fixtures passed
+- `npm run test:xenari`: translator, 52-row drift, and page contracts passed; drift report has 51 matches, 1 recorded known mismatch, 0 unexpected

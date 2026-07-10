@@ -256,6 +256,32 @@ def test_loop7_coordination_and_intransitive_fuzz_is_bounded():
     assert "ra nu xen" not in x.speak("I run and she waits.", evidential="assumed")
 
 
+def test_loop8_transitive_coordination_uses_reviewed_roles():
+    x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
+    forward = [case for case in fixtures["forward"] if case.get("loop") == 8]
+    stress = [case for case in forward if case.get("stress")]
+
+    assert len(forward) >= 7
+    assert len(stress) >= 5
+    assert {case["family"] for case in forward} >= {"coordination", "transitive"}
+
+    assert x.speak("The alien sees the dog.", evidential="assumed") == (
+        "ra vi zrenq ka vi qex ta toq vi sa xo"
+    )
+    assert x.speak("The dog sees the alien.", evidential="assumed") == (
+        "ra vi qex ka vi zrenq ta toq vi sa xo"
+    )
+    assert x.speak("I see the alien and run.", evidential="assumed") == (
+        "ra vi qex ka neq ta toq sa xo. xen ka neq ta zaqa sa xo"
+    )
+    assert x.speak("The dog sees the alien and runs.", evidential="assumed") == (
+        "ra vi qex ka vi zrenq ta toq vi sa xo. xen ka vi zrenq ta zaqa vi sa xo"
+    )
+    assert "ka neq ta toq" not in x.speak("The alien sees the dog.", evidential="assumed")
+    assert "ra vi qex xen" not in x.speak("I see the alien and run.", evidential="assumed")
+
+
 def test_loop3_reverse_reads_structured_clause_boundaries():
     x = Xenari(REPO / "xenari.db")
 

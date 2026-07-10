@@ -138,10 +138,12 @@ class TranslatorMixin:
                 major_parts = re.split(
                     r"\s+(?=(?:and|but|or|yet)\s+"
                     r"(?:(?:i|you|he|she|we|they)\b|"
-                    r"(?:the|a|an)\s+[a-z][a-z'-]*\s+[a-z][a-z'-]*\b))"
+                    r"(?:the|a|an)\s+[a-z][a-z'-]*\s+[a-z][a-z'-]*\b|"
+                    r"(?:open|opens|run|runs|ran|wait|waits|stop|stops)\b))"
                     r"|\s+(?=once\b)",
                     comma_part,
                 )
+                major_antecedent = None
                 for major_index, major_part in enumerate(major_parts):
                     major_part = major_part.strip()
                     major_connector = connector if major_index == 0 else "once"
@@ -149,9 +151,22 @@ class TranslatorMixin:
                     if connector_match:
                         major_connector = connector_match.group(1)
                         major_part = connector_match.group(2).strip()
+                        if major_antecedent and re.fullmatch(
+                            r"(?:open|opens|opened|run|runs|ran|wait|waits|waited|"
+                            r"stop|stops|stopped)",
+                            major_part,
+                        ):
+                            major_part = f"{major_antecedent} {major_part}"
                     elif major_part.startswith("once "):
                         major_connector = "once"
                         major_part = major_part[5:].strip()
+                    subject_match = re.match(
+                        r"^(?:the\s+|an?\s+)?"
+                        r"(i|you|he|she|we|they|[a-z][a-z'-]*)\b",
+                        major_part,
+                    )
+                    if subject_match:
+                        major_antecedent = subject_match.group(1)
                     subject_parts = [part.strip() for part in independent_subject.split(major_part) if part.strip()]
                     antecedent = None
                     if len(subject_parts) > 1:
@@ -479,7 +494,7 @@ class TranslatorMixin:
         if include_tense:
             past_forms = {
                 "bit", "broke", "built", "entered", "found", "helped", "opened",
-                "ran", "saw", "stopped", "touched", "went",
+                "ran", "saw", "slammed", "stopped", "touched", "waited", "went",
             }
             parts.extend(["lo" if verb_word in past_forms else "sa", evidence_root])
         return " ".join(parts)
@@ -490,7 +505,7 @@ class TranslatorMixin:
         verb_forms = (
             "see|sees|saw|build|builds|built|open|opens|opened|help|helps|helped|"
             "find|finds|found|touch|touched|hear|hears|heard|bite|bites|bit|"
-            "love|loves|loved"
+            "love|loves|loved|translate|translates|translated"
         )
         transitive = re.fullmatch(rf"(.+?)\s+({verb_forms})\s+(.+)", clean)
         if transitive:
@@ -510,7 +525,10 @@ class TranslatorMixin:
                 )
 
         intransitive = re.fullmatch(
-            r"(.+?)\s+(run|runs|ran|enter|enters|entered|stop|stops|stopped|slam|slammed)",
+            r"(.+?)\s+"
+            r"(open|opens|opened|run|runs|ran|wait|waits|waited|"
+            r"enter|enters|entered|stop|stops|stopped|slam|slams|slammed)"
+            r"(?:\s+(?:quickly|slowly|quietly|loudly))?",
             clean,
         )
         if intransitive:
@@ -1103,6 +1121,14 @@ class TranslatorMixin:
                     evidence_root=evidence_root,
                     question=True,
                 )
+
+        simple_reviewed_clause = self._parse_loop4_clause(
+            normalized,
+            evidence_root,
+            require_feature=False,
+        )
+        if simple_reviewed_clause:
+            return simple_reviewed_clause
 
         safe_intransitive = re.fullmatch(
             r"(?:(why)\s+did\s+)?(?:the\s+|an?\s+)?"

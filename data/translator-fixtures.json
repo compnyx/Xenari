@@ -411,6 +411,53 @@
       "family": "speaker-stage"
     },
     {
+      "english": "The alien sees the dog.",
+      "xenari": "ra vi zrenq ka vi qex ta toq vi sa xo",
+      "loop": 8,
+      "family": "transitive",
+      "stress": true
+    },
+    {
+      "english": "The dog sees the alien.",
+      "xenari": "ra vi qex ka vi zrenq ta toq vi sa xo",
+      "loop": 8,
+      "family": "transitive",
+      "stress": true
+    },
+    {
+      "english": "The alien sees the dog and the dog runs.",
+      "xenari": "ra vi zrenq ka vi qex ta toq vi sa xo. xen ka vi zrenq ta zaqa vi sa xo",
+      "loop": 8,
+      "family": "coordination",
+      "stress": true
+    },
+    {
+      "english": "The dog sees the alien and runs.",
+      "xenari": "ra vi qex ka vi zrenq ta toq vi sa xo. xen ka vi zrenq ta zaqa vi sa xo",
+      "loop": 8,
+      "family": "coordination",
+      "stress": true
+    },
+    {
+      "english": "I see the alien and run.",
+      "xenari": "ra vi qex ka neq ta toq sa xo. xen ka neq ta zaqa sa xo",
+      "loop": 8,
+      "family": "coordination",
+      "stress": true
+    },
+    {
+      "english": "I open the door and run.",
+      "xenari": "ra nu zrump ka neq ta xleq sa xo. xen ka neq ta zaqa sa xo",
+      "loop": 8,
+      "family": "coordination"
+    },
+    {
+      "english": "The translator translates the sentence.",
+      "xenari": "ra nu hune ka nu fona ta nrotm nu sa xo",
+      "loop": 8,
+      "family": "transitive"
+    },
+    {
       "english": "If I see the alien, I will run.",
       "xenari": "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo",
       "loop": 3,
@@ -842,7 +889,14 @@
       "Why run?",
       "The door opens and the alien runs.",
       "I run and she waits.",
-      "ALEX (V.O.): *bang bang* the door opens."
+      "ALEX (V.O.): *bang bang* the door opens.",
+      "The alien sees the dog.",
+      "The dog sees the alien.",
+      "The alien sees the dog and the dog runs.",
+      "The dog sees the alien and runs.",
+      "I see the alien and run.",
+      "I open the door and run.",
+      "The translator translates the sentence."
     ],
     "known_differences": [
       {
