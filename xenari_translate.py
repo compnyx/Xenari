@@ -10,6 +10,9 @@ class TranslatorMixin:
         is safer to expose an untranslated fragment than to print an English
         token in a position where it would look like a coined Xenari root.
         """
+        whole_phrase = self._casual_phrase(english)
+        if whole_phrase is not None:
+            return whole_phrase
         rendered = []
         connector_roots = {
             "and": self.p["and"],
@@ -57,6 +60,7 @@ class TranslatorMixin:
             "he's": "he is", "she's": "she is", "it's": "it is", "that's": "that is",
             "he'll": "he will", "she'll": "she will", "he'd": "he would", "she'd": "she would",
             "what's": "what is",
+            "how's": "how is", "how're": "how are",
             "isn't": "is not", "aren't": "are not", "wasn't": "was not",
             "weren't": "were not", "don't": "do not", "doesn't": "does not",
             "didn't": "did not", "won't": "will not", "can't": "can not",
@@ -205,6 +209,80 @@ class TranslatorMixin:
         clean = re.sub(r"\s+", " ", english.strip().strip(".,!?;"))
         return f"[untranslated: {clean}; unsupported grammar: {reason}]"
 
+    def _phrase_key(self, english: str) -> str:
+        """Normalize casual/discourse phrases before structural parsing."""
+        normalized = self._expand_english_contractions(english)
+        normalized = re.sub(r"[\U00010000-\U0010ffff]", " ", normalized)
+        normalized = re.sub(r"[^a-z0-9' ]+", " ", normalized)
+        return re.sub(r"\s+", " ", normalized).strip()
+
+    def _casual_phrase(self, english: str):
+        key = self._phrase_key(english)
+        phrases = {
+            "ok": "stux",
+            "okay": "stux",
+            "alright": "stux",
+            "all right": "stux",
+            "sounds good": "naxq",
+            "that sounds good": "naxq",
+            "alright that sounds good": "stux. naxq",
+            "all right that sounds good": "stux. naxq",
+            "nice": "naxu",
+            "nice sounds good": "naxu. naxq",
+            "that works": "naxq",
+            "works for me": "naxq",
+            "fair enough": "naxq",
+            "for sure": "fruxq",
+            "exactly": "zug",
+            "indeed": "zug",
+            "right": "xrenq",
+            "hello": "prax",
+            "hey": "prax",
+            "hi": "prax",
+            "greetings": "prax",
+            "hello there": "prax",
+            "hey there": "prax",
+            "hi there": "prax",
+            "hello friend": "prax",
+            "hello friends": "prax",
+            "hey friend": "prax",
+            "hey buddy": "prax",
+            "hi friend": "prax",
+            "hi pal": "prax",
+            "thanks": "gral",
+            "thank you": "ra mex ka neq ta gral sa xo",
+            "thanks a lot": "gral mse",
+            "thank you very much": "gral mse",
+            "much appreciated": "gral",
+            "sorry": "qezxol",
+            "i am sorry": "qezxol",
+            "my bad": "qezxol",
+            "oops": "vrin",
+            "whoops": "vrin",
+            "bye": "qlox'",
+            "goodbye": "qlox'",
+            "farewell": "qlox'",
+            "see you": "qlox'",
+            "take care": "qlox'",
+            "see you later": "qlox' qrolo",
+            "see you soon": "qlox' droh",
+            "talk later": "qlox' qrolo",
+            "no worries": "shengtac nulxant",
+            "no problem": "shengtac nulxant",
+            "not a problem": "shengtac nulxant",
+            "got it": "vreqclir",
+            "gotcha": "vreqclir",
+            "yep": "vroq",
+            "yeah": "vroq",
+            "nope": "nguq",
+            "nah": "nguq",
+            "maybe": "vex",
+            "maybe later": "vex qrolo",
+            "anyway": "qzecmru",
+            "english": "bivuzqa uqel po zuqra",
+        }
+        return phrases.get(key)
+
     def _english_subject_root(self, word: str):
         info = self.en_pronouns.get(word)
         if info:
@@ -233,7 +311,10 @@ class TranslatorMixin:
         }
         candidates = [irregular.get(clean, "")]
         if clean.endswith("ing") and len(clean) > 4:
-            candidates.extend([clean[:-3], clean[:-3] + "e"])
+            stem = clean[:-3]
+            candidates.extend([stem, stem + "e"])
+            if len(stem) > 2 and stem[-1] == stem[-2]:
+                candidates.append(stem[:-1])
         if clean.endswith("ied") and len(clean) > 4:
             candidates.append(clean[:-3] + "y")
         if clean.endswith("ed") and len(clean) > 3:
@@ -496,6 +577,9 @@ class TranslatorMixin:
         object_phrase=None,
         evidence_root="xo",
         include_tense=True,
+        tense_root=None,
+        negated=False,
+        question=False,
     ):
         verb_root = self._known_verb_root(verb_word)
         if not subject_phrase or not verb_root:
@@ -508,11 +592,19 @@ class TranslatorMixin:
         if not subject_phrase["inherent_animacy"]:
             parts.append(subject_phrase["animacy"])
         if include_tense:
-            past_forms = {
-                "bit", "broke", "built", "entered", "found", "helped", "opened",
-                "ran", "saw", "slammed", "stopped", "touched", "waited", "went",
-            }
-            parts.extend(["lo" if verb_word in past_forms else "sa", evidence_root])
+            if tense_root is None:
+                past_forms = {
+                    "ate", "bit", "broke", "built", "entered", "found", "gave",
+                    "helped", "opened", "ran", "rested", "sat", "saw", "sent",
+                    "slammed", "slept", "stood", "stopped", "took", "touched",
+                    "waited", "walked", "went",
+                }
+                tense_root = "lo" if verb_word in past_forms else "sa"
+            parts.extend([tense_root, evidence_root])
+        if question:
+            parts.append(self.p["q"])
+        if negated:
+            parts.append(self.p["neg"])
         return " ".join(parts)
 
     def _parse_loop4_clause(self, english: str, evidence_root: str, require_feature=True):
@@ -521,8 +613,61 @@ class TranslatorMixin:
         verb_forms = (
             "see|sees|saw|build|builds|built|open|opens|opened|help|helps|helped|"
             "find|finds|found|touch|touched|hear|hears|heard|bite|bites|bit|"
-            "love|loves|loved|translate|translates|translated"
+            "love|loves|loved|translate|translates|translated|eat|eats|ate|"
+            "send|sends|sent|give|gives|gave|take|takes|took"
         )
+        aux_question_transitive = re.fullmatch(
+            rf"(do|does|did|will|can|could)\s+(.+?)\s+(not\s+)?"
+            rf"({verb_forms})\s+(.+)",
+            clean,
+        )
+        if aux_question_transitive:
+            auxiliary, subject_text, negation, verb_word, object_text = aux_question_transitive.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            object_phrase = self._parse_loop4_np(object_text)
+            if subject_phrase and object_phrase:
+                tense_root = (
+                    "lo" if auxiliary == "did"
+                    else "ve" if auxiliary == "will"
+                    else "pe" if auxiliary in {"can", "could"}
+                    else "sa"
+                )
+                return self._render_loop4_clause(
+                    subject_phrase,
+                    verb_word,
+                    object_phrase=object_phrase,
+                    evidence_root=evidence_root,
+                    tense_root=tense_root,
+                    negated=bool(negation),
+                    question=True,
+                )
+
+        aux_transitive = re.fullmatch(
+            rf"(.+?)\s+(do|does|did|will|can|could)\s+(not\s+)?"
+            rf"({verb_forms})\s+(.+)",
+            clean,
+        )
+        if aux_transitive:
+            subject_text, auxiliary, negation, verb_word, object_text = aux_transitive.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            object_phrase = self._parse_loop4_np(object_text)
+            if subject_phrase and object_phrase:
+                tense_root = (
+                    "lo" if auxiliary == "did"
+                    else "ve" if auxiliary == "will"
+                    else "pe" if auxiliary in {"can", "could"}
+                    else "sa"
+                )
+                return self._render_loop4_clause(
+                    subject_phrase,
+                    verb_word,
+                    object_phrase=object_phrase,
+                    evidence_root=evidence_root,
+                    tense_root=tense_root,
+                    negated=bool(negation),
+                    question=False,
+                )
+
         transitive = re.fullmatch(rf"(.+?)\s+({verb_forms})\s+(.+)", clean)
         if transitive:
             subject_text, verb_word, object_text = transitive.groups()
@@ -543,7 +688,9 @@ class TranslatorMixin:
         intransitive = re.fullmatch(
             r"(.+?)\s+"
             r"(open|opens|opened|run|runs|ran|wait|waits|waited|"
-            r"enter|enters|entered|stop|stops|stopped|slam|slams|slammed)"
+            r"enter|enters|entered|stop|stops|stopped|slam|slams|slammed|"
+            r"walk|walks|walked|sleep|sleeps|slept|rest|rests|rested|"
+            r"sit|sits|sat|stand|stands|stood)"
             r"(?:\s+(?:quickly|slowly|quietly|loudly))?",
             clean,
         )
@@ -553,6 +700,73 @@ class TranslatorMixin:
             if subject_phrase and (not require_feature or subject_phrase["featured"]):
                 return self._render_loop4_clause(
                     subject_phrase, verb_word, evidence_root=evidence_root,
+                )
+        aux_question_intransitive = re.fullmatch(
+            r"(do|does|did|will|can|could)\s+(.+?)\s+(not\s+)?"
+            r"(open|opens|opened|run|runs|ran|wait|waits|waited|"
+            r"enter|enters|entered|stop|stops|stopped|walk|walks|walked|"
+            r"sleep|sleeps|slept|rest|rests|rested|sit|sits|sat|"
+            r"stand|stands|stood)",
+            clean,
+        )
+        if aux_question_intransitive:
+            auxiliary, subject_text, negation, verb_word = aux_question_intransitive.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            if subject_phrase:
+                tense_root = (
+                    "lo" if auxiliary == "did"
+                    else "ve" if auxiliary == "will"
+                    else "pe" if auxiliary in {"can", "could"}
+                    else "sa"
+                )
+                return self._render_loop4_clause(
+                    subject_phrase,
+                    verb_word,
+                    evidence_root=evidence_root,
+                    tense_root=tense_root,
+                    negated=bool(negation),
+                    question=True,
+                )
+        aux_intransitive = re.fullmatch(
+            r"(.+?)\s+(do|does|did|will|can|could)\s+(not\s+)?"
+            r"(open|opens|opened|run|runs|ran|wait|waits|waited|"
+            r"enter|enters|entered|stop|stops|stopped|walk|walks|walked|"
+            r"sleep|sleeps|slept|rest|rests|rested|sit|sits|sat|"
+            r"stand|stands|stood)",
+            clean,
+        )
+        if aux_intransitive:
+            subject_text, auxiliary, negation, verb_word = aux_intransitive.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            if subject_phrase:
+                tense_root = (
+                    "lo" if auxiliary == "did"
+                    else "ve" if auxiliary == "will"
+                    else "pe" if auxiliary in {"can", "could"}
+                    else "sa"
+                )
+                return self._render_loop4_clause(
+                    subject_phrase,
+                    verb_word,
+                    evidence_root=evidence_root,
+                    tense_root=tense_root,
+                    negated=bool(negation),
+                    question=False,
+                )
+        progressive = re.fullmatch(
+            r"(.+?)\s+(is|are|was|were)\s+(not\s+)?([a-z][a-z'-]*ing)",
+            clean,
+        )
+        if progressive:
+            subject_text, auxiliary, negation, verb_word = progressive.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            if subject_phrase and self._known_verb_root(verb_word):
+                return self._render_loop4_clause(
+                    subject_phrase,
+                    verb_word,
+                    evidence_root=evidence_root,
+                    tense_root="lo" if auxiliary in {"was", "were"} else "sa",
+                    negated=bool(negation),
                 )
         return None
 
@@ -612,6 +826,52 @@ class TranslatorMixin:
                 ])
                 return " ".join(parts)
 
+        quality_roots = {
+            "red": "rlis", "big": "nyix", "good": "nax", "nice": "naxu",
+            "bad": "qez", "fast": "kag", "tall": "sump", "small": "frem",
+            "dangerous": "fatyih", "open": "xleq", "closed": "qrak",
+        }
+        copular_quality = re.fullmatch(
+            r"(is|are|was|were)\s+(.+?)\s+(not\s+)?([a-z][a-z'-]*)",
+            clean,
+        )
+        if copular_quality:
+            auxiliary, subject_text, negation, quality_word = copular_quality.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            quality_root = quality_roots.get(quality_word)
+            if subject_phrase and quality_root:
+                parts = ["ra", quality_root]
+                parts.extend(self._render_loop4_np(subject_phrase, "ka"))
+                parts.extend(["ta", "zux"])
+                if not subject_phrase["inherent_animacy"]:
+                    parts.append(subject_phrase["animacy"])
+                parts.extend([
+                    "lo" if auxiliary in {"was", "were"} else "sa",
+                    evidence_root,
+                    self.p["q"],
+                ])
+                if negation:
+                    parts.append(self.p["neg"])
+                return " ".join(parts)
+        copular_quality = re.fullmatch(
+            r"(.+?)\s+(is|are|was|were)\s+(not\s+)?([a-z][a-z'-]*)",
+            clean,
+        )
+        if copular_quality:
+            subject_text, auxiliary, negation, quality_word = copular_quality.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            quality_root = quality_roots.get(quality_word)
+            if subject_phrase and quality_root:
+                parts = ["ra", quality_root]
+                parts.extend(self._render_loop4_np(subject_phrase, "ka"))
+                parts.extend(["ta", "zux"])
+                if not subject_phrase["inherent_animacy"]:
+                    parts.append(subject_phrase["animacy"])
+                parts.extend(["lo" if auxiliary in {"was", "were"} else "sa", evidence_root])
+                if negation:
+                    parts.append(self.p["neg"])
+                return " ".join(parts)
+
         purpose = re.fullmatch(
             r"(i|you|he|she|we)\s+(opened|built|touched)\s+(.+?)\s+to\s+"
             r"(help|touch|open)\s+(i|you|he|she|we|me|him|us)",
@@ -645,6 +905,20 @@ class TranslatorMixin:
         simple_clause = self._parse_loop4_clause(clean, evidence_root)
         if simple_clause:
             return simple_clause
+
+        possession = re.fullmatch(r"(.+?)\s+(has|have|had)\s+(.+)", clean)
+        if possession:
+            subject_text, verb_word, object_text = possession.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            object_phrase = self._parse_loop4_np(object_text)
+            if subject_phrase and object_phrase:
+                return self._render_loop4_clause(
+                    subject_phrase,
+                    "have",
+                    object_phrase=object_phrase,
+                    evidence_root=evidence_root,
+                    tense_root="lo" if verb_word == "had" else "sa",
+                )
 
         noun_phrase = self._parse_loop4_np(clean)
         if noun_phrase and noun_phrase["featured"]:
@@ -1377,6 +1651,9 @@ class TranslatorMixin:
         if evidential == "auto":
             evidential = "assumed"
         e = self.evidential_map.get(evidential, self.evidential_map["assumed"])
+        casual_phrase = self._casual_phrase(english)
+        if casual_phrase is not None:
+            return casual_phrase
         clause_frame = self._speak_clause_frame(english, e)
         if clause_frame is not None:
             return clause_frame
@@ -1638,6 +1915,12 @@ class TranslatorMixin:
             fragment = [obj, *[root for root in obj_tokens if root != obj]]
             return " ".join(fragment)
 
+        if subj is None and (verb or copula):
+            return self._unsupported_fragment(
+                english,
+                "clause subject could not be established safely",
+            )
+
         # Defaults
         if subj is None:
             subj = self.pronouns["1"]
@@ -1817,6 +2100,68 @@ class TranslatorMixin:
 
     def reverse(self, xenari: str) -> str:
         """Best-effort Xenari → English with explicit partial-parse warnings."""
+        clean = re.sub(r"\s+", " ", xenari.strip().strip(".!?"))
+        exact_reverse = {
+            "stux": "ok",
+            "naxq": "yes",
+            "naxu": "nice",
+            "qlox'": "goodbye",
+            "vreqclir": "understood",
+            "gral": "thanks",
+            "gral mse": "thanks a lot",
+            "qezxol": "sorry",
+            "vrin": "whoops",
+            "vroq": "yeah",
+            "nguq": "no",
+            "vex": "maybe",
+            "vex qrolo": "maybe later",
+            "qlox' qrolo": "see you later",
+            "qlox' droh": "see you soon",
+            "shengtac nulxant": "no problem",
+            "bivuzqa uqel po zuqra": "English",
+        }
+        if clean in exact_reverse:
+            return exact_reverse[clean]
+
+        target_command = re.fullmatch(
+            r"ra nu hune fa nu bivuzqa uqel po zuqra ta "
+            r"(nrotm|halbru|nimixu) vi ko xo",
+            clean,
+        )
+        if target_command:
+            verb = {
+                "nrotm": "translate",
+                "halbru": "reverse-engineer",
+                "nimixu": "decode",
+            }[target_command.group(1)]
+            return f"{verb} sentence to English!"
+
+        imperative = re.fullmatch(
+            r"(?:ra (nu|vi)?\s*([a-z']+)\s+)?ta ([a-z']+) vi ko xo( naxru)?( ngu)?",
+            clean,
+        )
+        if imperative:
+            _, object_root, verb_root, polite, negated = imperative.groups()
+            verb_words = {
+                "grip": "listen",
+                "semax": "stop",
+                "xleq": "open",
+                "qabrerd": "touch",
+                "zaqa": "run",
+            }
+            object_words = {
+                "zrump": "door",
+                "zra": "that",
+                "hune": "sentence",
+            }
+            verb = verb_words.get(verb_root)
+            if verb:
+                obj = object_words.get(object_root, object_root or "")
+                if negated:
+                    return "don't " + " ".join(part for part in [verb, obj] if part) + "!"
+                phrase = " ".join(part for part in [verb, obj] if part)
+                return ("please " + phrase if polite else phrase) + "!"
+
         structured = self._reverse_structured_frame(xenari)
         if structured is not None:
             return structured
@@ -1869,6 +2214,11 @@ class TranslatorMixin:
             "kazxibrih": "woman", "zrenq": "dog", "habdazluc": "person",
             "pronx": "tool", "cruq": "water", "canq": "forest", "qruq'": "bite",
             "tyequga": "whisper",
+            "stux": "ok", "naxq": "yes", "naxu": "nice",
+            "bivuzqa": "humanity", "uqel": "planet", "zuqra": "voice",
+            "qlox'": "goodbye", "vreqclir": "understood", "gral": "thanks",
+            "qezxol": "sorry", "vrin": "whoops", "vroq": "yeah", "nguq": "no",
+            "vex": "maybe", "mse": "much", "shengtac": "problem",
         }
         case_particles = {"ra", "ka", "ta", "na", "fa", "mo"}
         skip_particles = {"vi", "nu", "sa", "lo", "ve", "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "ha"}
@@ -2079,7 +2429,13 @@ class TranslatorMixin:
         tokens = re.findall(r"[a-z']+", text.lower())
         if not tokens:
             return False
-        if tokens == ["prax"]:
+        exact_roots = {
+            "prax", "stux", "naxq", "naxu", "qlox'", "vreqclir", "gral",
+            "qezxol", "vrin", "vroq", "nguq", "vex",
+        }
+        if len(tokens) == 1 and tokens[0] in exact_roots:
+            return True
+        if tokens == ["bivuzqa", "uqel", "po", "zuqra"]:
             return True
         particles = {
             "ra", "ka", "ta", "na", "fa", "mo", "vi", "nu", "sa", "lo", "ve",

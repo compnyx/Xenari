@@ -108,8 +108,75 @@ def test_everyday_verb_overrides_use_established_roots():
         "find": "trek",
         "enter": "logi",
         "belong": "mifzxuri",
+        "send": "bern",
+        "sent": "bern",
+        "give": "flux",
+        "gave": "flux",
+        "take": "treq",
+        "took": "treq",
+        "sleep": "pramx",
+        "rest": "ezlolax",
+        "sit": "bezli",
+        "stand": "cirku",
+        "running": "zaqa",
     }.items():
         assert x._known_verb_root(form) == root
+
+
+def test_casual_phrase_registry_precedes_structural_fallbacks():
+    x = Xenari(REPO / "xenari.db")
+
+    cases = {
+        "Okay?!": "stux",
+        "All right": "stux",
+        "Greetings": "prax",
+        "Hello, friend!": "prax",
+        "Thanks :)": "gral",
+        "Thank you": "ra mex ka neq ta gral sa xo",
+        "My bad": "qezxol",
+        "Oops!": "vrin",
+        "Whoops!": "vrin",
+        "Bye 👋": "qlox'",
+        "See you later!": "qlox' qrolo",
+        "Take care!": "qlox'",
+        "No worries.": "shengtac nulxant",
+        "No problem!": "shengtac nulxant",
+        "Not a problem.": "shengtac nulxant",
+        "That works": "naxq",
+        "Works for me": "naxq",
+        "Fair enough": "naxq",
+        "Got it": "vreqclir",
+        "Gotcha": "vreqclir",
+        "Yep": "vroq",
+        "Nope": "nguq",
+        "Maybe later": "vex qrolo",
+        "nice, sounds good": "naxu. naxq",
+    }
+    for english, xenari in cases.items():
+        assert x.speak(english, evidential="assumed") == xenari
+
+
+def test_audited_verb_map_roots_do_not_use_polluted_fallbacks():
+    x = Xenari(REPO / "xenari.db")
+
+    cases = {
+        "I send water.": "ra nu cruq ka neq ta bern sa xo",
+        "I give water.": "ra nu cruq ka neq ta flux sa xo",
+        "I take water.": "ra nu cruq ka neq ta treq sa xo",
+        "I sleep.": "ka neq ta pramx sa xo",
+        "I rest.": "ka neq ta ezlolax sa xo",
+        "I sit.": "ka neq ta bezli sa xo",
+        "I stand.": "ka neq ta cirku sa xo",
+    }
+    for english, xenari in cases.items():
+        rendered = x.speak(english, evidential="assumed")
+        assert rendered == xenari
+        assert " ta qlax " not in rendered
+        assert " ta qlemp " not in rendered
+        assert " ta rlenq " not in rendered
+        assert " ta qax " not in rendered
+        assert " ta hup " not in rendered
+        assert " ta kroc " not in rendered
 
 
 def test_loop3_clause_corpus_is_bounded_shared_and_readable():
@@ -242,6 +309,49 @@ def test_target_language_imperatives_precede_unsupported_fallback():
         assert x.speak(english, evidential="assumed") == (
             f"{expected_prefix}{verb_root}{expected_suffix}"
         )
+
+
+def test_noun_subject_auxiliaries_copulas_progressives_and_possession_keep_roles():
+    x = Xenari(REPO / "xenari.db")
+
+    cases = {
+        "The dog eats the hat.": "ra nu brid ka vi zrenq ta xlof vi sa xo",
+        "The dog does not see the alien.": "ra vi qex ka vi zrenq ta toq vi sa xo ngu",
+        "Does the dog run?": "ka vi zrenq ta zaqa vi sa xo va",
+        "Did the alien see the dog?": "ra vi zrenq ka vi qex ta toq vi lo xo va",
+        "The dog is dangerous.": "ra fatyih ka vi zrenq ta zux vi sa xo",
+        "Is the dog dangerous?": "ra fatyih ka vi zrenq ta zux vi sa xo va",
+        "I am running.": "ka neq ta zaqa sa xo",
+        "The dog is running.": "ka vi zrenq ta zaqa vi sa xo",
+        "The dog was not working.": "ka vi zrenq ta qxundraz vi lo xo ngu",
+        "The dog has the hat.": "ra nu brid ka vi zrenq ta xrong vi sa xo",
+    }
+    for english, xenari in cases.items():
+        rendered = x.speak(english, evidential="assumed")
+        assert rendered == xenari
+        if not english.startswith("I "):
+            assert "ka neq" not in rendered
+
+
+def test_reverse_autodetects_casual_roots_english_label_and_imperatives():
+    x = Xenari(REPO / "xenari.db")
+
+    cases = {
+        "stux": "ok",
+        "naxq": "yes",
+        "naxu": "nice",
+        "bivuzqa uqel po zuqra": "English",
+        "ra nu hune fa nu bivuzqa uqel po zuqra ta nrotm vi ko xo": (
+            "translate sentence to English!"
+        ),
+        "ta grip vi ko xo": "listen!",
+        "ta semax vi ko xo naxru": "please stop!",
+        "ra nu zrump ta xleq vi ko xo ngu": "don't open door!",
+        "ra nu zra ta qabrerd vi ko xo ngu": "don't touch that!",
+    }
+    for xenari, english in cases.items():
+        assert x.reverse(xenari) == english
+        assert x.translate(xenari) == english
 
 
 def test_loop7_coordination_and_intransitive_fuzz_is_bounded():
