@@ -139,6 +139,36 @@ def test_loop3_clause_corpus_is_bounded_shared_and_readable():
     assert all("kam" not in case["xenari"].split() for case in forward)
 
 
+def test_loop4_modifier_corpus_is_bounded_shared_and_readable():
+    x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
+    forward = [case for case in fixtures["forward"] if case.get("loop") == 4]
+    stress = [case for case in forward if case.get("stress")]
+
+    assert len(forward) >= 15
+    assert len(stress) >= 6
+    assert {case["family"] for case in forward} >= {
+        "comparative", "conditional", "possessive", "purpose",
+        "quantity", "relative", "superlative", "temporal",
+    }
+    assert all("[untranslated:" not in case["xenari"] for case in forward)
+
+    comparative = x.speak("The alien is taller than the human.", evidential="assumed")
+    superlative = x.speak("That is the fastest ship", evidential="assumed")
+    no_water = x.speak("No water", evidential="assumed")
+    no_people = x.speak("No people open the door.", evidential="assumed")
+
+    assert comparative.startswith("ra sump maq ")
+    assert "comparison-standard canon conflict" in comparative
+    assert superlative == "ra nu suhpi kag qruv ka nu zra ta zux nu sa xo"
+    assert no_water == "cruq nulxant"
+    assert no_people == "ra nu zrump ka vi zifrelk nulxant ta xleq vi sa xo"
+    assert "ngu" not in no_water.split()
+    assert "ngu" not in no_people.split()
+    for stale_root in {"qren", "trox", "xlu"}:
+        assert stale_root not in comparative.split()
+
+
 def test_loop3_reverse_reads_structured_clause_boundaries():
     x = Xenari(REPO / "xenari.db")
 

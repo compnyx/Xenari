@@ -1,6 +1,6 @@
 # Xenari Translator Hardening Campaign
 
-Status: Loop 3 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
+Status: Loop 4 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
 
 ## Campaign guardrails
 
@@ -33,6 +33,12 @@ Starting revisions were Xenari `4a05b16` and nyx-site `fb55b5b`; both worktrees 
 
 Rows 10–18 still produced dropped arguments, malformed relative attachment, or unrelated comma-separated clauses. Initial `when` was an honest but over-broad fallback that did not distinguish a WH question from temporal subordination.
 
+## Loop 4 baseline
+
+Starting revisions were Xenari `9eb9774` and nyx-site `ed5084a`; both worktrees were clean before Codex CLI began. The Loop 3 baseline still passed with 29 Python tests, 59 forward fixtures, 26 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting twelve drift matches plus the one approved `they` mismatch.
+
+The Codex CLI pass stalled after a partial Python-only patch, so Nyx killed only that hung loop process, reviewed the partial diff, and finished the Python/browser parity, fixture, documentation, and site-release work manually.
+
 ## Command and test inventory
 
 | Area | Command or file | What it checks |
@@ -58,7 +64,7 @@ Rows 10–18 still produced dropped arguments, malformed relative attachment, or
 4. The generic Python forward parser handles pronoun-first transitive clauses best. Noun subjects, imperatives, WH subjects, obliques, and multiple nouns can be assigned the wrong role without becoming unknown.
 5. Clause splitting is intentionally conservative but loses some punctuation/ellipsis intent. Python infers yes/no questions from opening auxiliaries; the browser retains terminal punctuation.
 6. Conditionals, relative clauses, temporal subordination, and purpose clauses now share bounded reviewed frames. Nested clauses, object-gap relatives, stative conditions, and omitted predicates still require explicit partial fallbacks.
-7. Comparatives and superlatives have canon particles, but neither translator has a proven shared implementation. Loop 1 now preserves these clauses as explicit unsupported grammar instead of silently deleting the comparison.
+7. Superlative and modifier noun phrases now have a bounded shared implementation using reviewed roots such as `qruv`, `xant`, `qrunq`, `vriq`, and `po`. Comparatives use `maq` only for the compared quality and remain readable partials because canon has no settled comparison-standard marker; stale `qren`, `trox`, and `xlu` guesses are explicitly forbidden by tests.
 8. Sound effects and vocalizations resolve to canon roots, but bare-fragment particles and inflected action readings differ between Python and the browser.
 9. Reverse translation is a heuristic reader, not a full validator. It warns on malformed frames but cannot prove semantic round-trip fidelity.
 
@@ -95,9 +101,9 @@ All 30 inputs were run through `python3 xenari_tool.py translate`; the same corp
 | 16 | I opened the door to help you. | purpose clause | fixed with `frex`; purpose subject, verb, and object are retained |
 | 17 | We went to the forest to find water. | motion plus purpose | fixed: forest remains the motion goal and water remains the purpose object |
 | 18 | She built a tool for me to translate the sentence. | ditransitive purpose | fixed: tool remains the matrix object; “me” and sentence remain purpose subject/object |
-| 19 | The alien is taller than the human. | comparative | now an honest unsupported-grammar result in both engines |
-| 20 | This tool is better than that tool. | irregular comparative | now an honest unsupported-grammar result in both engines |
-| 21 | That is the fastest ship. | superlative | honest fallback added to shared fixtures |
+| 19 | The alien is taller than the human. | comparative | fixed as a readable partial: quality plus `maq` is translated, while the “than …” standard is preserved in a compact warning |
+| 20 | This tool is better than that tool. | irregular comparative | fixed as the same readable partial frame using `nax maq` and the demonstrative object phrase |
+| 21 | That is the fastest ship. | superlative | fixed and shared-fixtured as `suhpi kag qruv` in a copular frame |
 | 22 | Bang! The door slammed. | sound effect, past action | remaining: sound root is known; `slammed` and bare-fragment rendering drift |
 | 23 | Shhh, listen to the wind. | vocalization, imperative | Python stale `listen` root fixed to `grip`; imperative/fragment drift remains |
 | 24 | Ugh... the elevator is broken. | vocalization, predicate | remaining: `ugh` is a real gap candidate and `broken` is not safely predicative |
@@ -109,6 +115,7 @@ All 30 inputs were run through `python3 xenari_tool.py translate`; the same corp
 | 30 | Yes? Fine. | dialogue fragments | no crash, but roots/register and bare-fragment particles drift |
 
 The table is cumulative. Loop 3 promotes rows 10–18 into shared exact or readable-partial contracts without claiming support for their more complex variants.
+Loop 4 promotes rows 19–21 and a broader possessive/quantity modifier corpus into shared exact or readable-partial contracts without inventing a canon “than” marker.
 
 ## Loop 1 changes
 
@@ -190,10 +197,10 @@ The table is cumulative. Loop 3 promotes rows 10–18 into shared exact or reada
 
 ### Loop 4 — comparisons and modifier semantics
 
-- [ ] Verify canon use of `maq`, `qruv`, `trox`, and `qren` before implementation.
-- [ ] Implement regular, irregular, and superlative comparisons in both engines.
-- [ ] Replace Loop 1 comparison fallbacks with exact shared fixtures only after grammar review.
-- [ ] Audit adjective/noun collision behavior and modifier ordering.
+- [x] Verify canon use of `maq`, `qruv`, `trox`, `qren`, and `xlu` before implementation.
+- [x] Implement bounded comparative partials, superlatives, possessives, demonstratives, quantifiers, and plural noun phrases in both engines.
+- [x] Replace Loop 1 comparison fallbacks with shared fixtures where grammar is reviewed; preserve comparison-standard uncertainty explicitly.
+- [x] Audit adjective/noun collision behavior and modifier ordering for the reviewed Loop 4 noun-phrase set.
 
 ### Loop 5 — dialogue, sounds, and gap tooling
 
@@ -284,3 +291,48 @@ Remaining failures carried forward from Loop 3:
 - English `they` remains the only drift known-mismatch: Python uses `zeq`; browser uses `req ha`.
 - Reverse translation reads the new boundaries but still simplifies articles, agreement, and purpose wording; it does not validate arbitrary nested Xenari.
 - Comparison rows 19–21 and dialogue/sound rows 22–30 remain assigned to later loops.
+
+## Loop 4 findings
+
+- Canon confirms `maq` as the comparative/more particle and `qruv` as the superlative/most particle.
+- `trox` is sweat, `qren` is mirror/reflector, and `xlu` is climb. They are not comparison-standard, equative, or inferior markers; Loop 4 tests assert they do not appear in comparative output.
+- Canon has reviewed quantifier roots for the bounded set used here: `fqam` one, `vriq` two, `xant` many, `qrunq` all/whole, `frox` some, `klog` few, `cleg` each/every, and `nulxant` none/no.
+- `nulxant` carries the “no/none” meaning directly. Loop 4 outputs such as “no water” and “no people open the door” do not add `ngu`.
+- The documented noun-phrase modifier order places quantifier-style material after the head noun. The translator now renders reviewed phrase fragments such as `zrump vriq`, `pronx xant`, and `suhpi kag qruv`.
+- English `their` still differs between Python and browser because of the unresolved `zeq`/`req ha` policy. Loop 4 avoids adding that as a shared exact fixture.
+
+## Loop 4 changes
+
+- Added a bounded Loop 4 noun-phrase parser to Python and the browser for possessives, demonstratives, reviewed qualities, reviewed superlatives, reviewed quantifiers, and simple plural nouns.
+- Added simple Loop 4 clause rendering so quantifier and possessive noun phrases survive as subjects/objects inside conditionals, temporals, relatives, and purpose clauses.
+- Replaced the old blanket superlative fallback for reviewed examples. “That is the fastest ship” now renders exactly, while “The alien is taller than the human” renders a partial comparative that preserves the unmodeled standard.
+- Extended the Loop 3 shared-frame parser to accept Loop 4 noun phrases inside `if`, `when`, relative, and purpose frames.
+- Added 20 Loop 4 forward fixtures across comparative, superlative, possessive, quantity, conditional, temporal, relative, and purpose families. Eight are marked stress cases.
+- Added Python and browser tests proving Loop 4 fixtures do not leak `[untranslated: …]`, `nulxant` frames do not add `ngu`, and stale roots `qren`, `trox`, and `xlu` are not used for comparison.
+- No DB row or generated dictionary changed, so `python3 xenari_tool.py sync --site` was intentionally not run.
+
+## Loop 4 release checklist
+
+- [x] Inspect both clean worktrees, recent history, campaign rows 19–21, grammar docs, translator code, fixtures, and tests before publishing.
+- [x] Verify comparison and quantifier roots through canon search/lookup rather than trusting Codex's guessed semantics.
+- [x] Review and finish the partial Codex CLI diff after the Loop 4 worker stalled.
+- [x] Add shared fixtures plus focused Python/browser regressions.
+- [x] Mirror Python changes in the browser translator and bump `translatorAssetVersion` (`20260710-hardening-loop4`).
+- [x] Update both site changelogs.
+- [x] Avoid DB/generated-data edits because the loop reused existing canon roots and mappings.
+
+Final Loop 4 gate:
+
+- `pytest -q`: 30 passed
+- `python3 xenari_tool.py doctor`: status ok
+- `python3 xenari_tool.py parity`: 79 forward and 26 reverse fixtures passed
+- `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
+- `npm run test:xenari`: translator, thirteen-row drift, and page contracts passed; drift report has 12 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run build`: 16 pages built successfully
+- `git diff --check`: clean in both repositories
+
+Remaining failures carried forward from Loop 4:
+
+- Canon still lacks a settled comparison-standard marker, so comparative standards are preserved as partial notes rather than encoded in Xenari grammar.
+- Dialogue/sound rows 22–30 remain assigned to Loop 5.
+- Initial interrogative `when`, interrogative `who`, `they` ordinal ambiguity, stative conditions, missing predicates, and nested/object-gap relatives remain unchanged from Loop 3.

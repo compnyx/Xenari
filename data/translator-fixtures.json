@@ -121,10 +121,6 @@
       "xenari": "ra neq po brid ka mex ta toq sa xo va"
     },
     {
-      "english": "That is the fastest ship",
-      "xenari": "[untranslated: that is the fastest ship; unsupported grammar: comparative/superlative]"
-    },
-    {
       "english": "Why did the elevator stop?",
       "xenari": "voq ka nu spokta ta semax nu lo xo"
     },
@@ -273,6 +269,141 @@
       "xenari": "qex [partial: unsupported relative clause: that the woman said she saw ran]",
       "loop": 3,
       "family": "relative",
+      "stress": true
+    },
+    {
+      "english": "The alien is taller than the human.",
+      "xenari": "ra sump maq ka vi qex ta zux vi sa xo [partial: than the human preserved; comparison-standard canon conflict]",
+      "loop": 4,
+      "family": "comparative",
+      "stress": true
+    },
+    {
+      "english": "This tool is better than that tool.",
+      "xenari": "ra nax maq ka nu pronx praq ta zux nu sa xo [partial: than that tool preserved; comparison-standard canon conflict]",
+      "loop": 4,
+      "family": "comparative",
+      "stress": true
+    },
+    {
+      "english": "The door is bigger than the hat.",
+      "xenari": "ra nyix maq ka nu zrump ta zux nu sa xo [partial: than the hat preserved; comparison-standard canon conflict]",
+      "loop": 4,
+      "family": "comparative"
+    },
+    {
+      "english": "That is the fastest ship",
+      "xenari": "ra nu suhpi kag qruv ka nu zra ta zux nu sa xo",
+      "loop": 4,
+      "family": "superlative",
+      "stress": true
+    },
+    {
+      "english": "The fastest ship",
+      "xenari": "suhpi kag qruv",
+      "loop": 4,
+      "family": "superlative"
+    },
+    {
+      "english": "The best tool",
+      "xenari": "pronx nax qruv",
+      "loop": 4,
+      "family": "superlative"
+    },
+    {
+      "english": "My hat",
+      "xenari": "neq po brid",
+      "loop": 4,
+      "family": "possessive"
+    },
+    {
+      "english": "Her hat",
+      "xenari": "leq po brid",
+      "loop": 4,
+      "family": "possessive"
+    },
+    {
+      "english": "The woman's tool",
+      "xenari": "kazxibrih po pronx",
+      "loop": 4,
+      "family": "possessive"
+    },
+    {
+      "english": "The alien's dog",
+      "xenari": "qex po zrenq",
+      "loop": 4,
+      "family": "possessive"
+    },
+    {
+      "english": "Two doors",
+      "xenari": "zrump vriq",
+      "loop": 4,
+      "family": "quantity"
+    },
+    {
+      "english": "Many doors",
+      "xenari": "zrump xant",
+      "loop": 4,
+      "family": "quantity"
+    },
+    {
+      "english": "All people",
+      "xenari": "zifrelk qrunq",
+      "loop": 4,
+      "family": "quantity"
+    },
+    {
+      "english": "No water",
+      "xenari": "cruq nulxant",
+      "loop": 4,
+      "family": "quantity",
+      "stress": true
+    },
+    {
+      "english": "I see two doors.",
+      "xenari": "ra nu zrump vriq ka neq ta toq sa xo",
+      "loop": 4,
+      "family": "quantity"
+    },
+    {
+      "english": "We build many tools.",
+      "xenari": "ra nu pronx xant ka neq ha ta mrob sa xo",
+      "loop": 4,
+      "family": "quantity"
+    },
+    {
+      "english": "No people open the door.",
+      "xenari": "ra nu zrump ka vi zifrelk nulxant ta xleq vi sa xo",
+      "loop": 4,
+      "family": "quantity",
+      "stress": true
+    },
+    {
+      "english": "If I see two doors, I run.",
+      "xenari": "pevoq ra nu zrump vriq ka neq ta toq sa xo ti ka neq ta zaqa sa xo",
+      "loop": 4,
+      "family": "conditional",
+      "stress": true
+    },
+    {
+      "english": "When all people enter, I stop.",
+      "xenari": "su cruv ka vi zifrelk qrunq ta logi vi sa xo ti ka neq ta semax sa xo",
+      "loop": 4,
+      "family": "temporal",
+      "stress": true
+    },
+    {
+      "english": "The woman who built two tools runs.",
+      "xenari": "ka vi kazxibrih su zre ra nu pronx vriq ta mrob vi lo xo ti ta zaqa vi sa xo",
+      "loop": 4,
+      "family": "relative",
+      "stress": true
+    },
+    {
+      "english": "I opened my door to help you.",
+      "xenari": "ra neq po zrump ka neq ta xleq lo xo frex ra mex ka neq ta pegzos",
+      "loop": 4,
+      "family": "purpose",
       "stress": true
     }
   ],
