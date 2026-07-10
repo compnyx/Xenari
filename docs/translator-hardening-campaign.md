@@ -1,6 +1,6 @@
 # Xenari Translator Hardening Campaign
 
-Status: Loop 2 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
+Status: Loop 3 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
 
 ## Campaign guardrails
 
@@ -27,6 +27,12 @@ Starting revisions were Xenari `1dee384` and nyx-site `4c22cfc`; both worktrees 
 
 No crashes occurred in the 30-sentence manual audit. The more serious failures were structurally plausible output made from real but wrong roots, dropped question/comparison meaning, and large Python/browser differences.
 
+## Loop 3 baseline
+
+Starting revisions were Xenari `4a05b16` and nyx-site `fb55b5b`; both worktrees were clean. The supervised Loop 2 baseline passed with 27 Python tests, 43 forward fixtures, 19 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting five drift matches plus the one approved `they` mismatch.
+
+Rows 10–18 still produced dropped arguments, malformed relative attachment, or unrelated comma-separated clauses. Initial `when` was an honest but over-broad fallback that did not distinguish a WH question from temporal subordination.
+
 ## Command and test inventory
 
 | Area | Command or file | What it checks |
@@ -51,7 +57,7 @@ No crashes occurred in the 30-sentence manual audit. The more serious failures w
 3. Common English inflections in the DB can outrank the intended base concept (`said`, `seen`, `stopped`, and similar script-gap rows). Translator overrides currently protect only selected verbs.
 4. The generic Python forward parser handles pronoun-first transitive clauses best. Noun subjects, imperatives, WH subjects, obliques, and multiple nouns can be assigned the wrong role without becoming unknown.
 5. Clause splitting is intentionally conservative but loses some punctuation/ellipsis intent. Python infers yes/no questions from opening auxiliaries; the browser retains terminal punctuation.
-6. Conditionals, relative clauses, and purpose clauses do not share one representation. Each engine can emit well-formed-looking but materially different structures.
+6. Conditionals, relative clauses, temporal subordination, and purpose clauses now share bounded reviewed frames. Nested clauses, object-gap relatives, stative conditions, and omitted predicates still require explicit partial fallbacks.
 7. Comparatives and superlatives have canon particles, but neither translator has a proven shared implementation. Loop 1 now preserves these clauses as explicit unsupported grammar instead of silently deleting the comparison.
 8. Sound effects and vocalizations resolve to canon roots, but bare-fragment particles and inflected action readings differ between Python and the browser.
 9. Reverse translation is a heuristic reader, not a full validator. It warns on malformed frames but cannot prove semantic round-trip fidelity.
@@ -80,15 +86,15 @@ All 30 inputs were run through `python3 xenari_tool.py translate`; the same corp
 | 7 | Where will you go? | WH question, future | fixed and shared-fixtured as bare `qur`; both engines preserve future `qeng` without `va` |
 | 8 | Who broke the red window? | WH subject, past | shared honest fallback: canon has no interrogative `who` root, so neither engine invents or drops it |
 | 9 | Have you seen my hat? | present perfect, question, possession | fixed and shared-fixtured |
-| 10 | If I see the alien, I will run. | conditional | remaining: both engines split/attach the condition differently |
-| 11 | If the door is open, we can enter. | conditional, modal | remaining: major structure and verb-sense drift |
-| 12 | I would help you if I could. | conditional fragments | remaining: trailing modal clause loses its predicate |
-| 13 | The woman who built the translator loves you. | subject relative | remaining: roles and relative-clause boundaries are unsafe |
-| 14 | I see the dog that bit the stranger. | object relative | remaining: Python drops the relative action; browser emits a different subordinate frame |
-| 15 | The hat which is red belongs to me. | copular relative | remaining: both outputs are structurally suspect |
-| 16 | I opened the door to help you. | purpose clause | remaining: Python drops purpose; browser treats it as a goal phrase |
-| 17 | We went to the forest to find water. | motion plus purpose | remaining: goal/object assignment diverges |
-| 18 | She built a tool for me to translate the sentence. | ditransitive purpose | remaining: both engines lose different arguments |
+| 10 | If I see the alien, I will run. | conditional | fixed and shared-fixtured as `pevoq [condition] ti [main]` |
+| 11 | If the door is open, we can enter. | conditional, modal | readable partial: preserves the modal main clause and marks the unsupported stative condition |
+| 12 | I would help you if I could. | conditional fragments | readable partial: preserves “I would help you” and marks the missing predicate after `could` |
+| 13 | The woman who built the translator loves you. | subject relative | fixed with animate subject relativizer `su zre … ti` and both matrix arguments retained |
+| 14 | I see the dog that bit the stranger. | object relative | fixed: dog remains the matrix object and the animate subject-gap relative is attached to its head NP |
+| 15 | The hat which is red belongs to me. | copular relative | fixed with inanimate `vro`, a bounded copular relative, and the goal argument retained |
+| 16 | I opened the door to help you. | purpose clause | fixed with `frex`; purpose subject, verb, and object are retained |
+| 17 | We went to the forest to find water. | motion plus purpose | fixed: forest remains the motion goal and water remains the purpose object |
+| 18 | She built a tool for me to translate the sentence. | ditransitive purpose | fixed: tool remains the matrix object; “me” and sentence remain purpose subject/object |
 | 19 | The alien is taller than the human. | comparative | now an honest unsupported-grammar result in both engines |
 | 20 | This tool is better than that tool. | irregular comparative | now an honest unsupported-grammar result in both engines |
 | 21 | That is the fastest ship. | superlative | honest fallback added to shared fixtures |
@@ -102,7 +108,7 @@ All 30 inputs were run through `python3 xenari_tool.py translate`; the same corp
 | 29 | I said, “Don’t touch that.” | quoted dialogue, smart punctuation | curly/ASCII quote normalization aligned; speech and imperative semantics remain |
 | 30 | Yes? Fine. | dialogue fragments | no crash, but roots/register and bare-fragment particles drift |
 
-Important Loop 1 fixes are captured in shared fixtures rather than adding giant exact-output blobs for the unresolved corpus. The unresolved rows above are the known-failure seed list for Loop 2.
+The table is cumulative. Loop 3 promotes rows 10–18 into shared exact or readable-partial contracts without claiming support for their more complex variants.
 
 ## Loop 1 changes
 
@@ -140,6 +146,27 @@ Important Loop 1 fixes are captured in shared fixtures rather than adding giant 
 - Added `npm run test:xenari:drift`, a deterministic six-row Python-versus-browser corpus report. It fails on new or changed drift and reports the one exact approved known mismatch.
 - No new canon root was added, but `xenari.db` mapping rows changed for `semax`; DB-derived dictionary exports were regenerated for the repo and site.
 
+## Loop 3 findings
+
+- Canon and the published grammar already define all four frame families needed here: conditionals use `pevoq … ti`; temporal clauses use `su cruv/prexq/vrem … ti`; relatives use role/animacy-specific relativizers inside `su … ti`; purpose uses `frex` without tense/evidential marking on the purpose predicate.
+- `zre` and `vro` are relativizers, not general English `who`/`which` roots. Bounded relative clauses can use them safely, while initial interrogative `who` remains unsupported.
+- Initial auxiliary-opened `when` is a WH question and has no reviewed interrogative root. Initial `when/once/after/before/while …, …` is temporal subordination and can use the canon frame. The two cases must be detected before ordinary comma splitting.
+- “If the door is open” is a stative condition, not automatically the action verb “open.” Loop 3 preserves the supported modal main clause and marks the condition partial instead of substituting `xleq` unsafely.
+- An English modal fragment such as “if I could” has no recoverable predicate. The translator now retains the matrix clause and states that the conditional predicate is missing.
+- Canon inspection found existing reviewed roots for every needed action. Several Python translator-only overrides were stale or weaker than the direct canon entries: `help → qlemp` pointed to “make/shape,” while `pegzos` is help; `zaqa`, `xleq`, and `trek` are direct roots for run, open, and find. No root or DB mapping was added.
+- Subject-gap relatives with one reviewed predicate are now bounded. Object-gap `thu`/`pla`, oblique `qlo`, stacked relatives, nested speech, and attachment ambiguity remain outside this loop.
+
+## Loop 3 changes
+
+- Added a shared bounded clause parser in Python and browser for complete simple conditionals, initial temporal subordination, subject-gap relatives in matrix subject/object roles, copular relatives, and explicit/implicit-subject purpose clauses.
+- Replaced clause-sized dumps with compact `[partial: …]` outputs for unsupported initial `when`, stative conditions, missing conditional predicates, and nested relative structures. Relative fallback retains the known head noun; conditional/temporal fallback retains the known main clause.
+- Added 16 shared forward fixtures and seven reverse fixtures. Seven forward fixtures are marked stress cases: initial WH `when`, three temporal markers, a person relative, a conditional using `semax`, and a nested relative that deliberately remains partial.
+- Expanded the paired Python/browser drift corpus from six to thirteen sentences. It now reports twelve exact matches, one approved `they` ordinal mismatch, and zero unexpected differences.
+- Aligned translator overrides to existing canon roots: run `zaqa`, open `xleq`, help `pegzos`, find `trek`, enter `logi`, belong `mifzxuri`, plus their reviewed inflections. General stop remains `semax`; no Loop 3 output uses stop-motion `kam`.
+- Added structured reverse handling for conditional, temporal, and relative boundaries; existing purpose recovery now reads the new `frex` fixtures. Reverse output remains a readable heuristic rather than a validator.
+- Added corpus-shape tests requiring at least ten Loop 3 forward fixtures, four reverse fixtures, five stress fixtures, every targeted family, no Loop 3 `[untranslated: …]` dump, and no `kam` token.
+- No DB row or generated dictionary changed, so `python3 xenari_tool.py sync --site` was intentionally not run.
+
 ## Remaining loops
 
 ### Loop 2 — questions, noun subjects, and everyday POS parity
@@ -153,13 +180,13 @@ Important Loop 1 fixes are captured in shared fixtures rather than adding giant 
 
 ### Loop 3 — shared clause grammar
 
-- [ ] Design a small common clause/frame vocabulary for condition, relative, and purpose relations.
-- [ ] Fix rows 10–18 one construction family at a time.
-- [ ] Preserve arguments explicitly when a subordinate clause cannot be translated.
-- [ ] Add reverse fixtures for every new forward construction.
-- [ ] Decide how initial `when` is distinguished from temporal subordination before replacing the Loop 2 readable fallback.
-- [ ] Keep the `who` interrogative gap and `they` ordinal ambiguity explicit unless canon is curated first.
-- [ ] Do not broaden noun-subject promotion until verb valency or another reviewed safe frame justifies it.
+- [x] Design a small common clause/frame vocabulary for condition, relative, temporal, and purpose relations.
+- [x] Fix or preserve rows 10–18 honestly one construction family at a time.
+- [x] Preserve arguments explicitly when a subordinate clause cannot be translated.
+- [x] Add reverse fixtures across every newly supported construction family.
+- [x] Distinguish initial WH `when` from initial temporal subordination before ordinary clause splitting.
+- [x] Keep the `who` interrogative gap and `they` ordinal ambiguity explicit unless canon is curated first.
+- [x] Keep noun-subject handling inside the reviewed simple and relative frames rather than broad promotion.
 
 ### Loop 4 — comparisons and modifier semantics
 
@@ -218,7 +245,7 @@ Final Loop 2 gate:
 - `pytest -q`: 27 passed
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 43 forward and 19 reverse fixtures passed
-- `python3 xenari_tool.py stats`: 9,334 roots; 11,046 English mappings; 83 categories
+- `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
 - `npm run test:xenari`: translator, six-row drift, and page contracts passed; drift report has 5 matches, 1 recorded known mismatch, 0 unexpected
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
@@ -227,5 +254,33 @@ Remaining failures carried forward:
 
 - Row 4 still needs a canon policy or context-aware UI for English `they`; Python `zeq` and browser `req ha` remain intentionally unchanged.
 - Row 8 still lacks a canon interrogative `who` root; no root was coined in this loop.
-- Initial `when` is an explicit unsupported shared fallback until Loop 3 distinguishes WH and temporal frames.
-- Rows 10–18 remain the Loop 3 clause-grammar corpus. Broader noun-subject syntax and dialogue rows 23, 26, 29, and 30 remain later-loop work.
+- Initial interrogative `when` remains an explicit unsupported shared fallback; temporal `when` is a separate Loop 3 frame.
+- Rows 10–18 are the Loop 3 clause-grammar corpus. Broader noun-subject syntax and dialogue rows 23, 26, 29, and 30 remain later-loop work.
+
+## Loop 3 release checklist
+
+- [x] Inspect both clean worktrees, recent history, campaign rows 10–18, grammar docs, translator code, fixtures, and tests before editing.
+- [x] Verify every selected relation particle and action root through `inspect`, `search`, and `lookup` before parser changes.
+- [x] Add at least ten forward, four reverse, and five stress fixtures; final additions were 16, seven, and seven respectively.
+- [x] Align Python/browser forward and reverse behavior, retaining the single canon-driven `they` known mismatch.
+- [x] Update Python tests, site tests, both site changelogs, and `translatorAssetVersion` (`20260710-hardening-loop3`).
+- [x] Avoid DB/generated-data edits because the loop reused existing canon roots and mappings.
+- [x] Run every requested local gate without committing, pushing, deploying, syncing externally, or restarting services.
+
+Final Loop 3 gate:
+
+- `pytest -q`: 29 passed
+- `python3 xenari_tool.py doctor`: status ok
+- `python3 xenari_tool.py parity`: 59 forward and 26 reverse fixtures passed
+- `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
+- `npm run test:xenari`: translator, thirteen-row drift, and page contracts passed; drift report has 12 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run build`: 16 pages built successfully
+- `git diff --check`: clean in both repositories
+
+Remaining failures carried forward from Loop 3:
+
+- Initial interrogative `when` and `who` still lack canon question roots; neither is synthesized from a subordinator/relativizer.
+- Stative conditions such as “if the door is open,” missing-predicate conditions such as “if I could,” and nested/stacked/object-gap/oblique relatives remain compact readable partials.
+- English `they` remains the only drift known-mismatch: Python uses `zeq`; browser uses `req ha`.
+- Reverse translation reads the new boundaries but still simplifies articles, agreement, and purpose wording; it does not validate arbitrary nested Xenari.
+- Comparison rows 19–21 and dialogue/sound rows 22–30 remain assigned to later loops.

@@ -102,8 +102,56 @@ def test_everyday_verb_overrides_use_established_roots():
         "broke": "zont",
         "broken": "zont",
         "wait": "trekq",
+        "run": "zaqa",
+        "open": "xleq",
+        "help": "pegzos",
+        "find": "trek",
+        "enter": "logi",
+        "belong": "mifzxuri",
     }.items():
         assert x._known_verb_root(form) == root
+
+
+def test_loop3_clause_corpus_is_bounded_shared_and_readable():
+    x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
+    forward = [case for case in fixtures["forward"] if case.get("loop") == 3]
+    reverse = [case for case in fixtures["reverse"] if case.get("loop") == 3]
+    stress = [case for case in forward if case.get("stress")]
+
+    assert len(forward) >= 10
+    assert len(reverse) >= 4
+    assert len(stress) >= 5
+    assert {case["family"] for case in forward} >= {
+        "conditional", "purpose", "relative", "temporal", "temporal-wh",
+    }
+    assert all("[untranslated:" not in case["xenari"] for case in forward)
+
+    initial_when = x.speak("When does the door open?", evidential="assumed")
+    temporal_when = x.speak("When the door opens, I run.", evidential="assumed")
+    unsupported_relative = x.speak(
+        "The alien that the woman said she saw ran.", evidential="assumed"
+    )
+
+    assert initial_when.startswith("[partial: unsupported WH question 'when':")
+    assert temporal_when.startswith("su cruv ")
+    assert unsupported_relative.startswith("qex [partial: unsupported relative clause:")
+    assert all("kam" not in case["xenari"].split() for case in forward)
+
+
+def test_loop3_reverse_reads_structured_clause_boundaries():
+    x = Xenari(REPO / "xenari.db")
+
+    assert x.reverse(
+        "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo"
+    ) == "if I see alien, then I will run"
+    assert x.reverse(
+        "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo"
+    ) == "when door opens, I run"
+    assert x.reverse(
+        "ka vi habdazluc su zre ra nu zrump ta zont vi lo xo "
+        "ti ta zaqa vi sa xo"
+    ) == "person who broke door runs"
 
 
 def test_content_questions_and_safe_noun_subjects_keep_their_roles():

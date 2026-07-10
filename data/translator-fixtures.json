@@ -171,6 +171,109 @@
     {
       "english": "I have broken the door",
       "xenari": "ra nu zrump ka neq ta zont lo xo"
+    },
+    {
+      "english": "If I see the alien, I will run.",
+      "xenari": "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo",
+      "loop": 3,
+      "family": "conditional"
+    },
+    {
+      "english": "If the door is open, we can enter.",
+      "xenari": "ka neq ha ta logi pe xo [partial: unsupported condition: if the door is open]",
+      "loop": 3,
+      "family": "conditional"
+    },
+    {
+      "english": "I would help you if I could.",
+      "xenari": "ra mex ka neq ta pegzos pe xo [partial: unsupported conditional clause: if i could (missing predicate)]",
+      "loop": 3,
+      "family": "conditional"
+    },
+    {
+      "english": "The woman who built the translator loves you.",
+      "xenari": "ra mex ka vi kazxibrih su zre ra nu fona ta mrob vi lo xo ti ta zrent vi sa xo",
+      "loop": 3,
+      "family": "relative"
+    },
+    {
+      "english": "I see the dog that bit the stranger.",
+      "xenari": "ra vi zrenq su zre ra vi qex ta qruq' vi lo xo ti ka neq ta toq sa xo",
+      "loop": 3,
+      "family": "relative"
+    },
+    {
+      "english": "The hat which is red belongs to me.",
+      "xenari": "fa neq ka nu brid su vro ra rlis ta zux nu sa xo ti ta mifzxuri nu sa xo",
+      "loop": 3,
+      "family": "relative"
+    },
+    {
+      "english": "I opened the door to help you.",
+      "xenari": "ra nu zrump ka neq ta xleq lo xo frex ra mex ka neq ta pegzos",
+      "loop": 3,
+      "family": "purpose"
+    },
+    {
+      "english": "We went to the forest to find water.",
+      "xenari": "fa nu canq ka neq ha ta qeng lo xo frex ra nu cruq ka neq ha ta trek",
+      "loop": 3,
+      "family": "purpose"
+    },
+    {
+      "english": "She built a tool for me to translate the sentence.",
+      "xenari": "ra nu pronx ka leq ta mrob lo xo frex ra nu hune ka neq ta nrotm",
+      "loop": 3,
+      "family": "purpose"
+    },
+    {
+      "english": "When does the door open?",
+      "xenari": "[partial: unsupported WH question 'when': when does the door open]",
+      "loop": 3,
+      "family": "temporal-wh",
+      "stress": true
+    },
+    {
+      "english": "When the door opens, I run.",
+      "xenari": "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo",
+      "loop": 3,
+      "family": "temporal",
+      "stress": true
+    },
+    {
+      "english": "After I open the door, you enter.",
+      "xenari": "su vrem ra nu zrump ka neq ta xleq sa xo ti ka mex ta logi sa xo",
+      "loop": 3,
+      "family": "temporal",
+      "stress": true
+    },
+    {
+      "english": "Before the alarm stops, I open the door.",
+      "xenari": "su prexq ka nu skump ta semax nu sa xo ti ra nu zrump ka neq ta xleq sa xo",
+      "loop": 3,
+      "family": "temporal",
+      "stress": true
+    },
+    {
+      "english": "The person who broke the door runs.",
+      "xenari": "ka vi habdazluc su zre ra nu zrump ta zont vi lo xo ti ta zaqa vi sa xo",
+      "loop": 3,
+      "family": "relative",
+      "stress": true
+    },
+    {
+      "english": "If I stop, you run.",
+      "xenari": "pevoq ka neq ta semax sa xo ti ka mex ta zaqa sa xo",
+      "loop": 3,
+      "family": "conditional",
+      "stress": true
+    },
+    {
+      "english": "The alien that the woman said she saw ran.",
+      "xenari": "qex [partial: unsupported relative clause: that the woman said she saw ran]",
+      "loop": 3,
+      "family": "relative",
+      "stress": true
     }
   ],
   "reverse": [
@@ -249,6 +352,48 @@
     {
       "xenari": "ra nu zrump ka neq ta zont lo xo",
       "english": "I broke door"
+    },
+    {
+      "xenari": "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo",
+      "english": "if I see alien, then I will run",
+      "loop": 3,
+      "family": "conditional"
+    },
+    {
+      "xenari": "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo",
+      "english": "when door opens, I run",
+      "loop": 3,
+      "family": "temporal"
+    },
+    {
+      "xenari": "su vrem ra nu zrump ka neq ta xleq sa xo ti ka mex ta logi sa xo",
+      "english": "after I open door, you enter",
+      "loop": 3,
+      "family": "temporal"
+    },
+    {
+      "xenari": "ka vi habdazluc su zre ra nu zrump ta zont vi lo xo ti ta zaqa vi sa xo",
+      "english": "person who broke door runs",
+      "loop": 3,
+      "family": "relative"
+    },
+    {
+      "xenari": "ra vi zrenq su zre ra vi qex ta qruq' vi lo xo ti ka neq ta toq sa xo",
+      "english": "I see dog who bit alien",
+      "loop": 3,
+      "family": "relative"
+    },
+    {
+      "xenari": "fa neq ka nu brid su vro ra rlis ta zux nu sa xo ti ta mifzxuri nu sa xo",
+      "english": "hat that is red belongs to me",
+      "loop": 3,
+      "family": "relative"
+    },
+    {
+      "xenari": "ra nu zrump ka neq ta xleq lo xo frex ra mex ka neq ta pegzos",
+      "english": "I opened door so that I help you",
+      "loop": 3,
+      "family": "purpose"
     }
   ],
   "hardening": {
@@ -279,7 +424,14 @@
       "Where will you go?",
       "Who broke the red window?",
       "Wait—what?",
-      "Hey, are you there?"
+      "Hey, are you there?",
+      "If I see the alien, I will run.",
+      "I would help you if I could.",
+      "The woman who built the translator loves you.",
+      "I opened the door to help you.",
+      "When the door opens, I run.",
+      "The person who broke the door runs.",
+      "The alien that the woman said she saw ran."
     ],
     "known_differences": [
       {
