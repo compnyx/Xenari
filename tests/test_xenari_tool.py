@@ -31,6 +31,49 @@ def test_reverse_uses_shared_fixtures():
         assert x.reverse(case["xenari"]) == case["english"]
 
 
+def test_multiclause_hardening_regression_is_bounded_and_honest():
+    x = Xenari(REPO / "xenari.db")
+    case = load_fixtures()["hardening"]
+
+    translated = x.speak(case["regression_input"], evidential="assumed")
+
+    for fragment in case["must_include"]:
+        assert fragment in translated
+    for fragment in case["must_not_include"]:
+        assert fragment not in translated
+    assert translated.count("[untranslated:") >= 3
+    assert translated.startswith("prax. ")
+    assert x.speak("hey friend", evidential="assumed") == "prax"
+
+
+def test_work_senses_and_unknown_subjects_do_not_become_fake_roots():
+    x = Xenari(REPO / "xenari.db")
+
+    assert x.speak("creative work", evidential="assumed") == "flonx"
+    assert "flonx" not in x.speak("I work", evidential="assumed")
+    assert x.speak("the elevator was not working", evidential="assumed") == (
+        "ka nu spokta ta qxundraz nu lo xo ngu"
+    )
+    assert x.speak("the turbolift was not working", evidential="assumed").startswith(
+        "[untranslated: the turbolift was not working;"
+    )
+
+
+def test_reverse_warns_when_recovering_malformed_clause_frames():
+    x = Xenari(REPO / "xenari.db")
+    malformed = (
+        "to fa nu flonx ka nu hey ta qeng nu ve xo ngu na nu xenari "
+        "ka nu qzecmru ta qranx nu sa xo mex"
+    )
+
+    reversed_text = x.reverse(malformed)
+
+    assert "[unknown: hey] will not go" in reversed_text
+    assert "anyway throw" in reversed_text
+    assert "[warning:" in reversed_text
+    assert "recovered separate fragments" in reversed_text
+
+
 def test_auto_translate_and_inspect_helpers():
     x = Xenari(REPO / "xenari.db")
 

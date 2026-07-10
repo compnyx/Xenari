@@ -79,9 +79,10 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "eat": "xlof",
             "eats": "xlof",
             "ate": "xlof",
-            "go": "sloz",
-            "goes": "sloz",
-            "went": "sloz",
+            "go": "qeng",
+            "goes": "qeng",
+            "going": "qeng",
+            "went": "qeng",
             "come": "di",
             "comes": "di",
             "came": "di",
@@ -175,6 +176,14 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "help": "qlemp",
             "hurt": "zont",
             "burn": "xraq",
+            "work": "qxundraz",
+            "works": "qxundraz",
+            "worked": "qxundraz",
+            "working": "qxundraz",
+            "operate": "qxundraz",
+            "operates": "qxundraz",
+            "operated": "qxundraz",
+            "operating": "qxundraz",
         }
 
         self.copula_words = {"is", "are", "am", "be", "was", "were", "being", "feel"}

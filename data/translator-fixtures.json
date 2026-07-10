@@ -41,6 +41,26 @@
       "xenari": "ra rlis ka nu brid ta zux nu sa xo"
     },
     {
+      "english": "hey, I love you",
+      "xenari": "prax. ra mex ka neq ta zrent sa xo"
+    },
+    {
+      "english": "hey friend",
+      "xenari": "prax"
+    },
+    {
+      "english": "I am going to work today",
+      "xenari": "fa nu kashatyong ka neq ta qeng ve xo"
+    },
+    {
+      "english": "the elevator was not working",
+      "xenari": "ka nu spokta ta qxundraz nu lo xo ngu"
+    },
+    {
+      "english": "creative work",
+      "xenari": "flonx"
+    },
+    {
       "english": "I approach the figure by the lake. The figure's hat blows off",
       "xenari": "ra vi loco na nu qlon ka neq ta frig sa xo. ra vi loco po brid ka vi cuq ta qruq vi sa xo"
     }
@@ -85,6 +105,23 @@
     {
       "xenari": "ra neq po brid ka vi cuq ta qruq vi sa xo",
       "english": "wind blow my hat"
+    },
+    {
+      "xenari": "ka nu spokta ta qxundraz nu lo xo ngu",
+      "english": "elevator did not operate"
     }
-  ]
+  ],
+  "hardening": {
+    "regression_input": "hey i'm going to work today, but the elevator was not working. anyway, this is a test sentence i'm throwing in the translator for you to decipher once i've gotten the output of xenari. can you reverse engineer this sentence back to english please?",
+    "must_include": [
+      "prax",
+      "fa nu kashatyong ka neq ta qeng ve xo",
+      "kex ka nu spokta ta qxundraz nu lo xo ngu",
+      "[untranslated: this is a test sentence"
+    ],
+    "must_not_include": [
+      "ka nu hey",
+      "fa nu flonx"
+    ]
+  }
 }
