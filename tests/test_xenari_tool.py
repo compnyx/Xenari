@@ -198,6 +198,34 @@ def test_loop5_dialogue_sound_and_imperative_corpus_is_bounded_and_honest():
     assert "ka neq" not in negative_command
 
 
+def test_loop6_fuzz_safety_corpus_is_shared_and_honest():
+    x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
+    forward = [case for case in fixtures["forward"] if case.get("loop") == 6]
+    stress = [case for case in forward if case.get("stress")]
+
+    assert len(forward) >= 10
+    assert len(stress) >= 6
+    assert {case["family"] for case in forward} >= {
+        "empty-input", "imperative-gap", "speaker-label",
+        "speaker-stage", "stage-direction",
+    }
+
+    assert x.speak("...", evidential="assumed") == "[untranslated: no translatable content]"
+    assert x.speak("   ", evidential="assumed") == "[untranslated: no translatable content]"
+    assert x.speak("Run!", evidential="assumed") == "[partial: unsupported imperative: run]"
+    assert x.speak("Don't run.", evidential="assumed") == (
+        "[partial: unsupported negated imperative: do not run]"
+    )
+    assert x.speak("NYX: Shhh.", evidential="assumed") == "shava"
+    assert x.speak("MARA (O.S.): Beep beep.", evidential="assumed") == "nqozo nqozo"
+    assert x.speak("(whispers) shhh.", evidential="assumed") == (
+        "[partial: omitted subject for action: whisper]. shava"
+    )
+    assert "ka neq" not in x.speak("Run!", evidential="assumed")
+    assert " va" not in x.speak("Don't run.", evidential="assumed")
+
+
 def test_loop3_reverse_reads_structured_clause_boundaries():
     x = Xenari(REPO / "xenari.db")
 

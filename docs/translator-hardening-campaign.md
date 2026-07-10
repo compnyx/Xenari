@@ -1,6 +1,6 @@
 # Xenari Translator Hardening Campaign
 
-Status: Loop 5 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
+Status: Loop 6 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
 
 ## Campaign guardrails
 
@@ -392,3 +392,40 @@ Items carried to Loop 6:
 - Decide through canon curation whether recurring `ugh` deserves a root; do not substitute `ux`, `aza`, or another nearby vocalization automatically.
 - Reverse translation still treats bare roots and imperative subjects heuristically and does not reconstruct quotation or stage-direction boundaries.
 - Existing unresolved `when`/`who`, comparison-standard, stative condition, missing conditional predicate, and nested/object-gap relative issues remain in scope for the final safety/fuzz audit rather than being silently generalized here.
+
+## Loop 6 findings
+
+- Codex CLI was temporarily unavailable because the model usage window asked for a retry at 14:58 CEST, so the loop began with local fuzzing instead of idling.
+- Punctuation-only and whitespace-only English input returned an empty translation string in both translators. This made the UI look broken instead of telling the user there was no content to translate.
+- Unreviewed verb-first inputs like “Run!”, “Help me!”, and “Translate this!” were interpreted by the fallback parser as first-person statements. That was misleading because only the Loop 5 command verbs have reviewed imperative frames.
+- Negated unreviewed commands like “Don’t run.” inherited yes/no question handling and could add `va` to a non-question command-shaped fragment.
+- Screenplay labels with parentheticals, such as `MARA (O.S.):`, leaked into the clause text. Parenthetical and asterisk stage spans were not normalized as seams, so they could become fake objects or subjects.
+
+## Loop 6 changes
+
+- Added a shared no-content fallback: `[untranslated: no translatable content]`.
+- Added speaker-label stripping before contraction/lowercase normalization in Python and browser code.
+- Added parenthetical and asterisk stage spans to the existing bracketed stage-direction clause seams.
+- Added a bounded Loop 6 safety frame that marks unreviewed subjectless commands as readable partials instead of inventing `ka neq`, while leaving the reviewed Loop 5 imperatives unchanged.
+- Added shared Loop 6 fixtures for empty input, unreviewed imperatives, speaker labels, speaker plus stage directions, parenthetical stage directions, and asterisk sound spans.
+- Expanded the Python/browser drift corpus from 26 to 37 sentences. It now reports 36 exact matches, the unchanged approved `they` mismatch, and zero unexpected differences.
+- No root, English mapping, DB row, or generated dictionary changed, so dictionary sync was intentionally not run.
+
+## Loop 6 release checklist
+
+- [x] Start a Codex CLI Loop 6 attempt and record the usage-window block instead of pretending it ran.
+- [x] Fuzz punctuation-only input, unreviewed commands, speaker labels, parenthetical stage directions, and asterisk sound spans locally.
+- [x] Mirror every selected safety behavior in Python and browser code.
+- [x] Add shared fixtures plus focused Python/browser regressions.
+- [x] Leave new command verbs as honest partials until their object frames are reviewed.
+- [x] Keep canon and generated dictionaries unchanged.
+
+Final Loop 6 gate:
+
+- `pytest -q`: 33 passed
+- `python3 xenari_tool.py doctor`: status ok
+- `python3 xenari_tool.py parity`: 107 forward and 27 reverse fixtures passed
+- `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
+- `npm run test:xenari`: translator, 37-row drift, and page contracts passed; drift report has 36 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run build`: 16 pages built successfully
+- `git diff --check`: clean in both repositories

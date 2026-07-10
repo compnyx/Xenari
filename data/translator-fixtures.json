@@ -284,6 +284,79 @@
       "family": "sound"
     },
     {
+      "english": "...",
+      "xenari": "[untranslated: no translatable content]",
+      "loop": 6,
+      "family": "empty-input",
+      "stress": true
+    },
+    {
+      "english": "Run!",
+      "xenari": "[partial: unsupported imperative: run]",
+      "loop": 6,
+      "family": "imperative-gap",
+      "stress": true
+    },
+    {
+      "english": "Don't run.",
+      "xenari": "[partial: unsupported negated imperative: do not run]",
+      "loop": 6,
+      "family": "imperative-gap",
+      "stress": true
+    },
+    {
+      "english": "Help me!",
+      "xenari": "[partial: unsupported imperative: help me]",
+      "loop": 6,
+      "family": "imperative-gap"
+    },
+    {
+      "english": "Translate this!",
+      "xenari": "[partial: unsupported imperative: translate this]",
+      "loop": 6,
+      "family": "imperative-gap"
+    },
+    {
+      "english": "Reverse engineer this!",
+      "xenari": "[partial: unsupported imperative: reverse engineer this]",
+      "loop": 6,
+      "family": "imperative-gap"
+    },
+    {
+      "english": "NYX: Shhh.",
+      "xenari": "shava",
+      "loop": 6,
+      "family": "speaker-label",
+      "stress": true
+    },
+    {
+      "english": "MARA (O.S.): Beep beep.",
+      "xenari": "nqozo nqozo",
+      "loop": 6,
+      "family": "speaker-label",
+      "stress": true
+    },
+    {
+      "english": "NYX: [door slams] I run.",
+      "xenari": "ka nu zrump ta tulo nu sa xo. ka neq ta zaqa sa xo",
+      "loop": 6,
+      "family": "speaker-stage",
+      "stress": true
+    },
+    {
+      "english": "(whispers) shhh.",
+      "xenari": "[partial: omitted subject for action: whisper]. shava",
+      "loop": 6,
+      "family": "stage-direction",
+      "stress": true
+    },
+    {
+      "english": "*beep beep* she waits.",
+      "xenari": "nqozo nqozo. ka leq ta trekq sa xo",
+      "loop": 6,
+      "family": "stage-direction"
+    },
+    {
       "english": "If I see the alien, I will run.",
       "xenari": "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo",
       "loop": 3,
@@ -696,7 +769,18 @@
       "Listen!",
       "The alarm goes beep beep.",
       "She whispered, “shhh.”",
-      "[door slams] I run."
+      "[door slams] I run.",
+      "...",
+      "Run!",
+      "Don't run.",
+      "Help me!",
+      "Translate this!",
+      "Reverse engineer this!",
+      "NYX: Shhh.",
+      "MARA (O.S.): Beep beep.",
+      "NYX: [door slams] I run.",
+      "(whispers) shhh.",
+      "*beep beep* she waits."
     ],
     "known_differences": [
       {

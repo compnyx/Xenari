@@ -28,7 +28,19 @@ class TranslatorMixin:
             if connector_root and not xenari.startswith("[untranslated:"):
                 xenari = f"{connector_root} {xenari}"
             rendered.append(xenari)
-        return ". ".join(rendered)
+        return ". ".join(rendered) if rendered else "[untranslated: no translatable content]"
+
+    def _strip_speaker_labels(self, text: str) -> str:
+        """Drop screenplay-style speaker labels before clause splitting."""
+        stripped_lines = []
+        label_re = re.compile(
+            r"^\s*[A-Za-z][A-Za-z0-9 .'\-]{0,40}"
+            r"(?:\s*\([A-Za-z0-9 .'\-]{1,12}\))?\s*:\s*(.*)$"
+        )
+        for line in text.splitlines() or [text]:
+            match = label_re.match(line)
+            stripped_lines.append(match.group(1) if match else line)
+        return "\n".join(stripped_lines)
 
     def _expand_english_contractions(self, text: str) -> str:
         contractions = {
@@ -56,6 +68,7 @@ class TranslatorMixin:
 
     def _split_english_clauses(self, text: str) -> List[Tuple[str, str]]:
         """Split prose at sentence boundaries and high-confidence clause seams."""
+        text = self._strip_speaker_labels(text)
         expanded = self._expand_english_contractions(text)
         expanded = expanded.translate(str.maketrans({
             "“": '"', "”": '"', "„": '"', "‟": '"', "…": ".",
@@ -64,6 +77,8 @@ class TranslatorMixin:
         # seams.  Keeping them separate prevents their words from being
         # assigned fake roles in the adjacent spoken/narrated clause.
         expanded = re.sub(r"\[\s*([^\]\n]+?)\s*\]", r". \1. ", expanded)
+        expanded = re.sub(r"\(\s*([^\)\n]+?)\s*\)", r". \1. ", expanded)
+        expanded = re.sub(r"\*\s*([^*\n]+?)\s*\*", r". \1. ", expanded)
         expanded = re.sub(r'(?<=[a-z0-9])\s+"\s*(?=[a-z0-9])', ". ", expanded)
         expanded = expanded.replace('"', " ")
         expanded = re.sub(r"\s*[—–]\s*", ". ", expanded)
@@ -1014,6 +1029,38 @@ class TranslatorMixin:
             return " ".join(fragment_roots[word] for word in fragment_words)
         return None
 
+    def _speak_loop6_frame(self, english: str, evidence_root: str):
+        """Keep fuzz-discovered subjectless actions readable and honest."""
+        clean = re.sub(r"[.!?]+$", "", english.strip().lower())
+        clean = re.sub(r"\s+", " ", clean).strip()
+        if not clean:
+            return None
+
+        unsupported_command_verbs = {
+            "help", "hide", "reverse", "reverse engineer", "run", "translate",
+        }
+        negated = re.fullmatch(r"(?:please\s+)?do not\s+(.+?)(?:\s+please)?", clean)
+        if negated:
+            phrase = negated.group(1).strip()
+            if phrase.split(maxsplit=1)[0] in unsupported_command_verbs or phrase.startswith("reverse engineer"):
+                return self._partial_frame("", f"unsupported negated imperative: do not {phrase}")
+
+        command = re.fullmatch(r"(?:please\s+)?(.+?)(?:\s+please)?", clean)
+        if command:
+            phrase = command.group(1).strip()
+            head = "reverse engineer" if phrase.startswith("reverse engineer") else phrase.split(maxsplit=1)[0]
+            if head in unsupported_command_verbs:
+                return self._partial_frame("", f"unsupported imperative: {phrase}")
+
+        subjectless_actions = {
+            "whisper": "whisper",
+            "whispers": "whisper",
+            "whispered": "whisper",
+        }
+        if clean in subjectless_actions:
+            return self._partial_frame("", f"omitted subject for action: {subjectless_actions[clean]}")
+        return None
+
     def _speak_common_pattern(self, normalized: str, evidence_root: str):
         """Handle common English frames whose structure is unambiguous."""
         interrogative_roots = {
@@ -1210,6 +1257,9 @@ class TranslatorMixin:
         loop5_frame = self._speak_loop5_frame(english, e)
         if loop5_frame is not None:
             return loop5_frame
+        loop6_frame = self._speak_loop6_frame(english, e)
+        if loop6_frame is not None:
+            return loop6_frame
         loop4_frame = self._speak_loop4_frame(english, e)
         if loop4_frame is not None:
             return loop4_frame
