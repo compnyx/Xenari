@@ -2029,6 +2029,7 @@
     "timestamp": "2026-07-08T20:41:23.912157+00:00",
     "notes": null,
     "english_keys": [
+      "drip",
       "dripping"
     ]
   },
@@ -2378,6 +2379,20 @@
     "notes": null,
     "english_keys": [
       "outspiraling"
+    ]
+  },
+  {
+    "id": 9468,
+    "root": "vepra",
+    "meaning": "defuse, make a bomb or danger unable to explode",
+    "category": "Action & Motion",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "defuse",
+      "disarm bomb",
+      "make safe"
     ]
   },
   {
@@ -7046,6 +7061,19 @@
     ]
   },
   {
+    "id": 9484,
+    "root": "cavrel",
+    "meaning": "paintbrush, handled brush for applying pigment",
+    "category": "Arts & Culture",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "paintbrush",
+      "painting brush"
+    ]
+  },
+  {
     "id": 1235,
     "root": "cramq",
     "meaning": "to paint, to decorate",
@@ -7423,6 +7451,20 @@
     "notes": null,
     "english_keys": [
       "veil-picture"
+    ]
+  },
+  {
+    "id": 9492,
+    "root": "qorvel",
+    "meaning": "provenance, recorded origin and ownership history",
+    "category": "Arts & Culture",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "origin history",
+      "ownership history",
+      "provenance"
     ]
   },
   {
@@ -9777,6 +9819,34 @@
     "notes": null,
     "english_keys": [
       "nest"
+    ]
+  },
+  {
+    "id": 9483,
+    "root": "murlaf",
+    "meaning": "deep breath, deliberate full inhale",
+    "category": "Body & Motion",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "deep breath",
+      "inhale deeply",
+      "take a deep breath",
+      "takes a deep breath"
+    ]
+  },
+  {
+    "id": 9496,
+    "root": "nuvosh",
+    "meaning": "sweaty, wet with sweat",
+    "category": "Body & Motion",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "sweat-covered",
+      "sweaty"
     ]
   },
   {
@@ -15113,7 +15183,8 @@
     "timestamp": "2026-07-08T15:49:17.578350",
     "notes": "QC repair 2026-07-09T18:08:23: renamed from wetpecu; validator issues: invalid character 'w' at position 0",
     "english_keys": [
-      "inspect"
+      "inspect",
+      "inspection"
     ]
   },
   {
@@ -15236,7 +15307,8 @@
     "timestamp": "2026-07-08T15:49:17.578350",
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jelesqe; validator issues: invalid character 'j' at position 0",
     "english_keys": [
-      "forge"
+      "forge",
+      "forgery"
     ]
   },
   {
@@ -16098,6 +16170,19 @@
     ]
   },
   {
+    "id": 9447,
+    "root": "qlutho",
+    "meaning": "entropy, disordering decay, irreversible loss of usable order",
+    "category": "Cosmology & Reality",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "disordering decay",
+      "entropy"
+    ]
+  },
+  {
     "id": 1175,
     "root": "qrong",
     "meaning": "deep; the Deep, far infernal depth",
@@ -16290,6 +16375,22 @@
     "notes": null,
     "english_keys": [
       "universe"
+    ]
+  },
+  {
+    "id": 9446,
+    "root": "xrane",
+    "meaning": "inversion, reversal of direction, flow, or causality",
+    "category": "Cosmology & Reality",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "inverse",
+      "inversion",
+      "invert",
+      "inverted",
+      "reverse-flow"
     ]
   },
   {
@@ -16860,7 +16961,8 @@
     "timestamp": "2026-07-08T15:24:31.928824+00:00",
     "notes": null,
     "english_keys": [
-      "smuggle"
+      "smuggle",
+      "smuggling"
     ]
   },
   {
@@ -16948,6 +17050,19 @@
     ]
   },
   {
+    "id": 9493,
+    "root": "trezun",
+    "meaning": "hostage, captive held as leverage",
+    "category": "Crime & Violence",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "captive leverage",
+      "hostage"
+    ]
+  },
+  {
     "id": 2649,
     "root": "tuvfix",
     "meaning": "one who carries out killings",
@@ -16993,6 +17108,20 @@
     "notes": null,
     "english_keys": [
       "obliterated"
+    ]
+  },
+  {
+    "id": 9482,
+    "root": "voshtek",
+    "meaning": "drug dealer, illicit seller of medicines or narcotics",
+    "category": "Crime & Violence",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "drug dealer",
+      "illicit dealer",
+      "narcotics dealer"
     ]
   },
   {
@@ -19522,6 +19651,20 @@
     ]
   },
   {
+    "id": 9465,
+    "root": "qrova",
+    "meaning": "agitated, stirred into restless distress",
+    "category": "Emotions & Psychological",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "agitated",
+      "agitation",
+      "restless distress"
+    ]
+  },
+  {
     "id": 2994,
     "root": "qruqa",
     "meaning": "pissed / angry (casual)",
@@ -19644,6 +19787,20 @@
     "english_keys": [
       "whispered",
       "whispers"
+    ]
+  },
+  {
+    "id": 9462,
+    "root": "vruska",
+    "meaning": "abandonment, being left behind or forsaken",
+    "category": "Emotions & Psychological",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "abandonment",
+      "forsaking",
+      "left behind"
     ]
   },
   {
@@ -52114,7 +52271,8 @@
     "timestamp": "2026-07-08T21:13:23.249617+00:00",
     "notes": null,
     "english_keys": [
-      "tearful"
+      "tearful",
+      "teary"
     ]
   },
   {
@@ -54502,7 +54660,8 @@
     "timestamp": "2026-07-08T21:13:23.239719+00:00",
     "notes": null,
     "english_keys": [
-      "detonate"
+      "detonate",
+      "detonation"
     ]
   },
   {
@@ -56470,6 +56629,7 @@
     "timestamp": "2026-07-08T21:13:23.238752+00:00",
     "notes": null,
     "english_keys": [
+      "whoa",
       "woah"
     ]
   },
@@ -64815,6 +64975,19 @@
     ]
   },
   {
+    "id": 9469,
+    "root": "satho",
+    "meaning": "lockdown, emergency sealed security state",
+    "category": "Government & Politics",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "lockdown",
+      "security lockdown"
+    ]
+  },
+  {
     "id": 2085,
     "root": "singxet",
     "meaning": "king, male ruler",
@@ -66615,6 +66788,33 @@
     ]
   },
   {
+    "id": 9491,
+    "root": "zuneth",
+    "meaning": "authentication, proof that something is genuine",
+    "category": "Law & Justice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "authenticate",
+      "authentication",
+      "prove genuine"
+    ]
+  },
+  {
+    "id": 9449,
+    "root": "prulom",
+    "meaning": "plutonium, dense radioactive actinide metal",
+    "category": "Materials",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "plutonium",
+      "radioactive metal"
+    ]
+  },
+  {
     "id": 4273,
     "root": "reze",
     "meaning": "straw",
@@ -66816,6 +67016,21 @@
     "notes": null,
     "english_keys": [
       "true"
+    ]
+  },
+  {
+    "id": 9481,
+    "root": "nexavo",
+    "meaning": "artificial intelligence, made mind or machine cognition",
+    "category": "Mathematics & Computation",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "ai",
+      "artificial intelligence",
+      "machine intelligence",
+      "made mind"
     ]
   },
   {
@@ -67058,6 +67273,19 @@
     ]
   },
   {
+    "id": 9486,
+    "root": "dronel",
+    "meaning": "stethoscope, listening tool for heart and breath",
+    "category": "Medicine & Health",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "heart listener",
+      "stethoscope"
+    ]
+  },
+  {
     "id": 2026,
     "root": "esngudiz",
     "meaning": "fever, high temperature",
@@ -67131,6 +67359,19 @@
     "english_keys": [
       "inflammation",
       "swelling"
+    ]
+  },
+  {
+    "id": 9453,
+    "root": "klorun",
+    "meaning": "insulin, blood-sugar regulating hormone or medicine",
+    "category": "Medicine & Health",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "blood sugar medicine",
+      "insulin"
     ]
   },
   {
@@ -67303,6 +67544,20 @@
     ]
   },
   {
+    "id": 9451,
+    "root": "nuzek",
+    "meaning": "respirator, breathing support mask or device",
+    "category": "Medicine & Health",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "breathing mask",
+      "breathing support",
+      "respirator"
+    ]
+  },
+  {
     "id": 2942,
     "root": "nxevi",
     "meaning": "collagen / injectable cosmetic filler",
@@ -67439,6 +67694,19 @@
     "english_keys": [
       "disease",
       "sickness"
+    ]
+  },
+  {
+    "id": 9461,
+    "root": "qlavor",
+    "meaning": "bruise, dark injury mark under skin",
+    "category": "Medicine & Health",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "bruise",
+      "bruises"
     ]
   },
   {
@@ -67623,6 +67891,19 @@
     ]
   },
   {
+    "id": 9452,
+    "root": "sqava",
+    "meaning": "syringe, injection tube with plunger and needle",
+    "category": "Medicine & Health",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "injection syringe",
+      "syringe"
+    ]
+  },
+  {
     "id": 2941,
     "root": "strexu",
     "meaning": "liposuction / fat-removal surgery",
@@ -67632,6 +67913,20 @@
     "notes": null,
     "english_keys": [
       "liposuction"
+    ]
+  },
+  {
+    "id": 9459,
+    "root": "thivan",
+    "meaning": "gurney, wheeled medical transport bed",
+    "category": "Medicine & Health",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "gurney",
+      "medical stretcher",
+      "stretcher"
     ]
   },
   {
@@ -70815,6 +71110,19 @@
     "english_keys": [
       "humvee",
       "humvees"
+    ]
+  },
+  {
+    "id": 9467,
+    "root": "cexu",
+    "meaning": "siege, surrounding pressure against a defended place",
+    "category": "Military & Tactical",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "besiegement",
+      "siege"
     ]
   },
   {
@@ -78414,6 +78722,19 @@
     ]
   },
   {
+    "id": 9460,
+    "root": "xunel",
+    "meaning": "headstone, grave marker for the dead",
+    "category": "Objects & Tools",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "grave marker",
+      "headstone"
+    ]
+  },
+  {
     "id": 3642,
     "root": "xurl",
     "meaning": "software",
@@ -78858,6 +79179,19 @@
     ]
   },
   {
+    "id": 9495,
+    "root": "savren",
+    "meaning": "convinced, settled into belief or certainty",
+    "category": "Perception & Cognition",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "certainty of belief",
+      "convinced"
+    ]
+  },
+  {
     "id": 4565,
     "root": "sqasop",
     "meaning": "predicted",
@@ -78930,6 +79264,20 @@
     ]
   },
   {
+    "id": 9494,
+    "root": "volqen",
+    "meaning": "skeptical, doubtful and withholding belief",
+    "category": "Perception & Cognition",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "doubtful",
+      "skeptical",
+      "skepticism"
+    ]
+  },
+  {
     "id": 4228,
     "root": "xuh",
     "meaning": "felt",
@@ -78939,6 +79287,19 @@
     "notes": null,
     "english_keys": [
       "felt"
+    ]
+  },
+  {
+    "id": 9463,
+    "root": "zupel",
+    "meaning": "amnesia, loss or rupture of memory",
+    "category": "Perception & Cognition",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "amnesia",
+      "memory loss"
     ]
   },
   {
@@ -80178,6 +80539,19 @@
     ]
   },
   {
+    "id": 9455,
+    "root": "axve",
+    "meaning": "silo, tall storage tower for grain or material",
+    "category": "Place/Space",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "silo",
+      "storage silo"
+    ]
+  },
+  {
     "id": 3352,
     "root": "ba",
     "meaning": "opposite",
@@ -80679,6 +81053,19 @@
     "notes": null,
     "english_keys": [
       "nearest"
+    ]
+  },
+  {
+    "id": 9454,
+    "root": "zroth",
+    "meaning": "aisle, narrow passage between rows or seats",
+    "category": "Place/Space",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "aisle",
+      "passage aisle"
     ]
   },
   {
@@ -83193,6 +83580,19 @@
     ]
   },
   {
+    "id": 9464,
+    "root": "dravun",
+    "meaning": "quizzical, puzzled in an openly questioning way",
+    "category": "Qualities",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "puzzled-questioning",
+      "quizzical"
+    ]
+  },
+  {
     "id": 899,
     "root": "drex",
     "meaning": "box / doos (inanimate object, also: insult)",
@@ -83478,6 +83878,20 @@
     "notes": null,
     "english_keys": [
       "thin-shape"
+    ]
+  },
+  {
+    "id": 9466,
+    "root": "flunor",
+    "meaning": "vacant, empty, unoccupied, or blankly absent",
+    "category": "Qualities",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "blankly absent",
+      "unoccupied",
+      "vacant"
     ]
   },
   {
@@ -87015,6 +87429,19 @@
     ]
   },
   {
+    "id": 9502,
+    "root": "zerkul",
+    "meaning": "electrified, charged with or powered by electricity",
+    "category": "Qualities",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "electric charged",
+      "electrified"
+    ]
+  },
+  {
     "id": 2796,
     "root": "zirna",
     "meaning": "emptied of air",
@@ -89463,7 +89890,8 @@
     "timestamp": "2026-07-08T15:49:17.578350",
     "notes": null,
     "english_keys": [
-      "negotiate"
+      "negotiate",
+      "negotiation"
     ]
   },
   {
@@ -91176,6 +91604,141 @@
     ]
   },
   {
+    "id": 9476,
+    "root": "aza",
+    "meaning": "ah, soft realization, pain, or release vocalization",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "ah",
+      "ahh"
+    ]
+  },
+  {
+    "id": 9470,
+    "root": "glivun",
+    "meaning": "whirr, steady rotary machine sound",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "machine whirr",
+      "rotary sound",
+      "whirr"
+    ]
+  },
+  {
+    "id": 9478,
+    "root": "oxu",
+    "meaning": "ouch, pain interjection",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "ouch",
+      "ow"
+    ]
+  },
+  {
+    "id": 9471,
+    "root": "qelto",
+    "meaning": "whoosh, rushing air or fast passing sound",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "rush of air",
+      "whoosh"
+    ]
+  },
+  {
+    "id": 9477,
+    "root": "shava",
+    "meaning": "shhh, quieting hush vocalization",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "hush sound",
+      "shh",
+      "shhh"
+    ]
+  },
+  {
+    "id": 9472,
+    "root": "sqor",
+    "meaning": "rustle, soft dry brushing movement sound",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "rustle",
+      "soft rustle"
+    ]
+  },
+  {
+    "id": 9475,
+    "root": "ux",
+    "meaning": "uh, hesitation filler vocalization",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "erm",
+      "uh",
+      "um"
+    ]
+  },
+  {
+    "id": 9479,
+    "root": "vrumo",
+    "meaning": "whummmmm, low sustained machine or energy hum",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "energy hum",
+      "low hum",
+      "whum",
+      "whummmmm"
+    ]
+  },
+  {
+    "id": 9474,
+    "root": "xeha",
+    "meaning": "huh, questioning or confused vocalization",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "confused huh",
+      "huh"
+    ]
+  },
+  {
+    "id": 9473,
+    "root": "zavi",
+    "meaning": "swish, soft fast sweeping sound",
+    "category": "Sound & Voice",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "sweeping sound",
+      "swish"
+    ]
+  },
+  {
     "id": 3358,
     "root": "akgeva",
     "meaning": "simulation",
@@ -91245,6 +91808,19 @@
     "notes": null,
     "english_keys": [
       "hole"
+    ]
+  },
+  {
+    "id": 9499,
+    "root": "kulvex",
+    "meaning": "asteroid, small rocky body orbiting in space",
+    "category": "Space/Science",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "asteroid",
+      "minor planet"
     ]
   },
   {
@@ -91332,6 +91908,19 @@
     ]
   },
   {
+    "id": 9501,
+    "root": "qorath",
+    "meaning": "radioactive, emitting ionizing radiation",
+    "category": "Space/Science",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "radioactive",
+      "radioactivity"
+    ]
+  },
+  {
     "id": 3278,
     "root": "tuniqu",
     "meaning": "telemetry",
@@ -91377,6 +91966,19 @@
     "notes": null,
     "english_keys": [
       "distortions"
+    ]
+  },
+  {
+    "id": 9500,
+    "root": "xromel",
+    "meaning": "antimatter, matter with opposite charge structure",
+    "category": "Space/Science",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "anti-matter",
+      "antimatter"
     ]
   },
   {
@@ -93618,6 +94220,19 @@
     ]
   },
   {
+    "id": 9497,
+    "root": "daxmel",
+    "meaning": "payload, carried cargo of a craft, tool, or weapon",
+    "category": "Technology & Devices",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "carried cargo",
+      "payload"
+    ]
+  },
+  {
     "id": 2519,
     "root": "erocu",
     "meaning": "radio",
@@ -93627,6 +94242,19 @@
     "notes": null,
     "english_keys": [
       "radio"
+    ]
+  },
+  {
+    "id": 9450,
+    "root": "fexra",
+    "meaning": "reactor, controlled energy-reaction vessel or facility",
+    "category": "Technology & Devices",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "energy reactor",
+      "reactor"
     ]
   },
   {
@@ -93788,6 +94416,19 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from limreje; validator issues: invalid character 'j' at position 5",
     "english_keys": [
       "laptop"
+    ]
+  },
+  {
+    "id": 9488,
+    "root": "nethru",
+    "meaning": "receiver, device or person that receives a signal or object",
+    "category": "Technology & Devices",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "receiver",
+      "receiving device"
     ]
   },
   {
@@ -94428,6 +95069,19 @@
     ]
   },
   {
+    "id": 9480,
+    "root": "thezru",
+    "meaning": "hearing aid, worn device that assists hearing",
+    "category": "Technology & Devices",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "auditory aid",
+      "hearing aid"
+    ]
+  },
+  {
     "id": 1380,
     "root": "trekx",
     "meaning": "gear, mechanism",
@@ -94561,6 +95215,47 @@
     "notes": null,
     "english_keys": [
       "cable"
+    ]
+  },
+  {
+    "id": 9498,
+    "root": "zathor",
+    "meaning": "beacon, signal light or guiding transmitter",
+    "category": "Technology & Devices",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "beacon",
+      "guiding light",
+      "signal beacon"
+    ]
+  },
+  {
+    "id": 9448,
+    "root": "zecvar",
+    "meaning": "turnstile, rotating threshold or inversion gate",
+    "category": "Technology & Devices",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "inversion gate",
+      "rotating gate",
+      "turnstile"
+    ]
+  },
+  {
+    "id": 9487,
+    "root": "zilov",
+    "meaning": "earpiece, small device worn at or in the ear",
+    "category": "Technology & Devices",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "ear piece",
+      "earpiece"
     ]
   },
   {
@@ -96303,6 +96998,19 @@
     ]
   },
   {
+    "id": 9458,
+    "root": "nuvra",
+    "meaning": "peephole, small hole for looking through a barrier",
+    "category": "Tools & Objects",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "peephole",
+      "viewing hole"
+    ]
+  },
+  {
     "id": 833,
     "root": "nyiny",
     "meaning": "coat",
@@ -96791,6 +97499,19 @@
     ]
   },
   {
+    "id": 9489,
+    "root": "savlo",
+    "meaning": "lantern, carried or enclosed light source",
+    "category": "Tools & Objects",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "carried light",
+      "lantern"
+    ]
+  },
+  {
     "id": 2225,
     "root": "segma",
     "meaning": "table, flat surface",
@@ -96992,6 +97713,19 @@
     "notes": null,
     "english_keys": [
       "racket"
+    ]
+  },
+  {
+    "id": 9485,
+    "root": "teksav",
+    "meaning": "clipboard, portable writing board with a clamp",
+    "category": "Tools & Objects",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "clipboard",
+      "writing board"
     ]
   },
   {
@@ -98275,6 +99009,20 @@
     ]
   },
   {
+    "id": 9490,
+    "root": "qelvar",
+    "meaning": "appraisal, judged value or formal valuation",
+    "category": "Trade & Economy",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "appraisal",
+      "appraise",
+      "valuation"
+    ]
+  },
+  {
     "id": 3043,
     "root": "qleqo",
     "meaning": "check / written payment order",
@@ -98510,6 +99258,20 @@
     "notes": null,
     "english_keys": [
       "buy"
+    ]
+  },
+  {
+    "id": 9457,
+    "root": "zrelo",
+    "meaning": "freeport, bonded storage zone outside normal customs flow",
+    "category": "Trade & Economy",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "bonded warehouse",
+      "customs-free port",
+      "freeport"
     ]
   },
   {
@@ -100634,6 +101396,20 @@
     "notes": null,
     "english_keys": [
       "bus"
+    ]
+  },
+  {
+    "id": 9456,
+    "root": "cavu",
+    "meaning": "yacht, private leisure boat or luxury vessel",
+    "category": "Vehicles",
+    "source": "screenplay_gap_fill_20260710",
+    "timestamp": "2026-07-10T10:20",
+    "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
+    "english_keys": [
+      "luxury boat",
+      "private boat",
+      "yacht"
     ]
   },
   {

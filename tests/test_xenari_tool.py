@@ -234,7 +234,7 @@ def test_gap_harvest_captures_words_phrases_sounds_and_names(tmp_path):
 NYX:
 Hello Varek.
 
-(WHIRR. WHOOSH. DRIP.)
+(FZZARR.)
 LEE watches.
 The rustglass elevator hums.
 The rustglass elevator hums.
@@ -247,9 +247,7 @@ Her claws skittered across the floor.
     report = harvester.harvest_paths([script], phrase_min_count=2)
     buckets = report["buckets"]
 
-    assert any(item["key"] == "whirr" for item in buckets["sound_effects"])
-    assert any(item["key"] == "whoosh" for item in buckets["sound_effects"])
-    assert any(item["key"] == "drip" for item in buckets["sound_effects"])
+    assert any(item["key"] == "fzzarr" for item in buckets["sound_effects"])
     assert any(item["key"] == "varek" for item in buckets["names_places"])
     assert any(item["key"] == "lee" for item in buckets["names_places"])
     assert any(item["key"] == "int" for item in buckets["script_format_markers"])
@@ -268,7 +266,7 @@ Her claws skittered across the floor.
 def test_gaps_cli_writes_json_report(tmp_path):
     script = tmp_path / "script.txt"
     out = tmp_path / "gap-report.json"
-    script.write_text("MARA:\nShh. The rustglass door clicks.\nThe rustglass door clicks.\n", encoding="utf-8")
+    script.write_text("MARA:\nNnn. The rustglass door clicks.\nThe rustglass door clicks.\n", encoding="utf-8")
 
     result = subprocess.run(
         [
@@ -293,7 +291,7 @@ def test_gaps_cli_writes_json_report(tmp_path):
     assert f"wrote {out}" in result.stdout
     data = json.loads(out.read_text(encoding="utf-8"))
     assert data["summary"]["documents"] == 1
-    assert any(item["key"] == "shh" for item in data["buckets"]["vocalizations"])
+    assert any(item["key"] == "nnn" for item in data["buckets"]["vocalizations"])
     assert any(item["key"] == "the rustglass" for item in data["buckets"]["phrase_gaps"])
 
 
