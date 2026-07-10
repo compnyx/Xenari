@@ -307,7 +307,9 @@ class GapHarvester:
         sentence_index = 0
         current_speaker = None
         for line_no, raw_line in enumerate(text.splitlines(), 1):
-            line = TAG_RE.sub(" ", raw_line).replace("\u2019", "'").replace("\u2018", "'")
+            line = TAG_RE.sub(" ", raw_line).translate(str.maketrans({
+                "\u2019": "'", "\u2018": "'", "\u02bc": "'", "\uff07": "'", "`": "'",
+            }))
             stripped = line.strip()
             if not stripped:
                 current_speaker = None

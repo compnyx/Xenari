@@ -151,16 +151,18 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "sees": "toq",
             "seeing": "toq",
             "saw": "toq",
+            "seen": "toq",
             "look": "toq",
             "looks": "toq",
             "looked": "toq",
             "watch": "toq",
             "watches": "toq",
             "watched": "toq",
-            "hear": "cremp",
-            "hears": "cremp",
-            "listen": "cremp",
-            "listens": "cremp",
+            "hear": "cromq",
+            "hears": "cromq",
+            "heard": "cromq",
+            "listen": "grip",
+            "listens": "grip",
             "speak": "zuqra",
             "speaks": "zuqra",
             "spoke": "zuqra",
@@ -225,7 +227,8 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
                            "again", "further", "then", "once", "here", "there",
                            "all", "any", "both", "each", "few", "more", "most",
                            "other", "some", "such", "only", "own", "same", "than",
-                           "too", "s", "t", "can", "should", "now", "today"}
+                           "too", "s", "t", "can", "should", "now", "today",
+                           "yesterday", "tomorrow", "tonight"}
 
     def _load_from_db(self):
         """Load all roots and english mappings from the sqlite DB."""

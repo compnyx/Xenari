@@ -41,7 +41,8 @@ class TranslatorMixin:
             "what's": "what is",
             "isn't": "is not", "aren't": "are not", "wasn't": "was not",
             "weren't": "were not", "don't": "do not", "doesn't": "does not",
-            "didn't": "did not", "won't": "will not", "can't": "cannot",
+            "didn't": "did not", "won't": "will not", "can't": "can not",
+            "cannot": "can not",
             "wouldn't": "would not", "couldn't": "could not", "shouldn't": "should not",
             "mustn't": "must not", "haven't": "have not",
             "hasn't": "has not", "hadn't": "had not",
@@ -127,6 +128,11 @@ class TranslatorMixin:
         missing = ", ".join(dict.fromkeys(unknown))
         return f"[untranslated: {clean}; no Xenari root for: {missing}]"
 
+    def _unsupported_fragment(self, english: str, reason: str) -> str:
+        """Keep unsupported grammar readable instead of dropping its meaning."""
+        clean = re.sub(r"\s+", " ", english.strip().strip(".,!?;"))
+        return f"[untranslated: {clean}; unsupported grammar: {reason}]"
+
     def _english_subject_root(self, word: str):
         info = self.en_pronouns.get(word)
         if info:
@@ -179,6 +185,8 @@ class TranslatorMixin:
         question=False,
         polite=False,
         purpose=None,
+        goal_root=None,
+        negated=False,
     ) -> str:
         """Render a small, fully-known clause without inventing any roots."""
         parts = []
@@ -186,6 +194,8 @@ class TranslatorMixin:
             parts.extend(["ra", "nu", *object_roots])
         if location_root:
             parts.extend(["na", "nu", location_root])
+        if goal_root:
+            parts.extend(["fa", "nu", goal_root])
         parts.append("ka")
         subject_animacy = self._animacy_for(subject_root, default=self.p["inan"])
         if not self._is_pronoun_root(subject_root):
@@ -212,10 +222,31 @@ class TranslatorMixin:
             parts.extend([purpose_subject, "ta", purpose_verb])
             if not self._is_pronoun_root(purpose_subject):
                 parts.append(purpose_animacy)
+        if negated:
+            parts.append(self.p["neg"])
         return " ".join(parts)
 
     def _speak_common_pattern(self, normalized: str, evidence_root: str):
         """Handle common English frames whose structure is unambiguous."""
+        going_to_work = re.fullmatch(
+            r"(i|you|he|she|we|they)\s+(?:am|are|is)\s+(not\s+)?"
+            r"going\s+to\s+work(?:\s+(?:today|tomorrow))?",
+            normalized,
+        )
+        if going_to_work:
+            subject, negated = going_to_work.groups()
+            subject_root = self._english_subject_root(subject)
+            job_root, _ = self.lookup("job")
+            if subject_root and job_root:
+                return self._render_simple_frame(
+                    subject_root,
+                    self._known_verb_root("go"),
+                    goal_root=job_root,
+                    tense_root="ve",
+                    evidence_root=evidence_root,
+                    negated=bool(negated),
+                )
+
         copula = re.fullmatch(
             r"(this|that)\s+(is|was)\s+(?:a\s+)?(?:(test)\s+)?(sentence|utterance)",
             normalized,
@@ -337,6 +368,13 @@ class TranslatorMixin:
         """
         normalized = re.sub(r"[^a-z0-9' ]+", " ", english.lower())
         normalized = re.sub(r"\s+", " ", normalized).strip()
+        unsupported_superlatives = {
+            "best", "worst", "fastest", "slowest", "tallest", "shortest",
+            "biggest", "smallest", "newest", "oldest", "strongest", "weakest",
+        }
+        normalized_words = set(normalized.split())
+        if "than" in normalized_words or normalized_words & unsupported_superlatives:
+            return self._unsupported_fragment(english, "comparative/superlative")
         if evidential == "auto":
             evidential = "assumed"
         e = self.evidential_map.get(evidential, self.evidential_map["assumed"])
@@ -411,7 +449,12 @@ class TranslatorMixin:
         copula = False
         negated = False
         adjectives = []
-        question = False
+        yes_no_openers = {
+            "am", "are", "is", "was", "were", "do", "does", "did", "will",
+            "would", "shall", "should", "can", "could", "may", "might", "must",
+            "have", "has", "had",
+        }
+        question = bool(tokens and tokens[0] in yes_no_openers)
         obj_tokens = []
         unknown_words = []
 
@@ -440,6 +483,17 @@ class TranslatorMixin:
             if tok in {"have", "has", "had", "having"}:
                 if tense == "auto" and tok == "had":
                     tense = "past"
+                continue
+
+            if tok in {"do", "does", "did", "will", "would", "shall", "should",
+                       "can", "could", "may", "might", "must"}:
+                if tense == "auto":
+                    if tok == "did":
+                        tense = "past"
+                    elif tok in {"will", "would", "shall"}:
+                        tense = "future"
+                    elif tok in {"can", "could", "should", "may", "might", "must"}:
+                        tense = "potential"
                 continue
 
             # Question words

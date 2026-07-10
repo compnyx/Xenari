@@ -103,6 +103,26 @@
     {
       "english": "I approach the figure by the lake. The figure's hat blows off",
       "xenari": "ra vi loco na nu qlon ka neq ta frig sa xo. ra vi loco po brid ka vi cuq ta qruq vi sa xo"
+    },
+    {
+      "english": "I’m not going to work today",
+      "xenari": "fa nu kashatyong ka neq ta qeng ve xo ngu"
+    },
+    {
+      "english": "She didn’t kiss him yesterday",
+      "xenari": "ra leq ka leq ta nquxe lo xo ngu"
+    },
+    {
+      "english": "Can’t you hear the alarm?",
+      "xenari": "ra nu skump ka mex ta cromq pe xo ngu va"
+    },
+    {
+      "english": "Have you seen my hat?",
+      "xenari": "ra neq po brid ka mex ta toq sa xo va"
+    },
+    {
+      "english": "That is the fastest ship",
+      "xenari": "[untranslated: that is the fastest ship; unsupported grammar: comparative/superlative]"
     }
   ],
   "reverse": [

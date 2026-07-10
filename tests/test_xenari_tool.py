@@ -80,6 +80,15 @@ def test_kiss_and_bite_use_distinct_canon_roots():
     assert x.speak("I bite you", evidential="assumed") == "ra mex ka neq ta qruq' sa xo"
 
 
+def test_everyday_verb_overrides_use_established_roots():
+    x = Xenari(REPO / "xenari.db")
+
+    assert x._known_verb_root("hear") == "cromq"
+    assert x._known_verb_root("heard") == "cromq"
+    assert x._known_verb_root("listen") == "grip"
+    assert x._known_verb_root("seen") == "toq"
+
+
 def test_reverse_warns_when_recovering_malformed_clause_frames():
     x = Xenari(REPO / "xenari.db")
     malformed = (
@@ -325,6 +334,24 @@ Her claws skittered across the floor.
     assert "## Sound Effects" in markdown
     assert "## Phrase Gaps" in markdown
     assert "script.txt:" in markdown
+
+
+def test_gap_harvest_normalizes_all_supported_apostrophes():
+    x = Xenari(REPO / "xenari.db")
+    harvester = GapHarvester(x)
+    variants = ["I'm", "I’m", "I‘m", "Iʼm", "I＇m", "I`m"]
+
+    reports = [
+        harvester.harvest_documents([{"source": "dialogue", "text": variant}])
+        for variant in variants
+    ]
+
+    bucket_keys = [
+        {name: [item["key"] for item in entries] for name, entries in report["buckets"].items()}
+        for report in reports
+    ]
+    assert all(keys == bucket_keys[0] for keys in bucket_keys[1:])
+    assert bucket_keys[0]["covered_by_grammar"] == ["am"]
 
 
 def test_gaps_cli_writes_json_report(tmp_path):
