@@ -357,6 +357,60 @@
       "family": "stage-direction"
     },
     {
+      "english": "The door opens.",
+      "xenari": "ka nu zrump ta xleq nu sa xo",
+      "loop": 7,
+      "family": "intransitive",
+      "stress": true
+    },
+    {
+      "english": "The alien runs quickly.",
+      "xenari": "ka vi qex ta zaqa vi sa xo",
+      "loop": 7,
+      "family": "intransitive",
+      "stress": true
+    },
+    {
+      "english": "The dog runs slowly.",
+      "xenari": "ka vi zrenq ta zaqa vi sa xo",
+      "loop": 7,
+      "family": "animacy",
+      "stress": true
+    },
+    {
+      "english": "Why did the door open?",
+      "xenari": "voq ka nu zrump ta xleq nu lo xo",
+      "loop": 7,
+      "family": "question"
+    },
+    {
+      "english": "Why run?",
+      "xenari": "[partial: unsupported subjectless question: why run]",
+      "loop": 7,
+      "family": "question-gap",
+      "stress": true
+    },
+    {
+      "english": "The door opens and the alien runs.",
+      "xenari": "ka nu zrump ta xleq nu sa xo. xen ka vi qex ta zaqa vi sa xo",
+      "loop": 7,
+      "family": "coordination",
+      "stress": true
+    },
+    {
+      "english": "I run and she waits.",
+      "xenari": "ka neq ta zaqa sa xo. xen ka leq ta trekq sa xo",
+      "loop": 7,
+      "family": "coordination",
+      "stress": true
+    },
+    {
+      "english": "ALEX (V.O.): *bang bang* the door opens.",
+      "xenari": "tesena tesena. ka nu zrump ta xleq nu sa xo",
+      "loop": 7,
+      "family": "speaker-stage"
+    },
+    {
       "english": "If I see the alien, I will run.",
       "xenari": "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo",
       "loop": 3,
@@ -780,7 +834,15 @@
       "MARA (O.S.): Beep beep.",
       "NYX: [door slams] I run.",
       "(whispers) shhh.",
-      "*beep beep* she waits."
+      "*beep beep* she waits.",
+      "The door opens.",
+      "The alien runs quickly.",
+      "The dog runs slowly.",
+      "Why did the door open?",
+      "Why run?",
+      "The door opens and the alien runs.",
+      "I run and she waits.",
+      "ALEX (V.O.): *bang bang* the door opens."
     ],
     "known_differences": [
       {

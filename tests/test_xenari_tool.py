@@ -226,6 +226,36 @@ def test_loop6_fuzz_safety_corpus_is_shared_and_honest():
     assert " va" not in x.speak("Don't run.", evidential="assumed")
 
 
+def test_loop7_coordination_and_intransitive_fuzz_is_bounded():
+    x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
+    forward = [case for case in fixtures["forward"] if case.get("loop") == 7]
+    stress = [case for case in forward if case.get("stress")]
+
+    assert len(forward) >= 8
+    assert len(stress) >= 5
+    assert {case["family"] for case in forward} >= {
+        "animacy", "coordination", "intransitive",
+        "question", "question-gap", "speaker-stage",
+    }
+
+    assert x.speak("The door opens.", evidential="assumed") == "ka nu zrump ta xleq nu sa xo"
+    assert x.speak("The alien runs quickly.", evidential="assumed") == (
+        "ka vi qex ta zaqa vi sa xo"
+    )
+    assert x.speak("The dog runs slowly.", evidential="assumed") == (
+        "ka vi zrenq ta zaqa vi sa xo"
+    )
+    assert x.speak("I run and she waits.", evidential="assumed") == (
+        "ka neq ta zaqa sa xo. xen ka leq ta trekq sa xo"
+    )
+    assert x.speak("Why run?", evidential="assumed") == (
+        "[partial: unsupported subjectless question: why run]"
+    )
+    assert "ra nu zrump ka neq ta xleq" not in x.speak("The door opens.", evidential="assumed")
+    assert "ra nu xen" not in x.speak("I run and she waits.", evidential="assumed")
+
+
 def test_loop3_reverse_reads_structured_clause_boundaries():
     x = Xenari(REPO / "xenari.db")
 

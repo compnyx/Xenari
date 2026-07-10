@@ -135,11 +135,22 @@ class TranslatorMixin:
                     if not comma_part:
                         continue
 
-                major_parts = re.split(r"\s+(?=once\b)", comma_part)
+                major_parts = re.split(
+                    r"\s+(?=(?:and|but|or|yet)\s+"
+                    r"(?:(?:i|you|he|she|we|they)\b|"
+                    r"(?:the|a|an)\s+[a-z][a-z'-]*\s+[a-z][a-z'-]*\b))"
+                    r"|\s+(?=once\b)",
+                    comma_part,
+                )
                 for major_index, major_part in enumerate(major_parts):
                     major_part = major_part.strip()
                     major_connector = connector if major_index == 0 else "once"
-                    if major_part.startswith("once "):
+                    connector_match = re.match(r"^(and|but|or|yet)\s+(.+)$", major_part)
+                    if connector_match:
+                        major_connector = connector_match.group(1)
+                        major_part = connector_match.group(2).strip()
+                    elif major_part.startswith("once "):
+                        major_connector = "once"
                         major_part = major_part[5:].strip()
                     subject_parts = [part.strip() for part in independent_subject.split(major_part) if part.strip()]
                     antecedent = None
@@ -185,6 +196,7 @@ class TranslatorMixin:
         reviewed_overrides = {
             "slams": "tulo",
             "whisper": "tyequga", "whispers": "tyequga", "whispered": "tyequga",
+            "ran": "zaqa",
         }
         if clean in reviewed_overrides:
             return reviewed_overrides[clean]
@@ -232,6 +244,7 @@ class TranslatorMixin:
         purpose=None,
         goal_root=None,
         negated=False,
+        subject_animacy=None,
     ) -> str:
         """Render a small, fully-known clause without inventing any roots."""
         parts = []
@@ -242,7 +255,7 @@ class TranslatorMixin:
         if goal_root:
             parts.extend(["fa", "nu", goal_root])
         parts.append("ka")
-        subject_animacy = self._animacy_for(subject_root, default=self.p["inan"])
+        subject_animacy = subject_animacy or self._animacy_for(subject_root, default=self.p["inan"])
         if not self._is_pronoun_root(subject_root):
             parts.append(subject_animacy)
         parts.extend([subject_root, "ta", verb_root])
@@ -1039,6 +1052,13 @@ class TranslatorMixin:
         unsupported_command_verbs = {
             "help", "hide", "reverse", "reverse engineer", "run", "translate",
         }
+        subjectless_question = re.fullmatch(r"why\s+(.+)", clean)
+        if subjectless_question:
+            phrase = subjectless_question.group(1).strip()
+            head = "reverse engineer" if phrase.startswith("reverse engineer") else phrase.split(maxsplit=1)[0]
+            if head in unsupported_command_verbs:
+                return self._partial_frame("", f"unsupported subjectless question: why {phrase}")
+
         negated = re.fullmatch(r"(?:please\s+)?do not\s+(.+?)(?:\s+please)?", clean)
         if negated:
             phrase = negated.group(1).strip()
@@ -1086,7 +1106,9 @@ class TranslatorMixin:
 
         safe_intransitive = re.fullmatch(
             r"(?:(why)\s+did\s+)?(?:the\s+|an?\s+)?"
-            r"([a-z][a-z'-]*)\s+(stop|stopped|slam|slams|slammed)",
+            r"([a-z][a-z'-]*)\s+"
+            r"(open|opens|opened|run|runs|ran|wait|waits|waited|stop|stopped|slam|slams|slammed)"
+            r"(?:\s+(?:quickly|slowly|quietly|loudly))?",
             normalized,
         )
         if safe_intransitive:
@@ -1094,12 +1116,13 @@ class TranslatorMixin:
             subject_root, _ = self.lookup(subject_word)
             verb_root = self._known_verb_root(verb_word)
             if subject_root and verb_root:
-                tense_root = "lo" if interrogative or verb_word.endswith("ed") else "sa"
+                tense_root = "lo" if interrogative or verb_word.endswith("ed") or verb_word == "ran" else "sa"
                 rendered = self._render_simple_frame(
                     subject_root,
                     verb_root,
                     tense_root=tense_root,
                     evidence_root=evidence_root,
+                    subject_animacy=self._reviewed_animacy(subject_word, subject_root),
                 )
                 return f"{interrogative_roots[interrogative]} {rendered}" if interrogative else rendered
 

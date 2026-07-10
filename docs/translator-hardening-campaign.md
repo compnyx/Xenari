@@ -1,6 +1,6 @@
 # Xenari Translator Hardening Campaign
 
-Status: Loop 6 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
+Status: Loop 7 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
 
 ## Campaign guardrails
 
@@ -429,3 +429,25 @@ Final Loop 6 gate:
 - `npm run test:xenari`: translator, 37-row drift, and page contracts passed; drift report has 36 matches, 1 recorded known mismatch, 0 unexpected
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
+
+## Loop 7 findings
+
+- Local fuzzing after the Loop 6 deploy exposed another fallback-parser cluster: simple intransitives like “The door opens.” and “The alien runs quickly.” could still become fake object-first first-person clauses.
+- Coordination without auxiliary verbs, such as “I run and she waits.”, was not split at the connector seam and could treat `and`/`xen` as a noun object.
+- “Why run?” was a subjectless question, but the fallback parser rendered it as if the speaker were asking why they personally run.
+- Python and browser disagreed on `dog` animacy for the safe intransitive path until the Python renderer accepted the reviewed subject animacy.
+
+## Loop 7 changes
+
+- Added bounded safe-intransitive handling for reviewed open/run/wait/stop/slam forms, including simple adverbs and reviewed `why did ...` questions.
+- Added a narrow coordination seam for connector plus independent subject clauses, covering cases like “The door opens and the alien runs.” without splitting ordinary noun phrases.
+- Added an honest subjectless-question partial for “Why run?”-style inputs.
+- Passed reviewed subject animacy into the Python simple-frame renderer so animate nouns such as `dog` stay animate in both translators.
+- Added eight Loop 7 shared fixtures and expanded the drift corpus from 37 to 45 sentences. It now reports 44 exact matches, the unchanged approved `they` mismatch, and zero unexpected differences.
+- No root, English mapping, DB row, or generated dictionary changed.
+
+Final Loop 7 gate:
+
+- `pytest -q`: 34 passed
+- `python3 xenari_tool.py parity`: 115 forward and 27 reverse fixtures passed
+- `npm run test:xenari`: translator, 45-row drift, and page contracts passed; drift report has 44 matches, 1 recorded known mismatch, 0 unexpected
