@@ -228,6 +228,12 @@
       "family": "dialogue"
     },
     {
+      "english": "Alright that sounds good.",
+      "xenari": "stux. naxq",
+      "loop": 10,
+      "family": "casual-agreement"
+    },
+    {
       "english": "Don’t open the door.",
       "xenari": "ra nu zrump ta xleq vi ko xo ngu",
       "loop": 5,
