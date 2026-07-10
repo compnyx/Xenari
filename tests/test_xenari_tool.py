@@ -282,6 +282,25 @@ def test_loop8_transitive_coordination_uses_reviewed_roles():
     assert "ra vi qex xen" not in x.speak("I see the alien and run.", evidential="assumed")
 
 
+def test_loop9_colon_quotes_do_not_become_speaker_labels():
+    x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
+    forward = [case for case in fixtures["forward"] if case.get("loop") == 9]
+
+    assert len(forward) >= 3
+    assert {case["family"] for case in forward} >= {"colon-quote", "speaker-colon"}
+    assert x.speak("She whispers: shhh.", evidential="assumed") == (
+        "ka leq ta tyequga sa xo. shava"
+    )
+    assert x.speak("ALEX: She whispers: shhh.", evidential="assumed") == (
+        "ka leq ta tyequga sa xo. shava"
+    )
+    assert x.speak("ALEX: She says: run.", evidential="assumed") == (
+        "ka leq ta krimp sa xo. [partial: unsupported imperative: run]"
+    )
+    assert x.speak("NYX: Shhh.", evidential="assumed") == "shava"
+
+
 def test_loop3_reverse_reads_structured_clause_boundaries():
     x = Xenari(REPO / "xenari.db")
 

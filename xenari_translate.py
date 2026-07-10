@@ -34,12 +34,18 @@ class TranslatorMixin:
         """Drop screenplay-style speaker labels before clause splitting."""
         stripped_lines = []
         label_re = re.compile(
-            r"^\s*[A-Za-z][A-Za-z0-9 .'\-]{0,40}"
-            r"(?:\s*\([A-Za-z0-9 .'\-]{1,12}\))?\s*:\s*(.*)$"
+            r"^\s*([A-Za-z][A-Za-z0-9 .'\-]{0,40}"
+            r"(?:\s*\([A-Za-z0-9 .'\-]{1,12}\))?)\s*:\s*(.*)$"
         )
         for line in text.splitlines() or [text]:
             match = label_re.match(line)
-            stripped_lines.append(match.group(1) if match else line)
+            if match:
+                label, rest = match.groups()
+                label_core = re.sub(r"\([^)]*\)", "", label)
+                if not re.search(r"[a-z]", label_core):
+                    stripped_lines.append(rest)
+                    continue
+            stripped_lines.append(line)
         return "\n".join(stripped_lines)
 
     def _expand_english_contractions(self, text: str) -> str:
@@ -79,6 +85,7 @@ class TranslatorMixin:
         expanded = re.sub(r"\[\s*([^\]\n]+?)\s*\]", r". \1. ", expanded)
         expanded = re.sub(r"\(\s*([^\)\n]+?)\s*\)", r". \1. ", expanded)
         expanded = re.sub(r"\*\s*([^*\n]+?)\s*\*", r". \1. ", expanded)
+        expanded = re.sub(r":\s*", ". ", expanded)
         expanded = re.sub(r'(?<=[a-z0-9])\s+"\s*(?=[a-z0-9])', ". ", expanded)
         expanded = expanded.replace('"', " ")
         expanded = re.sub(r"\s*[—–]\s*", ". ", expanded)

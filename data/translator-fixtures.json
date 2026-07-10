@@ -458,6 +458,27 @@
       "family": "transitive"
     },
     {
+      "english": "She whispers: shhh.",
+      "xenari": "ka leq ta tyequga sa xo. shava",
+      "loop": 9,
+      "family": "colon-quote",
+      "stress": true
+    },
+    {
+      "english": "ALEX: She whispers: shhh.",
+      "xenari": "ka leq ta tyequga sa xo. shava",
+      "loop": 9,
+      "family": "speaker-colon",
+      "stress": true
+    },
+    {
+      "english": "ALEX: She says: run.",
+      "xenari": "ka leq ta krimp sa xo. [partial: unsupported imperative: run]",
+      "loop": 9,
+      "family": "speaker-colon",
+      "stress": true
+    },
+    {
       "english": "If I see the alien, I will run.",
       "xenari": "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo",
       "loop": 3,
@@ -896,7 +917,10 @@
       "The dog sees the alien and runs.",
       "I see the alien and run.",
       "I open the door and run.",
-      "The translator translates the sentence."
+      "The translator translates the sentence.",
+      "She whispers: shhh.",
+      "ALEX: She whispers: shhh.",
+      "ALEX: She says: run."
     ],
     "known_differences": [
       {

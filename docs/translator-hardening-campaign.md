@@ -1,6 +1,6 @@
 # Xenari Translator Hardening Campaign
 
-Status: Loop 8 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
+Status: Loop 9 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
 
 ## Campaign guardrails
 
@@ -473,3 +473,27 @@ Final Loop 8 gate:
 - `pytest -q`: 35 passed
 - `python3 xenari_tool.py parity`: 122 forward and 27 reverse fixtures passed
 - `npm run test:xenari`: translator, 52-row drift, and page contracts passed; drift report has 51 matches, 1 recorded known mismatch, 0 unexpected
+
+## Loop 9 findings
+
+- Codex CLI could be launched after the retry window, but this OpenClaw process did not have usable Codex auth and the CLI failed with `401 Unauthorized`, so Loop 9 continued locally.
+- The speaker-label stripper was too broad: a normal sentence like “She whispers: shhh.” matched as if `She whispers:` were a screenplay speaker label, dropping the verb.
+- Colon quote seams were not explicit, so speaker-plus-colon dialogue could either lose quoted content or force it into an object slot.
+
+## Loop 9 changes
+
+- Restricted speaker-label stripping to uppercase screenplay-style labels, preserving mixed-case sentence text before colons.
+- Added colon seams after speaker stripping so “She whispers: shhh.” becomes a speech/action clause plus a `shava` fragment.
+- Added three Loop 9 fixtures for colon quotes and uppercase speaker labels.
+- Expanded the drift corpus from 52 to 55 sentences.
+- No root, English mapping, DB row, or generated dictionary changed.
+
+Final Loop 9 gate:
+
+- `pytest -q`: 36 passed
+- `python3 xenari_tool.py doctor`: status ok
+- `python3 xenari_tool.py parity`: 125 forward and 27 reverse fixtures passed
+- `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
+- `npm run test:xenari`: translator, 55-row drift, and page contracts passed; drift report has 54 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run build`: 16 pages built successfully
+- `git diff --check`: clean in both repositories
