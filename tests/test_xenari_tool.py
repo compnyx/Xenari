@@ -71,6 +71,15 @@ def test_work_senses_and_unknown_subjects_do_not_become_fake_roots():
     )
 
 
+def test_kiss_and_bite_use_distinct_canon_roots():
+    x = Xenari(REPO / "xenari.db")
+
+    assert x.lookup("kiss") == ("nquxe", "to kiss / to press lips together")
+    assert x.lookup("bite") == ("qruq'", "to bite")
+    assert x.speak("I kiss you", evidential="assumed") == "ra mex ka neq ta nquxe sa xo"
+    assert x.speak("I bite you", evidential="assumed") == "ra mex ka neq ta qruq' sa xo"
+
+
 def test_reverse_warns_when_recovering_malformed_clause_frames():
     x = Xenari(REPO / "xenari.db")
     malformed = (

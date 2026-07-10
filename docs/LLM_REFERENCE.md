@@ -44,7 +44,8 @@ When a pronoun is the subject, do not repeat animacy on the verb.
 
 - `neq` = first person, I/me/we/us by context
 - `mex` = second person, you
-- `zeq` = third person, they/them by context
+- `leq` = present third person, he/she/it/him/her by context
+- `zeq` = indefinite/abstract third person, they/them by context
 
 Correct:
 
@@ -125,6 +126,14 @@ Pronoun possessors render as English possessive pronouns:
 ra neq po brid ka vi cuq ta qruq vi sa xo
 The wind blows my hat away.
 ```
+
+## Connectors And Clause Particles
+
+- `kex` = but / contrastive
+- `xen` = and
+- `noq` = or
+- `truq` = concessive, even though / despite
+- `su` ... `ti` = subordinate clause frame
 
 ## Translation Guidance
 
