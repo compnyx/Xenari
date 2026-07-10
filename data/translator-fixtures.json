@@ -134,11 +134,16 @@
     },
     {
       "english": "Wait—what?",
-      "xenari": "ta trekq vi ko xo. qan"
+      "xenari": "ta trekq vi ko xo. qan",
+      "loop": 5,
+      "family": "dialogue",
+      "stress": true
     },
     {
       "english": "Hey, are you there?",
-      "xenari": "prax. ra nu qroxang ka mex ta zux sa xo va"
+      "xenari": "prax. ra nu qroxang ka mex ta zux sa xo va",
+      "loop": 5,
+      "family": "dialogue"
     },
     {
       "english": "the elevator stopped",
@@ -167,6 +172,116 @@
     {
       "english": "I have broken the door",
       "xenari": "ra nu zrump ka neq ta zont lo xo"
+    },
+    {
+      "english": "Bang! The door slammed.",
+      "xenari": "tesena. ka nu zrump ta tulo nu lo xo",
+      "loop": 5,
+      "family": "sound"
+    },
+    {
+      "english": "Shhh, listen to the wind.",
+      "xenari": "shava. fa vi cuq ta grip vi ko xo",
+      "loop": 5,
+      "family": "imperative"
+    },
+    {
+      "english": "Ugh... the elevator is broken.",
+      "xenari": "[untranslated: ugh; no Xenari root for: ugh]. spokta [partial: unsupported predicate state: broken]",
+      "loop": 5,
+      "family": "vocalization-gap",
+      "stress": true
+    },
+    {
+      "english": "Beep beep beep.",
+      "xenari": "nqozo nqozo nqozo",
+      "loop": 5,
+      "family": "sound",
+      "stress": true
+    },
+    {
+      "english": "No, I won’t.",
+      "xenari": "nguq. [partial: omitted predicate after i will not]",
+      "loop": 5,
+      "family": "dialogue",
+      "stress": true
+    },
+    {
+      "english": "I said, “Don’t touch that.”",
+      "xenari": "ka neq ta krimp lo xo. ra nu zra ta qabrerd vi ko xo ngu",
+      "loop": 5,
+      "family": "quote",
+      "stress": true
+    },
+    {
+      "english": "Yes? Fine.",
+      "xenari": "naxq. stux",
+      "loop": 5,
+      "family": "dialogue"
+    },
+    {
+      "english": "Don’t open the door.",
+      "xenari": "ra nu zrump ta xleq vi ko xo ngu",
+      "loop": 5,
+      "family": "imperative"
+    },
+    {
+      "english": "Please stop.",
+      "xenari": "ta semax vi ko xo naxru",
+      "loop": 5,
+      "family": "imperative"
+    },
+    {
+      "english": "Listen!",
+      "xenari": "ta grip vi ko xo",
+      "loop": 5,
+      "family": "imperative"
+    },
+    {
+      "english": "The alarm goes beep beep.",
+      "xenari": "skump nqozo nqozo [partial: unsupported sound-report frame: goes]",
+      "loop": 5,
+      "family": "sound-report",
+      "stress": true
+    },
+    {
+      "english": "She whispered, “shhh.”",
+      "xenari": "ka leq ta tyequga lo xo. shava",
+      "loop": 5,
+      "family": "quote"
+    },
+    {
+      "english": "[door slams] I run.",
+      "xenari": "ka nu zrump ta tulo nu sa xo. ka neq ta zaqa sa xo",
+      "loop": 5,
+      "family": "stage-direction",
+      "stress": true
+    },
+    {
+      "english": "I said “Listen!”",
+      "xenari": "ka neq ta krimp lo xo. ta grip vi ko xo",
+      "loop": 5,
+      "family": "quote",
+      "stress": true
+    },
+    {
+      "english": "Shhh… Listen!",
+      "xenari": "shava. ta grip vi ko xo",
+      "loop": 5,
+      "family": "typography",
+      "stress": true
+    },
+    {
+      "english": "Huh? Uh... Ah! Ouch.",
+      "xenari": "xeha. ux. aza. oxu",
+      "loop": 5,
+      "family": "vocalization"
+    },
+    {
+      "english": "Whirr—whoosh. Drip.",
+      "xenari": "glivun. qelto. priva",
+      "loop": 5,
+      "family": "sound"
     },
     {
       "english": "If I see the alien, I will run.",
@@ -525,6 +640,12 @@
       "english": "I opened door so that I help you",
       "loop": 3,
       "family": "purpose"
+    },
+    {
+      "xenari": "ka leq ta tyequga lo xo",
+      "english": "he/she/it whispered",
+      "loop": 5,
+      "family": "quote"
     }
   ],
   "hardening": {
@@ -562,7 +683,20 @@
       "I opened the door to help you.",
       "When the door opens, I run.",
       "The person who broke the door runs.",
-      "The alien that the woman said she saw ran."
+      "The alien that the woman said she saw ran.",
+      "Bang! The door slammed.",
+      "Shhh, listen to the wind.",
+      "Ugh... the elevator is broken.",
+      "Beep beep beep.",
+      "No, I won’t.",
+      "I said, “Don’t touch that.”",
+      "Yes? Fine.",
+      "Don’t open the door.",
+      "Please stop.",
+      "Listen!",
+      "The alarm goes beep beep.",
+      "She whispered, “shhh.”",
+      "[door slams] I run."
     ],
     "known_differences": [
       {

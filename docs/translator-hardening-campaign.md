@@ -1,6 +1,6 @@
 # Xenari Translator Hardening Campaign
 
-Status: Loop 4 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
+Status: Loop 5 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
 
 ## Campaign guardrails
 
@@ -39,6 +39,12 @@ Starting revisions were Xenari `9eb9774` and nyx-site `ed5084a`; both worktrees 
 
 The Codex CLI pass stalled after a partial Python-only patch, so Nyx killed only that hung loop process, reviewed the partial diff, and finished the Python/browser parity, fixture, documentation, and site-release work manually.
 
+## Loop 5 baseline
+
+Starting revisions were Xenari `f74143f` and nyx-site `7b75da6`; both worktrees were clean. The Loop 4 baseline passed with 30 Python tests, 79 forward fixtures, 26 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting twelve drift matches plus the one approved `they` mismatch.
+
+The 15-row dialogue audit had no crashes, but repeated sounds collapsed, browser fragments gained fake animacy particles, imperative punctuation triggered `va`, generic parsing invented first-person command subjects, inline stage directions merged with narration, and the gap harvester discarded inline `SPEAKER: dialogue` text.
+
 ## Command and test inventory
 
 | Area | Command or file | What it checks |
@@ -62,10 +68,10 @@ The Codex CLI pass stalled after a partial Python-only patch, so Nyx killed only
 2. The DB export has no authoritative part-of-speech field. The browser infers POS from category/definition text, so roots such as `build`, `say`, `touch`, and `slam` can load as nouns even when the translator needs a verb sense.
 3. Common English inflections in the DB can outrank the intended base concept (`said`, `seen`, `stopped`, and similar script-gap rows). Translator overrides currently protect only selected verbs.
 4. The generic Python forward parser handles pronoun-first transitive clauses best. Noun subjects, imperatives, WH subjects, obliques, and multiple nouns can be assigned the wrong role without becoming unknown.
-5. Clause splitting is intentionally conservative but loses some punctuation/ellipsis intent. Python infers yes/no questions from opening auxiliaries; the browser retains terminal punctuation.
+5. Clause splitting now aligns reviewed quote, dash, ellipsis, and bracketed-stage seams. It still juxtaposes quoted speech rather than encoding a speech-complement relation, and arbitrary nested quotation remains unsupported.
 6. Conditionals, relative clauses, temporal subordination, and purpose clauses now share bounded reviewed frames. Nested clauses, object-gap relatives, stative conditions, and omitted predicates still require explicit partial fallbacks.
 7. Superlative and modifier noun phrases now have a bounded shared implementation using reviewed roots such as `qruv`, `xant`, `qrunq`, `vriq`, and `po`. Comparatives use `maq` only for the compared quality and remain readable partials because canon has no settled comparison-standard marker; stale `qren`, `trox`, and `xlu` guesses are explicitly forbidden by tests.
-8. Sound effects and vocalizations resolve to canon roots, but bare-fragment particles and inflected action readings differ between Python and the browser.
+8. Reviewed sound effects and vocalizations now render as aligned bare lexical fragments with repetition preserved. Unreviewed forms remain explicit gaps, and arbitrary English sound-report syntax is not treated as a verb frame.
 9. Reverse translation is a heuristic reader, not a full validator. It warns on malformed frames but cannot prove semantic round-trip fidelity.
 
 ## Python/site drift risks
@@ -104,18 +110,19 @@ All 30 inputs were run through `python3 xenari_tool.py translate`; the same corp
 | 19 | The alien is taller than the human. | comparative | fixed as a readable partial: quality plus `maq` is translated, while the “than …” standard is preserved in a compact warning |
 | 20 | This tool is better than that tool. | irregular comparative | fixed as the same readable partial frame using `nax maq` and the demonstrative object phrase |
 | 21 | That is the fastest ship. | superlative | fixed and shared-fixtured as `suhpi kag qruv` in a copular frame |
-| 22 | Bang! The door slammed. | sound effect, past action | remaining: sound root is known; `slammed` and bare-fragment rendering drift |
-| 23 | Shhh, listen to the wind. | vocalization, imperative | Python stale `listen` root fixed to `grip`; imperative/fragment drift remains |
-| 24 | Ugh... the elevator is broken. | vocalization, predicate | remaining: `ugh` is a real gap candidate and `broken` is not safely predicative |
-| 25 | Beep beep beep. | repeated sound effect | root resolves; browser adds a bare-fragment animacy particle that Python omits |
-| 26 | No, I won’t. | dialogue ellipsis, negation | remaining: missing elided predicate produces empty-looking clauses |
+| 22 | Bang! The door slammed. | sound effect, past action | fixed and shared-fixtured as bare `tesena` plus the reviewed past intransitive `tulo` frame |
+| 23 | Shhh, listen to the wind. | vocalization, imperative | fixed and shared-fixtured as bare `shava` plus a goal-marked `grip` imperative using `fa … ko xo` |
+| 24 | Ugh... the elevator is broken. | vocalization, predicate | honest shared partial: `ugh` remains an explicit missing vocalization and `spokta` is retained without claiming that action `zont` means a broken state |
+| 25 | Beep beep beep. | repeated sound effect | fixed and shared-fixtured as three bare `nqozo` roots with no fake animacy particle |
+| 26 | No, I won’t. | dialogue ellipsis, negation | fixed as refusal `nguq` plus a compact missing-predicate partial; no empty-looking pronoun clause remains |
 | 27 | Wait—what? | em dash, dialogue question | fixed and shared-fixtured as an imperative `trekq` clause plus bare `qan`; em/en dashes now form conservative clause seams |
 | 28 | Hey, are you there? | greeting plus question | fixed and shared-fixtured as `prax` plus a `qroxang` copular yes/no clause ending in `va` |
-| 29 | I said, “Don’t touch that.” | quoted dialogue, smart punctuation | curly/ASCII quote normalization aligned; speech and imperative semantics remain |
-| 30 | Yes? Fine. | dialogue fragments | no crash, but roots/register and bare-fragment particles drift |
+| 29 | I said, “Don’t touch that.” | quoted dialogue, smart punctuation | fixed as a past `krimp` clause plus a separate negated `qabrerd` imperative; quotation relation remains conservative juxtaposition |
+| 30 | Yes? Fine. | dialogue fragments | fixed and shared-fixtured with reviewed `naxq` affirmation and casual agreement `stux`, both bare |
 
 The table is cumulative. Loop 3 promotes rows 10–18 into shared exact or readable-partial contracts without claiming support for their more complex variants.
 Loop 4 promotes rows 19–21 and a broader possessive/quantity modifier corpus into shared exact or readable-partial contracts without inventing a canon “than” marker.
+Loop 5 promotes rows 22–30 plus the requested imperative, quote, stage-direction, sound-report, and typographic variants into shared exact or readable-partial contracts without adding a root or DB mapping.
 
 ## Loop 1 changes
 
@@ -204,10 +211,10 @@ Loop 4 promotes rows 19–21 and a broader possessive/quantity modifier corpus i
 
 ### Loop 5 — dialogue, sounds, and gap tooling
 
-- [ ] Fix ellipsis, quote boundaries, em dashes, and imperative fragments.
-- [ ] Decide fragment rendering for sound effects/vocalizations and align both engines.
-- [ ] Review `ugh` and other recurring everyday vocalizations DB-first; coin only reviewed gaps.
-- [ ] Expand gap-tool tests for typography, repeated sounds, speaker labels, and stage directions.
+- [x] Fix reviewed ellipsis, quote boundaries, em dashes, bracketed stage seams, and imperative fragments.
+- [x] Render reviewed sound effects/vocalizations as bare lexical roots and preserve repetition in both engines.
+- [x] Review `ugh` DB-first and preserve it as a vocalization gap rather than coining or substituting a root.
+- [x] Expand gap-tool tests for typography, repeated sounds, inline speaker labels, and inline stage directions.
 
 ### Loop 6 — fuzzing, reverse safety, and release gate
 
@@ -336,3 +343,52 @@ Remaining failures carried forward from Loop 4:
 - Canon still lacks a settled comparison-standard marker, so comparative standards are preserved as partial notes rather than encoded in Xenari grammar.
 - Dialogue/sound rows 22–30 remain assigned to Loop 5.
 - Initial interrogative `when`, interrogative `who`, `they` ordinal ambiguity, stative conditions, missing predicates, and nested/object-gap relatives remain unchanged from Loop 3.
+
+## Loop 5 findings
+
+- Canon already contains reviewed fragment roots for the requested known sounds and vocalizations: `tesena` bang, `nqozo` beep, `shava` shhh, `xeha` huh, `ux` uh, `aza` ah, `oxu` ouch, `glivun` whirr, `qelto` whoosh, and `priva` drip. Fragment rendering did not need new vocabulary.
+- Canon has no `ugh` root or English mapping. Search produced only unrelated fuzzy matches, so Loop 5 keeps it as `[untranslated: ugh; no Xenari root for: ugh]` and lets the gap harvester classify it as a vocalization candidate.
+- `nguq` is the reviewed refusal “no,” `naxq` the reviewed affirmation “yes,” and `stux` casual agreement “ok/fine.” Broad lookup collisions had produced a trap-weapon root, a plural-looking unrelated root, and adjectival thin/fine readings in dialogue fragments.
+- The published grammar explicitly defines `ko` as imperative tense, `xo` as the default imperative evidential, and imperative negation as `ko xo ngu`. Commands do not require an invented first-person `ka neq` subject and exclamation punctuation is not yes/no `va`.
+- `groz` is the existing whisper fragment/noun, while `tyequga` is the reviewed verb “makes soft whispering sounds”; the direct `whispered` mapping resolves to the noun-like `vpogrkep` hushed speech. `tulo` is the reviewed slam root while `slams` can collide with a separate inflection row. Narrow translator overrides select the established verb/action roots without changing canon mappings.
+- Canon does not establish an English-style quotation/complement particle for these frames. Loop 5 treats quote openings as conservative clause seams and renders speech plus quoted content as adjacent clauses rather than inventing a relation.
+- Gap harvesting had three concrete extraction flaws: an inline `SPEAKER: dialogue` line was wholly discarded, inline `[stage direction] narration` received no stage metadata, and phrase windows could cross ellipses/dashes or line boundaries. Repeated unknown onomatopoeia outside brackets also fell into the name/gap buckets.
+
+## Loop 5 changes
+
+- Added a bounded Loop 5 frame in both translators for reviewed bare fragments, repeated sounds, imperative wait/listen/stop/open/touch frames, missing modal predicates, stative “broken” partials, and the unsupported “alarm goes beep” relation.
+- Preserved repeated roots exactly and removed browser-only fragment animacy particles. Reviewed dialogue `yes`, `no`, and `fine` now select `naxq`, `nguq`, and `stux` rather than lookup collisions.
+- Normalized curly/ASCII quote openings, Unicode ellipsis, em/en dashes, and bracketed stage directions into aligned clause seams. The existing `Wait—what?` and `Hey, are you there?` contracts remain unchanged.
+- Added 19 forward and one reverse Loop 5 shared fixtures across dialogue, imperative, quote, sound, sound-report, stage-direction, typography, known vocalization, and vocalization-gap families. Nine forward cases are marked stress cases.
+- Expanded the paired Python/browser drift corpus from thirteen to 26 sentences. It now reports 25 exact matches, the unchanged approved `they` mismatch, and zero unexpected differences.
+- Fixed the read-only gap harvester to retain inline speaker dialogue, annotate only inline stage spans, separate phrase windows at typographic punctuation/stage transitions/line boundaries, count repeated sounds, and recognize bounded repeated-consonant onomatopoeia.
+- No root, English mapping, DB row, or generated dictionary changed, so dictionary sync was intentionally not run.
+
+## Loop 5 release checklist
+
+- [x] Inspect both clean worktrees, the Loop 4 handoff, translator code, shared fixtures, tests, grammar docs, and gap-harvester implementation before editing.
+- [x] Run all 15 requested seeds through Python and the browser and verify every selected root through DB-aware `inspect`/`search` commands.
+- [x] Mirror every translator behavior change in Python and browser code and cover it with shared fixtures plus focused runtime tests.
+- [x] Add gap-tool regressions for repeated sounds, inline stage directions, inline/standalone speaker labels, and typographic punctuation.
+- [x] Keep `ugh` as an honest vocalization gap and make no canon/generated-data edits.
+- [x] Update both site changelogs and bump `translatorAssetVersion` (`20260710-hardening-loop5`).
+- [x] Run and record the final full local gate after all documentation changes.
+
+Final Loop 5 gate:
+
+- `pytest -q`: 32 passed
+- `python3 xenari_tool.py doctor`: status ok
+- `python3 xenari_tool.py parity`: 96 forward and 27 reverse fixtures passed
+- `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
+- `npm run test:xenari`: translator, 26-row drift, and page contracts passed; drift report has 25 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run build`: 16 pages built successfully
+- `git diff --check`: clean in both repositories
+
+Items carried to Loop 6:
+
+- Keep the existing `they` Python/browser difference unchanged until grammar/canon establishes a default English ordinal reading.
+- Fuzz nested/malformed quotes, unmatched brackets, speaker labels with parentheticals, punctuation-only input, and long repeated-sound runs; Loop 5 covers reviewed seams, not a general screenplay parser.
+- Review additional imperative verbs one bounded argument frame at a time. Unreviewed English verb-first clauses should not be assumed to share the five Loop 5 command frames.
+- Decide through canon curation whether recurring `ugh` deserves a root; do not substitute `ux`, `aza`, or another nearby vocalization automatically.
+- Reverse translation still treats bare roots and imperative subjects heuristically and does not reconstruct quotation or stage-direction boundaries.
+- Existing unresolved `when`/`who`, comparison-standard, stative condition, missing conditional predicate, and nested/object-gap relative issues remain in scope for the final safety/fuzz audit rather than being silently generalized here.

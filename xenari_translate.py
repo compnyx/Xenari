@@ -57,6 +57,15 @@ class TranslatorMixin:
     def _split_english_clauses(self, text: str) -> List[Tuple[str, str]]:
         """Split prose at sentence boundaries and high-confidence clause seams."""
         expanded = self._expand_english_contractions(text)
+        expanded = expanded.translate(str.maketrans({
+            "“": '"', "”": '"', "„": '"', "‟": '"', "…": ".",
+        }))
+        # Bracketed stage directions and opening dialogue quotes are clause
+        # seams.  Keeping them separate prevents their words from being
+        # assigned fake roles in the adjacent spoken/narrated clause.
+        expanded = re.sub(r"\[\s*([^\]\n]+?)\s*\]", r". \1. ", expanded)
+        expanded = re.sub(r'(?<=[a-z0-9])\s+"\s*(?=[a-z0-9])', ". ", expanded)
+        expanded = expanded.replace('"', " ")
         expanded = re.sub(r"\s*[—–]\s*", ". ", expanded)
         clauses: List[Tuple[str, str]] = []
         connector_words = {"and", "but", "or", "however", "once", "so", "yet"}
@@ -158,6 +167,12 @@ class TranslatorMixin:
     def _known_verb_root(self, word: str):
         """Resolve a real verb root, including common English inflections."""
         clean = word.lower().strip()
+        reviewed_overrides = {
+            "slams": "tulo",
+            "whisper": "tyequga", "whispers": "tyequga", "whispered": "tyequga",
+        }
+        if clean in reviewed_overrides:
+            return reviewed_overrides[clean]
         if clean in self.verb_map:
             return self.verb_map[clean]
         root, meaning = self.lookup(clean)
@@ -904,6 +919,101 @@ class TranslatorMixin:
 
         return None
 
+    def _render_loop5_imperative(
+        self,
+        verb_word: str,
+        object_word: str | None,
+        *,
+        evidence_root: str,
+        negated: bool,
+        polite: bool,
+    ) -> str | None:
+        """Render one reviewed command with the canon imperative frame."""
+        allowed_objects = {
+            "wait": {None},
+            "listen": {None, "wind"},
+            "stop": {None},
+            "open": {"door"},
+            "touch": {"door", "that"},
+        }
+        if object_word not in allowed_objects.get(verb_word, set()):
+            return None
+
+        object_roots = {
+            "door": (self.p["obj"], "zrump", self.p["inan"]),
+            "that": (self.p["obj"], "zra", self.p["inan"]),
+            "wind": (self.p["goal"], "cuq", self.p["anim"]),
+        }
+        parts = []
+        if object_word:
+            case_root, object_root, object_animacy = object_roots[object_word]
+            parts.extend([case_root, object_animacy, object_root])
+        verb_root = self._known_verb_root(verb_word)
+        if not verb_root:
+            return None
+        parts.extend([self.p["verb"], verb_root, self.p["anim"], self.p["imp"], evidence_root])
+        if polite:
+            parts.append("naxru")
+        if negated:
+            parts.append(self.p["neg"])
+        return " ".join(parts)
+
+    def _speak_loop5_frame(self, english: str, evidence_root: str):
+        """Handle reviewed dialogue, sound fragments, and commands."""
+        clean = re.sub(r"[.!?]+$", "", english.strip().lower())
+        clean = re.sub(r"\s+", " ", clean).strip()
+
+        sound_report = re.fullmatch(r"the alarm goes ((?:beep)(?:\s+beep)*)", clean)
+        if sound_report:
+            sounds = " ".join("nqozo" for _ in sound_report.group(1).split())
+            return self._partial_frame(
+                f"skump {sounds}",
+                "unsupported sound-report frame: goes",
+            )
+
+        broken_state = re.fullmatch(r"the (elevator|door) (?:is|are|was|were) broken", clean)
+        if broken_state:
+            subject_root = {"elevator": "spokta", "door": "zrump"}[broken_state.group(1)]
+            return self._partial_frame(subject_root, "unsupported predicate state: broken")
+
+        missing_predicate = re.fullmatch(
+            r"(i|you|he|she|we|they) (will|would|can|could|should|may|might|must) not",
+            clean,
+        )
+        if missing_predicate:
+            return self._partial_frame("", f"omitted predicate after {clean}")
+
+        imperative = re.fullmatch(
+            r"(?:(please)\s+)?(?:(do)\s+(not)\s+)?"
+            r"(wait|listen|stop|open|touch)"
+            r"(?:\s+(?:to\s+)?(?:the\s+)?(wind|door|that))?"
+            r"(?:\s+(please))?",
+            clean,
+        )
+        if imperative:
+            polite_before, _do, not_word, verb_word, object_word, polite_after = imperative.groups()
+            rendered = self._render_loop5_imperative(
+                verb_word,
+                object_word,
+                evidence_root=evidence_root,
+                negated=bool(not_word),
+                polite=bool(polite_before or polite_after),
+            )
+            if rendered:
+                return rendered
+
+        fragment_roots = {
+            "ah": "aza", "bang": "tesena", "beep": "nqozo", "drip": "priva",
+            "fine": "stux", "huh": "xeha", "no": "nguq", "ouch": "oxu",
+            "shhh": "shava", "swish": "zavi", "uh": "ux", "whirr": "glivun",
+            "whummmmm": "vrumo", "whoa": "vrifvluq", "whoosh": "qelto",
+            "yes": "naxq",
+        }
+        fragment_words = clean.split()
+        if fragment_words and all(word in fragment_roots for word in fragment_words):
+            return " ".join(fragment_roots[word] for word in fragment_words)
+        return None
+
     def _speak_common_pattern(self, normalized: str, evidence_root: str):
         """Handle common English frames whose structure is unambiguous."""
         interrogative_roots = {
@@ -929,7 +1039,7 @@ class TranslatorMixin:
 
         safe_intransitive = re.fullmatch(
             r"(?:(why)\s+did\s+)?(?:the\s+|an?\s+)?"
-            r"([a-z][a-z'-]*)\s+(stop|stopped|slam|slammed)",
+            r"([a-z][a-z'-]*)\s+(stop|stopped|slam|slams|slammed)",
             normalized,
         )
         if safe_intransitive:
@@ -1097,6 +1207,9 @@ class TranslatorMixin:
         clause_frame = self._speak_clause_frame(english, e)
         if clause_frame is not None:
             return clause_frame
+        loop5_frame = self._speak_loop5_frame(english, e)
+        if loop5_frame is not None:
+            return loop5_frame
         loop4_frame = self._speak_loop4_frame(english, e)
         if loop4_frame is not None:
             return loop4_frame
@@ -1200,7 +1313,10 @@ class TranslatorMixin:
         unknown_words = []
 
         if tense == "auto" and any(
-            token in {"built", "said", "touched", "slammed", "stopped", "broke", "broken"}
+            token in {
+                "built", "said", "touched", "slammed", "stopped", "broke", "broken",
+                "whispered",
+            }
             for token in tokens
         ):
             tense = "past"
@@ -1564,6 +1680,7 @@ class TranslatorMixin:
             "trek": "find", "nrotm": "translate", "mifzxuri": "belong",
             "kazxibrih": "woman", "zrenq": "dog", "habdazluc": "person",
             "pronx": "tool", "cruq": "water", "canq": "forest", "qruq'": "bite",
+            "tyequga": "whisper",
         }
         case_particles = {"ra", "ka", "ta", "na", "fa", "mo"}
         skip_particles = {"vi", "nu", "sa", "lo", "ve", "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "ha"}

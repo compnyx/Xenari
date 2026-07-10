@@ -169,6 +169,35 @@ def test_loop4_modifier_corpus_is_bounded_shared_and_readable():
         assert stale_root not in comparative.split()
 
 
+def test_loop5_dialogue_sound_and_imperative_corpus_is_bounded_and_honest():
+    x = Xenari(REPO / "xenari.db")
+    fixtures = load_fixtures()
+    forward = [case for case in fixtures["forward"] if case.get("loop") == 5]
+    reverse = [case for case in fixtures["reverse"] if case.get("loop") == 5]
+    stress = [case for case in forward if case.get("stress")]
+
+    assert len(forward) >= 15
+    assert len(reverse) >= 1
+    assert len(stress) >= 7
+    assert {case["family"] for case in forward} >= {
+        "dialogue", "imperative", "quote", "sound", "sound-report",
+        "stage-direction", "typography", "vocalization", "vocalization-gap",
+    }
+    assert x._known_verb_root("slams") == "tulo"
+    assert x._known_verb_root("whispered") == "tyequga"
+
+    repeated_beep = x.speak("Beep beep beep.", evidential="assumed")
+    unknown_ugh = x.speak("Ugh...", evidential="assumed")
+    negative_command = x.speak("Don't touch that!", evidential="assumed")
+
+    assert repeated_beep == "nqozo nqozo nqozo"
+    assert " nu" not in repeated_beep
+    assert unknown_ugh == "[untranslated: ugh; no Xenari root for: ugh]"
+    assert negative_command == "ra nu zra ta qabrerd vi ko xo ngu"
+    assert " va" not in negative_command
+    assert "ka neq" not in negative_command
+
+
 def test_loop3_reverse_reads_structured_clause_boundaries():
     x = Xenari(REPO / "xenari.db")
 
@@ -470,6 +499,38 @@ def test_gap_harvest_normalizes_all_supported_apostrophes():
     ]
     assert all(keys == bucket_keys[0] for keys in bucket_keys[1:])
     assert bucket_keys[0]["covered_by_grammar"] == ["am"]
+
+
+def test_gap_harvest_keeps_repeated_sounds_inline_speakers_and_stage_spans_separate():
+    x = Xenari(REPO / "xenari.db")
+    harvester = GapHarvester(x)
+    report = harvester.harvest_documents([{
+        "source": "dialogue",
+        "text": "NYX: Ugh… KRRR KRRR.\nMARA:\n[FZZARR FZZARR] I run.\n",
+    }], phrase_min_count=1, max_phrase_words=3)
+    buckets = report["buckets"]
+
+    ugh = next(item for item in buckets["vocalizations"] if item["key"] == "ugh")
+    krrr = next(item for item in buckets["sound_effects"] if item["key"] == "krrr")
+    fzzarr = next(item for item in buckets["sound_effects"] if item["key"] == "fzzarr")
+    phrase_keys = {item["key"] for item in buckets["phrase_gaps"]}
+    all_keys = {
+        item["key"]
+        for entries in buckets.values()
+        for item in entries
+    }
+
+    assert ugh["count"] == 1
+    assert ugh["contexts"][0]["speaker"] == "Nyx"
+    assert krrr["count"] == 2
+    assert krrr["contexts"][0]["speaker"] == "Nyx"
+    assert fzzarr["count"] == 2
+    assert fzzarr["contexts"][0]["speaker"] == "Mara"
+    assert fzzarr["contexts"][0]["stage_direction"] is True
+    assert "ugh krrr" not in phrase_keys
+    assert "fzzarr i" not in phrase_keys
+    assert "nyx" not in all_keys
+    assert "mara" not in all_keys
 
 
 def test_gaps_cli_writes_json_report(tmp_path):

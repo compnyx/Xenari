@@ -17,7 +17,9 @@ from typing import Any, Iterable
 
 
 WORD_RE = re.compile(r"[A-Za-z]+(?:['-][A-Za-z]+)*")
-SPEAKER_RE = re.compile(r"^\s*([A-Z][A-Z0-9 .'\-]{1,40})(?:\:|\s*$)")
+SPEAKER_RE = re.compile(
+    r"^\s*([A-Z][A-Z0-9 .'\-]{0,40}?)(?::(?:\s*(.*))?\s*$|\s*$)"
+)
 TAG_RE = re.compile(r"<[^>]+>")
 
 CONTRACTIONS = {
@@ -314,13 +316,30 @@ class GapHarvester:
             if not stripped:
                 current_speaker = None
                 continue
-            stage = self._is_stage_direction(stripped)
-            speaker = None if stage else self._speaker_label(stripped)
-            if speaker:
-                current_speaker = speaker
-                continue
             context = " ".join(stripped.split())
+            full_line_stage = self._is_stage_direction(stripped)
+            speaker_line = None if full_line_stage else self._speaker_line_parts(stripped)
+            if speaker_line:
+                current_speaker, stripped = speaker_line
+                stripped = stripped.strip()
+                if not stripped:
+                    continue
+
+            stage_spans = [
+                match.span()
+                for match in re.finditer(r"\[[^\]]*\]|\([^)]*\)|\*[^*]+\*", stripped)
+            ]
+            previous_end = 0
+            previous_stage = None
             for match in WORD_RE.finditer(stripped):
+                between = stripped[previous_end:match.start()]
+                token_stage = full_line_stage or any(
+                    start <= match.start() < end for start, end in stage_spans
+                )
+                if re.search(r"[.!?…;—–]", between) or (
+                    previous_stage is not None and token_stage != previous_stage
+                ):
+                    sentence_index += 1
                 raw = match.group(0)
                 for norm in self._normalize_word(raw):
                     if not norm:
@@ -332,17 +351,20 @@ class GapHarvester:
                         line=line_no,
                         context=context,
                         speaker=current_speaker,
-                        stage_direction=stage,
+                        stage_direction=token_stage,
                         token_index=token_index,
                         sentence_index=sentence_index,
                     ))
                     token_index += 1
-            if re.search(r"[.!?]\s*$", stripped):
-                sentence_index += 1
+                previous_end = match.end()
+                previous_stage = token_stage
+            # Script lines are independent phrase contexts even when a writer
+            # omits terminal punctuation.
+            sentence_index += 1
         return tokens
 
-    def _speaker_label(self, line: str) -> str | None:
-        if len(line) > 48:
+    def _speaker_line_parts(self, line: str) -> tuple[str, str] | None:
+        if len(line) > 120:
             return None
         match = SPEAKER_RE.match(line)
         if not match:
@@ -350,7 +372,11 @@ class GapHarvester:
         label = match.group(1).strip(" :-")
         if not label or any(ch.islower() for ch in label):
             return None
-        return label.title()
+        return label.title(), match.group(2) or ""
+
+    def _speaker_label(self, line: str) -> str | None:
+        parts = self._speaker_line_parts(line)
+        return parts[0] if parts else None
 
     def _is_stage_direction(self, line: str) -> bool:
         if line.startswith(("(", "[", "*")) and line.endswith((")", "]", "*")):
@@ -453,6 +479,8 @@ class GapHarvester:
     def _sound_effect_shape(self, word: str, token: Token) -> bool:
         if token.stage_direction and len(word) >= 3 and re.fullmatch(r"[a-z]+", word):
             return word in SOUND_EFFECTS or re.search(r"(ck|ng|sh|th|mp|nt|zz|rr|oo)", word) is not None
+        if 3 <= len(word) <= 16 and re.fullmatch(r"[a-z]+", word):
+            return re.search(r"(rrr|zzz|kkk|ttt|bbb|ppp|ddd|ggg)", word) is not None
         return False
 
     def _vocalization_shape(self, word: str) -> bool:
