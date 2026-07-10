@@ -55,6 +55,16 @@ NOISE_WORDS = {
     "stylesheet", "www",
 }
 
+SCRIPT_FORMAT_MARKERS = {
+    "black", "continued", "cont", "cut", "day", "dissolve", "ext", "fade",
+    "int", "later", "night", "oc", "os", "pre-lap", "title", "titles", "to",
+    "vo",
+}
+
+ALWAYS_SCRIPT_FORMAT_MARKERS = {
+    "continued", "cont", "ext", "int", "oc", "os", "pre-lap", "vo",
+}
+
 
 @dataclass
 class GapOccurrence:
@@ -144,6 +154,7 @@ class GapHarvester:
         "vocalizations",
         "names_places",
         "inflection_variants",
+        "script_format_markers",
         "covered_by_grammar",
         "extraction_noise",
     ]
@@ -155,6 +166,7 @@ class GapHarvester:
         "vocalizations": "Vocalizations",
         "names_places": "Names And Places",
         "inflection_variants": "Inflection Variants",
+        "script_format_markers": "Script Format Markers",
         "covered_by_grammar": "Covered By Grammar",
         "extraction_noise": "Extraction Noise",
     }
@@ -300,11 +312,11 @@ class GapHarvester:
             if not stripped:
                 current_speaker = None
                 continue
-            speaker = self._speaker_label(stripped)
+            stage = self._is_stage_direction(stripped)
+            speaker = None if stage else self._speaker_label(stripped)
             if speaker:
                 current_speaker = speaker
                 continue
-            stage = self._is_stage_direction(stripped)
             context = " ".join(stripped.split())
             for match in WORD_RE.finditer(stripped):
                 raw = match.group(0)
@@ -361,6 +373,8 @@ class GapHarvester:
         variant_of = self._known_variant_base(word)
         if variant_of:
             return "inflection_variants", "base form is already known", variant_of
+        if self._is_script_format_marker(token):
+            return "script_format_markers", "screenplay/navigation marker", None
         if self._is_extraction_noise(word):
             return "extraction_noise", "markup/code-looking token", None
         if word in SOUND_EFFECTS or self._sound_effect_shape(word, token):
@@ -415,8 +429,17 @@ class GapHarvester:
         if token.stage_direction and raw.isupper() and token.norm in SOUND_EFFECTS:
             return False
         if raw.isupper() and len(raw) <= 4:
-            return False
+            return not self._is_script_format_marker(token)
         return True
+
+    def _is_script_format_marker(self, token: Token) -> bool:
+        word = token.norm
+        if word in ALWAYS_SCRIPT_FORMAT_MARKERS:
+            return True
+        raw = token.raw.strip("'-.").lower()
+        if raw not in SCRIPT_FORMAT_MARKERS:
+            return False
+        return token.raw.upper() == token.raw or token.stage_direction
 
     def _is_extraction_noise(self, word: str) -> bool:
         if word in NOISE_WORDS:
@@ -446,7 +469,7 @@ class GapHarvester:
         phrases: dict[str, GapEntry] = {}
         by_sentence: dict[tuple[str, int], list[Token]] = defaultdict(list)
         for token in tokens:
-            if self._classify_token(token)[0] in {"extraction_noise", "names_places"}:
+            if self._classify_token(token)[0] in {"extraction_noise", "names_places", "script_format_markers"}:
                 continue
             by_sentence[(token.source, token.sentence_index)].append(token)
 

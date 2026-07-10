@@ -229,10 +229,13 @@ def test_review_cli_writes_markdown_report(tmp_path):
 def test_gap_harvest_captures_words_phrases_sounds_and_names(tmp_path):
     script = tmp_path / "script.txt"
     script.write_text(
-        """NYX:
+        """INT. BLACK ROOM - NIGHT
+
+NYX:
 Hello Varek.
 
 (WHIRR. WHOOSH. DRIP.)
+LEE watches.
 The rustglass elevator hums.
 The rustglass elevator hums.
 Her claws skittered across the floor.
@@ -248,8 +251,12 @@ Her claws skittered across the floor.
     assert any(item["key"] == "whoosh" for item in buckets["sound_effects"])
     assert any(item["key"] == "drip" for item in buckets["sound_effects"])
     assert any(item["key"] == "varek" for item in buckets["names_places"])
+    assert any(item["key"] == "lee" for item in buckets["names_places"])
+    assert any(item["key"] == "int" for item in buckets["script_format_markers"])
     assert any(item["key"] == "skittered" for item in buckets["lexical_gaps"])
     assert any(item["key"] == "the rustglass" for item in buckets["phrase_gaps"])
+    assert not any(item["key"] == "int" for item in buckets["lexical_gaps"])
+    assert not any(item["key"] == "lee" for item in buckets["lexical_gaps"])
 
     markdown = harvester.render_markdown(report, limit=5)
     assert "# Xenari Gap Harvest Report" in markdown

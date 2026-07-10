@@ -125,11 +125,14 @@ source contexts, and sorts candidates into review buckets:
 - vocalizations
 - names and places
 - inflection variants
+- script format markers
 - grammar-covered function words
 - extraction noise
 
 Sound effects and vocalizations are first-class lexical candidates, not junk.
 Use them for impact, ambience, body sounds, interjections, and emotion roots.
+Script format markers such as `INT`, `EXT`, and `cont'd` are separated from the
+lexical queue so screenplay structure does not crowd out real vocabulary gaps.
 `--phrase-min-count` controls repeated phrase sensitivity; use `1` when you want
 even one-off phrase candidates. `--limit 0` prints every candidate in Markdown.
 
