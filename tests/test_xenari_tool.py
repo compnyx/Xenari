@@ -226,6 +226,24 @@ def test_loop6_fuzz_safety_corpus_is_shared_and_honest():
     assert " va" not in x.speak("Don't run.", evidential="assumed")
 
 
+def test_target_language_imperatives_precede_unsupported_fallback():
+    x = Xenari(REPO / "xenari.db")
+
+    expected_prefix = "ra nu hune fa nu gledru ta "
+    expected_suffix = " vi ko xo"
+    for english, verb_root in {
+        "Translate this sentence to English": "nrotm",
+        "Translate this sentence back to English": "nrotm",
+        "Reverse engineer this sentence back to English": "halbru",
+        "Reverse-engineer this sentence back to English": "halbru",
+        "Decode this sentence to English": "nimixu",
+        "Decipher this sentence to English": "nimixu",
+    }.items():
+        assert x.speak(english, evidential="assumed") == (
+            f"{expected_prefix}{verb_root}{expected_suffix}"
+        )
+
+
 def test_loop7_coordination_and_intransitive_fuzz_is_bounded():
     x = Xenari(REPO / "xenari.db")
     fixtures = load_fixtures()

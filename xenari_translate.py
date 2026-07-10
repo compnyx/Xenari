@@ -1106,6 +1106,32 @@ class TranslatorMixin:
             return self._partial_frame("", f"omitted subject for action: {subjectless_actions[clean]}")
         return None
 
+    def _speak_target_language_imperative(self, normalized: str, evidence_root: str):
+        """Render reviewed target-language commands before imperative fallback."""
+        imperative_translate = re.fullmatch(
+            r"(?:(please)\s+)?"
+            r"(translate|decode|decipher|reverse engineer|reverse-engineer)\s+"
+            r"(?:this|that|the|an?)\s+(sentence|utterance|output|result|translation)"
+            r"\s+(?:back\s+)?(?:to|into)\s+(english|xenari)(?:\s+(please))?",
+            normalized,
+        )
+        if not imperative_translate:
+            return None
+
+        polite_before, verb, obj, target, polite_after = imperative_translate.groups()
+        verb_root = self._known_verb_root(verb)
+        object_root, _ = self.lookup(obj)
+        target_root, _ = self.lookup(target)
+        if not (verb_root and object_root and target_root):
+            return None
+
+        parts = ["ra", "nu", object_root, "fa", "nu", target_root, "ta", verb_root, "vi", "ko", evidence_root]
+        if polite_before or polite_after:
+            please_root, _ = self.lookup("please")
+            if please_root:
+                parts.append(please_root)
+        return " ".join(parts)
+
     def _speak_common_pattern(self, normalized: str, evidence_root: str):
         """Handle common English frames whose structure is unambiguous."""
         interrogative_roots = {
@@ -1160,25 +1186,9 @@ class TranslatorMixin:
                     polite=bool(please),
                 )
 
-        imperative_translate = re.fullmatch(
-            r"(?:(please)\s+)?"
-            r"(translate|decode|decipher|reverse engineer|reverse-engineer)\s+"
-            r"(?:this|that|the|an?)\s+(sentence|utterance|output|result|translation)"
-            r"\s+(?:back\s+)?(?:to|into)\s+(english|xenari)(?:\s+(please))?",
-            normalized,
-        )
-        if imperative_translate:
-            polite_before, verb, obj, target, polite_after = imperative_translate.groups()
-            verb_root = self._known_verb_root(verb)
-            object_root, _ = self.lookup(obj)
-            target_root, _ = self.lookup(target)
-            if verb_root and object_root and target_root:
-                parts = ["ra", "nu", object_root, "fa", "nu", target_root, "ta", verb_root, "vi", "ko", evidence_root]
-                if polite_before or polite_after:
-                    please_root, _ = self.lookup("please")
-                    if please_root:
-                        parts.append(please_root)
-                return " ".join(parts)
+        imperative_translation = self._speak_target_language_imperative(normalized, evidence_root)
+        if imperative_translation is not None:
+            return imperative_translation
 
         simple_reviewed_clause = self._parse_loop4_clause(
             normalized,
@@ -1364,6 +1374,11 @@ class TranslatorMixin:
         loop5_frame = self._speak_loop5_frame(english, e)
         if loop5_frame is not None:
             return loop5_frame
+        # Target-language commands are a supported imperative subset, so they
+        # must precede loop 6's generic unsupported-imperative fallback.
+        imperative_translation = self._speak_target_language_imperative(normalized, e)
+        if imperative_translation is not None:
+            return imperative_translation
         loop6_frame = self._speak_loop6_frame(english, e)
         if loop6_frame is not None:
             return loop6_frame
