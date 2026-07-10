@@ -275,7 +275,8 @@ class TranslatorMixin:
         if location_root:
             parts.extend(["na", "nu", location_root])
         if goal_root:
-            parts.extend(["fa", "nu", goal_root])
+            goal_parts = list(goal_root) if isinstance(goal_root, (list, tuple)) else [goal_root]
+            parts.extend(["fa", "nu", *goal_parts])
         parts.append("ka")
         subject_animacy = subject_animacy or self._animacy_for(subject_root, default=self.p["inan"])
         if not self._is_pronoun_root(subject_root):
@@ -305,6 +306,14 @@ class TranslatorMixin:
         if negated:
             parts.append(self.p["neg"])
         return " ".join(parts)
+
+    def _language_target_parts(self, target: str):
+        """Return reviewed Xenari for explicit language-name targets."""
+        normalized = target.lower().strip()
+        if normalized == "english":
+            return ["bivuzqa", "uqel", "po", "zuqra"]
+        root, _ = self.lookup(normalized)
+        return [root] if root else None
 
     def _reviewed_animacy(self, english_word: str, root: str) -> str:
         animate_words = {
@@ -1121,11 +1130,11 @@ class TranslatorMixin:
         polite_before, verb, obj, target, polite_after = imperative_translate.groups()
         verb_root = self._known_verb_root(verb)
         object_root, _ = self.lookup(obj)
-        target_root, _ = self.lookup(target)
-        if not (verb_root and object_root and target_root):
+        target_parts = self._language_target_parts(target)
+        if not (verb_root and object_root and target_parts):
             return None
 
-        parts = ["ra", "nu", object_root, "fa", "nu", target_root, "ta", verb_root, "vi", "ko", evidence_root]
+        parts = ["ra", "nu", object_root, "fa", "nu", *target_parts, "ta", verb_root, "vi", "ko", evidence_root]
         if polite_before or polite_after:
             please_root, _ = self.lookup("please")
             if please_root:
@@ -1168,13 +1177,13 @@ class TranslatorMixin:
             subject_root = self._english_subject_root(subject)
             verb_root = self._known_verb_root(verb)
             object_root, _ = self.lookup(obj)
-            target_root, _ = self.lookup(target)
-            if subject_root and verb_root and object_root and target_root:
+            target_parts = self._language_target_parts(target)
+            if subject_root and verb_root and object_root and target_parts:
                 return self._render_simple_frame(
                     subject_root,
                     verb_root,
                     object_roots=[object_root],
-                    goal_root=target_root,
+                    goal_root=target_parts,
                     tense_root=(
                         "ve" if modal_word in {"will", "would"}
                         else "pe" if modal_word
@@ -1430,6 +1439,7 @@ class TranslatorMixin:
             "creative art": "flonx",
             "i am going to work today": f"fa nu kashatyong ka neq ta qeng ve {e}",
             "i am going to work": f"fa nu kashatyong ka neq ta qeng ve {e}",
+            "english": "bivuzqa uqel po zuqra",
         }
         if normalized in exact_phrases:
             return exact_phrases[normalized]

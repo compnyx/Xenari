@@ -94,11 +94,11 @@
     },
     {
       "english": "Can you reverse engineer this sentence back to English please?",
-      "xenari": "ra nu hune fa nu gledru ka mex ta halbru pe xo naxru va"
+      "xenari": "ra nu hune fa nu bivuzqa uqel po zuqra ka mex ta halbru pe xo naxru va"
     },
     {
       "english": "English",
-      "xenari": "gledru"
+      "xenari": "bivuzqa uqel po zuqra"
     },
     {
       "english": "the elevator was not working",
@@ -853,7 +853,7 @@
   ],
   "hardening": {
     "regression_input": "hey i’m going to work today, but the elevator was not working. anyway, this is a test sentence i’m throwing in the translator for you to decipher once i’ve gotten the output of xenari. can you reverse engineer this sentence back to english please?",
-    "expected": "prax. fa nu kashatyong ka neq ta qeng ve xo. kex ka nu spokta ta qxundraz nu lo xo ngu. qzecmru. ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo. ra nu hune na nu fona ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu. cruv ra nu xenari po duqe ka neq ta smite lo xo. ra nu hune fa nu gledru ka mex ta halbru pe xo naxru va",
+    "expected": "prax. fa nu kashatyong ka neq ta qeng ve xo. kex ka nu spokta ta qxundraz nu lo xo ngu. qzecmru. ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo. ra nu hune na nu fona ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu. cruv ra nu xenari po duqe ka neq ta smite lo xo. ra nu hune fa nu bivuzqa uqel po zuqra ka mex ta halbru pe xo naxru va",
     "must_include": [
       "prax",
       "fa nu kashatyong ka neq ta qeng ve xo",
@@ -861,7 +861,7 @@
       "ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo",
       "frex ra nu hune ka mex ta nimixu",
       "cruv ra nu xenari po duqe ka neq ta smite lo xo",
-      "ra nu hune fa nu gledru ka mex ta halbru pe xo naxru va"
+      "ra nu hune fa nu bivuzqa uqel po zuqra ka mex ta halbru pe xo naxru va"
     ],
     "must_not_include": [
       "ka nu hey",

@@ -229,7 +229,7 @@ def test_loop6_fuzz_safety_corpus_is_shared_and_honest():
 def test_target_language_imperatives_precede_unsupported_fallback():
     x = Xenari(REPO / "xenari.db")
 
-    expected_prefix = "ra nu hune fa nu gledru ta "
+    expected_prefix = "ra nu hune fa nu bivuzqa uqel po zuqra ta "
     expected_suffix = " vi ko xo"
     for english, verb_root in {
         "Translate this sentence to English": "nrotm",
