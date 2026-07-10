@@ -99,9 +99,9 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "fall": "hup",
             "falls": "hup",
             "fell": "hup",
-            "stop": "kam",
-            "stops": "kam",
-            "stopped": "kam",
+            "stop": "semax",
+            "stops": "semax",
+            "stopped": "semax",
             "start": "qe",
             "starts": "qe",
             "started": "qe",
@@ -117,6 +117,7 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "cook": "krol",
             "fix": "mlun",
             "build": "mrob",
+            "built": "mrob",
             "teach": "nyec",
             "learn": "qlef",
             "drink": "qlup",
@@ -133,6 +134,8 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "shape": "qlemp",
             "grow": "qlax",
             "break": "zont",
+            "broke": "zont",
+            "broken": "zont",
             "dream": "qax",
             "think": "bre",
             "change": "xreq",
@@ -180,7 +183,11 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "put": "xlom",
             "sit": "hup",
             "stand": "kroc",
-            "wait": "kam",
+            "touch": "qabrerd",
+            "touched": "qabrerd",
+            "slam": "tulo",
+            "slammed": "tulo",
+            "wait": "trekq",
             "help": "qlemp",
             "hurt": "zont",
             "burn": "xraq",
@@ -234,13 +241,13 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
         """Load all roots and english mappings from the sqlite DB."""
         for row in self.db.conn.execute("SELECT root, meaning FROM roots"):
             self.lexicon[row["root"]] = row["meaning"].lower()
-        for row in self.db.conn.execute("SELECT english_key, root FROM english_map JOIN roots ON roots.id = english_map.root_id"):
+        for row in self.db.conn.execute("SELECT english_key, root, context_note FROM english_map JOIN roots ON roots.id = english_map.root_id"):
             key = row["english_key"].lower()
             if key not in self.english_to_root:
                 self.english_to_root[key] = row["root"]
             else:
                 current = self.english_to_root[key]
                 current_score = self.db._lookup_score(key, self.lexicon.get(current, ""))
-                candidate_score = self.db._lookup_score(key, self.lexicon.get(row["root"], ""))
+                candidate_score = self.db._lookup_score(key, self.lexicon.get(row["root"], ""), row["context_note"])
                 if candidate_score > current_score:
                     self.english_to_root[key] = row["root"]

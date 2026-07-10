@@ -1,6 +1,6 @@
 # Xenari Translator Hardening Campaign
 
-Status: Loop 1 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
+Status: Loop 2 of 6 completed on 2026-07-10. This is a living audit and handoff file, not a claim that the translator is complete.
 
 ## Campaign guardrails
 
@@ -20,6 +20,10 @@ The clean baseline passed:
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 26 forward and 14 reverse fixtures passed
 - `npm run test:xenari`: translator and page contracts passed
+
+## Loop 2 baseline
+
+Starting revisions were Xenari `1dee384` and nyx-site `4c22cfc`; both worktrees were clean. The Loop 1 baseline still passed with 26 Python tests, 31 forward fixtures, 14 reverse fixtures, a healthy doctor report, and passing site translator/page contracts.
 
 No crashes occurred in the 30-sentence manual audit. The more serious failures were structurally plausible output made from real but wrong roots, dropped question/comparison meaning, and large Python/browser differences.
 
@@ -65,16 +69,16 @@ No crashes occurred in the 30-sentence manual audit. The more serious failures w
 
 All 30 inputs were run through `python3 xenari_tool.py translate`; the same corpus was then run through the browser parser for drift review.
 
-| # | Input | Coverage | Loop 1 result |
+| # | Input | Coverage | Current result |
 | --- | --- | --- | --- |
 | 1 | I'm not going to work today. | contraction, negation, future | fixed and shared-fixtured |
 | 2 | She didn’t kiss him yesterday. | smart apostrophe, past negation | fixed and shared-fixtured |
 | 3 | We’ve never seen the alien. | smart apostrophe, present perfect, negation | fixed by established `toq` override; still not a dedicated fixture |
-| 4 | They’ll build the door tomorrow. | contraction, future | Python improved; browser verb POS and pronoun drift remain |
+| 4 | They’ll build the door tomorrow. | contraction, future | `build` is now a verb in both engines; exact `zeq` versus `req ha` output remains a recorded known mismatch because English does not encode the canon presence/knownness distinction |
 | 5 | Can’t you hear the alarm? | smart apostrophe, modal, negated question | fixed and shared-fixtured with canon lookup `cromq` |
-| 6 | Why did the elevator stop? | WH question, past | remaining: Python defaults the subject incorrectly; browser drops the verb |
-| 7 | Where will you go? | WH question, future | remaining: Python drops `where`; browser and Python disagree on question marking |
-| 8 | Who broke the red window? | WH subject, past | remaining: neither engine has a safe shared WH-subject frame |
+| 6 | Why did the elevator stop? | WH question, past | fixed and shared-fixtured as bare `voq` plus an elevator subject and past `semax`, without yes/no `va` |
+| 7 | Where will you go? | WH question, future | fixed and shared-fixtured as bare `qur`; both engines preserve future `qeng` without `va` |
+| 8 | Who broke the red window? | WH subject, past | shared honest fallback: canon has no interrogative `who` root, so neither engine invents or drops it |
 | 9 | Have you seen my hat? | present perfect, question, possession | fixed and shared-fixtured |
 | 10 | If I see the alien, I will run. | conditional | remaining: both engines split/attach the condition differently |
 | 11 | If the door is open, we can enter. | conditional, modal | remaining: major structure and verb-sense drift |
@@ -93,8 +97,8 @@ All 30 inputs were run through `python3 xenari_tool.py translate`; the same corp
 | 24 | Ugh... the elevator is broken. | vocalization, predicate | remaining: `ugh` is a real gap candidate and `broken` is not safely predicative |
 | 25 | Beep beep beep. | repeated sound effect | root resolves; browser adds a bare-fragment animacy particle that Python omits |
 | 26 | No, I won’t. | dialogue ellipsis, negation | remaining: missing elided predicate produces empty-looking clauses |
-| 27 | Wait—what? | em dash, dialogue question | remaining: dash normalization and question-word preservation differ |
-| 28 | Hey, are you there? | greeting plus question | greeting is safe; location/existential analysis drifts |
+| 27 | Wait—what? | em dash, dialogue question | fixed and shared-fixtured as an imperative `trekq` clause plus bare `qan`; em/en dashes now form conservative clause seams |
+| 28 | Hey, are you there? | greeting plus question | fixed and shared-fixtured as `prax` plus a `qroxang` copular yes/no clause ending in `va` |
 | 29 | I said, “Don’t touch that.” | quoted dialogue, smart punctuation | curly/ASCII quote normalization aligned; speech and imperative semantics remain |
 | 30 | Yes? Fine. | dialogue fragments | no crash, but roots/register and bare-fragment particles drift |
 
@@ -114,16 +118,38 @@ Important Loop 1 fixes are captured in shared fixtures rather than adding giant 
 - Added five shared forward fixtures plus focused Python/browser/gap tests.
 - No canon word was added and `xenari.db` was not changed; therefore no generated dictionary sync was required in Loop 1.
 
-## Next five loops
+## Loop 2 findings
+
+- Canon and the site grammar agree that `va` is only the clause-final yes/no marker. Content interrogatives are bare roots: `qan` what/which, `qur` where, `cil` how, and `voq` why.
+- Canon does not contain an interrogative `who`. The numerous English `who...` sound/vocalization mappings are not grammar roots, so row 8 must remain explicit unsupported grammar until a curator decides whether the language needs one.
+- Canon has reviewed roots for every everyday action in scope. Browser failures came from POS inference and collision selection, not missing vocabulary: `mrob` build, `krimp` say, `qabrerd` touch, `tulo` slam, `semax` stop/cease, and `zont` break.
+- `trekq` is the canon “to wait” root. The old Python `wait` → `kam` shortcut conflated waiting with stop-motion and was corrected for row 27.
+- `kam` means stop-motion and must not be reused for the general verb “stop”; general stop/cease/halt frames now use `semax`.
+- The pronoun sources do not justify one automatic English `they` reading. Canon distinguishes `leq` present other, `req` absent known, and `zeq` indefinite; standalone English also leaves number ambiguous. Python still chooses `zeq`, while the browser chooses `req ha`. This exact difference is now tested and reported rather than hidden.
+- Safe noun-subject correction can be bounded to the reviewed intransitive `stop/slam` frame. No general English transitivity parser was introduced.
+
+## Loop 2 changes
+
+- Added twelve shared forward fixtures and five reverse fixtures for Loop 2 questions, noun subjects, everyday verbs, and past rendering.
+- Separated supported WH roots from the yes/no flag in Python; browser metadata/tests now prove WH clauses omit `va` while established yes/no clauses retain it.
+- Preserved unsupported `who` and `when` grammar as readable fallbacks instead of dropping the interrogative meaning.
+- Added narrow Python noun-subject handling for `stop/stopped` and `slam/slammed`; browser POS overrides now let its existing subject walk parse the same frames.
+- Aligned reviewed Python/browser overrides for build/built, say/said, touch/touched, slam/slammed, stop/stopped, and break/broke/broken. Reverse past glosses now cover built, said, broke, slammed, and stopped.
+- Added explicit `semax` English mappings for stop/stops/stopped/stopping/halt/halted so lookup and translator logic prefer the general stop/cease verb over noisy auto-mapped feeding and stopped-clock rows.
+- Normalized em/en dashes into conservative clause seams and aligned `Wait—what?` plus `Hey, are you there?`.
+- Added `npm run test:xenari:drift`, a deterministic six-row Python-versus-browser corpus report. It fails on new or changed drift and reports the one exact approved known mismatch.
+- No new canon root was added, but `xenari.db` mapping rows changed for `semax`; DB-derived dictionary exports were regenerated for the repo and site.
+
+## Remaining loops
 
 ### Loop 2 — questions, noun subjects, and everyday POS parity
 
-- [ ] Turn rows 4, 6, 7, 8, 27, and 28 into focused known-failure/contract cases.
-- [ ] Align WH roots and yes/no marking without conflating WH questions with `va` questions.
-- [ ] Fix noun-subject role assignment for intransitives such as “the elevator stopped”.
-- [ ] Audit a small reviewed set of everyday verb POS overrides (`build`, `say`, `touch`, `slam`, `stop`).
-- [ ] Decide `zeq`/`req` behavior from canon grammar and fixture it.
-- [ ] Add a repeatable Python-versus-browser corpus diff command or test helper.
+- [x] Turn rows 4, 6, 7, 8, 27, and 28 into focused known-failure/contract cases.
+- [x] Align WH roots and yes/no marking without conflating WH questions with `va` questions.
+- [x] Fix noun-subject role assignment for reviewed safe intransitives such as “the elevator stopped”.
+- [x] Audit and align the reviewed everyday verb POS set.
+- [x] Review `zeq`/`req` from canon grammar; preserve and fixture the unresolved ambiguity instead of choosing semantics without support.
+- [x] Add a repeatable Python-versus-browser corpus diff command.
 
 ### Loop 3 — shared clause grammar
 
@@ -131,6 +157,9 @@ Important Loop 1 fixes are captured in shared fixtures rather than adding giant 
 - [ ] Fix rows 10–18 one construction family at a time.
 - [ ] Preserve arguments explicitly when a subordinate clause cannot be translated.
 - [ ] Add reverse fixtures for every new forward construction.
+- [ ] Decide how initial `when` is distinguished from temporal subordination before replacing the Loop 2 readable fallback.
+- [ ] Keep the `who` interrogative gap and `they` ordinal ambiguity explicit unless canon is curated first.
+- [ ] Do not broaden noun-subject promotion until verb valency or another reviewed safe frame justifies it.
 
 ### Loop 4 — comparisons and modifier semantics
 
@@ -169,7 +198,34 @@ Final Loop 1 gate:
 - `pytest -q`: 26 passed
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 31 forward and 14 reverse fixtures passed
-- `python3 xenari_tool.py stats`: 9,334 roots; 11,046 English mappings; 83 categories
+- `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
 - `npm run test:xenari`: translator and page contracts passed
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
+
+## Loop 2 release checklist
+
+- [x] Inspect both repository histories/worktrees and rerun the clean Loop 1 baseline.
+- [x] Review Python and browser translator implementations before patching.
+- [x] Verify content-question, pronoun, and everyday-verb behavior against canon DB/docs/code.
+- [x] Add shared fixtures plus focused Python/browser regressions.
+- [x] Add the repeatable paired drift report and preserve its one semantic ambiguity explicitly.
+- [x] Mirror browser changes in the site changelogs and translator asset version.
+- [x] Run all requested final gates without committing, pushing, deploying, syncing externally, or restarting services.
+
+Final Loop 2 gate:
+
+- `pytest -q`: 27 passed
+- `python3 xenari_tool.py doctor`: status ok
+- `python3 xenari_tool.py parity`: 43 forward and 19 reverse fixtures passed
+- `python3 xenari_tool.py stats`: 9,334 roots; 11,046 English mappings; 83 categories
+- `npm run test:xenari`: translator, six-row drift, and page contracts passed; drift report has 5 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run build`: 16 pages built successfully
+- `git diff --check`: clean in both repositories
+
+Remaining failures carried forward:
+
+- Row 4 still needs a canon policy or context-aware UI for English `they`; Python `zeq` and browser `req ha` remain intentionally unchanged.
+- Row 8 still lacks a canon interrogative `who` root; no root was coined in this loop.
+- Initial `when` is an explicit unsupported shared fallback until Loop 3 distinguishes WH and temporal frames.
+- Rows 10–18 remain the Loop 3 clause-grammar corpus. Broader noun-subject syntax and dialogue rows 23, 26, 29, and 30 remain later-loop work.

@@ -87,6 +87,46 @@ def test_everyday_verb_overrides_use_established_roots():
     assert x._known_verb_root("heard") == "cromq"
     assert x._known_verb_root("listen") == "grip"
     assert x._known_verb_root("seen") == "toq"
+    for form, root in {
+        "build": "mrob",
+        "built": "mrob",
+        "say": "krimp",
+        "said": "krimp",
+        "touch": "qabrerd",
+        "touched": "qabrerd",
+        "slam": "tulo",
+        "slammed": "tulo",
+        "stop": "semax",
+        "stopped": "semax",
+        "break": "zont",
+        "broke": "zont",
+        "broken": "zont",
+        "wait": "trekq",
+    }.items():
+        assert x._known_verb_root(form) == root
+
+
+def test_content_questions_and_safe_noun_subjects_keep_their_roles():
+    x = Xenari(REPO / "xenari.db")
+
+    why = x.speak("Why did the elevator stop?", evidential="assumed")
+    where = x.speak("Where will you go?", evidential="assumed")
+
+    assert why == "voq ka nu spokta ta semax nu lo xo"
+    assert where == "qur ka mex ta qeng ve xo"
+    assert " va" not in why
+    assert " va" not in where
+    assert x.speak("Have you seen my hat?", evidential="assumed").endswith(" va")
+    assert x.speak("Who broke the red window?", evidential="assumed") == (
+        "[untranslated: who broke the red window; unsupported grammar: "
+        "WH subject 'who' lacks a canon interrogative]"
+    )
+    assert x.speak("the elevator stopped", evidential="assumed") == (
+        "ka nu spokta ta semax nu lo xo"
+    )
+    assert x.speak("the door slammed", evidential="assumed") == (
+        "ka nu zrump ta tulo nu lo xo"
+    )
 
 
 def test_reverse_warns_when_recovering_malformed_clause_frames():

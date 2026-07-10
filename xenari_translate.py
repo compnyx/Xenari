@@ -57,6 +57,7 @@ class TranslatorMixin:
     def _split_english_clauses(self, text: str) -> List[Tuple[str, str]]:
         """Split prose at sentence boundaries and high-confidence clause seams."""
         expanded = self._expand_english_contractions(text)
+        expanded = re.sub(r"\s*[—–]\s*", ". ", expanded)
         clauses: List[Tuple[str, str]] = []
         connector_words = {"and", "but", "or", "however", "once", "so", "yet"}
         greeting_tail_words = {"there", "friend", "friends", "buddy", "pal"}
@@ -228,6 +229,46 @@ class TranslatorMixin:
 
     def _speak_common_pattern(self, normalized: str, evidence_root: str):
         """Handle common English frames whose structure is unambiguous."""
+        interrogative_roots = {
+            "what": "qan", "which": "qan", "where": "qur", "how": "cil", "why": "voq",
+        }
+        if normalized in interrogative_roots:
+            return interrogative_roots[normalized]
+
+        if normalized == "wait":
+            return f"ta {self._known_verb_root('wait')} vi ko {evidence_root}"
+
+        if normalized == "are you there":
+            subject_root = self._english_subject_root("you")
+            there_root, _ = self.lookup("there")
+            if subject_root and there_root:
+                return self._render_simple_frame(
+                    subject_root,
+                    "zux",
+                    object_roots=[there_root],
+                    evidence_root=evidence_root,
+                    question=True,
+                )
+
+        safe_intransitive = re.fullmatch(
+            r"(?:(why)\s+did\s+)?(?:the\s+|an?\s+)?"
+            r"([a-z][a-z'-]*)\s+(stop|stopped|slam|slammed)",
+            normalized,
+        )
+        if safe_intransitive:
+            interrogative, subject_word, verb_word = safe_intransitive.groups()
+            subject_root, _ = self.lookup(subject_word)
+            verb_root = self._known_verb_root(verb_word)
+            if subject_root and verb_root:
+                tense_root = "lo" if interrogative or verb_word.endswith("ed") else "sa"
+                rendered = self._render_simple_frame(
+                    subject_root,
+                    verb_root,
+                    tense_root=tense_root,
+                    evidence_root=evidence_root,
+                )
+                return f"{interrogative_roots[interrogative]} {rendered}" if interrogative else rendered
+
         going_to_work = re.fullmatch(
             r"(i|you|he|she|we|they)\s+(?:am|are|is)\s+(not\s+)?"
             r"going\s+to\s+work(?:\s+(?:today|tomorrow))?",
@@ -350,7 +391,12 @@ class TranslatorMixin:
                     verb_root,
                     object_roots=[object_root],
                     location_root=location_root,
-                    tense_root="lo" if auxiliary in {"was", "were"} else "sa",
+                    tense_root=(
+                        "lo"
+                        if auxiliary in {"was", "were"}
+                        or verb in {"built", "said", "touched", "slammed", "stopped", "broke", "broken"}
+                        else "sa"
+                    ),
                     evidence_root=evidence_root,
                     purpose=purpose,
                 )
@@ -375,6 +421,17 @@ class TranslatorMixin:
         normalized_words = set(normalized.split())
         if "than" in normalized_words or normalized_words & unsupported_superlatives:
             return self._unsupported_fragment(english, "comparative/superlative")
+        first_word = normalized.split(maxsplit=1)[0] if normalized else ""
+        if first_word in {"who", "whom", "whose"}:
+            return self._unsupported_fragment(
+                english,
+                f"WH subject '{first_word}' lacks a canon interrogative",
+            )
+        if first_word == "when":
+            return self._unsupported_fragment(
+                english,
+                "WH/temporal 'when' lacks a proven shared frame",
+            )
         if evidential == "auto":
             evidential = "assumed"
         e = self.evidential_map.get(evidential, self.evidential_map["assumed"])
@@ -455,8 +512,15 @@ class TranslatorMixin:
             "have", "has", "had",
         }
         question = bool(tokens and tokens[0] in yes_no_openers)
+        interrogative_root = None
         obj_tokens = []
         unknown_words = []
+
+        if tense == "auto" and any(
+            token in {"built", "said", "touched", "slammed", "stopped", "broke", "broken"}
+            for token in tokens
+        ):
+            tense = "past"
 
         for i, tok in enumerate(tokens):
             # Pronoun check
@@ -497,8 +561,13 @@ class TranslatorMixin:
                 continue
 
             # Question words
-            if tok in ("what", "who", "where", "when", "why", "how", "which", "whose"):
-                question = True
+            wh_roots = {
+                "what": "qan", "which": "qan", "where": "qur", "how": "cil", "why": "voq",
+            }
+            if tok in wh_roots:
+                interrogative_root = wh_roots[tok]
+                continue
+            if tok in {"when"}:
                 continue
 
             # Skip function words (the, a, to, of, in, etc.)
@@ -638,6 +707,9 @@ class TranslatorMixin:
 
         result = " ".join(parts).strip()
 
+        if interrogative_root:
+            result = f"{interrogative_root} {result}".strip()
+
         # Question particle
         if question:
             result += f" {self.p['q']}"
@@ -733,11 +805,18 @@ class TranslatorMixin:
             "qzecmru": "anyway", "qranx": "throw", "flonx": "art",
             "hune": "sentence", "fona": "translator", "halbru": "reverse-engineer",
             "smite": "get", "duqe": "result", "naxru": "please",
+            "mrob": "build", "krimp": "say", "qabrerd": "touch", "tulo": "slam",
+            "semax": "stop", "zont": "break", "trekq": "wait", "spokta": "elevator",
+            "zrump": "door", "qroxang": "there",
         }
         case_particles = {"ra", "ka", "ta", "na", "fa", "mo"}
         skip_particles = {"vi", "nu", "sa", "lo", "ve", "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "ha"}
         connector_glosses = {"kex": "but", "xen": "and", "noq": "or", "qlez": "so", "cruv": "once/when"}
-        grammar_particles = case_particles | skip_particles | {"ngu", "va", "po"} | set(connector_glosses)
+        interrogative_glosses = {"qan": "what", "qur": "where", "cil": "how", "voq": "why"}
+        grammar_particles = (
+            case_particles | skip_particles | {"ngu", "va", "po"}
+            | set(connector_glosses) | set(interrogative_glosses)
+        )
 
         def root_english(root: str, verb: bool = False, role: str = "plain") -> str:
             if root in reverse_pronouns:
@@ -783,6 +862,7 @@ class TranslatorMixin:
 
             tokens = sentence.split()
             obj = subj = loc = goal = instrument = verb = ""
+            interrogative = ""
             tense = "sa"
             negated = False
             question = False
@@ -828,6 +908,9 @@ class TranslatorMixin:
                 elif tok == "va":
                     question = True
                     i += 1
+                elif tok in interrogative_glosses:
+                    interrogative = interrogative_glosses[tok]
+                    i += 1
                 elif tok == "naxru":
                     polite = True
                     i += 1
@@ -860,7 +943,8 @@ class TranslatorMixin:
                 base = v
                 if tense == "lo":
                     irregular_past = {
-                        "get": "got", "go": "went", "throw": "threw",
+                        "get": "got", "go": "went", "throw": "threw", "build": "built",
+                        "say": "said", "break": "broke", "slam": "slammed", "stop": "stopped",
                         "reverse-engineer": "reverse-engineered",
                     }
                     if base in irregular_past:
@@ -906,11 +990,13 @@ class TranslatorMixin:
                 text = f"{text} with {instrument}".strip()
             if loose:
                 text = f"{text} [fragment: {' '.join(loose)}]".strip()
+            if interrogative:
+                text = f"{interrogative} {text}".strip()
             if text_parts:
                 text = " ".join([*text_parts, text]).strip()
             if polite:
                 text = f"{text}, please"
-            if question:
+            if question or interrogative:
                 text = f"{text}?"
             if warnings:
                 text += f" [warning: {'; '.join(warnings)}]"

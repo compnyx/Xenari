@@ -109,17 +109,21 @@ class XenariDB:
         """english word → (root, meaning)"""
         key = english.lower().strip()
         rows = self.conn.execute(
-            """SELECT r.root, r.meaning FROM english_map e
+            """SELECT r.root, r.meaning, e.context_note FROM english_map e
                JOIN roots r ON r.id = e.root_id
                WHERE e.english_key = ?""", (key,)
         ).fetchall()
         if not rows:
             return None
-        row = max(rows, key=lambda r: self._lookup_score(key, r["meaning"]))
+        row = max(rows, key=lambda r: self._lookup_score(key, r["meaning"], r["context_note"]))
         return (row["root"], row["meaning"]) if row else None
 
-    def _lookup_score(self, key: str, meaning: str) -> int:
+    def _lookup_score(self, key: str, meaning: str, context_note: str = None) -> int:
         head = self._audit_headword(meaning)
+        note = (context_note or "").lower()
+        note_tokens = [token for token in re.split(r"[ /,;:-]+", note) if token]
+        if key in note_tokens or any(len(token) >= 3 and key.startswith(token) for token in note_tokens):
+            return 5
         if head == key:
             return 4
         if head.startswith(key + " "):

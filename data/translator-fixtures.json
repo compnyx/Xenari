@@ -123,6 +123,54 @@
     {
       "english": "That is the fastest ship",
       "xenari": "[untranslated: that is the fastest ship; unsupported grammar: comparative/superlative]"
+    },
+    {
+      "english": "Why did the elevator stop?",
+      "xenari": "voq ka nu spokta ta semax nu lo xo"
+    },
+    {
+      "english": "Where will you go?",
+      "xenari": "qur ka mex ta qeng ve xo"
+    },
+    {
+      "english": "Who broke the red window?",
+      "xenari": "[untranslated: who broke the red window; unsupported grammar: WH subject 'who' lacks a canon interrogative]"
+    },
+    {
+      "english": "Wait—what?",
+      "xenari": "ta trekq vi ko xo. qan"
+    },
+    {
+      "english": "Hey, are you there?",
+      "xenari": "prax. ra nu qroxang ka mex ta zux sa xo va"
+    },
+    {
+      "english": "the elevator stopped",
+      "xenari": "ka nu spokta ta semax nu lo xo"
+    },
+    {
+      "english": "the door slammed",
+      "xenari": "ka nu zrump ta tulo nu lo xo"
+    },
+    {
+      "english": "I build the door",
+      "xenari": "ra nu zrump ka neq ta mrob sa xo"
+    },
+    {
+      "english": "I said the sentence",
+      "xenari": "ra nu hune ka neq ta krimp lo xo"
+    },
+    {
+      "english": "I touched the door",
+      "xenari": "ra nu zrump ka neq ta qabrerd lo xo"
+    },
+    {
+      "english": "I broke the door",
+      "xenari": "ra nu zrump ka neq ta zont lo xo"
+    },
+    {
+      "english": "I have broken the door",
+      "xenari": "ra nu zrump ka neq ta zont lo xo"
     }
   ],
   "reverse": [
@@ -181,6 +229,26 @@
     {
       "xenari": "ra nu hune ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu",
       "english": "I throw sentence so that you decode sentence"
+    },
+    {
+      "xenari": "voq ka nu spokta ta semax nu lo xo",
+      "english": "why elevator stopped?"
+    },
+    {
+      "xenari": "qur ka mex ta qeng ve xo",
+      "english": "where you will go?"
+    },
+    {
+      "xenari": "ka nu zrump ta tulo nu lo xo",
+      "english": "door slammed"
+    },
+    {
+      "xenari": "ra nu hune ka neq ta krimp lo xo",
+      "english": "I said sentence"
+    },
+    {
+      "xenari": "ra nu zrump ka neq ta zont lo xo",
+      "english": "I broke door"
     }
   ],
   "hardening": {
@@ -202,6 +270,24 @@
       "[untranslated:",
       "i’m",
       "i’ve"
+    ]
+  },
+  "drift": {
+    "corpus": [
+      "They'll build the door tomorrow.",
+      "Why did the elevator stop?",
+      "Where will you go?",
+      "Who broke the red window?",
+      "Wait—what?",
+      "Hey, are you there?"
+    ],
+    "known_differences": [
+      {
+        "english": "They'll build the door tomorrow.",
+        "python": "ra nu zrump ka zeq ta mrob ve xo",
+        "browser": "ra nu zrump ka req ha ta mrob ve xo",
+        "reason": "English 'they' does not encode Xenari presence/knownness, and canon does not define a default ordinal reading."
+      }
     ]
   }
 }

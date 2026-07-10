@@ -105021,8 +105021,13 @@
     "timestamp": "2026-07-08T20:47:42.881083+00:00",
     "notes": null,
     "english_keys": [
+      "halt",
+      "halted",
       "halting",
-      "stopping"
+      "stop",
+      "stopped",
+      "stopping",
+      "stops"
     ]
   },
   {
