@@ -42,7 +42,7 @@ def test_multiclause_hardening_regression_is_bounded_and_honest():
         assert fragment in translated
     for fragment in case["must_not_include"]:
         assert fragment not in translated
-    assert translated.count("[partial:") == 1
+    assert translated.count("[partial:") == 0
     assert translated.startswith("prax. ")
     assert x.speak("hey friend", evidential="assumed") == "prax"
 

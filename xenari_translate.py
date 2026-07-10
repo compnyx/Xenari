@@ -1129,6 +1129,57 @@ class TranslatorMixin:
                     question=True,
                 )
 
+        translate_target = re.fullmatch(
+            r"(?:(can|could|should|will|would)\s+)?"
+            r"(i|you|he|she|we|they)\s+"
+            r"(translate|translates|translated|decode|decipher|reverse engineer|reverse-engineer)\s+"
+            r"(?:this|that|the|an?)\s+(sentence|utterance|output|result|translation)"
+            r"\s+(?:back\s+)?(?:to|into)\s+(english|xenari)(\s+please)?",
+            normalized,
+        )
+        if translate_target:
+            modal_word, subject, verb, obj, target, please = translate_target.groups()
+            subject_root = self._english_subject_root(subject)
+            verb_root = self._known_verb_root(verb)
+            object_root, _ = self.lookup(obj)
+            target_root, _ = self.lookup(target)
+            if subject_root and verb_root and object_root and target_root:
+                return self._render_simple_frame(
+                    subject_root,
+                    verb_root,
+                    object_roots=[object_root],
+                    goal_root=target_root,
+                    tense_root=(
+                        "ve" if modal_word in {"will", "would"}
+                        else "pe" if modal_word
+                        else "lo" if verb == "translated"
+                        else "sa"
+                    ),
+                    evidence_root=evidence_root,
+                    question=bool(modal_word),
+                    polite=bool(please),
+                )
+
+        imperative_translate = re.fullmatch(
+            r"(?:(please)\s+)?"
+            r"(translate|decode|decipher|reverse engineer|reverse-engineer)\s+"
+            r"(?:this|that|the|an?)\s+(sentence|utterance|output|result|translation)"
+            r"\s+(?:back\s+)?(?:to|into)\s+(english|xenari)(?:\s+(please))?",
+            normalized,
+        )
+        if imperative_translate:
+            polite_before, verb, obj, target, polite_after = imperative_translate.groups()
+            verb_root = self._known_verb_root(verb)
+            object_root, _ = self.lookup(obj)
+            target_root, _ = self.lookup(target)
+            if verb_root and object_root and target_root:
+                parts = ["ra", "nu", object_root, "fa", "nu", target_root, "ta", verb_root, "vi", "ko", evidence_root]
+                if polite_before or polite_after:
+                    please_root, _ = self.lookup("please")
+                    if please_root:
+                        parts.append(please_root)
+                return " ".join(parts)
+
         simple_reviewed_clause = self._parse_loop4_clause(
             normalized,
             evidence_root,
@@ -1236,18 +1287,18 @@ class TranslatorMixin:
             subject_root = self._english_subject_root(subject)
             verb_root = self._known_verb_root(verb)
             object_root, _ = self.lookup(obj)
+            target_root, _ = self.lookup("english") if language_target else (None, None)
             if subject_root and verb_root and object_root:
                 rendered = self._render_simple_frame(
                     subject_root,
                     verb_root,
                     object_roots=[object_root],
+                    goal_root=target_root,
                     tense_root="ve" if modal_word in {"will", "would"} else "pe",
                     evidence_root=evidence_root,
                     question=True,
                     polite=bool(please),
                 )
-                if language_target:
-                    rendered += " [partial: omitted language target: English]"
                 return rendered
 
         action = re.fullmatch(

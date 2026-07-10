@@ -263,3 +263,9 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
                 candidate_score = self.db._lookup_score(key, self.lexicon.get(row["root"], ""), row["context_note"])
                 if candidate_score > current_score:
                     self.english_to_root[key] = row["root"]
+        preferred = {
+            "language": "zuqra",
+        }
+        for key, root in preferred.items():
+            if root in self.lexicon:
+                self.english_to_root[key] = root

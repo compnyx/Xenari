@@ -13214,6 +13214,18 @@
     ]
   },
   {
+    "id": 9507,
+    "root": "gledru",
+    "meaning": "English language / English speech",
+    "category": "Core Vocabulary",
+    "source": "tool",
+    "timestamp": "2026-07-10 15:12",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "english"
+    ]
+  },
+  {
     "id": 129,
     "root": "glez",
     "meaning": "catch-motion",
@@ -90464,6 +90476,19 @@
     "notes": null,
     "english_keys": [
       "mention"
+    ]
+  },
+  {
+    "id": 9506,
+    "root": "pardru",
+    "meaning": "translation / rendered-language output",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-07-10 15:12",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "rendered-language",
+      "translation"
     ]
   },
   {
