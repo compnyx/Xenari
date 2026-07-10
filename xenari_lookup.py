@@ -72,7 +72,11 @@ class LookupMixin:
             "enemy", "student", "teacher", "worker", "thief", "robber",
             "demon", "succubus", "human", "body", "soul", "living"
         )
-        return self.p["anim"] if any(cue in meaning for cue in animate_cues) else default
+        return (
+            self.p["anim"]
+            if any(re.search(rf"\b{re.escape(cue)}s?\b", meaning) for cue in animate_cues)
+            else default
+        )
 
     def _is_pronoun_root(self, root: str) -> bool:
         """Xenari pronouns carry inherent animacy and do not print vi/nu."""

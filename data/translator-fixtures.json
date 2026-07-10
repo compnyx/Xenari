@@ -53,6 +53,46 @@
       "xenari": "fa nu kashatyong ka neq ta qeng ve xo"
     },
     {
+      "english": "I’m going to work today",
+      "xenari": "fa nu kashatyong ka neq ta qeng ve xo"
+    },
+    {
+      "english": "I've gotten the output",
+      "xenari": "ra nu duqe ka neq ta smite lo xo"
+    },
+    {
+      "english": "I’ve gotten the output",
+      "xenari": "ra nu duqe ka neq ta smite lo xo"
+    },
+    {
+      "english": "Once I have gotten the result",
+      "xenari": "cruv ra nu duqe ka neq ta smite lo xo"
+    },
+    {
+      "english": "I am working today",
+      "xenari": "ka neq ta qxundraz sa xo"
+    },
+    {
+      "english": "This is a test sentence",
+      "xenari": "ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo"
+    },
+    {
+      "english": "I am throwing the sentence for you to decipher",
+      "xenari": "ra nu hune ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu"
+    },
+    {
+      "english": "I am throwing the sentence in the translator for you to decipher",
+      "xenari": "ra nu hune na nu fona ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu"
+    },
+    {
+      "english": "Can you decipher this sentence please?",
+      "xenari": "ra nu hune ka mex ta nimixu pe xo naxru va"
+    },
+    {
+      "english": "Can you reverse engineer this sentence please?",
+      "xenari": "ra nu hune ka mex ta halbru pe xo naxru va"
+    },
+    {
       "english": "the elevator was not working",
       "xenari": "ka nu spokta ta qxundraz nu lo xo ngu"
     },
@@ -109,19 +149,39 @@
     {
       "xenari": "ka nu spokta ta qxundraz nu lo xo ngu",
       "english": "elevator did not operate"
+    },
+    {
+      "xenari": "ra nu duqe ka neq ta smite lo xo",
+      "english": "I got result"
+    },
+    {
+      "xenari": "ra nu hune ka mex ta halbru pe xo naxru va",
+      "english": "you could reverse-engineer sentence, please?"
+    },
+    {
+      "xenari": "ra nu hune ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu",
+      "english": "I throw sentence so that you decode sentence"
     }
   ],
   "hardening": {
-    "regression_input": "hey i'm going to work today, but the elevator was not working. anyway, this is a test sentence i'm throwing in the translator for you to decipher once i've gotten the output of xenari. can you reverse engineer this sentence back to english please?",
+    "regression_input": "hey i’m going to work today, but the elevator was not working. anyway, this is a test sentence i’m throwing in the translator for you to decipher once i’ve gotten the output of xenari. can you reverse engineer this sentence back to english please?",
+    "expected": "prax. fa nu kashatyong ka neq ta qeng ve xo. kex ka nu spokta ta qxundraz nu lo xo ngu. qzecmru. ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo. ra nu hune na nu fona ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu. cruv ra nu xenari po duqe ka neq ta smite lo xo. ra nu hune ka mex ta halbru pe xo naxru va [partial: omitted language target: English]",
     "must_include": [
       "prax",
       "fa nu kashatyong ka neq ta qeng ve xo",
       "kex ka nu spokta ta qxundraz nu lo xo ngu",
-      "[untranslated: this is a test sentence"
+      "ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo",
+      "frex ra nu hune ka mex ta nimixu",
+      "cruv ra nu xenari po duqe ka neq ta smite lo xo",
+      "ra nu hune ka mex ta halbru pe xo naxru va",
+      "[partial: omitted language target: English]"
     ],
     "must_not_include": [
       "ka nu hey",
-      "fa nu flonx"
+      "fa nu flonx",
+      "[untranslated:",
+      "i’m",
+      "i’ve"
     ]
   }
 }

@@ -34,7 +34,8 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
         self.pronouns = {
             "1": "neq",   # I/me
             "2": "mex",   # you
-            "3": "zeq",   # they (3rd ordinal)
+            "3": "zeq",   # indefinite/abstract other
+            "4": "leq",   # present third person
         }
 
         # English pronoun mapping
@@ -42,6 +43,9 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "i": ("1", False), "me": ("1", False), "my": ("1", True), "mine": ("1", True),
             "we": ("1", False, True), "us": ("1", False, True), "our": ("1", True, True),
             "you": ("2", False), "your": ("2", True), "yours": ("2", True),
+            "he": ("4", False), "him": ("4", False), "his": ("4", True),
+            "she": ("4", False), "her": ("4", False), "hers": ("4", True),
+            "it": ("4", False), "its": ("4", True),
             "they": ("3", False), "them": ("3", False), "their": ("3", True), "theirs": ("3", True),
         }
 
@@ -184,6 +188,28 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "operates": "qxundraz",
             "operated": "qxundraz",
             "operating": "qxundraz",
+            "throw": "qranx",
+            "throws": "qranx",
+            "throwing": "qranx",
+            "threw": "qranx",
+            "thrown": "qranx",
+            "decode": "nimixu",
+            "decodes": "nimixu",
+            "decoded": "nimixu",
+            "decoding": "nimixu",
+            "decipher": "nimixu",
+            "deciphers": "nimixu",
+            "deciphered": "nimixu",
+            "deciphering": "nimixu",
+            "translate": "nrotm",
+            "translates": "nrotm",
+            "translated": "nrotm",
+            "translating": "nrotm",
+            "get": "smite",
+            "gets": "smite",
+            "got": "smite",
+            "gotten": "smite",
+            "getting": "smite",
         }
 
         self.copula_words = {"is", "are", "am", "be", "was", "were", "being", "feel"}
@@ -197,7 +223,7 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
                            "again", "further", "then", "once", "here", "there",
                            "all", "any", "both", "each", "few", "more", "most",
                            "other", "some", "such", "only", "own", "same", "than",
-                           "too", "s", "t", "can", "should", "now"}
+                           "too", "s", "t", "can", "should", "now", "today"}
 
     def _load_from_db(self):
         """Load all roots and english mappings from the sqlite DB."""

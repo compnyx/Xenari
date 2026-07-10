@@ -18301,6 +18301,7 @@
       "brightness",
       "light",
       "light;",
+      "this",
       "this;"
     ]
   },
@@ -21281,7 +21282,6 @@
     "english_keys": [
       "noun",
       "patient",
-      "result",
       "which"
     ]
   },
@@ -23573,6 +23573,7 @@
     "english_keys": [
       "consequence",
       "effect",
+      "output",
       "result"
     ]
   },
@@ -66634,8 +66635,8 @@
     "timestamp": "2026-07-08T15:38:24.415582",
     "notes": "QC repair 2026-07-09T18:08:23: renamed from sowi; validator issues: invalid character 'w' at position 2",
     "english_keys": [
-      "punishment",
-      "sentence"
+      "legal sentence",
+      "punishment"
     ]
   },
   {
@@ -72097,18 +72098,6 @@
     "notes": null,
     "english_keys": [
       "happen"
-    ]
-  },
-  {
-    "id": 3372,
-    "root": "ntitoz",
-    "meaning": "gotten",
-    "category": "Motion/Action",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:30:33.136987+00:00",
-    "notes": "QC repair 2026-07-09T18:08:23: renamed from ntitoj; validator issues: invalid character 'j' at position 5",
-    "english_keys": [
-      "gotten"
     ]
   },
   {
@@ -89845,6 +89834,19 @@
     ]
   },
   {
+    "id": 9503,
+    "root": "hune",
+    "meaning": "sentence / utterance — complete linguistic expression",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-07-10 11:35",
+    "notes": null,
+    "english_keys": [
+      "sentence",
+      "utterance"
+    ]
+  },
+  {
     "id": 3725,
     "root": "hurkehlxaxv",
     "meaning": "biologist",
@@ -92015,18 +92017,6 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jix; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "holes"
-    ]
-  },
-  {
-    "id": 3203,
-    "root": "filez",
-    "meaning": "getting",
-    "category": "State/Condition",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:30:33.136987+00:00",
-    "notes": "QC repair 2026-07-09T18:08:23: renamed from filej; validator issues: invalid character 'j' at position 4",
-    "english_keys": [
-      "getting"
     ]
   },
   {
@@ -94258,6 +94248,19 @@
     ]
   },
   {
+    "id": 9504,
+    "root": "fona",
+    "meaning": "translator — translation tool or translating agent",
+    "category": "Technology & Devices",
+    "source": "tool",
+    "timestamp": "2026-07-10 11:35",
+    "notes": null,
+    "english_keys": [
+      "translation tool",
+      "translator"
+    ]
+  },
+  {
     "id": 1397,
     "root": "gloqkruxxol",
     "meaning": "server — a vessel for made-minds, hardware hosting AI (gloq + kruxxol = vessel + made-mind)",
@@ -94311,6 +94314,19 @@
       "gaq",
       "release",
       "strap"
+    ]
+  },
+  {
+    "id": 9505,
+    "root": "halbru",
+    "meaning": "to reverse-engineer — reconstruct or analyze a system backwards from a result",
+    "category": "Technology & Devices",
+    "source": "tool",
+    "timestamp": "2026-07-10 11:35",
+    "notes": null,
+    "english_keys": [
+      "reverse engineer",
+      "reverse-engineer"
     ]
   },
   {
@@ -103659,7 +103675,11 @@
     "notes": null,
     "english_keys": [
       "acquire",
-      "gain"
+      "gain",
+      "get",
+      "getting",
+      "got",
+      "gotten"
     ]
   },
   {

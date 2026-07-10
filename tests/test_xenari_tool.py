@@ -37,18 +37,30 @@ def test_multiclause_hardening_regression_is_bounded_and_honest():
 
     translated = x.speak(case["regression_input"], evidential="assumed")
 
+    assert translated == case["expected"]
     for fragment in case["must_include"]:
         assert fragment in translated
     for fragment in case["must_not_include"]:
         assert fragment not in translated
-    assert translated.count("[untranslated:") >= 3
+    assert translated.count("[partial:") == 1
     assert translated.startswith("prax. ")
     assert x.speak("hey friend", evidential="assumed") == "prax"
+
+
+def test_smart_apostrophes_expand_like_ascii_apostrophes():
+    x = Xenari(REPO / "xenari.db")
+
+    ascii_forms = "I'm working; I've gotten the result; You've seen it; we'll go; I can't go"
+    for apostrophe in ("’", "‘", "ʼ", "＇"):
+        smart_forms = ascii_forms.replace("'", apostrophe)
+        assert x._expand_english_contractions(smart_forms) == x._expand_english_contractions(ascii_forms)
 
 
 def test_work_senses_and_unknown_subjects_do_not_become_fake_roots():
     x = Xenari(REPO / "xenari.db")
 
+    assert x._merge_compounds(["red", "hat"]) == ["red", "hat"]
+    assert "rlisbrid" not in x.speak("I love the red hat", evidential="assumed")
     assert x.speak("creative work", evidential="assumed") == "flonx"
     assert "flonx" not in x.speak("I work", evidential="assumed")
     assert x.speak("the elevator was not working", evidential="assumed") == (
