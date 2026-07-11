@@ -259,7 +259,7 @@ Final Loop 1 gate:
 - [x] Review Python and browser translator implementations before patching.
 - [x] Verify content-question, pronoun, and everyday-verb behavior against canon DB/docs/code.
 - [x] Add shared fixtures plus focused Python/browser regressions.
-- [x] Add the repeatable paired drift report and preserve its one semantic ambiguity explicitly.
+- [x] Add the repeatable paired drift report and record the then-unresolved semantic ambiguity explicitly.
 - [x] Mirror browser changes in the site changelogs and translator asset version.
 - [x] Run all requested final gates without committing, pushing, deploying, syncing externally, or restarting services.
 
@@ -269,13 +269,13 @@ Final Loop 2 gate:
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 43 forward and 19 reverse fixtures passed
 - `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
-- `npm run test:xenari`: translator, six-row drift, and page contracts passed; drift report has 5 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run test:xenari`: translator, six-row drift, and page contracts passed; drift report had 5 matches plus the later-resolved `they` divergence, 0 unexpected
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
 
 Remaining failures carried forward:
 
-- Row 4 still needs a canon policy or context-aware UI for English `they`; Python `zeq` and browser `req ha` remain intentionally unchanged.
+- Row 4 later received the canon default: bare English `they` is plural `req ha`; no context-aware UI is required for the default path.
 - Row 8 still lacks a canon interrogative `who` root; no root was coined in this loop.
 - Initial interrogative `when` remains an explicit unsupported shared fallback; temporal `when` is a separate Loop 3 frame.
 - Rows 10–18 are the Loop 3 clause-grammar corpus. Broader noun-subject syntax and dialogue rows 23, 26, 29, and 30 remain later-loop work.
@@ -285,7 +285,7 @@ Remaining failures carried forward:
 - [x] Inspect both clean worktrees, recent history, campaign rows 10–18, grammar docs, translator code, fixtures, and tests before editing.
 - [x] Verify every selected relation particle and action root through `inspect`, `search`, and `lookup` before parser changes.
 - [x] Add at least ten forward, four reverse, and five stress fixtures; final additions were 16, seven, and seven respectively.
-- [x] Align Python/browser forward and reverse behavior, retaining the single canon-driven `they` known mismatch.
+- [x] Align Python/browser forward and reverse behavior; the former `they` divergence was later removed by the canon default.
 - [x] Update Python tests, site tests, both site changelogs, and `translatorAssetVersion` (`20260710-hardening-loop3`).
 - [x] Avoid DB/generated-data edits because the loop reused existing canon roots and mappings.
 - [x] Run every requested local gate without committing, pushing, deploying, syncing externally, or restarting services.
@@ -296,7 +296,7 @@ Final Loop 3 gate:
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 59 forward and 26 reverse fixtures passed
 - `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
-- `npm run test:xenari`: translator, thirteen-row drift, and page contracts passed; drift report has 12 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run test:xenari`: translator, thirteen-row drift, and page contracts passed; drift report had 12 matches plus the later-resolved `they` divergence, 0 unexpected
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
 
@@ -304,7 +304,7 @@ Remaining failures carried forward from Loop 3:
 
 - Initial interrogative `when` and `who` still lack canon question roots; neither is synthesized from a subordinator/relativizer.
 - Stative conditions such as “if the door is open,” missing-predicate conditions such as “if I could,” and nested/stacked/object-gap/oblique relatives remain compact readable partials.
-- English `they` remains the only drift known-mismatch: Python uses `zeq`; browser uses `req ha`.
+- The former English `they` drift is resolved: both engines now use plural `req ha` by default.
 - Reverse translation reads the new boundaries but still simplifies articles, agreement, and purpose wording; it does not validate arbitrary nested Xenari.
 - Comparison rows 19–21 and dialogue/sound rows 22–30 remain assigned to later loops.
 
@@ -315,7 +315,7 @@ Remaining failures carried forward from Loop 3:
 - Canon has reviewed quantifier roots for the bounded set used here: `fqam` one, `vriq` two, `xant` many, `qrunq` all/whole, `frox` some, `klog` few, `cleg` each/every, and `nulxant` none/no.
 - `nulxant` carries the “no/none” meaning directly. Loop 4 outputs such as “no water” and “no people open the door” do not add `ngu`.
 - The documented noun-phrase modifier order places quantifier-style material after the head noun. The translator now renders reviewed phrase fragments such as `zrump vriq`, `pronx xant`, and `suhpi kag qruv`.
-- English `their` still differs between Python and browser because of the unresolved `zeq`/`req ha` policy. Loop 4 avoids adding that as a shared exact fixture.
+- English `their` follows the same resolved plural default as `they`: `req ha`. It is covered by focused Python/browser regression checks.
 
 ## Loop 4 changes
 
@@ -343,7 +343,7 @@ Final Loop 4 gate:
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 79 forward and 26 reverse fixtures passed
 - `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
-- `npm run test:xenari`: translator, thirteen-row drift, and page contracts passed; drift report has 12 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run test:xenari`: translator, thirteen-row drift, and page contracts passed; drift report had 12 matches plus the later-resolved `they` divergence, 0 unexpected
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
 
@@ -351,7 +351,7 @@ Remaining failures carried forward from Loop 4:
 
 - Canon still lacks a settled comparison-standard marker, so comparative standards are preserved as partial notes rather than encoded in Xenari grammar.
 - Dialogue/sound rows 22–30 remain assigned to Loop 5.
-- Initial interrogative `when`, interrogative `who`, `they` ordinal ambiguity, stative conditions, missing predicates, and nested/object-gap relatives remain unchanged from Loop 3.
+- Initial interrogative `when`, interrogative `who`, stative conditions, missing predicates, and nested/object-gap relatives remain unchanged from Loop 3; the `they` ordinal ambiguity was resolved later.
 
 ## Loop 5 findings
 
@@ -369,7 +369,7 @@ Remaining failures carried forward from Loop 4:
 - Preserved repeated roots exactly and removed browser-only fragment animacy particles. Reviewed dialogue `yes`, `no`, and `fine` now select `naxq`, `nguq`, and `stux` rather than lookup collisions.
 - Normalized curly/ASCII quote openings, Unicode ellipsis, em/en dashes, and bracketed stage directions into aligned clause seams. The existing `Wait—what?` and `Hey, are you there?` contracts remain unchanged.
 - Added 19 forward and one reverse Loop 5 shared fixtures across dialogue, imperative, quote, sound, sound-report, stage-direction, typography, known vocalization, and vocalization-gap families. Nine forward cases are marked stress cases.
-- Expanded the paired Python/browser drift corpus from thirteen to 26 sentences. It now reports 25 exact matches, the unchanged approved `they` mismatch, and zero unexpected differences.
+- Expanded the paired Python/browser drift corpus from thirteen to 26 sentences. At this checkpoint it reported 25 exact matches plus the later-resolved `they` divergence, and zero unexpected differences.
 - Fixed the read-only gap harvester to retain inline speaker dialogue, annotate only inline stage spans, separate phrase windows at typographic punctuation/stage transitions/line boundaries, count repeated sounds, and recognize bounded repeated-consonant onomatopoeia.
 - No root, English mapping, DB row, or generated dictionary changed, so dictionary sync was intentionally not run.
 
@@ -389,13 +389,13 @@ Final Loop 5 gate:
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 96 forward and 27 reverse fixtures passed
 - `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
-- `npm run test:xenari`: translator, 26-row drift, and page contracts passed; drift report has 25 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run test:xenari`: translator, 26-row drift, and page contracts passed; drift report had 25 matches plus the later-resolved `they` divergence, 0 unexpected
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
 
 Items carried to Loop 6:
 
-- Keep the existing `they` Python/browser difference unchanged until grammar/canon establishes a default English ordinal reading.
+- The former `they` Python/browser difference was resolved by the grammar/canon default `req ha`.
 - Fuzz nested/malformed quotes, unmatched brackets, speaker labels with parentheticals, punctuation-only input, and long repeated-sound runs; Loop 5 covers reviewed seams, not a general screenplay parser.
 - Review additional imperative verbs one bounded argument frame at a time. Unreviewed English verb-first clauses should not be assumed to share the five Loop 5 command frames.
 - Decide through canon curation whether recurring `ugh` deserves a root; do not substitute `ux`, `aza`, or another nearby vocalization automatically.
@@ -417,7 +417,7 @@ Items carried to Loop 6:
 - Added parenthetical and asterisk stage spans to the existing bracketed stage-direction clause seams.
 - Added a bounded Loop 6 safety frame that marks unreviewed subjectless commands as readable partials instead of inventing `ka neq`, while leaving the reviewed Loop 5 imperatives unchanged.
 - Added shared Loop 6 fixtures for empty input, unreviewed imperatives, speaker labels, speaker plus stage directions, parenthetical stage directions, and asterisk sound spans.
-- Expanded the Python/browser drift corpus from 26 to 37 sentences. It now reports 36 exact matches, the unchanged approved `they` mismatch, and zero unexpected differences.
+- Expanded the Python/browser drift corpus from 26 to 37 sentences. At this checkpoint it reported 36 exact matches plus the later-resolved `they` divergence, and zero unexpected differences.
 - No root, English mapping, DB row, or generated dictionary changed, so dictionary sync was intentionally not run.
 
 ## Loop 6 release checklist
@@ -435,7 +435,7 @@ Final Loop 6 gate:
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 107 forward and 27 reverse fixtures passed
 - `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
-- `npm run test:xenari`: translator, 37-row drift, and page contracts passed; drift report has 36 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run test:xenari`: translator, 37-row drift, and page contracts passed; drift report had 36 matches plus the later-resolved `they` divergence, 0 unexpected
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
 
@@ -452,14 +452,14 @@ Final Loop 6 gate:
 - Added a narrow coordination seam for connector plus independent subject clauses, covering cases like “The door opens and the alien runs.” without splitting ordinary noun phrases.
 - Added an honest subjectless-question partial for “Why run?”-style inputs.
 - Passed reviewed subject animacy into the Python simple-frame renderer so animate nouns such as `dog` stay animate in both translators.
-- Added eight Loop 7 shared fixtures and expanded the drift corpus from 37 to 45 sentences. It now reports 44 exact matches, the unchanged approved `they` mismatch, and zero unexpected differences.
+- Added eight Loop 7 shared fixtures and expanded the drift corpus from 37 to 45 sentences. At this checkpoint it reported 44 exact matches plus the later-resolved `they` divergence, and zero unexpected differences.
 - No root, English mapping, DB row, or generated dictionary changed.
 
 Final Loop 7 gate:
 
 - `pytest -q`: 34 passed
 - `python3 xenari_tool.py parity`: 115 forward and 27 reverse fixtures passed
-- `npm run test:xenari`: translator, 45-row drift, and page contracts passed; drift report has 44 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run test:xenari`: translator, 45-row drift, and page contracts passed; drift report had 44 matches plus the later-resolved `they` divergence, 0 unexpected
 
 ## Loop 8 findings
 
@@ -474,14 +474,14 @@ Final Loop 7 gate:
 - Added `translate/translates/translated` to the reviewed simple transitive set so “The translator translates the sentence.” uses the existing `nrotm` root.
 - Added elided-subject coordination for reviewed bare intransitives after `and`/`but`/`or`/`yet`.
 - Added seven Loop 8 fixtures for noun-subject/noun-object transitives, elided-subject coordination, and translator/action wording.
-- Expanded the drift corpus from 45 to 52 sentences. It now reports 51 exact matches, the unchanged approved `they` mismatch, and zero unexpected differences.
+- Expanded the drift corpus from 45 to 52 sentences. At this checkpoint it reported 51 exact matches plus the later-resolved `they` divergence, and zero unexpected differences.
 - No root, English mapping, DB row, or generated dictionary changed.
 
 Final Loop 8 gate:
 
 - `pytest -q`: 35 passed
 - `python3 xenari_tool.py parity`: 122 forward and 27 reverse fixtures passed
-- `npm run test:xenari`: translator, 52-row drift, and page contracts passed; drift report has 51 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run test:xenari`: translator, 52-row drift, and page contracts passed; drift report had 51 matches plus the later-resolved `they` divergence, 0 unexpected
 
 ## Loop 9 findings
 
@@ -503,6 +503,6 @@ Final Loop 9 gate:
 - `python3 xenari_tool.py doctor`: status ok
 - `python3 xenari_tool.py parity`: 125 forward and 27 reverse fixtures passed
 - `python3 xenari_tool.py stats`: 9,334 roots; 11,051 English mappings; 83 categories
-- `npm run test:xenari`: translator, 55-row drift, and page contracts passed; drift report has 54 matches, 1 recorded known mismatch, 0 unexpected
+- `npm run test:xenari`: translator, 55-row drift, and page contracts passed; drift report had 54 matches plus the later-resolved `they` divergence, 0 unexpected
 - `npm run build`: 16 pages built successfully
 - `git diff --check`: clean in both repositories
