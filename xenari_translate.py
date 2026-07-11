@@ -2417,6 +2417,35 @@ class TranslatorMixin:
                     return aux + " " + v
                 return base
 
+            if tense == "ko" and verb and not subj:
+                command_parts = [verb]
+                if obj:
+                    command_parts.append(obj)
+                if loc:
+                    command_parts.append(f"in/at {loc}")
+                if goal:
+                    command_parts.append(f"to {goal}")
+                if instrument:
+                    command_parts.append(f"with {instrument}")
+                text = " ".join(command_parts)
+                if negated:
+                    text = f"don't {text}"
+                if polite:
+                    text = f"please {text}"
+                if connector:
+                    text = " ".join([connector, text]).strip()
+                if loose:
+                    text = f"{text} [fragment: {' '.join(loose)}]".strip()
+                if interrogative:
+                    text = f"{interrogative} {text}".strip()
+                text = f"{text}?"
+                if not question and not interrogative:
+                    text = text[:-1] + "!"
+                if warnings:
+                    text += f" [warning: {'; '.join(warnings)}]"
+                rendered.append(text)
+                continue
+
             if connector:
                 text_parts = [connector]
             else:

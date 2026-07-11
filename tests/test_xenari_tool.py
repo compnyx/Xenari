@@ -1074,7 +1074,9 @@ def test_translator_preserves_plural_forms_questions_evidence_and_complements():
 def test_reverse_imperatives_keep_verb_and_goal_meaning():
     x = Xenari(REPO / "xenari.db", read_only=True)
     assert x.reverse("ta trekq vi ko xo") == "wait!"
+    assert x.reverse("ta qroz vi ko xo") == "fuck!"
     assert x.reverse("fa vi cuq ta grip vi ko xo") == "listen to wind!"
+    assert x.reverse("ra neq po ngox ta qroz vi ko xo") == "fuck my ass!"
 
 
 def test_gap_harvest_preserves_uppercase_cues_and_expands_wont():

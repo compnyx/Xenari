@@ -821,6 +821,18 @@
       "english": "I broke door"
     },
     {
+      "xenari": "ta qroz vi ko xo",
+      "english": "fuck!",
+      "loop": 5,
+      "family": "imperative"
+    },
+    {
+      "xenari": "ra neq po ngox ta qroz vi ko xo",
+      "english": "fuck my ass!",
+      "loop": 5,
+      "family": "imperative"
+    },
+    {
       "xenari": "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo",
       "english": "if I see alien, then I will run",
       "loop": 3,
