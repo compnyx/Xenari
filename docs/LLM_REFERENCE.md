@@ -42,10 +42,17 @@ Core particles:
 Pronouns already carry their own animacy. Do not add `vi` or `nu` before them.
 When a pronoun is the subject, do not repeat animacy on the verb.
 
-- `neq` = first person, I/me/we/us by context
+- `neq` = first person, I/me; add `ha` for we/us
 - `mex` = second person, you
-- `leq` = present third person, he/she/it/him/her by context
-- `zeq` = indefinite/abstract third person, they/them by context
+- `leq` = 3rd ordinal, present other: he/she/it/him/her by context
+- `req` = 4th ordinal, absent known other: plural they/them/their/theirs defaults to `req ha`
+- `seq` = 5th ordinal, unknown/foreign other
+- `zeq` = 6th ordinal, singular indefinite/abstract other
+
+English does not mark Xenari ordinal context. The translator's default for bare
+English `they`, `them`, `their`, and `theirs` is the ordinary plural reading:
+`req ha`. Do not silently choose singular/indefinite `zeq`; use it only when
+that reading is explicit in the source context.
 
 Correct:
 

@@ -23,6 +23,18 @@ def test_known_phrase_generation():
         assert x.speak(case["english"], evidential="assumed") == case["xenari"]
 
 
+def test_bare_english_they_defaults_to_plural_known_req_ha():
+    x = Xenari(REPO / "xenari.db")
+
+    assert x.lookup("they")[0] == "req"
+    assert x.lookup("their")[0] == "req"
+    assert x.speak("They'll build the door tomorrow.", evidential="assumed") == (
+        "ra nu zrump ka req ha ta mrob ve xo"
+    )
+    assert x.speak("Their door", evidential="assumed") == "req ha po zrump"
+    assert x.reverse("ra nu zrump ka req ha ta mrob ve xo") == "they will build door"
+
+
 def test_reverse_uses_shared_fixtures():
     x = Xenari(REPO / "xenari.db")
     fixtures = load_fixtures()

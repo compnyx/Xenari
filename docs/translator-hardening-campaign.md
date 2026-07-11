@@ -10,6 +10,15 @@ Status: Loop 9 completed on 2026-07-10. This is a living audit and handoff file,
 - No loop commits, deploys, service restarts, or external syncs. Nyx reviews and publishes separately.
 - Each loop should leave a bounded diff and carry unresolved examples forward explicitly.
 
+## Default English `they` rule
+
+Canon distinguishes ordinal readings that English leaves unspecified. For a
+bare English `they`/`them`/`their`/`theirs`, use the ordinary plural default
+`req ha` (4th ordinal, known other plus plural). Do not infer singular or
+indefinite `zeq`; that reading requires explicit source context. The shared
+fixture for “They'll build the door tomorrow.” is an exact Python/browser
+agreement check, and the drift gate accepts no documented differences.
+
 ## Loop 1 baseline
 
 Starting revisions were Xenari `13097a3` and nyx-site `afcdf9d`; both worktrees were clean. Canon reported 9,334 roots, 11,046 English mappings, and 83 categories.
@@ -29,19 +38,19 @@ No crashes occurred in the 30-sentence manual audit. The more serious failures w
 
 ## Loop 3 baseline
 
-Starting revisions were Xenari `4a05b16` and nyx-site `fb55b5b`; both worktrees were clean. The supervised Loop 2 baseline passed with 27 Python tests, 43 forward fixtures, 19 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting five drift matches plus the one approved `they` mismatch.
+Starting revisions were Xenari `4a05b16` and nyx-site `fb55b5b`; both worktrees were clean. The supervised Loop 2 baseline passed with 27 Python tests, 43 forward fixtures, 19 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting five drift matches plus the later-resolved `they` divergence.
 
 Rows 10–18 still produced dropped arguments, malformed relative attachment, or unrelated comma-separated clauses. Initial `when` was an honest but over-broad fallback that did not distinguish a WH question from temporal subordination.
 
 ## Loop 4 baseline
 
-Starting revisions were Xenari `9eb9774` and nyx-site `ed5084a`; both worktrees were clean before Codex CLI began. The Loop 3 baseline still passed with 29 Python tests, 59 forward fixtures, 26 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting twelve drift matches plus the one approved `they` mismatch.
+Starting revisions were Xenari `9eb9774` and nyx-site `ed5084a`; both worktrees were clean before Codex CLI began. The Loop 3 baseline still passed with 29 Python tests, 59 forward fixtures, 26 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting twelve drift matches plus the later-resolved `they` divergence.
 
 The Codex CLI pass stalled after a partial Python-only patch, so Nyx killed only that hung loop process, reviewed the partial diff, and finished the Python/browser parity, fixture, documentation, and site-release work manually.
 
 ## Loop 5 baseline
 
-Starting revisions were Xenari `f74143f` and nyx-site `7b75da6`; both worktrees were clean. The Loop 4 baseline passed with 30 Python tests, 79 forward fixtures, 26 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting twelve drift matches plus the one approved `they` mismatch.
+Starting revisions were Xenari `f74143f` and nyx-site `7b75da6`; both worktrees were clean. The Loop 4 baseline passed with 30 Python tests, 79 forward fixtures, 26 reverse fixtures, a healthy doctor report, 9,334 roots / 11,051 English mappings / 83 categories, and the site translator suite reporting twelve drift matches plus the later-resolved `they` divergence.
 
 The 15-row dialogue audit had no crashes, but repeated sounds collapsed, browser fragments gained fake animacy particles, imperative punctuation triggered `va`, generic parsing invented first-person command subjects, inline stage directions merged with narration, and the gap harvester discarded inline `SPEAKER: dialogue` text.
 
@@ -77,7 +86,7 @@ The 15-row dialogue audit had no crashes, but repeated sounds collapsed, browser
 ## Python/site drift risks
 
 - Python `verb_map` can intentionally override noisy DB lookups; browser `EXTRA_MAPPINGS` can override the generated dictionary. Updating only one changes semantics immediately.
-- Python uses `zeq` for indefinite/abstract third person; the browser still contains a separate `req` plural-third-person convention. This needs a grammar-led decision, not an incidental parser edit.
+- Bare English `they` now has one grammar-led default in both engines: plural `req ha`. Singular/indefinite `zeq` remains explicit-only, and the drift gate rejects every mismatch.
 - Browser dictionary collision selection and Python `_lookup_score` are not the same algorithm.
 - Python returns a single rendered string. Browser results carry `wordPairs`, `partial`, `unknown`, notes, and display suffixes; parity tests currently compare only rendered text.
 - The Astro page needs a cache-bust change whenever browser translator behavior changes.
@@ -92,7 +101,7 @@ All 30 inputs were run through `python3 xenari_tool.py translate`; the same corp
 | 1 | I'm not going to work today. | contraction, negation, future | fixed and shared-fixtured |
 | 2 | She didn’t kiss him yesterday. | smart apostrophe, past negation | fixed and shared-fixtured |
 | 3 | We’ve never seen the alien. | smart apostrophe, present perfect, negation | fixed by established `toq` override; still not a dedicated fixture |
-| 4 | They’ll build the door tomorrow. | contraction, future | `build` is now a verb in both engines; exact `zeq` versus `req ha` output remains a recorded known mismatch because English does not encode the canon presence/knownness distinction |
+| 4 | They’ll build the door tomorrow. | contraction, future | fixed and shared-fixtured as `ra nu zrump ka req ha ta mrob ve xo`; bare English `they` has the canon plural default |
 | 5 | Can’t you hear the alarm? | smart apostrophe, modal, negated question | fixed and shared-fixtured with canon lookup `cromq` |
 | 6 | Why did the elevator stop? | WH question, past | fixed and shared-fixtured as bare `voq` plus an elevator subject and past `semax`, without yes/no `va` |
 | 7 | Where will you go? | WH question, future | fixed and shared-fixtured as bare `qur`; both engines preserve future `qeng` without `va` |
@@ -145,7 +154,7 @@ Loop 5 promotes rows 22–30 plus the requested imperative, quote, stage-directi
 - Canon has reviewed roots for every everyday action in scope. Browser failures came from POS inference and collision selection, not missing vocabulary: `mrob` build, `krimp` say, `qabrerd` touch, `tulo` slam, `semax` stop/cease, and `zont` break.
 - `trekq` is the canon “to wait” root. The old Python `wait` → `kam` shortcut conflated waiting with stop-motion and was corrected for row 27.
 - `kam` means stop-motion and must not be reused for the general verb “stop”; general stop/cease/halt frames now use `semax`.
-- The pronoun sources do not justify one automatic English `they` reading. Canon distinguishes `leq` present other, `req` absent known, and `zeq` indefinite; standalone English also leaves number ambiguous. Python still chooses `zeq`, while the browser chooses `req ha`. This exact difference is now tested and reported rather than hidden.
+- Canon distinguishes `leq` present other, `req` absent known, and `zeq` indefinite. The explicit translation rule resolves English underspecification: bare `they` defaults to plural `req ha`; `zeq` is never inferred automatically.
 - Safe noun-subject correction can be bounded to the reviewed intransitive `stop/slam` frame. No general English transitivity parser was introduced.
 
 ## Loop 2 changes
@@ -157,7 +166,7 @@ Loop 5 promotes rows 22–30 plus the requested imperative, quote, stage-directi
 - Aligned reviewed Python/browser overrides for build/built, say/said, touch/touched, slam/slammed, stop/stopped, and break/broke/broken. Reverse past glosses now cover built, said, broke, slammed, and stopped.
 - Added explicit `semax` English mappings for stop/stops/stopped/stopping/halt/halted so lookup and translator logic prefer the general stop/cease verb over noisy auto-mapped feeding and stopped-clock rows.
 - Normalized em/en dashes into conservative clause seams and aligned `Wait—what?` plus `Hey, are you there?`.
-- Added `npm run test:xenari:drift`, a deterministic six-row Python-versus-browser corpus report. It fails on new or changed drift and reports the one exact approved known mismatch.
+- Added `npm run test:xenari:drift`, a deterministic Python-versus-browser corpus report. It now requires exact agreement for every listed phrase.
 - No new canon root was added, but `xenari.db` mapping rows changed for `semax`; DB-derived dictionary exports were regenerated for the repo and site.
 
 ## Loop 3 findings

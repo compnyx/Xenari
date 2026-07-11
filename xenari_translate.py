@@ -435,10 +435,10 @@ class TranslatorMixin:
             "my": (self.pronouns["1"], False),
             "our": (self.pronouns["1"], True),
             "your": (self.pronouns["2"], False),
-            "his": (self.pronouns["4"], False),
-            "her": (self.pronouns["4"], False),
-            "its": (self.pronouns["4"], False),
-            "their": (self.pronouns["3"], True),
+            "his": (self.pronouns["3"], False),
+            "her": (self.pronouns["3"], False),
+            "its": (self.pronouns["3"], False),
+            "their": (self.pronouns["4"], True),
         }
         first, separator, remainder = clean.partition(" ")
         if first in possessive_pronouns and separator:

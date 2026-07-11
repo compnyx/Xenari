@@ -29,6 +29,10 @@
       "xenari": "ra vi qex ka neq ta toq sa xo"
     },
     {
+      "english": "They'll build the door tomorrow.",
+      "xenari": "ra nu zrump ka req ha ta mrob ve xo"
+    },
+    {
       "english": "the alien sees me",
       "xenari": "ra neq ka vi qex ta toq vi sa xo"
     },
@@ -935,13 +939,6 @@
       "ALEX: She whispers: shhh.",
       "ALEX: She says: run."
     ],
-    "known_differences": [
-      {
-        "english": "They'll build the door tomorrow.",
-        "python": "ra nu zrump ka zeq ta mrob ve xo",
-        "browser": "ra nu zrump ka req ha ta mrob ve xo",
-        "reason": "English 'they' does not encode Xenari presence/knownness, and canon does not define a default ordinal reading."
-      }
-    ]
+    "known_differences": []
   }
 }

@@ -30,23 +30,28 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
             "and": "xen", "or": "noq", "but": "kex",
         }
 
-        # Ordinal pronouns (spec §2.4)
+        # Ordinal pronouns (spec §2.4). The numeric keys match the canon
+        # ordinal labels so English mappings cannot silently swap readings.
         self.pronouns = {
             "1": "neq",   # I/me
             "2": "mex",   # you
-            "3": "zeq",   # indefinite/abstract other
-            "4": "leq",   # present third person
+            "3": "leq",   # present other
+            "4": "req",   # absent known other
+            "5": "seq",   # unknown/foreign other
+            "6": "zeq",   # indefinite/abstract other
         }
 
-        # English pronoun mapping
+        # English does not encode Xenari ordinal context. Bare they/them/their
+        # default to plural known others (req ha), never inferred zeq.
         self.en_pronouns = {
             "i": ("1", False), "me": ("1", False), "my": ("1", True), "mine": ("1", True),
             "we": ("1", False, True), "us": ("1", False, True), "our": ("1", True, True),
             "you": ("2", False), "your": ("2", True), "yours": ("2", True),
-            "he": ("4", False), "him": ("4", False), "his": ("4", True),
-            "she": ("4", False), "her": ("4", False), "hers": ("4", True),
-            "it": ("4", False), "its": ("4", True),
-            "they": ("3", False), "them": ("3", False), "their": ("3", True), "theirs": ("3", True),
+            "he": ("3", False), "him": ("3", False), "his": ("3", True),
+            "she": ("3", False), "her": ("3", False), "hers": ("3", True),
+            "it": ("3", False), "its": ("3", True),
+            "they": ("4", False, True), "them": ("4", False, True),
+            "their": ("4", True, True), "theirs": ("4", True, True),
         }
 
         self.tense_map = {

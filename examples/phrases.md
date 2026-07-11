@@ -18,6 +18,11 @@ I loved you.
 ```
 
 ```text
+ra nu zrump ka req ha ta mrob ve xo
+They'll build the door tomorrow. / bare English they defaults to plural known `req ha`.
+```
+
+```text
 ra mex ka neq ta zrent sa xa ngu
 I do not love you.
 ```
