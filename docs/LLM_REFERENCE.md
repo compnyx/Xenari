@@ -109,6 +109,13 @@ ra vi qex ka neq ta toq sa xa
 I see the alien.
 ```
 
+Gratitude can take a causal clause with `troz`:
+
+```text
+gral troz ra zra ka mex ta pyoquqab lo xo
+thanks for solving that. / literally: thanks because you solved that.
+```
+
 ## Copula / Predicate Clauses
 
 Predicates use `ra` like objects.

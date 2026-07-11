@@ -23,6 +23,11 @@ They'll build the door tomorrow. / bare English they defaults to plural known `r
 ```
 
 ```text
+gral troz ra zra ka mex ta pyoquqab lo xo
+thanks for solving that. / literally: thanks because you solved that.
+```
+
+```text
 ra mex ka neq ta zrent sa xa ngu
 I do not love you.
 ```

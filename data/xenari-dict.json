@@ -104995,7 +104995,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from pwouab; validator issues: vowel hiatus: ou at position 2, vowel hiatus: ua at position 3, invalid character 'w' at position 1",
     "english_keys": [
       "resolve",
-      "solve"
+      "solve",
+      "solved",
+      "solves",
+      "solving"
     ]
   },
   {

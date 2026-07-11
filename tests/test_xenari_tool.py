@@ -120,6 +120,10 @@ def test_everyday_verb_overrides_use_established_roots():
         "find": "trek",
         "enter": "logi",
         "belong": "mifzxuri",
+        "solve": "pyoquqab",
+        "solves": "pyoquqab",
+        "solved": "pyoquqab",
+        "solving": "pyoquqab",
         "send": "bern",
         "sent": "bern",
         "give": "flux",
@@ -144,9 +148,9 @@ def test_casual_phrase_registry_precedes_structural_fallbacks():
         "Greetings": "prax",
         "Hello, friend!": "prax",
         "Thanks :)": "gral",
-        "Thanks for solving that": "gral",
+        "Thanks for solving that": "gral troz ra zra ka mex ta pyoquqab lo xo",
         "Thank you": "ra mex ka neq ta gral sa xo",
-        "Thank you for solving that": "gral",
+        "Thank you for solving that": "ra mex ka neq ta gral sa xo troz ra zra ka mex ta pyoquqab lo xo",
         "My bad": "qezxol",
         "Oops!": "vrin",
         "Whoops!": "vrin",
@@ -362,6 +366,10 @@ def test_reverse_autodetects_casual_roots_english_label_and_imperatives():
         "ta semax vi ko xo naxru": "please stop!",
         "ra nu zrump ta xleq vi ko xo ngu": "don't open door!",
         "ra nu zra ta qabrerd vi ko xo ngu": "don't touch that!",
+        "gral troz ra zra ka mex ta pyoquqab lo xo": "thanks for solving that",
+        "ra mex ka neq ta gral sa xo troz ra zra ka mex ta pyoquqab lo xo": (
+            "thank you for solving that"
+        ),
     }
     for xenari, english in cases.items():
         assert x.reverse(xenari) == english

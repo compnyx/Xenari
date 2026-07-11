@@ -54,7 +54,7 @@
     },
     {
       "english": "thanks for solving that",
-      "xenari": "gral"
+      "xenari": "gral troz ra zra ka mex ta pyoquqab lo xo"
     },
     {
       "english": "I am going to work today",
@@ -740,6 +740,10 @@
     }
   ],
   "reverse": [
+    {
+      "xenari": "gral troz ra zra ka mex ta pyoquqab lo xo",
+      "english": "thanks for solving that"
+    },
     {
       "xenari": "prax",
       "english": "hello"
