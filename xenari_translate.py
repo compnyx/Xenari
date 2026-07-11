@@ -103,10 +103,12 @@ class TranslatorMixin:
             r"(?:am|are|is|was|were|have|has|had|will|would|can|could|do|does|did)\b)"
         )
 
-        for sentence in re.split(r"[.!?]+", expanded):
-            sentence = sentence.strip()
+        for match in re.finditer(r"([^.!?]+)([.!?]+|$)", expanded):
+            sentence = match.group(1).strip()
             if not sentence:
                 continue
+            if "?" in match.group(2):
+                sentence += "?"
             # Initial condition/temporal clauses need their comma boundary in
             # order to build one canon frame instead of two unrelated clauses.
             if re.match(r"^(?:if|when|once|after|before|while)\b", sentence) and "," in sentence:
@@ -501,9 +503,12 @@ class TranslatorMixin:
                 return None
 
         head_word = words[-1]
-        plural = False
+        # Resolve attested lexical plurals before trying a guessed singular.
+        # For example, "glasses" and "glass" name different canon roots.
+        lexical_plurals = {"glasses", "pants", "shorts"}
+        plural = head_word in lexical_plurals
         head_root = self._english_subject_root(head_word)
-        if head_word not in self.en_pronouns and head_word != "people":
+        if not head_root and head_word not in self.en_pronouns and head_word != "people":
             singular_candidates = []
             if head_word.endswith("ies") and len(head_word) > 3:
                 singular_candidates.append(head_word[:-3] + "y")
@@ -597,16 +602,16 @@ class TranslatorMixin:
             if tense_root is None:
                 past_forms = {
                     "ate", "bit", "broke", "built", "entered", "found", "gave",
-                    "helped", "opened", "ran", "rested", "sat", "saw", "sent",
+                    "heard", "helped", "kissed", "loved", "opened", "ran", "rested", "sat", "saw", "sent",
                     "slammed", "slept", "stood", "stopped", "took", "touched",
                     "waited", "walked", "went",
                 }
                 tense_root = "lo" if verb_word in past_forms else "sa"
             parts.extend([tense_root, evidence_root])
-        if question:
-            parts.append(self.p["q"])
         if negated:
             parts.append(self.p["neg"])
+        if question:
+            parts.append(self.p["q"])
         return " ".join(parts)
 
     def _parse_loop4_clause(self, english: str, evidence_root: str, require_feature=True):
@@ -1417,7 +1422,7 @@ class TranslatorMixin:
                 parts.append(please_root)
         return " ".join(parts)
 
-    def _speak_common_pattern(self, normalized: str, evidence_root: str):
+    def _speak_common_pattern(self, normalized: str, evidence_root: str, *, terminal_question: bool = False):
         """Handle common English frames whose structure is unambiguous."""
         interrogative_roots = {
             "what": "qan", "which": "qan", "where": "qur", "how": "cil", "why": "voq",
@@ -1481,6 +1486,8 @@ class TranslatorMixin:
             require_feature=False,
         )
         if simple_reviewed_clause:
+            if terminal_question and not simple_reviewed_clause.endswith(f" {self.p['q']}"):
+                return f"{simple_reviewed_clause} {self.p['q']}"
             return simple_reviewed_clause
 
         safe_intransitive = re.fullmatch(
@@ -1648,11 +1655,31 @@ class TranslatorMixin:
         - Handles possession (po)
         - Handles plural (ha)
         """
+        terminal_question = english.strip().endswith("?")
         normalized = re.sub(r"[^a-z0-9' ]+", " ", english.lower())
         normalized = re.sub(r"\s+", " ", normalized).strip()
+        first_word = normalized.split(maxsplit=1)[0] if normalized else ""
+        terminal_yes_no_question = terminal_question and first_word not in {
+            "what", "which", "where", "when", "how", "why", "who", "whom", "whose",
+        }
         if evidential == "auto":
-            evidential = "assumed"
+            if re.search(r"\bsaw\b", normalized):
+                evidential = "witnessed"
+            elif re.search(r"\bheard\b", normalized):
+                evidential = "reported"
+            else:
+                evidential = "assumed"
         e = self.evidential_map.get(evidential, self.evidential_map["assumed"])
+        infinitive_complement = re.fullmatch(
+            r"(i|you|he|she|we|they)\s+(want|wants|wanted|need|needs|needed)\s+to\s+(.+)",
+            normalized,
+        )
+        if infinitive_complement:
+            subject, matrix_verb, complement = infinitive_complement.groups()
+            return self._partial_frame(
+                "",
+                f"unsupported infinitive complement retained: {subject} {matrix_verb} to {complement}",
+            )
         casual_phrase = self._casual_phrase(english)
         if casual_phrase is not None:
             return casual_phrase
@@ -1691,7 +1718,7 @@ class TranslatorMixin:
                 english,
                 "WH/temporal 'when' lacks a proven shared frame",
             )
-        common = self._speak_common_pattern(normalized, e)
+        common = self._speak_common_pattern(normalized, e, terminal_question=terminal_yes_no_question)
         if common is not None:
             return common
         exact_phrases = {
@@ -1774,7 +1801,7 @@ class TranslatorMixin:
             "would", "shall", "should", "can", "could", "may", "might", "must",
             "have", "has", "had",
         }
-        question = bool(tokens and tokens[0] in yes_no_openers)
+        question = terminal_yes_no_question or bool(tokens and tokens[0] in yes_no_openers)
         interrogative_root = None
         obj_tokens = []
         unknown_words = []
@@ -1782,7 +1809,7 @@ class TranslatorMixin:
         if tense == "auto" and any(
             token in {
                 "built", "said", "touched", "slammed", "stopped", "broke", "broken",
-                "whispered",
+                "whispered", "heard", "kissed", "loved",
             }
             for token in tokens
         ):
@@ -2141,26 +2168,30 @@ class TranslatorMixin:
             return f"{verb} sentence to English!"
 
         imperative = re.fullmatch(
-            r"(?:ra (nu|vi)?\s*([a-z']+)\s+)?ta ([a-z']+) vi ko xo( naxru)?( ngu)?",
+            r"(?:(ra|fa)\s+(?:nu|vi)\s+([a-z']+)\s+)?ta ([a-z']+) vi ko xo( naxru)?( ngu)?",
             clean,
         )
         if imperative:
-            _, object_root, verb_root, polite, negated = imperative.groups()
+            object_case, object_root, verb_root, polite, negated = imperative.groups()
             verb_words = {
                 "grip": "listen",
                 "semax": "stop",
                 "xleq": "open",
                 "qabrerd": "touch",
                 "zaqa": "run",
+                "trekq": "wait",
             }
             object_words = {
                 "zrump": "door",
                 "zra": "that",
                 "hune": "sentence",
+                "cuq": "wind",
             }
             verb = verb_words.get(verb_root)
             if verb:
                 obj = object_words.get(object_root, object_root or "")
+                if object_case == "fa" and obj:
+                    obj = f"to {obj}"
                 if negated:
                     return "don't " + " ".join(part for part in [verb, obj] if part) + "!"
                 phrase = " ".join(part for part in [verb, obj] if part)

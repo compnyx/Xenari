@@ -6,12 +6,13 @@ from typing import Optional
 class ExportMixin:
     def export_js_dict(self) -> str:
         """Export a clean JS dict for the site translator."""
-        lines = ["const DICT = {"]
-        for eng, root in sorted(self.english_to_root.items()):
-            meaning = self.lexicon.get(root, "").replace('"', '\\"').replace("\n", " ")
-            lines.append(f'  "{eng}": {{root: "{root}", gloss: "{meaning}"}},')
-        lines.append("};")
-        return "\n".join(lines)
+        data = {
+            eng: {"root": root, "gloss": self.lexicon.get(root, "")}
+            for eng, root in sorted(self.english_to_root.items())
+        }
+        # JSON is valid JavaScript object syntax and escapes every user/data
+        # supplied string (including quote-bearing English keys and glosses).
+        return "const DICT = " + json.dumps(data, indent=2, ensure_ascii=False) + ";"
 
     def export_json(self) -> str:
         """Export as JSON for external use."""

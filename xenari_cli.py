@@ -2,6 +2,7 @@
 """Command-line interface for the Xenari tool."""
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -55,12 +56,14 @@ def main():
     parser.add_argument("--site", action="store_true", help="sync exports into nyx-site dictionary paths too")
     parser.add_argument("--limit", type=int, default=20, help="result limit for search/lint/propose commands")
     parser.add_argument("--output", default=None, help="optional output path for export")
+    parser.add_argument("--check", action="store_true", help="validate generated export output without writing")
     parser.add_argument("--format", choices=["markdown", "json"], default="markdown", help="output format for gaps")
     parser.add_argument("--phrase-min-count", type=int, default=2, help="minimum repeated count for phrase gap candidates")
     parser.add_argument("--max-phrase-words", type=int, default=5, help="maximum words per phrase gap candidate")
     args = parser.parse_args()
 
-    x = Xenari()
+    write_commands = {"add", "remove", "map", "categorize", "relate", "coin", "sync"}
+    x = Xenari(read_only=args.command not in write_commands)
 
     if args.command == "help":
         parser.print_help()
@@ -177,7 +180,19 @@ def main():
     elif args.command == "export-js":
         print(x.export_js_dict())
     elif args.command == "export-json":
-        print(x.db.export_json())
+        exported = x.db.export_json()
+        if args.check:
+            try:
+                parsed = json.loads(exported)
+                checked = (Path(__file__).resolve().parent / "data" / "xenari-dict.json").read_text(encoding="utf-8")
+                if json.loads(checked) != parsed:
+                    raise ValueError("data/xenari-dict.json is out of date")
+            except (OSError, ValueError, json.JSONDecodeError) as exc:
+                print(f"export-json: failed: {exc}")
+                sys.exit(1)
+            print("export-json: ok")
+        else:
+            print(exported)
     elif args.command == "export-md":
         out = Path(args.args[0]) if args.args else Path("xenari-lexicon-export.md")
         x.db.export_markdown(out)
@@ -341,7 +356,8 @@ def main():
                 print("Refusing to remove without --yes. Re-run with --yes after reading the preview.")
                 sys.exit(1)
             sys.exit(0)
-        x.db.remove_root(args.args[0])
+        if not x.db.remove_root(args.args[0]):
+            sys.exit(1)
     elif args.command == "map":
         if len(args.args) < 2:
             print("Usage: map <english-key> <root> [context note]")
@@ -356,7 +372,8 @@ def main():
                 print("Refusing to map without --yes. Re-run with --yes after reading the preview.")
                 sys.exit(1)
             sys.exit(0)
-        x.db.add_english_mapping(args.args[0], args.args[1], context_note=note)
+        if not x.db.add_english_mapping(args.args[0], args.args[1], context_note=note):
+            sys.exit(1)
     elif args.command == "add":
         if len(args.args) < 2:
             print("Usage: add <english-word> <root> [meaning...]")
@@ -377,9 +394,11 @@ def main():
                 sys.exit(1)
             sys.exit(0 if ok else 1)
         if ok:
-            x2 = Xenari()
+            x2 = Xenari(read_only=True)
             r = x2.lookup(english)
             print(f"Verified: {r[0]} — {r[1]}" if r else "WARNING: added but lookup failed (english key not auto-mapped)")
+        else:
+            sys.exit(1)
 
 
 if __name__ == "__main__":

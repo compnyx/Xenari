@@ -27,13 +27,31 @@ DB_PATH = Path(__file__).parent / "xenari.db"
 
 
 class XenariDB:
-    def __init__(self, db_path: Optional[Path] = None):
-        self.db_path = db_path or DB_PATH
-        self.conn = sqlite3.connect(str(self.db_path))
+    def __init__(self, db_path: Optional[Path] = None, *, read_only: bool = False):
+        """Open the canonical database.
+
+        Read-only opens intentionally use SQLite's ``mode=ro`` and
+        ``immutable=1`` URI flags.  Besides making the contract explicit, this
+        prevents read commands from creating WAL/SHM sidecars or
+        opportunistically initializing a schema.
+        """
+        self.db_path = Path(db_path or DB_PATH)
+        self.read_only = read_only
+        if read_only:
+            uri = f"{self.db_path.resolve().as_uri()}?mode=ro&immutable=1"
+            self.conn = sqlite3.connect(uri, uri=True)
+        else:
+            self.conn = sqlite3.connect(str(self.db_path))
         self.conn.row_factory = sqlite3.Row
-        self.conn.execute("PRAGMA journal_mode=WAL")
         self.conn.execute("PRAGMA foreign_keys=ON")
-        self._init_schema()
+        if read_only:
+            self.conn.execute("PRAGMA query_only=ON")
+        if not read_only:
+            # The canonical DB is version-controlled by itself; WAL sidecars
+            # are ignored and can hide committed changes from export/commit
+            # workflows.  Keep writes in the main DB file.
+            self.conn.execute("PRAGMA journal_mode=DELETE")
+            self._init_schema()
 
     def _init_schema(self):
         self.conn.executescript("""
@@ -168,8 +186,7 @@ class XenariDB:
                FROM roots r
                LEFT JOIN english_map e ON e.root_id = r.id
                WHERE r.root LIKE ? OR r.meaning LIKE ? OR e.english_key LIKE ?
-               GROUP BY r.id
-               LIMIT ?""", (q, q, q, max(limit * 5, 50))
+               GROUP BY r.id""", (q, q, q)
         ).fetchall()
         results = []
         for row in rows:
@@ -404,10 +421,12 @@ class XenariDB:
                 msgs.append(f"WARNING: root '{root}' is close to existing '{row['root']}' ({row['meaning']}). Check for typos? Proceeding anyway.")
                 break
 
-        # Phonotactic validation
+        # Phonotactic validation is a write gate, not advisory text.  A root
+        # that fails canon shape checks must never reach the INSERT below.
         phon_issues = self.validate_phonotactics(root)
-        for pi in phon_issues:
-            msgs.append(f"Phonotactic warning: {pi}")
+        if phon_issues:
+            msgs.extend(f"BLOCKED: invalid root form: {pi}" for pi in phon_issues)
+            return False, msgs
 
         if dry_run:
             msgs.append(f"DRY RUN: would add {root} — {meaning} (for '{english}') in [{category}]")

@@ -30,17 +30,8 @@ class LookupMixin:
         return keys
 
     def _lookup_by_meaning_synonym(self, key: str) -> Optional[str]:
-        best = None
-        best_score = -1
-        for root, meaning in self.lexicon.items():
-            keys = self._meaning_keys(meaning)
-            if key not in keys:
-                continue
-            score = 3 if keys and keys[0] == key else 2
-            if score > best_score:
-                best = root
-                best_score = score
-        return best
+        match = self._meaning_synonym_index.get(key)
+        return match[0] if match else None
 
     def lookup_root(self, root: str) -> str:
         """Look up a Xenari root, return its meaning."""

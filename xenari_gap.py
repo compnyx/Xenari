@@ -45,7 +45,7 @@ VOCALIZATIONS = {
 SOUND_EFFECTS = {
     "bang", "beep", "boom", "bump", "buzz", "clang", "clank", "click",
     "crack", "crash", "creak", "ding", "drip", "gasp", "groan", "growl",
-    "grunt", "gulp", "hiss", "howl", "knock", "moan", "murmur", "pop",
+    "grunt", "gulp", "help", "hiss", "howl", "knock", "moan", "murmur", "pop",
     "ring", "roar", "rumble", "scream", "screech", "shatter", "sigh",
     "slam", "slap", "snap", "snarl", "sniff", "sob", "splash", "squelch",
     "thud", "thump", "tick", "whimper", "whine", "whirr", "whisper",
@@ -318,7 +318,12 @@ class GapHarvester:
                 continue
             context = " ".join(stripped.split())
             full_line_stage = self._is_stage_direction(stripped)
-            speaker_line = None if full_line_stage else self._speaker_line_parts(stripped)
+            # Bare uppercase cues can look like screenplay labels.  Preserve
+            # their lexical signal before applying label stripping.
+            speaker_line = (
+                None if full_line_stage or self._is_standalone_cue_line(stripped)
+                else self._speaker_line_parts(stripped)
+            )
             if speaker_line:
                 current_speaker, stripped = speaker_line
                 stripped = stripped.strip()
@@ -374,6 +379,17 @@ class GapHarvester:
             return None
         return label.title(), match.group(2) or ""
 
+    def _is_standalone_cue_line(self, line: str) -> bool:
+        words = WORD_RE.findall(line)
+        if not words or not line.isupper():
+            return False
+        return all(
+            word.lower() in SOUND_EFFECTS
+            or word.lower() in VOCALIZATIONS
+            or bool(re.search(r"(rrr|zzz|kkk|ttt|bbb|ppp|ddd|ggg)", word.lower()))
+            for word in words
+        )
+
     def _speaker_label(self, line: str) -> str | None:
         parts = self._speaker_line_parts(line)
         return parts[0] if parts else None
@@ -388,6 +404,8 @@ class GapHarvester:
         word = raw.lower().strip("'-.")
         if not word:
             return []
+        if word in CONTRACTIONS:
+            return list(CONTRACTIONS[word])
         for suffix, replacement in CONTRACTIONS.items():
             if word.endswith(suffix) and word != suffix:
                 stem = word[: -len(suffix)]
@@ -396,6 +414,15 @@ class GapHarvester:
 
     def _classify_token(self, token: Token) -> tuple[str, str | None, str | None]:
         word = token.norm
+        uppercase_cue = token.raw.isupper() and (
+            word in SOUND_EFFECTS
+            or word in VOCALIZATIONS
+            or (not token.stage_direction and self._sound_effect_shape(word, token))
+        )
+        if uppercase_cue:
+            if word in VOCALIZATIONS or self._vocalization_shape(word):
+                return "vocalizations", "sound or embodied action candidate", None
+            return "sound_effects", "sound or embodied action candidate", None
         if self._known(word):
             return "known", None, None
         variant_of = self._known_variant_base(word)

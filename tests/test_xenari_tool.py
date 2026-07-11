@@ -8,6 +8,7 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
 from xenari_tool import Xenari
+from xenari_db import XenariDB
 from xenari_gap import GapHarvester
 
 
@@ -973,3 +974,137 @@ def test_remove_cleans_dependent_rows(tmp_path):
         "SELECT COUNT(*) FROM semantic_relations WHERE root_a = ? OR root_b = ?",
         ("xoz", "xoz"),
     ).fetchone()[0] == 0
+
+
+def test_export_js_uses_json_escaping_and_is_valid_javascript(tmp_path):
+    x = Xenari(REPO / "xenari.db", read_only=True)
+    x.english_to_root['feed"'] = "zrent"
+    x.lexicon["zrent"] = 'to love "without loss"\nwith care'
+    exported = x.export_js_dict()
+    payload = exported.removeprefix("const DICT = ").removesuffix(";")
+    assert json.loads(payload)['feed"']['gloss'] == 'to love "without loss"\nwith care'
+
+    output = tmp_path / "xenari-export.js"
+    output.write_text(exported, encoding="utf-8")
+    node = shutil.which("node")
+    if node:
+        result = subprocess.run([node, "--check", str(output)], capture_output=True, text=True)
+        assert result.returncode == 0, result.stderr
+
+
+def test_read_only_db_open_does_not_initialize_or_write_and_write_open_still_creates(tmp_path):
+    db_path = tmp_path / "readonly.db"
+    shutil.copy2(REPO / "xenari.db", db_path)
+    before = db_path.read_bytes()
+
+    x = Xenari(db_path, read_only=True)
+    assert x.db.lookup("man") == ("odsalsorq", "man")
+    assert x.db.search("english", limit=1)
+    x.db.close()
+    assert db_path.read_bytes() == before
+    assert not (tmp_path / "readonly.db-wal").exists()
+    assert not (tmp_path / "readonly.db-shm").exists()
+
+    created = tmp_path / "created.db"
+    writable = XenariDB(created)
+    assert writable.conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'roots'"
+    ).fetchone()
+    writable.close()
+    assert not (tmp_path / "created.db-wal").exists()
+    assert not (tmp_path / "created.db-shm").exists()
+
+
+def test_invalid_root_is_blocked_without_database_mutation(tmp_path):
+    db_path = tmp_path / "xenari.db"
+    shutil.copy2(REPO / "xenari.db", db_path)
+    db = XenariDB(db_path)
+    before = db.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0]
+    ok, messages = db.add_root("bad-root", "xqz", "invalid root", category="Tests")
+    assert not ok
+    assert any(message.startswith("BLOCKED: invalid root form:") for message in messages)
+    assert db.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0] == before
+    assert db.lookup("bad-root") is None
+
+
+def test_failed_mutation_commands_exit_nonzero():
+    cases = [
+        ["add", "bad-root", "xqz", "invalid", "--yes"],
+        ["map", "test-map", "not-a-root", "--yes"],
+        ["remove", "not-a-root", "--yes"],
+    ]
+    for args in cases:
+        result = subprocess.run(
+            [sys.executable, "xenari_tool.py", *args],
+            cwd=REPO,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        assert result.returncode != 0, result.stdout + result.stderr
+
+
+def test_search_ranks_all_matches_before_limiting_results():
+    x = Xenari(REPO / "xenari.db", read_only=True)
+    for term in ("man", "english"):
+        expected_root, _ = x.db.lookup(term)
+        results = x.db.search(term, limit=1)
+        assert results[0]["root"] == expected_root
+
+
+def test_translator_preserves_plural_forms_questions_evidence_and_complements():
+    x = Xenari(REPO / "xenari.db", read_only=True)
+
+    assert "lamiy" in x.speak("The glasses open.", evidential="assumed")
+    assert "klam" in x.speak("The pants open.", evidential="assumed")
+    assert "shirxush" in x.speak("The shorts open.", evidential="assumed")
+    assert x.speak("I loved you.", evidential="assumed") == "ra mex ka neq ta zrent lo xo"
+    assert x.speak("I kissed you.", evidential="assumed") == "ra mex ka neq ta nquxe lo xo"
+    assert x.speak("I heard you.", evidential="auto") == "ra mex ka neq ta cromq lo xi"
+    assert x.speak("I saw the alien", evidential="auto") == "ra vi qex ka neq ta toq lo xa"
+    assert x.speak("You love me?", evidential="assumed").endswith(" va")
+    assert not x.speak("You love me.", evidential="assumed").endswith(" va")
+    assert x.speak("Do you not love me?", evidential="assumed").endswith("ngu va")
+    for sentence in ("I want to eat food", "I need to go"):
+        rendered = x.speak(sentence, evidential="assumed")
+        assert rendered.startswith("[partial:")
+        assert "infinitive complement retained" in rendered
+
+
+def test_reverse_imperatives_keep_verb_and_goal_meaning():
+    x = Xenari(REPO / "xenari.db", read_only=True)
+    assert x.reverse("ta trekq vi ko xo") == "wait!"
+    assert x.reverse("fa vi cuq ta grip vi ko xo") == "listen to wind!"
+
+
+def test_gap_harvest_preserves_uppercase_cues_and_expands_wont():
+    x = Xenari(REPO / "xenari.db", read_only=True)
+    harvester = GapHarvester(x)
+    report = harvester.harvest_documents([{
+        "source": "dialogue",
+        "text": "BANG\nUGH\nHELP\nKRRR KRRR\nI won't go.",
+    }])
+    buckets = report["buckets"]
+    sounds = {item["key"] for item in buckets["sound_effects"]}
+    vocals = {item["key"] for item in buckets["vocalizations"]}
+    all_keys = {item["key"] for entries in buckets.values() for item in entries}
+    assert {"bang", "help", "krrr"} <= sounds
+    assert "ugh" in vocals
+    assert "wo" not in all_keys
+    assert harvester._normalize_word("won't") == ["will", "not"]
+
+
+def test_repeated_lookup_misses_use_the_loaded_synonym_index():
+    x = Xenari(REPO / "xenari.db", read_only=True)
+    calls = 0
+    original = x._meaning_keys
+
+    def counted(meaning):
+        nonlocal calls
+        calls += 1
+        return original(meaning)
+
+    x._meaning_keys = counted
+    for _ in range(20):
+        assert x.lookup("definitely-not-a-xenari-meaning") == (None, None)
+    assert calls == 0

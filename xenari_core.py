@@ -12,9 +12,9 @@ from xenari_translate import TranslatorMixin
 
 
 class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMixin):
-    def __init__(self, db_path: Optional[Path] = None):
+    def __init__(self, db_path: Optional[Path] = None, *, read_only: bool = False):
         from xenari_db import XenariDB
-        self.db = XenariDB(db_path) if db_path else XenariDB()
+        self.db = XenariDB(db_path, read_only=read_only)
         self.lexicon: Dict[str, str] = {}          # root -> meaning
         self.english_to_root: Dict[str, str] = {}  # english -> root
         self._load_from_db()
@@ -272,6 +272,8 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
 
     def _load_from_db(self):
         """Load all roots and english mappings from the sqlite DB."""
+        self.lexicon.clear()
+        self.english_to_root.clear()
         for row in self.db.conn.execute("SELECT root, meaning FROM roots"):
             self.lexicon[row["root"]] = row["meaning"].lower()
         for row in self.db.conn.execute("SELECT english_key, root, context_note FROM english_map JOIN roots ON roots.id = english_map.root_id"):
@@ -290,3 +292,11 @@ class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMix
         for key, root in preferred.items():
             if root in self.lexicon:
                 self.english_to_root[key] = root
+        self._meaning_synonym_index = {}
+        for root, meaning in self.lexicon.items():
+            keys = self._meaning_keys(meaning)
+            for key in keys:
+                score = 3 if keys and keys[0] == key else 2
+                current = self._meaning_synonym_index.get(key)
+                if current is None or score > current[1]:
+                    self._meaning_synonym_index[key] = (root, score)
