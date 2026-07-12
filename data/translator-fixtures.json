@@ -698,6 +698,13 @@
       "family": "quantity"
     },
     {
+      "english": "I have five dicks and you're going to eat them",
+      "xenari": "ra nu kroxvi cum ka neq ta xrong sa xo. xen ra req ha ka mex ta xlof ve xo",
+      "loop": 4,
+      "family": "quantity",
+      "stress": true
+    },
+    {
       "english": "We build many tools.",
       "xenari": "ra nu pronx xant ka neq ha ta mrob sa xo",
       "loop": 4,
@@ -957,7 +964,8 @@
       "The translator translates the sentence.",
       "She whispers: shhh.",
       "ALEX: She whispers: shhh.",
-      "ALEX: She says: run."
+      "ALEX: She says: run.",
+      "I have five dicks and you're going to eat them"
     ],
     "known_differences": []
   }

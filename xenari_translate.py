@@ -473,7 +473,7 @@ class TranslatorMixin:
             "some": "frox", "no": "nulxant", "few": "klog",
             "each": "cleg", "every": "cleg",
         }
-        number_roots = {"two": "vriq"}
+        number_roots = {"two": "vriq", "three": "prit", "four": "qang", "five": "cum"}
         quality_roots = {
             "red": "rlis", "big": "nyix", "good": "nax", "bad": "qez",
             "fast": "kag", "tall": "sump", "small": "frem",
@@ -623,6 +623,26 @@ class TranslatorMixin:
             "love|loves|loved|translate|translates|translated|eat|eats|ate|"
             "send|sends|sent|give|gives|gave|take|takes|took"
         )
+        going_to_transitive = re.fullmatch(
+            rf"(.+?)\s+(am|are|is|was|were)\s+(not\s+)?going\s+to\s+"
+            rf"({verb_forms})\s+(.+)",
+            clean,
+        )
+        if going_to_transitive:
+            subject_text, auxiliary, negation, verb_word, object_text = going_to_transitive.groups()
+            subject_phrase = self._parse_loop4_np(subject_text)
+            object_phrase = self._parse_loop4_np(object_text)
+            if subject_phrase and object_phrase:
+                return self._render_loop4_clause(
+                    subject_phrase,
+                    verb_word,
+                    object_phrase=object_phrase,
+                    evidence_root=evidence_root,
+                    tense_root="ve",
+                    negated=bool(negation),
+                    question=False,
+                )
+
         aux_question_transitive = re.fullmatch(
             rf"(do|does|did|will|can|could)\s+(.+?)\s+(not\s+)?"
             rf"({verb_forms})\s+(.+)",
