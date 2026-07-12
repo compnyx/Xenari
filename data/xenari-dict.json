@@ -20873,8 +20873,8 @@
     "meaning": "six",
     "category": "Function Words & Grammar",
     "source": "xenari-lexicon.md",
-    "timestamp": null,
-    "notes": null,
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Lexicalized six; productive base-6 form is `ca xang`.",
     "english_keys": [
       "six"
     ]
@@ -22294,6 +22294,20 @@
     ]
   },
   {
+    "id": 994,
+    "root": "xang",
+    "meaning": "place, location, territory; base-6 place/group morpheme",
+    "category": "Function Words & Grammar",
+    "source": "xenari-lexicon.md",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon base-6 update 2026-07-12: root also serves as productive base-6 place/group morpheme.",
+    "english_keys": [
+      "location",
+      "place",
+      "territory"
+    ]
+  },
+  {
     "id": 286,
     "root": "xant",
     "meaning": "many, group, collective",
@@ -23224,18 +23238,6 @@
     "notes": null,
     "english_keys": [
       "cities"
-    ]
-  },
-  {
-    "id": 5502,
-    "root": "besmun",
-    "meaning": "nine",
-    "category": "General",
-    "source": "multi_script_gap_fill",
-    "timestamp": "2026-07-08T20:59:36.614238+00:00",
-    "notes": "QC repair 2026-07-08T23:29:26: renamed from baosk; validator issues: vowel hiatus: ao at position 1",
-    "english_keys": [
-      "nine"
     ]
   },
   {
@@ -56070,18 +56072,6 @@
     ]
   },
   {
-    "id": 6357,
-    "root": "vnub",
-    "meaning": "eleven",
-    "category": "General Vocabulary",
-    "source": "multi_script_gap_fill",
-    "timestamp": "2026-07-08T21:13:23.147964+00:00",
-    "notes": null,
-    "english_keys": [
-      "eleven"
-    ]
-  },
-  {
     "id": 8491,
     "root": "vnucvrub",
     "meaning": "vibration",
@@ -66815,6 +66805,78 @@
     ]
   },
   {
+    "id": 5502,
+    "root": "besmun",
+    "meaning": "nine (legacy numeral alias; productive base-6 ca xang prit)",
+    "category": "Legacy Numeral Aliases",
+    "source": "multi_script_gap_fill",
+    "timestamp": "2026-07-08T20:59:36.614238+00:00",
+    "notes": "QC repair 2026-07-08T23:29:26: renamed from baosk; validator issues: vowel hiatus: ao at position 1 | Legacy numeral alias for nine; prefer productive base-6 `ca xang prit`.",
+    "english_keys": [
+      "nine"
+    ]
+  },
+  {
+    "id": 5993,
+    "root": "cveqsrin",
+    "meaning": "twelve (legacy numeral alias; productive base-6 vriq xang)",
+    "category": "Legacy Numeral Aliases",
+    "source": "multi_script_gap_fill",
+    "timestamp": "2026-07-08T21:10:25.803134+00:00",
+    "notes": "Legacy numeral alias for twelve; prefer productive base-6 `vriq xang`.",
+    "english_keys": [
+      "twelve"
+    ]
+  },
+  {
+    "id": 3369,
+    "root": "pev",
+    "meaning": "eight (legacy numeral alias; productive base-6 ca xang vriq)",
+    "category": "Legacy Numeral Aliases",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:30:33.136987+00:00",
+    "notes": "Legacy numeral alias for eight; prefer productive base-6 `ca xang vriq`.",
+    "english_keys": [
+      "eight"
+    ]
+  },
+  {
+    "id": 3330,
+    "root": "vipezuz",
+    "meaning": "ten (legacy numeral alias; productive base-6 ca xang qang)",
+    "category": "Legacy Numeral Aliases",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:30:33.136987+00:00",
+    "notes": "Legacy numeral alias for ten; prefer productive base-6 `ca xang qang`.",
+    "english_keys": [
+      "ten"
+    ]
+  },
+  {
+    "id": 6357,
+    "root": "vnub",
+    "meaning": "eleven (legacy numeral alias; productive base-6 ca xang cum)",
+    "category": "Legacy Numeral Aliases",
+    "source": "multi_script_gap_fill",
+    "timestamp": "2026-07-08T21:13:23.147964+00:00",
+    "notes": "Legacy numeral alias for eleven; prefer productive base-6 `ca xang cum`.",
+    "english_keys": [
+      "eleven"
+    ]
+  },
+  {
+    "id": 3397,
+    "root": "zif",
+    "meaning": "seven (legacy numeral alias; productive base-6 ca xang ca)",
+    "category": "Legacy Numeral Aliases",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:30:33.136987+00:00",
+    "notes": "Legacy numeral alias for seven; prefer productive base-6 `ca xang ca`.",
+    "english_keys": [
+      "seven"
+    ]
+  },
+  {
     "id": 9449,
     "root": "prulom",
     "meaning": "plutonium, dense radioactive actinide metal",
@@ -66890,13 +66952,18 @@
   {
     "id": 1350,
     "root": "flopq",
-    "meaning": "divide",
+    "meaning": "divided-by / divide / split math operator",
     "category": "Mathematics & Computation",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
+    "source": "canon-math-20260712",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon math grammar particle 2026-07-12: division/split operator.",
     "english_keys": [
-      "divide"
+      "divide",
+      "divided by",
+      "divided-by",
+      "divides",
+      "division",
+      "split"
     ]
   },
   {
@@ -66926,13 +66993,17 @@
   {
     "id": 1351,
     "root": "grak",
-    "meaning": "greater than",
+    "meaning": "greater-than / more-than math relation",
     "category": "Mathematics & Computation",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
+    "source": "canon-math-20260712",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon math grammar particle 2026-07-12: greater-than/more-than relation.",
     "english_keys": [
-      "greater"
+      "greater",
+      "greater than",
+      "greater-than",
+      "more than",
+      "more-than"
     ]
   },
   {
@@ -66998,13 +67069,16 @@
   {
     "id": 1348,
     "root": "krut",
-    "meaning": "subtract",
+    "meaning": "minus / remove / subtract math operator",
     "category": "Mathematics & Computation",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
+    "source": "canon-math-20260712",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon math grammar particle 2026-07-12: minus/subtraction operator.",
     "english_keys": [
-      "subtract"
+      "minus",
+      "remove",
+      "subtract",
+      "subtraction"
     ]
   },
   {
@@ -67049,25 +67123,30 @@
   {
     "id": 1353,
     "root": "nok",
-    "meaning": "fraction",
+    "meaning": "fraction / ratio / part-of math relation",
     "category": "Mathematics & Computation",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
+    "source": "canon-math-20260712",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon math grammar particle 2026-07-12: fraction/ratio relation.",
     "english_keys": [
-      "fraction"
+      "fraction",
+      "part of",
+      "part-of",
+      "ratio"
     ]
   },
   {
     "id": 1347,
     "root": "plomt",
-    "meaning": "add",
+    "meaning": "plus / add / addition math operator",
     "category": "Mathematics & Computation",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
+    "source": "canon-math-20260712",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon math grammar particle 2026-07-12: plus/addition operator.",
     "english_keys": [
-      "add"
+      "add",
+      "addition",
+      "plus"
     ]
   },
   {
@@ -67205,12 +67284,18 @@
   {
     "id": 1352,
     "root": "vlox",
-    "meaning": "less than",
+    "meaning": "less-than / fewer-than math relation",
     "category": "Mathematics & Computation",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": []
+    "source": "canon-math-20260712",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon math grammar particle 2026-07-12: less-than/fewer-than relation.",
+    "english_keys": [
+      "fewer than",
+      "fewer-than",
+      "less",
+      "less than",
+      "less-than"
+    ]
   },
   {
     "id": 1361,
@@ -67227,13 +67312,33 @@
   {
     "id": 1349,
     "root": "vrot",
-    "meaning": "multiply",
+    "meaning": "times / grouped-by / multiply math operator",
     "category": "Mathematics & Computation",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
+    "source": "canon-math-20260712",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon math grammar particle 2026-07-12: multiplication/grouped-by operator.",
     "english_keys": [
-      "multiply"
+      "grouped by",
+      "grouped-by",
+      "multiplication",
+      "multiply",
+      "times"
+    ]
+  },
+  {
+    "id": 919,
+    "root": "zlem",
+    "meaning": "equals / same-as math relation; equal/balanced",
+    "category": "Mathematics & Computation",
+    "source": "xenari-lexicon.md",
+    "timestamp": "2026-07-12 16:00",
+    "notes": "Canon math grammar particle 2026-07-12: equality/same-as relation.",
+    "english_keys": [
+      "balanced",
+      "equal",
+      "equals",
+      "same as",
+      "same-as"
     ]
   },
   {
@@ -77979,18 +78084,6 @@
     ]
   },
   {
-    "id": 3369,
-    "root": "pev",
-    "meaning": "eight",
-    "category": "Numeral",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:30:33.136987+00:00",
-    "notes": null,
-    "english_keys": [
-      "eight"
-    ]
-  },
-  {
     "id": 3312,
     "root": "urvov",
     "meaning": "twenty",
@@ -78000,30 +78093,6 @@
     "notes": null,
     "english_keys": [
       "twenty"
-    ]
-  },
-  {
-    "id": 3330,
-    "root": "vipezuz",
-    "meaning": "ten",
-    "category": "Numeral",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:30:33.136987+00:00",
-    "notes": null,
-    "english_keys": [
-      "ten"
-    ]
-  },
-  {
-    "id": 3397,
-    "root": "zif",
-    "meaning": "seven",
-    "category": "Numeral",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:30:33.136987+00:00",
-    "notes": null,
-    "english_keys": [
-      "seven"
     ]
   },
   {
@@ -86959,20 +87028,6 @@
     ]
   },
   {
-    "id": 994,
-    "root": "xang",
-    "meaning": "place, location, territory",
-    "category": "Qualities",
-    "source": "xenari-lexicon.md",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "location",
-      "place",
-      "territory"
-    ]
-  },
-  {
     "id": 3113,
     "root": "xeka",
     "meaning": "entire",
@@ -87476,19 +87531,6 @@
     "notes": null,
     "english_keys": [
       "hydraulic"
-    ]
-  },
-  {
-    "id": 919,
-    "root": "zlem",
-    "meaning": "equal/balanced",
-    "category": "Qualities",
-    "source": "xenari-lexicon.md",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "balanced",
-      "equal"
     ]
   },
   {
@@ -107285,18 +107327,6 @@
     "notes": null,
     "english_keys": [
       "muscleman"
-    ]
-  },
-  {
-    "id": 5993,
-    "root": "cveqsrin",
-    "meaning": "twelve",
-    "category": "general",
-    "source": "multi_script_gap_fill",
-    "timestamp": "2026-07-08T21:10:25.803134+00:00",
-    "notes": null,
-    "english_keys": [
-      "twelve"
     ]
   },
   {

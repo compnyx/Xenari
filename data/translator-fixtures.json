@@ -744,6 +744,90 @@
       "loop": 4,
       "family": "purpose",
       "stress": true
+    },
+    {
+      "english": "0",
+      "xenari": "nul",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "english": "5",
+      "xenari": "cum",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "english": "6",
+      "xenari": "ca xang",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "english": "7",
+      "xenari": "ca xang ca",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "english": "12",
+      "xenari": "vriq xang",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "english": "35",
+      "xenari": "cum xang cum",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "english": "36",
+      "xenari": "ca xang xang",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "english": "2 plus 3",
+      "xenari": "vriq plomt prit",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "english": "6 minus 1",
+      "xenari": "ca xang krut ca",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "english": "2 times 3",
+      "xenari": "vriq vrot prit",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "english": "6 divided by 2",
+      "xenari": "ca xang flopq vriq",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "english": "3 equals 3",
+      "xenari": "prit zlem prit",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "english": "5 greater than 2",
+      "xenari": "cum grak vriq",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "english": "2 less than 5",
+      "xenari": "vriq vlox cum",
+      "family": "math",
+      "loop": 10
     }
   ],
   "reverse": [
@@ -886,6 +970,84 @@
       "english": "he/she/it whispered",
       "loop": 5,
       "family": "quote"
+    },
+    {
+      "xenari": "nul",
+      "english": "0",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "xenari": "ca xang",
+      "english": "6",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "xenari": "ca xang ca",
+      "english": "7",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "xenari": "vriq xang",
+      "english": "12",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "xenari": "cum xang cum",
+      "english": "35",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "xenari": "ca xang xang",
+      "english": "36",
+      "family": "base6",
+      "loop": 10
+    },
+    {
+      "xenari": "vriq plomt prit",
+      "english": "2 plus 3",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "xenari": "ca xang krut ca",
+      "english": "6 minus 1",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "xenari": "vriq vrot prit",
+      "english": "2 times 3",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "xenari": "ca xang flopq vriq",
+      "english": "6 divided by 2",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "xenari": "prit zlem prit",
+      "english": "3 equals 3",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "xenari": "cum grak vriq",
+      "english": "5 greater than 2",
+      "family": "math",
+      "loop": 10
+    },
+    {
+      "xenari": "vriq vlox cum",
+      "english": "2 less than 5",
+      "family": "math",
+      "loop": 10
     }
   ],
   "hardening": {

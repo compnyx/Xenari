@@ -64,6 +64,68 @@ I love you.
 Do not place animacy particles before pronouns, and do not add verb animacy
 agreement when the subject is a pronoun.
 
+## Numbers And Math
+
+Xenari counts in base 6.
+
+Digit roots:
+
+- `nul` = 0
+- `ca` = 1
+- `vriq` = 2
+- `prit` = 3
+- `qang` = 4
+- `cum` = 5
+
+`fqam` is the one/single quantifier, not the numeral digit. Use `ca` for the
+number 1 in math and positional base-6 forms.
+
+Use `xang` as the productive base-6 place/group morpheme. A nonzero digit
+followed by one `xang` marks sixes, two `xang` roots marks six-squared, and so
+on. Omit zero digits.
+
+```text
+ca xang
+6 / base-6 10
+
+ca xang ca
+7 / base-6 11
+
+vriq xang
+12 / base-6 20
+
+cum xang cum
+35 / base-6 55
+
+ca xang xang
+36 / base-6 100
+```
+
+Legacy roots for 7-12 remain dictionary aliases only: `zif`, `pev`, `besmun`,
+`vipezuz`, `vnub`, and `cveqsrin`. Prefer productive base-6 composition in new
+text.
+
+Math particles:
+
+- `plomt` = plus / add
+- `krut` = minus / subtract
+- `vrot` = times / grouped by / multiply
+- `flopq` = divided by / split
+- `zlem` = equals / same as
+- `grak` = greater than / more than
+- `vlox` = less than / fewer than
+- `nok` = fraction / ratio / part of
+
+Math expressions are written as number, operator, number:
+
+```text
+vriq plomt prit
+2 plus 3
+
+ca xang flopq vriq
+6 divided by 2
+```
+
 ## Animacy
 
 Animacy marks current agency/state, not permanent essence.

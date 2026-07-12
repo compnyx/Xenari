@@ -28,6 +28,51 @@ thanks for solving that. / literally: thanks because you solved that.
 ```
 
 ```text
+ca xang
+6 / base-6 10.
+```
+
+```text
+ca xang ca
+7 / base-6 11. Prefer this productive form over legacy alias `zif`.
+```
+
+```text
+vriq xang
+12 / base-6 20. Prefer this productive form over legacy alias `cveqsrin`.
+```
+
+```text
+cum xang cum
+35 / base-6 55.
+```
+
+```text
+ca xang xang
+36 / base-6 100.
+```
+
+```text
+vriq plomt prit
+2 plus 3.
+```
+
+```text
+ca xang krut ca
+6 minus 1.
+```
+
+```text
+ca xang flopq vriq
+6 divided by 2.
+```
+
+```text
+cum grak vriq
+5 greater than 2.
+```
+
+```text
 ra mex ka neq ta zrent sa xa ngu
 I do not love you.
 ```

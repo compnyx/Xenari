@@ -36,6 +36,79 @@ def test_bare_english_they_defaults_to_plural_known_req_ha():
     assert x.reverse("ra nu zrump ka req ha ta mrob ve xo") == "they will build door"
 
 
+def test_base6_numbers_and_math_particles_are_canon():
+    x = Xenari(REPO / "xenari.db")
+
+    numbers = {
+        "0": "nul",
+        "1": "ca",
+        "2": "vriq",
+        "3": "prit",
+        "4": "qang",
+        "5": "cum",
+        "6": "ca xang",
+        "7": "ca xang ca",
+        "12": "vriq xang",
+        "35": "cum xang cum",
+        "36": "ca xang xang",
+        "six": "ca xang",
+        "seven": "ca xang ca",
+    }
+    for english, xenari in numbers.items():
+        assert x.speak(english, evidential="assumed") == xenari
+        assert x.reverse(xenari) == str(int(english) if english.isdigit() else {"six": 6, "seven": 7}[english])
+
+    expressions = {
+        "2 plus 3": "vriq plomt prit",
+        "6 minus 1": "ca xang krut ca",
+        "2 times 3": "vriq vrot prit",
+        "6 divided by 2": "ca xang flopq vriq",
+        "3 equals 3": "prit zlem prit",
+        "5 greater than 2": "cum grak vriq",
+        "2 less than 5": "vriq vlox cum",
+        "2 + 3": "vriq plomt prit",
+        "2 < 5": "vriq vlox cum",
+    }
+    for english, xenari in expressions.items():
+        assert x.speak(english, evidential="assumed") == xenari
+
+    assert x.reverse("vriq plomt prit") == "2 plus 3"
+    assert x.reverse("ca xang flopq vriq") == "6 divided by 2"
+    assert x.translate("ca xang xang") == "36"
+
+
+def test_base6_db_canon_and_legacy_aliases_are_marked():
+    x = Xenari(REPO / "xenari.db")
+
+    xang = x.db.lookup_root("xang")
+    assert "base-6 place/group morpheme" in xang["meaning"]
+
+    legacy_forms = {
+        "zif": "ca xang ca",
+        "pev": "ca xang vriq",
+        "besmun": "ca xang prit",
+        "vipezuz": "ca xang qang",
+        "vnub": "ca xang cum",
+        "cveqsrin": "vriq xang",
+    }
+    for root, productive in legacy_forms.items():
+        row = x.db.lookup_root(root)
+        assert row["category"] == "Legacy Numeral Aliases"
+        assert productive in row["notes"]
+
+    for english, root in {
+        "plus": "plomt",
+        "minus": "krut",
+        "times": "vrot",
+        "divided by": "flopq",
+        "equals": "zlem",
+        "greater than": "grak",
+        "less than": "vlox",
+        "ratio": "nok",
+    }.items():
+        assert x.lookup(english)[0] == root
+
+
 def test_reverse_uses_shared_fixtures():
     x = Xenari(REPO / "xenari.db")
     fixtures = load_fixtures()
@@ -1110,3 +1183,45 @@ def test_repeated_lookup_misses_use_the_loaded_synonym_index():
     for _ in range(20):
         assert x.lookup("definitely-not-a-xenari-meaning") == (None, None)
     assert calls == 0
+
+
+def test_base6_numbers_and_math_use_productive_xang_places():
+    x = Xenari(REPO / "xenari.db", read_only=True)
+
+    cases = {
+        "zero": "nul",
+        "one": "ca",
+        "five": "cum",
+        "six": "ca xang",
+        "seven": "ca xang ca",
+        "twelve": "vriq xang",
+        "35": "cum xang cum",
+        "36": "ca xang xang",
+        "2 + 3": "vriq plomt prit",
+        "six equals six": "ca xang zlem ca xang",
+        "seven greater than five": "ca xang ca grak cum",
+        "one over two": "ca nok vriq",
+    }
+    for english, xenari in cases.items():
+        assert x.speak(english, evidential="assumed") == xenari
+
+    assert x.reverse("ca xang") == "6"
+    assert x.reverse("ca xang ca") == "7"
+    assert x.reverse("vriq xang") == "12"
+    assert x.reverse("vriq plomt prit") == "2 plus 3"
+    assert x.reverse("ca xang zlem ca xang") == "6 equals 6"
+
+
+def test_productive_base6_numbers_work_inside_quantity_noun_phrases():
+    x = Xenari(REPO / "xenari.db", read_only=True)
+
+    assert x.speak("one dick", evidential="assumed") == "kroxvi fqam"
+    assert x.speak("five dicks", evidential="assumed") == "kroxvi cum"
+    assert x.speak("six dicks", evidential="assumed") == "kroxvi ca xang"
+    assert x.speak("seven dicks", evidential="assumed") == "kroxvi ca xang ca"
+    assert x.speak("I have six dicks", evidential="assumed") == (
+        "ra nu kroxvi ca xang ka neq ta xrong sa xo"
+    )
+    assert x.speak("I have 12 dicks", evidential="assumed") == (
+        "ra nu kroxvi vriq xang ka neq ta xrong sa xo"
+    )
