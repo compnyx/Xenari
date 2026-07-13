@@ -241,6 +241,8 @@ class TranslatorMixin:
             "exactly": "zug",
             "indeed": "zug",
             "right": "xrenq",
+            "right now": "qros",
+            "now": "qros",
             "hello": "prax",
             "hey": "prax",
             "hi": "prax",
@@ -1732,22 +1734,23 @@ class TranslatorMixin:
 
         going_to_work = re.fullmatch(
             r"(i|you|he|she|we|they)\s+(?:am|are|is)\s+(not\s+)?"
-            r"going\s+to\s+work(?:\s+(?:today|tomorrow))?",
+            r"going\s+to\s+work(?:\s+(today|tomorrow|now|right\s+now))?",
             normalized,
         )
         if going_to_work:
-            subject, negated = going_to_work.groups()
+            subject, negated, temporal = going_to_work.groups()
             subject_root = self._english_subject_root(subject)
             job_root, _ = self.lookup("job")
             if subject_root and job_root:
-                return self._render_simple_frame(
+                rendered = self._render_simple_frame(
                     subject_root,
                     self._known_verb_root("go"),
                     goal_root=job_root,
-                    tense_root="ve",
+                    tense_root="sa" if temporal in {"now", "right now"} else "ve",
                     evidence_root=evidence_root,
                     negated=bool(negated),
                 )
+                return f"{rendered} qros" if temporal in {"now", "right now"} else rendered
 
         copula = re.fullmatch(
             r"(this|that)\s+(is|was)\s+(?:a\s+)?(?:(test)\s+)?(sentence|utterance)",
@@ -1972,6 +1975,8 @@ class TranslatorMixin:
             "creative art": "flonx",
             "i am going to work today": f"fa nu kashatyong ka neq ta qeng ve {e}",
             "i am going to work": f"fa nu kashatyong ka neq ta qeng ve {e}",
+            "i am going to work now": f"fa nu kashatyong ka neq ta qeng sa {e} qros",
+            "i am going to work right now": f"fa nu kashatyong ka neq ta qeng sa {e} qros",
             "english": "bivuzqa uqel po zuqra",
         }
         if normalized in exact_phrases:
