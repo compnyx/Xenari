@@ -16,6 +16,7 @@ def main():
   harvest:   gaps script.txt other-script.md --output xenari-gap-harvest.md
   find:      inspect fatyih | lookup love | search dangerous | near "soft light" | relations fatyih
   translate: translate "I love you" | translate "ra mex ka neq ta zrent sa xa"
+  llm:       llm-context "messy source" | llm-lint "ra mex ka neq ta zrent sa xa"
   coin:      coin glimmer "soft unsteady light" | coin glimmer "soft unsteady light" --root zakglu --yes
   curate:    categorize --root anhthu | relate ROOT_A ROOT_B --relation synonym
   mutate:    add/map/remove/categorize/relate preview by default; write only with --yes
@@ -30,6 +31,7 @@ def main():
         "help", "lookup", "inspect", "info", "validate", "doctor", "workbench",
         "review", "gaps",
         "compound", "speak", "gloss", "translate", "reverse",
+        "llm-context", "llm-lint",
         "export-js", "export-json", "export-md",
         "export", "stats", "audit", "lint", "curate", "meta", "sync",
         "add", "remove", "search", "near", "relations", "propose-root", "coin",
@@ -177,6 +179,21 @@ def main():
             print("Usage: reverse <xenari sentence>")
             sys.exit(1)
         print(x.reverse(sent))
+    elif args.command == "llm-context":
+        sent = " ".join(args.args)
+        if not sent:
+            print("Usage: llm-context <english-or-xenari>")
+            sys.exit(1)
+        print(json.dumps(x.llm_context(sent, args.tense, args.evidential), indent=2, ensure_ascii=False))
+    elif args.command == "llm-lint":
+        sent = " ".join(args.args)
+        if not sent:
+            print("Usage: llm-lint <xenari-candidate>")
+            sys.exit(1)
+        report = x.lint_xenari_candidate(sent)
+        print(json.dumps(report, indent=2, ensure_ascii=False))
+        if not report["ok"]:
+            sys.exit(1)
     elif args.command == "export-js":
         print(x.export_js_dict())
     elif args.command == "export-json":

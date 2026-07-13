@@ -6,12 +6,13 @@ from typing import Dict, Optional
 
 from xenari_export import ExportMixin
 from xenari_health import HealthMixin
+from xenari_llm import LlmMixin
 from xenari_lookup import LookupMixin
 from xenari_mutation import MutationMixin
 from xenari_translate import TranslatorMixin
 
 
-class Xenari(LookupMixin, TranslatorMixin, ExportMixin, HealthMixin, MutationMixin):
+class Xenari(LookupMixin, TranslatorMixin, LlmMixin, ExportMixin, HealthMixin, MutationMixin):
     def __init__(self, db_path: Optional[Path] = None, *, read_only: bool = False):
         from xenari_db import XenariDB
         self.db = XenariDB(db_path, read_only=read_only)

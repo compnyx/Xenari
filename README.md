@@ -220,6 +220,8 @@ canon-side Xenari to English check:
 python3 xenari_tool.py translate "I love you"
 python3 xenari_tool.py translate "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
+python3 xenari_tool.py llm-context "If you can't translate it, fix it."
+python3 xenari_tool.py llm-lint "ra mex ka neq ta zrent sa xa"
 ```
 
 The browser translator and Python CLI share regression fixtures in
@@ -227,6 +229,12 @@ The browser translator and Python CLI share regression fixtures in
 contract and `npm run test:xenari` in `nyx-site` for the browser side.
 The shared fixtures cover pronoun object case (`you love me`), pronoun
 possessives (`my hat`), and tense/negation reverse rendering.
+
+For LLM-backed translation experiments, use `llm-context` to package compact
+canon hints for the model and `llm-lint` to check a proposed Xenari candidate.
+The LLM is the semantic translator/interpreter; this tool only checks hard
+constraints such as known roots, known particles, and basic clause shape.
+Do not treat the deterministic translator as the semantic judge.
 
 ## Mutating The DB
 

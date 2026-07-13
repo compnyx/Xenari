@@ -216,10 +216,36 @@ The wind blows my hat away.
 - Prefer the DB/tool for vocabulary lookup.
 - Keep grammar particles exact.
 - Do not invent roots when the DB lacks a word. Mark unknowns clearly.
+- Treat an LLM as the semantic translator/interpreter, not the DB tool.
+- Treat the DB tool as a canon linter: it can reject fake roots, unknown
+  particles, and malformed clause frames, but it is not the final judge of
+  intended meaning.
+- If the LLM and deterministic translator disagree, surface the disagreement
+  instead of trusting the deterministic parser blindly.
 - For narrative prose, `xo` is a reasonable default evidential unless the speaker
   directly witnesses the event.
 - For direct personal statements, use `xa` when the speaker is reporting direct
   experience.
+
+## LLM Sidecar Contract
+
+Use `python3 xenari_tool.py llm-context <text>` to build a compact prompt packet
+for an LLM sidecar. The packet includes direction, lexicon/token hints, core
+grammar constraints, and the deterministic tool's current output as a reference
+only.
+
+An LLM translation candidate should return:
+
+- `candidate_translation`: proposed English or Xenari output
+- `literal_gloss`: literal structure, especially for Xenari
+- `roots_used`: roots and DB meanings the candidate depends on
+- `grammar_frame`: brief particle/clause parse
+- `confidence`: low, medium, or high
+- `unsupported_bits`: guessed, missing, or non-canon pieces
+
+Use `python3 xenari_tool.py llm-lint <xenari>` on proposed Xenari. Passing lint
+means only that the candidate uses known roots/particles and a plausible hard
+frame. It does not prove that the sentence means the English source.
 
 ## Full Lexicon
 
