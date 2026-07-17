@@ -2,25 +2,30 @@
 
 Canon source package for the Xenari conlang.
 
-This repository is intentionally small. The SQLite database is the canonical
-lexicon; the Markdown docs are teaching references for LLMs and humans, not the
-source of truth.
+The SQLite database is the canonical lexicon; the Markdown docs are teaching
+references for LLMs and humans, not the source of truth. Runtime code uses a
+standard `src` package layout while the original top-level modules remain as
+compatibility shims.
 
 ## Contents
 
-- `xenari.db` - canonical SQLite lexicon database.
-- `xenari_db.py` - database wrapper for lookup, search, export, and validation.
-- `xenari_tool.py` - compatibility CLI/import entrypoint.
-- `xenari_core.py` - `Xenari` facade assembled from focused tool mixins.
-- `xenari_cli.py` - command-line interface.
-- `xenari_lookup.py`, `xenari_translate.py`, `xenari_export.py`,
-  `xenari_health.py`, `xenari_mutation.py` - focused helper modules.
+- `src/xenari/data/xenari.db` - packaged canonical SQLite lexicon database.
+- `xenari.db` - compatibility link to the packaged canonical database.
+- `src/xenari/` - installable Python package.
+- `src/xenari/db/` - SQLite canon access and curation behavior.
+- `src/xenari/translate/` - forward and reverse translation engine.
+- `src/xenari/services/` - lookup, health, export, mutation, LLM, and gap tools.
+- `xenari_tool.py` and `xenari_*.py` - legacy-compatible entrypoints/imports.
 - `data/xenari-dict.json` - generated full JSON dictionary export.
-- `docs/LLM_REFERENCE.md` - compact grammar and usage reference for LLMs.
+- `docs/reference/LLM_REFERENCE.md` - compact grammar and usage reference.
+- `docs/development/architecture.md` - module boundaries and integration rules.
+- `docs/history/` - dated implementation and vocabulary campaign records.
 - `examples/phrases.md` - known-good examples.
-- `scripts/export_json.py` - regenerate `data/xenari-dict.json` from `xenari.db`.
+- `pyproject.toml` - package, console command, and test configuration.
 
 ## Quick Start
+
+The repository entrypoint works without installation:
 
 ```bash
 python3 xenari_tool.py stats
@@ -50,6 +55,13 @@ python3 xenari_tool.py meta
 python3 xenari_tool.py sync
 ```
 
+For the packaged `xenari` command:
+
+```bash
+python3 -m pip install -e '.[dev]'
+xenari stats
+```
+
 Regenerate JSON after DB edits:
 
 ```bash
@@ -68,9 +80,9 @@ pytest -q
 
 ## Canon Rules
 
-- `xenari.db` is canon.
+- `src/xenari/data/xenari.db` is canon; the root `xenari.db` path is a compatibility link.
 - Generated files must be rebuilt from the DB, not edited by hand.
-- `docs/LLM_REFERENCE.md` should stay compact. Do not paste the full lexicon into
+- `docs/reference/LLM_REFERENCE.md` should stay compact. Do not paste the full lexicon into
   it.
 - Use `data/xenari-dict.json` or the SQLite DB for full vocabulary access.
 
@@ -255,6 +267,9 @@ python3 xenari_tool.py sync --site
 python3 xenari_tool.py doctor
 pytest -q
 ```
+
+`sync --site` resolves the site checkout from `--site-root`, then
+`XENARI_SITE_ROOT`, then `~/nyx-site`.
 
 ## Metadata
 

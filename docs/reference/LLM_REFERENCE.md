@@ -1,6 +1,7 @@
 # Xenari LLM Reference
 
-Use this file for grammar and common behavior. Use `../xenari.db` or
+Use this file for grammar and common behavior. Use `../../xenari.db` (the
+compatibility link to `../../src/xenari/data/xenari.db`) or
 `../data/xenari-dict.json` for full vocabulary.
 
 ## Core Shape
@@ -251,7 +252,7 @@ frame. It does not prove that the sentence means the English source.
 
 Full vocabulary lives outside this reference:
 
-- SQLite: `../xenari.db`
+- SQLite: `../../xenari.db` (compatibility link)
 - JSON: `../data/xenari-dict.json`
 - CLI search: `python3 ../xenari_tool.py search <query>`
 - CLI reverse check: `python3 ../xenari_tool.py reverse <xenari sentence>`
