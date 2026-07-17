@@ -30,7 +30,7 @@
     },
     {
       "english": "They'll build the door tomorrow.",
-      "xenari": "ra nu zrump ka req ha ta mrob ve xo"
+      "xenari": "ra nu zrump ka req ha ta mrob ve xo glent"
     },
     {
       "english": "the alien sees me",
@@ -58,11 +58,11 @@
     },
     {
       "english": "I am going to work today",
-      "xenari": "fa nu kashatyong ka neq ta qeng ve xo"
+      "xenari": "fa nu kashatyong ka neq ta qeng ve xo bro"
     },
     {
       "english": "I’m going to work today",
-      "xenari": "fa nu kashatyong ka neq ta qeng ve xo"
+      "xenari": "fa nu kashatyong ka neq ta qeng ve xo bro"
     },
     {
       "english": "I am going to work right now",
@@ -90,7 +90,7 @@
     },
     {
       "english": "I am working today",
-      "xenari": "ka neq ta qxundraz sa xo"
+      "xenari": "ka neq ta qxundraz sa xo bro"
     },
     {
       "english": "This is a test sentence",
@@ -134,11 +134,11 @@
     },
     {
       "english": "I’m not going to work today",
-      "xenari": "fa nu kashatyong ka neq ta qeng ve xo ngu"
+      "xenari": "fa nu kashatyong ka neq ta qeng ve xo ngu bro"
     },
     {
       "english": "She didn’t kiss him yesterday",
-      "xenari": "ra leq ka leq ta nquxe lo xo ngu"
+      "xenari": "ra leq ka leq ta nquxe lo xo ngu hreh"
     },
     {
       "english": "Can’t you hear the alarm?",
@@ -868,6 +868,22 @@
       "english": "I will love you"
     },
     {
+      "xenari": "ka neq ta zaqa sa xo bro",
+      "english": "I run today"
+    },
+    {
+      "xenari": "ka neq ta zaqa sa xo glent",
+      "english": "I run tomorrow"
+    },
+    {
+      "xenari": "ka neq ta zaqa lo xo hreh",
+      "english": "I ran yesterday"
+    },
+    {
+      "xenari": "ka neq ta qxundraz sa xo kohfrep",
+      "english": "I operate tonight"
+    },
+    {
       "xenari": "ra mex ka neq ta zrent sa xa ngu",
       "english": "I do not love you"
     },
@@ -1064,10 +1080,10 @@
   ],
   "hardening": {
     "regression_input": "hey i’m going to work today, but the elevator was not working. anyway, this is a test sentence i’m throwing in the translator for you to decipher once i’ve gotten the output of xenari. can you reverse engineer this sentence back to english please?",
-    "expected": "prax. fa nu kashatyong ka neq ta qeng ve xo. kex ka nu spokta ta qxundraz nu lo xo ngu. qzecmru. ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo. ra nu hune na nu fona ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu. cruv ra nu xenari po duqe ka neq ta smite lo xo. ra nu hune fa nu bivuzqa uqel po zuqra ka mex ta halbru pe xo naxru va",
+    "expected": "prax. fa nu kashatyong ka neq ta qeng ve xo bro. kex ka nu spokta ta qxundraz nu lo xo ngu. qzecmru. ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo. ra nu hune na nu fona ka neq ta qranx sa xo frex ra nu hune ka mex ta nimixu. cruv ra nu xenari po duqe ka neq ta smite lo xo. ra nu hune fa nu bivuzqa uqel po zuqra ka mex ta halbru pe xo naxru va",
     "must_include": [
       "prax",
-      "fa nu kashatyong ka neq ta qeng ve xo",
+      "fa nu kashatyong ka neq ta qeng ve xo bro",
       "kex ka nu spokta ta qxundraz nu lo xo ngu",
       "ra nu hune mifkmesvtu ka nu praq ta zux nu sa xo",
       "frex ra nu hune ka mex ta nimixu",

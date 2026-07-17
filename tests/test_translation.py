@@ -15,10 +15,28 @@ def test_bare_english_they_defaults_to_plural_known_req_ha():
     assert x.lookup("they")[0] == "req"
     assert x.lookup("their")[0] == "req"
     assert x.speak("They'll build the door tomorrow.", evidential="assumed") == (
-        "ra nu zrump ka req ha ta mrob ve xo"
+        "ra nu zrump ka req ha ta mrob ve xo glent"
     )
     assert x.speak("Their door", evidential="assumed") == "req ha po zrump"
-    assert x.reverse("ra nu zrump ka req ha ta mrob ve xo") == "they will build door"
+    assert x.reverse("ra nu zrump ka req ha ta mrob ve xo glent") == "they will build door tomorrow"
+
+def test_sentence_final_time_words_are_preserved_in_both_directions():
+    x = Xenari(REPO / "xenari.db")
+
+    cases = {
+        "I am going to work today": "fa nu kashatyong ka neq ta qeng ve xo bro",
+        "I run tomorrow": "ka neq ta zaqa sa xo glent",
+        "I ran yesterday": "ka neq ta zaqa lo xo hreh",
+        "I work tonight": "ka neq ta qxundraz sa xo kohfrep",
+    }
+    for english, xenari in cases.items():
+        assert x.speak(english, evidential="assumed") == xenari
+
+    assert x.reverse("ka neq ta zaqa sa xo glent") == "I run tomorrow"
+    assert x.reverse("ka neq ta zaqa lo xo hreh") == "I ran yesterday"
+    assert x.reverse("ka neq ta qxundraz sa xo kohfrep") == "I operate tonight"
+    assert "[fragment:" not in x.reverse("ka neq ta zaqa sa xo bro")
+    assert "[warning:" not in x.reverse("ka neq ta zaqa sa xo bro")
 
 def test_base6_numbers_and_math_particles_are_canon():
     x = Xenari(REPO / "xenari.db")
@@ -122,6 +140,9 @@ def test_everyday_verb_overrides_use_established_roots():
     for form, root in {
         "build": "mrob",
         "built": "mrob",
+        "approach": "frig",
+        "blow": "qruq",
+        "whisper": "tyequga",
         "say": "krimp",
         "said": "krimp",
         "touch": "qabrerd",

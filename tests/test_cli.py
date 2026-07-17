@@ -17,14 +17,15 @@ def test_curate_cli_accepts_section_and_limit_flags():
     assert "Relation candidate groups" not in result.stdout
 
     categorize = subprocess.run(
-        [sys.executable, "xenari_tool.py", "categorize", "--root", "anhthu", "--limit", "1"],
+        [sys.executable, "xenari_tool.py", "categorize", "--root", "cfolmna", "--limit", "1"],
         cwd=REPO,
         check=False,
         capture_output=True,
         text=True,
     )
     assert categorize.returncode == 0
-    assert "Uncategorized -> Action & Motion" in categorize.stdout
+    assert "Uncategorized -> Uncategorized" in categorize.stdout
+    assert "no suggestion" in categorize.stdout
     assert "PREVIEW ONLY" in categorize.stdout
 
     relate = subprocess.run(

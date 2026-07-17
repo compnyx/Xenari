@@ -86,6 +86,13 @@ def test_ranked_search_proposals_relations_lint_and_meta():
     assert proposals[0]["category"] == "Elements & Nature"
     assert not any("kgl" in item["root"] for item in proposals[:2])
     assert x.db._guess_category("wrath", "hot sharp anger") == "Mental & Abstract"
+    assert x.db._guess_category("god", "god") == "Cosmology & Reality"
+    assert x.db._guess_category("assesses", "English 'assesses' — gap fill") == "Perception & Cognition"
+    assert x.db._guess_category("motherboard", "computer motherboard") == "Technology & Devices"
+    assert x.db._guess_category("handrail", "metal handrail") == "Tools & Objects"
+    assert x.db._guess_category("airbags", "vehicle airbags") == "Technology & Devices"
+    assert x.db._guess_category("boom", "loud boom") == "Sound & Voice"
+    assert x.db._guess_category("calculation", "numerical calculation") == "Mathematics & Computation"
 
     ok, report = x.db.relations_report("fatyih")
     assert ok
@@ -122,8 +129,8 @@ def test_curation_sections_are_filterable_and_explain_hypotheses():
         relations=False,
     )
     assert "Placeholder category suggestions (grouped by suggestion)" in placeholders
-    assert "  Action & Motion:" in placeholders
-    assert "[high] (matched" in placeholders
+    assert "  Uncategorized:" in placeholders
+    assert "[none]" in placeholders
     assert "Phrase-like definition review" not in placeholders
     assert "Relation candidate groups" not in placeholders
 
@@ -195,6 +202,11 @@ def test_categorize_previews_guards_broad_writes_and_backs_up(tmp_path):
     db_path = tmp_path / "xenari.db"
     shutil.copy2(REPO / "xenari.db", db_path)
     x = Xenari(db_path)
+
+    x.db.conn.execute(
+        "UPDATE roots SET category = 'Uncategorized' WHERE root = 'anhthu'"
+    )
+    x.db.conn.commit()
 
     original = x.db.lookup_root("anhthu")["category"]
     ok, preview = x.db.categorize(root="anhthu")

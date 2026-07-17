@@ -204,6 +204,10 @@ class ReverseTranslationMixin:
         skip_particles = {"vi", "nu", "sa", "lo", "ve", "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "ha"}
         connector_glosses = {"kex": "but", "xen": "and", "noq": "or", "qlez": "so", "cruv": "once/when"}
         interrogative_glosses = {"qan": "what", "qur": "where", "cil": "how", "voq": "why"}
+        temporal_glosses = {
+            "bro": "today", "glent": "tomorrow", "hreh": "yesterday",
+            "kohfrep": "tonight", "qros": "now", "qrosa": "now",
+        }
         grammar_particles = (
             case_particles | skip_particles | {"ngu", "va", "po"}
             | set(connector_glosses) | set(interrogative_glosses)
@@ -259,6 +263,7 @@ class ReverseTranslationMixin:
             question = False
             polite = False
             connector = ""
+            temporal_modifiers = []
             warnings = []
             loose = []
             counts = {particle: tokens.count(particle) for particle in case_particles}
@@ -304,6 +309,9 @@ class ReverseTranslationMixin:
                     i += 1
                 elif tok == "naxru":
                     polite = True
+                    i += 1
+                elif tok in temporal_glosses and verb:
+                    temporal_modifiers.append(temporal_glosses[tok])
                     i += 1
                 else:
                     if tok not in grammar_particles:
@@ -372,6 +380,7 @@ class ReverseTranslationMixin:
                     command_parts.append(f"to {goal}")
                 if instrument:
                     command_parts.append(f"with {instrument}")
+                command_parts.extend(temporal_modifiers)
                 text = " ".join(command_parts)
                 if negated:
                     text = f"don't {text}"
@@ -409,6 +418,8 @@ class ReverseTranslationMixin:
                 text = f"{text} to {goal}".strip()
             if instrument:
                 text = f"{text} with {instrument}".strip()
+            if temporal_modifiers:
+                text = f"{text} {' '.join(temporal_modifiers)}".strip()
             if loose:
                 text = f"{text} [fragment: {' '.join(loose)}]".strip()
             if interrogative:

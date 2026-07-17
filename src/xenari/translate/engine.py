@@ -8,6 +8,25 @@ from .reverse import ReverseTranslationMixin
 
 
 class TranslatorMixin(NumberTranslationMixin, ModifierTranslationMixin, DialogueTranslationMixin, ReverseTranslationMixin):
+    _sentence_final_temporals = {
+        "today": "bro",
+        "tomorrow": "glent",
+        "yesterday": "hreh",
+        "tonight": "kohfrep",
+    }
+
+    def _split_sentence_final_temporal(self, english: str):
+        """Detach one reviewed trailing time word without discarding it."""
+        match = re.fullmatch(
+            r"(.+?)\s+(today|tomorrow|yesterday|tonight)(\s*\?)?",
+            english.strip(),
+            flags=re.IGNORECASE,
+        )
+        if not match:
+            return english, None
+        clause, temporal, question = match.groups()
+        return clause.strip() + ("?" if question else ""), self._sentence_final_temporals[temporal.lower()]
+
     def speak(self, english: str, tense: str = "auto", evidential: str = "auto") -> str:
         """Translate English as a sequence of bounded clauses.
 
@@ -32,9 +51,12 @@ class TranslatorMixin(NumberTranslationMixin, ModifierTranslationMixin, Dialogue
             "yet": self.p["but"],
         }
         for clause, connector in self._split_english_clauses(english):
+            clause, temporal_root = self._split_sentence_final_temporal(clause)
             xenari = self._speak_clause(clause, tense=tense, evidential=evidential)
             if not xenari:
                 continue
+            if temporal_root and not xenari.startswith(("[untranslated:", "[partial:")):
+                xenari = f"{xenari} {temporal_root}"
             connector_root = connector_roots.get(connector or "")
             if connector_root and not xenari.startswith("[untranslated:"):
                 xenari = f"{connector_root} {xenari}"
@@ -913,7 +935,13 @@ class TranslatorMixin(NumberTranslationMixin, ModifierTranslationMixin, Dialogue
                     evidence_root=evidence_root,
                     negated=bool(negated),
                 )
-                return f"{rendered} qros" if temporal in {"now", "right now"} else rendered
+                temporal_root = {
+                    "today": "bro",
+                    "tomorrow": "glent",
+                    "now": "qros",
+                    "right now": "qros",
+                }.get(temporal)
+                return f"{rendered} {temporal_root}" if temporal_root else rendered
 
         copula = re.fullmatch(
             r"(this|that)\s+(is|was)\s+(?:a\s+)?(?:(test)\s+)?(sentence|utterance)",
@@ -1136,7 +1164,7 @@ class TranslatorMixin(NumberTranslationMixin, ModifierTranslationMixin, Dialogue
             "i see the alien in the forest": f"ra vi qex na nu canq ka neq ta toq sa {e}",
             "creative work": "flonx",
             "creative art": "flonx",
-            "i am going to work today": f"fa nu kashatyong ka neq ta qeng ve {e}",
+            "i am going to work today": f"fa nu kashatyong ka neq ta qeng ve {e} bro",
             "i am going to work": f"fa nu kashatyong ka neq ta qeng ve {e}",
             "i am going to work now": f"fa nu kashatyong ka neq ta qeng sa {e} qros",
             "i am going to work right now": f"fa nu kashatyong ka neq ta qeng sa {e} qros",

@@ -172,6 +172,20 @@ ra vi qex ka neq ta toq sa xa
 I see the alien.
 ```
 
+Reviewed sentence-final time modifiers follow the finite frame. They add time
+information; they do not replace tense or evidential marking.
+
+- `bro` = today
+- `glent` = tomorrow
+- `hreh` = yesterday
+- `kohfrep` = tonight
+- `qros` = now / right now
+
+```text
+ra nu zrump ka req ha ta mrob ve xo glent
+They will build the door tomorrow.
+```
+
 Gratitude can take a causal clause with `troz`:
 
 ```text
@@ -246,7 +260,11 @@ An LLM translation candidate should return:
 
 Use `python3 xenari_tool.py llm-lint <xenari>` on proposed Xenari. Passing lint
 means only that the candidate uses known roots/particles and a plausible hard
-frame. It does not prove that the sentence means the English source.
+frame. The linter rejects unattested roots in verb position, repeated case,
+tense, or evidential markers, and case-marked fragments without `ta`. It does
+recognize canon boundaries for conditionals, temporal subordinates, relative
+clauses, and purpose clauses before checking their component frames. It does
+not prove that the sentence means the English source.
 
 ## Full Lexicon
 

@@ -20,6 +20,81 @@ class LlmMixin:
     def _llm_tokenize_xenari(self, text: str) -> List[str]:
         return re.findall(r"[a-z']+", text.lower())
 
+    def _llm_attested_verb_roots(self):
+        """Return roots with explicit verb evidence in reviewed canon data."""
+        roots = set(self.verb_map.values())
+        roots.update(
+            root for root, meaning in self.lexicon.items()
+            if meaning.strip().startswith("to ")
+        )
+        return roots
+
+    @staticmethod
+    def _llm_matching_ti(tokens: List[str], start: int) -> int:
+        """Find the ``ti`` that closes a structural ``su`` or ``pevoq``."""
+        depth = 1
+        for index in range(start + 1, len(tokens)):
+            if tokens[index] in {"su", "pevoq"}:
+                depth += 1
+            elif tokens[index] == "ti":
+                depth -= 1
+                if depth == 0:
+                    return index
+        return -1
+
+    def _llm_clause_regions(self, tokens: List[str], mode: str = "finite") -> List[Dict[str, object]]:
+        """Split known structured frames into independently lintable clauses.
+
+        Xenari conditionals, temporal subordinates, relative clauses, and
+        purpose clauses can contain more than one ``ta`` inside one written
+        sentence. Treating that sentence as a flat clause produces false
+        repeated-marker errors, so the hard linter follows the canon boundary
+        particles before validating each region.
+        """
+        tokens = list(tokens)
+        while tokens and tokens[0] in {"kex", "xen", "noq", "qlez"}:
+            tokens = tokens[1:]
+        if not tokens:
+            return []
+
+        if tokens[0] == "pevoq":
+            boundary = self._llm_matching_ti(tokens, 0)
+            if boundary >= 0:
+                return (
+                    self._llm_clause_regions(tokens[1:boundary], "conditional")
+                    + self._llm_clause_regions(tokens[boundary + 1:], mode)
+                )
+
+        if len(tokens) > 1 and tokens[0] == "su" and tokens[1] in {"cruv", "prexq", "vrem"}:
+            boundary = self._llm_matching_ti(tokens, 0)
+            if boundary >= 0:
+                return (
+                    self._llm_clause_regions(tokens[2:boundary], "subordinate")
+                    + self._llm_clause_regions(tokens[boundary + 1:], mode)
+                )
+
+        for index in range(len(tokens) - 1):
+            if tokens[index:index + 2] not in (["su", "zre"], ["su", "vro"]):
+                continue
+            boundary = self._llm_matching_ti(tokens, index)
+            if boundary < 0:
+                break
+            matrix = tokens[:index] + tokens[boundary + 1:]
+            relative = tokens[index + 2:boundary]
+            return (
+                self._llm_clause_regions(matrix, mode)
+                + self._llm_clause_regions(relative, "relative")
+            )
+
+        if "frex" in tokens:
+            boundary = tokens.index("frex")
+            return (
+                self._llm_clause_regions(tokens[:boundary], mode)
+                + self._llm_clause_regions(tokens[boundary + 1:], "purpose")
+            )
+
+        return [{"tokens": tokens, "mode": mode}]
+
     def _llm_english_hints(self, text: str, limit: int = 40) -> List[Dict[str, str]]:
         words = re.findall(r"[a-z']+", self._expand_english_contractions(text))
         hints = []
@@ -84,6 +159,7 @@ class LlmMixin:
         evidence_roots = {"xa", "xe", "xi", "xo", "zu"}
         case_markers = {"ra", "ka", "na", "fa", "mo"}
         ignorable_after_ta = {"vi", "nu"}
+        attested_verb_roots = self._llm_attested_verb_roots()
         tokens = self._llm_tokenize_xenari(candidate)
         unknown = sorted({
             token for token in tokens
@@ -99,17 +175,33 @@ class LlmMixin:
         if self._reverse_number_or_math(" ".join(tokens)) is not None:
             frames.append({"type": "number_or_math", "tokens": tokens})
         else:
-            clauses = [
+            expected_boundaries = tokens.count("su") + tokens.count("pevoq")
+            if tokens.count("ti") != expected_boundaries:
+                errors.append(
+                    "unbalanced structural boundaries: "
+                    f"expected {expected_boundaries} ti marker(s), found {tokens.count('ti')}"
+                )
+            written_clauses = [
                 self._llm_tokenize_xenari(part)
                 for part in re.split(r"[.!?]+", candidate)
                 if self._llm_tokenize_xenari(part)
             ] or ([tokens] if tokens else [])
-            for index, clause_tokens in enumerate(clauses, start=1):
-                frame = {"index": index, "tokens": clause_tokens, "type": "fragment"}
+            regions = []
+            for clause_tokens in written_clauses:
+                regions.extend(self._llm_clause_regions(clause_tokens))
+            for index, region in enumerate(regions, start=1):
+                clause_tokens = region["tokens"]
+                mode = region["mode"]
+                frame = {
+                    "index": index,
+                    "tokens": clause_tokens,
+                    "mode": mode,
+                    "type": "fragment",
+                }
                 frames.append(frame)
                 if "ta" not in clause_tokens:
                     if any(marker in clause_tokens for marker in case_markers):
-                        warnings.append(
+                        errors.append(
                             f"clause {index}: case marker present without verb marker ta"
                         )
                     continue
@@ -120,7 +212,16 @@ class LlmMixin:
                     errors.append(f"clause {index}: repeated verb marker ta")
                 if "ka" in clause_tokens and clause_tokens.index("ka") > ta_index:
                     errors.append(f"clause {index}: subject marker ka appears after ta")
-                if "ka" not in clause_tokens and "ko" not in clause_tokens[ta_index + 1:]:
+                for marker in case_markers - {"ka"}:
+                    if marker in clause_tokens and clause_tokens.index(marker) > ta_index:
+                        errors.append(
+                            f"clause {index}: case marker {marker} appears after ta"
+                        )
+                if (
+                    mode != "relative"
+                    and "ka" not in clause_tokens
+                    and "ko" not in clause_tokens[ta_index + 1:]
+                ):
                     errors.append(
                         f"clause {index}: finite non-imperative frame missing ka subject marker"
                     )
@@ -135,23 +236,33 @@ class LlmMixin:
                 frame["verb"] = verb_root
                 if verb_root in particles:
                     errors.append(f"clause {index}: ta is followed by particle {verb_root}, not a verb root")
+                elif verb_root in self.lexicon and verb_root not in attested_verb_roots:
+                    errors.append(
+                        f"clause {index}: root {verb_root} is not attested as a verb"
+                    )
 
                 tail = clause_tokens[verb_index + 1:]
                 tense_positions = [i for i, token in enumerate(tail) if token in tense_roots]
                 if not tense_positions:
-                    errors.append(f"clause {index}: missing tense/aspect root after verb")
+                    if mode != "purpose":
+                        errors.append(f"clause {index}: missing tense/aspect root after verb")
                     continue
+                if len(tense_positions) > 1:
+                    errors.append(f"clause {index}: multiple tense/aspect roots")
                 tense_pos = tense_positions[0]
                 frame["tense"] = tail[tense_pos]
-                evidence = next((token for token in tail[tense_pos + 1:] if token in evidence_roots), "")
+                evidentials = [token for token in tail[tense_pos + 1:] if token in evidence_roots]
+                evidence = evidentials[0] if evidentials else ""
                 if evidence:
                     frame["evidential"] = evidence
+                    if len(evidentials) > 1:
+                        errors.append(f"clause {index}: multiple evidential roots")
                 else:
                     errors.append(f"clause {index}: missing evidential root after tense/aspect")
 
                 for marker in ("ra", "ka", "na", "fa", "mo"):
                     if clause_tokens.count(marker) > 1:
-                        warnings.append(f"clause {index}: repeated marker {marker}")
+                        errors.append(f"clause {index}: repeated marker {marker}")
 
         if unknown:
             errors.append("unknown root or particle: " + ", ".join(unknown))

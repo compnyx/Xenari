@@ -18,8 +18,20 @@ I loved you.
 ```
 
 ```text
-ra nu zrump ka req ha ta mrob ve xo
+ra nu zrump ka req ha ta mrob ve xo glent
 They'll build the door tomorrow. / bare English they defaults to plural known `req ha`.
+```
+
+Sentence-final time words remain explicit modifiers after the finite frame:
+
+```text
+fa nu kashatyong ka neq ta qeng ve xo bro
+I am going to work today.
+```
+
+```text
+ka neq ta zaqa lo xo hreh
+I ran yesterday.
 ```
 
 ```text

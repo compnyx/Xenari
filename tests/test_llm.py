@@ -41,6 +41,42 @@ def test_llm_candidate_linter_checks_hard_canon_constraints_only():
     assert particle_as_verb["ok"] is False
     assert any("followed by particle ka" in error for error in particle_as_verb["errors"])
 
+    noun_as_verb = x.lint_xenari_candidate("ka neq ta cruq sa xo")
+    assert noun_as_verb["ok"] is False
+    assert any("root cruq is not attested as a verb" in error for error in noun_as_verb["errors"])
+
+    repeated_case = x.lint_xenari_candidate("ra mex ra leq ka neq ta zrent sa xo")
+    assert repeated_case["ok"] is False
+    assert any("repeated marker ra" in error for error in repeated_case["errors"])
+
+    marker_without_verb = x.lint_xenari_candidate("ra mex ka neq")
+    assert marker_without_verb["ok"] is False
+    assert any("without verb marker ta" in error for error in marker_without_verb["errors"])
+
+    duplicate_finite_grammar = x.lint_xenari_candidate("ra mex ka neq ta zrent sa ve xo xa")
+    assert duplicate_finite_grammar["ok"] is False
+    assert any("multiple tense/aspect roots" in error for error in duplicate_finite_grammar["errors"])
+    assert any("multiple evidential roots" in error for error in duplicate_finite_grammar["errors"])
+
+def test_llm_candidate_linter_understands_structured_clause_boundaries():
+    x = Xenari(REPO / "xenari.db", read_only=True)
+
+    candidates = (
+        "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo",
+        "ra nu zrump ka neq ta xleq lo xo frex ra mex ka neq ta pegzos",
+        "ka vi habdazluc su zre ra nu zrump ta zont vi lo xo ti ta zaqa vi sa xo",
+        "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo",
+    )
+    for candidate in candidates:
+        lint = x.lint_xenari_candidate(candidate)
+        assert lint["ok"] is True, lint["errors"]
+
+    unbalanced = x.lint_xenari_candidate(
+        "pevoq ra vi qex ka neq ta toq sa xo ka neq ta zaqa ve xo"
+    )
+    assert unbalanced["ok"] is False
+    assert any("unbalanced structural boundaries" in error for error in unbalanced["errors"])
+
 def test_llm_cli_context_and_lint_json_contracts():
     context = subprocess.run(
         [sys.executable, "xenari_tool.py", "llm-context", "I love you"],

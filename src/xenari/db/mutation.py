@@ -238,14 +238,15 @@ class MutationMixin:
               "recipe", "ingredient", "meal", "snack", "taste", "simmer", "grill"],
              "Plants & Food"),
             (["music", "sing", "song", "drum", "flute", "instrument", "rhythm",
-              "melody", "beat", "harmony", "chorus", "boom", "sound", "noise"],
+              "melody", "beat", "harmony", "chorus"],
              "Arts & Culture"),
+            (["boom", "sound", "noise", "audio"], "Sound & Voice"),
             (["hate", "jealous", "grief", "nostalgia", "contempt", "awe", "bored",
-              "excit", "disappoint", "shame", "pride", "guilt", "longing", "anxiety",
-              "seren", "rage", "anger", "angry", "wrath", "melanchol", "hope", "despair", "envy", "grateful",
-              "resent", "lonely", "affection", "tenderness", "despise", "scorn",
+              "excit*", "disappoint*", "shame", "pride", "guilt", "longing", "anxiety",
+              "seren*", "rage", "anger", "angry", "wrath", "melanchol*", "hope", "despair", "envy", "grateful",
+              "resent*", "lonely", "affection", "tenderness", "despise", "scorn",
               "disdain", "solitude", "lonely", "alone"], "Mental & Abstract"),
-            (["math", "number", "calculat", "add", "subtract", "multiply", "divide",
+            (["math", "number", "calculat*", "add", "subtract", "multiply", "divide",
               "geometry", "angle", "logic", "algorithm", "data", "variable",
               "function", "loop", "boolean"], "Mathematics & Computation"),
             (["body", "bone", "blood", "hand", "mouth", "eye", "ear", "lung",
@@ -254,13 +255,15 @@ class MutationMixin:
              "Body Parts"),
             (["veil", "glamer", "essence", "vitality", "feeding pulse", "resonance"],
              "Cosmology & Reality"),
-            (["heaven", "heavens", "cosmos", "reality", "universe"], "Cosmology & Reality"),
+            (["heaven", "heavens", "cosmos", "reality", "universe", "god"], "Cosmology & Reality"),
             (["home", "bed", "curtain", "window", "closet", "picture", "art",
               "wall", "comfort"], "Home & Comfort"),
             (["family", "parent", "child", "sibling", "mother", "father", "kid", "kin"],
              "Family & Kinship"),
-            (["tech", "device", "ai", "machine", "screen", "wearable", "clock", "computer"],
+            (["tech", "device", "ai", "machine", "screen", "wearable", "clock", "computer",
+              "motherboard", "airbag", "airbags", "hardware"],
              "Technology & Devices"),
+            (["assess", "assesses", "assessment"], "Perception & Cognition"),
             (["pleasure", "pain", "tease", "orgasm", "cum"], "Sexual & Explicit"),
             (["sex", "fuck", "cock", "pussy", "vagina", "penis", "clit", "ass", "tits", "oral"],
              "Sexual & Explicit"),
@@ -273,11 +276,11 @@ class MutationMixin:
             (["body", "eat", "drink", "sleep", "walk", "run", "bite", "see",
               "hear", "breathe"], "Beings & Creatures"),
             (["tool", "object", "weapon", "cloth", "wear", "vessel", "cord",
-              "wheel", "shelter"], "Tools & Objects"),
-            (["place", "time", "day", "night", "year", "hour", "home", "cave", "city"],
+              "wheel", "shelter", "handrail"], "Tools & Objects"),
+            (["place", "time", "day", "night", "nighttime", "nightfall", "year", "hour", "home", "cave", "city"],
              "Place & Time"),
             (["facility", "facilities", "building", "room", "site"], "Place & Time"),
-            (["quality", "big", "small", "good", "bad", "dark", "bright", "hot",
+            (["quality", "big", "small", "good", "bad", "dark", "darken", "darkens", "bright", "hot",
               "cold", "fast", "slow"], "Qualities"),
             (["social", "talk", "speak", "friend", "enemy", "respect", "insult",
               "command", "ask"], "Social & Communication"),
@@ -309,10 +312,13 @@ class MutationMixin:
         }
         matches = []
         for keywords, category in self._category_rules():
-            matched = [
-                keyword for keyword in keywords
-                if re.search(rf"(?<![a-z]){re.escape(keyword)}", text)
-            ]
+            matched = []
+            for keyword in keywords:
+                stem = keyword.endswith("*")
+                value = keyword.removesuffix("*")
+                suffix = "" if stem else r"(?![a-z])"
+                if re.search(rf"(?<![a-z]){re.escape(value)}{suffix}", text):
+                    matched.append(value)
             if matched:
                 resolved = self._resolve_category_name(category, existing)
                 matches.append((resolved, matched))

@@ -1349,6 +1349,18 @@
     ]
   },
   {
+    "id": 4862,
+    "root": "anhthu",
+    "meaning": "English 'activates' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.590916+00:00",
+    "notes": null,
+    "english_keys": [
+      "activates"
+    ]
+  },
+  {
     "id": 4536,
     "root": "capu",
     "meaning": "absorbs",
@@ -15556,6 +15568,18 @@
     ]
   },
   {
+    "id": 4440,
+    "root": "bleram",
+    "meaning": "heavens",
+    "category": "Cosmology & Reality",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:41:23.912157+00:00",
+    "notes": null,
+    "english_keys": [
+      "heavens"
+    ]
+  },
+  {
     "id": 1032,
     "root": "clex",
     "meaning": "glamer, magical disguise",
@@ -16216,6 +16240,18 @@
     "notes": null,
     "english_keys": [
       "deep"
+    ]
+  },
+  {
+    "id": 4233,
+    "root": "rizmeh",
+    "meaning": "god",
+    "category": "Cosmology & Reality",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:41:23.912157+00:00",
+    "notes": null,
+    "english_keys": [
+      "god"
     ]
   },
   {
@@ -68368,6 +68404,18 @@
     ]
   },
   {
+    "id": 4870,
+    "root": "azr",
+    "meaning": "English 'solitude' — gap fill from Interstellar script",
+    "category": "Mental & Abstract",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.591432+00:00",
+    "notes": null,
+    "english_keys": [
+      "solitude"
+    ]
+  },
+  {
     "id": 1117,
     "root": "be'",
     "meaning": "rule",
@@ -79237,6 +79285,18 @@
     ]
   },
   {
+    "id": 4631,
+    "root": "rocsre",
+    "meaning": "English 'assesses' — gap fill from Interstellar script",
+    "category": "Perception & Cognition",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.572149+00:00",
+    "notes": null,
+    "english_keys": [
+      "assesses"
+    ]
+  },
+  {
     "id": 4541,
     "root": "sateh",
     "meaning": "spellbound",
@@ -79385,6 +79445,18 @@
     ]
   },
   {
+    "id": 4824,
+    "root": "anmqu",
+    "meaning": "English 'facilities' — gap fill from Interstellar script",
+    "category": "Place & Time",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.587872+00:00",
+    "notes": null,
+    "english_keys": [
+      "facilities"
+    ]
+  },
+  {
     "id": 2292,
     "root": "azcibaz",
     "meaning": "bathroom",
@@ -79503,6 +79575,18 @@
     "notes": null,
     "english_keys": [
       "destination"
+    ]
+  },
+  {
+    "id": 4828,
+    "root": "elmnhu",
+    "meaning": "English 'site' — gap fill from Interstellar script",
+    "category": "Place & Time",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.588120+00:00",
+    "notes": null,
+    "english_keys": [
+      "site"
     ]
   },
   {
@@ -80228,6 +80312,18 @@
     ]
   },
   {
+    "id": 4781,
+    "root": "tesnkunt",
+    "meaning": "English 'nighttime' — gap fill from Interstellar script",
+    "category": "Place & Time",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.584320+00:00",
+    "notes": null,
+    "english_keys": [
+      "nighttime"
+    ]
+  },
+  {
     "id": 898,
     "root": "tlon",
     "meaning": "tunnel",
@@ -80237,6 +80333,18 @@
     "notes": null,
     "english_keys": [
       "tunnel"
+    ]
+  },
+  {
+    "id": 4813,
+    "root": "toftozr",
+    "meaning": "English 'nightfall' — gap fill from Interstellar script",
+    "category": "Place & Time",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.587107+00:00",
+    "notes": null,
+    "english_keys": [
+      "nightfall"
     ]
   },
   {
@@ -83811,6 +83919,18 @@
     "english_keys": [
       "foolish",
       "stupid"
+    ]
+  },
+  {
+    "id": 4741,
+    "root": "exk",
+    "meaning": "English 'darkens' — gap fill from Interstellar script",
+    "category": "Qualities",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.580349+00:00",
+    "notes": null,
+    "english_keys": [
+      "darkens"
     ]
   },
   {
@@ -91686,6 +91806,30 @@
     ]
   },
   {
+    "id": 4839,
+    "root": "cavmphozs",
+    "meaning": "English 'boom' — gap fill from Interstellar script",
+    "category": "Sound & Voice",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.588920+00:00",
+    "notes": null,
+    "english_keys": [
+      "boom"
+    ]
+  },
+  {
+    "id": 4886,
+    "root": "erm",
+    "meaning": "English 'audio' — gap fill from Interstellar script",
+    "category": "Sound & Voice",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.592472+00:00",
+    "notes": null,
+    "english_keys": [
+      "audio"
+    ]
+  },
+  {
     "id": 9470,
     "root": "glivun",
     "meaning": "whirr, steady rotary machine sound",
@@ -94426,6 +94570,18 @@
     ]
   },
   {
+    "id": 4765,
+    "root": "kovtvafr",
+    "meaning": "English 'motherboard' — gap fill from Interstellar script",
+    "category": "Technology & Devices",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.582395+00:00",
+    "notes": null,
+    "english_keys": [
+      "motherboard"
+    ]
+  },
+  {
     "id": 1381,
     "root": "kruxxol",
     "meaning": "artificial intelligence — a mind that is made, not born (krux + xol = make-mind)",
@@ -95226,6 +95382,18 @@
     ]
   },
   {
+    "id": 4841,
+    "root": "uzm",
+    "meaning": "English 'hardware' — gap fill from Interstellar script",
+    "category": "Technology & Devices",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.589381+00:00",
+    "notes": null,
+    "english_keys": [
+      "hardware"
+    ]
+  },
+  {
     "id": 3055,
     "root": "vexo",
     "meaning": "video / recorded visual media",
@@ -95235,6 +95403,18 @@
     "notes": null,
     "english_keys": [
       "video"
+    ]
+  },
+  {
+    "id": 4659,
+    "root": "vurfta",
+    "meaning": "English 'airbags' — gap fill from Interstellar script",
+    "category": "Technology & Devices",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.574260+00:00",
+    "notes": null,
+    "english_keys": [
+      "airbags"
     ]
   },
   {
@@ -96873,6 +97053,18 @@
     "notes": null,
     "english_keys": [
       "anesthetic"
+    ]
+  },
+  {
+    "id": 4789,
+    "root": "loztsqo",
+    "meaning": "English 'handrail' — gap fill from Interstellar script",
+    "category": "Tools & Objects",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.585061+00:00",
+    "notes": null,
+    "english_keys": [
+      "handrail"
     ]
   },
   {
@@ -99358,66 +99550,6 @@
     ]
   },
   {
-    "id": 4862,
-    "root": "anhthu",
-    "meaning": "English 'activates' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.590916+00:00",
-    "notes": null,
-    "english_keys": [
-      "activates"
-    ]
-  },
-  {
-    "id": 4824,
-    "root": "anmqu",
-    "meaning": "English 'facilities' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.587872+00:00",
-    "notes": null,
-    "english_keys": [
-      "facilities"
-    ]
-  },
-  {
-    "id": 4870,
-    "root": "azr",
-    "meaning": "English 'solitude' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.591432+00:00",
-    "notes": null,
-    "english_keys": [
-      "solitude"
-    ]
-  },
-  {
-    "id": 4440,
-    "root": "bleram",
-    "meaning": "heavens",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:41:23.912157+00:00",
-    "notes": null,
-    "english_keys": [
-      "heavens"
-    ]
-  },
-  {
-    "id": 4839,
-    "root": "cavmphozs",
-    "meaning": "English 'boom' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.588920+00:00",
-    "notes": null,
-    "english_keys": [
-      "boom"
-    ]
-  },
-  {
     "id": 4746,
     "root": "cfolmna",
     "meaning": "English 'contest' — gap fill from Interstellar script",
@@ -99562,30 +99694,6 @@
     ]
   },
   {
-    "id": 4828,
-    "root": "elmnhu",
-    "meaning": "English 'site' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.588120+00:00",
-    "notes": null,
-    "english_keys": [
-      "site"
-    ]
-  },
-  {
-    "id": 4886,
-    "root": "erm",
-    "meaning": "English 'audio' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.592472+00:00",
-    "notes": null,
-    "english_keys": [
-      "audio"
-    ]
-  },
-  {
     "id": 4719,
     "root": "esf",
     "meaning": "English 'resume' — gap fill from Interstellar script",
@@ -99595,18 +99703,6 @@
     "notes": null,
     "english_keys": [
       "resume"
-    ]
-  },
-  {
-    "id": 4741,
-    "root": "exk",
-    "meaning": "English 'darkens' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.580349+00:00",
-    "notes": null,
-    "english_keys": [
-      "darkens"
     ]
   },
   {
@@ -100054,18 +100150,6 @@
     ]
   },
   {
-    "id": 4765,
-    "root": "kovtvafr",
-    "meaning": "English 'motherboard' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.582395+00:00",
-    "notes": null,
-    "english_keys": [
-      "motherboard"
-    ]
-  },
-  {
     "id": 4784,
     "root": "ksockpers",
     "meaning": "English 'quick' — gap fill from Interstellar script",
@@ -100147,18 +100231,6 @@
     "notes": null,
     "english_keys": [
       "wade"
-    ]
-  },
-  {
-    "id": 4789,
-    "root": "loztsqo",
-    "meaning": "English 'handrail' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.585061+00:00",
-    "notes": null,
-    "english_keys": [
-      "handrail"
     ]
   },
   {
@@ -100822,18 +100894,6 @@
     ]
   },
   {
-    "id": 4233,
-    "root": "rizmeh",
-    "meaning": "god",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:41:23.912157+00:00",
-    "notes": null,
-    "english_keys": [
-      "god"
-    ]
-  },
-  {
     "id": 4823,
     "root": "rizn",
     "meaning": "English 'require' — gap fill from Interstellar script",
@@ -100843,18 +100903,6 @@
     "notes": null,
     "english_keys": [
       "require"
-    ]
-  },
-  {
-    "id": 4631,
-    "root": "rocsre",
-    "meaning": "English 'assesses' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.572149+00:00",
-    "notes": null,
-    "english_keys": [
-      "assesses"
     ]
   },
   {
@@ -101086,18 +101134,6 @@
     ]
   },
   {
-    "id": 4781,
-    "root": "tesnkunt",
-    "meaning": "English 'nighttime' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.584320+00:00",
-    "notes": null,
-    "english_keys": [
-      "nighttime"
-    ]
-  },
-  {
     "id": 4921,
     "root": "tiftzunkmsi",
     "meaning": "English 'recordings' — gap fill from Interstellar script",
@@ -101131,18 +101167,6 @@
     "notes": null,
     "english_keys": [
       "pararescue"
-    ]
-  },
-  {
-    "id": 4813,
-    "root": "toftozr",
-    "meaning": "English 'nightfall' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.587107+00:00",
-    "notes": null,
-    "english_keys": [
-      "nightfall"
     ]
   },
   {
@@ -101230,18 +101254,6 @@
     ]
   },
   {
-    "id": 4841,
-    "root": "uzm",
-    "meaning": "English 'hardware' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.589381+00:00",
-    "notes": null,
-    "english_keys": [
-      "hardware"
-    ]
-  },
-  {
     "id": 4775,
     "root": "vazrnazn",
     "meaning": "English 'dips' — gap fill from Interstellar script",
@@ -101275,18 +101287,6 @@
     "notes": null,
     "english_keys": [
       "flag"
-    ]
-  },
-  {
-    "id": 4659,
-    "root": "vurfta",
-    "meaning": "English 'airbags' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.574260+00:00",
-    "notes": null,
-    "english_keys": [
-      "airbags"
     ]
   },
   {
