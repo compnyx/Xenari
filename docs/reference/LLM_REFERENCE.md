@@ -2,7 +2,7 @@
 
 Use this file for grammar and common behavior. Use `../../xenari.db` (the
 compatibility link to `../../src/xenari/data/xenari.db`) or
-`../data/xenari-dict.json` for full vocabulary.
+`../../data/xenari-dict.json` for full vocabulary.
 
 ## Core Shape
 
@@ -271,15 +271,15 @@ not prove that the sentence means the English source.
 Full vocabulary lives outside this reference:
 
 - SQLite: `../../xenari.db` (compatibility link)
-- JSON: `../data/xenari-dict.json`
-- CLI search: `python3 ../xenari_tool.py search <query>`
-- CLI reverse check: `python3 ../xenari_tool.py reverse <xenari sentence>`
-- New root planning: `python3 ../xenari_tool.py coin <english> <meaning>`
-- Category curation: `python3 ../xenari_tool.py curate --placeholder --limit 20`
-- Definition curation: `python3 ../xenari_tool.py curate --phrases --limit 20`
-- Relation curation: `python3 ../xenari_tool.py curate --relations --limit 20`
-- Category cleanup preview: `python3 ../xenari_tool.py categorize --root <root>`
-- Relation lookup: `python3 ../xenari_tool.py relations <root>`
+- JSON: `../../data/xenari-dict.json`
+- CLI search: `python3 ../../xenari_tool.py search <query>`
+- CLI reverse check: `python3 ../../xenari_tool.py reverse <xenari sentence>`
+- New root planning: `python3 ../../xenari_tool.py coin <english> <meaning>`
+- Category curation: `python3 ../../xenari_tool.py curate --placeholder --limit 20`
+- Definition curation: `python3 ../../xenari_tool.py curate --phrases --limit 20`
+- Relation curation: `python3 ../../xenari_tool.py curate --relations --limit 20`
+- Category cleanup preview: `python3 ../../xenari_tool.py categorize --root <root>`
+- Relation lookup: `python3 ../../xenari_tool.py relations <root>`
 
 `curate` output is heuristic. Category confidence/reasons and relation labels
 are review signals, not canon facts. `categorize` and `relate` do not write by

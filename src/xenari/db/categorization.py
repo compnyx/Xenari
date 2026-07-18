@@ -21,7 +21,7 @@ class CategorizationMixin:
               "excit*", "disappoint*", "shame", "pride", "guilt", "longing", "anxiety",
               "seren*", "rage", "anger", "angry", "wrath", "melanchol*", "hope", "despair", "envy", "grateful",
               "resent*", "lonely", "affection", "tenderness", "despise", "scorn",
-              "disdain", "solitude", "lonely", "alone"], "Mental & Abstract"),
+              "disdain", "solitude", "alone"], "Mental & Abstract"),
             (["math", "number", "calculat*", "add", "subtract", "multiply", "divide",
               "geometry", "angle", "logic", "algorithm", "data", "variable",
               "function", "loop", "boolean"], "Mathematics & Computation"),

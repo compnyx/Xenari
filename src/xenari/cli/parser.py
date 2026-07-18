@@ -26,7 +26,7 @@ def build_parser() -> argparse.ArgumentParser:
   publish:   parity && sync --site && pytest -q
 """
     parser = argparse.ArgumentParser(
-        description="Xenari Tool v4 — DB-powered, for Nyx",
+        description="Xenari — DB-powered conlang tooling",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=epilog,
     )

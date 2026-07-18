@@ -1,6 +1,5 @@
 import json
 import datetime
-from pathlib import Path
 from typing import List, Tuple
 
 from ..paths import TRANSLATOR_FIXTURES
@@ -123,7 +122,7 @@ class HealthMixin:
     def workbench(self, limit: int = 5) -> Tuple[bool, str]:
         """Agent-friendly snapshot for deciding what to do next."""
         ok, doctor_report = self.doctor()
-        parity_ok, parity_report = self.parity()
+        parity_ok, _ = self.parity()
         audit = self.db.audit(limit=0)
         lint = self.db.lint(limit=limit)
         lines = [

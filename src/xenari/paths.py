@@ -26,20 +26,18 @@ def resolve_repo_root() -> Optional[Path]:
     return None
 
 
-REPO_ROOT = resolve_repo_root()
-
-
 def generated_dictionary_path() -> Path:
     """Resolve the generated repo dictionary or an explicit override."""
     configured = os.environ.get("XENARI_GENERATED_DICTIONARY")
     if configured:
         return Path(configured).expanduser().resolve()
-    if REPO_ROOT is None:
+    repo_root = resolve_repo_root()
+    if repo_root is None:
         raise RuntimeError(
             "generated dictionary path is source-checkout-only; set "
             "XENARI_GENERATED_DICTIONARY to an explicit output path"
         )
-    return REPO_ROOT / "data" / "xenari-dict.json"
+    return repo_root / "data" / "xenari-dict.json"
 
 
 def resolve_site_root(value: Optional[Union[str, Path]] = None) -> Path:

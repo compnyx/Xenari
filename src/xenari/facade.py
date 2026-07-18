@@ -20,7 +20,7 @@ class Xenari(LookupMixin, TranslatorMixin, LlmMixin, ExportMixin, HealthMixin, C
         self,
         db_path: Optional[Path] = None,
         *,
-        read_only: bool = False,
+        read_only: Optional[bool] = None,
         site_root: Optional[Path] = None,
     ):
         self.db = XenariDB(db_path, read_only=read_only)
@@ -30,6 +30,17 @@ class Xenari(LookupMixin, TranslatorMixin, LlmMixin, ExportMixin, HealthMixin, C
         self._load_from_db()
 
         load_grammar_state(self)
+
+    def close(self):
+        """Close the underlying canon database connection."""
+        self.db.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.close()
+        return False
 
     def _load_from_db(self):
         """Load all roots and english mappings from the sqlite DB."""

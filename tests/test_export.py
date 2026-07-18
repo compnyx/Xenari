@@ -4,23 +4,29 @@ import json
 import shutil
 import subprocess
 
-from xenari import Xenari
-
-from .support import REPO
-
-def test_unified_export_and_reverse_helpers(tmp_path):
-    x = Xenari(REPO / "xenari.db")
-
-    assert x.export_format("json").lstrip().startswith("[")
-    assert x.export_json() == x.db.export_json()
-    assert "const DICT" in x.export_format("js")
+def test_unified_export_and_reverse_helpers(tmp_path, xenari):
+    assert xenari.export_format("json").lstrip().startswith("[")
+    assert xenari.export_json() == xenari.db.export_json()
+    assert "const DICT" in xenari.export_format("js")
 
     out = tmp_path / "lexicon.md"
-    assert "wrote" in x.export_format("md", output=out)
+    assert "wrote" in xenari.export_format("md", output=out)
     assert out.exists()
 
-def test_export_js_uses_json_escaping_and_is_valid_javascript(tmp_path):
-    x = Xenari(REPO / "xenari.db", read_only=True)
+
+def test_database_json_export_uses_bounded_queries(fresh_xenari):
+    x = fresh_xenari
+    statements = []
+    x.db.conn.set_trace_callback(statements.append)
+
+    exported = x.db.export_json()
+
+    selects = [statement for statement in statements if statement.lstrip().upper().startswith("SELECT")]
+    assert json.loads(exported)
+    assert len(selects) == 2
+
+def test_export_js_uses_json_escaping_and_is_valid_javascript(tmp_path, fresh_xenari):
+    x = fresh_xenari
     x.english_to_root['feed"'] = "zrent"
     x.lexicon["zrent"] = 'to love "without loss"\nwith care'
     exported = x.export_js_dict()

@@ -1,6 +1,32 @@
 import re
 
 
+_AUXILIARY_FORMS = "do|does|did|will|can|could"
+_TRANSITIVE_VERB_FORMS = (
+    "see|sees|saw|build|builds|built|open|opens|opened|help|helps|helped|"
+    "find|finds|found|touch|touched|hear|hears|heard|bite|bites|bit|"
+    "love|loves|loved|translate|translates|translated|eat|eats|ate|"
+    "send|sends|sent|give|gives|gave|take|takes|took"
+)
+_INTRANSITIVE_VERB_FORMS = (
+    "open|opens|opened|run|runs|ran|wait|waits|waited|"
+    "enter|enters|entered|stop|stops|stopped|slam|slams|slammed|"
+    "walk|walks|walked|sleep|sleeps|slept|rest|rests|rested|"
+    "sit|sits|sat|stand|stands|stood"
+)
+_AUX_INTRANSITIVE_VERB_FORMS = (
+    "open|opens|opened|run|runs|ran|wait|waits|waited|"
+    "enter|enters|entered|stop|stops|stopped|walk|walks|walked|"
+    "sleep|sleeps|slept|rest|rests|rested|sit|sits|sat|"
+    "stand|stands|stood"
+)
+_QUALITY_ROOTS = {
+    "red": "rlis", "big": "nyix", "good": "nax", "nice": "naxu",
+    "bad": "qez", "fast": "kag", "tall": "sump", "small": "frem",
+    "dangerous": "fatyih", "open": "xleq", "closed": "qrak",
+}
+
+
 class ModifierTranslationMixin:
     def _parse_modifier_np(self, english: str):
         """Parse one bounded possessive/quantity/modifier noun phrase.
@@ -195,18 +221,113 @@ class ModifierTranslationMixin:
             parts.append(self.p["q"])
         return " ".join(parts)
 
+    @staticmethod
+    def _auxiliary_tense_root(auxiliary: str) -> str:
+        if auxiliary == "did":
+            return "lo"
+        if auxiliary == "will":
+            return "ve"
+        if auxiliary in {"can", "could"}:
+            return "pe"
+        return "sa"
+
+    def _render_auxiliary_modifier_clause(
+        self,
+        subject_text: str,
+        auxiliary: str,
+        negation: str | None,
+        verb_word: str,
+        evidence_root: str,
+        *,
+        object_text: str | None = None,
+        question: bool = False,
+    ):
+        """Render the shared auxiliary clause after its word order is parsed."""
+        subject_phrase = self._parse_modifier_np(subject_text)
+        object_phrase = self._parse_modifier_np(object_text) if object_text is not None else None
+        if not subject_phrase or (object_text is not None and not object_phrase):
+            return None
+        return self._render_modifier_clause(
+            subject_phrase,
+            verb_word,
+            object_phrase=object_phrase,
+            evidence_root=evidence_root,
+            tense_root=self._auxiliary_tense_root(auxiliary),
+            negated=bool(negation),
+            question=question,
+        )
+
+    def _parse_auxiliary_modifier_clause(
+        self,
+        clean: str,
+        evidence_root: str,
+        *,
+        verb_forms: str,
+        transitive: bool,
+    ):
+        """Parse both auxiliary word orders and render their shared clause."""
+        object_pattern = r"\s+(.+)" if transitive else ""
+        patterns = (
+            (rf"({_AUXILIARY_FORMS})\s+(.+?)\s+(not\s+)?({verb_forms}){object_pattern}", True),
+            (rf"(.+?)\s+({_AUXILIARY_FORMS})\s+(not\s+)?({verb_forms}){object_pattern}", False),
+        )
+        for pattern, question in patterns:
+            match = re.fullmatch(pattern, clean)
+            if not match:
+                continue
+            first, second, negation, verb_word, *remainder = match.groups()
+            auxiliary, subject_text = (first, second) if question else (second, first)
+            rendered = self._render_auxiliary_modifier_clause(
+                subject_text,
+                auxiliary,
+                negation,
+                verb_word,
+                evidence_root,
+                object_text=remainder[0] if remainder else None,
+                question=question,
+            )
+            if rendered is not None:
+                return rendered
+        return None
+
+    def _parse_copular_quality_clause(self, clean: str, evidence_root: str):
+        """Parse and render statement/question variants of a quality frame."""
+        patterns = (
+            (r"(is|are|was|were)\s+(.+?)\s+(not\s+)?([a-z][a-z'-]*)", True),
+            (r"(.+?)\s+(is|are|was|were)\s+(not\s+)?([a-z][a-z'-]*)", False),
+        )
+        for pattern, question in patterns:
+            match = re.fullmatch(pattern, clean)
+            if not match:
+                continue
+            first, second, negation, quality_word = match.groups()
+            auxiliary, subject_text = (first, second) if question else (second, first)
+            subject_phrase = self._parse_modifier_np(subject_text)
+            quality_root = _QUALITY_ROOTS.get(quality_word)
+            if not subject_phrase or not quality_root:
+                continue
+            parts = ["ra", quality_root]
+            parts.extend(self._render_modifier_np(subject_phrase, "ka"))
+            parts.extend(["ta", "zux"])
+            if not subject_phrase["inherent_animacy"]:
+                parts.append(subject_phrase["animacy"])
+            parts.extend([
+                "lo" if auxiliary in {"was", "were"} else "sa",
+                evidence_root,
+            ])
+            if question:
+                parts.append(self.p["q"])
+            if negation:
+                parts.append(self.p["neg"])
+            return " ".join(parts)
+        return None
+
     def _parse_modifier_clause(self, english: str, evidence_root: str, require_feature=True):
         """Parse a simple clause only when reviewed modifier semantics are present."""
         clean = re.sub(r"\s+", " ", english.strip().lower())
-        verb_forms = (
-            "see|sees|saw|build|builds|built|open|opens|opened|help|helps|helped|"
-            "find|finds|found|touch|touched|hear|hears|heard|bite|bites|bit|"
-            "love|loves|loved|translate|translates|translated|eat|eats|ate|"
-            "send|sends|sent|give|gives|gave|take|takes|took"
-        )
         going_to_transitive = re.fullmatch(
             rf"(.+?)\s+(am|are|is|was|were)\s+(not\s+)?going\s+to\s+"
-            rf"({verb_forms})\s+(.+)",
+            rf"({_TRANSITIVE_VERB_FORMS})\s+(.+)",
             clean,
         )
         if going_to_transitive:
@@ -224,59 +345,16 @@ class ModifierTranslationMixin:
                     question=False,
                 )
 
-        aux_question_transitive = re.fullmatch(
-            rf"(do|does|did|will|can|could)\s+(.+?)\s+(not\s+)?"
-            rf"({verb_forms})\s+(.+)",
+        auxiliary_transitive = self._parse_auxiliary_modifier_clause(
             clean,
+            evidence_root,
+            verb_forms=_TRANSITIVE_VERB_FORMS,
+            transitive=True,
         )
-        if aux_question_transitive:
-            auxiliary, subject_text, negation, verb_word, object_text = aux_question_transitive.groups()
-            subject_phrase = self._parse_modifier_np(subject_text)
-            object_phrase = self._parse_modifier_np(object_text)
-            if subject_phrase and object_phrase:
-                tense_root = (
-                    "lo" if auxiliary == "did"
-                    else "ve" if auxiliary == "will"
-                    else "pe" if auxiliary in {"can", "could"}
-                    else "sa"
-                )
-                return self._render_modifier_clause(
-                    subject_phrase,
-                    verb_word,
-                    object_phrase=object_phrase,
-                    evidence_root=evidence_root,
-                    tense_root=tense_root,
-                    negated=bool(negation),
-                    question=True,
-                )
+        if auxiliary_transitive is not None:
+            return auxiliary_transitive
 
-        aux_transitive = re.fullmatch(
-            rf"(.+?)\s+(do|does|did|will|can|could)\s+(not\s+)?"
-            rf"({verb_forms})\s+(.+)",
-            clean,
-        )
-        if aux_transitive:
-            subject_text, auxiliary, negation, verb_word, object_text = aux_transitive.groups()
-            subject_phrase = self._parse_modifier_np(subject_text)
-            object_phrase = self._parse_modifier_np(object_text)
-            if subject_phrase and object_phrase:
-                tense_root = (
-                    "lo" if auxiliary == "did"
-                    else "ve" if auxiliary == "will"
-                    else "pe" if auxiliary in {"can", "could"}
-                    else "sa"
-                )
-                return self._render_modifier_clause(
-                    subject_phrase,
-                    verb_word,
-                    object_phrase=object_phrase,
-                    evidence_root=evidence_root,
-                    tense_root=tense_root,
-                    negated=bool(negation),
-                    question=False,
-                )
-
-        transitive = re.fullmatch(rf"(.+?)\s+({verb_forms})\s+(.+)", clean)
+        transitive = re.fullmatch(rf"(.+?)\s+({_TRANSITIVE_VERB_FORMS})\s+(.+)", clean)
         if transitive:
             subject_text, verb_word, object_text = transitive.groups()
             subject_phrase = self._parse_modifier_np(subject_text)
@@ -295,10 +373,7 @@ class ModifierTranslationMixin:
 
         intransitive = re.fullmatch(
             r"(.+?)\s+"
-            r"(open|opens|opened|run|runs|ran|wait|waits|waited|"
-            r"enter|enters|entered|stop|stops|stopped|slam|slams|slammed|"
-            r"walk|walks|walked|sleep|sleeps|slept|rest|rests|rested|"
-            r"sit|sits|sat|stand|stands|stood)"
+            rf"({_INTRANSITIVE_VERB_FORMS})"
             r"(?:\s+(?:quickly|slowly|quietly|loudly))?",
             clean,
         )
@@ -309,58 +384,14 @@ class ModifierTranslationMixin:
                 return self._render_modifier_clause(
                     subject_phrase, verb_word, evidence_root=evidence_root,
                 )
-        aux_question_intransitive = re.fullmatch(
-            r"(do|does|did|will|can|could)\s+(.+?)\s+(not\s+)?"
-            r"(open|opens|opened|run|runs|ran|wait|waits|waited|"
-            r"enter|enters|entered|stop|stops|stopped|walk|walks|walked|"
-            r"sleep|sleeps|slept|rest|rests|rested|sit|sits|sat|"
-            r"stand|stands|stood)",
+        auxiliary_intransitive = self._parse_auxiliary_modifier_clause(
             clean,
+            evidence_root,
+            verb_forms=_AUX_INTRANSITIVE_VERB_FORMS,
+            transitive=False,
         )
-        if aux_question_intransitive:
-            auxiliary, subject_text, negation, verb_word = aux_question_intransitive.groups()
-            subject_phrase = self._parse_modifier_np(subject_text)
-            if subject_phrase:
-                tense_root = (
-                    "lo" if auxiliary == "did"
-                    else "ve" if auxiliary == "will"
-                    else "pe" if auxiliary in {"can", "could"}
-                    else "sa"
-                )
-                return self._render_modifier_clause(
-                    subject_phrase,
-                    verb_word,
-                    evidence_root=evidence_root,
-                    tense_root=tense_root,
-                    negated=bool(negation),
-                    question=True,
-                )
-        aux_intransitive = re.fullmatch(
-            r"(.+?)\s+(do|does|did|will|can|could)\s+(not\s+)?"
-            r"(open|opens|opened|run|runs|ran|wait|waits|waited|"
-            r"enter|enters|entered|stop|stops|stopped|walk|walks|walked|"
-            r"sleep|sleeps|slept|rest|rests|rested|sit|sits|sat|"
-            r"stand|stands|stood)",
-            clean,
-        )
-        if aux_intransitive:
-            subject_text, auxiliary, negation, verb_word = aux_intransitive.groups()
-            subject_phrase = self._parse_modifier_np(subject_text)
-            if subject_phrase:
-                tense_root = (
-                    "lo" if auxiliary == "did"
-                    else "ve" if auxiliary == "will"
-                    else "pe" if auxiliary in {"can", "could"}
-                    else "sa"
-                )
-                return self._render_modifier_clause(
-                    subject_phrase,
-                    verb_word,
-                    evidence_root=evidence_root,
-                    tense_root=tense_root,
-                    negated=bool(negation),
-                    question=False,
-                )
+        if auxiliary_intransitive is not None:
+            return auxiliary_intransitive
         progressive = re.fullmatch(
             r"(.+?)\s+(is|are|was|were)\s+(not\s+)?([a-z][a-z'-]*ing)",
             clean,
@@ -434,51 +465,9 @@ class ModifierTranslationMixin:
                 ])
                 return " ".join(parts)
 
-        quality_roots = {
-            "red": "rlis", "big": "nyix", "good": "nax", "nice": "naxu",
-            "bad": "qez", "fast": "kag", "tall": "sump", "small": "frem",
-            "dangerous": "fatyih", "open": "xleq", "closed": "qrak",
-        }
-        copular_quality = re.fullmatch(
-            r"(is|are|was|were)\s+(.+?)\s+(not\s+)?([a-z][a-z'-]*)",
-            clean,
-        )
-        if copular_quality:
-            auxiliary, subject_text, negation, quality_word = copular_quality.groups()
-            subject_phrase = self._parse_modifier_np(subject_text)
-            quality_root = quality_roots.get(quality_word)
-            if subject_phrase and quality_root:
-                parts = ["ra", quality_root]
-                parts.extend(self._render_modifier_np(subject_phrase, "ka"))
-                parts.extend(["ta", "zux"])
-                if not subject_phrase["inherent_animacy"]:
-                    parts.append(subject_phrase["animacy"])
-                parts.extend([
-                    "lo" if auxiliary in {"was", "were"} else "sa",
-                    evidence_root,
-                    self.p["q"],
-                ])
-                if negation:
-                    parts.append(self.p["neg"])
-                return " ".join(parts)
-        copular_quality = re.fullmatch(
-            r"(.+?)\s+(is|are|was|were)\s+(not\s+)?([a-z][a-z'-]*)",
-            clean,
-        )
-        if copular_quality:
-            subject_text, auxiliary, negation, quality_word = copular_quality.groups()
-            subject_phrase = self._parse_modifier_np(subject_text)
-            quality_root = quality_roots.get(quality_word)
-            if subject_phrase and quality_root:
-                parts = ["ra", quality_root]
-                parts.extend(self._render_modifier_np(subject_phrase, "ka"))
-                parts.extend(["ta", "zux"])
-                if not subject_phrase["inherent_animacy"]:
-                    parts.append(subject_phrase["animacy"])
-                parts.extend(["lo" if auxiliary in {"was", "were"} else "sa", evidence_root])
-                if negation:
-                    parts.append(self.p["neg"])
-                return " ".join(parts)
+        copular_quality = self._parse_copular_quality_clause(clean, evidence_root)
+        if copular_quality is not None:
+            return copular_quality
 
         purpose = re.fullmatch(
             r"(i|you|he|she|we)\s+(opened|built|touched)\s+(.+?)\s+to\s+"

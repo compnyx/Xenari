@@ -1,15 +1,10 @@
 """Focused Xenari behavior tests."""
 
 import json
-import subprocess
-import sys
 
-from xenari import Xenari
 from xenari.services.gap import GapHarvester
 
-from .support import REPO
-
-def test_gap_harvest_captures_words_phrases_sounds_and_names(tmp_path):
+def test_gap_harvest_captures_words_phrases_sounds_and_names(tmp_path, xenari):
     script = tmp_path / "script.txt"
     script.write_text(
         """INT. BLACK ROOM - NIGHT
@@ -25,8 +20,7 @@ Her claws skittered across the floor.
 """,
         encoding="utf-8",
     )
-    x = Xenari(REPO / "xenari.db")
-    harvester = GapHarvester(x)
+    harvester = GapHarvester(xenari)
     report = harvester.harvest_paths([script], phrase_min_count=2)
     buckets = report["buckets"]
 
@@ -45,9 +39,8 @@ Her claws skittered across the floor.
     assert "## Phrase Gaps" in markdown
     assert "script.txt:" in markdown
 
-def test_gap_harvest_normalizes_all_supported_apostrophes():
-    x = Xenari(REPO / "xenari.db")
-    harvester = GapHarvester(x)
+def test_gap_harvest_normalizes_all_supported_apostrophes(xenari):
+    harvester = GapHarvester(xenari)
     variants = ["I'm", "I’m", "I‘m", "Iʼm", "I＇m", "I`m"]
 
     reports = [
@@ -62,9 +55,8 @@ def test_gap_harvest_normalizes_all_supported_apostrophes():
     assert all(keys == bucket_keys[0] for keys in bucket_keys[1:])
     assert bucket_keys[0]["covered_by_grammar"] == ["am"]
 
-def test_gap_harvest_keeps_repeated_sounds_inline_speakers_and_stage_spans_separate():
-    x = Xenari(REPO / "xenari.db")
-    harvester = GapHarvester(x)
+def test_gap_harvest_keeps_repeated_sounds_inline_speakers_and_stage_spans_separate(xenari):
+    harvester = GapHarvester(xenari)
     report = harvester.harvest_documents([{
         "source": "dialogue",
         "text": "NYX: Ugh… KRRR KRRR.\nMARA:\n[FZZARR FZZARR] I run.\n",
@@ -93,28 +85,20 @@ def test_gap_harvest_keeps_repeated_sounds_inline_speakers_and_stage_spans_separ
     assert "nyx" not in all_keys
     assert "mara" not in all_keys
 
-def test_gaps_cli_writes_json_report(tmp_path):
+def test_gaps_cli_writes_json_report(tmp_path, run_cli):
     script = tmp_path / "script.txt"
     out = tmp_path / "gap-report.json"
     script.write_text("MARA:\nNnn. The rustglass door clicks.\nThe rustglass door clicks.\n", encoding="utf-8")
 
-    result = subprocess.run(
-        [
-            sys.executable,
-            "xenari_tool.py",
-            "gaps",
-            str(script),
-            "--format",
-            "json",
-            "--output",
-            str(out),
-            "--phrase-min-count",
-            "2",
-        ],
-        cwd=REPO,
-        check=False,
-        capture_output=True,
-        text=True,
+    result = run_cli(
+        "gaps",
+        script,
+        "--format",
+        "json",
+        "--output",
+        out,
+        "--phrase-min-count",
+        "2",
     )
 
     assert result.returncode == 0
@@ -124,9 +108,8 @@ def test_gaps_cli_writes_json_report(tmp_path):
     assert any(item["key"] == "nnn" for item in data["buckets"]["vocalizations"])
     assert any(item["key"] == "the rustglass" for item in data["buckets"]["phrase_gaps"])
 
-def test_gap_harvest_preserves_uppercase_cues_and_expands_wont():
-    x = Xenari(REPO / "xenari.db", read_only=True)
-    harvester = GapHarvester(x)
+def test_gap_harvest_preserves_uppercase_cues_and_expands_wont(xenari):
+    harvester = GapHarvester(xenari)
     report = harvester.harvest_documents([{
         "source": "dialogue",
         "text": "BANG\nUGH\nHELP\nKRRR KRRR\nI won't go.",

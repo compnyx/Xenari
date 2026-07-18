@@ -336,7 +336,7 @@ class EnglishPreprocessingMixin:
         """Heuristic: is this word likely a verb?"""
         if word in self.verb_map or word in self.copula_words:
             return True
-        root, meaning = self.lookup(word)
+        _root, meaning = self.lookup(word)
         if meaning:
             if meaning.strip().startswith("to "):
                 return True

@@ -7,12 +7,13 @@ Schema:
   english_map(id, english_key, root_id, context_note)
 
 Usage:
-  from xenari_db import XenariDB
-  db = XenariDB()
-  db.lookup("hate")
-  db.add_root("hate", "blun", "to hate, detest", category="Mental & Abstract")
-  db.search("feed")
-  db.export_markdown(Path("xenari-lexicon-export.md"))
+  from pathlib import Path
+  from xenari.db import XenariDB
+  with XenariDB(Path("xenari.db")) as db:
+      db.lookup("hate")
+      db.add_root("hate", "blun", "to hate, detest", category="Mental & Abstract")
+      db.search("feed")
+      db.export_markdown(Path("xenari-lexicon-export.md"))
 """
 
 import sqlite3
@@ -20,7 +21,7 @@ import datetime
 from pathlib import Path
 from typing import Optional
 
-from ..paths import CANON_DB
+from ..paths import CANON_DB, resolve_repo_root
 from .audit import AuditMixin
 from .mutation import MutationMixin
 from .search import SearchMixin
@@ -29,14 +30,27 @@ DB_PATH = CANON_DB
 
 
 class XenariDB(SearchMixin, MutationMixin, AuditMixin):
-    def __init__(self, db_path: Optional[Path] = None, *, read_only: bool = False):
+    def __init__(self, db_path: Optional[Path] = None, *, read_only: Optional[bool] = None):
         """Open the canonical database.
+
+        The bundled canon opens read-only by default. An explicit ``db_path``
+        remains an explicit writable workflow. Writing an installed package's
+        bundled resource is rejected; callers should copy the canon and pass
+        that destination explicitly instead.
 
         Read-only opens intentionally use SQLite's ``mode=ro`` and
         ``immutable=1`` URI flags.  Besides making the contract explicit, this
         prevents read commands from creating WAL/SHM sidecars or
         opportunistically initializing a schema.
         """
+        if read_only is None:
+            read_only = db_path is None
+        if not read_only and db_path is None and resolve_repo_root() is None:
+            raise RuntimeError(
+                "refusing to write the installed package canon; pass an "
+                "explicit writable db_path"
+            )
+
         self.db_path = Path(db_path or DB_PATH)
         self.read_only = read_only
         if read_only:
@@ -118,3 +132,10 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin):
 
     def close(self):
         self.conn.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.close()
+        return False

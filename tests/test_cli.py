@@ -6,6 +6,7 @@ from types import SimpleNamespace
 
 import pytest
 
+from xenari.cli import commands
 from xenari.cli.commands import COMMAND_HANDLERS
 from xenari.cli.handlers import maintenance
 from xenari.cli.parser import COMMANDS
@@ -15,6 +16,105 @@ from .support import REPO
 
 def test_every_parser_command_has_exactly_one_handler():
     assert set(COMMANDS) == {"help", *COMMAND_HANDLERS}
+
+
+@pytest.mark.parametrize(
+    "argv",
+    [
+        ["add"],
+        ["remove"],
+        ["map"],
+        ["categorize"],
+        ["relate"],
+        ["coin"],
+        ["coin", "--yes", "--dry-run"],
+        ["sync"],
+        ["sync", "--yes"],
+    ],
+)
+def test_preview_and_sync_invocations_open_the_canon_read_only(monkeypatch, argv):
+    opened = []
+
+    class FakeXenari:
+        def __init__(self, *, read_only, site_root):
+            opened.append({"read_only": read_only, "closed": False})
+
+        def close(self):
+            opened[-1]["closed"] = True
+
+    monkeypatch.setattr(commands, "Xenari", FakeXenari)
+    monkeypatch.setitem(commands.COMMAND_HANDLERS, argv[0], lambda _args, _x: None)
+
+    commands.main(argv)
+
+    assert opened == [{"read_only": True, "closed": True}]
+
+
+@pytest.mark.parametrize("command", sorted(commands.DB_MUTATION_COMMANDS))
+def test_confirmed_mutations_open_the_canon_writable(monkeypatch, command):
+    opened = []
+
+    class FakeXenari:
+        def __init__(self, *, read_only, site_root):
+            opened.append({"read_only": read_only, "closed": False})
+
+        def close(self):
+            opened[-1]["closed"] = True
+
+    monkeypatch.setattr(commands, "Xenari", FakeXenari)
+    monkeypatch.setitem(commands.COMMAND_HANDLERS, command, lambda _args, _x: None)
+
+    commands.main([command, "--yes"])
+
+    assert opened == [{"read_only": False, "closed": True}]
+
+
+def test_cli_closes_the_facade_when_a_handler_raises(monkeypatch):
+    closed = []
+
+    class FakeXenari:
+        def __init__(self, *, read_only, site_root):
+            pass
+
+        def close(self):
+            closed.append(True)
+
+    def fail(_args, _x):
+        raise RuntimeError("handler failed")
+
+    monkeypatch.setattr(commands, "Xenari", FakeXenari)
+    monkeypatch.setitem(commands.COMMAND_HANDLERS, "stats", fail)
+
+    with pytest.raises(RuntimeError, match="handler failed"):
+        commands.main(["stats"])
+
+    assert closed == [True]
+
+
+def test_cli_reports_an_unavailable_writable_canon_cleanly(monkeypatch, capsys):
+    class RefusingXenari:
+        def __init__(self, **_kwargs):
+            raise RuntimeError("explicit writable db_path required")
+
+    monkeypatch.setattr(commands, "Xenari", RefusingXenari)
+
+    with pytest.raises(SystemExit) as exc:
+        commands.main(["add", "--yes"])
+
+    assert exc.value.code == 1
+    assert "explicit writable db_path required" in capsys.readouterr().err
+
+
+def test_help_does_not_open_the_database(monkeypatch, capsys):
+    class UnexpectedXenari:
+        def __init__(self, **_kwargs):
+            raise AssertionError("help must not open the canon")
+
+    monkeypatch.setattr(commands, "Xenari", UnexpectedXenari)
+
+    commands.main(["help"])
+
+    assert "Xenari" in capsys.readouterr().out
 
 
 def test_curate_cli_accepts_section_and_limit_flags():

@@ -30,6 +30,19 @@ the explicit `XENARI_REPO_ROOT` / `XENARI_GENERATED_DICTIONARY` overrides.
 Site synchronization uses `--site-root`, then `XENARI_SITE_ROOT`, then
 `~/nyx-site`. Repository code must not contain host-specific absolute paths.
 
+## Known boundaries
+
+- Python and browser translation use separate parsers and part-of-speech
+  overrides. Packaged fixtures define the behavior both runtimes promise.
+- The lexicon does not yet store an authoritative part of speech. Browser
+  integration still infers it from categories and definitions.
+- Generic forward translation is strongest for simple, pronoun-led clauses.
+  Unsupported or ambiguous structures must remain explicit partial results.
+- Reverse translation is a readable heuristic, not proof of semantic
+  round-trip fidelity.
+- Changes to translator behavior or mappings must pass both Python parity and
+  the paired site drift suite.
+
 ## Refactoring rule
 
 Split modules by semantic responsibility, not by the numbered hardening loop in

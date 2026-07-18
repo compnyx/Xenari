@@ -20,3 +20,9 @@ def test_repository_outputs_are_resolved_explicitly():
 
     assert repo_root is not None
     assert generated_dictionary_path() == repo_root / "data" / "xenari-dict.json"
+
+
+def test_repository_output_honors_runtime_root_override(monkeypatch, tmp_path):
+    monkeypatch.setenv("XENARI_REPO_ROOT", str(tmp_path))
+
+    assert generated_dictionary_path() == tmp_path / "data" / "xenari-dict.json"

@@ -1,48 +1,39 @@
 """Focused Xenari behavior tests."""
 
-from xenari import Xenari
+from .support import load_fixtures
 
-from .support import REPO, load_fixtures
-
-def test_known_phrase_generation():
-    x = Xenari(REPO / "xenari.db")
+def test_known_phrase_generation(xenari):
     fixtures = load_fixtures()
 
     for case in fixtures["forward"]:
-        assert x.speak(case["english"], evidential="assumed") == case["xenari"]
+        assert xenari.speak(case["english"], evidential="assumed") == case["xenari"]
 
-def test_bare_english_they_defaults_to_plural_known_req_ha():
-    x = Xenari(REPO / "xenari.db")
-
-    assert x.lookup("they")[0] == "req"
-    assert x.lookup("their")[0] == "req"
-    assert x.speak("They'll build the door tomorrow.", evidential="assumed") == (
+def test_bare_english_they_defaults_to_plural_known_req_ha(xenari):
+    assert xenari.lookup("they")[0] == "req"
+    assert xenari.lookup("their")[0] == "req"
+    assert xenari.speak("They'll build the door tomorrow.", evidential="assumed") == (
         "ra nu zrump ka req ha ta mrob ve xo glent"
     )
-    assert x.speak("Their door", evidential="assumed") == "req ha po zrump"
-    assert x.reverse("ra nu zrump ka req ha ta mrob ve xo glent") == "they will build door tomorrow"
+    assert xenari.speak("Their door", evidential="assumed") == "req ha po zrump"
+    assert xenari.reverse("ra nu zrump ka req ha ta mrob ve xo glent") == "they will build door tomorrow"
 
-def test_sentence_final_time_words_are_preserved_in_both_directions():
-    x = Xenari(REPO / "xenari.db")
-
+def test_sentence_final_time_words_are_preserved_in_both_directions(xenari):
     cases = {
         "I am going to work today": "fa nu kashatyong ka neq ta qeng ve xo bro",
         "I run tomorrow": "ka neq ta zaqa sa xo glent",
         "I ran yesterday": "ka neq ta zaqa lo xo hreh",
         "I work tonight": "ka neq ta qxundraz sa xo kohfrep",
     }
-    for english, xenari in cases.items():
-        assert x.speak(english, evidential="assumed") == xenari
+    for english, expected in cases.items():
+        assert xenari.speak(english, evidential="assumed") == expected
 
-    assert x.reverse("ka neq ta zaqa sa xo glent") == "I run tomorrow"
-    assert x.reverse("ka neq ta zaqa lo xo hreh") == "I ran yesterday"
-    assert x.reverse("ka neq ta qxundraz sa xo kohfrep") == "I operate tonight"
-    assert "[fragment:" not in x.reverse("ka neq ta zaqa sa xo bro")
-    assert "[warning:" not in x.reverse("ka neq ta zaqa sa xo bro")
+    assert xenari.reverse("ka neq ta zaqa sa xo glent") == "I run tomorrow"
+    assert xenari.reverse("ka neq ta zaqa lo xo hreh") == "I ran yesterday"
+    assert xenari.reverse("ka neq ta qxundraz sa xo kohfrep") == "I operate tonight"
+    assert "[fragment:" not in xenari.reverse("ka neq ta zaqa sa xo bro")
+    assert "[warning:" not in xenari.reverse("ka neq ta zaqa sa xo bro")
 
-def test_base6_numbers_and_math_particles_are_canon():
-    x = Xenari(REPO / "xenari.db")
-
+def test_base6_numbers_and_math_particles_are_canon(xenari):
     numbers = {
         "0": "nul",
         "1": "ca",
@@ -58,9 +49,9 @@ def test_base6_numbers_and_math_particles_are_canon():
         "six": "ca xang",
         "seven": "ca xang ca",
     }
-    for english, xenari in numbers.items():
-        assert x.speak(english, evidential="assumed") == xenari
-        assert x.reverse(xenari) == str(int(english) if english.isdigit() else {"six": 6, "seven": 7}[english])
+    for english, expected in numbers.items():
+        assert xenari.speak(english, evidential="assumed") == expected
+        assert xenari.reverse(expected) == str(int(english) if english.isdigit() else {"six": 6, "seven": 7}[english])
 
     expressions = {
         "2 plus 3": "vriq plomt prit",
@@ -73,25 +64,23 @@ def test_base6_numbers_and_math_particles_are_canon():
         "2 + 3": "vriq plomt prit",
         "2 < 5": "vriq vlox cum",
     }
-    for english, xenari in expressions.items():
-        assert x.speak(english, evidential="assumed") == xenari
+    for english, expected in expressions.items():
+        assert xenari.speak(english, evidential="assumed") == expected
 
-    assert x.reverse("vriq plomt prit") == "2 plus 3"
-    assert x.reverse("ca xang flopq vriq") == "6 divided by 2"
-    assert x.translate("ca xang xang") == "36"
+    assert xenari.reverse("vriq plomt prit") == "2 plus 3"
+    assert xenari.reverse("ca xang flopq vriq") == "6 divided by 2"
+    assert xenari.translate("ca xang xang") == "36"
 
-def test_reverse_uses_shared_fixtures():
-    x = Xenari(REPO / "xenari.db")
+def test_reverse_uses_shared_fixtures(xenari):
     fixtures = load_fixtures()
 
     for case in fixtures["reverse"]:
-        assert x.reverse(case["xenari"]) == case["english"]
+        assert xenari.reverse(case["xenari"]) == case["english"]
 
-def test_multiclause_hardening_regression_is_bounded_and_honest():
-    x = Xenari(REPO / "xenari.db")
+def test_multiclause_hardening_regression_is_bounded_and_honest(xenari):
     case = load_fixtures()["hardening"]
 
-    translated = x.speak(case["regression_input"], evidential="assumed")
+    translated = xenari.speak(case["regression_input"], evidential="assumed")
 
     assert translated == case["expected"]
     for fragment in case["must_include"]:
@@ -100,45 +89,37 @@ def test_multiclause_hardening_regression_is_bounded_and_honest():
         assert fragment not in translated
     assert translated.count("[partial:") == 0
     assert translated.startswith("prax. ")
-    assert x.speak("hey friend", evidential="assumed") == "prax"
+    assert xenari.speak("hey friend", evidential="assumed") == "prax"
 
-def test_smart_apostrophes_expand_like_ascii_apostrophes():
-    x = Xenari(REPO / "xenari.db")
-
+def test_smart_apostrophes_expand_like_ascii_apostrophes(xenari):
     ascii_forms = "I'm working; I've gotten the result; You've seen it; we'll go; I can't go"
     for apostrophe in ("’", "‘", "ʼ", "＇"):
         smart_forms = ascii_forms.replace("'", apostrophe)
-        assert x._expand_english_contractions(smart_forms) == x._expand_english_contractions(ascii_forms)
+        assert xenari._expand_english_contractions(smart_forms) == xenari._expand_english_contractions(ascii_forms)
 
-def test_work_senses_and_unknown_subjects_do_not_become_fake_roots():
-    x = Xenari(REPO / "xenari.db")
-
-    assert x._merge_compounds(["red", "hat"]) == ["red", "hat"]
-    assert "rlisbrid" not in x.speak("I love the red hat", evidential="assumed")
-    assert x.speak("creative work", evidential="assumed") == "flonx"
-    assert "flonx" not in x.speak("I work", evidential="assumed")
-    assert x.speak("the elevator was not working", evidential="assumed") == (
+def test_work_senses_and_unknown_subjects_do_not_become_fake_roots(xenari):
+    assert xenari._merge_compounds(["red", "hat"]) == ["red", "hat"]
+    assert "rlisbrid" not in xenari.speak("I love the red hat", evidential="assumed")
+    assert xenari.speak("creative work", evidential="assumed") == "flonx"
+    assert "flonx" not in xenari.speak("I work", evidential="assumed")
+    assert xenari.speak("the elevator was not working", evidential="assumed") == (
         "ka nu spokta ta qxundraz nu lo xo ngu"
     )
-    assert x.speak("the turbolift was not working", evidential="assumed").startswith(
+    assert xenari.speak("the turbolift was not working", evidential="assumed").startswith(
         "[untranslated: the turbolift was not working;"
     )
 
-def test_kiss_and_bite_use_distinct_canon_roots():
-    x = Xenari(REPO / "xenari.db")
+def test_kiss_and_bite_use_distinct_canon_roots(xenari):
+    assert xenari.lookup("kiss") == ("nquxe", "to kiss / to press lips together")
+    assert xenari.lookup("bite") == ("qruq'", "to bite")
+    assert xenari.speak("I kiss you", evidential="assumed") == "ra mex ka neq ta nquxe sa xo"
+    assert xenari.speak("I bite you", evidential="assumed") == "ra mex ka neq ta qruq' sa xo"
 
-    assert x.lookup("kiss") == ("nquxe", "to kiss / to press lips together")
-    assert x.lookup("bite") == ("qruq'", "to bite")
-    assert x.speak("I kiss you", evidential="assumed") == "ra mex ka neq ta nquxe sa xo"
-    assert x.speak("I bite you", evidential="assumed") == "ra mex ka neq ta qruq' sa xo"
-
-def test_everyday_verb_overrides_use_established_roots():
-    x = Xenari(REPO / "xenari.db")
-
-    assert x._known_verb_root("hear") == "cromq"
-    assert x._known_verb_root("heard") == "cromq"
-    assert x._known_verb_root("listen") == "grip"
-    assert x._known_verb_root("seen") == "toq"
+def test_everyday_verb_overrides_use_established_roots(xenari):
+    assert xenari._known_verb_root("hear") == "cromq"
+    assert xenari._known_verb_root("heard") == "cromq"
+    assert xenari._known_verb_root("listen") == "grip"
+    assert xenari._known_verb_root("seen") == "toq"
     for form, root in {
         "build": "mrob",
         "built": "mrob",
@@ -179,11 +160,9 @@ def test_everyday_verb_overrides_use_established_roots():
         "stand": "cirku",
         "running": "zaqa",
     }.items():
-        assert x._known_verb_root(form) == root
+        assert xenari._known_verb_root(form) == root
 
-def test_casual_phrase_registry_precedes_structural_fallbacks():
-    x = Xenari(REPO / "xenari.db")
-
+def test_casual_phrase_registry_precedes_structural_fallbacks(xenari):
     cases = {
         "Okay?!": "stux",
         "All right": "stux",
@@ -212,12 +191,10 @@ def test_casual_phrase_registry_precedes_structural_fallbacks():
         "Maybe later": "vex qrolo",
         "nice, sounds good": "naxu. naxq",
     }
-    for english, xenari in cases.items():
-        assert x.speak(english, evidential="assumed") == xenari
+    for english, expected in cases.items():
+        assert xenari.speak(english, evidential="assumed") == expected
 
-def test_audited_verb_map_roots_do_not_use_polluted_fallbacks():
-    x = Xenari(REPO / "xenari.db")
-
+def test_audited_verb_map_roots_do_not_use_polluted_fallbacks(xenari):
     cases = {
         "I send water.": "ra nu cruq ka neq ta bern sa xo",
         "I give water.": "ra nu cruq ka neq ta flux sa xo",
@@ -227,9 +204,9 @@ def test_audited_verb_map_roots_do_not_use_polluted_fallbacks():
         "I sit.": "ka neq ta bezli sa xo",
         "I stand.": "ka neq ta cirku sa xo",
     }
-    for english, xenari in cases.items():
-        rendered = x.speak(english, evidential="assumed")
-        assert rendered == xenari
+    for english, expected in cases.items():
+        rendered = xenari.speak(english, evidential="assumed")
+        assert rendered == expected
         assert " ta qlax " not in rendered
         assert " ta qlemp " not in rendered
         assert " ta rlenq " not in rendered
@@ -237,8 +214,7 @@ def test_audited_verb_map_roots_do_not_use_polluted_fallbacks():
         assert " ta hup " not in rendered
         assert " ta kroc " not in rendered
 
-def test_shared_clause_corpus_is_bounded_shared_and_readable():
-    x = Xenari(REPO / "xenari.db")
+def test_shared_clause_corpus_is_bounded_shared_and_readable(xenari):
     fixtures = load_fixtures()
     forward = [case for case in fixtures["forward"] if case.get("loop") == 3]
     reverse = [case for case in fixtures["reverse"] if case.get("loop") == 3]
@@ -252,9 +228,9 @@ def test_shared_clause_corpus_is_bounded_shared_and_readable():
     }
     assert all("[untranslated:" not in case["xenari"] for case in forward)
 
-    initial_when = x.speak("When does the door open?", evidential="assumed")
-    temporal_when = x.speak("When the door opens, I run.", evidential="assumed")
-    unsupported_relative = x.speak(
+    initial_when = xenari.speak("When does the door open?", evidential="assumed")
+    temporal_when = xenari.speak("When the door opens, I run.", evidential="assumed")
+    unsupported_relative = xenari.speak(
         "The alien that the woman said she saw ran.", evidential="assumed"
     )
 
@@ -263,8 +239,7 @@ def test_shared_clause_corpus_is_bounded_shared_and_readable():
     assert unsupported_relative.startswith("qex [partial: unsupported relative clause:")
     assert all("kam" not in case["xenari"].split() for case in forward)
 
-def test_modifier_corpus_is_bounded_shared_and_readable():
-    x = Xenari(REPO / "xenari.db")
+def test_modifier_corpus_is_bounded_shared_and_readable(xenari):
     fixtures = load_fixtures()
     forward = [case for case in fixtures["forward"] if case.get("loop") == 4]
     stress = [case for case in forward if case.get("stress")]
@@ -277,10 +252,10 @@ def test_modifier_corpus_is_bounded_shared_and_readable():
     }
     assert all("[untranslated:" not in case["xenari"] for case in forward)
 
-    comparative = x.speak("The alien is taller than the human.", evidential="assumed")
-    superlative = x.speak("That is the fastest ship", evidential="assumed")
-    no_water = x.speak("No water", evidential="assumed")
-    no_people = x.speak("No people open the door.", evidential="assumed")
+    comparative = xenari.speak("The alien is taller than the human.", evidential="assumed")
+    superlative = xenari.speak("That is the fastest ship", evidential="assumed")
+    no_water = xenari.speak("No water", evidential="assumed")
+    no_people = xenari.speak("No people open the door.", evidential="assumed")
 
     assert comparative.startswith("ra sump maq ")
     assert "comparison-standard canon conflict" in comparative
@@ -292,8 +267,7 @@ def test_modifier_corpus_is_bounded_shared_and_readable():
     for stale_root in {"qren", "trox", "xlu"}:
         assert stale_root not in comparative.split()
 
-def test_dialogue_sound_and_imperative_corpus_is_bounded_and_honest():
-    x = Xenari(REPO / "xenari.db")
+def test_dialogue_sound_and_imperative_corpus_is_bounded_and_honest(xenari):
     fixtures = load_fixtures()
     forward = [case for case in fixtures["forward"] if case.get("loop") == 5]
     reverse = [case for case in fixtures["reverse"] if case.get("loop") == 5]
@@ -306,12 +280,12 @@ def test_dialogue_sound_and_imperative_corpus_is_bounded_and_honest():
         "dialogue", "imperative", "quote", "sound", "sound-report",
         "stage-direction", "typography", "vocalization", "vocalization-gap",
     }
-    assert x._known_verb_root("slams") == "tulo"
-    assert x._known_verb_root("whispered") == "tyequga"
+    assert xenari._known_verb_root("slams") == "tulo"
+    assert xenari._known_verb_root("whispered") == "tyequga"
 
-    repeated_beep = x.speak("Beep beep beep.", evidential="assumed")
-    unknown_ugh = x.speak("Ugh...", evidential="assumed")
-    negative_command = x.speak("Don't touch that!", evidential="assumed")
+    repeated_beep = xenari.speak("Beep beep beep.", evidential="assumed")
+    unknown_ugh = xenari.speak("Ugh...", evidential="assumed")
+    negative_command = xenari.speak("Don't touch that!", evidential="assumed")
 
     assert repeated_beep == "nqozo nqozo nqozo"
     assert " nu" not in repeated_beep
@@ -320,8 +294,7 @@ def test_dialogue_sound_and_imperative_corpus_is_bounded_and_honest():
     assert " va" not in negative_command
     assert "ka neq" not in negative_command
 
-def test_fuzz_safety_corpus_is_shared_and_honest():
-    x = Xenari(REPO / "xenari.db")
+def test_fuzz_safety_corpus_is_shared_and_honest(xenari):
     fixtures = load_fixtures()
     forward = [case for case in fixtures["forward"] if case.get("loop") == 6]
     stress = [case for case in forward if case.get("stress")]
@@ -333,23 +306,21 @@ def test_fuzz_safety_corpus_is_shared_and_honest():
         "speaker-stage", "stage-direction",
     }
 
-    assert x.speak("...", evidential="assumed") == "[untranslated: no translatable content]"
-    assert x.speak("   ", evidential="assumed") == "[untranslated: no translatable content]"
-    assert x.speak("Run!", evidential="assumed") == "[partial: unsupported imperative: run]"
-    assert x.speak("Don't run.", evidential="assumed") == (
+    assert xenari.speak("...", evidential="assumed") == "[untranslated: no translatable content]"
+    assert xenari.speak("   ", evidential="assumed") == "[untranslated: no translatable content]"
+    assert xenari.speak("Run!", evidential="assumed") == "[partial: unsupported imperative: run]"
+    assert xenari.speak("Don't run.", evidential="assumed") == (
         "[partial: unsupported negated imperative: do not run]"
     )
-    assert x.speak("NYX: Shhh.", evidential="assumed") == "shava"
-    assert x.speak("MARA (O.S.): Beep beep.", evidential="assumed") == "nqozo nqozo"
-    assert x.speak("(whispers) shhh.", evidential="assumed") == (
+    assert xenari.speak("NYX: Shhh.", evidential="assumed") == "shava"
+    assert xenari.speak("MARA (O.S.): Beep beep.", evidential="assumed") == "nqozo nqozo"
+    assert xenari.speak("(whispers) shhh.", evidential="assumed") == (
         "[partial: omitted subject for action: whisper]. shava"
     )
-    assert "ka neq" not in x.speak("Run!", evidential="assumed")
-    assert " va" not in x.speak("Don't run.", evidential="assumed")
+    assert "ka neq" not in xenari.speak("Run!", evidential="assumed")
+    assert " va" not in xenari.speak("Don't run.", evidential="assumed")
 
-def test_target_language_imperatives_precede_unsupported_fallback():
-    x = Xenari(REPO / "xenari.db")
-
+def test_target_language_imperatives_precede_unsupported_fallback(xenari):
     expected_prefix = "ra nu hune fa nu bivuzqa uqel po zuqra ta "
     expected_suffix = " vi ko xo"
     for english, verb_root in {
@@ -360,13 +331,11 @@ def test_target_language_imperatives_precede_unsupported_fallback():
         "Decode this sentence to English": "nimixu",
         "Decipher this sentence to English": "nimixu",
     }.items():
-        assert x.speak(english, evidential="assumed") == (
+        assert xenari.speak(english, evidential="assumed") == (
             f"{expected_prefix}{verb_root}{expected_suffix}"
         )
 
-def test_noun_subject_auxiliaries_copulas_progressives_and_possession_keep_roles():
-    x = Xenari(REPO / "xenari.db")
-
+def test_noun_subject_auxiliaries_copulas_progressives_and_possession_keep_roles(xenari):
     cases = {
         "The dog eats the hat.": "ra nu brid ka vi zrenq ta xlof vi sa xo",
         "The dog does not see the alien.": "ra vi qex ka vi zrenq ta toq vi sa xo ngu",
@@ -379,15 +348,13 @@ def test_noun_subject_auxiliaries_copulas_progressives_and_possession_keep_roles
         "The dog was not working.": "ka vi zrenq ta qxundraz vi lo xo ngu",
         "The dog has the hat.": "ra nu brid ka vi zrenq ta xrong vi sa xo",
     }
-    for english, xenari in cases.items():
-        rendered = x.speak(english, evidential="assumed")
-        assert rendered == xenari
+    for english, expected in cases.items():
+        rendered = xenari.speak(english, evidential="assumed")
+        assert rendered == expected
         if not english.startswith("I "):
             assert "ka neq" not in rendered
 
-def test_reverse_autodetects_casual_roots_english_label_and_imperatives():
-    x = Xenari(REPO / "xenari.db")
-
+def test_reverse_autodetects_casual_roots_english_label_and_imperatives(xenari):
     cases = {
         "stux": "ok",
         "naxq": "yes",
@@ -405,12 +372,11 @@ def test_reverse_autodetects_casual_roots_english_label_and_imperatives():
             "thank you for solving that"
         ),
     }
-    for xenari, english in cases.items():
-        assert x.reverse(xenari) == english
-        assert x.translate(xenari) == english
+    for source, english in cases.items():
+        assert xenari.reverse(source) == english
+        assert xenari.translate(source) == english
 
-def test_coordination_and_intransitive_fuzz_is_bounded():
-    x = Xenari(REPO / "xenari.db")
+def test_coordination_and_intransitive_fuzz_is_bounded(xenari):
     fixtures = load_fixtures()
     forward = [case for case in fixtures["forward"] if case.get("loop") == 7]
     stress = [case for case in forward if case.get("stress")]
@@ -422,24 +388,23 @@ def test_coordination_and_intransitive_fuzz_is_bounded():
         "question", "question-gap", "speaker-stage",
     }
 
-    assert x.speak("The door opens.", evidential="assumed") == "ka nu zrump ta xleq nu sa xo"
-    assert x.speak("The alien runs quickly.", evidential="assumed") == (
+    assert xenari.speak("The door opens.", evidential="assumed") == "ka nu zrump ta xleq nu sa xo"
+    assert xenari.speak("The alien runs quickly.", evidential="assumed") == (
         "ka vi qex ta zaqa vi sa xo"
     )
-    assert x.speak("The dog runs slowly.", evidential="assumed") == (
+    assert xenari.speak("The dog runs slowly.", evidential="assumed") == (
         "ka vi zrenq ta zaqa vi sa xo"
     )
-    assert x.speak("I run and she waits.", evidential="assumed") == (
+    assert xenari.speak("I run and she waits.", evidential="assumed") == (
         "ka neq ta zaqa sa xo. xen ka leq ta trekq sa xo"
     )
-    assert x.speak("Why run?", evidential="assumed") == (
+    assert xenari.speak("Why run?", evidential="assumed") == (
         "[partial: unsupported subjectless question: why run]"
     )
-    assert "ra nu zrump ka neq ta xleq" not in x.speak("The door opens.", evidential="assumed")
-    assert "ra nu xen" not in x.speak("I run and she waits.", evidential="assumed")
+    assert "ra nu zrump ka neq ta xleq" not in xenari.speak("The door opens.", evidential="assumed")
+    assert "ra nu xen" not in xenari.speak("I run and she waits.", evidential="assumed")
 
-def test_transitive_coordination_uses_reviewed_roles():
-    x = Xenari(REPO / "xenari.db")
+def test_transitive_coordination_uses_reviewed_roles(xenari):
     fixtures = load_fixtures()
     forward = [case for case in fixtures["forward"] if case.get("loop") == 8]
     stress = [case for case in forward if case.get("stress")]
@@ -448,129 +413,116 @@ def test_transitive_coordination_uses_reviewed_roles():
     assert len(stress) >= 5
     assert {case["family"] for case in forward} >= {"coordination", "transitive"}
 
-    assert x.speak("The alien sees the dog.", evidential="assumed") == (
+    assert xenari.speak("The alien sees the dog.", evidential="assumed") == (
         "ra vi zrenq ka vi qex ta toq vi sa xo"
     )
-    assert x.speak("The dog sees the alien.", evidential="assumed") == (
+    assert xenari.speak("The dog sees the alien.", evidential="assumed") == (
         "ra vi qex ka vi zrenq ta toq vi sa xo"
     )
-    assert x.speak("I see the alien and run.", evidential="assumed") == (
+    assert xenari.speak("I see the alien and run.", evidential="assumed") == (
         "ra vi qex ka neq ta toq sa xo. xen ka neq ta zaqa sa xo"
     )
-    assert x.speak("The dog sees the alien and runs.", evidential="assumed") == (
+    assert xenari.speak("The dog sees the alien and runs.", evidential="assumed") == (
         "ra vi qex ka vi zrenq ta toq vi sa xo. xen ka vi zrenq ta zaqa vi sa xo"
     )
-    assert "ka neq ta toq" not in x.speak("The alien sees the dog.", evidential="assumed")
-    assert "ra vi qex xen" not in x.speak("I see the alien and run.", evidential="assumed")
+    assert "ka neq ta toq" not in xenari.speak("The alien sees the dog.", evidential="assumed")
+    assert "ra vi qex xen" not in xenari.speak("I see the alien and run.", evidential="assumed")
 
-def test_colon_quotes_do_not_become_speaker_labels():
-    x = Xenari(REPO / "xenari.db")
+def test_colon_quotes_do_not_become_speaker_labels(xenari):
     fixtures = load_fixtures()
     forward = [case for case in fixtures["forward"] if case.get("loop") == 9]
 
     assert len(forward) >= 3
     assert {case["family"] for case in forward} >= {"colon-quote", "speaker-colon"}
-    assert x.speak("She whispers: shhh.", evidential="assumed") == (
+    assert xenari.speak("She whispers: shhh.", evidential="assumed") == (
         "ka leq ta tyequga sa xo. shava"
     )
-    assert x.speak("ALEX: She whispers: shhh.", evidential="assumed") == (
+    assert xenari.speak("ALEX: She whispers: shhh.", evidential="assumed") == (
         "ka leq ta tyequga sa xo. shava"
     )
-    assert x.speak("ALEX: She says: run.", evidential="assumed") == (
+    assert xenari.speak("ALEX: She says: run.", evidential="assumed") == (
         "ka leq ta krimp sa xo. [partial: unsupported imperative: run]"
     )
-    assert x.speak("NYX: Shhh.", evidential="assumed") == "shava"
+    assert xenari.speak("NYX: Shhh.", evidential="assumed") == "shava"
 
-def test_reverse_reads_structured_clause_boundaries():
-    x = Xenari(REPO / "xenari.db")
-
-    assert x.reverse(
+def test_reverse_reads_structured_clause_boundaries(xenari):
+    assert xenari.reverse(
         "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo"
     ) == "if I see alien, then I will run"
-    assert x.reverse(
+    assert xenari.reverse(
         "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo"
     ) == "when door opens, I run"
-    assert x.reverse(
+    assert xenari.reverse(
         "ka vi habdazluc su zre ra nu zrump ta zont vi lo xo "
         "ti ta zaqa vi sa xo"
     ) == "person who broke door runs"
 
-def test_content_questions_and_safe_noun_subjects_keep_their_roles():
-    x = Xenari(REPO / "xenari.db")
-
-    why = x.speak("Why did the elevator stop?", evidential="assumed")
-    where = x.speak("Where will you go?", evidential="assumed")
+def test_content_questions_and_safe_noun_subjects_keep_their_roles(xenari):
+    why = xenari.speak("Why did the elevator stop?", evidential="assumed")
+    where = xenari.speak("Where will you go?", evidential="assumed")
 
     assert why == "voq ka nu spokta ta semax nu lo xo"
     assert where == "qur ka mex ta qeng ve xo"
     assert " va" not in why
     assert " va" not in where
-    assert x.speak("Have you seen my hat?", evidential="assumed").endswith(" va")
-    assert x.speak("Who broke the red window?", evidential="assumed") == (
+    assert xenari.speak("Have you seen my hat?", evidential="assumed").endswith(" va")
+    assert xenari.speak("Who broke the red window?", evidential="assumed") == (
         "[untranslated: who broke the red window; unsupported grammar: "
         "WH subject 'who' lacks a canon interrogative]"
     )
-    assert x.speak("the elevator stopped", evidential="assumed") == (
+    assert xenari.speak("the elevator stopped", evidential="assumed") == (
         "ka nu spokta ta semax nu lo xo"
     )
-    assert x.speak("the door slammed", evidential="assumed") == (
+    assert xenari.speak("the door slammed", evidential="assumed") == (
         "ka nu zrump ta tulo nu lo xo"
     )
 
-def test_reverse_warns_when_recovering_malformed_clause_frames():
-    x = Xenari(REPO / "xenari.db")
+def test_reverse_warns_when_recovering_malformed_clause_frames(xenari):
     malformed = (
         "to fa nu flonx ka nu hey ta qeng nu ve xo ngu na nu xenari "
         "ka nu qzecmru ta qranx nu sa xo mex"
     )
 
-    reversed_text = x.reverse(malformed)
+    reversed_text = xenari.reverse(malformed)
 
     assert "[unknown: hey] will not go" in reversed_text
     assert "anyway throw" in reversed_text
     assert "[warning:" in reversed_text
     assert "recovered separate fragments" in reversed_text
 
-def test_auto_translate_and_inspect_helpers():
-    x = Xenari(REPO / "xenari.db")
+def test_auto_translate_and_inspect_helpers(xenari):
+    assert xenari.translate("I love you", evidential="assumed") == "ra mex ka neq ta zrent sa xo"
+    assert xenari.translate("ra mex ka neq ta zrent sa xa") == "I love you"
+    assert xenari.translate("prax") == "hello"
 
-    assert x.translate("I love you", evidential="assumed") == "ra mex ka neq ta zrent sa xo"
-    assert x.translate("ra mex ka neq ta zrent sa xa") == "I love you"
-    assert x.translate("prax") == "hello"
-
-    report = x.inspect_term("fatyih")
+    report = xenari.inspect_term("fatyih")
     assert "Root: fatyih" in report
     assert "dangerous" in report
     assert "Review-near meanings:" in report
 
-def test_translator_preserves_plural_forms_questions_evidence_and_complements():
-    x = Xenari(REPO / "xenari.db", read_only=True)
-
-    assert "lamiy" in x.speak("The glasses open.", evidential="assumed")
-    assert "klam" in x.speak("The pants open.", evidential="assumed")
-    assert "shirxush" in x.speak("The shorts open.", evidential="assumed")
-    assert x.speak("I loved you.", evidential="assumed") == "ra mex ka neq ta zrent lo xo"
-    assert x.speak("I kissed you.", evidential="assumed") == "ra mex ka neq ta nquxe lo xo"
-    assert x.speak("I heard you.", evidential="auto") == "ra mex ka neq ta cromq lo xi"
-    assert x.speak("I saw the alien", evidential="auto") == "ra vi qex ka neq ta toq lo xa"
-    assert x.speak("You love me?", evidential="assumed").endswith(" va")
-    assert not x.speak("You love me.", evidential="assumed").endswith(" va")
-    assert x.speak("Do you not love me?", evidential="assumed").endswith("ngu va")
+def test_translator_preserves_plural_forms_questions_evidence_and_complements(xenari):
+    assert "lamiy" in xenari.speak("The glasses open.", evidential="assumed")
+    assert "klam" in xenari.speak("The pants open.", evidential="assumed")
+    assert "shirxush" in xenari.speak("The shorts open.", evidential="assumed")
+    assert xenari.speak("I loved you.", evidential="assumed") == "ra mex ka neq ta zrent lo xo"
+    assert xenari.speak("I kissed you.", evidential="assumed") == "ra mex ka neq ta nquxe lo xo"
+    assert xenari.speak("I heard you.", evidential="auto") == "ra mex ka neq ta cromq lo xi"
+    assert xenari.speak("I saw the alien", evidential="auto") == "ra vi qex ka neq ta toq lo xa"
+    assert xenari.speak("You love me?", evidential="assumed").endswith(" va")
+    assert not xenari.speak("You love me.", evidential="assumed").endswith(" va")
+    assert xenari.speak("Do you not love me?", evidential="assumed").endswith("ngu va")
     for sentence in ("I want to eat food", "I need to go"):
-        rendered = x.speak(sentence, evidential="assumed")
+        rendered = xenari.speak(sentence, evidential="assumed")
         assert rendered.startswith("[partial:")
         assert "infinitive complement retained" in rendered
 
-def test_reverse_imperatives_keep_verb_and_goal_meaning():
-    x = Xenari(REPO / "xenari.db", read_only=True)
-    assert x.reverse("ta trekq vi ko xo") == "wait!"
-    assert x.reverse("ta qroz vi ko xo") == "fuck!"
-    assert x.reverse("fa vi cuq ta grip vi ko xo") == "listen to wind!"
-    assert x.reverse("ra neq po ngox ta qroz vi ko xo") == "fuck my ass!"
+def test_reverse_imperatives_keep_verb_and_goal_meaning(xenari):
+    assert xenari.reverse("ta trekq vi ko xo") == "wait!"
+    assert xenari.reverse("ta qroz vi ko xo") == "fuck!"
+    assert xenari.reverse("fa vi cuq ta grip vi ko xo") == "listen to wind!"
+    assert xenari.reverse("ra neq po ngox ta qroz vi ko xo") == "fuck my ass!"
 
-def test_base6_numbers_and_math_use_productive_xang_places():
-    x = Xenari(REPO / "xenari.db", read_only=True)
-
+def test_base6_numbers_and_math_use_productive_xang_places(xenari):
     cases = {
         "zero": "nul",
         "one": "ca",
@@ -585,25 +537,23 @@ def test_base6_numbers_and_math_use_productive_xang_places():
         "seven greater than five": "ca xang ca grak cum",
         "one over two": "ca nok vriq",
     }
-    for english, xenari in cases.items():
-        assert x.speak(english, evidential="assumed") == xenari
+    for english, expected in cases.items():
+        assert xenari.speak(english, evidential="assumed") == expected
 
-    assert x.reverse("ca xang") == "6"
-    assert x.reverse("ca xang ca") == "7"
-    assert x.reverse("vriq xang") == "12"
-    assert x.reverse("vriq plomt prit") == "2 plus 3"
-    assert x.reverse("ca xang zlem ca xang") == "6 equals 6"
+    assert xenari.reverse("ca xang") == "6"
+    assert xenari.reverse("ca xang ca") == "7"
+    assert xenari.reverse("vriq xang") == "12"
+    assert xenari.reverse("vriq plomt prit") == "2 plus 3"
+    assert xenari.reverse("ca xang zlem ca xang") == "6 equals 6"
 
-def test_productive_base6_numbers_work_inside_quantity_noun_phrases():
-    x = Xenari(REPO / "xenari.db", read_only=True)
-
-    assert x.speak("one dick", evidential="assumed") == "kroxvi fqam"
-    assert x.speak("five dicks", evidential="assumed") == "kroxvi cum"
-    assert x.speak("six dicks", evidential="assumed") == "kroxvi ca xang"
-    assert x.speak("seven dicks", evidential="assumed") == "kroxvi ca xang ca"
-    assert x.speak("I have six dicks", evidential="assumed") == (
+def test_productive_base6_numbers_work_inside_quantity_noun_phrases(xenari):
+    assert xenari.speak("one dick", evidential="assumed") == "kroxvi fqam"
+    assert xenari.speak("five dicks", evidential="assumed") == "kroxvi cum"
+    assert xenari.speak("six dicks", evidential="assumed") == "kroxvi ca xang"
+    assert xenari.speak("seven dicks", evidential="assumed") == "kroxvi ca xang ca"
+    assert xenari.speak("I have six dicks", evidential="assumed") == (
         "ra nu kroxvi ca xang ka neq ta xrong sa xo"
     )
-    assert x.speak("I have 12 dicks", evidential="assumed") == (
+    assert xenari.speak("I have 12 dicks", evidential="assumed") == (
         "ra nu kroxvi vriq xang ka neq ta xrong sa xo"
     )

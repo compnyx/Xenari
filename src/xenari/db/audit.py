@@ -3,7 +3,7 @@ import json
 import re
 import shlex
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict
 
 
 class AuditMixin:
@@ -326,14 +326,16 @@ class AuditMixin:
 
     def export_json(self) -> str:
         """Export everything as JSON."""
-        import json
+        keys_by_root = {}
+        for mapping in self.conn.execute(
+            "SELECT root_id, english_key FROM english_map ORDER BY root_id, english_key"
+        ):
+            keys_by_root.setdefault(mapping["root_id"], []).append(mapping["english_key"])
+
         roots = []
-        for r in self.conn.execute("SELECT * FROM roots ORDER BY category, root").fetchall():
+        for r in self.conn.execute("SELECT * FROM roots ORDER BY category, root"):
             row = dict(r)
-            keys = self.conn.execute(
-                "SELECT english_key FROM english_map WHERE root_id = ?", (r["id"],)
-            ).fetchall()
-            row["english_keys"] = [k["english_key"] for k in keys]
+            row["english_keys"] = keys_by_root.get(r["id"], [])
             roots.append(row)
         return json.dumps(roots, ensure_ascii=False, indent=2)
 
@@ -486,12 +488,6 @@ class AuditMixin:
         # v is a morphology marker (vi=animate, nu=inanimate, vu=passive) not a native consonant
         # but it appears in many compound roots as a suffix, so we allow it
         valid_compound_markers = set("v")
-        # digraphs: ny, ng
-        valid_codas = {"mp", "nt", "ngk", "nq"}
-        valid_onset_clusters = {"pr","tr","kr","gr","fr","sr","zr","cr","xr","qr","mr",
-                                 "pl","tl","kl","gl","fl","sl","cl","xl","ql","ml",
-                                 "br","dr","bl","dl"}
-
         if not root:
             issues.append("empty root")
             return issues

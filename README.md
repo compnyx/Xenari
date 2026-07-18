@@ -137,4 +137,3 @@ The browser and Python translators share the fixture contract. Run
 - [Architecture](docs/development/architecture.md)
 - [LLM grammar reference](docs/reference/LLM_REFERENCE.md)
 - [Known-good phrases](examples/phrases.md)
-- [Historical hardening notes](docs/history/)

@@ -1,4 +1,10 @@
 __pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
 *.py[cod]
 *.egg-info/
 build/
@@ -6,4 +12,6 @@ dist/
 .venv/
 *.db-shm
 *.db-wal
+*.db.*.bak
+xenari-lexicon-export.md
 .DS_Store

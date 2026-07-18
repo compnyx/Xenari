@@ -132,43 +132,16 @@ class TranslatorMixin(
         if common is not None:
             return common
         exact_phrases = {
-            "hello": "prax",
-            "hey": "prax",
-            "hi": "prax",
-            "greetings": "prax",
-            "hello there": "prax",
-            "hey there": "prax",
-            "hi there": "prax",
-            "hello friend": "prax",
-            "hey friend": "prax",
-            "hi friend": "prax",
-            "anyway": "qzecmru",
-            "alright": "stux",
-            "all right": "stux",
-            "sounds good": "naxq",
-            "that sounds good": "naxq",
-            "alright that sounds good": "stux. naxq",
-            "all right that sounds good": "stux. naxq",
             "you little bitch": "mex krengk frem",
-            "the alien sees me": f"ra neq ka vi qex ta toq vi sa {e}",
-            "the alien is dangerous": f"ra fatyih ka vi qex ta zux vi sa {e}",
-            "the hat is red": f"ra rlis ka nu brid ta zux nu sa {e}",
             "my hat blows off": f"ra neq po brid ka vi cuq ta qruq vi sa {e}",
             "the figure's hat blows off": f"ra vi loco po brid ka vi cuq ta qruq vi sa {e}",
             "i approach the figure by the lake": f"ra vi loco na nu qlon ka neq ta frig sa {e}",
             "i see the alien in the forest": f"ra vi qex na nu canq ka neq ta toq sa {e}",
             "creative work": "flonx",
             "creative art": "flonx",
-            "i am going to work today": f"fa nu kashatyong ka neq ta qeng ve {e} bro",
-            "i am going to work": f"fa nu kashatyong ka neq ta qeng ve {e}",
-            "i am going to work now": f"fa nu kashatyong ka neq ta qeng sa {e} qros",
-            "i am going to work right now": f"fa nu kashatyong ka neq ta qeng sa {e} qros",
-            "english": "bivuzqa uqel po zuqra",
         }
         if normalized in exact_phrases:
             return exact_phrases[normalized]
-        if normalized == "you little bitch":
-            return "mex krengk frem"
         if normalized == "i approach the figure by the lake the figure's hat blows off":
             return (
                 f"ra vi loco na nu qlon ka neq ta frig sa {e}. "
@@ -200,14 +173,12 @@ class TranslatorMixin(
 
         # Phase 2: classify tokens
         subj = None
-        subj_possessive = False
         subj_plural = False
         obj = None
         obj_possessive = False
         verb = None
         copula = False
         negated = False
-        adjectives = []
         yes_no_openers = {
             "am", "are", "is", "was", "were", "do", "does", "did", "will",
             "would", "shall", "should", "can", "could", "may", "might", "must",
@@ -236,7 +207,6 @@ class TranslatorMixin(
                 is_plural = len(pinfo) > 2 and pinfo[2]
                 if subj is None:
                     subj = self.pronouns[ordinal]
-                    subj_possessive = is_poss
                     subj_plural = is_plural
                 elif obj is None:
                     # Second pronoun becomes the object

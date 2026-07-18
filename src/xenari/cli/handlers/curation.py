@@ -151,7 +151,8 @@ def handle(args, x):
                 sys.exit(1)
             sys.exit(0 if ok else 1)
         if ok:
-            verification = Xenari(read_only=True).lookup(english)
+            with Xenari(read_only=True) as verifier:
+                verification = verifier.lookup(english)
             print(
                 f"Verified: {verification[0]} — {verification[1]}"
                 if verification

@@ -7,10 +7,8 @@ from xenari.db import XenariDB
 
 from .support import REPO
 
-def test_base6_db_canon_and_legacy_aliases_are_marked():
-    x = Xenari(REPO / "xenari.db")
-
-    xang = x.db.lookup_root("xang")
+def test_base6_db_canon_and_legacy_aliases_are_marked(xenari):
+    xang = xenari.db.lookup_root("xang")
     assert "base-6 place/group morpheme" in xang["meaning"]
 
     legacy_forms = {
@@ -22,7 +20,7 @@ def test_base6_db_canon_and_legacy_aliases_are_marked():
         "cveqsrin": "vriq xang",
     }
     for root, productive in legacy_forms.items():
-        row = x.db.lookup_root(root)
+        row = xenari.db.lookup_root(root)
         assert row["category"] == "Legacy Numeral Aliases"
         assert productive in row["notes"]
 
@@ -36,99 +34,88 @@ def test_base6_db_canon_and_legacy_aliases_are_marked():
         "less than": "vlox",
         "ratio": "nok",
     }.items():
-        assert x.lookup(english)[0] == root
+        assert xenari.lookup(english)[0] == root
 
-def test_lookup_prefers_pronouns_and_synonyms():
-    x = Xenari(REPO / "xenari.db")
+def test_lookup_prefers_pronouns_and_synonyms(xenari):
+    assert xenari.lookup("you")[0] == "mex"
+    assert xenari.lookup("me")[0] == "neq"
+    assert xenari.lookup("wrath")[0] == "nud"
+    assert xenari.lookup("perilous")[0] == "fatyih"
 
-    assert x.lookup("you")[0] == "mex"
-    assert x.lookup("me")[0] == "neq"
-    assert x.lookup("wrath")[0] == "nud"
-    assert x.lookup("perilous")[0] == "fatyih"
-
-def test_audit_has_no_actionable_qc_failures():
-    x = Xenari(REPO / "xenari.db")
-    audit = x.db.audit(limit=5)
+def test_audit_has_no_actionable_qc_failures(xenari):
+    audit = xenari.db.audit(limit=5)
 
     assert "Actionable exact duplicate groups: 0" in audit
     assert "Stale/conflict/reanalysis marker rows: 0" in audit
     assert "Phonotactic validator failures: 0" in audit
 
-def test_info_and_validation_helpers():
-    x = Xenari(REPO / "xenari.db")
+def test_info_and_validation_helpers(xenari):
+    assert "dangerous" in xenari.info("fatyih")
+    assert xenari.info("fatwih") == "unknown root"
+    assert xenari.stats() == xenari.db.stats()
 
-    assert "dangerous" in x.info("fatyih")
-    assert x.info("fatwih") == "unknown root"
-    assert x.stats() == x.db.stats()
-
-    ok, report = x.validate_roots(["fatyih", "qip", "xqz"])
+    ok, report = xenari.validate_roots(["fatyih", "qip", "xqz"])
     assert not ok
     assert "fatyih: ok" in report
     assert "q followed by i" in report
     assert "root must contain at least one vowel" in report
 
-def test_doctor_health_check():
-    x = Xenari(REPO / "xenari.db")
-
-    ok, report = x.doctor()
+def test_doctor_health_check(xenari):
+    ok, report = xenari.doctor()
     assert ok
     assert "audit: ok" in report
     assert "lookup: ok" in report
     assert "speak: ok" in report
 
-def test_ranked_search_proposals_relations_lint_and_meta():
-    x = Xenari(REPO / "xenari.db")
-
-    search = x.db.search("dangerous", limit=5)
+def test_ranked_search_proposals_relations_lint_and_meta(xenari):
+    search = xenari.db.search("dangerous", limit=5)
     assert search
     assert search[0]["root"] == "fatyih"
     assert search[0]["score"] > 0
 
-    proposals = x.db.propose_root("glimmer", "soft unsteady light", limit=3)
+    proposals = xenari.db.propose_root("glimmer", "soft unsteady light", limit=3)
     assert len(proposals) == 3
-    assert all(not x.db.has_root(item["root"]) for item in proposals)
-    assert all(not x.db.validate_phonotactics(item["root"]) for item in proposals)
+    assert all(not xenari.db.has_root(item["root"]) for item in proposals)
+    assert all(not xenari.db.validate_phonotactics(item["root"]) for item in proposals)
     assert proposals[0]["score"] >= proposals[-1]["score"]
     assert proposals[0]["category"] == "Elements & Nature"
     assert not any("kgl" in item["root"] for item in proposals[:2])
-    assert x.db._guess_category("wrath", "hot sharp anger") == "Mental & Abstract"
-    assert x.db._guess_category("god", "god") == "Cosmology & Reality"
-    assert x.db._guess_category("assesses", "English 'assesses' — gap fill") == "Perception & Cognition"
-    assert x.db._guess_category("motherboard", "computer motherboard") == "Technology & Devices"
-    assert x.db._guess_category("handrail", "metal handrail") == "Tools & Objects"
-    assert x.db._guess_category("airbags", "vehicle airbags") == "Technology & Devices"
-    assert x.db._guess_category("boom", "loud boom") == "Sound & Voice"
-    assert x.db._guess_category("calculation", "numerical calculation") == "Mathematics & Computation"
+    assert xenari.db._guess_category("wrath", "hot sharp anger") == "Mental & Abstract"
+    assert xenari.db._guess_category("god", "god") == "Cosmology & Reality"
+    assert xenari.db._guess_category("assesses", "English 'assesses' — gap fill") == "Perception & Cognition"
+    assert xenari.db._guess_category("motherboard", "computer motherboard") == "Technology & Devices"
+    assert xenari.db._guess_category("handrail", "metal handrail") == "Tools & Objects"
+    assert xenari.db._guess_category("airbags", "vehicle airbags") == "Technology & Devices"
+    assert xenari.db._guess_category("boom", "loud boom") == "Sound & Voice"
+    assert xenari.db._guess_category("calculation", "numerical calculation") == "Mathematics & Computation"
 
-    ok, report = x.db.relations_report("fatyih")
+    ok, report = xenari.db.relations_report("fatyih")
     assert ok
     assert "fatyih" in report
     assert "Relations:" in report
 
-    assert "Xenari lint" in x.db.lint(limit=3)
-    curation = x.db.curation_report(limit=3)
+    assert "Xenari lint" in xenari.db.lint(limit=3)
+    curation = xenari.db.curation_report(limit=3)
     assert "Xenari curation report" in curation
     assert "Placeholder category suggestions" in curation
     assert "Relation candidate groups" in curation
-    assert "schema_version" in x.db.metadata_report()
+    assert "schema_version" in xenari.db.metadata_report()
 
-    ok, workbench = x.workbench(limit=2)
+    ok, workbench = xenari.workbench(limit=2)
     assert ok
     assert "Xenari workbench" in workbench
     assert "Useful next commands:" in workbench
     assert "translator parity: ok" in workbench
 
-    ok, review = x.review_report(limit=1)
+    ok, review = xenari.review_report(limit=1)
     assert ok
     assert review.startswith("# Xenari QC Review Report")
     assert "Mode: read-only; no database writes" in review
     assert "## Curation Queue" in review
     assert "python3 xenari_tool.py curate --placeholder --limit 20" in review
 
-def test_curation_sections_are_filterable_and_explain_hypotheses():
-    x = Xenari(REPO / "xenari.db")
-
-    placeholders = x.db.curation_report(
+def test_curation_sections_are_filterable_and_explain_hypotheses(xenari):
+    placeholders = xenari.db.curation_report(
         limit=8,
         placeholder=True,
         phrases=False,
@@ -140,7 +127,7 @@ def test_curation_sections_are_filterable_and_explain_hypotheses():
     assert "Phrase-like definition review" not in placeholders
     assert "Relation candidate groups" not in placeholders
 
-    candidates = x.db.relation_candidates()
+    candidates = xenari.db.relation_candidates()
     kinds = {candidate["kind"] for candidate in candidates}
     assert kinds == {
         "possible synonym",
@@ -148,7 +135,7 @@ def test_curation_sections_are_filterable_and_explain_hypotheses():
         "possible category clash",
         "possible false friend",
     }
-    relations = x.db.curation_report(
+    relations = xenari.db.curation_report(
         limit=1,
         placeholder=False,
         phrases=False,
@@ -158,30 +145,26 @@ def test_curation_sections_are_filterable_and_explain_hypotheses():
     assert "possible synonym" in relations
     assert "preview only: python3 xenari_tool.py relate" in relations
 
-def test_parity_and_coin_workflow_preview():
-    x = Xenari(REPO / "xenari.db")
-
-    ok, parity = x.parity()
+def test_parity_and_coin_workflow_preview(xenari):
+    ok, parity = xenari.parity()
     assert ok
     assert "forward: ok" in parity
     assert "reverse: ok" in parity
 
-    ok, scout = x.coin_root("glimmer", "soft unsteady light", limit=3)
+    ok, scout = xenari.coin_root("glimmer", "soft unsteady light", limit=3)
     assert ok
     assert "Coin root:" in scout
     assert "Candidate roots:" in scout
     assert "No write requested." in scout
 
-    root = x.db.propose_root("glimmer", "soft unsteady light", limit=1)[0]["root"]
-    ok, preview = x.coin_root("glimmer", "soft unsteady light", root=root, limit=3, dry_run=True)
+    root = xenari.db.propose_root("glimmer", "soft unsteady light", limit=1)[0]["root"]
+    ok, preview = xenari.coin_root("glimmer", "soft unsteady light", root=root, limit=3, dry_run=True)
     assert ok
     assert "DRY RUN" in preview
-    assert x.db.lookup("glimmer") is None
+    assert xenari.db.lookup("glimmer") is None
 
-def test_mutation_previews_do_not_write(tmp_path):
-    db_path = tmp_path / "xenari.db"
-    shutil.copy2(REPO / "xenari.db", db_path)
-    x = Xenari(db_path)
+def test_mutation_previews_do_not_write(writable_xenari):
+    x = writable_xenari
 
     ok, messages = x.db.add_root(
         "testroot",
@@ -204,10 +187,8 @@ def test_mutation_previews_do_not_write(tmp_path):
     assert "Map preview: danger-test -> fatyih" in report
     assert x.db.lookup("danger-test") is None
 
-def test_categorize_previews_guards_broad_writes_and_backs_up(tmp_path):
-    db_path = tmp_path / "xenari.db"
-    shutil.copy2(REPO / "xenari.db", db_path)
-    x = Xenari(db_path)
+def test_categorize_previews_guards_broad_writes_and_backs_up(tmp_path, writable_xenari):
+    x = writable_xenari
 
     x.db.conn.execute(
         "UPDATE roots SET category = 'Uncategorized' WHERE root = 'anhthu'"
@@ -252,10 +233,8 @@ def test_categorize_previews_guards_broad_writes_and_backs_up(tmp_path):
     assert "Wrote 1 category change" in explicit
     assert x.db.lookup_root("xaz")["category"] == proposal["suggested_category"]
 
-def test_relate_is_preview_first_and_backs_up_explicit_writes(tmp_path):
-    db_path = tmp_path / "xenari.db"
-    shutil.copy2(REPO / "xenari.db", db_path)
-    x = Xenari(db_path)
+def test_relate_is_preview_first_and_backs_up_explicit_writes(tmp_path, writable_xenari):
+    x = writable_xenari
     roots = ("brak", "plonq")
 
     ok, preview = x.db.relate(*roots, relation="synonym")
@@ -276,10 +255,8 @@ def test_relate_is_preview_first_and_backs_up_explicit_writes(tmp_path):
     ).fetchone()
     assert list(tmp_path.glob("xenari.db.*.relate.bak"))
 
-def test_remove_cleans_dependent_rows(tmp_path):
-    db_path = tmp_path / "xenari.db"
-    shutil.copy2(REPO / "xenari.db", db_path)
-    x = Xenari(db_path)
+def test_remove_cleans_dependent_rows(writable_xenari):
+    x = writable_xenari
 
     assert x.db.add_root("tempone", "xaz", "temporary one", category="Tests")[0]
     assert x.db.add_root("temptwo", "xoz", "temporary two", category="Tests")[0]
@@ -337,10 +314,8 @@ def test_lookup_prefers_base_verb_over_incidental_compound_mentions():
         db.close()
         x.db.close()
 
-def test_invalid_root_is_blocked_without_database_mutation(tmp_path):
-    db_path = tmp_path / "xenari.db"
-    shutil.copy2(REPO / "xenari.db", db_path)
-    db = XenariDB(db_path)
+def test_invalid_root_is_blocked_without_database_mutation(writable_db):
+    db = writable_db
     before = db.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0]
     ok, messages = db.add_root("bad-root", "xqz", "invalid root", category="Tests")
     assert not ok
@@ -348,15 +323,14 @@ def test_invalid_root_is_blocked_without_database_mutation(tmp_path):
     assert db.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0] == before
     assert db.lookup("bad-root") is None
 
-def test_search_ranks_all_matches_before_limiting_results():
-    x = Xenari(REPO / "xenari.db", read_only=True)
+def test_search_ranks_all_matches_before_limiting_results(xenari):
     for term in ("man", "english"):
-        expected_root, _ = x.db.lookup(term)
-        results = x.db.search(term, limit=1)
+        expected_root, _ = xenari.db.lookup(term)
+        results = xenari.db.search(term, limit=1)
         assert results[0]["root"] == expected_root
 
-def test_repeated_lookup_misses_use_the_loaded_synonym_index():
-    x = Xenari(REPO / "xenari.db", read_only=True)
+def test_repeated_lookup_misses_use_the_loaded_synonym_index(fresh_xenari):
+    x = fresh_xenari
     calls = 0
     original = x._meaning_keys
 
