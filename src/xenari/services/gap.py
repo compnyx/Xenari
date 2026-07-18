@@ -390,10 +390,6 @@ class GapHarvester:
             for word in words
         )
 
-    def _speaker_label(self, line: str) -> str | None:
-        parts = self._speaker_line_parts(line)
-        return parts[0] if parts else None
-
     def _is_stage_direction(self, line: str) -> bool:
         if line.startswith(("(", "[", "*")) and line.endswith((")", "]", "*")):
             return True

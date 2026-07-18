@@ -1,6 +1,12 @@
 """Focused Xenari behavior tests."""
 
-from .support import *
+import json
+import subprocess
+import sys
+
+from xenari import Xenari
+
+from .support import REPO
 
 def test_llm_context_treats_model_as_semantic_translator_and_tool_as_linter():
     x = Xenari(REPO / "xenari.db", read_only=True)

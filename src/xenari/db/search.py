@@ -25,6 +25,9 @@ class SearchMixin:
             return 5
         if head == key:
             return 4
+        inflected_past = key + ("d" if key.endswith("e") else "ed")
+        if head == inflected_past:
+            return 4
         if head.startswith(key + " "):
             return 3
         if key in re.split(r"[ /,;]+", head):

@@ -4,10 +4,6 @@ from typing import List, Tuple
 
 class ReverseTranslationMixin:
     @staticmethod
-    def _lower_clause_start(text: str) -> str:
-        return text[:1].lower() + text[1:] if text else text
-
-    @staticmethod
     def _polish_structured_english(text: str) -> str:
         replacements = {
             "door open": "door opens",

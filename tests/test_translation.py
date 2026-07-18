@@ -1,6 +1,8 @@
 """Focused Xenari behavior tests."""
 
-from .support import *
+from xenari import Xenari
+
+from .support import REPO, load_fixtures
 
 def test_known_phrase_generation():
     x = Xenari(REPO / "xenari.db")

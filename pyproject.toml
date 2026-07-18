@@ -25,8 +25,9 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [tool.setuptools.package-data]
-xenari = ["data/*.db"]
+xenari = ["data/xenari.db", "data/translator-fixtures.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
 addopts = "-ra"

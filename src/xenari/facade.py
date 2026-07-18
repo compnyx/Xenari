@@ -11,11 +11,11 @@ from .services.export import ExportMixin
 from .services.health import HealthMixin
 from .services.llm import LlmMixin
 from .services.lookup import LookupMixin
-from .services.mutation import MutationMixin
+from .services.curation import CurationMixin
 from .translate import TranslatorMixin
 
 
-class Xenari(LookupMixin, TranslatorMixin, LlmMixin, ExportMixin, HealthMixin, MutationMixin):
+class Xenari(LookupMixin, TranslatorMixin, LlmMixin, ExportMixin, HealthMixin, CurationMixin):
     def __init__(
         self,
         db_path: Optional[Path] = None,

@@ -1,16 +1,45 @@
 """Repository and integration paths used by Xenari tooling."""
 
 import os
+from importlib.resources import files
 from pathlib import Path
 from typing import Optional, Union
 
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
 PACKAGE_ROOT = Path(__file__).resolve().parent
 CANON_DB = PACKAGE_ROOT / "data" / "xenari.db"
-DATA_DIR = REPO_ROOT / "data"
-TRANSLATOR_FIXTURES = DATA_DIR / "translator-fixtures.json"
-GENERATED_DICTIONARY = DATA_DIR / "xenari-dict.json"
+TRANSLATOR_FIXTURES = files("xenari").joinpath("data", "translator-fixtures.json")
+
+
+def resolve_repo_root() -> Optional[Path]:
+    """Return the source checkout when one exists.
+
+    Runtime resources live inside the package. Repository-only artifacts must
+    not be inferred from arbitrary ``site-packages`` parent directories.
+    """
+    configured = os.environ.get("XENARI_REPO_ROOT")
+    if configured:
+        return Path(configured).expanduser().resolve()
+    candidate = PACKAGE_ROOT.parents[1]
+    if (candidate / "pyproject.toml").is_file() and (candidate / "data").is_dir():
+        return candidate
+    return None
+
+
+REPO_ROOT = resolve_repo_root()
+
+
+def generated_dictionary_path() -> Path:
+    """Resolve the generated repo dictionary or an explicit override."""
+    configured = os.environ.get("XENARI_GENERATED_DICTIONARY")
+    if configured:
+        return Path(configured).expanduser().resolve()
+    if REPO_ROOT is None:
+        raise RuntimeError(
+            "generated dictionary path is source-checkout-only; set "
+            "XENARI_GENERATED_DICTIONARY to an explicit output path"
+        )
+    return REPO_ROOT / "data" / "xenari-dict.json"
 
 
 def resolve_site_root(value: Optional[Union[str, Path]] = None) -> Path:

@@ -1,6 +1,13 @@
 """Focused Xenari behavior tests."""
 
-from .support import *
+import json
+import subprocess
+import sys
+
+from xenari import Xenari
+from xenari.services.gap import GapHarvester
+
+from .support import REPO
 
 def test_gap_harvest_captures_words_phrases_sounds_and_names(tmp_path):
     script = tmp_path / "script.txt"

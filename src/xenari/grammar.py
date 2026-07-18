@@ -152,7 +152,6 @@ def load_grammar_state(self) -> None:
         "kiss": "nquxe",
         "kisses": "nquxe",
         "kissed": "nquxe",
-        "need": "qemp",
         "see": "toq",
         "sees": "toq",
         "seeing": "toq",

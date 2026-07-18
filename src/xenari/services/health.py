@@ -11,7 +11,8 @@ class HealthMixin:
         return self.lexicon.get(root, "unknown root")
 
     def stats(self) -> str:
-        return f"Roots: {len(self.lexicon)} | English mappings: {len(self.english_to_root)}"
+        """Expose the database's single canonical statistics summary."""
+        return self.db.stats()
 
     def validate_roots(self, roots: List[str]) -> Tuple[bool, str]:
         """Validate one or more root forms and return (all_ok, report)."""

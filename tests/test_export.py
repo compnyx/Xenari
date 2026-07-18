@@ -1,11 +1,18 @@
 """Focused Xenari behavior tests."""
 
-from .support import *
+import json
+import shutil
+import subprocess
+
+from xenari import Xenari
+
+from .support import REPO
 
 def test_unified_export_and_reverse_helpers(tmp_path):
     x = Xenari(REPO / "xenari.db")
 
     assert x.export_format("json").lstrip().startswith("[")
+    assert x.export_json() == x.db.export_json()
     assert "const DICT" in x.export_format("js")
 
     out = tmp_path / "lexicon.md"

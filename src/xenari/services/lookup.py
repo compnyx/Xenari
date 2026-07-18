@@ -37,15 +37,6 @@ class LookupMixin:
         """Look up a Xenari root, return its meaning."""
         return self.lexicon.get(root, "unknown root")
 
-    def _safe_root(self, word: str) -> str:
-        """Return real root or [unknown:word]. Never hallucinates."""
-        root, _ = self.lookup(word)
-        return root if root else f"[unknown:{word}]"
-
-    def _is_known(self, word: str) -> bool:
-        """Check if a word exists in the lexicon."""
-        return word.lower().strip() in self.english_to_root
-
     def _animacy_for(self, root: str, default: str = "nu") -> str:
         """Best-effort animacy for generated clauses.
 
@@ -98,16 +89,3 @@ class LookupMixin:
                 result += "'"
             result += r
         return result
-
-    def _try_compound_pair(self, w1: str, w2: str) -> Optional[str]:
-        """Try to compound two words. Merge if BOTH words exist individually."""
-        r1, _ = self.lookup(w1)
-        r2, _ = self.lookup(w2)
-        if r1 and r2:
-            # Build the compound (right-headed)
-            result = r1
-            if result[-1] in "bcdfghjklmnpqrstvwxyz" and r2[0] in "bcdfghjklmnpqrstvwxyz":
-                result += "'"
-            result += r2
-            return result
-        return None

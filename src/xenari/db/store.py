@@ -118,7 +118,3 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin):
 
     def close(self):
         self.conn.close()
-
-    def _auto_export(self):
-        """Deprecated: exports must be explicit so repo/site/live stay in sync."""
-        return

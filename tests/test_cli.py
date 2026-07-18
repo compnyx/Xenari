@@ -1,6 +1,21 @@
 """Focused Xenari behavior tests."""
 
-from .support import *
+import subprocess
+import sys
+from types import SimpleNamespace
+
+import pytest
+
+from xenari.cli.commands import COMMAND_HANDLERS
+from xenari.cli.handlers import maintenance
+from xenari.cli.parser import COMMANDS
+
+from .support import REPO
+
+
+def test_every_parser_command_has_exactly_one_handler():
+    assert set(COMMANDS) == {"help", *COMMAND_HANDLERS}
+
 
 def test_curate_cli_accepts_section_and_limit_flags():
     result = subprocess.run(
@@ -80,3 +95,22 @@ def test_failed_mutation_commands_exit_nonzero():
             text=True,
         )
         assert result.returncode != 0, result.stdout + result.stderr
+
+
+def test_repo_export_fails_cleanly_outside_a_source_checkout(capsys):
+    class InstalledFacade:
+        def export_format(self, *_args, **_kwargs):
+            raise RuntimeError("generated dictionary path is source-checkout-only")
+
+    args = SimpleNamespace(
+        command="export",
+        args=["repo"],
+        output=None,
+        site=False,
+    )
+
+    with pytest.raises(SystemExit) as exc:
+        maintenance.handle(args, InstalledFacade())
+
+    assert exc.value.code == 1
+    assert "source-checkout-only" in capsys.readouterr().out

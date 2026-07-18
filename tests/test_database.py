@@ -1,6 +1,11 @@
 """Focused Xenari behavior tests."""
 
-from .support import *
+import shutil
+
+from xenari import Xenari
+from xenari.db import XenariDB
+
+from .support import REPO
 
 def test_base6_db_canon_and_legacy_aliases_are_marked():
     x = Xenari(REPO / "xenari.db")
@@ -54,6 +59,7 @@ def test_info_and_validation_helpers():
 
     assert "dangerous" in x.info("fatyih")
     assert x.info("fatwih") == "unknown root"
+    assert x.stats() == x.db.stats()
 
     ok, report = x.validate_roots(["fatyih", "qip", "xqz"])
     assert not ok
@@ -319,6 +325,17 @@ def test_read_only_db_open_does_not_initialize_or_write_and_write_open_still_cre
     writable.close()
     assert not (tmp_path / "created.db-wal").exists()
     assert not (tmp_path / "created.db-shm").exists()
+
+
+def test_lookup_prefers_base_verb_over_incidental_compound_mentions():
+    db = XenariDB(REPO / "xenari.db", read_only=True)
+    x = Xenari(REPO / "xenari.db", read_only=True)
+    try:
+        assert db.lookup("love") == ("zrent", "loved")
+        assert x.lookup("love") == ("zrent", "loved")
+    finally:
+        db.close()
+        x.db.close()
 
 def test_invalid_root_is_blocked_without_database_mutation(tmp_path):
     db_path = tmp_path / "xenari.db"

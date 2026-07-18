@@ -15,11 +15,8 @@ class ExportMixin:
         return "const DICT = " + json.dumps(data, indent=2, ensure_ascii=False) + ";"
 
     def export_json(self) -> str:
-        """Export as JSON for external use."""
-        data = {}
-        for eng, root in sorted(self.english_to_root.items()):
-            data[eng] = {"root": root, "gloss": self.lexicon.get(root, "")}
-        return json.dumps(data, indent=2, ensure_ascii=False)
+        """Return the canonical full export exposed by the database layer."""
+        return self.db.export_json()
 
     def export_format(self, fmt: str, output: Optional[Path] = None, include_site: bool = False) -> str:
         """Unified export surface for generated dictionary artifacts."""
