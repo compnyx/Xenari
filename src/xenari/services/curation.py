@@ -1,6 +1,7 @@
 from typing import Optional
 
 from ..paths import generated_dictionary_path
+from ..runtime import sync_runtime_exports
 
 
 class CurationMixin:
@@ -127,5 +128,10 @@ class CurationMixin:
         for path in out_paths:
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(json_text, encoding="utf-8")
+            lines.append(f"wrote {path}")
+        for path in sync_runtime_exports(
+            include_site=include_site,
+            site_root=self.site_root,
+        ):
             lines.append(f"wrote {path}")
         return "\n".join(lines)

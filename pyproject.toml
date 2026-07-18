@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xenari"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Canonical lexicon and translation tooling for the Xenari conlang"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -13,7 +13,13 @@ authors = [{name = "Nyx"}]
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest>=7"]
+dev = [
+    "coverage[toml]>=7.6",
+    "hypothesis>=6.100",
+    "mypy>=1.10",
+    "pytest>=7",
+    "ruff>=0.6",
+]
 
 [project.scripts]
 xenari = "xenari.cli:main"
@@ -24,10 +30,48 @@ package-dir = {"" = "src"}
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.dynamic]
+version = {attr = "xenari._version.__version__"}
+
 [tool.setuptools.package-data]
-xenari = ["data/xenari.db", "data/translator-fixtures.json"]
+xenari = ["data/xenari.db", "data/translator-fixtures.json", "data/xenari-runtime.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
 addopts = "-ra"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+# The legacy translator still relies on dynamic mixin attributes. Keep the
+# type gate honest and strict over the new standalone contracts while those
+# older modules are migrated incrementally instead of hiding their errors.
+files = [
+    "src/xenari/_version.py",
+    "src/xenari/grammar.py",
+    "src/xenari/runtime.py",
+    "src/xenari/runtime_tables.py",
+    "src/xenari/translate/models.py",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["xenari"]
+
+[tool.coverage.report]
+fail_under = 60
+show_missing = true
+skip_covered = true

@@ -2,6 +2,8 @@
 
 import re
 
+from .models import CommonPatternRequest, TranslationMatch
+
 
 class ForwardFrameMixin:
     """Render explicitly supported clause and target-language frames."""
@@ -448,7 +450,23 @@ class ForwardFrameMixin:
         return " ".join(parts)
 
     def _speak_common_pattern(self, normalized: str, evidence_root: str, *, terminal_question: bool = False):
-        """Handle common English frames whose structure is unambiguous."""
+        """Run common-frame recognizers in their established precedence."""
+        request = CommonPatternRequest(normalized, evidence_root, terminal_question)
+        stages = (
+            self._match_common_fixed_patterns,
+            self._match_common_reviewed_patterns,
+            self._match_common_predicate_patterns,
+        )
+        for stage in stages:
+            rendered = stage(request)
+            if rendered is not None:
+                return TranslationMatch(stage.__name__, rendered).text
+        return None
+
+    def _match_common_fixed_patterns(self, request: CommonPatternRequest):
+        """Match fixed prompts and explicit translation-target frames."""
+        normalized = request.normalized
+        evidence_root = request.evidence_root
         interrogative_roots = {
             "what": "qan", "which": "qan", "where": "qur", "how": "cil", "why": "voq",
         }
@@ -500,7 +518,16 @@ class ForwardFrameMixin:
                     question=bool(modal_word),
                     polite=bool(please),
                 )
+        return None
 
+    def _match_common_reviewed_patterns(self, request: CommonPatternRequest):
+        """Match reviewed imperative, modifier, and intransitive frames."""
+        normalized = request.normalized
+        evidence_root = request.evidence_root
+        terminal_question = request.terminal_question
+        interrogative_roots = {
+            "what": "qan", "which": "qan", "where": "qur", "how": "cil", "why": "voq",
+        }
         imperative_translation = self._speak_target_language_imperative(normalized, evidence_root)
         if imperative_translation is not None:
             return imperative_translation
@@ -562,7 +589,12 @@ class ForwardFrameMixin:
                     "right now": "qros",
                 }.get(temporal)
                 return f"{rendered} {temporal_root}" if temporal_root else rendered
+        return None
 
+    def _match_common_predicate_patterns(self, request: CommonPatternRequest):
+        """Match explicit copula, perfect, modal, and action predicates."""
+        normalized = request.normalized
+        evidence_root = request.evidence_root
         copula = re.fullmatch(
             r"(this|that)\s+(is|was)\s+(?:a\s+)?(?:(test)\s+)?(sentence|utterance)",
             normalized,

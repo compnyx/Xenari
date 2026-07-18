@@ -2,6 +2,7 @@
 
 from .support import load_fixtures
 
+
 def test_known_phrase_generation(xenari):
     fixtures = load_fixtures()
 

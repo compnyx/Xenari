@@ -1,5 +1,6 @@
 """Focused Xenari behavior tests."""
 
+import json
 import subprocess
 import sys
 from types import SimpleNamespace
@@ -9,7 +10,7 @@ import pytest
 from xenari.cli import commands
 from xenari.cli.commands import COMMAND_HANDLERS
 from xenari.cli.handlers import maintenance
-from xenari.cli.parser import COMMANDS
+from xenari.cli.parser import COMMANDS, build_parser
 
 from .support import REPO
 
@@ -18,71 +19,108 @@ def test_every_parser_command_has_exactly_one_handler():
     assert set(COMMANDS) == {"help", *COMMAND_HANDLERS}
 
 
+def test_subcommands_expose_only_command_specific_options():
+    parser = build_parser()
+
+    search = parser.parse_args(["search", "danger", "--limit", "3"])
+    assert search.command == "search"
+    assert search.limit == 3
+    assert not hasattr(search, "tense")
+
+    speak = parser.parse_args(["speak", "I love you", "--tense", "past"])
+    assert speak.command == "speak"
+    assert speak.tense == "past"
+    assert not hasattr(speak, "limit")
+
+    with pytest.raises(SystemExit) as exc:
+        parser.parse_args(["stats", "--limit", "1"])
+    assert exc.value.code == 2
+
+
 @pytest.mark.parametrize(
     "argv",
     [
-        ["add"],
-        ["remove"],
-        ["map"],
-        ["categorize"],
-        ["relate"],
-        ["coin"],
-        ["coin", "--yes", "--dry-run"],
-        ["sync"],
-        ["sync", "--yes"],
+        ["stats"],
+        ["search", "dangerous", "--limit", "2"],
+        ["duplicates", "--limit", "1", "--format", "json"],
+        ["pos", "verb", "--limit", "1", "--format", "json"],
+        ["pos-set", "see", "toq", "verb", "--dry-run"],
+        ["pos-backfill", "--dry-run"],
+        ["categorize", "--root", "anhthu"],
+        ["relate", "brak", "plonq", "--relation", "synonym", "--dry-run"],
+        ["add", "byte", "qevk", "byte", "--dry-run"],
+        ["export", "json"],
+        ["export", "md", "out.md"],
     ],
 )
-def test_preview_and_sync_invocations_open_the_canon_read_only(monkeypatch, argv):
+def test_db_only_invocations_select_the_lightweight_runtime(argv):
+    args = build_parser().parse_args(argv)
+    assert commands._uses_database_runtime(args)
+
+
+@pytest.mark.parametrize(
+    "argv",
+    [
+        ["lookup", "love"],
+        ["inspect", "fatyih"],
+        ["translate", "I love you"],
+        ["doctor"],
+        ["parity"],
+        ["gaps", "script.txt"],
+        ["sync"],
+        ["coin", "glimmer", "soft unsteady light"],
+        ["export", "js"],
+        ["export", "site"],
+    ],
+)
+def test_translation_and_cross_component_invocations_keep_the_full_runtime(argv):
+    args = build_parser().parse_args(argv)
+    assert not commands._uses_database_runtime(args)
+
+
+def test_db_only_command_does_not_construct_translation_facade(monkeypatch):
     opened = []
 
-    class FakeXenari:
-        def __init__(self, *, read_only, site_root):
+    class FakeDatabase:
+        def __init__(self, *, read_only):
             opened.append({"read_only": read_only, "closed": False})
+
+        def stats(self):
+            return "tiny runtime"
 
         def close(self):
             opened[-1]["closed"] = True
 
-    monkeypatch.setattr(commands, "Xenari", FakeXenari)
-    monkeypatch.setitem(commands.COMMAND_HANDLERS, argv[0], lambda _args, _x: None)
+    monkeypatch.setattr(commands, "XenariDB", FakeDatabase)
 
-    commands.main(argv)
+    commands.main(["stats"])
 
     assert opened == [{"read_only": True, "closed": True}]
 
 
 @pytest.mark.parametrize("command", sorted(commands.DB_MUTATION_COMMANDS))
-def test_confirmed_mutations_open_the_canon_writable(monkeypatch, command):
-    opened = []
+def test_confirmed_mutations_request_a_writable_runtime(command):
+    args = build_parser().parse_args([command, "--yes"])
+    assert commands._requires_db_write(args)
 
-    class FakeXenari:
-        def __init__(self, *, read_only, site_root):
-            opened.append({"read_only": read_only, "closed": False})
 
-        def close(self):
-            opened[-1]["closed"] = True
-
-    monkeypatch.setattr(commands, "Xenari", FakeXenari)
-    monkeypatch.setitem(commands.COMMAND_HANDLERS, command, lambda _args, _x: None)
-
-    commands.main([command, "--yes"])
-
-    assert opened == [{"read_only": False, "closed": True}]
+@pytest.mark.parametrize("command", sorted(commands.DB_MUTATION_COMMANDS))
+def test_preview_mutations_request_a_read_only_runtime(command):
+    args = build_parser().parse_args([command])
+    assert not commands._requires_db_write(args)
 
 
 def test_cli_closes_the_facade_when_a_handler_raises(monkeypatch):
     closed = []
 
-    class FakeXenari:
-        def __init__(self, *, read_only, site_root):
-            pass
-
+    class FakeRuntime:
         def close(self):
             closed.append(True)
 
     def fail(_args, _x):
         raise RuntimeError("handler failed")
 
-    monkeypatch.setattr(commands, "Xenari", FakeXenari)
+    monkeypatch.setattr(commands, "_open_runtime", lambda _args: FakeRuntime())
     monkeypatch.setitem(commands.COMMAND_HANDLERS, "stats", fail)
 
     with pytest.raises(RuntimeError, match="handler failed"):
@@ -92,11 +130,10 @@ def test_cli_closes_the_facade_when_a_handler_raises(monkeypatch):
 
 
 def test_cli_reports_an_unavailable_writable_canon_cleanly(monkeypatch, capsys):
-    class RefusingXenari:
-        def __init__(self, **_kwargs):
-            raise RuntimeError("explicit writable db_path required")
+    def refuse(_args):
+        raise RuntimeError("explicit writable db_path required")
 
-    monkeypatch.setattr(commands, "Xenari", RefusingXenari)
+    monkeypatch.setattr(commands, "_open_runtime", refuse)
 
     with pytest.raises(SystemExit) as exc:
         commands.main(["add", "--yes"])
@@ -106,15 +143,45 @@ def test_cli_reports_an_unavailable_writable_canon_cleanly(monkeypatch, capsys):
 
 
 def test_help_does_not_open_the_database(monkeypatch, capsys):
-    class UnexpectedXenari:
-        def __init__(self, **_kwargs):
-            raise AssertionError("help must not open the canon")
+    def unexpected(_args):
+        raise AssertionError("help must not open the canon")
 
-    monkeypatch.setattr(commands, "Xenari", UnexpectedXenari)
+    monkeypatch.setattr(commands, "_open_runtime", unexpected)
 
     commands.main(["help"])
 
     assert "Xenari" in capsys.readouterr().out
+
+
+def test_duplicates_cli_is_explicitly_read_only_and_machine_readable(run_cli):
+    result = run_cli("duplicates", "--limit", "1", "--format", "json")
+
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["write_performed"] is False
+    assert payload["count"] >= len(payload["candidates"]) == 1
+    assert payload["candidates"][0]["rows"]
+
+
+def test_part_of_speech_cli_reports_senses_and_previews_without_writing(run_cli):
+    before = (REPO / "xenari.db").read_bytes()
+
+    report = run_cli("pos", "--format", "json", check=True)
+    payload = json.loads(report.stdout)
+    assert payload["schema_present"] is True
+    assert payload["annotated"] > 0
+
+    verbs = run_cli("pos", "verb", "--limit", "2", "--format", "json", check=True)
+    verb_rows = json.loads(verbs.stdout)
+    assert len(verb_rows) == 2
+    assert all(row["part_of_speech"] == "verb" for row in verb_rows)
+
+    preview = run_cli("pos-set", "see", "toq", "verb", "--dry-run", check=True)
+    assert "POS preview: see -> toq = verb" in preview.stdout
+
+    backfill = run_cli("pos-backfill", "--dry-run", check=True)
+    assert "POS backfill preview" in backfill.stdout
+    assert (REPO / "xenari.db").read_bytes() == before
 
 
 def test_curate_cli_accepts_section_and_limit_flags():

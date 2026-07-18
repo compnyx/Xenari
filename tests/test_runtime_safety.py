@@ -5,8 +5,7 @@ import sqlite3
 import pytest
 
 from xenari import Xenari
-from xenari.db import XenariDB
-from xenari.db import store
+from xenari.db import XenariDB, store
 
 
 def test_bundled_canon_defaults_to_read_only():

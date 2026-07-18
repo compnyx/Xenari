@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Compatibility entrypoint for the Xenari tool.
+"""Repository entrypoint for the packaged Xenari tool."""
 
-Import `Xenari` from here as before; implementation lives in `src/xenari`.
-"""
+import sys
+from pathlib import Path
 
-from xenari_compat import ensure_src
+src = str(Path(__file__).resolve().parent / "src")
+if src not in sys.path:
+    sys.path.insert(0, src)
 
-ensure_src()
-
-from xenari import Xenari
-from xenari.cli import main
+from xenari import Xenari  # noqa: E402
+from xenari.cli import main  # noqa: E402
 
 __all__ = ["Xenari", "main"]
 

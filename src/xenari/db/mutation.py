@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 from .categorization import CategorizationMixin
+from .pos import infer_mapping_part_of_speech, normalize_part_of_speech
 from .relations import RelationsMixin
 
 
@@ -13,10 +14,18 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
                  category: str = "Uncategorized",
                  source: str = None, notes: str = None,
                  extra_english_keys: List[str] = None,
-                 dry_run: bool = False) -> Tuple[bool, List[str]]:
+                 dry_run: bool = False,
+                 part_of_speech: str = None) -> Tuple[bool, List[str]]:
         """Add a root + english mapping. Returns (success, messages)."""
         key = english.lower().strip()
         msgs = []
+        try:
+            normalized_pos = normalize_part_of_speech(part_of_speech)
+        except ValueError as exc:
+            return False, [f"BLOCKED: {exc}"]
+        if normalized_pos is None:
+            inferred = infer_mapping_part_of_speech(key, root, meaning, category)
+            normalized_pos = inferred[0] if inferred else None
 
         # Hard collision checks
         if self.has_english(key) and self.has_root(root):
@@ -74,23 +83,31 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
             return False, msgs
 
         if dry_run:
-            msgs.append(f"DRY RUN: would add {root} — {meaning} (for '{english}') in [{category}]")
+            pos_text = f", POS={normalized_pos}" if normalized_pos else ""
+            msgs.append(
+                f"DRY RUN: would add {root} — {meaning} (for '{english}') "
+                f"in [{category}{pos_text}]"
+            )
             return True, msgs
 
         # Insert
         ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
         src = source or "tool"
+        self._backup_before_mutation("add-root")
         try:
             cur = self.conn.execute(
-                "INSERT INTO roots (root, meaning, category, source, timestamp, notes) VALUES (?, ?, ?, ?, ?, ?)",
-                (root, meaning, category, src, ts, notes)
+                """INSERT INTO roots
+                   (root, meaning, category, source, timestamp, notes)
+                   VALUES (?, ?, ?, ?, ?, ?)""",
+                (root, meaning, category, src, ts, notes),
             )
             root_id = cur.lastrowid
 
             # Map the primary english key
             self.conn.execute(
-                "INSERT OR IGNORE INTO english_map (english_key, root_id) VALUES (?, ?)",
-                (key, root_id)
+                """INSERT OR IGNORE INTO english_map
+                   (english_key, root_id, part_of_speech) VALUES (?, ?, ?)""",
+                (key, root_id, normalized_pos),
             )
 
             # Map extra english keys if provided
@@ -98,18 +115,26 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
                 for ek in extra_english_keys:
                     ek = ek.lower().strip()
                     if ek and ek != key:
+                        inferred = infer_mapping_part_of_speech(
+                            ek, root, meaning, category
+                        )
                         self.conn.execute(
-                            "INSERT OR IGNORE INTO english_map (english_key, root_id) VALUES (?, ?)",
-                            (ek, root_id)
+                            """INSERT OR IGNORE INTO english_map
+                               (english_key, root_id, part_of_speech)
+                               VALUES (?, ?, ?)""",
+                            (ek, root_id, inferred[0] if inferred else None),
                         )
 
             # Also auto-map individual words from the meaning (for backwards compat)
             for w in re.split(r"[ /,]+", meaning.lower().split("—")[0].strip()):
                 w = w.strip()
                 if w and len(w) > 1 and not self.has_english(w):
+                    inferred = infer_mapping_part_of_speech(w, root, meaning, category)
                     self.conn.execute(
-                        "INSERT OR IGNORE INTO english_map (english_key, root_id) VALUES (?, ?)",
-                        (w, root_id)
+                        """INSERT OR IGNORE INTO english_map
+                           (english_key, root_id, part_of_speech)
+                           VALUES (?, ?, ?)""",
+                        (w, root_id, inferred[0] if inferred else None),
                     )
 
             self.conn.commit()
@@ -126,6 +151,7 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
         if not row:
             print(f"root '{root}' not found")
             return False
+        self._backup_before_mutation("remove-root")
         self.conn.execute("DELETE FROM compounds WHERE compound_root = ? OR component_root = ?", (root, root))
         self.conn.execute("DELETE FROM semantic_relations WHERE root_a = ? OR root_b = ?", (root, root))
         self.conn.execute("DELETE FROM english_map WHERE root_id = ?", (row["id"],))
@@ -184,12 +210,29 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
 
         return True, "\n".join(lines)
 
-    def describe_english_mapping(self, english_key: str, root: str, context_note: str = None) -> Tuple[bool, str]:
+    def describe_english_mapping(
+        self,
+        english_key: str,
+        root: str,
+        context_note: str = None,
+        part_of_speech: str = None,
+    ) -> Tuple[bool, str]:
         """Preview adding an English mapping to an existing root."""
-        row = self.conn.execute("SELECT id, root, meaning FROM roots WHERE root = ?", (root,)).fetchone()
+        row = self.conn.execute(
+            "SELECT id, root, meaning, category FROM roots WHERE root = ?", (root,)
+        ).fetchone()
         if not row:
             return False, f"root '{root}' not found"
         key = english_key.lower().strip()
+        try:
+            normalized_pos = normalize_part_of_speech(part_of_speech)
+        except ValueError as exc:
+            return False, f"BLOCKED: {exc}"
+        if normalized_pos is None:
+            inferred = infer_mapping_part_of_speech(
+                key, root, row["meaning"], row["category"]
+            )
+            normalized_pos = inferred[0] if inferred else None
         existing = self.conn.execute(
             """SELECT r.root, r.meaning
                FROM english_map e JOIN roots r ON r.id = e.root_id
@@ -200,6 +243,7 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
         lines = [f"Map preview: {key} -> {root} — {row['meaning']}"]
         if context_note:
             lines.append(f"Context note: {context_note}")
+        lines.append(f"Part of speech: {normalized_pos or 'unknown'}")
         if existing:
             lines.append(f"Existing mappings for '{key}':")
             for item in existing:
@@ -208,17 +252,40 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
             lines.append(f"No existing mappings for '{key}'.")
         return True, "\n".join(lines)
 
-    def add_english_mapping(self, english_key: str, root: str, context_note: str = None) -> bool:
+    def add_english_mapping(
+        self,
+        english_key: str,
+        root: str,
+        context_note: str = None,
+        part_of_speech: str = None,
+    ) -> bool:
         """Add an english→root mapping to an existing root."""
-        row = self.conn.execute("SELECT id FROM roots WHERE root = ?", (root,)).fetchone()
+        row = self.conn.execute(
+            "SELECT id, meaning, category FROM roots WHERE root = ?", (root,)
+        ).fetchone()
         if not row:
             print(f"root '{root}' not found")
             return False
         key = english_key.lower().strip()
+        normalized_pos = normalize_part_of_speech(part_of_speech)
+        if normalized_pos is None:
+            inferred = infer_mapping_part_of_speech(
+                key, root, row["meaning"], row["category"]
+            )
+            normalized_pos = inferred[0] if inferred else None
+        if self.conn.execute(
+            "SELECT 1 FROM english_map WHERE english_key = ? AND root_id = ?",
+            (key, row["id"]),
+        ).fetchone():
+            print(f"'{key}' is already mapped to '{root}'")
+            return False
+        self._backup_before_mutation("add-mapping")
         try:
             self.conn.execute(
-                "INSERT OR IGNORE INTO english_map (english_key, root_id, context_note) VALUES (?, ?, ?)",
-                (key, row["id"], context_note)
+                """INSERT OR IGNORE INTO english_map
+                   (english_key, root_id, context_note, part_of_speech)
+                   VALUES (?, ?, ?, ?)""",
+                (key, row["id"], context_note, normalized_pos),
             )
             self.conn.commit()
             print(f"Mapped: {key} → {root}")

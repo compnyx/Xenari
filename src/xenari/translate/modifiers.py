@@ -1,6 +1,5 @@
 import re
 
-
 _AUXILIARY_FORMS = "do|does|did|will|can|could"
 _TRANSITIVE_VERB_FORMS = (
     "see|sees|saw|build|builds|built|open|opens|opened|help|helps|helped|"

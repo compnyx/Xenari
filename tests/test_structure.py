@@ -6,8 +6,8 @@ from .support import REPO
 
 
 def test_src_package_and_legacy_entrypoint_share_the_same_facade():
-    from xenari_tool import Xenari as LegacyXenari
     from xenari import Xenari as PackagedXenari
+    from xenari_tool import Xenari as LegacyXenari
 
     assert LegacyXenari is PackagedXenari
     instance = PackagedXenari(read_only=True)
@@ -17,11 +17,7 @@ def test_src_package_and_legacy_entrypoint_share_the_same_facade():
 def test_repository_compatibility_surface_is_intentionally_minimal():
     compatibility_modules = {path.name for path in REPO.glob("xenari_*.py")}
 
-    assert compatibility_modules == {
-        "xenari_compat.py",
-        "xenari_db.py",
-        "xenari_tool.py",
-    }
+    assert compatibility_modules == {"xenari_tool.py"}
 
 
 def test_site_root_is_configurable_without_host_specific_paths(monkeypatch, tmp_path):

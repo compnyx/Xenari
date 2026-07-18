@@ -23,10 +23,7 @@ class LlmMixin:
     def _llm_attested_verb_roots(self):
         """Return roots with explicit verb evidence in reviewed canon data."""
         roots = set(self.verb_map.values())
-        roots.update(
-            root for root, meaning in self.lexicon.items()
-            if meaning.strip().startswith("to ")
-        )
+        roots.update(self.db.attested_verb_roots())
         return roots
 
     @staticmethod
@@ -311,7 +308,7 @@ class LlmMixin:
                 "do_not_invent_roots": True,
                 "pronouns_carry_animacy": True,
                 "base": 6,
-                "digit_roots": self._base6_digit_roots(),
+                "digit_roots": dict(self._base6_digit_roots()),
                 "particle_roots": sorted(self._llm_particle_roots()),
                 "reference": "docs/reference/LLM_REFERENCE.md",
             },

@@ -5,10 +5,10 @@ from importlib.resources import files
 from pathlib import Path
 from typing import Optional, Union
 
-
 PACKAGE_ROOT = Path(__file__).resolve().parent
 CANON_DB = PACKAGE_ROOT / "data" / "xenari.db"
 TRANSLATOR_FIXTURES = files("xenari").joinpath("data", "translator-fixtures.json")
+RUNTIME_CONTRACT = files("xenari").joinpath("data", "xenari-runtime.json")
 
 
 def resolve_repo_root() -> Optional[Path]:
@@ -38,6 +38,20 @@ def generated_dictionary_path() -> Path:
             "XENARI_GENERATED_DICTIONARY to an explicit output path"
         )
     return repo_root / "data" / "xenari-dict.json"
+
+
+def generated_runtime_path() -> Path:
+    """Resolve the generated repo runtime contract or an explicit override."""
+    configured = os.environ.get("XENARI_GENERATED_RUNTIME")
+    if configured:
+        return Path(configured).expanduser().resolve()
+    repo_root = resolve_repo_root()
+    if repo_root is None:
+        raise RuntimeError(
+            "generated runtime path is source-checkout-only; set "
+            "XENARI_GENERATED_RUNTIME to an explicit output path"
+        )
+    return repo_root / "src" / "xenari" / "data" / "xenari-runtime.json"
 
 
 def resolve_site_root(value: Optional[Union[str, Path]] = None) -> Path:

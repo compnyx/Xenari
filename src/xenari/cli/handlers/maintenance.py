@@ -5,8 +5,8 @@ import sys
 from pathlib import Path
 
 from ...paths import generated_dictionary_path
+from ...runtime import check_runtime_export, runtime_json
 from ...services.gap import GapHarvester
-
 
 COMMANDS = frozenset(
     {
@@ -17,6 +17,7 @@ COMMANDS = frozenset(
         "gaps",
         "export-js",
         "export-json",
+        "export-runtime",
         "export-md",
         "export",
         "stats",
@@ -99,6 +100,23 @@ def handle(args, x):
             print("export-json: ok")
         else:
             print(exported)
+    elif args.command == "export-runtime":
+        if args.check:
+            try:
+                checked = check_runtime_export(args.output)
+            except (RuntimeError, ValueError) as exc:
+                print(f"export-runtime: failed: {exc}")
+                sys.exit(1)
+            print(f"export-runtime: ok ({checked})")
+        else:
+            text = runtime_json()
+            if args.output:
+                output = Path(args.output)
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_text(text, encoding="utf-8")
+                print(f"wrote {output}")
+            else:
+                print(text, end="")
     elif args.command == "export-md":
         out = Path(args.args[0]) if args.args else Path("xenari-lexicon-export.md")
         x.db.export_markdown(out)
@@ -107,10 +125,23 @@ def handle(args, x):
         if not args.args:
             print("Usage: export <json|js|md|site|repo> [output-path]")
             sys.exit(1)
-        fmt = args.args[0]
+        fmt = args.args[0].lower().strip()
         output = Path(args.output or args.args[1]) if args.output or len(args.args) > 1 else None
         try:
-            print(x.export_format(fmt, output=output, include_site=args.site))
+            if fmt in {"json", "dict"}:
+                text = x.db.export_json()
+                if output:
+                    output.parent.mkdir(parents=True, exist_ok=True)
+                    output.write_text(text, encoding="utf-8")
+                    print(f"wrote {output}")
+                else:
+                    print(text)
+            elif fmt in {"md", "markdown"}:
+                out = output or Path("xenari-lexicon-export.md")
+                x.db.export_markdown(out)
+                print(f"wrote {out}")
+            else:
+                print(x.export_format(fmt, output=output, include_site=args.site))
         except (RuntimeError, ValueError) as exc:
             print(exc)
             sys.exit(1)

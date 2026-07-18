@@ -3,7 +3,6 @@
 import json
 import sys
 
-
 COMMANDS = frozenset({"compound", "speak", "gloss", "translate", "reverse", "llm-context", "llm-lint"})
 
 

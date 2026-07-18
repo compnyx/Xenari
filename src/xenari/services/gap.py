@@ -8,13 +8,12 @@ source context so humans can decide what deserves canon.
 
 from __future__ import annotations
 
-from collections import Counter, defaultdict
-from dataclasses import dataclass, field
 import json
 import re
+from collections import Counter, defaultdict
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
-
 
 WORD_RE = re.compile(r"[A-Za-z]+(?:['-][A-Za-z]+)*")
 SPEAKER_RE = re.compile(

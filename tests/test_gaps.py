@@ -4,6 +4,7 @@ import json
 
 from xenari.services.gap import GapHarvester
 
+
 def test_gap_harvest_captures_words_phrases_sounds_and_names(tmp_path, xenari):
     script = tmp_path / "script.txt"
     script.write_text(

@@ -4,6 +4,7 @@ import json
 import shutil
 import subprocess
 
+
 def test_unified_export_and_reverse_helpers(tmp_path, xenari):
     assert xenari.export_format("json").lstrip().startswith("[")
     assert xenari.export_json() == xenari.db.export_json()

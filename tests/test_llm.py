@@ -2,6 +2,7 @@
 
 import json
 
+
 def test_llm_context_treats_model_as_semantic_translator_and_tool_as_linter(xenari):
     packet = xenari.llm_context("If you cannot translate it, fix it.", evidential="assumed")
 

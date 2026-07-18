@@ -1,10 +1,59 @@
-"""Canonical grammar particles and reviewed English mapping tables."""
+"""Immutable canonical grammar particles and reviewed English mappings."""
+
+from dataclasses import dataclass
+from types import MappingProxyType
+from typing import Mapping, TypeVar
+
+PronounSpec = tuple[str, bool] | tuple[str, bool, bool]
+_K = TypeVar("_K")
+_V = TypeVar("_V")
 
 
-def load_grammar_state(self) -> None:
-    """Attach immutable grammar configuration to a Xenari facade."""
+def _immutable(values: Mapping[_K, _V]) -> Mapping[_K, _V]:
+    """Copy a mapping into a read-only view owned by the grammar config."""
+    return MappingProxyType(dict(values))
+
+
+@dataclass(frozen=True, slots=True)
+class GrammarConfig:
+    """All grammar tables required by the translator.
+
+    A facade receives one explicit config object instead of having module code
+    attach a collection of unrelated attributes at runtime. Mapping values are
+    copied into read-only views and word collections use ``frozenset`` so the
+    frozen dataclass is deeply immutable for the supported value types.
+    """
+
+    particles: Mapping[str, str]
+    pronouns: Mapping[str, str]
+    english_pronouns: Mapping[str, PronounSpec]
+    tense_roots: Mapping[str, str]
+    evidential_roots: Mapping[str, str]
+    verb_roots: Mapping[str, str]
+    copula_words: frozenset[str]
+    skip_words: frozenset[str]
+
+    def to_runtime_dict(self) -> dict[str, object]:
+        """Return a deterministic JSON-serializable browser/tool contract."""
+        return {
+            "particles": dict(sorted(self.particles.items())),
+            "pronouns": dict(sorted(self.pronouns.items())),
+            "english_pronouns": {
+                key: list(value)
+                for key, value in sorted(self.english_pronouns.items())
+            },
+            "tense_roots": dict(sorted(self.tense_roots.items())),
+            "evidential_roots": dict(sorted(self.evidential_roots.items())),
+            "verb_roots": dict(sorted(self.verb_roots.items())),
+            "copula_words": sorted(self.copula_words),
+            "skip_words": sorted(self.skip_words),
+        }
+
+
+def _build_default_config() -> GrammarConfig:
+    """Build the shared, immutable default grammar configuration."""
     # Particles from spec §2.3
-    self.p = {
+    particles = {
         "subj": "ka", "obj": "ra", "verb": "ta", "loc": "na", "goal": "fa",
         "inst": "mo", "anim": "vi", "inan": "nu",
         "past": "lo", "fut": "ve", "pres": "sa", "hab": "du", "pot": "pe", "imp": "ko",
@@ -16,7 +65,7 @@ def load_grammar_state(self) -> None:
 
     # Ordinal pronouns (spec §2.4). The numeric keys match the canon
     # ordinal labels so English mappings cannot silently swap readings.
-    self.pronouns = {
+    pronouns = {
         "1": "neq",   # I/me
         "2": "mex",   # you
         "3": "leq",   # present other
@@ -27,7 +76,7 @@ def load_grammar_state(self) -> None:
 
     # English does not encode Xenari ordinal context. Bare they/them/their
     # default to plural known others (req ha), never inferred zeq.
-    self.en_pronouns = {
+    english_pronouns: dict[str, PronounSpec] = {
         "i": ("1", False), "me": ("1", False), "my": ("1", True), "mine": ("1", True),
         "we": ("1", False, True), "us": ("1", False, True), "our": ("1", True, True),
         "you": ("2", False), "your": ("2", True), "yours": ("2", True),
@@ -38,7 +87,7 @@ def load_grammar_state(self) -> None:
         "their": ("4", True, True), "theirs": ("4", True, True),
     }
 
-    self.tense_map = {
+    tense_roots = {
         "pres": "sa", "present": "sa",
         "past": "lo", "ed": "lo", "was": "lo", "were": "lo", "had": "lo", "did": "lo",
         "future": "ve", "will": "ve", "shall": "ve", "would": "ve",
@@ -47,7 +96,7 @@ def load_grammar_state(self) -> None:
         "imperative": "ko",
     }
 
-    self.evidential_map = {
+    evidential_roots = {
         "witnessed": "xa", "saw": "xa",
         "inferred": "xe",
         "reported": "xi", "heard": "xi",
@@ -58,7 +107,7 @@ def load_grammar_state(self) -> None:
     # Common English verbs that exist in the lexicon
     # We check these against the lexicon at runtime
     # English -> Xenari verb roots (from actual lexicon)
-    self.verb_map = {
+    verb_roots = {
         "want": "glemp", "desire": "glemp",
         "wants": "glemp", "wanted": "glemp",
         "love": "zrent", "loved": "zrent",
@@ -249,16 +298,30 @@ def load_grammar_state(self) -> None:
         "getting": "smite",
     }
 
-    self.copula_words = {"is", "are", "am", "be", "was", "were", "being", "feel"}
+    copula_words = {"is", "are", "am", "be", "was", "were", "being", "feel"}
 
     # English function words to skip (not nouns, not verbs)
-    self.skip_words = {"the", "a", "an", "to", "of", "in", "on", "at", "by", "for",
-                       "with", "from", "as", "that", "this", "these", "those",
-                       "it", "its", "so", "very", "just", "really", "also",
-                       "about", "into", "through", "during", "before", "after",
-                       "above", "below", "up", "down", "out", "over", "under",
-                       "again", "further", "then", "once", "here", "there",
-                       "all", "any", "both", "each", "few", "more", "most",
-                       "other", "some", "such", "only", "own", "same", "than",
-                       "too", "s", "t", "can", "should", "now", "today",
-                       "yesterday", "tomorrow", "tonight"}
+    skip_words = {"the", "a", "an", "to", "of", "in", "on", "at", "by", "for",
+                  "with", "from", "as", "that", "this", "these", "those",
+                  "it", "its", "so", "very", "just", "really", "also",
+                  "about", "into", "through", "during", "before", "after",
+                  "above", "below", "up", "down", "out", "over", "under",
+                  "again", "further", "then", "once", "here", "there",
+                  "all", "any", "both", "each", "few", "more", "most",
+                  "other", "some", "such", "only", "own", "same", "than",
+                  "too", "s", "t", "can", "should", "now", "today",
+                  "yesterday", "tomorrow", "tonight"}
+
+    return GrammarConfig(
+        particles=_immutable(particles),
+        pronouns=_immutable(pronouns),
+        english_pronouns=_immutable(english_pronouns),
+        tense_roots=_immutable(tense_roots),
+        evidential_roots=_immutable(evidential_roots),
+        verb_roots=_immutable(verb_roots),
+        copula_words=frozenset(copula_words),
+        skip_words=frozenset(skip_words),
+    )
+
+
+DEFAULT_GRAMMAR = _build_default_config()

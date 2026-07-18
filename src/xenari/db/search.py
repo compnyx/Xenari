@@ -37,7 +37,11 @@ class SearchMixin:
     def lookup_root(self, root: str) -> Optional[Dict]:
         """root → full row"""
         row = self.conn.execute("SELECT * FROM roots WHERE root = ?", (root,)).fetchone()
-        return dict(row) if row else None
+        if not row:
+            return None
+        result = dict(row)
+        result["parts_of_speech"] = self.parts_of_speech_for_root(root)
+        return result
 
     def has_english(self, key: str) -> bool:
         return self.conn.execute(
@@ -54,14 +58,23 @@ class SearchMixin:
         roots = self.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0]
         maps = self.conn.execute("SELECT COUNT(*) FROM english_map").fetchone()[0]
         cats = self.conn.execute("SELECT COUNT(DISTINCT category) FROM roots").fetchone()[0]
-        return f"Roots: {roots} | English mappings: {maps} | Categories: {cats}"
+        pos = self.part_of_speech_report()
+        return (
+            f"Roots: {roots} | English mappings: {maps} | Categories: {cats} | "
+            f"POS senses: {pos['annotated']} | POS unknown: {pos['unknown']}"
+        )
 
     def search(self, query: str, limit: int = 20) -> List[Dict]:
         """Ranked search across roots, meanings, and english keys."""
         clean = query.lower().strip()
         q = f"%{clean}%"
+        pos_column = (
+            "GROUP_CONCAT(DISTINCT e.part_of_speech) AS parts_of_speech"
+            if self._has_part_of_speech_column()
+            else "NULL AS parts_of_speech"
+        )
         rows = self.conn.execute(
-            """SELECT DISTINCT r.root, r.meaning, r.category,
+            f"""SELECT r.root, r.meaning, r.category, {pos_column},
                       GROUP_CONCAT(e.english_key, ', ') as english_keys
                FROM roots r
                LEFT JOIN english_map e ON e.root_id = r.id

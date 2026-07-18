@@ -3,16 +3,13 @@
 import re
 from typing import List, Tuple
 
+from ..runtime_tables import ENGLISH_CONTRACTIONS, SENTENCE_FINAL_TEMPORALS
+
 
 class EnglishPreprocessingMixin:
     """Prepare bounded English clauses and resolve reviewed phrase forms."""
 
-    _sentence_final_temporals = {
-        "today": "bro",
-        "tomorrow": "glent",
-        "yesterday": "hreh",
-        "tonight": "kohfrep",
-    }
+    _sentence_final_temporals = SENTENCE_FINAL_TEMPORALS
 
     def _split_sentence_final_temporal(self, english: str):
         """Detach one reviewed trailing time word without discarding it."""
@@ -45,27 +42,9 @@ class EnglishPreprocessingMixin:
         return "\n".join(stripped_lines)
 
     def _expand_english_contractions(self, text: str) -> str:
-        contractions = {
-            "i'm": "i am", "i've": "i have", "i'll": "i will", "i'd": "i would",
-            "you're": "you are", "you've": "you have", "you'll": "you will", "you'd": "you would",
-            "we're": "we are", "we've": "we have", "we'll": "we will", "we'd": "we would",
-            "they're": "they are", "they've": "they have", "they'll": "they will", "they'd": "they would",
-            "he's": "he is", "she's": "she is", "it's": "it is", "that's": "that is",
-            "he'll": "he will", "she'll": "she will", "he'd": "he would", "she'd": "she would",
-            "what's": "what is",
-            "how's": "how is", "how're": "how are",
-            "isn't": "is not", "aren't": "are not", "wasn't": "was not",
-            "weren't": "were not", "don't": "do not", "doesn't": "does not",
-            "didn't": "did not", "won't": "will not", "can't": "can not",
-            "cannot": "can not",
-            "wouldn't": "would not", "couldn't": "could not", "shouldn't": "should not",
-            "mustn't": "must not", "haven't": "have not",
-            "hasn't": "has not", "hadn't": "had not",
-            "let's": "let us", "y'all": "you all",
-        }
         apostrophes = str.maketrans({"’": "'", "‘": "'", "ʼ": "'", "＇": "'", "`": "'"})
         expanded = text.lower().translate(apostrophes)
-        for contraction, replacement in contractions.items():
+        for contraction, replacement in ENGLISH_CONTRACTIONS.items():
             expanded = re.sub(rf"\b{re.escape(contraction)}\b", replacement, expanded)
         return expanded
 
@@ -292,6 +271,9 @@ class EnglishPreprocessingMixin:
     def _known_verb_root(self, word: str):
         """Resolve a real verb root, including common English inflections."""
         clean = word.lower().strip()
+        curated_pos = self.english_part_of_speech.get(clean)
+        if curated_pos is not None:
+            return self.english_to_root.get(clean) if curated_pos == "verb" else None
         reviewed_overrides = {
             "slams": "tulo",
             "whisper": "tyequga", "whispers": "tyequga", "whispered": "tyequga",
@@ -325,6 +307,11 @@ class EnglishPreprocessingMixin:
         for candidate in candidates:
             if not candidate:
                 continue
+            candidate_pos = self.english_part_of_speech.get(candidate)
+            if candidate_pos is not None:
+                if candidate_pos == "verb":
+                    return self.english_to_root.get(candidate)
+                continue
             if candidate in self.verb_map:
                 return self.verb_map[candidate]
             root, meaning = self.lookup(candidate)
@@ -334,6 +321,9 @@ class EnglishPreprocessingMixin:
 
     def _is_verb_like(self, word: str) -> bool:
         """Heuristic: is this word likely a verb?"""
+        curated_pos = self.english_part_of_speech.get(word)
+        if curated_pos is not None:
+            return curated_pos == "verb"
         if word in self.verb_map or word in self.copula_words:
             return True
         _root, meaning = self.lookup(word)

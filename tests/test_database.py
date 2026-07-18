@@ -7,6 +7,7 @@ from xenari.db import XenariDB
 
 from .support import REPO
 
+
 def test_base6_db_canon_and_legacy_aliases_are_marked(xenari):
     xang = xenari.db.lookup_root("xang")
     assert "base-6 place/group morpheme" in xang["meaning"]
@@ -187,6 +188,18 @@ def test_mutation_previews_do_not_write(writable_xenari):
     assert "Map preview: danger-test -> fatyih" in report
     assert x.db.lookup("danger-test") is None
 
+
+def test_mapping_write_backs_up_and_duplicate_is_not_success(tmp_path, writable_xenari):
+    x = writable_xenari
+
+    assert x.db.add_english_mapping("danger-test", "fatyih", part_of_speech="adjective")
+    assert x.db.lookup("danger-test")[0] == "fatyih"
+    backups = list(tmp_path.glob("xenari.db.*.add-mapping.bak"))
+    assert len(backups) == 1
+
+    assert not x.db.add_english_mapping("danger-test", "fatyih")
+    assert list(tmp_path.glob("xenari.db.*.add-mapping.bak")) == backups
+
 def test_categorize_previews_guards_broad_writes_and_backs_up(tmp_path, writable_xenari):
     x = writable_xenari
 
@@ -255,7 +268,7 @@ def test_relate_is_preview_first_and_backs_up_explicit_writes(tmp_path, writable
     ).fetchone()
     assert list(tmp_path.glob("xenari.db.*.relate.bak"))
 
-def test_remove_cleans_dependent_rows(writable_xenari):
+def test_remove_cleans_dependent_rows(tmp_path, writable_xenari):
     x = writable_xenari
 
     assert x.db.add_root("tempone", "xaz", "temporary one", category="Tests")[0]
@@ -276,6 +289,8 @@ def test_remove_cleans_dependent_rows(writable_xenari):
         "SELECT COUNT(*) FROM compounds WHERE compound_root = ? OR component_root = ?",
         ("xoz", "xoz"),
     ).fetchone()[0] == 0
+    assert list(tmp_path.glob("xenari.db.*.add-root.bak"))
+    assert list(tmp_path.glob("xenari.db.*.remove-root.bak"))
     assert x.db.conn.execute(
         "SELECT COUNT(*) FROM semantic_relations WHERE root_a = ? OR root_b = ?",
         ("xoz", "xoz"),

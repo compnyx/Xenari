@@ -306,18 +306,26 @@ class AuditMixin:
             "",
         ]
 
-        for cat_name, count in cats:
+        for cat_name, _count in cats:
             lines.append(f"## {cat_name}")
             lines.append("")
-            lines.append("| Root | Meaning | Source |")
-            lines.append("|---|---|---|")
+            lines.append("| Root | Meaning | Part of speech | Source |")
+            lines.append("|---|---|---|---|")
+            pos_column = (
+                "GROUP_CONCAT(DISTINCT e.part_of_speech) AS parts_of_speech"
+                if self._has_part_of_speech_column()
+                else "NULL AS parts_of_speech"
+            )
             rows = self.conn.execute(
-                "SELECT root, meaning, source FROM roots WHERE category = ? ORDER BY root",
-                (cat_name,)
+                f"""SELECT r.root, r.meaning, {pos_column}, r.source
+                    FROM roots r LEFT JOIN english_map e ON e.root_id = r.id
+                    WHERE r.category = ? GROUP BY r.id ORDER BY r.root""",
+                (cat_name,),
             ).fetchall()
             for r in rows:
                 src = r["source"] or ""
-                lines.append(f"| `{r['root']}` | {r['meaning']} | {src} |")
+                pos = r["parts_of_speech"] or ""
+                lines.append(f"| `{r['root']}` | {r['meaning']} | {pos} | {src} |")
             lines.append("")
 
         content = "\n".join(lines)
@@ -327,15 +335,28 @@ class AuditMixin:
     def export_json(self) -> str:
         """Export everything as JSON."""
         keys_by_root = {}
+        pos_by_root = {}
+        pos_column = "part_of_speech" if self._has_part_of_speech_column() else "NULL"
         for mapping in self.conn.execute(
-            "SELECT root_id, english_key FROM english_map ORDER BY root_id, english_key"
+            f"""SELECT root_id, english_key, {pos_column} AS part_of_speech
+                FROM english_map ORDER BY root_id, english_key"""
         ):
             keys_by_root.setdefault(mapping["root_id"], []).append(mapping["english_key"])
+            if mapping["part_of_speech"]:
+                pos_by_root.setdefault(mapping["root_id"], {})[
+                    mapping["english_key"]
+                ] = mapping["part_of_speech"]
 
         roots = []
         for r in self.conn.execute("SELECT * FROM roots ORDER BY category, root"):
             row = dict(r)
             row["english_keys"] = keys_by_root.get(r["id"], [])
+            sense_pos = pos_by_root.get(r["id"])
+            if sense_pos:
+                # Keep the browser export lean: POS belongs to individual
+                # English senses, and roots without annotations need no empty
+                # object or redundant root-level union.
+                row["english_parts_of_speech"] = sense_pos
             roots.append(row)
         return json.dumps(roots, ensure_ascii=False, indent=2)
 
@@ -361,7 +382,8 @@ class AuditMixin:
     def audit(self, limit: int = 40) -> str:
         """Read-only lexicon audit for duplicates, stale markers, and validator failures."""
         roots = [dict(r) for r in self.conn.execute(
-            "SELECT id, root, meaning, category, source, notes FROM roots ORDER BY root"
+            """SELECT id, root, meaning, category, source, notes
+               FROM roots ORDER BY root"""
         ).fetchall()]
         maps = [dict(r) for r in self.conn.execute(
             """SELECT e.english_key, r.root, r.meaning, r.category
@@ -432,6 +454,7 @@ class AuditMixin:
         exact_dupes.sort(key=lambda item: (-len(item[1]), item[0]))
         headword_dupes.sort(key=lambda item: (-len(item[1]), item[0]))
         actionable_exact_dupes.sort(key=lambda item: (-len(item[1]), item[0]))
+        pos_report = self.part_of_speech_report()
 
         lines = [
             "Xenari audit",
@@ -445,6 +468,10 @@ class AuditMixin:
             f"Raw headword duplicate groups: {len(headword_dupes)}",
             f"Stale/conflict/reanalysis marker rows: {len(markers)}",
             f"Phonotactic validator failures: {len(phon_failures)}",
+            f"POS schema present: {'yes' if pos_report['schema_present'] else 'no'}",
+            f"POS annotated senses: {pos_report['annotated']}",
+            f"POS unknown senses: {pos_report['unknown']}",
+            f"Invalid POS values: {len(pos_report['invalid'])}",
             "",
             "Note: english-key collisions are noisy because english_map indexes words inside definitions.",
             "Note: raw duplicate groups include synonyms, register variants, particles, and derived families.",
@@ -476,6 +503,15 @@ class AuditMixin:
             lines.append("  none")
         for row, issues in phon_failures[:limit]:
             lines.append(f"  - {row['root']}[{row['category']}]: {'; '.join(issues)}")
+
+        lines.extend(["", "Invalid part-of-speech values"])
+        if not pos_report["invalid"]:
+            lines.append("  none")
+        for row in pos_report["invalid"][:limit]:
+            lines.append(
+                f"  - {row['english_key']} -> {row['root']}: "
+                f"{row['part_of_speech']!r}"
+            )
 
         return "\n".join(lines)
 

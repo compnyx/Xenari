@@ -1,85 +1,30 @@
 import re
 from typing import List
 
+from ..runtime_tables import (
+    BASE6_DIGIT_ROOTS,
+    BASE6_NUMBER_WORDS,
+    BASE6_PLACE_ROOT,
+    ENGLISH_MATH_OPERATORS,
+    MATH_OPERATOR_ROOTS,
+)
+
 
 class NumberTranslationMixin:
     def _base6_digit_roots(self):
-        return {
-            0: "nul",
-            1: "ca",
-            2: "vriq",
-            3: "prit",
-            4: "qang",
-            5: "cum",
-        }
+        return BASE6_DIGIT_ROOTS
 
     def _base6_number_words(self):
-        return {
-            "zero": 0,
-            "one": 1,
-            "two": 2,
-            "three": 3,
-            "four": 4,
-            "five": 5,
-            "six": 6,
-            "seven": 7,
-            "eight": 8,
-            "nine": 9,
-            "ten": 10,
-            "eleven": 11,
-            "twelve": 12,
-        }
+        return BASE6_NUMBER_WORDS
+
+    def _base6_place_root(self):
+        return BASE6_PLACE_ROOT
 
     def _math_operator_roots(self):
-        return {
-            "plus": "plomt",
-            "add": "plomt",
-            "added to": "plomt",
-            "addition": "plomt",
-            "minus": "krut",
-            "subtract": "krut",
-            "subtracted by": "krut",
-            "subtraction": "krut",
-            "times": "vrot",
-            "multiply": "vrot",
-            "multiplied by": "vrot",
-            "grouped by": "vrot",
-            "divided by": "flopq",
-            "divide by": "flopq",
-            "divide": "flopq",
-            "split by": "flopq",
-            "equals": "zlem",
-            "equal to": "zlem",
-            "same as": "zlem",
-            "greater than": "grak",
-            "more than": "grak",
-            "less than": "vlox",
-            "fewer than": "vlox",
-            "fraction": "nok",
-            "ratio": "nok",
-            "over": "nok",
-            "+": "plomt",
-            "-": "krut",
-            "*": "vrot",
-            "x": "vrot",
-            "×": "vrot",
-            "/": "flopq",
-            "=": "zlem",
-            ">": "grak",
-            "<": "vlox",
-        }
+        return MATH_OPERATOR_ROOTS
 
     def _english_math_operator(self, root: str) -> str:
-        return {
-            "plomt": "plus",
-            "krut": "minus",
-            "vrot": "times",
-            "flopq": "divided by",
-            "zlem": "equals",
-            "grak": "greater than",
-            "vlox": "less than",
-            "nok": "fraction",
-        }[root]
+        return ENGLISH_MATH_OPERATORS[root]
 
     def _parse_english_number_value(self, text: str):
         clean = re.sub(r"[\s_-]+", " ", text.lower().strip())
@@ -105,7 +50,7 @@ class NumberTranslationMixin:
             if digit == 0:
                 continue
             parts.append(digit_roots[digit])
-            parts.extend(["xang"] * place)
+            parts.extend([self._base6_place_root()] * place)
         return parts
 
     def _number_value_from_xenari_tokens(self, tokens: List[str]):
@@ -125,7 +70,7 @@ class NumberTranslationMixin:
             digit = root_digits[token]
             i += 1
             place = 0
-            while i < len(tokens) and tokens[i] == "xang":
+            while i < len(tokens) and tokens[i] == self._base6_place_root():
                 place += 1
                 i += 1
             if digit == 0 and (place or len(tokens) > 1):

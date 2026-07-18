@@ -4,7 +4,7 @@ Xenari Database — sqlite source of truth for the Xenari conlang.
 
 Schema:
   roots(id, root, meaning, category, source, timestamp, notes)
-  english_map(id, english_key, root_id, context_note)
+  english_map(id, english_key, root_id, context_note, part_of_speech)
 
 Usage:
   from pathlib import Path
@@ -16,20 +16,22 @@ Usage:
       db.export_markdown(Path("xenari-lexicon-export.md"))
 """
 
-import sqlite3
 import datetime
+import re
+import sqlite3
 from pathlib import Path
 from typing import Optional
 
 from ..paths import CANON_DB, resolve_repo_root
 from .audit import AuditMixin
 from .mutation import MutationMixin
+from .pos import POS_SCHEMA_VERSION, PartOfSpeechMixin
 from .search import SearchMixin
 
 DB_PATH = CANON_DB
 
 
-class XenariDB(SearchMixin, MutationMixin, AuditMixin):
+class XenariDB(SearchMixin, MutationMixin, AuditMixin, PartOfSpeechMixin):
     def __init__(self, db_path: Optional[Path] = None, *, read_only: Optional[bool] = None):
         """Open the canonical database.
 
@@ -70,6 +72,27 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin):
             self._init_schema()
 
     def _init_schema(self):
+        existing_version = self._existing_schema_version()
+        if existing_version is not None and existing_version != "legacy":
+            existing_key = self._schema_version_key(existing_version)
+            if existing_key is None:
+                raise RuntimeError(f"unrecognized database schema version: {existing_version}")
+            current_key = self._schema_version_key(POS_SCHEMA_VERSION)
+            if current_key is None:
+                raise RuntimeError(f"invalid packaged schema version: {POS_SCHEMA_VERSION}")
+            if existing_key > current_key:
+                raise RuntimeError(
+                    "database schema is newer than this Xenari build: "
+                    f"{existing_version} > {POS_SCHEMA_VERSION}"
+                )
+        has_english_map = self.conn.execute(
+            """SELECT 1 FROM sqlite_master
+               WHERE type = 'table' AND name = 'english_map'"""
+        ).fetchone()
+        if has_english_map is not None and not self._has_part_of_speech_column():
+            # Schema changes are real mutations too. Preserve a consistent
+            # legacy copy before ALTER TABLE so migrations remain recoverable.
+            self._backup_before_mutation("schema-pos-v2")
         self.conn.executescript("""
             CREATE TABLE IF NOT EXISTS roots (
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -86,6 +109,13 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin):
                 english_key TEXT NOT NULL,
                 root_id     INTEGER NOT NULL,
                 context_note TEXT,
+                part_of_speech TEXT CHECK (
+                    part_of_speech IS NULL OR part_of_speech IN (
+                        'adjective', 'adverb', 'ideophone', 'interjection',
+                        'noun', 'numeral', 'particle', 'pronoun',
+                        'proper_noun', 'verb'
+                    )
+                ),
                 FOREIGN KEY (root_id) REFERENCES roots(id) ON DELETE CASCADE,
                 UNIQUE(english_key, root_id)
             );
@@ -123,12 +153,39 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin):
                 updated_at  TEXT NOT NULL
             );
         """)
-        self.conn.execute(
-            """INSERT OR IGNORE INTO tool_meta (key, value, updated_at)
-               VALUES (?, ?, ?)""",
-            ("schema_version", "2026-07-09.2", datetime.datetime.now().isoformat(timespec="seconds")),
-        )
+        self._ensure_part_of_speech_schema()
+        if existing_version != POS_SCHEMA_VERSION:
+            self.conn.execute(
+                """INSERT INTO tool_meta (key, value, updated_at)
+                   VALUES (?, ?, ?)
+                   ON CONFLICT(key) DO UPDATE SET
+                     value = excluded.value,
+                     updated_at = excluded.updated_at""",
+                (
+                    "schema_version",
+                    POS_SCHEMA_VERSION,
+                    datetime.datetime.now().isoformat(timespec="seconds"),
+                ),
+            )
         self.conn.commit()
+
+    def _existing_schema_version(self) -> Optional[str]:
+        table = self.conn.execute(
+            "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'tool_meta'"
+        ).fetchone()
+        if table is None:
+            return None
+        row = self.conn.execute(
+            "SELECT value FROM tool_meta WHERE key = 'schema_version'"
+        ).fetchone()
+        return row[0] if row else None
+
+    @staticmethod
+    def _schema_version_key(value: str) -> Optional[tuple[int, int, int, int]]:
+        match = re.fullmatch(r"(\d{4})-(\d{2})-(\d{2})\.(\d+)", value or "")
+        if match is None:
+            return None
+        return tuple(int(part) for part in match.groups())
 
     def close(self):
         self.conn.close()

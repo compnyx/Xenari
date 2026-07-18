@@ -1,6 +1,9 @@
 import re
 from typing import List, Tuple
 
+from ..runtime_tables import REVERSE_PREFERRED, REVERSE_PRONOUNS, TEMPORAL_GLOSSES
+from .models import ReverseClause, ReverseRequest, ReverseSegments, TranslationMatch
+
 
 class ReverseTranslationMixin:
     @staticmethod
@@ -13,12 +16,8 @@ class ReverseTranslationMixin:
         return replacements.get(text, text)
 
     def _reverse_head_gloss(self, root: str) -> str:
-        preferred = {
-            "brid": "hat", "habdazluc": "person", "kazxibrih": "woman",
-            "qex": "alien", "zrenq": "dog",
-        }
-        if root in preferred:
-            return preferred[root]
+        if root in REVERSE_PREFERRED:
+            return REVERSE_PREFERRED[root]
         meaning = self.lexicon.get(root, root)
         head = self.db._audit_headword(meaning)
         return head.split()[0] if head else root
@@ -66,8 +65,20 @@ class ReverseTranslationMixin:
         return None
 
     def reverse(self, xenari: str) -> str:
-        """Best-effort Xenari → English with explicit partial-parse warnings."""
-        clean = re.sub(r"\s+", " ", xenari.strip().strip(".!?"))
+        """Best-effort Xenari → English through explicit bounded stages."""
+        request = ReverseRequest(
+            source=xenari,
+            clean=re.sub(r"\s+", " ", xenari.strip().strip(".!?")),
+        )
+        match = self._reverse_fast_path(request)
+        if match is not None:
+            return match.text
+        segments = self._segment_reverse_frames(request.clean)
+        return self._render_reverse_segments(segments)
+
+    def _reverse_fast_path(self, request: ReverseRequest) -> TranslationMatch | None:
+        """Resolve exact, numeric, command, and structured reverse frames."""
+        clean = request.clean
         exact_reverse = {
             "stux": "ok",
             "naxq": "yes",
@@ -90,10 +101,10 @@ class ReverseTranslationMixin:
             "bivuzqa uqel po zuqra": "English",
         }
         if clean in exact_reverse:
-            return exact_reverse[clean]
+            return TranslationMatch("exact-reverse", exact_reverse[clean])
         number_math = self._reverse_number_or_math(clean)
         if number_math is not None:
-            return number_math
+            return TranslationMatch("number-or-math", number_math)
 
         target_command = re.fullmatch(
             r"ra nu hune fa nu bivuzqa uqel po zuqra ta "
@@ -106,7 +117,7 @@ class ReverseTranslationMixin:
                 "halbru": "reverse-engineer",
                 "nimixu": "decode",
             }[target_command.group(1)]
-            return f"{verb} sentence to English!"
+            return TranslationMatch("target-language-command", f"{verb} sentence to English!")
 
         imperative = re.fullmatch(
             r"(?:(ra|fa)\s+(?:nu|vi)\s+([a-z']+)\s+)?ta ([a-z']+) vi ko xo( naxru)?( ngu)?",
@@ -134,14 +145,25 @@ class ReverseTranslationMixin:
                 if object_case == "fa" and obj:
                     obj = f"to {obj}"
                 if negated:
-                    return "don't " + " ".join(part for part in [verb, obj] if part) + "!"
+                    return TranslationMatch(
+                        "imperative",
+                        "don't " + " ".join(part for part in [verb, obj] if part) + "!",
+                    )
                 phrase = " ".join(part for part in [verb, obj] if part)
-                return ("please " + phrase if polite else phrase) + "!"
+                return TranslationMatch(
+                    "imperative",
+                    ("please " + phrase if polite else phrase) + "!",
+                )
 
-        structured = self._reverse_structured_frame(xenari)
+        structured = self._reverse_structured_frame(request.source)
         if structured is not None:
-            return structured
-        sentences = [s.strip() for s in re.split(r"[.!?]+", xenari) if s.strip()]
+            return TranslationMatch("structured-frame", structured)
+        return None
+
+    @staticmethod
+    def _segment_reverse_frames(clean: str) -> ReverseSegments:
+        """Recover clause boundaries before role parsing and rendering."""
+        sentences = [s.strip() for s in re.split(r"[.!?]+", clean) if s.strip()]
         frames = []
         purpose_frames = set()
         recovered_boundary = False
@@ -166,55 +188,91 @@ class ReverseTranslationMixin:
             if current:
                 frames.append(" ".join(current))
 
+        return ReverseSegments(
+            frames=tuple(frames),
+            purpose_frame_indexes=frozenset(purpose_frames),
+            recovered_boundary=recovered_boundary,
+        )
+
+    @staticmethod
+    def _render_english_verb(
+        verb: str,
+        *,
+        tense: str,
+        negated: bool,
+        subject: str,
+    ) -> str:
+        """Render one parsed predicate without closing over a clause loop."""
+        if verb == "is":
+            if tense == "lo":
+                return "was not" if negated else "was"
+            if tense == "ve":
+                return "will not be" if negated else "will be"
+            if negated:
+                return "is not"
+            return "is"
+
+        base = verb
+        if tense == "lo":
+            irregular_past = {
+                "get": "got",
+                "go": "went",
+                "throw": "threw",
+                "build": "built",
+                "say": "said",
+                "break": "broke",
+                "slam": "slammed",
+                "stop": "stopped",
+                "run": "ran",
+                "open": "opened",
+                "bite": "bit",
+                "reverse-engineer": "reverse-engineered",
+            }
+            if base in irregular_past:
+                base = irregular_past[base]
+            elif base.endswith("e"):
+                base += "d"
+            elif base.endswith("y"):
+                base = base[:-1] + "ied"
+            else:
+                base += "ed"
+        elif tense == "ve":
+            base = "will " + base
+        elif tense == "du":
+            base = "usually " + base
+        elif tense == "pe":
+            base = "could " + base
+
+        if negated:
+            if tense == "ve":
+                return "will not " + base.removeprefix("will ")
+            if tense == "lo":
+                return "did not " + verb
+            auxiliary = "do not" if subject in {"I", "you", "they"} else "does not"
+            return auxiliary + " " + verb
+        return base
+
+    def _render_reverse_segments(self, segments: ReverseSegments) -> str:
+        """Parse and render already segmented reverse clause frames."""
+        frames = segments.frames
+        purpose_frames = segments.purpose_frame_indexes
+        recovered_boundary = segments.recovered_boundary
         rendered = []
-        reverse_pronouns = {
-            "neq": {"subj": "I", "obj": "me", "poss": "my"},
-            "mex": {"subj": "you", "obj": "you", "poss": "your"},
-            "zeq": {"subj": "they", "obj": "them", "poss": "their"},
-            "leq": {"subj": "he/she/it", "obj": "him/her/it", "poss": "his/her/its"},
-            "req": {"subj": "they", "obj": "them", "poss": "their"},
-        }
-        preferred = {
-            "zrent": "love", "toq": "see", "zux": "is", "fatyih": "dangerous",
-            "qex": "alien", "loco": "figure", "qlon": "lake", "brid": "hat",
-            "cuq": "wind", "qruq": "blow", "frig": "approach", "rlis": "red",
-            "qeng": "go", "qxundraz": "operate", "kashatyong": "job",
-            "qzecmru": "anyway", "qranx": "throw", "flonx": "art",
-            "hune": "sentence", "fona": "translator", "halbru": "reverse-engineer",
-            "smite": "get", "duqe": "result", "naxru": "please",
-            "mrob": "build", "krimp": "say", "qabrerd": "touch", "tulo": "slam",
-            "semax": "stop", "zont": "break", "trekq": "wait", "spokta": "elevator",
-            "zrump": "door", "qroxang": "there",
-            "zaqa": "run", "xleq": "open", "logi": "enter", "pegzos": "help",
-            "trek": "find", "nrotm": "translate", "mifzxuri": "belong",
-            "kazxibrih": "woman", "zrenq": "dog", "habdazluc": "person",
-            "pronx": "tool", "cruq": "water", "canq": "forest", "qruq'": "bite",
-            "tyequga": "whisper",
-            "stux": "ok", "naxq": "yes", "naxu": "nice",
-            "bivuzqa": "humanity", "uqel": "planet", "zuqra": "voice",
-            "qlox'": "goodbye", "vreqclir": "understood", "gral": "thanks",
-            "qezxol": "sorry", "vrin": "whoops", "vroq": "yeah", "nguq": "no",
-            "vex": "maybe", "mse": "much", "shengtac": "problem",
-        }
         case_particles = {"ra", "ka", "ta", "na", "fa", "mo"}
         skip_particles = {"vi", "nu", "sa", "lo", "ve", "du", "pe", "ko", "xa", "xe", "xi", "xo", "zu", "ha"}
         connector_glosses = {"kex": "but", "xen": "and", "noq": "or", "qlez": "so", "cruv": "once/when"}
         interrogative_glosses = {"qan": "what", "qur": "where", "cil": "how", "voq": "why"}
-        temporal_glosses = {
-            "bro": "today", "glent": "tomorrow", "hreh": "yesterday",
-            "kohfrep": "tonight", "qros": "now", "qrosa": "now",
-        }
         grammar_particles = (
             case_particles | skip_particles | {"ngu", "va", "po"}
             | set(connector_glosses) | set(interrogative_glosses)
         )
 
         def root_english(root: str, verb: bool = False, role: str = "plain") -> str:
-            if root in reverse_pronouns:
-                forms = reverse_pronouns[root]
+            if root in REVERSE_PRONOUNS:
+                forms = REVERSE_PRONOUNS[root]
                 return forms.get(role, forms["subj"])
-            if root in preferred:
-                return preferred[root]
+            if root in REVERSE_PREFERRED:
+                return REVERSE_PREFERRED[root]
             meaning = self.lexicon.get(root)
             if meaning is None:
                 return f"[unknown: {root}]"
@@ -252,119 +310,88 @@ class ReverseTranslationMixin:
                 continue
 
             tokens = sentence.split()
-            obj = subj = loc = goal = instrument = verb = ""
-            interrogative = ""
-            tense = "sa"
-            negated = False
-            question = False
-            polite = False
-            connector = ""
-            temporal_modifiers = []
-            warnings = []
-            loose = []
+            clause = ReverseClause()
             counts = {particle: tokens.count(particle) for particle in case_particles}
             unknown_roots = [
                 token for token in tokens
                 if token not in grammar_particles
-                and token not in reverse_pronouns
+                and token not in REVERSE_PRONOUNS
                 and token not in self.lexicon
             ]
             i = 0
             while i < len(tokens):
                 tok = tokens[i]
                 if tok in connector_glosses and i == 0:
-                    connector = connector_glosses[tok]
+                    clause.connector = connector_glosses[tok]
                     i += 1
                 elif tok == "ra":
-                    obj, i = read_phrase(tokens, i + 1, role="obj")
+                    clause.object, i = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "ka":
-                    subj, i = read_phrase(tokens, i + 1, role="subj")
+                    clause.subject, i = read_phrase(tokens, i + 1, role="subj")
                 elif tok == "na":
-                    loc, i = read_phrase(tokens, i + 1, role="obj")
+                    clause.location, i = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "fa":
-                    goal, i = read_phrase(tokens, i + 1, role="obj")
+                    clause.goal, i = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "mo":
-                    instrument, i = read_phrase(tokens, i + 1, role="obj")
+                    clause.instrument, i = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "ta":
                     j = i + 1
                     while j < len(tokens) and tokens[j] in skip_particles:
                         j += 1
-                    verb = root_english(tokens[j], verb=True) if j < len(tokens) else ""
+                    clause.verb = root_english(tokens[j], verb=True) if j < len(tokens) else ""
                     i = j + 1
                 elif tok in {"sa", "lo", "ve", "du", "pe", "ko"}:
-                    tense = tok
+                    clause.tense = tok
                     i += 1
                 elif tok == "ngu":
-                    negated = True
+                    clause.negated = True
                     i += 1
                 elif tok == "va":
-                    question = True
+                    clause.question = True
                     i += 1
                 elif tok in interrogative_glosses:
-                    interrogative = interrogative_glosses[tok]
+                    clause.interrogative = interrogative_glosses[tok]
                     i += 1
                 elif tok == "naxru":
-                    polite = True
+                    clause.polite = True
                     i += 1
-                elif tok in temporal_glosses and verb:
-                    temporal_modifiers.append(temporal_glosses[tok])
+                elif tok in TEMPORAL_GLOSSES and clause.verb:
+                    clause.temporal_modifiers.append(TEMPORAL_GLOSSES[tok])
                     i += 1
                 else:
                     if tok not in grammar_particles:
-                        loose.append(root_english(tok))
+                        clause.loose_fragments.append(root_english(tok))
                     i += 1
 
             for particle, count in counts.items():
                 if count > 1:
-                    warnings.append(f"repeated marker '{particle}'")
-            if counts["ta"] and not verb:
-                warnings.append("verb marker has no readable verb")
+                    clause.warnings.append(f"repeated marker '{particle}'")
+            if counts["ta"] and not clause.verb:
+                clause.warnings.append("verb marker has no readable verb")
             if (counts["ka"] or counts["ra"]) and not counts["ta"]:
-                warnings.append("partial clause has no verb marker")
+                clause.warnings.append("partial clause has no verb marker")
             if unknown_roots:
-                warnings.append(f"unknown Xenari root(s): {', '.join(dict.fromkeys(unknown_roots))}")
-            if loose:
-                warnings.append("loose fragment(s) preserved outside the clause frame")
+                clause.warnings.append(
+                    f"unknown Xenari root(s): {', '.join(dict.fromkeys(unknown_roots))}"
+                )
+            if clause.loose_fragments:
+                clause.warnings.append("loose fragment(s) preserved outside the clause frame")
 
-            def render_verb(v: str) -> str:
-                if v == "is":
-                    if tense == "lo":
-                        return "was not" if negated else "was"
-                    if tense == "ve":
-                        return "will not be" if negated else "will be"
-                    if negated:
-                        return "is not"
-                    return "is"
-                base = v
-                if tense == "lo":
-                    irregular_past = {
-                        "get": "got", "go": "went", "throw": "threw", "build": "built",
-                        "say": "said", "break": "broke", "slam": "slammed", "stop": "stopped",
-                        "run": "ran", "open": "opened", "bite": "bit",
-                        "reverse-engineer": "reverse-engineered",
-                    }
-                    if base in irregular_past:
-                        base = irregular_past[base]
-                    elif base.endswith("e"):
-                        base = base + "d"
-                    elif base.endswith("y"):
-                        base = base[:-1] + "ied"
-                    else:
-                        base = base + "ed"
-                elif tense == "ve":
-                    base = "will " + base
-                elif tense == "du":
-                    base = "usually " + base
-                elif tense == "pe":
-                    base = "could " + base
-                if negated:
-                    if tense == "ve":
-                        return "will not " + base.removeprefix("will ")
-                    if tense == "lo":
-                        return "did not " + v
-                    aux = "do not" if subj in {"I", "you", "they"} else "does not"
-                    return aux + " " + v
-                return base
+            obj = clause.object
+            subj = clause.subject
+            loc = clause.location
+            goal = clause.goal
+            instrument = clause.instrument
+            verb = clause.verb
+            interrogative = clause.interrogative
+            tense = clause.tense
+            negated = clause.negated
+            question = clause.question
+            polite = clause.polite
+            connector = clause.connector
+            temporal_modifiers = clause.temporal_modifiers
+            warnings = clause.warnings
+            loose = clause.loose_fragments
 
             if tense == "ko" and verb and not subj:
                 command_parts = [verb]
@@ -401,11 +428,29 @@ class ReverseTranslationMixin:
             else:
                 text_parts = []
             if verb == "is":
-                text = " ".join(part for part in [subj, render_verb(verb), obj] if part)
+                rendered_verb = self._render_english_verb(
+                    verb,
+                    tense=tense,
+                    negated=negated,
+                    subject=subj,
+                )
+                text = " ".join(part for part in [subj, rendered_verb, obj] if part)
             elif verb and obj and subj:
-                text = " ".join(part for part in [subj, render_verb(verb), obj] if part)
+                rendered_verb = self._render_english_verb(
+                    verb,
+                    tense=tense,
+                    negated=negated,
+                    subject=subj,
+                )
+                text = " ".join(part for part in [subj, rendered_verb, obj] if part)
             elif verb and subj:
-                text = " ".join(part for part in [subj, render_verb(verb)] if part)
+                rendered_verb = self._render_english_verb(
+                    verb,
+                    tense=tense,
+                    negated=negated,
+                    subject=subj,
+                )
+                text = " ".join(part for part in [subj, rendered_verb] if part)
             else:
                 text = " ".join(part for part in [subj, obj] if part)
             if loc:

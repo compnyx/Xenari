@@ -85,7 +85,11 @@ class RelationsMixin:
             return False, "\n".join(lines)
         rows = [self.lookup_root(root) for root in (root_a, root_b)]
         if not all(rows):
-            missing = [root for root, row in zip((root_a, root_b), rows) if not row]
+            missing = [
+                root
+                for root, row in zip((root_a, root_b), rows, strict=True)
+                if not row
+            ]
             lines.append(f"Unknown root(s): {', '.join(missing)}")
             return False, "\n".join(lines)
         for row in rows:

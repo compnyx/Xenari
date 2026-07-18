@@ -1,5 +1,5 @@
-import json
 import datetime
+import json
 from typing import List, Tuple
 
 from ..paths import TRANSLATOR_FIXTURES
@@ -60,12 +60,30 @@ class HealthMixin:
             "Actionable exact duplicate groups: 0",
             "Stale/conflict/reanalysis marker rows: 0",
             "Phonotactic validator failures: 0",
+            "POS schema present: yes",
+            "Invalid POS values: 0",
         ):
             if needle not in audit:
                 ok = False
                 lines.append(f"FAIL audit: missing {needle}")
         if ok:
             lines.append("audit: ok")
+
+        pos_report = self.db.part_of_speech_report()
+        if (
+            not pos_report["schema_present"]
+            or pos_report["invalid"]
+            or pos_report["annotated"] == 0
+        ):
+            ok = False
+            lines.append(
+                "FAIL parts of speech: expected a migrated, partially annotated canon"
+            )
+        else:
+            lines.append(
+                "parts of speech: ok "
+                f"({pos_report['annotated']} annotated, {pos_report['unknown']} unknown)"
+            )
 
         for english, expected in lookup_cases.items():
             root, _meaning = self.lookup(english)
@@ -177,7 +195,7 @@ class HealthMixin:
             "# Xenari QC Review Report",
             "",
             f"- Generated: `{generated}`",
-            f"- Mode: read-only; no database writes",
+            "- Mode: read-only; no database writes",
             f"- Stats: `{self.db.stats()}`",
             f"- Doctor: `{'ok' if doctor_ok else 'FAIL'}`",
             f"- Translator parity: `{'ok' if parity_ok else 'FAIL'}`",

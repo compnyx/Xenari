@@ -14,11 +14,13 @@ assets are derived from it and must never be edited as canon.
 - `src/xenari/translate/` - forward and reverse translation.
 - `src/xenari/services/` - curation, export, health, LLM, and gap workflows.
 - `src/xenari/cli/` - command-line parsing and dispatch.
+- `src/xenari/data/translator-fixtures.json` - shared behavior contract.
+- `src/xenari/data/xenari-runtime.json` - generated, packaged runtime tables.
 - `data/xenari-dict.json` - generated full dictionary export.
-- `data/translator-fixtures.json` - shared Python/browser contract.
 - `tests/` - behavior, canon, packaging, and compatibility checks.
 - `docs/reference/LLM_REFERENCE.md` - compact grammar reference.
 - `docs/development/architecture.md` - ownership and integration boundaries.
+- `docs/development/versioning.md` - compatibility and release policy.
 
 The root `xenari.db` link and `xenari_tool.py` entrypoint support repository
 workflows. New Python code should import from the `xenari` package.
@@ -64,6 +66,7 @@ python3 xenari_tool.py search dangerous
 python3 xenari_tool.py near "soft unsteady light"
 python3 xenari_tool.py relations fatyih
 python3 xenari_tool.py categories
+python3 xenari_tool.py pos verb --limit 20
 ```
 
 Translate and validate model output:
@@ -91,13 +94,16 @@ python3 xenari_tool.py categorize --root anhthu
 python3 xenari_tool.py propose-root glimmer "soft unsteady light"
 python3 xenari_tool.py coin glimmer "soft unsteady light" --root zakglu --dry-run
 python3 xenari_tool.py relate brak plonq --relation synonym --dry-run
+python3 xenari_tool.py duplicates --limit 20
+python3 xenari_tool.py pos-set ear cromq noun --dry-run
 ```
 
 ## Mutation Safety
 
-Database writes preview by default and require `--yes`. Categorization,
-relation, and removal workflows create timestamped SQLite backups before
-changing canon.
+Database writes preview by default and require `--yes`. Schema migrations and
+guarded curation writes create timestamped SQLite backups before changing
+canon. Part of speech is attached to an English-key/root sense, not globally
+to a potentially polysemous Xenari root.
 
 ```bash
 python3 xenari_tool.py add byte qevk "byte" --dry-run
@@ -113,11 +119,13 @@ python3 xenari_tool.py sync --site
 python3 xenari_tool.py doctor
 python3 xenari_tool.py parity
 python3 xenari_tool.py export-json --check
+python3 xenari_tool.py export-runtime --check
 pytest -q
 ```
 
 `sync --site` resolves the site checkout from `--site-root`, then
-`XENARI_SITE_ROOT`, then `~/nyx-site`.
+`XENARI_SITE_ROOT`, then `~/nyx-site`. It refreshes both the dictionary and
+the versioned Python/browser runtime contract.
 
 ## Canon And Quality Rules
 
@@ -135,5 +143,7 @@ The browser and Python translators share the fixture contract. Run
 ## Further Documentation
 
 - [Architecture](docs/development/architecture.md)
+- [Versioning and compatibility](docs/development/versioning.md)
+- [Changelog](CHANGELOG.md)
 - [LLM grammar reference](docs/reference/LLM_REFERENCE.md)
 - [Known-good phrases](examples/phrases.md)

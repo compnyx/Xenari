@@ -1,9 +1,11 @@
 """Read-only lexicon query command handlers."""
 
+import json
 import sys
 
-
-COMMANDS = frozenset({"lookup", "inspect", "info", "validate", "categories", "search", "near", "relations"})
+COMMANDS = frozenset(
+    {"lookup", "inspect", "info", "validate", "categories", "search", "near", "relations", "pos"}
+)
 
 
 def handle(args, x):
@@ -40,10 +42,26 @@ def handle(args, x):
             print("Usage: info <xenari-root>")
             sys.exit(1)
         for root in args.args:
-            print(f"{root} — {x.info(root)}")
+            row = x.db.lookup_root(root)
+            # The historical facade normalizes its in-memory meanings to lower
+            # case. Keep that public CLI behavior while avoiding the full load.
+            meaning = row["meaning"].lower() if row else "unknown root"
+            print(f"{root} — {meaning}")
     elif args.command == "validate":
-        ok, report = x.validate_roots(args.args)
-        print(report)
+        if not args.args:
+            print("Usage: validate <root> [root...]")
+            sys.exit(1)
+        ok = True
+        lines = []
+        for root in args.args:
+            issues = x.db.validate_phonotactics(root)
+            if issues:
+                ok = False
+                lines.append(f"{root}: INVALID")
+                lines.extend(f"  - {issue}" for issue in issues)
+            else:
+                lines.append(f"{root}: ok")
+        print("\n".join(lines))
         if not ok:
             sys.exit(1)
     elif args.command == "categories":
@@ -82,3 +100,28 @@ def handle(args, x):
         print(report)
         if not ok:
             sys.exit(1)
+    elif args.command == "pos":
+        if not args.args:
+            report = x.db.part_of_speech_report()
+            if args.format == "json":
+                print(json.dumps(report, indent=2, ensure_ascii=False))
+            else:
+                print("Xenari sense-level part of speech")
+                print(f"Annotated: {report['annotated']} / {report['total']}")
+                print(f"Unknown: {report['unknown']}")
+                for name, count in report["counts"].items():
+                    print(f"  {name}: {count}")
+            return
+        try:
+            rows = x.db.mappings_by_part_of_speech(args.args[0], limit=args.limit)
+        except ValueError as exc:
+            print(exc)
+            sys.exit(1)
+        if args.format == "json":
+            print(json.dumps(rows, indent=2, ensure_ascii=False))
+        else:
+            for row in rows:
+                print(
+                    f"{row['english_key']} -> {row['root']} "
+                    f"[{row['part_of_speech']}]: {row['meaning']}"
+                )
