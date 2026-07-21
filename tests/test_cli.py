@@ -236,9 +236,9 @@ def test_structured_translation_reports_and_benchmark_are_machine_readable(run_c
     assert complete["status"] == "complete"
     assert complete["confidence"] == "high"
 
-    partial = json.loads(run_cli("speak", "Run!", "--format", "json", check=True).stdout)
+    partial = json.loads(run_cli("speak", "Reverse this!", "--format", "json", check=True).stdout)
     assert partial["status"] == "partial"
-    assert partial["diagnostics"] == ["[partial: unsupported imperative: run]"]
+    assert partial["diagnostics"] == ["[partial: unsupported imperative: reverse this]"]
 
     reverse = json.loads(
         run_cli("reverse", "ra blorq ka neq ta zrent sa xo", "--format", "json", check=True).stdout
@@ -278,7 +278,7 @@ def test_structured_translation_reports_and_benchmark_are_machine_readable(run_c
         ["pos", "--proposals", "--format", "json"],
         ["compound", "red", "dog"],
         ["speak", "I love you"],
-        ["speak", "Run!", "--format", "json"],
+        ["speak", "Reverse this!", "--format", "json"],
         ["gloss", "I love you"],
         ["translate", "I love you"],
         ["reverse", "ra mex ka neq ta zrent sa xo"],

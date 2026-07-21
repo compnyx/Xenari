@@ -5,6 +5,14 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.4.0 - 2026-07-21
+
+- Expand the reviewed subjectless imperative grammar to run, hide, help,
+  translate, and reverse-engineer commands, including objects, politeness,
+  negation, and readable reverse translation.
+- Keep Python, browser, shared fixtures, grammar references, and live examples
+  aligned on the expanded `ko xo` command frame.
+
 ## 0.3.1 - 2026-07-21
 
 - Add one machine-readable `check` command covering doctor, translator parity,

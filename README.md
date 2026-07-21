@@ -78,6 +78,8 @@ python3 xenari_tool.py speak "I see the alien" --evidential witnessed
 python3 xenari_tool.py gloss "I love you"
 python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
 python3 xenari_tool.py speak "Run!" --format json
+python3 xenari_tool.py speak "Please help me!"
+python3 xenari_tool.py reverse "ra nu praq ta nrotm vi ko xo ngu"
 python3 xenari_tool.py llm-context "If you can't translate it, fix it."
 python3 xenari_tool.py llm-lint "ra mex ka neq ta zrent sa xa"
 ```

@@ -157,6 +157,21 @@ Tense:
 - `pe` potential
 - `ko` imperative
 
+Reviewed subjectless commands omit `ka SUBJECT` and use `ko xo`. Objects still
+precede the verb with their ordinary case and animacy markers. Polite `naxru`
+and negative `ngu` follow the evidential, in that order.
+
+```text
+ta zaqa vi ko xo
+Run!
+
+ra vi neq ta pegzos vi ko xo naxru
+Please help me!
+
+ra nu praq ta nrotm vi ko xo ngu
+Don't translate this!
+```
+
 Evidential:
 
 - `xa` witnessed/direct

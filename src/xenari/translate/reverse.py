@@ -132,12 +132,18 @@ class ReverseTranslationMixin:
                 "qabrerd": "touch",
                 "zaqa": "run",
                 "trekq": "wait",
+                "nging": "hide",
+                "pegzos": "help",
+                "nrotm": "translate",
+                "halbru": "reverse engineer",
             }
             object_words = {
                 "zrump": "door",
                 "zra": "that",
                 "hune": "sentence",
                 "cuq": "wind",
+                "neq": "me",
+                "praq": "this",
             }
             verb = verb_words.get(verb_root)
             if verb:

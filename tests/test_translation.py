@@ -303,15 +303,22 @@ def test_fuzz_safety_corpus_is_shared_and_honest(xenari):
     assert len(forward) >= 10
     assert len(stress) >= 6
     assert {case["family"] for case in forward} >= {
-        "empty-input", "imperative-gap", "speaker-label",
+        "empty-input", "imperative", "speaker-label",
         "speaker-stage", "stage-direction",
     }
 
     assert xenari.speak("...", evidential="assumed") == "[untranslated: no translatable content]"
     assert xenari.speak("   ", evidential="assumed") == "[untranslated: no translatable content]"
-    assert xenari.speak("Run!", evidential="assumed") == "[partial: unsupported imperative: run]"
-    assert xenari.speak("Don't run.", evidential="assumed") == (
-        "[partial: unsupported negated imperative: do not run]"
+    assert xenari.speak("Run!", evidential="assumed") == "ta zaqa vi ko xo"
+    assert xenari.speak("Don't run.", evidential="assumed") == "ta zaqa vi ko xo ngu"
+    assert xenari.speak("Help me!", evidential="assumed") == (
+        "ra vi neq ta pegzos vi ko xo"
+    )
+    assert xenari.speak("Translate this!", evidential="assumed") == (
+        "ra nu praq ta nrotm vi ko xo"
+    )
+    assert xenari.speak("Reverse engineer this!", evidential="assumed") == (
+        "ra nu praq ta halbru vi ko xo"
     )
     assert xenari.speak("NYX: Shhh.", evidential="assumed") == "shava"
     assert xenari.speak("MARA (O.S.): Beep beep.", evidential="assumed") == "nqozo nqozo"
@@ -320,6 +327,9 @@ def test_fuzz_safety_corpus_is_shared_and_honest(xenari):
     )
     assert "ka neq" not in xenari.speak("Run!", evidential="assumed")
     assert " va" not in xenari.speak("Don't run.", evidential="assumed")
+    for english in ("run!", "don't run!", "help me!", "translate this!", "reverse engineer this!"):
+        rendered = xenari.speak(english, evidential="assumed")
+        assert xenari.reverse(rendered).casefold() == english.casefold()
 
 def test_target_language_imperatives_precede_unsupported_fallback(xenari):
     expected_prefix = "ra nu hune fa nu bivuzqa uqel po zuqra ta "
@@ -442,7 +452,7 @@ def test_colon_quotes_do_not_become_speaker_labels(xenari):
         "ka leq ta tyequga sa xo. shava"
     )
     assert xenari.speak("ALEX: She says: run.", evidential="assumed") == (
-        "ka leq ta krimp sa xo. [partial: unsupported imperative: run]"
+        "ka leq ta krimp sa xo. ta zaqa vi ko xo"
     )
     assert xenari.speak("NYX: Shhh.", evidential="assumed") == "shava"
 

@@ -18,6 +18,11 @@ class DialogueTranslationMixin:
             "stop": {None},
             "open": {"door"},
             "touch": {"door", "that"},
+            "run": {None},
+            "hide": {None},
+            "help": {"me"},
+            "translate": {"this"},
+            "reverse engineer": {"this"},
         }
         if object_word not in allowed_objects.get(verb_word, set()):
             return None
@@ -26,6 +31,8 @@ class DialogueTranslationMixin:
             "door": (self.p["obj"], "zrump", self.p["inan"]),
             "that": (self.p["obj"], "zra", self.p["inan"]),
             "wind": (self.p["goal"], "cuq", self.p["anim"]),
+            "me": (self.p["obj"], "neq", self.p["anim"]),
+            "this": (self.p["obj"], "praq", self.p["inan"]),
         }
         parts = []
         if object_word:
@@ -68,8 +75,8 @@ class DialogueTranslationMixin:
 
         imperative = re.fullmatch(
             r"(?:(please)\s+)?(?:(do)\s+(not)\s+)?"
-            r"(wait|listen|stop|open|touch)"
-            r"(?:\s+(?:to\s+)?(?:the\s+)?(wind|door|that))?"
+            r"(reverse engineer|wait|listen|stop|open|touch|run|hide|help|translate)"
+            r"(?:\s+(?:to\s+)?(?:the\s+)?(wind|door|that|me|this))?"
             r"(?:\s+(please))?",
             clean,
         )

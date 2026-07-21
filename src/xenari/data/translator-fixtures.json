@@ -326,35 +326,35 @@
     },
     {
       "english": "Run!",
-      "xenari": "[partial: unsupported imperative: run]",
+      "xenari": "ta zaqa vi ko xo",
       "loop": 6,
-      "family": "imperative-gap",
+      "family": "imperative",
       "stress": true
     },
     {
       "english": "Don't run.",
-      "xenari": "[partial: unsupported negated imperative: do not run]",
+      "xenari": "ta zaqa vi ko xo ngu",
       "loop": 6,
-      "family": "imperative-gap",
+      "family": "imperative",
       "stress": true
     },
     {
       "english": "Help me!",
-      "xenari": "[partial: unsupported imperative: help me]",
+      "xenari": "ra vi neq ta pegzos vi ko xo",
       "loop": 6,
-      "family": "imperative-gap"
+      "family": "imperative"
     },
     {
       "english": "Translate this!",
-      "xenari": "[partial: unsupported imperative: translate this]",
+      "xenari": "ra nu praq ta nrotm vi ko xo",
       "loop": 6,
-      "family": "imperative-gap"
+      "family": "imperative"
     },
     {
       "english": "Reverse engineer this!",
-      "xenari": "[partial: unsupported imperative: reverse engineer this]",
+      "xenari": "ra nu praq ta halbru vi ko xo",
       "loop": 6,
-      "family": "imperative-gap"
+      "family": "imperative"
     },
     {
       "english": "NYX: Shhh.",
@@ -507,7 +507,7 @@
     },
     {
       "english": "ALEX: She says: run.",
-      "xenari": "ka leq ta krimp sa xo. [partial: unsupported imperative: run]",
+      "xenari": "ka leq ta krimp sa xo. ta zaqa vi ko xo",
       "loop": 9,
       "family": "speaker-colon",
       "stress": true
