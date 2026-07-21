@@ -59,6 +59,8 @@ cover the full package.
   round-trip fidelity.
 - `benchmark` records representative local lookup, search, forward, and reverse
   timings without enforcing hardware-dependent pass/fail thresholds.
+- `check` is the checkout-local release gate for doctor, parity, dictionary
+  freshness, and runtime freshness; it also has a stable JSON result schema.
 - Changes to translator behavior or mappings must pass both Python parity and
   the paired site drift suite.
 

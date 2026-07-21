@@ -255,6 +255,12 @@ def test_structured_translation_reports_and_benchmark_are_machine_readable(run_c
     }
     assert all(value >= 0 for value in benchmark["milliseconds_per_operation"].values())
 
+    release_check = json.loads(run_cli("check", "--format", "json", check=True).stdout)
+    assert release_check["schema"] == "xenari.release_check.v1"
+    assert release_check["ok"] is True
+    assert release_check["errors"] == {}
+    assert all(release_check["checks"].values())
+
 
 @pytest.mark.parametrize(
     "argv",
@@ -286,6 +292,7 @@ def test_structured_translation_reports_and_benchmark_are_machine_readable(run_c
         ["curate", "--phrases", "--limit", "1"],
         ["duplicates", "--limit", "1", "--format", "json"],
         ["benchmark", "--iterations", "1", "--format", "json"],
+        ["check", "--format", "json"],
     ],
 )
 def test_read_only_handlers_execute_in_process(argv, xenari, capsys):

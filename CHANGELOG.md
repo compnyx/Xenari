@@ -5,6 +5,13 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.3.1 - 2026-07-21
+
+- Add one machine-readable `check` command covering doctor, translator parity,
+  generated dictionary freshness, and runtime-contract freshness.
+- Raise the enforced coverage floor from 60% to 80% and test Python 3.13 in CI.
+- Update official GitHub actions to their Node 24-backed major versions.
+
 ## 0.3.0 - 2026-07-21
 
 - Recognize explicit infinitive English mappings such as `to arrive` as

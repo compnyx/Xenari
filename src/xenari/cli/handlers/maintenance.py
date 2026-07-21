@@ -12,6 +12,7 @@ from ...services.gap import GapHarvester
 COMMANDS = frozenset(
     {
         "doctor",
+        "check",
         "benchmark",
         "parity",
         "workbench",
@@ -31,12 +32,55 @@ COMMANDS = frozenset(
 )
 
 
+def _release_check_payload(x):
+    """Run the checkout-local checks required before publishing Xenari."""
+    doctor_ok, _ = x.doctor()
+    parity_ok, _ = x.parity()
+    checks = {"doctor": doctor_ok, "parity": parity_ok}
+    errors = {}
+
+    try:
+        generated = json.loads(generated_dictionary_path().read_text(encoding="utf-8"))
+        checks["dictionary_export"] = generated == json.loads(x.db.export_json())
+        if not checks["dictionary_export"]:
+            errors["dictionary_export"] = "generated dictionary is out of date"
+    except (OSError, RuntimeError, ValueError, json.JSONDecodeError) as exc:
+        checks["dictionary_export"] = False
+        errors["dictionary_export"] = str(exc)
+
+    try:
+        check_runtime_export()
+        checks["runtime_export"] = True
+    except (OSError, RuntimeError, ValueError, json.JSONDecodeError) as exc:
+        checks["runtime_export"] = False
+        errors["runtime_export"] = str(exc)
+
+    return {
+        "schema": "xenari.release_check.v1",
+        "ok": all(checks.values()),
+        "checks": checks,
+        "errors": errors,
+    }
+
+
 def handle(args, x):
     """Execute a maintenance, reporting, or export command."""
     if args.command == "doctor":
         ok, report = x.doctor()
         print(report)
         if not ok:
+            sys.exit(1)
+    elif args.command == "check":
+        payload = _release_check_payload(x)
+        if args.format == "json":
+            print(json.dumps(payload, indent=2))
+        else:
+            print("Xenari release check")
+            for name, ok in payload["checks"].items():
+                suffix = "ok" if ok else f"failed: {payload['errors'].get(name, 'check failed')}"
+                print(f"{name}: {suffix}")
+            print("status: " + ("ok" if payload["ok"] else "failed"))
+        if not payload["ok"]:
             sys.exit(1)
     elif args.command == "benchmark":
         iterations = max(args.iterations, 1)

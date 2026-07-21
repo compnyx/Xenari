@@ -12,7 +12,7 @@ COMMANDS = [
     "export", "stats", "audit", "lint", "curate", "meta", "sync", "add",
     "remove", "search", "near", "relations", "propose-root", "coin",
     "categories", "categorize", "duplicates", "map", "parity", "relate",
-    "pos", "pos-set", "pos-backfill", "benchmark",
+    "pos", "pos-set", "pos-backfill", "benchmark", "check",
 ]
 
 TENSES = ("auto", "past", "future", "habitual", "potential", "imperative")
@@ -107,6 +107,9 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark = subparsers.add_parser("benchmark", help="measure representative local operations")
     benchmark.add_argument("--iterations", type=int, default=25)
     benchmark.add_argument("--format", choices=("text", "json"), default="text")
+
+    check = subparsers.add_parser("check", help="run the local release-readiness gate")
+    check.add_argument("--format", choices=("text", "json"), default="text")
 
     review = subparsers.add_parser("review", help="build a read-only QC report")
     _add_limit(review)

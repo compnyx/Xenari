@@ -100,6 +100,7 @@ python3 xenari_tool.py relate brak plonq --relation synonym --dry-run
 python3 xenari_tool.py duplicates --confidence high --kind possible_synonym --limit 20
 python3 xenari_tool.py pos-set ear cromq noun --dry-run
 python3 xenari_tool.py benchmark --iterations 100 --format json
+python3 xenari_tool.py check --format json
 ```
 
 ## Mutation Safety
@@ -117,6 +118,14 @@ python3 xenari_tool.py remove oldroot --dry-run
 ```
 
 After a canon change, regenerate derived data and run the release gates:
+
+```bash
+python3 xenari_tool.py check
+```
+
+The aggregate check verifies canon health, shared translator fixtures, and both
+generated package exports. Site drift/build checks remain in the paired site
+repository because they require its JavaScript toolchain.
 
 ```bash
 python3 xenari_tool.py sync --site
