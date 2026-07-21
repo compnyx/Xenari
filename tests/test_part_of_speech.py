@@ -6,6 +6,7 @@ import sqlite3
 import pytest
 
 from xenari.db import PARTS_OF_SPEECH, XenariDB, normalize_part_of_speech
+from xenari.db.pos import infer_mapping_part_of_speech
 
 
 def _create_legacy_database(path, *, schema_version="legacy"):
@@ -156,6 +157,12 @@ def test_pos_is_mapping_level_and_preserves_polysemy(writable_db):
     )
     assert not ok
     assert "unknown part of speech" in messages[0]
+
+
+def test_explicit_infinitive_mapping_is_a_high_confidence_verb():
+    assert infer_mapping_part_of_speech(
+        "to arrive", "fliq", "to arrive", "Core Vocabulary"
+    ) == ("verb", "English key matches definition infinitive head")
 
 
 def test_canon_pos_is_exposed_by_queries_export_audit_and_doctor(xenari):

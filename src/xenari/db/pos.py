@@ -127,7 +127,7 @@ def infer_mapping_part_of_speech(
 
     infinitive = re.match(r"^to\s+([a-z][a-z'-]*)\b", meaning_clean)
     if infinitive and infinitive.group(1) not in NON_INFINITIVE_TO_HEADS:
-        if key == infinitive.group(1):
+        if key in {infinitive.group(1), f"to {infinitive.group(1)}"}:
             return "verb", "English key matches definition infinitive head"
 
     explicit_labels = (
