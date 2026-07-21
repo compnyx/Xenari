@@ -15,9 +15,15 @@ def handle(args, x):
         print(x.compound(*args.args))
     elif args.command == "speak":
         sent = " ".join(args.args)
+        if not sent:
+            print("Usage: speak <english sentence>")
+            sys.exit(1)
         print(x.speak(sent, args.tense, args.evidential))
     elif args.command == "gloss":
         sent = " ".join(args.args)
+        if not sent:
+            print("Usage: gloss <english sentence>")
+            sys.exit(1)
         print(x.gloss(sent, args.tense, args.evidential))
     elif args.command == "translate":
         sent = " ".join(args.args)

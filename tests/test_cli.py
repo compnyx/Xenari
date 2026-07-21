@@ -153,6 +153,36 @@ def test_help_does_not_open_the_database(monkeypatch, capsys):
     assert "Xenari" in capsys.readouterr().out
 
 
+@pytest.mark.parametrize(
+    ("command", "usage"),
+    [
+        ("compound", "Usage: compound"),
+        ("speak", "Usage: speak"),
+        ("gloss", "Usage: gloss"),
+        ("translate", "Usage: translate"),
+        ("reverse", "Usage: reverse"),
+        ("llm-context", "Usage: llm-context"),
+        ("llm-lint", "Usage: llm-lint"),
+    ],
+)
+def test_translation_commands_reject_missing_input(run_cli, command, usage):
+    result = run_cli(command)
+
+    assert result.returncode == 1
+    assert usage in result.stdout
+
+
+def test_info_exits_nonzero_when_any_requested_root_is_unknown(run_cli):
+    known = run_cli("info", "zrent")
+    assert known.returncode == 0
+    assert "zrent — love" in known.stdout
+
+    mixed = run_cli("info", "zrent", "definitely-not-a-root")
+    assert mixed.returncode == 1
+    assert "zrent — love" in mixed.stdout
+    assert "definitely-not-a-root — unknown root" in mixed.stdout
+
+
 def test_duplicates_cli_is_explicitly_read_only_and_machine_readable(run_cli):
     result = run_cli("duplicates", "--limit", "1", "--format", "json")
 

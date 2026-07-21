@@ -5,6 +5,13 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Recognize explicit infinitive English mappings such as `to arrive` as
+  high-confidence verb senses during conservative POS curation.
+- Make empty `speak` and `gloss` invocations fail with usage guidance instead
+  of emitting misleading untranslated output.
+- Make `info` return a nonzero status when any requested Xenari root is unknown,
+  while still reporting every requested root for batch-friendly diagnostics.
+
 ## 0.2.0 - 2026-07-18
 
 - Reorganized the implementation as an installable `src/xenari` package.

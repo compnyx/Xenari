@@ -41,12 +41,16 @@ def handle(args, x):
         if not args.args:
             print("Usage: info <xenari-root>")
             sys.exit(1)
+        found_all = True
         for root in args.args:
             row = x.db.lookup_root(root)
             # The historical facade normalizes its in-memory meanings to lower
             # case. Keep that public CLI behavior while avoiding the full load.
             meaning = row["meaning"].lower() if row else "unknown root"
+            found_all = found_all and row is not None
             print(f"{root} — {meaning}")
+        if not found_all:
+            sys.exit(1)
     elif args.command == "validate":
         if not args.args:
             print("Usage: validate <root> [root...]")
