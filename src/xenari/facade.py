@@ -143,11 +143,11 @@ class Xenari:
             if root in self.lexicon:
                 self.english_to_root[key] = root
                 self.english_part_of_speech.pop(key, None)
-        self._meaning_synonym_index = {}
+        self._meaning_synonym_index: Dict[str, tuple[str, int]] = {}
         for root, meaning in self.lexicon.items():
             keys = self._meaning_keys(meaning)
             for key in keys:
                 score = 3 if keys and keys[0] == key else 2
-                current = self._meaning_synonym_index.get(key)
-                if current is None or score > current[1]:
+                indexed = self._meaning_synonym_index.get(key)
+                if indexed is None or score > indexed[1]:
                     self._meaning_synonym_index[key] = (root, score)

@@ -38,3 +38,14 @@ def test_candidate_linter_never_crashes_on_marker_sequences(xenari, tokens):
     assert report["schema"] == "xenari.llm_lint.v1"
     assert isinstance(report["ok"], bool)
     assert isinstance(report["errors"], list)
+
+
+@given(st.text(max_size=120))
+@settings(max_examples=75, deadline=None)
+def test_translation_report_is_total_and_honest_about_markers(xenari, source):
+    report = xenari.translation_report(source)
+    assert report["schema"] == "xenari.translation_report.v1"
+    assert report["source"] == source
+    assert report["status"] in {"complete", "partial", "unsupported"}
+    if report["diagnostics"]:
+        assert report["status"] != "complete"

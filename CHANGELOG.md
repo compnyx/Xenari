@@ -5,12 +5,20 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.3.0 - 2026-07-21
+
 - Recognize explicit infinitive English mappings such as `to arrive` as
   high-confidence verb senses during conservative POS curation.
 - Make empty `speak` and `gloss` invocations fail with usage guidance instead
   of emitting misleading untranslated output.
 - Make `info` return a nonzero status when any requested Xenari root is unknown,
   while still reporting every requested root for batch-friendly diagnostics.
+- Add structured translation reports with complete/partial/unsupported status,
+  explicit diagnostics, and JSON CLI output for forward and reverse workflows.
+- Add bounded unknown-POS/proposal queues, duplicate candidate filters, and a
+  representative local benchmark command for curator and performance work.
+- Expand static typing to the public facade/components and add property checks
+  for structured translation-report honesty.
 
 ## 0.2.0 - 2026-07-18
 

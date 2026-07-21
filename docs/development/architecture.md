@@ -52,8 +52,13 @@ cover the full package.
   use legacy browser inference; curator review expands coverage safely.
 - Generic forward translation is strongest for simple, pronoun-led clauses.
   Unsupported or ambiguous structures must remain explicit partial results.
+- `xenari.translation_report.v1` exposes those explicit markers as structured
+  status/confidence diagnostics for API and CLI consumers; it does not elevate
+  the deterministic translator into a semantic authority.
 - Reverse translation is a readable heuristic, not proof of semantic
   round-trip fidelity.
+- `benchmark` records representative local lookup, search, forward, and reverse
+  timings without enforcing hardware-dependent pass/fail thresholds.
 - Changes to translator behavior or mappings must pass both Python parity and
   the paired site drift suite.
 

@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "Canonical lexicon and translation tooling for the Xenari conlang"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "Proprietary"}
+license = "LicenseRef-Proprietary"
 authors = [{name = "Nyx"}]
 dependencies = []
 
@@ -64,7 +64,10 @@ files = [
     "src/xenari/grammar.py",
     "src/xenari/runtime.py",
     "src/xenari/runtime_tables.py",
+    "src/xenari/components.py",
+    "src/xenari/facade.py",
     "src/xenari/translate/models.py",
+    "src/xenari/translate/report.py",
 ]
 
 [tool.coverage.run]

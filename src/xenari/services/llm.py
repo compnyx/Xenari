@@ -1,6 +1,8 @@
 import re
 from typing import Dict, List
 
+from ..translate.report import TranslationReport, build_translation_report
+
 
 class LlmMixin:
     """LLM bridge helpers.
@@ -8,6 +10,18 @@ class LlmMixin:
     These helpers do not call a model. They package canon context for an LLM
     translator and lint model-proposed Xenari for objective canon violations.
     """
+
+    def translation_report(
+        self, text: str, tense: str = "auto", evidential: str = "auto"
+    ) -> TranslationReport:
+        """Return deterministic output with explicit completeness diagnostics."""
+        direction = "xenari_to_english" if self.looks_xenari(text) else "english_to_xenari"
+        output = (
+            self.reverse(text)
+            if direction == "xenari_to_english"
+            else self.speak(text, tense=tense, evidential=evidential)
+        )
+        return build_translation_report(source=text, direction=direction, output=output)
 
     def _llm_particle_roots(self):
         particles = set(self.p.values())

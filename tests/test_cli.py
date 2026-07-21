@@ -192,6 +192,14 @@ def test_duplicates_cli_is_explicitly_read_only_and_machine_readable(run_cli):
     assert payload["count"] >= len(payload["candidates"]) == 1
     assert payload["candidates"][0]["rows"]
 
+    filtered = run_cli(
+        "duplicates", "--confidence", "high", "--kind", "possible_synonym",
+        "--limit", "2", "--format", "json", check=True,
+    )
+    filtered_payload = json.loads(filtered.stdout)
+    assert all(row["confidence"] == "high" for row in filtered_payload["candidates"])
+    assert all(row["kind"] == "possible synonym" for row in filtered_payload["candidates"])
+
 
 def test_part_of_speech_cli_reports_senses_and_previews_without_writing(run_cli):
     before = (REPO / "xenari.db").read_bytes()
@@ -212,6 +220,78 @@ def test_part_of_speech_cli_reports_senses_and_previews_without_writing(run_cli)
     backfill = run_cli("pos-backfill", "--dry-run", check=True)
     assert "POS backfill preview" in backfill.stdout
     assert (REPO / "xenari.db").read_bytes() == before
+
+    unknown = run_cli("pos", "--unknown", "--limit", "2", "--format", "json", check=True)
+    unknown_rows = json.loads(unknown.stdout)
+    assert len(unknown_rows) == 2
+    assert all("english_key" in row and "root" in row for row in unknown_rows)
+
+    proposals = run_cli("pos", "--proposals", "--format", "json", check=True)
+    assert isinstance(json.loads(proposals.stdout), list)
+
+
+def test_structured_translation_reports_and_benchmark_are_machine_readable(run_cli):
+    complete = json.loads(run_cli("speak", "I love you", "--format", "json", check=True).stdout)
+    assert complete["schema"] == "xenari.translation_report.v1"
+    assert complete["status"] == "complete"
+    assert complete["confidence"] == "high"
+
+    partial = json.loads(run_cli("speak", "Run!", "--format", "json", check=True).stdout)
+    assert partial["status"] == "partial"
+    assert partial["diagnostics"] == ["[partial: unsupported imperative: run]"]
+
+    reverse = json.loads(
+        run_cli("reverse", "ra blorq ka neq ta zrent sa xo", "--format", "json", check=True).stdout
+    )
+    assert reverse["direction"] == "xenari_to_english"
+    assert reverse["status"] in {"partial", "unsupported"}
+
+    benchmark = json.loads(
+        run_cli("benchmark", "--iterations", "2", "--format", "json", check=True).stdout
+    )
+    assert benchmark["iterations"] == 2
+    assert set(benchmark["milliseconds_per_operation"]) == {
+        "lookup", "search", "forward", "reverse"
+    }
+    assert all(value >= 0 for value in benchmark["milliseconds_per_operation"].values())
+
+
+@pytest.mark.parametrize(
+    "argv",
+    [
+        ["lookup", "love"],
+        ["inspect", "fatyih", "--limit", "1"],
+        ["info", "zrent"],
+        ["validate", "zrent"],
+        ["categories"],
+        ["search", "dangerous", "--limit", "1"],
+        ["near", "danger", "--limit", "1"],
+        ["relations", "brak"],
+        ["pos", "--format", "json"],
+        ["pos", "--unknown", "--limit", "1"],
+        ["pos", "--proposals", "--format", "json"],
+        ["compound", "red", "dog"],
+        ["speak", "I love you"],
+        ["speak", "Run!", "--format", "json"],
+        ["gloss", "I love you"],
+        ["translate", "I love you"],
+        ["reverse", "ra mex ka neq ta zrent sa xo"],
+        ["llm-context", "I love you"],
+        ["llm-lint", "ra mex ka neq ta zrent sa xo"],
+        ["stats"],
+        ["meta"],
+        ["audit", "1"],
+        ["lint", "1"],
+        ["workbench", "--limit", "1"],
+        ["curate", "--phrases", "--limit", "1"],
+        ["duplicates", "--limit", "1", "--format", "json"],
+        ["benchmark", "--iterations", "1", "--format", "json"],
+    ],
+)
+def test_read_only_handlers_execute_in_process(argv, xenari, capsys):
+    args = build_parser().parse_args(argv)
+    COMMAND_HANDLERS[args.command](args, xenari)
+    assert capsys.readouterr().out.strip()
 
 
 def test_curate_cli_accepts_section_and_limit_flags():

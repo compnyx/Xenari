@@ -105,6 +105,25 @@ def handle(args, x):
         if not ok:
             sys.exit(1)
     elif args.command == "pos":
+        if args.unknown or args.proposals:
+            rows = (
+                x.db.part_of_speech_proposals()[: max(args.limit, 0)]
+                if args.proposals
+                else x.db.unknown_part_of_speech_mappings(limit=args.limit)
+            )
+            if args.format == "json":
+                print(json.dumps(rows, indent=2, ensure_ascii=False))
+            else:
+                label = "Safe POS proposals" if args.proposals else "Unknown POS senses"
+                print(label)
+                for row in rows:
+                    suffix = (
+                        f" -> {row['part_of_speech']} ({row['reason']})"
+                        if args.proposals
+                        else f": {row['meaning']} [{row['category']}]"
+                    )
+                    print(f"{row['english_key']} -> {row['root']}{suffix}")
+            return
         if not args.args:
             report = x.db.part_of_speech_report()
             if args.format == "json":

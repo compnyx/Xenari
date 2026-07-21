@@ -76,6 +76,17 @@ def handle(args, x):
         ))
     elif args.command == "duplicates":
         all_candidates = x.db.relation_candidates()
+        if args.kind:
+            wanted = args.kind.strip().lower().replace("_", " ")
+            all_candidates = [
+                candidate for candidate in all_candidates
+                if candidate["kind"].lower() == wanted
+            ]
+        if args.confidence:
+            all_candidates = [
+                candidate for candidate in all_candidates
+                if candidate["confidence"] == args.confidence
+            ]
         visible = all_candidates[: max(args.limit, 0)]
         if args.format == "json":
             print(

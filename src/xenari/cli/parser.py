@@ -12,7 +12,7 @@ COMMANDS = [
     "export", "stats", "audit", "lint", "curate", "meta", "sync", "add",
     "remove", "search", "near", "relations", "propose-root", "coin",
     "categories", "categorize", "duplicates", "map", "parity", "relate",
-    "pos", "pos-set", "pos-backfill",
+    "pos", "pos-set", "pos-backfill", "benchmark",
 ]
 
 TENSES = ("auto", "past", "future", "habitual", "potential", "imperative")
@@ -104,6 +104,10 @@ def build_parser() -> argparse.ArgumentParser:
     workbench = subparsers.add_parser("workbench", help="show a compact maintenance snapshot")
     _add_limit(workbench, default=20)
 
+    benchmark = subparsers.add_parser("benchmark", help="measure representative local operations")
+    benchmark.add_argument("--iterations", type=int, default=25)
+    benchmark.add_argument("--format", choices=("text", "json"), default="text")
+
     review = subparsers.add_parser("review", help="build a read-only QC report")
     _add_limit(review)
     review.add_argument("--output", default=None, help="optional report output path")
@@ -129,6 +133,8 @@ def build_parser() -> argparse.ArgumentParser:
         command = subparsers.add_parser(name, help=help_text)
         _add_words(command, "TEXT")
         _add_translation_options(command)
+        if name in {"speak", "gloss", "translate"}:
+            command.add_argument("--format", choices=("text", "json"), default="text")
 
     for name, help_text in {
         "reverse": "translate Xenari to English",
@@ -136,6 +142,8 @@ def build_parser() -> argparse.ArgumentParser:
     }.items():
         command = subparsers.add_parser(name, help=help_text)
         _add_words(command, "TEXT")
+        if name == "reverse":
+            command.add_argument("--format", choices=("text", "json"), default="text")
 
     export_json = subparsers.add_parser("export-json", help="print or verify the canonical JSON export")
     export_json.add_argument("--check", action="store_true", help="verify the generated repository export")
@@ -179,6 +187,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_limit(duplicates)
     duplicates.add_argument("--format", choices=("markdown", "json"), default="markdown")
+    duplicates.add_argument("--kind", default=None, help="filter candidate classification")
+    duplicates.add_argument(
+        "--confidence", choices=("high", "medium", "low"), default=None
+    )
 
     sync = subparsers.add_parser("sync", help="refresh generated dictionary exports")
     _add_site_options(sync)
@@ -240,6 +252,8 @@ def build_parser() -> argparse.ArgumentParser:
     _add_words(pos, "PART_OF_SPEECH")
     _add_limit(pos)
     pos.add_argument("--format", choices=("text", "json"), default="text")
+    pos.add_argument("--unknown", action="store_true", help="show still-untyped senses")
+    pos.add_argument("--proposals", action="store_true", help="show safe backfill proposals")
 
     pos_set = subparsers.add_parser(
         "pos-set", help="curate POS for one English-key/root sense"

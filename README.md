@@ -67,6 +67,8 @@ python3 xenari_tool.py near "soft unsteady light"
 python3 xenari_tool.py relations fatyih
 python3 xenari_tool.py categories
 python3 xenari_tool.py pos verb --limit 20
+python3 xenari_tool.py pos --unknown --limit 20
+python3 xenari_tool.py pos --proposals --format json
 ```
 
 Translate and validate model output:
@@ -75,6 +77,7 @@ Translate and validate model output:
 python3 xenari_tool.py speak "I see the alien" --evidential witnessed
 python3 xenari_tool.py gloss "I love you"
 python3 xenari_tool.py reverse "ra mex ka neq ta zrent sa xa"
+python3 xenari_tool.py speak "Run!" --format json
 python3 xenari_tool.py llm-context "If you can't translate it, fix it."
 python3 xenari_tool.py llm-lint "ra mex ka neq ta zrent sa xa"
 ```
@@ -94,8 +97,9 @@ python3 xenari_tool.py categorize --root anhthu
 python3 xenari_tool.py propose-root glimmer "soft unsteady light"
 python3 xenari_tool.py coin glimmer "soft unsteady light" --root zakglu --dry-run
 python3 xenari_tool.py relate brak plonq --relation synonym --dry-run
-python3 xenari_tool.py duplicates --limit 20
+python3 xenari_tool.py duplicates --confidence high --kind possible_synonym --limit 20
 python3 xenari_tool.py pos-set ear cromq noun --dry-run
+python3 xenari_tool.py benchmark --iterations 100 --format json
 ```
 
 ## Mutation Safety
@@ -139,6 +143,11 @@ the versioned Python/browser runtime contract.
 
 The browser and Python translators share the fixture contract. Run
 `npm run test:xenari` in `nyx-site` after translator or fixture changes.
+
+`speak`, `gloss`, `translate`, and `reverse` accept `--format json`. The
+structured report distinguishes complete, partial, and unsupported deterministic
+output by reading explicit translator diagnostics; it is not a claim of semantic
+certainty.
 
 ## Further Documentation
 

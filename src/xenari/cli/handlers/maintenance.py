@@ -2,6 +2,7 @@
 
 import json
 import sys
+import time
 from pathlib import Path
 
 from ...paths import generated_dictionary_path
@@ -11,6 +12,7 @@ from ...services.gap import GapHarvester
 COMMANDS = frozenset(
     {
         "doctor",
+        "benchmark",
         "parity",
         "workbench",
         "review",
@@ -36,6 +38,28 @@ def handle(args, x):
         print(report)
         if not ok:
             sys.exit(1)
+    elif args.command == "benchmark":
+        iterations = max(args.iterations, 1)
+        operations = {
+            "lookup": lambda: x.lookup("love"),
+            "search": lambda: x.db.search("dangerous", limit=5),
+            "forward": lambda: x.speak("I see the alien"),
+            "reverse": lambda: x.reverse("ra vi qex ka neq ta toq sa xo"),
+        }
+        timings = {}
+        for name, operation in operations.items():
+            operation()
+            started = time.perf_counter()
+            for _ in range(iterations):
+                operation()
+            timings[name] = round((time.perf_counter() - started) * 1000 / iterations, 4)
+        payload = {"iterations": iterations, "milliseconds_per_operation": timings}
+        if args.format == "json":
+            print(json.dumps(payload, indent=2))
+        else:
+            print(f"Xenari benchmark ({iterations} iterations)")
+            for name, elapsed in timings.items():
+                print(f"{name}: {elapsed:.4f} ms/op")
     elif args.command == "parity":
         ok, report = x.parity()
         print(report)

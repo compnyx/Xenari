@@ -18,25 +18,39 @@ def handle(args, x):
         if not sent:
             print("Usage: speak <english sentence>")
             sys.exit(1)
-        print(x.speak(sent, args.tense, args.evidential))
+        if args.format == "json":
+            print(json.dumps(x.translation_report(sent, args.tense, args.evidential), indent=2))
+        else:
+            print(x.speak(sent, args.tense, args.evidential))
     elif args.command == "gloss":
         sent = " ".join(args.args)
         if not sent:
             print("Usage: gloss <english sentence>")
             sys.exit(1)
-        print(x.gloss(sent, args.tense, args.evidential))
+        if args.format == "json":
+            report = x.translation_report(sent, args.tense, args.evidential)
+            report["output"] = x.gloss(sent, args.tense, args.evidential)
+            print(json.dumps(report, indent=2))
+        else:
+            print(x.gloss(sent, args.tense, args.evidential))
     elif args.command == "translate":
         sent = " ".join(args.args)
         if not sent:
             print("Usage: translate <english-or-xenari>")
             sys.exit(1)
-        print(x.translate(sent, args.tense, args.evidential))
+        if args.format == "json":
+            print(json.dumps(x.translation_report(sent, args.tense, args.evidential), indent=2))
+        else:
+            print(x.translate(sent, args.tense, args.evidential))
     elif args.command == "reverse":
         sent = " ".join(args.args)
         if not sent:
             print("Usage: reverse <xenari sentence>")
             sys.exit(1)
-        print(x.reverse(sent))
+        if args.format == "json":
+            print(json.dumps(x.translation_report(sent), indent=2))
+        else:
+            print(x.reverse(sent))
     elif args.command == "llm-context":
         sent = " ".join(args.args)
         if not sent:

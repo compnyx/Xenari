@@ -197,6 +197,21 @@ class PartOfSpeechMixin:
             )
         return proposals
 
+    def unknown_part_of_speech_mappings(self, limit: int = 20) -> list[dict[str, object]]:
+        """Return a bounded curator queue of still-untyped mapping senses."""
+        if not self._has_part_of_speech_column():
+            return []
+        rows = self.conn.execute(
+            """SELECT e.english_key, r.root, r.meaning, r.category, e.context_note
+               FROM english_map e
+               JOIN roots r ON r.id = e.root_id
+               WHERE e.part_of_speech IS NULL
+               ORDER BY e.english_key, r.root
+               LIMIT ?""",
+            (max(limit, 0),),
+        ).fetchall()
+        return [dict(row) for row in rows]
+
     def part_of_speech_report(self) -> dict[str, object]:
         """Return sense-level schema, coverage, vocabulary, and validation data."""
         total = self.conn.execute("SELECT COUNT(*) FROM english_map").fetchone()[0]
