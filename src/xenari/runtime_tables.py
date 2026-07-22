@@ -223,6 +223,7 @@ REVERSE_PREFERRED: Mapping[str, str] = _immutable(
         "tulo": "slam",
         "semax": "stop",
         "zont": "break",
+        "xlonqtoq": "window",
         "trekq": "wait",
         "spokta": "elevator",
         "zrump": "door",

@@ -461,6 +461,66 @@ class ForwardFrameMixin:
 
         return None
 
+    def _speak_compositional_content_question(
+        self,
+        normalized: str,
+        evidence_root: str,
+    ):
+        """Render reviewed ``who`` and interrogative ``when`` compositionally.
+
+        Xenari does not need dedicated opaque roots for these meanings:
+        ``qan vi`` asks for an animate identity (who), while ``qan qro`` asks
+        for a time (when).  Both phrases remain bare clause-front
+        interrogatives, matching the existing ``qan``/``qur``/``voq`` rule.
+        """
+        who_subject = re.fullmatch(
+            r"who\s+"
+            r"(broke|built|saw|opened|helped|found|touched|heard|bit|loved|ate)\s+"
+            r"(.+)",
+            normalized,
+        )
+        if who_subject:
+            verb_word, object_text = who_subject.groups()
+            verb_root = self._known_verb_root(verb_word)
+            object_phrase = self._parse_modifier_np(object_text)
+            object_parts = self._render_modifier_np(object_phrase, "ra")
+            if verb_root and object_parts:
+                tense_root = "lo" if verb_word in {
+                    "broke", "built", "saw", "opened", "helped", "found",
+                    "touched", "heard", "bit", "loved", "ate",
+                } else "sa"
+                return " ".join([
+                    "qan", self.p["anim"], *object_parts,
+                    "ta", verb_root, self.p["anim"], tense_root, evidence_root,
+                ])
+
+        when_question = re.fullmatch(
+            r"when\s+(do|does|did|will|would|can|could)\s+"
+            r"(.+?)\s+"
+            r"(open|opens|run|runs|wait|waits|enter|enters|stop|stops|"
+            r"walk|walks|sleep|sleeps|rest|rests|sit|sits|stand|stands|go)",
+            normalized,
+        )
+        if when_question:
+            auxiliary, subject_text, verb_word = when_question.groups()
+            subject_phrase = self._parse_modifier_np(subject_text)
+            subject_parts = self._render_modifier_np(subject_phrase, "ka")
+            verb_root = self._known_verb_root(verb_word)
+            if subject_parts and verb_root:
+                tense_root = {
+                    "did": "lo",
+                    "will": "ve",
+                    "would": "pe",
+                    "can": "pe",
+                    "could": "pe",
+                }.get(auxiliary, "sa")
+                verb_animacy = subject_phrase["animacy"]
+                return " ".join([
+                    "qan", "qro", *subject_parts,
+                    "ta", verb_root, verb_animacy, tense_root, evidence_root,
+                ])
+        return None
+
     def _speak_target_language_imperative(self, normalized: str, evidence_root: str):
         """Render reviewed target-language commands before imperative fallback."""
         imperative_translate = re.fullmatch(

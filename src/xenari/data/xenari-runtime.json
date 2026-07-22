@@ -663,6 +663,7 @@
       "vrin": "whoops",
       "vroq": "yeah",
       "xleq": "open",
+      "xlonqtoq": "window",
       "zaqa": "run",
       "zont": "break",
       "zrenq": "dog",
@@ -714,5 +715,5 @@
   },
   "schema": "xenari-runtime",
   "schema_version": 1,
-  "xenari_version": "0.5.0"
+  "xenari_version": "0.6.0"
 }

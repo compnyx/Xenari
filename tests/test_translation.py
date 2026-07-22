@@ -235,7 +235,7 @@ def test_shared_clause_corpus_is_bounded_shared_and_readable(xenari):
         "The alien that the woman said she saw ran.", evidential="assumed"
     )
 
-    assert initial_when.startswith("[partial: unsupported WH question 'when':")
+    assert initial_when == "qan qro ka nu zrump ta xleq nu sa xo"
     assert temporal_when.startswith("su cruv ")
     assert unsupported_relative.startswith("qex [partial: unsupported relative clause:")
     assert all("kam" not in case["xenari"].split() for case in forward)
@@ -486,16 +486,20 @@ def test_conditional_state_predicates_keep_the_copula_frame(xenari):
 def test_content_questions_and_safe_noun_subjects_keep_their_roles(xenari):
     why = xenari.speak("Why did the elevator stop?", evidential="assumed")
     where = xenari.speak("Where will you go?", evidential="assumed")
+    who = xenari.speak("Who broke the red window?", evidential="assumed")
+    when = xenari.speak("When does the door open?", evidential="assumed")
 
     assert why == "voq ka nu spokta ta semax nu lo xo"
     assert where == "qur ka mex ta qeng ve xo"
+    assert who == "qan vi ra nu xlonqtoq rlis ta zont vi lo xo"
+    assert when == "qan qro ka nu zrump ta xleq nu sa xo"
     assert " va" not in why
     assert " va" not in where
+    assert " va" not in who
+    assert " va" not in when
     assert xenari.speak("Have you seen my hat?", evidential="assumed").endswith(" va")
-    assert xenari.speak("Who broke the red window?", evidential="assumed") == (
-        "[untranslated: who broke the red window; unsupported grammar: "
-        "WH subject 'who' lacks a canon interrogative]"
-    )
+    assert xenari.reverse(who) == "who broke red window?"
+    assert xenari.reverse(when) == "when does door open?"
     assert xenari.speak("the elevator stopped", evidential="assumed") == (
         "ka nu spokta ta semax nu lo xo"
     )

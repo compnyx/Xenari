@@ -158,7 +158,7 @@
     },
     {
       "english": "Who broke the red window?",
-      "xenari": "[untranslated: who broke the red window; unsupported grammar: WH subject 'who' lacks a canon interrogative]"
+      "xenari": "qan vi ra nu xlonqtoq rlis ta zont vi lo xo"
     },
     {
       "english": "Wait—what?",
@@ -592,7 +592,7 @@
     },
     {
       "english": "When does the door open?",
-      "xenari": "[partial: unsupported WH question 'when': when does the door open]",
+      "xenari": "qan qro ka nu zrump ta xleq nu sa xo",
       "loop": 3,
       "family": "temporal-wh",
       "stress": true
@@ -950,6 +950,14 @@
     {
       "xenari": "qur ka mex ta qeng ve xo",
       "english": "where you will go?"
+    },
+    {
+      "xenari": "qan vi ra nu xlonqtoq rlis ta zont vi lo xo",
+      "english": "who broke red window?"
+    },
+    {
+      "xenari": "qan qro ka nu zrump ta xleq nu sa xo",
+      "english": "when does door open?"
     },
     {
       "xenari": "ka nu zrump ta tulo nu lo xo",

@@ -121,6 +121,12 @@ class TranslatorMixin(
         casual_phrase = self._casual_phrase(english)
         if casual_phrase is not None:
             return TranslationMatch("casual-phrase", casual_phrase)
+        content_question = self._speak_compositional_content_question(
+            normalized,
+            evidence_root,
+        )
+        if content_question is not None:
+            return TranslationMatch("compositional-content-question", content_question)
         clause_frame = self._speak_clause_frame(english, evidence_root)
         if clause_frame is not None:
             return TranslationMatch("clause-frame", clause_frame)

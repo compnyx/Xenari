@@ -63,6 +63,8 @@ def test_llm_candidate_linter_understands_structured_clause_boundaries(xenari):
         "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo",
         "su troz ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa sa xo",
         "su truq ka nu zrump ta xleq nu sa xo ti ka neq ta trekq sa xo",
+        "qan vi ra nu xlonqtoq rlis ta zont vi lo xo",
+        "qan qro ka nu zrump ta xleq nu sa xo",
     )
     for candidate in candidates:
         lint = xenari.lint_xenari_candidate(candidate)
@@ -73,6 +75,10 @@ def test_llm_candidate_linter_understands_structured_clause_boundaries(xenari):
     )
     assert unbalanced["ok"] is False
     assert any("unbalanced structural boundaries" in error for error in unbalanced["errors"])
+
+    malformed_gap = xenari.lint_xenari_candidate("qan nu ta zont nu lo xo")
+    assert malformed_gap["ok"] is False
+    assert any("missing ka subject marker" in error for error in malformed_gap["errors"])
 
 def test_llm_cli_context_and_lint_json_contracts(run_cli):
     context = run_cli("llm-context", "I love you", check=True)

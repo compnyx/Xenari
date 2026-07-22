@@ -5,6 +5,12 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.6.0 - 2026-07-22
+
+- Add compositional content questions: `qan vi` for "who" and `qan qro` for "when".
+- Support bounded subject-gap `who` questions and temporal questions across Python, browser, and reverse translation.
+- Improve reverse question inversion and align the preferred reverse mapping for `window`.
+
 ## 0.5.0 - 2026-07-22
 
 - Add reviewed finite causal and concessive subordination with

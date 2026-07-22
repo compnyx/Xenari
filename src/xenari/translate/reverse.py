@@ -35,7 +35,37 @@ class ReverseTranslationMixin:
             "hat belong to me": "hat belongs to me",
             "person run": "person runs",
         }
-        return replacements.get(text, text)
+        polished = replacements.get(text, text)
+        return re.sub(r"\bwindow red\b", "red window", polished)
+
+    @staticmethod
+    def _invert_when_question(statement: str, tense: str) -> str:
+        """Turn one bounded intransitive statement into an English WH clause."""
+        if tense in {"ve", "pe"}:
+            auxiliary = "will" if tense == "ve" else "could"
+            match = re.fullmatch(rf"(.+?) {auxiliary} (.+)", statement)
+            if match:
+                subject, predicate = match.groups()
+                return f"{auxiliary} {subject} {predicate}"
+        subject, separator, verb = statement.rpartition(" ")
+        if not separator:
+            return statement
+        if tense == "lo":
+            past_to_base = {
+                "opened": "open", "ran": "run", "waited": "wait",
+                "entered": "enter", "stopped": "stop", "walked": "walk",
+                "slept": "sleep", "rested": "rest", "sat": "sit",
+                "stood": "stand", "went": "go",
+            }
+            return f"did {subject} {past_to_base.get(verb, verb)}"
+        present_to_base = {
+            "opens": "open", "runs": "run", "waits": "wait",
+            "enters": "enter", "stops": "stop", "walks": "walk",
+            "sleeps": "sleep", "rests": "rest", "sits": "sit",
+            "stands": "stand", "goes": "go",
+        }
+        auxiliary = "do" if subject in {"I", "you", "we", "they"} else "does"
+        return f"{auxiliary} {subject} {present_to_base.get(verb, verb)}"
 
     def _reverse_head_gloss(self, root: str) -> str:
         if root in REVERSE_PREFERRED:
@@ -109,6 +139,26 @@ class ReverseTranslationMixin:
     def _reverse_fast_path(self, request: ReverseRequest) -> TranslationMatch | None:
         """Resolve exact, numeric, command, and structured reverse frames."""
         clean = request.clean
+        who_question = re.fullmatch(r"qan vi (.+)", clean)
+        if who_question and " ta " in who_question.group(1):
+            body = who_question.group(1)
+            prefix, suffix = body.split(" ta ", 1)
+            english = self.reverse(f"{prefix} ka leq ta {suffix}")
+            english = re.sub(r"^he/she/it\s+", "", english)
+            english = self._polish_structured_english(english)
+            return TranslationMatch("compositional-who-question", f"who {english}?")
+
+        when_question = re.fullmatch(r"qan qro (.+)", clean)
+        if when_question and " ta " in when_question.group(1):
+            body = when_question.group(1)
+            english = self._polish_structured_english(self.reverse(body))
+            tense = next(
+                (token for token in body.split() if token in {"sa", "lo", "ve", "pe"}),
+                "sa",
+            )
+            inverted = self._invert_when_question(english, tense)
+            return TranslationMatch("compositional-when-question", f"when {inverted}?")
+
         exact_reverse = {
             "stux": "ok",
             "naxq": "yes",

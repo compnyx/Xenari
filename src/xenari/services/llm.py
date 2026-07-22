@@ -221,6 +221,9 @@ class LlmMixin:
 
                 frame["type"] = "finite_or_imperative"
                 ta_index = clause_tokens.index("ta")
+                animate_interrogative_gap = clause_tokens[:2] == ["qan", "vi"]
+                if animate_interrogative_gap:
+                    frame["type"] = "content_question_subject_gap"
                 if clause_tokens.count("ta") > 1:
                     errors.append(f"clause {index}: repeated verb marker ta")
                 if "ka" in clause_tokens and clause_tokens.index("ka") > ta_index:
@@ -234,6 +237,7 @@ class LlmMixin:
                     mode != "relative"
                     and "ka" not in clause_tokens
                     and "ko" not in clause_tokens[ta_index + 1:]
+                    and not animate_interrogative_gap
                 ):
                     errors.append(
                         f"clause {index}: finite non-imperative frame missing ka subject marker"

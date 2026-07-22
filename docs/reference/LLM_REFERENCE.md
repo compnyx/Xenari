@@ -65,6 +65,31 @@ I love you.
 Do not place animacy particles before pronouns, and do not add verb animacy
 agreement when the subject is a pronoun.
 
+## Content Questions
+
+Content interrogatives stay bare at clause front and do not take `va`.
+
+- `qan` = what / which
+- `qur` = where
+- `cil` = how
+- `voq` = why
+- `qan vi` = who, literally “what animate being”
+- `qan qro` = when, literally “what time”
+
+In a subject-gap `who` question, `qan vi` supplies the missing animate subject;
+do not add a second `ka` subject. Objects retain ordinary OSV marking.
+
+```text
+qan vi ra nu xlonqtoq rlis ta zont vi lo xo
+Who broke the red window?
+
+qan qro ka nu zrump ta xleq nu sa xo
+When does the door open?
+```
+
+This interrogative use of `qan qro` is distinct from temporal subordination
+with `su cruv ... ti ...` (“when/while ...”).
+
 ## Numbers And Math
 
 Xenari counts in base 6.
