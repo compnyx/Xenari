@@ -5,6 +5,17 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.5.0 - 2026-07-22
+
+- Add reviewed finite causal and concessive subordination with
+  `su troz ... ti ...` and `su truq ... ti ...`, accepting both initial and
+  trailing English subordinate clauses.
+- Preserve copular state predicates inside conditionals instead of degrading
+  them to partial output.
+- Preserve plural pronouns, nouns, and possessors during reverse translation.
+- Keep Python, browser, shared fixtures, LLM linting, and public grammar
+  references aligned on the expanded clause frames.
+
 ## 0.4.0 - 2026-07-21
 
 - Expand the reviewed subjectless imperative grammar to run, hide, help,

@@ -61,6 +61,8 @@ def test_llm_candidate_linter_understands_structured_clause_boundaries(xenari):
         "ra nu zrump ka neq ta xleq lo xo frex ra mex ka neq ta pegzos",
         "ka vi habdazluc su zre ra nu zrump ta zont vi lo xo ti ta zaqa vi sa xo",
         "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo",
+        "su troz ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa sa xo",
+        "su truq ka nu zrump ta xleq nu sa xo ti ka neq ta trekq sa xo",
     )
     for candidate in candidates:
         lint = xenari.lint_xenari_candidate(candidate)

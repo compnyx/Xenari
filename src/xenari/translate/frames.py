@@ -146,6 +146,9 @@ class ForwardFrameMixin:
         modifier_clause = self._parse_modifier_clause(clean, evidence_root)
         if modifier_clause:
             return modifier_clause
+        copular_quality = self._parse_copular_quality_clause(clean, evidence_root)
+        if copular_quality:
+            return copular_quality
         match = re.fullmatch(
             r"(?:the\s+|an?\s+)?([a-z][a-z'-]*)\s+"
             r"(?:(will|can|could|would|may|might|should)\s+)?"
@@ -221,6 +224,41 @@ class ForwardFrameMixin:
                     reason += " (missing predicate)"
                 return self._partial_frame(main, reason)
             return self._partial_frame("", f"unsupported conditional clause: {clean}")
+
+        # Canon causal/concessive subordination: su MARKER [subordinate] ti [main].
+        initial_relation = re.fullmatch(
+            r"(because|although|even though)\s+(.+?),\s*(.+)", clean,
+        )
+        if initial_relation:
+            relation, subordinate_text, main_text = initial_relation.groups()
+            subordinate = self._parse_reviewed_clause(subordinate_text, evidence_root)
+            main = self._parse_reviewed_clause(main_text, evidence_root)
+            marker_root = "troz" if relation == "because" else "truq"
+            if subordinate and main:
+                return f"su {marker_root} {subordinate} ti {main}"
+            if main:
+                return self._partial_frame(
+                    main,
+                    f"unsupported {relation} clause: {subordinate_text}",
+                )
+            return self._partial_frame("", f"unsupported subordinate clause: {clean}")
+
+        trailing_relation = re.fullmatch(
+            r"(.+?)\s+(because|although|even though)\s+(.+)", clean,
+        )
+        if trailing_relation:
+            main_text, relation, subordinate_text = trailing_relation.groups()
+            main = self._parse_reviewed_clause(main_text, evidence_root)
+            subordinate = self._parse_reviewed_clause(subordinate_text, evidence_root)
+            marker_root = "troz" if relation == "because" else "truq"
+            if subordinate and main:
+                return f"su {marker_root} {subordinate} ti {main}"
+            if main:
+                return self._partial_frame(
+                    main,
+                    f"unsupported {relation} clause: {subordinate_text}",
+                )
+            return self._partial_frame("", f"unsupported subordinate clause: {clean}")
 
         # Initial temporal subordination is distinct from an initial WH query.
         temporal = re.fullmatch(r"(when|once|after|before|while)\s+(.+?),\s*(.+)", clean)

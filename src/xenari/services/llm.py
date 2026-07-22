@@ -76,7 +76,9 @@ class LlmMixin:
                     + self._llm_clause_regions(tokens[boundary + 1:], mode)
                 )
 
-        if len(tokens) > 1 and tokens[0] == "su" and tokens[1] in {"cruv", "prexq", "vrem"}:
+        if len(tokens) > 1 and tokens[0] == "su" and tokens[1] in {
+            "cruv", "prexq", "vrem", "troz", "truq",
+        }:
             boundary = self._llm_matching_ti(tokens, 0)
             if boundary >= 0:
                 return (

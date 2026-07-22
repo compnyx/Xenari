@@ -520,7 +520,7 @@
     },
     {
       "english": "If the door is open, we can enter.",
-      "xenari": "ka neq ha ta logi pe xo [partial: unsupported condition: if the door is open]",
+      "xenari": "pevoq ra xleq ka nu zrump ta zux nu sa xo ti ka neq ha ta logi pe xo",
       "loop": 3,
       "family": "conditional"
     },
@@ -529,6 +529,30 @@
       "xenari": "ra mex ka neq ta pegzos pe xo [partial: unsupported conditional clause: if i could (missing predicate)]",
       "loop": 3,
       "family": "conditional"
+    },
+    {
+      "english": "Because I see the alien, I run.",
+      "xenari": "su troz ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa sa xo",
+      "loop": 3,
+      "family": "causal"
+    },
+    {
+      "english": "I run because I see the alien.",
+      "xenari": "su troz ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa sa xo",
+      "loop": 3,
+      "family": "causal"
+    },
+    {
+      "english": "Although the door opens, I wait.",
+      "xenari": "su truq ka nu zrump ta xleq nu sa xo ti ka neq ta trekq sa xo",
+      "loop": 3,
+      "family": "concessive"
+    },
+    {
+      "english": "I wait even though the door opens.",
+      "xenari": "su truq ka nu zrump ta xleq nu sa xo ti ka neq ta trekq sa xo",
+      "loop": 3,
+      "family": "concessive"
     },
     {
       "english": "The woman who built the translator loves you.",
@@ -956,6 +980,42 @@
       "english": "if I see alien, then I will run",
       "loop": 3,
       "family": "conditional"
+    },
+    {
+      "xenari": "pevoq ra xleq ka nu zrump ta zux nu sa xo ti ka neq ha ta logi pe xo",
+      "english": "if door is open, then we could enter",
+      "loop": 3,
+      "family": "conditional"
+    },
+    {
+      "xenari": "su troz ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa sa xo",
+      "english": "because I see alien, I run",
+      "loop": 3,
+      "family": "causal"
+    },
+    {
+      "xenari": "su truq ka nu zrump ta xleq nu sa xo ti ka neq ta trekq sa xo",
+      "english": "although door opens, I wait",
+      "loop": 3,
+      "family": "concessive"
+    },
+    {
+      "xenari": "ka neq ha ta zaqa sa xo",
+      "english": "we run",
+      "loop": 3,
+      "family": "plural"
+    },
+    {
+      "xenari": "ra neq ha ka mex ta toq sa xo",
+      "english": "you see us",
+      "loop": 3,
+      "family": "plural"
+    },
+    {
+      "xenari": "ka vi zrenq ha ta zaqa vi sa xo",
+      "english": "dogs run",
+      "loop": 3,
+      "family": "plural"
     },
     {
       "xenari": "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo",

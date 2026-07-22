@@ -83,7 +83,10 @@ class EnglishPreprocessingMixin:
                 sentence += "?"
             # Initial condition/temporal clauses need their comma boundary in
             # order to build one canon frame instead of two unrelated clauses.
-            if re.match(r"^(?:if|when|once|after|before|while)\b", sentence) and "," in sentence:
+            if re.match(
+                r"^(?:if|when|once|after|before|while|because|although|even though)\b",
+                sentence,
+            ) and "," in sentence:
                 comma_parts = [sentence]
             else:
                 comma_parts = [
@@ -95,10 +98,13 @@ class EnglishPreprocessingMixin:
                 if first in connector_words and rest:
                     connector, comma_part = first, rest.strip()
 
-                if re.match(r"^(?:if|when|once|after|before|while)\b.+,", comma_part):
+                if re.match(
+                    r"^(?:if|when|once|after|before|while|because|although|even though)\b.+,",
+                    comma_part,
+                ):
                     clauses.append((comma_part, connector))
                     continue
-                if " if " in comma_part:
+                if re.search(r"\s(?:if|because|although|even though)\s", comma_part):
                     clauses.append((comma_part, connector))
                     continue
 

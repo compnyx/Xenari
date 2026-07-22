@@ -461,12 +461,27 @@ def test_reverse_reads_structured_clause_boundaries(xenari):
         "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa ve xo"
     ) == "if I see alien, then I will run"
     assert xenari.reverse(
+        "pevoq ra xleq ka nu zrump ta zux nu sa xo ti ka neq ha ta logi pe xo"
+    ) == "if door is open, then we could enter"
+    assert xenari.reverse(
         "su cruv ka nu zrump ta xleq nu sa xo ti ka neq ta zaqa sa xo"
     ) == "when door opens, I run"
     assert xenari.reverse(
         "ka vi habdazluc su zre ra nu zrump ta zont vi lo xo "
         "ti ta zaqa vi sa xo"
     ) == "person who broke door runs"
+
+
+def test_conditional_state_predicates_keep_the_copula_frame(xenari):
+    assert xenari.speak(
+        "If the door is open, we can enter.", evidential="assumed"
+    ) == "pevoq ra xleq ka nu zrump ta zux nu sa xo ti ka neq ha ta logi pe xo"
+    assert xenari.speak(
+        "If the door is not open, we can wait.", evidential="assumed"
+    ) == (
+        "pevoq ra xleq ka nu zrump ta zux nu sa xo ngu "
+        "ti ka neq ha ta trekq pe xo"
+    )
 
 def test_content_questions_and_safe_noun_subjects_keep_their_roles(xenari):
     why = xenari.speak("Why did the elevator stop?", evidential="assumed")

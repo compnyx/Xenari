@@ -7,6 +7,28 @@ from .models import ReverseClause, ReverseRequest, ReverseSegments, TranslationM
 
 class ReverseTranslationMixin:
     @staticmethod
+    def _reverse_plural_form(root: str, text: str, role: str) -> str:
+        """Render ``ha`` on the noun/pronoun it follows instead of dropping it."""
+        if root == "neq":
+            return {"subj": "we", "obj": "us", "poss": "our"}.get(role, "we")
+        if root == "mex":
+            return {"subj": "you", "obj": "you", "poss": "your"}.get(role, "you")
+        if root in {"leq", "req", "zeq"}:
+            return {"subj": "they", "obj": "them", "poss": "their"}.get(role, "they")
+        if root == "seq":
+            return "strangers'" if role == "poss" else "strangers"
+        if text == "person":
+            return "people's" if role == "poss" else "people"
+        if role == "poss":
+            base = ReverseTranslationMixin._reverse_plural_form(root, text, "plain")
+            return base if base.endswith("'") else f"{base}'"
+        if text.endswith(("s", "x", "z", "ch", "sh")):
+            return f"{text}es"
+        if len(text) > 1 and text.endswith("y") and text[-2] not in "aeiou":
+            return f"{text[:-1]}ies"
+        return f"{text}s"
+
+    @staticmethod
     def _polish_structured_english(text: str) -> str:
         replacements = {
             "door open": "door opens",
@@ -31,10 +53,18 @@ class ReverseTranslationMixin:
             main_en = self._polish_structured_english(self.reverse(main))
             return f"if {condition_en}, then {main_en}"
 
-        temporal = re.fullmatch(r"su (cruv|prexq|vrem) (.+) ti (.+)", clean)
-        if temporal:
-            marker, subordinate, main = temporal.groups()
-            marker_en = {"cruv": "when", "prexq": "before", "vrem": "after"}[marker]
+        subordinate_frame = re.fullmatch(
+            r"su (cruv|prexq|vrem|troz|truq) (.+) ti (.+)", clean,
+        )
+        if subordinate_frame:
+            marker, subordinate, main = subordinate_frame.groups()
+            marker_en = {
+                "cruv": "when",
+                "prexq": "before",
+                "vrem": "after",
+                "troz": "because",
+                "truq": "although",
+            }[marker]
             subordinate_en = self._polish_structured_english(self.reverse(subordinate))
             main_en = self._polish_structured_english(self.reverse(main))
             return f"{marker_en} {subordinate_en}, {main_en}"
@@ -293,19 +323,42 @@ class ReverseTranslationMixin:
             possessor = None
             while i < len(tokens) and tokens[i] not in case_particles:
                 tok = tokens[i]
+                if tok == "ha":
+                    if pieces:
+                        pieces[0]["plural"] = True
+                        pieces[0]["text"] = self._reverse_plural_form(
+                            pieces[0]["root"], pieces[0]["text"], role,
+                        )
+                    i += 1
+                    continue
                 if tok in skip_particles:
                     i += 1
                     continue
                 if tok == "po":
                     possessor = pieces.pop() if pieces else None
+                    if possessor:
+                        possessor_text = root_english(possessor["root"], role="poss")
+                        possessor["text"] = (
+                            self._reverse_plural_form(
+                                possessor["root"], possessor_text, "poss",
+                            )
+                            if possessor.get("plural") else possessor_text
+                        )
                     i += 1
                     continue
-                pieces.append({"root": tok, "text": root_english(tok, role=role)})
+                pieces.append({
+                    "root": tok,
+                    "text": root_english(tok, role=role),
+                    "plural": False,
+                })
                 i += 1
             words = [piece["text"] for piece in pieces]
             if possessor and words:
-                poss_text = root_english(possessor["root"], role="poss")
-                if poss_text == possessor["text"] and not poss_text.endswith("'s"):
+                poss_text = possessor["text"]
+                if (
+                    possessor["root"] not in REVERSE_PRONOUNS
+                    and not poss_text.endswith(("'", "'s"))
+                ):
                     poss_text = f"{poss_text}'s"
                 return f"{poss_text} {' '.join(words)}", i
             return " ".join(words), i

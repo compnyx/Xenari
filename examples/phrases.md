@@ -39,6 +39,18 @@ gral troz ra zra ka mex ta pyoquqab lo xo
 thanks for solving that. / literally: thanks because you solved that.
 ```
 
+Finite causal and concessive clauses use the reviewed `su ... ti` frame:
+
+```text
+su troz ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa sa xo
+Because I see the alien, I run.
+```
+
+```text
+su truq ka nu zrump ta xleq nu sa xo ti ka neq ta trekq sa xo
+Although the door opens, I wait.
+```
+
 ```text
 ca xang
 6 / base-6 10.

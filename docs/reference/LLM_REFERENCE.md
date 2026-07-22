@@ -238,8 +238,22 @@ The wind blows my hat away.
 - `kex` = but / contrastive
 - `xen` = and
 - `noq` = or
+- `troz` = because / causal
 - `truq` = concessive, even though / despite
 - `su` ... `ti` = subordinate clause frame
+
+Reviewed finite subordination places the relation immediately after `su`,
+then closes the subordinate clause with `ti` before the main clause.
+
+```text
+su troz ra vi qex ka neq ta toq sa xo ti ka neq ta zaqa sa xo
+Because I see the alien, I run.
+```
+
+```text
+su truq ka nu zrump ta xleq nu sa xo ti ka neq ta trekq sa xo
+Although the door opens, I wait.
+```
 
 ## Translation Guidance
 
