@@ -8521,6 +8521,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "adversary",
       "enemy"
     ]
   },
@@ -18291,6 +18292,19 @@
     ]
   },
   {
+    "id": 9510,
+    "root": "kruzca",
+    "meaning": "a ring of light around a head",
+    "category": "Elements & Nature",
+    "source": "tool",
+    "timestamp": "2026-07-24 01:34",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "around",
+      "halo"
+    ]
+  },
+  {
     "id": 357,
     "root": "kud",
     "meaning": "midnight",
@@ -19599,6 +19613,19 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from wuhurni; validator issues: invalid character 'w' at position 0",
     "english_keys": [
       "thud"
+    ]
+  },
+  {
+    "id": 9513,
+    "root": "zamfra",
+    "meaning": "a light silvery metal",
+    "category": "Elements & Nature",
+    "source": "tool",
+    "timestamp": "2026-07-24 01:35",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "aluminum",
+      "silvery"
     ]
   },
   {
@@ -71775,6 +71802,19 @@
     ]
   },
   {
+    "id": 9512,
+    "root": "bradra",
+    "meaning": "a guard who watches a place",
+    "category": "Military & Tactical",
+    "source": "tool",
+    "timestamp": "2026-07-24 01:35",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "sentry",
+      "who"
+    ]
+  },
+  {
     "id": 9467,
     "root": "cexu",
     "meaning": "siege, surrounding pressure against a defended place",
@@ -73797,6 +73837,7 @@
     "timestamp": "2026-07-08T20:32:45.935848+00:00",
     "notes": null,
     "english_keys": [
+      "atom",
       "atoms"
     ]
   },
@@ -79149,6 +79190,7 @@
     "timestamp": "2026-07-08T20:32:45.935848+00:00",
     "notes": null,
     "english_keys": [
+      "uniform",
       "uniforms"
     ]
   },
@@ -81720,6 +81762,7 @@
     "timestamp": "2026-07-08T20:30:33.136987+00:00",
     "notes": "QC repair 2026-07-09T18:08:23: renamed from zajsqe; validator issues: invalid character 'j' at position 2",
     "english_keys": [
+      "toward",
       "towards"
     ]
   },
@@ -84256,6 +84299,19 @@
     "english_keys": [
       "disgusting",
       "gross"
+    ]
+  },
+  {
+    "id": 9511,
+    "root": "cunu",
+    "meaning": "wild and untamed",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-07-24 01:35",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "feral",
+      "untamed"
     ]
   },
   {
@@ -88139,6 +88195,7 @@
     "timestamp": "2026-07-10T10:20",
     "notes": "Coined from 2026-07-10 five-script gap harvest; selected by reusable semantic value.",
     "english_keys": [
+      "electric",
       "electric charged",
       "electrified"
     ]
@@ -91361,6 +91418,19 @@
     "notes": null,
     "english_keys": [
       "booty call"
+    ]
+  },
+  {
+    "id": 9509,
+    "root": "pompko",
+    "meaning": "a large group of people",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-07-24 01:34",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "crowd",
+      "of"
     ]
   },
   {
@@ -99619,8 +99689,12 @@
     "timestamp": "2026-07-08T20:41:23.912157+00:00",
     "notes": null,
     "english_keys": [
+      "target",
       "targets"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "target": "noun"
+    }
   },
   {
     "id": 4302,
@@ -100457,6 +100531,21 @@
     "notes": null,
     "english_keys": [
       "chute"
+    ]
+  },
+  {
+    "id": 9508,
+    "root": "faqzra",
+    "meaning": "in opposition to or in contact with",
+    "category": "Uncategorized",
+    "source": "tool",
+    "timestamp": "2026-07-24 01:30",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "against",
+      "in",
+      "opposition",
+      "to"
     ]
   },
   {

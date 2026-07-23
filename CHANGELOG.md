@@ -5,6 +5,8 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Curated the first Wolverine screenplay harvest batch: added roots for against, crowd, halo, feral, sentry, and aluminum; added singular/base mappings for target, toward, electric, uniform, atom, and adversary.
+
 ## 0.6.0 - 2026-07-22
 
 - Add compositional content questions: `qan vi` for "who" and `qan qro` for "when".
