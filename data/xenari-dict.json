@@ -1398,7 +1398,8 @@
     "timestamp": "2026-08-01 09:01",
     "notes": "coined via xenari_tool coin; wolverine batch 11",
     "english_keys": [
-      "gnashes"
+      "gnashes",
+      "teeth-gnashing"
     ]
   },
   {
@@ -3464,6 +3465,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 8",
     "english_keys": [
       "scrutinizing"
+    ]
+  },
+  {
+    "id": 10017,
+    "root": "xunqsp",
+    "meaning": "painting with-spray",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "spray-painting"
     ]
   },
   {
@@ -9874,6 +9887,18 @@
     ]
   },
   {
+    "id": 10043,
+    "root": "pelma",
+    "meaning": "part eagle-form",
+    "category": "Beings & Creatures",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "half-eagle"
+    ]
+  },
+  {
     "id": 622,
     "root": "plenf",
     "meaning": "barnacle, clinging-thing",
@@ -10898,6 +10923,18 @@
     "english_keys": [
       "anemone",
       "sea-flower"
+    ]
+  },
+  {
+    "id": 10033,
+    "root": "zlofle",
+    "meaning": "animal eating-leaves",
+    "category": "Beings & Creatures",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "leaf-eater"
     ]
   },
   {
@@ -12502,6 +12539,18 @@
     "notes": null,
     "english_keys": [
       "collarbone"
+    ]
+  },
+  {
+    "id": 10013,
+    "root": "pritto",
+    "meaning": "having three-toes",
+    "category": "Body Parts",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "three-toed"
     ]
   },
   {
@@ -21309,6 +21358,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 4",
     "english_keys": [
       "amalgam"
+    ]
+  },
+  {
+    "id": 10008,
+    "root": "xrofst",
+    "meaning": "stain-resistant steel",
+    "category": "Elements & Nature",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "stainless-steel"
     ]
   },
   {
@@ -41701,7 +41762,8 @@
     "timestamp": "2026-07-08T21:13:23.267109+00:00",
     "notes": null,
     "english_keys": [
-      "health"
+      "health",
+      "well-being"
     ]
   },
   {
@@ -71400,6 +71462,18 @@
     ]
   },
   {
+    "id": 10031,
+    "root": "clexmak",
+    "meaning": "pretend fantasy",
+    "category": "Mental & Abstract",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "make-believe"
+    ]
+  },
+  {
     "id": 1038,
     "root": "clog",
     "meaning": "memory trace",
@@ -72498,6 +72572,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 7",
     "english_keys": [
       "remorse"
+    ]
+  },
+  {
+    "id": 10020,
+    "root": "nudslf",
+    "meaning": "hatred of-self",
+    "category": "Mental & Abstract",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "self-loathing"
     ]
   },
   {
@@ -74410,6 +74496,7 @@
     "notes": "coined via xenari_tool coin; wolverine batch 3",
     "english_keys": [
       "stasis",
+      "still-standing",
       "unmoving"
     ]
   },
@@ -74594,7 +74681,8 @@
     "timestamp": "2026-08-01 08:50",
     "notes": "coined via xenari_tool coin; wolverine batch 5",
     "english_keys": [
-      "strategic"
+      "strategic",
+      "strategically-placed"
     ]
   },
   {
@@ -74802,6 +74890,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 14",
     "english_keys": [
       "berserker"
+    ]
+  },
+  {
+    "id": 10035,
+    "root": "zrumhi",
+    "meaning": "strongly detonating",
+    "category": "Military & Tactical",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "high-explosive"
     ]
   },
   {
@@ -83326,6 +83426,30 @@
     ]
   },
   {
+    "id": 10047,
+    "root": "pelca",
+    "meaning": "things between-states",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "in-betweens"
+    ]
+  },
+  {
+    "id": 10039,
+    "root": "pelva",
+    "meaning": "window with-view",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "window-overlooking"
+    ]
+  },
+  {
     "id": 9516,
     "root": "plaxu",
     "meaning": "lateral adjacency",
@@ -83488,6 +83612,18 @@
     ]
   },
   {
+    "id": 10018,
+    "root": "qrotspl",
+    "meaning": "tiny time-slice",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "split-second"
+    ]
+  },
+  {
     "id": 9669,
     "root": "qrotstra",
     "meaning": "immediate without-delay",
@@ -83532,6 +83668,7 @@
     "timestamp": "2026-08-01 08:58",
     "notes": "coined via xenari_tool coin; wolverine batch 9",
     "english_keys": [
+      "mid-air",
       "midway"
     ]
   },
@@ -83571,6 +83708,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 9",
     "english_keys": [
       "northward"
+    ]
+  },
+  {
+    "id": 10027,
+    "root": "quroff",
+    "meaning": "away from-roads",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "off-road"
     ]
   },
   {
@@ -83947,6 +84096,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 2",
     "english_keys": [
       "across"
+    ]
+  },
+  {
+    "id": 10012,
+    "root": "vriqla",
+    "meaning": "having two-lanes",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "two-lane"
     ]
   },
   {
@@ -87458,6 +87619,30 @@
     ]
   },
   {
+    "id": 10019,
+    "root": "cagsmk",
+    "meaning": "darkened by-smoke",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "smoke-darkened"
+    ]
+  },
+  {
+    "id": 10009,
+    "root": "cagsnc",
+    "meaning": "covered in-snow",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "snow-covered"
+    ]
+  },
+  {
     "id": 9918,
     "root": "cakcri",
     "meaning": "firm and-brittle",
@@ -87539,6 +87724,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 7",
     "english_keys": [
       "punctured"
+    ]
+  },
+  {
+    "id": 10007,
+    "root": "cakqe",
+    "meaning": "solidly constructed body",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "well-built"
     ]
   },
   {
@@ -89039,6 +89236,18 @@
     ]
   },
   {
+    "id": 10011,
+    "root": "maqhp",
+    "meaning": "very powerful",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "high-powered"
+    ]
+  },
+  {
     "id": 9844,
     "root": "maqxar",
     "meaning": "raised in-intensity",
@@ -89366,6 +89575,66 @@
     ]
   },
   {
+    "id": 10036,
+    "root": "naxhl",
+    "meaning": "carrying heavy-load",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "heavily-laden"
+    ]
+  },
+  {
+    "id": 10074,
+    "root": "naxka",
+    "meaning": "farewell parting-word",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "good-bye"
+    ]
+  },
+  {
+    "id": 10071,
+    "root": "naxla",
+    "meaning": "about four-inches long",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "four-inch-long"
+    ]
+  },
+  {
+    "id": 10072,
+    "root": "naxma",
+    "meaning": "pure complete lineage",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "full-blooded"
+    ]
+  },
+  {
+    "id": 10010,
+    "root": "naxmsb",
+    "meaning": "heavily muscled",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "muscle-bound"
+    ]
+  },
+  {
     "id": 9778,
     "root": "naxmus",
     "meaning": "having strong-muscles",
@@ -89375,6 +89644,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 9",
     "english_keys": [
       "muscular"
+    ]
+  },
+  {
+    "id": 10070,
+    "root": "naxna",
+    "meaning": "about one-foot long",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "foot-long"
     ]
   },
   {
@@ -89390,6 +89671,90 @@
     ]
   },
   {
+    "id": 10073,
+    "root": "naxpa",
+    "meaning": "at complete size",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "full-scale"
+    ]
+  },
+  {
+    "id": 10026,
+    "root": "naxpal",
+    "meaning": "having pale-skin",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "pale-skinned"
+    ]
+  },
+  {
+    "id": 10025,
+    "root": "naxper",
+    "meaning": "bleached pale-hair",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "peroxide-blonde"
+    ]
+  },
+  {
+    "id": 10065,
+    "root": "naxra",
+    "meaning": "large multi-wheel truck",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "eighteen-wheel"
+    ]
+  },
+  {
+    "id": 10022,
+    "root": "naxrbd",
+    "meaning": "having red-beard",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "red-bearded"
+    ]
+  },
+  {
+    "id": 10021,
+    "root": "naxrin",
+    "meaning": "having ringed-tail",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "ring-tailed"
+    ]
+  },
+  {
+    "id": 10068,
+    "root": "naxsa",
+    "meaning": "former colonel",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "ex-colonel"
+    ]
+  },
+  {
     "id": 9731,
     "root": "naxsca",
     "meaning": "covered in-scales",
@@ -89399,6 +89764,42 @@
     "notes": "coined via xenari_tool coin; wolverine batch 8",
     "english_keys": [
       "scaled"
+    ]
+  },
+  {
+    "id": 10069,
+    "root": "naxta",
+    "meaning": "five floors tall",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "five-story"
+    ]
+  },
+  {
+    "id": 10014,
+    "root": "naxth",
+    "meaning": "dense wool-coat",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "thick-wooled"
+    ]
+  },
+  {
+    "id": 10075,
+    "root": "naxza",
+    "meaning": "among the-best",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "world-class"
     ]
   },
   {
@@ -89966,6 +90367,18 @@
     ]
   },
   {
+    "id": 10048,
+    "root": "pelda",
+    "meaning": "able to-support-load",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:07",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16 fix",
+    "english_keys": [
+      "weight-bearing"
+    ]
+  },
+  {
     "id": 9905,
     "root": "pelde",
     "meaning": "skillfully agile",
@@ -89987,6 +90400,126 @@
     "notes": "coined via xenari_tool coin; wolverine batch 12",
     "english_keys": [
       "experienced"
+    ]
+  },
+  {
+    "id": 10050,
+    "root": "pelfa",
+    "meaning": "piercing through-armor",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:07",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "armor-piercing"
+    ]
+  },
+  {
+    "id": 10051,
+    "root": "pelga",
+    "meaning": "warship-grade steel",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:07",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "battleship-steel"
+    ]
+  },
+  {
+    "id": 10052,
+    "root": "pelha",
+    "meaning": "soaked in-blood",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:07",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "blood-soaked"
+    ]
+  },
+  {
+    "id": 10045,
+    "root": "pelka",
+    "meaning": "recently made-submissive",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "newly-subservient"
+    ]
+  },
+  {
+    "id": 10062,
+    "root": "pelku",
+    "meaning": "tipped with-diamond",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "diamond-tipped"
+    ]
+  },
+  {
+    "id": 10061,
+    "root": "pelmi",
+    "meaning": "made to-order",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "custom-made"
+    ]
+  },
+  {
+    "id": 10042,
+    "root": "pelna",
+    "meaning": "like a-hospital",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "hospital-style"
+    ]
+  },
+  {
+    "id": 10056,
+    "root": "pelne",
+    "meaning": "quick like-a-cat",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "cat-quick"
+    ]
+  },
+  {
+    "id": 10044,
+    "root": "pelpa",
+    "meaning": "appearing unpleasant",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "nasty-looking"
+    ]
+  },
+  {
+    "id": 10063,
+    "root": "pelpo",
+    "meaning": "lit only-faintly",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "dimly-lit"
     ]
   },
   {
@@ -90014,6 +90547,18 @@
     ]
   },
   {
+    "id": 10053,
+    "root": "pelqe",
+    "meaning": "filled with-bright-light",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:07",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "brightly-lit"
+    ]
+  },
+  {
     "id": 9588,
     "root": "pelra",
     "meaning": "smooth elegant-motion",
@@ -90023,6 +90568,30 @@
     "notes": "coined via xenari_tool coin; wolverine batch 4",
     "english_keys": [
       "grace"
+    ]
+  },
+  {
+    "id": 10055,
+    "root": "pelru",
+    "meaning": "thick bull-like neck",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:07",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "bull-necked"
+    ]
+  },
+  {
+    "id": 10040,
+    "root": "pelsa",
+    "meaning": "large liquor-belly",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "whiskey-bellied"
     ]
   },
   {
@@ -90038,6 +90607,30 @@
     ]
   },
   {
+    "id": 10041,
+    "root": "pelta",
+    "meaning": "solidly struck",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "well-hit"
+    ]
+  },
+  {
+    "id": 10064,
+    "root": "pelte",
+    "meaning": "with dirty-feathers",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "dirty-feathered"
+    ]
+  },
+  {
     "id": 9614,
     "root": "pelvi",
     "meaning": "able to-succeed",
@@ -90047,6 +90640,52 @@
     "notes": "coined via xenari_tool coin; wolverine batch 5",
     "english_keys": [
       "viable"
+    ]
+  },
+  {
+    "id": 10058,
+    "root": "pelvu",
+    "meaning": "very near view",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "close-up"
+    ]
+  },
+  {
+    "id": 10038,
+    "root": "pelxa",
+    "meaning": "among the-best",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16 fix",
+    "english_keys": []
+  },
+  {
+    "id": 10059,
+    "root": "pelxi",
+    "meaning": "fellow workers",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:08",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "co-workers"
+    ]
+  },
+  {
+    "id": 10054,
+    "root": "pelxo",
+    "meaning": "harshly heavily-muscled",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:07",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "brutally-muscled"
     ]
   },
   {
@@ -90167,6 +90806,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 10",
     "english_keys": [
       "lidless"
+    ]
+  },
+  {
+    "id": 10032,
+    "root": "plekls",
+    "meaning": "sleeves of-leather",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "leather-sleeved"
     ]
   },
   {
@@ -90397,6 +91048,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 13",
     "english_keys": [
       "contorted"
+    ]
+  },
+  {
+    "id": 10037,
+    "root": "qenghc",
+    "meaning": "aggressively advancing",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "hard-charging"
     ]
   },
   {
@@ -90739,6 +91402,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 10",
     "english_keys": [
       "leftover"
+    ]
+  },
+  {
+    "id": 10030,
+    "root": "qrotmid",
+    "meaning": "mid life-years",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "middle-aged"
     ]
   },
   {
@@ -91359,6 +92034,7 @@
     "timestamp": "2026-08-01 08:44",
     "notes": "coined via xenari_tool coin; wolverine batch 3",
     "english_keys": [
+      "hard-wired",
       "wired"
     ]
   },
@@ -92104,6 +92780,18 @@
     ]
   },
   {
+    "id": 10024,
+    "root": "xolpun",
+    "meaning": "dazed from-blows",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "punch-drunk"
+    ]
+  },
+  {
     "id": 3127,
     "root": "xomfa",
     "meaning": "gently",
@@ -92173,6 +92861,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 2",
     "english_keys": [
       "stainless"
+    ]
+  },
+  {
+    "id": 10016,
+    "root": "xrofstr",
+    "meaning": "strengthened with-steel",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "steel-reinforced"
     ]
   },
   {
@@ -96555,6 +97255,18 @@
     ]
   },
   {
+    "id": 10023,
+    "root": "qontred",
+    "meaning": "forced relearning",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "re-education"
+    ]
+  },
+  {
     "id": 9840,
     "root": "qontxo",
     "meaning": "loud horn-call",
@@ -97547,6 +98259,7 @@
     "timestamp": "2026-08-01 08:55",
     "notes": "coined via xenari_tool coin; wolverine batch 7",
     "english_keys": [
+      "red-hued",
       "redhead"
     ]
   },
@@ -101543,6 +102256,18 @@
     ]
   },
   {
+    "id": 10028,
+    "root": "xunqni",
+    "meaning": "seeing in-dark",
+    "category": "Technology & Devices",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "night-vision"
+    ]
+  },
+  {
     "id": 9719,
     "root": "xunqre",
     "meaning": "displayed data-view",
@@ -101629,6 +102354,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 4",
     "english_keys": [
       "amperage"
+    ]
+  },
+  {
+    "id": 10034,
+    "root": "zexhi",
+    "meaning": "very high-electric",
+    "category": "Technology & Devices",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "high-voltage"
     ]
   },
   {
@@ -102803,6 +103540,18 @@
     ]
   },
   {
+    "id": 10029,
+    "root": "fluqmin",
+    "meaning": "small cold-box",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "mini-fridge"
+    ]
+  },
+  {
     "id": 2423,
     "root": "foyfoquh",
     "meaning": "helicopter",
@@ -103650,6 +104399,18 @@
     ]
   },
   {
+    "id": 10046,
+    "root": "pelza",
+    "meaning": "mended clothing",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:06",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 17",
+    "english_keys": [
+      "patched-suit"
+    ]
+  },
+  {
     "id": 835,
     "root": "per",
     "meaning": "shield",
@@ -103816,6 +104577,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 5",
     "english_keys": [
       "tissue"
+    ]
+  },
+  {
+    "id": 10015,
+    "root": "plekts",
+    "meaning": "short sleeve-shirt",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:05",
+    "notes": "coined via xenari_tool coin; wolverine hyphen batch 16",
+    "english_keys": [
+      "t-shirt"
     ]
   },
   {
