@@ -5,6 +5,7 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Curated Wolverine screenplay harvest batch 3: added 29 roots plus plural/alias maps for remaining high-signal gaps (leaving, pork, lemur(s), gym, whistling, smiley, pounces, plexiglass, mug, flatbed, baobab, writhes, wired, weaponry, walnut, volts, vintage, unblinking, tribal, titanium, swollen, stasis, spruce, serrated, nowhere, manacles, liquor, inhuman, hypodermic); mapped lumberjacks, sentries, carved, and jukebox onto existing roots.
 - Curated Wolverine screenplay harvest batch 2: added 28 roots covering mutant/adamantium action-and-setting vocab (beside, nothing, already, across, lumberjack, bartender, revolver, bloodied, fury, forearm, isolation, commando, clenched, bouncer, whiskey, shred, panther, gunner, thrum, pine, stainless, handkerchief, aide, carving, enhanced, factor, and related forms); mapped mutants→yuxsre and along→ludyuf.
 - Fixed bad auto-maps from batch 1: removed who→bradra (sentry) and around→kruzca (halo) so grammar/content-question who and spatial around stay unpolluted.
 - Curated the first Wolverine screenplay harvest batch: added roots for against, crowd, halo, feral, sentry, and aluminum; added singular/base mappings for target, toward, electric, uniform, atom, and adversary.

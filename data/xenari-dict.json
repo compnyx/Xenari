@@ -1964,6 +1964,18 @@
     ]
   },
   {
+    "id": 9548,
+    "root": "nonqra",
+    "meaning": "sudden leap-attack",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "pounces"
+    ]
+  },
+  {
     "id": 4372,
     "root": "nxacoq",
     "meaning": "crossing",
@@ -2082,6 +2094,18 @@
     "notes": null,
     "english_keys": [
       "update"
+    ]
+  },
+  {
+    "id": 9553,
+    "root": "qenra",
+    "meaning": "twisting pain-motion",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "writhes"
     ]
   },
   {
@@ -2406,6 +2430,18 @@
     "notes": null,
     "english_keys": [
       "outspiraling"
+    ]
+  },
+  {
+    "id": 9542,
+    "root": "tuxra",
+    "meaning": "departing exit-motion",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "leaving"
     ]
   },
   {
@@ -7096,6 +7132,7 @@
     "timestamp": "2026-08-01 08:34",
     "notes": "coined via xenari_tool coin; wolverine batch 2",
     "english_keys": [
+      "carved",
       "carving"
     ]
   },
@@ -9709,6 +9746,19 @@
     "english_keys": [
       "squirrel",
       "tree-climber"
+    ]
+  },
+  {
+    "id": 9544,
+    "root": "zlofqvi",
+    "meaning": "tree-climbing primate",
+    "category": "Beings & Creatures",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "lemur",
+      "lemurs"
     ]
   },
   {
@@ -19527,6 +19577,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 2",
     "english_keys": [
       "adamantium"
+    ]
+  },
+  {
+    "id": 9561,
+    "root": "xrofta",
+    "meaning": "light strong-metal",
+    "category": "Elements & Nature",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "titanium"
     ]
   },
   {
@@ -65804,6 +65866,18 @@
     ]
   },
   {
+    "id": 9545,
+    "root": "naxcromtoq",
+    "meaning": "training body-hall",
+    "category": "Home & Comfort",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "gym"
+    ]
+  },
+  {
     "id": 2253,
     "root": "ngec",
     "meaning": "village, small settlement",
@@ -68633,6 +68707,18 @@
     "notes": null,
     "english_keys": [
       "liposuction"
+    ]
+  },
+  {
+    "id": 9570,
+    "root": "suyrif",
+    "meaning": "under-skin needle",
+    "category": "Medicine & Health",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "hypodermic"
     ]
   },
   {
@@ -71910,6 +71996,18 @@
     ]
   },
   {
+    "id": 9563,
+    "root": "zuxlo",
+    "meaning": "frozen still-state",
+    "category": "Mental & Abstract",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "stasis"
+    ]
+  },
+  {
     "id": 9517,
     "root": "zuxngu",
     "meaning": "empty absence",
@@ -71943,6 +72041,7 @@
     "timestamp": "2026-07-24 01:35",
     "notes": "coined via xenari_tool coin",
     "english_keys": [
+      "sentries",
       "sentry"
     ]
   },
@@ -72066,6 +72165,18 @@
     "notes": null,
     "english_keys": [
       "tactical"
+    ]
+  },
+  {
+    "id": 9555,
+    "root": "merecqu",
+    "meaning": "collected arms-set",
+    "category": "Military & Tactical",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "weaponry"
     ]
   },
   {
@@ -80862,6 +80973,18 @@
     ]
   },
   {
+    "id": 9566,
+    "root": "qurngu",
+    "meaning": "no-place location",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "nowhere"
+    ]
+  },
+  {
     "id": 2308,
     "root": "regpa",
     "meaning": "bunker",
@@ -82213,6 +82336,18 @@
     ]
   },
   {
+    "id": 9568,
+    "root": "flukliq",
+    "meaning": "strong drink-spirit",
+    "category": "Plants & Food",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "liquor"
+    ]
+  },
+  {
     "id": 9530,
     "root": "flukxra",
     "meaning": "strong grain-spirit",
@@ -82806,6 +82941,30 @@
     ]
   },
   {
+    "id": 9552,
+    "root": "noqebra",
+    "meaning": "massive trunk-tree",
+    "category": "Plants & Food",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "baobab"
+    ]
+  },
+  {
+    "id": 9564,
+    "root": "noqespr",
+    "meaning": "pointed evergreen",
+    "category": "Plants & Food",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "spruce"
+    ]
+  },
+  {
     "id": 9535,
     "root": "noqexri",
     "meaning": "needle evergreen",
@@ -82900,6 +83059,18 @@
     "notes": null,
     "english_keys": [
       "corn"
+    ]
+  },
+  {
+    "id": 9556,
+    "root": "plikkax",
+    "meaning": "hard shell-nut",
+    "category": "Plants & Food",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "walnut"
     ]
   },
   {
@@ -83556,6 +83727,18 @@
     "notes": null,
     "english_keys": [
       "stove"
+    ]
+  },
+  {
+    "id": 9543,
+    "root": "vroqpa",
+    "meaning": "pig meat-cut",
+    "category": "Plants & Food",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "pork"
     ]
   },
   {
@@ -84404,6 +84587,18 @@
     "notes": null,
     "english_keys": [
       "spherical"
+    ]
+  },
+  {
+    "id": 9565,
+    "root": "cakxri",
+    "meaning": "saw-toothed edge",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "serrated"
     ]
   },
   {
@@ -85942,6 +86137,18 @@
     ]
   },
   {
+    "id": 9562,
+    "root": "naxcromxra",
+    "meaning": "puffed injured-size",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "swollen"
+    ]
+  },
+  {
     "id": 966,
     "root": "naxzuq",
     "meaning": "virtue, good reputation",
@@ -85966,6 +86173,18 @@
     "english_keys": [
       "genuine",
       "real"
+    ]
+  },
+  {
+    "id": 9569,
+    "root": "neqvi'ngu",
+    "meaning": "not-human quality",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "inhuman"
     ]
   },
   {
@@ -86898,6 +87117,18 @@
     ]
   },
   {
+    "id": 9558,
+    "root": "qrotca",
+    "meaning": "aged classic-style",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "vintage"
+    ]
+  },
+  {
     "id": 3000,
     "root": "qroxe",
     "meaning": "selfish / self-centered",
@@ -87432,6 +87663,18 @@
     "english_keys": [
       "enormous",
       "massive"
+    ]
+  },
+  {
+    "id": 9554,
+    "root": "suyra",
+    "meaning": "cable-linked",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "wired"
     ]
   },
   {
@@ -88226,6 +88469,18 @@
     ]
   },
   {
+    "id": 9559,
+    "root": "xunqngu",
+    "meaning": "never-closing gaze",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "unblinking"
+    ]
+  },
+  {
     "id": 4462,
     "root": "xunznuz",
     "meaning": "svelte",
@@ -88603,6 +88858,18 @@
       "love": "verb",
       "loved": "verb"
     }
+  },
+  {
+    "id": 9547,
+    "root": "zrentca",
+    "meaning": "grinning face-mark",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "smiley"
+    ]
   },
   {
     "id": 922,
@@ -91693,7 +91960,8 @@
     "timestamp": "2026-08-01 08:34",
     "notes": "coined via xenari_tool coin; wolverine batch 2",
     "english_keys": [
-      "lumberjack"
+      "lumberjack",
+      "lumberjacks"
     ]
   },
   {
@@ -91879,6 +92147,18 @@
     ]
   },
   {
+    "id": 9546,
+    "root": "qontzu",
+    "meaning": "tuned breath-tone",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "whistling"
+    ]
+  },
+  {
     "id": 4330,
     "root": "qosi",
     "meaning": "commander",
@@ -91888,6 +92168,18 @@
     "notes": null,
     "english_keys": [
       "commander"
+    ]
+  },
+  {
+    "id": 9560,
+    "root": "qronxra",
+    "meaning": "clan-bound",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "tribal"
     ]
   },
   {
@@ -95920,6 +96212,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "jukebox",
       "screen"
     ]
   },
@@ -96603,6 +96896,18 @@
       "inversion gate",
       "rotating gate",
       "turnstile"
+    ]
+  },
+  {
+    "id": 9557,
+    "root": "zexvolt",
+    "meaning": "electric force-units",
+    "category": "Technology & Devices",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "volts"
     ]
   },
   {
@@ -97972,6 +98277,18 @@
     ]
   },
   {
+    "id": 9567,
+    "root": "kaxbrak",
+    "meaning": "wrist lock-cuffs",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:44",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "manacles"
+    ]
+  },
+  {
     "id": 758,
     "root": "keg",
     "meaning": "weighing stone",
@@ -98699,6 +99016,18 @@
     ]
   },
   {
+    "id": 9549,
+    "root": "qloxplek",
+    "meaning": "clear hard-plastic",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "plexiglass"
+    ]
+  },
+  {
     "id": 786,
     "root": "qloxxangxunq",
     "meaning": "veil map — a map of the planes, showing Veil boundaries between realities (qlox + xangxunq)",
@@ -98709,6 +99038,18 @@
     "english_keys": [
       "map",
       "veil"
+    ]
+  },
+  {
+    "id": 9550,
+    "root": "qlupca",
+    "meaning": "thick drink-cup",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "mug"
     ]
   },
   {
@@ -100091,6 +100432,18 @@
     "english_keys": [
       "door",
       "gate"
+    ]
+  },
+  {
+    "id": 9551,
+    "root": "zrumplox",
+    "meaning": "open cargo-truck",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:43",
+    "notes": "coined via xenari_tool coin; wolverine batch 3",
+    "english_keys": [
+      "flatbed"
     ]
   },
   {
