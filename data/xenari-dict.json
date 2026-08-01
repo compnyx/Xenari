@@ -1143,7 +1143,8 @@
     "notes": null,
     "english_keys": [
       "endure",
-      "survive"
+      "survive",
+      "survived"
     ],
     "english_parts_of_speech": {
       "endure": "verb"
@@ -1437,6 +1438,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 15",
     "english_keys": [
       "calibrated"
+    ]
+  },
+  {
+    "id": 10080,
+    "root": "cakrak",
+    "meaning": "dragging with-tines",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "raking"
     ]
   },
   {
@@ -1753,6 +1766,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 6",
     "english_keys": [
       "spill"
+    ]
+  },
+  {
+    "id": 10084,
+    "root": "fluqsub",
+    "meaning": "going under-water",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "submerging"
     ]
   },
   {
@@ -2368,6 +2393,18 @@
     ]
   },
   {
+    "id": 10083,
+    "root": "nonqtop",
+    "meaning": "falling over",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "toppling"
+    ]
+  },
+  {
     "id": 9780,
     "root": "nudmot",
     "meaning": "give drive-to",
@@ -2452,6 +2489,18 @@
     ]
   },
   {
+    "id": 10082,
+    "root": "pelba",
+    "meaning": "expressing in-sound",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "voicing"
+    ]
+  },
+  {
     "id": 4610,
     "root": "pele",
     "meaning": "hacks",
@@ -2461,6 +2510,18 @@
     "notes": null,
     "english_keys": [
       "hacks"
+    ]
+  },
+  {
+    "id": 10086,
+    "root": "pelsu",
+    "meaning": "struck with-slap",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "swatted"
     ]
   },
   {
@@ -2600,6 +2661,18 @@
     ]
   },
   {
+    "id": 10081,
+    "root": "qengacc",
+    "meaning": "gaining speed",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "accelerating"
+    ]
+  },
+  {
     "id": 9947,
     "root": "qengcl",
     "meaning": "climbing awkwardly",
@@ -2645,6 +2718,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 7",
     "english_keys": [
       "scoot"
+    ]
+  },
+  {
+    "id": 10078,
+    "root": "qengsid",
+    "meaning": "steps aside-quickly",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "sidesteps"
     ]
   },
   {
@@ -2728,7 +2813,8 @@
     "timestamp": "2026-08-01 08:50",
     "notes": "coined via xenari_tool coin; wolverine batch 5",
     "english_keys": [
-      "swivel"
+      "swivel",
+      "swiveling"
     ]
   },
   {
@@ -14265,7 +14351,8 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "escape"
+      "escape",
+      "escaped"
     ]
   },
   {
@@ -14621,7 +14708,8 @@
     "timestamp": "2026-07-08T15:49:17.578350",
     "notes": null,
     "english_keys": [
-      "shine"
+      "shine",
+      "shining"
     ]
   },
   {
@@ -14786,7 +14874,8 @@
     "english_keys": [
       "stir",
       "torpor",
-      "wake"
+      "wake",
+      "waking"
     ],
     "english_parts_of_speech": {
       "wake": "verb"
@@ -16619,7 +16708,8 @@
     "notes": null,
     "english_keys": [
       "inscribe",
-      "write"
+      "write",
+      "writing"
     ],
     "english_parts_of_speech": {
       "inscribe": "verb",
@@ -71497,7 +71587,8 @@
     "english_keys": [
       "force",
       "power",
-      "strength"
+      "strength",
+      "strong"
     ]
   },
   {
@@ -89767,6 +89858,18 @@
     ]
   },
   {
+    "id": 10079,
+    "root": "naxsha",
+    "meaning": "hair removed",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "shaved"
+    ]
+  },
+  {
     "id": 10069,
     "root": "naxta",
     "meaning": "five floors tall",
@@ -90571,6 +90674,18 @@
     ]
   },
   {
+    "id": 10085,
+    "root": "pelro",
+    "meaning": "cut neatly-short",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "trimmed"
+    ]
+  },
+  {
     "id": 10055,
     "root": "pelru",
     "meaning": "thick bull-like neck",
@@ -90604,6 +90719,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 6",
     "english_keys": [
       "skillful"
+    ]
+  },
+  {
+    "id": 10076,
+    "root": "pelsuc",
+    "meaning": "achieving desired-result",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "successful"
     ]
   },
   {
@@ -96619,6 +96746,18 @@
     "notes": null,
     "english_keys": [
       "refuse"
+    ]
+  },
+  {
+    "id": 10077,
+    "root": "naxski",
+    "meaning": "shaved-head person",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-01 11:09",
+    "notes": "coined via xenari_tool coin; wolverine batch 18 leftovers",
+    "english_keys": [
+      "skinhead"
     ]
   },
   {
@@ -109171,7 +109310,9 @@
     "timestamp": "2026-07-08T22:35:30.663382",
     "notes": null,
     "english_keys": [
-      "shove"
+      "shove",
+      "shoved",
+      "shoving"
     ]
   },
   {
