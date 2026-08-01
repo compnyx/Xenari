@@ -1676,6 +1676,18 @@
     ]
   },
   {
+    "id": 9531,
+    "root": "klenza",
+    "meaning": "tear-apart strips",
+    "category": "Action & Motion",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "shred"
+    ]
+  },
+  {
     "id": 4528,
     "root": "klisxrih",
     "meaning": "contracting",
@@ -7076,6 +7088,18 @@
     ]
   },
   {
+    "id": 9539,
+    "root": "caktoq",
+    "meaning": "shaped cutwork",
+    "category": "Arts & Culture",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "carving"
+    ]
+  },
+  {
     "id": 9484,
     "root": "cavrel",
     "meaning": "paintbrush, handled brush for applying pigment",
@@ -8100,6 +8124,18 @@
     "english_keys": [
       "queen",
       "ruler-female"
+    ]
+  },
+  {
+    "id": 9532,
+    "root": "cunuvi",
+    "meaning": "dark wildcat",
+    "category": "Beings & Creatures",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "panther"
     ]
   },
   {
@@ -9537,6 +9573,19 @@
     ]
   },
   {
+    "id": 9514,
+    "root": "yuxsre",
+    "meaning": "altered-power creature",
+    "category": "Beings & Creatures",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "mutant",
+      "mutants"
+    ]
+  },
+  {
     "id": 2420,
     "root": "zagzir",
     "meaning": "guy",
@@ -10031,6 +10080,18 @@
     "notes": null,
     "english_keys": [
       "arm"
+    ]
+  },
+  {
+    "id": 9525,
+    "root": "braklo",
+    "meaning": "lower-arm segment",
+    "category": "Body Parts",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "forearm"
     ]
   },
   {
@@ -18300,7 +18361,6 @@
     "timestamp": "2026-07-24 01:34",
     "notes": "coined via xenari_tool coin",
     "english_keys": [
-      "around",
       "halo"
     ]
   },
@@ -19458,6 +19518,18 @@
     ]
   },
   {
+    "id": 9515,
+    "root": "xroflak",
+    "meaning": "unbreakable metal-alloy",
+    "category": "Elements & Nature",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "adamantium"
+    ]
+  },
+  {
     "id": 410,
     "root": "xrok",
     "meaning": "thunder",
@@ -19795,6 +19867,18 @@
     "notes": null,
     "english_keys": [
       "night"
+    ]
+  },
+  {
+    "id": 9534,
+    "root": "zumra",
+    "meaning": "low continuous vibration",
+    "category": "Elements & Nature",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "thrum"
     ]
   },
   {
@@ -24670,6 +24754,7 @@
     "timestamp": "2026-07-08T20:59:36.614238+00:00",
     "notes": null,
     "english_keys": [
+      "along",
       "alongside"
     ]
   },
@@ -70069,6 +70154,18 @@
     ]
   },
   {
+    "id": 9524,
+    "root": "nudxra",
+    "meaning": "violent wrath-storm",
+    "category": "Mental & Abstract",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "fury"
+    ]
+  },
+  {
     "id": 2529,
     "root": "nupenk",
     "meaning": "revolution",
@@ -70301,6 +70398,18 @@
     "notes": null,
     "english_keys": [
       "truth"
+    ]
+  },
+  {
+    "id": 9541,
+    "root": "prulxa",
+    "meaning": "contributing force-element",
+    "category": "Mental & Abstract",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "factor"
     ]
   },
   {
@@ -71481,6 +71590,18 @@
     ]
   },
   {
+    "id": 9526,
+    "root": "yingxol",
+    "meaning": "cutaway solitude",
+    "category": "Mental & Abstract",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "isolation"
+    ]
+  },
+  {
     "id": 2204,
     "root": "yizrob",
     "meaning": "spirit, essence",
@@ -71789,6 +71910,18 @@
     ]
   },
   {
+    "id": 9517,
+    "root": "zuxngu",
+    "meaning": "empty absence",
+    "category": "Mental & Abstract",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "nothing"
+    ]
+  },
+  {
     "id": 2704,
     "root": "afsin",
     "meaning": "military vehicle",
@@ -71810,8 +71943,7 @@
     "timestamp": "2026-07-24 01:35",
     "notes": "coined via xenari_tool coin",
     "english_keys": [
-      "sentry",
-      "who"
+      "sentry"
     ]
   },
   {
@@ -71898,6 +72030,18 @@
     "english_keys": [
       "safeties",
       "safety"
+    ]
+  },
+  {
+    "id": 9527,
+    "root": "legufra",
+    "meaning": "elite raid-soldier",
+    "category": "Military & Tactical",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "commando"
     ]
   },
   {
@@ -72033,6 +72177,18 @@
     "english_keys": [
       "operator",
       "operators"
+    ]
+  },
+  {
+    "id": 9533,
+    "root": "zexezra",
+    "meaning": "gun-crew fighter",
+    "category": "Military & Tactical",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "gunner"
     ]
   },
   {
@@ -80556,6 +80712,18 @@
     ]
   },
   {
+    "id": 9516,
+    "root": "plaxu",
+    "meaning": "lateral adjacency",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "beside"
+    ]
+  },
+  {
     "id": 2316,
     "root": "pozhu",
     "meaning": "campfire",
@@ -80679,6 +80847,18 @@
     "english_keys": [
       "path",
       "road"
+    ]
+  },
+  {
+    "id": 9518,
+    "root": "qrotlo",
+    "meaning": "prior-complete state",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "already"
     ]
   },
   {
@@ -81007,6 +81187,18 @@
     "english_keys": [
       "afternoon",
       "mid-day"
+    ]
+  },
+  {
+    "id": 9519,
+    "root": "vlexra",
+    "meaning": "transverse span",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "across"
     ]
   },
   {
@@ -82021,6 +82213,18 @@
     ]
   },
   {
+    "id": 9530,
+    "root": "flukxra",
+    "meaning": "strong grain-spirit",
+    "category": "Plants & Food",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "whiskey"
+    ]
+  },
+  {
     "id": 2311,
     "root": "fraqro",
     "meaning": "burrito",
@@ -82599,6 +82803,18 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from noe; validator issues: vowel hiatus: oe at position 1",
     "english_keys": [
       "tree"
+    ]
+  },
+  {
+    "id": 9535,
+    "root": "noqexri",
+    "meaning": "needle evergreen",
+    "category": "Plants & Food",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "pine"
     ]
   },
   {
@@ -85167,6 +85383,18 @@
     ]
   },
   {
+    "id": 9528,
+    "root": "kaxru",
+    "meaning": "tightly-shut grip",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "clenched"
+    ]
+  },
+  {
     "id": 4392,
     "root": "kepinxa",
     "meaning": "rapid",
@@ -87705,6 +87933,18 @@
     ]
   },
   {
+    "id": 9523,
+    "root": "vraklu",
+    "meaning": "blood-stained",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "bloodied"
+    ]
+  },
+  {
     "id": 1974,
     "root": "xagxah",
     "meaning": "clean, pure",
@@ -87873,6 +88113,18 @@
     "notes": null,
     "english_keys": [
       "heavier"
+    ]
+  },
+  {
+    "id": 9536,
+    "root": "xrofnu",
+    "meaning": "stain-resistant metal",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "stainless"
     ]
   },
   {
@@ -88159,6 +88411,18 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jazpuv; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "worst"
+    ]
+  },
+  {
+    "id": 9540,
+    "root": "zdilra",
+    "meaning": "boosted beyond-normal",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "enhanced"
     ]
   },
   {
@@ -90144,6 +90408,18 @@
     ]
   },
   {
+    "id": 9538,
+    "root": "brulvi",
+    "meaning": "personal helper",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "aide"
+    ]
+  },
+  {
     "id": 1182,
     "root": "buc",
     "meaning": "sing",
@@ -91409,6 +91685,18 @@
     }
   },
   {
+    "id": 9520,
+    "root": "plikzra",
+    "meaning": "timber-cutter worker",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "lumberjack"
+    ]
+  },
+  {
     "id": 2983,
     "root": "plonqo",
     "meaning": "booty call / casual sex summons",
@@ -91552,6 +91840,18 @@
     "notes": null,
     "english_keys": [
       "discuss"
+    ]
+  },
+  {
+    "id": 9521,
+    "root": "qlupzra",
+    "meaning": "drink-server worker",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "bartender"
     ]
   },
   {
@@ -92506,6 +92806,18 @@
     "english_keys": [
       "gift",
       "offering"
+    ]
+  },
+  {
+    "id": 9529,
+    "root": "zrumvi",
+    "meaning": "door-guard enforcer",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "bouncer"
     ]
   },
   {
@@ -98203,6 +98515,18 @@
     ]
   },
   {
+    "id": 9537,
+    "root": "plekca",
+    "meaning": "small face-cloth",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "handkerchief"
+    ]
+  },
+  {
     "id": 870,
     "root": "plik",
     "meaning": "wood",
@@ -99606,6 +99930,18 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jexe; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "gun"
+    ]
+  },
+  {
+    "id": 9522,
+    "root": "zexevri",
+    "meaning": "chambered hand-weapon",
+    "category": "Tools & Objects",
+    "source": "tool",
+    "timestamp": "2026-08-01 08:34",
+    "notes": "coined via xenari_tool coin; wolverine batch 2",
+    "english_keys": [
+      "revolver"
     ]
   },
   {
