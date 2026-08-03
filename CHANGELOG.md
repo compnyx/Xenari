@@ -5,6 +5,7 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Added `qrazhel` (“a mind that will not catch the thread”) and the English-to-Xenari mapping `retard` → `qrazhel`.
 - Recategorized 50 reviewed legacy `Uncategorized` entries from the Interstellar gap-fill era across action, place, tool, quality, social, and nature domains; regenerated canon exports without adding vocabulary.
 - Curated Wolverine screenplay harvest batch 18: finished remaining real single-token leftovers (successful, skinhead, sidesteps, shaved, raking, accelerating, voicing, toppling, submerging, trimmed, swatted) and mapped strong/shining/writing/waking/escaped/survived/swiveling/shoving onto existing roots.
 - Curated Wolverine screenplay harvest hyphen batches 16-17: added real compound gaps (well-built, stainless-steel, night-vision, mini-fridge, armor-piercing, blood-soaked, t-shirt, and related forms); fixed bad collision maps on world-class/weight-bearing; stripped OCR/fragment junk roots (a-bear, checks-her, collapses-and, em-up) and bare number compounds.
