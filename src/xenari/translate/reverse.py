@@ -290,10 +290,16 @@ class ReverseTranslationMixin:
     ) -> str:
         """Render one parsed predicate without closing over a clause loop."""
         if verb == "is":
+            plural_or_second_person = subject in {"you", "we", "they"}
             if tense == "lo":
-                return "was not" if negated else "was"
+                copula = "were" if plural_or_second_person else "was"
+                return f"{copula} not" if negated else copula
             if tense == "ve":
                 return "will not be" if negated else "will be"
+            if subject == "I":
+                return "am not" if negated else "am"
+            if plural_or_second_person:
+                return "are not" if negated else "are"
             if negated:
                 return "is not"
             return "is"
