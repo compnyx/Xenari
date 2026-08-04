@@ -7103,6 +7103,182 @@
         "reverse": "I see ant"
       }
     },
+    "things-picturable-001": {
+      "root": "pral",
+      "fixture": {
+        "english": "I see an angle.",
+        "xenari": "ra nu pral ka neq ta toq sa xo",
+        "reverse": "I see angle"
+      }
+    },
+    "things-picturable-005": {
+      "root": "plonq",
+      "fixture": {
+        "english": "I see an arm.",
+        "xenari": "ra nu plonq ka neq ta toq sa xo",
+        "reverse": "I see arm"
+      }
+    },
+    "things-picturable-008": {
+      "root": "tlor",
+      "fixture": {
+        "english": "I see a bag.",
+        "xenari": "ra nu tlor ka neq ta toq sa xo",
+        "reverse": "I see bag"
+      }
+    },
+    "things-picturable-009": {
+      "root": "mikne",
+      "fixture": {
+        "english": "I see a ball.",
+        "xenari": "ra nu mikne ka neq ta toq sa xo",
+        "reverse": "I see ball"
+      }
+    },
+    "things-picturable-010": {
+      "root": "zrol",
+      "fixture": {
+        "english": "I see a band.",
+        "xenari": "ra nu zrol ka neq ta toq sa xo",
+        "reverse": "I see band"
+      }
+    },
+    "things-picturable-011": {
+      "root": "zmasq",
+      "fixture": {
+        "english": "I see a basin.",
+        "xenari": "ra nu zmasq ka neq ta toq sa xo",
+        "reverse": "I see basin"
+      }
+    },
+    "things-picturable-013": {
+      "root": "zluscqnu",
+      "fixture": {
+        "english": "I see a bath.",
+        "xenari": "ra nu zluscqnu ka neq ta toq sa xo",
+        "reverse": "I see bath"
+      }
+    },
+    "things-picturable-014": {
+      "root": "pramq",
+      "fixture": {
+        "english": "I see a bed.",
+        "xenari": "ra nu pramq ka neq ta toq sa xo",
+        "reverse": "I see bed"
+      }
+    },
+    "things-picturable-016": {
+      "root": "lak",
+      "fixture": {
+        "english": "I see a bell.",
+        "xenari": "ra nu lak ka neq ta toq sa xo",
+        "reverse": "I see bell"
+      }
+    },
+    "things-picturable-017": {
+      "root": "lequp",
+      "fixture": {
+        "english": "I see a berry.",
+        "xenari": "ra nu lequp ka neq ta toq sa xo",
+        "reverse": "I see berry"
+      }
+    },
+    "things-picturable-019": {
+      "root": "zrang",
+      "fixture": {
+        "english": "I see a blade.",
+        "xenari": "ra nu zrang ka neq ta toq sa xo",
+        "reverse": "I see blade"
+      }
+    },
+    "things-picturable-020": {
+      "root": "lulfo",
+      "fixture": {
+        "english": "I see a board.",
+        "xenari": "ra nu lulfo ka neq ta toq sa xo",
+        "reverse": "I see board"
+      }
+    },
+    "things-picturable-021": {
+      "root": "frep",
+      "fixture": {
+        "english": "I see a boat.",
+        "xenari": "ra nu frep ka neq ta toq sa xo",
+        "reverse": "I see boat"
+      }
+    },
+    "things-picturable-022": {
+      "root": "qram",
+      "fixture": {
+        "english": "I see a bone.",
+        "xenari": "ra nu qram ka neq ta toq sa xo",
+        "reverse": "I see bone"
+      }
+    },
+    "things-picturable-023": {
+      "root": "riz",
+      "fixture": {
+        "english": "I see a book.",
+        "xenari": "ra nu riz ka neq ta toq sa xo",
+        "reverse": "I see book"
+      }
+    },
+    "things-picturable-024": {
+      "root": "roz",
+      "fixture": {
+        "english": "I see a boot.",
+        "xenari": "ra nu roz ka neq ta toq sa xo",
+        "reverse": "I see boot"
+      }
+    },
+    "things-picturable-025": {
+      "root": "otshe",
+      "fixture": {
+        "english": "I see a bottle.",
+        "xenari": "ra nu otshe ka neq ta toq sa xo",
+        "reverse": "I see bottle"
+      }
+    },
+    "things-picturable-026": {
+      "root": "drex",
+      "fixture": {
+        "english": "I see a box.",
+        "xenari": "ra nu drex ka neq ta toq sa xo",
+        "reverse": "I see box"
+      }
+    },
+    "things-picturable-028": {
+      "root": "qrep",
+      "fixture": {
+        "english": "I see a brain.",
+        "xenari": "ra nu qrep ka neq ta toq sa xo",
+        "reverse": "I see brain"
+      }
+    },
+    "things-picturable-029": {
+      "root": "ebova",
+      "fixture": {
+        "english": "I see a brake.",
+        "xenari": "ra nu ebova ka neq ta toq sa xo",
+        "reverse": "I see brake"
+      }
+    },
+    "things-picturable-030": {
+      "root": "zlepx",
+      "fixture": {
+        "english": "I see a branch.",
+        "xenari": "ra nu zlepx ka neq ta toq sa xo",
+        "reverse": "I see branch"
+      }
+    },
+    "things-picturable-032": {
+      "root": "tudyib",
+      "fixture": {
+        "english": "I see a bridge.",
+        "xenari": "ra nu tudyib ka neq ta toq sa xo",
+        "reverse": "I see bridge"
+      }
+    },
     "things-picturable-007": {
       "root": "bushuz",
       "fixture": {

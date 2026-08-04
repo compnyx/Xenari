@@ -5,6 +5,12 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Approved 22 unambiguous concrete Ogden picturable nouns (`angle`, `arm`,
+  `bag`, `ball`, `band`, `basin`, `bath`, `bed`, `bell`, `berry`, `blade`,
+  `board`, `boat`, `bone`, `book`, `boot`, `bottle`, `box`, `brain`, `brake`,
+  `branch`, and `bridge`) against explicit selected roots. Every approved
+  sense is noun-tagged and has a forward/reverse sentence fixture; coverage is
+  112 approved / 738 pending.
 - Approved 19 unambiguous Ogden opposite-quality slots (`awake`, `bitter`,
   `blue`, `certain`, `cold`, `complete`, `cruel`, `dark`, `delicate`,
   `different`, `dirty`, `dry`, `false`, `foolish`, `green`, `last`, `late`,

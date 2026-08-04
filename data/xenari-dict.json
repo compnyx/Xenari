@@ -10002,7 +10002,10 @@
     "notes": null,
     "english_keys": [
       "band"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "band": "noun"
+    }
   },
   {
     "id": 4493,
@@ -13416,7 +13419,10 @@
     "notes": null,
     "english_keys": [
       "arm"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "arm": "noun"
+    }
   },
   {
     "id": 485,
@@ -13626,7 +13632,10 @@
     "notes": null,
     "english_keys": [
       "bone"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bone": "noun"
+    }
   },
   {
     "id": 526,
@@ -13686,7 +13695,10 @@
     "notes": null,
     "english_keys": [
       "brain"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "brain": "noun"
+    }
   },
   {
     "id": 530,
@@ -29692,7 +29704,10 @@
     "notes": null,
     "english_keys": [
       "bath"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bath": "noun"
+    }
   },
   {
     "id": 5506,
@@ -69583,7 +69598,10 @@
     "english_keys": [
       "bridge",
       "crossing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bridge": "noun"
+    }
   },
   {
     "id": 1547,
@@ -71198,7 +71216,10 @@
     "notes": null,
     "english_keys": [
       "angle"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "angle": "noun"
+    }
   },
   {
     "id": 1367,
@@ -82925,7 +82946,10 @@
     "notes": null,
     "english_keys": [
       "ball"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ball": "noun"
+    }
   },
   {
     "id": 3306,
@@ -84887,7 +84911,10 @@
     "notes": null,
     "english_keys": [
       "bed"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bed": "noun"
+    }
   },
   {
     "id": 878,
@@ -86034,7 +86061,10 @@
     "notes": null,
     "english_keys": [
       "board"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "board": "noun"
+    }
   },
   {
     "id": 3120,
@@ -87087,7 +87117,10 @@
     "notes": null,
     "english_keys": [
       "berry"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "berry": "noun"
+    }
   },
   {
     "id": 2276,
@@ -88621,7 +88654,10 @@
     "notes": null,
     "english_keys": [
       "branch"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "branch": "noun"
+    }
   },
   {
     "id": 663,
@@ -89533,7 +89569,10 @@
       "box",
       "doos",
       "object"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "box": "noun"
+    }
   },
   {
     "id": 941,
@@ -105516,7 +105555,10 @@
     "notes": null,
     "english_keys": [
       "brake"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "brake": "noun"
+    }
   },
   {
     "id": 2538,
@@ -105660,7 +105702,10 @@
     "notes": null,
     "english_keys": [
       "boat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "boat": "noun"
+    }
   },
   {
     "id": 2256,
@@ -106181,7 +106226,10 @@
     "notes": null,
     "english_keys": [
       "bell"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bell": "noun"
+    }
   },
   {
     "id": 4289,
@@ -106531,7 +106579,10 @@
     "notes": null,
     "english_keys": [
       "bottle"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bottle": "noun"
+    }
   },
   {
     "id": 2610,
@@ -107204,7 +107255,10 @@
     "notes": null,
     "english_keys": [
       "book"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "book": "noun"
+    }
   },
   {
     "id": 843,
@@ -107264,7 +107318,10 @@
     "notes": null,
     "english_keys": [
       "boot"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "boot": "noun"
+    }
   },
   {
     "id": 9489,
@@ -107590,7 +107647,10 @@
     "notes": null,
     "english_keys": [
       "bag"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bag": "noun"
+    }
   },
   {
     "id": 797,
@@ -108582,7 +108642,10 @@
     "notes": null,
     "english_keys": [
       "blade"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "blade": "noun"
+    }
   },
   {
     "id": 4369,
@@ -120183,7 +120246,10 @@
       "basin",
       "bowl",
       "catchment"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "basin": "noun"
+    }
   },
   {
     "id": 5649,
