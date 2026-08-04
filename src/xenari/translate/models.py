@@ -76,6 +76,7 @@ class ReverseClause:
 
     object: str = ""
     subject: str = ""
+    subject_plural: bool = False
     location: str = ""
     goal: str = ""
     instrument: str = ""

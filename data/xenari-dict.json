@@ -16522,7 +16522,6 @@
     "notes": null,
     "english_keys": [
       "day",
-      "has",
       "lo",
       "passed",
       "sun",
@@ -17919,11 +17918,15 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "has",
       "have",
-      "hold"
+      "hold",
+      "own"
     ],
     "english_parts_of_speech": {
-      "have": "verb"
+      "has": "verb",
+      "have": "verb",
+      "own": "verb"
     }
   },
   {
@@ -23292,7 +23295,6 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "my",
       "spouse"
     ]
   },
@@ -23393,7 +23395,6 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "my",
       "parent"
     ]
   },
@@ -23592,7 +23593,6 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "my",
       "sibling"
     ]
   },
@@ -23775,8 +23775,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "child",
-      "my"
+      "child"
     ]
   },
   {
@@ -23838,8 +23837,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "grandchild",
-      "my"
+      "grandchild"
     ]
   },
   {
@@ -24078,7 +24076,6 @@
     "english_keys": [
       "adjective-forming",
       "explicit",
-      "into",
       "root"
     ]
   },
@@ -24209,9 +24206,7 @@
     "english_keys": [
       "against",
       "foe",
-      "in",
-      "opposition",
-      "to"
+      "opposition"
     ]
   },
   {
@@ -25066,7 +25061,10 @@
     "english_keys": [
       "also",
       "too"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "also": "particle"
+    }
   },
   {
     "id": 194,
@@ -26037,7 +26035,6 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "after",
       "echo",
       "feeding",
       "reverberation"
@@ -69254,8 +69251,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "closet",
-      "your"
+      "closet"
     ]
   },
   {
@@ -69619,8 +69615,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "curtains",
-      "your"
+      "curtains"
     ]
   },
   {
@@ -69698,7 +69693,6 @@
     "notes": null,
     "english_keys": [
       "sunlight",
-      "through",
       "window"
     ]
   },
@@ -69813,8 +69807,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "pillow",
-      "your"
+      "pillow"
     ]
   },
   {
@@ -79587,7 +79580,6 @@
     "timestamp": "2026-07-08T22:55:30.978279",
     "notes": null,
     "english_keys": [
-      "below",
       "sub",
       "submarine"
     ]
@@ -85210,7 +85202,10 @@
     "english_keys": [
       "below",
       "under"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "below": "particle"
+    }
   },
   {
     "id": 2173,
@@ -89408,7 +89403,6 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "also",
       "also:",
       "box",
       "doos",
@@ -96644,12 +96638,8 @@
     "notes": null,
     "english_keys": [
       "fuck-buddy",
-      "have",
       "regular"
-    ],
-    "english_parts_of_speech": {
-      "have": "verb"
-    }
+    ]
   },
   {
     "id": 1871,
@@ -98651,8 +98641,7 @@
     "notes": "coined via xenari_tool coin",
     "english_keys": [
       "crowd",
-      "crowds",
-      "of"
+      "crowds"
     ]
   },
   {
@@ -100963,8 +100952,7 @@
     "notes": null,
     "english_keys": [
       "call",
-      "summon",
-      "through"
+      "summon"
     ]
   },
   {
@@ -101856,7 +101844,6 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "through",
       "veil-piercing"
     ]
   },
@@ -102016,8 +102003,7 @@
     "english_keys": [
       "back",
       "banish",
-      "force",
-      "through"
+      "force"
     ]
   },
   {
@@ -103687,14 +103673,9 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "have",
-      "own",
       "watch",
       "xrong"
-    ],
-    "english_parts_of_speech": {
-      "own": "verb"
-    }
+    ]
   },
   {
     "id": 1420,
@@ -103958,7 +103939,6 @@
     "notes": null,
     "english_keys": [
       "decorative",
-      "do",
       "doesn't",
       "mark",
       "ngu",
@@ -107693,8 +107673,7 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "map",
-      "your"
+      "map"
     ]
   },
   {

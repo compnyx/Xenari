@@ -3,6 +3,7 @@ import sqlite3
 from importlib.resources import files
 
 from xenari.paths import (
+    OGDEN_BASIC_ENGLISH,
     RUNTIME_CONTRACT,
     TRANSLATOR_FIXTURES,
     generated_dictionary_path,
@@ -27,6 +28,13 @@ def test_runtime_contract_is_available_as_package_data():
     contract = json.loads(RUNTIME_CONTRACT.read_text(encoding="utf-8"))
     assert contract["schema"] == "xenari-runtime"
     assert contract["schema_version"] == 1
+
+
+def test_ogden_baseline_is_available_as_package_data():
+    assert OGDEN_BASIC_ENGLISH.is_file()
+    baseline = json.loads(OGDEN_BASIC_ENGLISH.read_text(encoding="utf-8"))
+    assert baseline["schema"] == "xenari.ogden-basic-english.v1"
+    assert baseline["source"]["accepted_form_count"] == 852
 
 
 def test_packaged_canon_contains_migrated_part_of_speech_metadata():

@@ -1,5 +1,4 @@
 import datetime
-import re
 import sqlite3
 from pathlib import Path
 from typing import List, Tuple
@@ -124,18 +123,6 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
                                VALUES (?, ?, ?)""",
                             (ek, root_id, inferred[0] if inferred else None),
                         )
-
-            # Also auto-map individual words from the meaning (for backwards compat)
-            for w in re.split(r"[ /,]+", meaning.lower().split("—")[0].strip()):
-                w = w.strip()
-                if w and len(w) > 1 and not self.has_english(w):
-                    inferred = infer_mapping_part_of_speech(w, root, meaning, category)
-                    self.conn.execute(
-                        """INSERT OR IGNORE INTO english_map
-                           (english_key, root_id, part_of_speech)
-                           VALUES (?, ?, ?)""",
-                        (w, root_id, inferred[0] if inferred else None),
-                    )
 
             self.conn.commit()
             msgs.append(f"Added: {root} — {meaning} (for '{english}') in [{category}]")

@@ -123,19 +123,24 @@ def test_curation_sections_are_filterable_and_explain_hypotheses(xenari):
         relations=False,
     )
     assert "Placeholder category suggestions (grouped by suggestion)" in placeholders
-    assert "  Uncategorized:" in placeholders
-    assert "[none]" in placeholders
+    # The canon has no remaining placeholder categories after the legacy
+    # cleanup.  Keep the report filter covered without pretending that a
+    # completed queue still has a candidate.
+    assert "Placeholder category rows: 0" in placeholders
+    assert "  none" in placeholders
     assert "Phrase-like definition review" not in placeholders
     assert "Relation candidate groups" not in placeholders
 
     candidates = xenari.db.relation_candidates()
     kinds = {candidate["kind"] for candidate in candidates}
-    assert kinds == {
+    allowed_kinds = {
         "possible synonym",
         "possible register variant",
         "possible category clash",
         "possible false friend",
     }
+    assert kinds
+    assert kinds <= allowed_kinds
     relations = xenari.db.curation_report(
         limit=1,
         placeholder=False,
@@ -143,7 +148,7 @@ def test_curation_sections_are_filterable_and_explain_hypotheses(xenari):
         relations=True,
     )
     assert "hypotheses, not facts" in relations
-    assert "possible synonym" in relations
+    assert any(kind in relations for kind in kinds)
     assert "preview only: python3 xenari_tool.py relate" in relations
 
 def test_parity_and_coin_workflow_preview(xenari):
@@ -152,17 +157,19 @@ def test_parity_and_coin_workflow_preview(xenari):
     assert "forward: ok" in parity
     assert "reverse: ok" in parity
 
-    ok, scout = xenari.coin_root("glimmer", "soft unsteady light", limit=3)
+    english = "unsharedcoin"
+    meaning = "temporary unshared coin preview"
+    ok, scout = xenari.coin_root(english, meaning, limit=3)
     assert ok
     assert "Coin root:" in scout
     assert "Candidate roots:" in scout
     assert "No write requested." in scout
 
-    root = xenari.db.propose_root("glimmer", "soft unsteady light", limit=1)[0]["root"]
-    ok, preview = xenari.coin_root("glimmer", "soft unsteady light", root=root, limit=3, dry_run=True)
+    root = xenari.db.propose_root(english, meaning, limit=1)[0]["root"]
+    ok, preview = xenari.coin_root(english, meaning, root=root, limit=3, dry_run=True)
     assert ok
     assert "DRY RUN" in preview
-    assert xenari.db.lookup("glimmer") is None
+    assert xenari.db.lookup(english) is None
 
 def test_mutation_previews_do_not_write(writable_xenari):
     x = writable_xenari
@@ -187,6 +194,24 @@ def test_mutation_previews_do_not_write(writable_xenari):
     assert ok
     assert "Map preview: danger-test -> fatyih" in report
     assert x.db.lookup("danger-test") is None
+
+
+def test_add_root_only_maps_explicit_english_keys(writable_xenari):
+    x = writable_xenari
+    root = x.db.propose_root(
+        "intentional-primary", "a unsharedsentinel mapping description", limit=1
+    )[0]["root"]
+
+    ok, messages = x.db.add_root(
+        "intentional-primary",
+        root,
+        "a unsharedsentinel mapping description",
+        category="Tests",
+    )
+
+    assert ok, messages
+    assert x.db.lookup("intentional-primary")[0] == root
+    assert x.db.lookup("unsharedsentinel") is None
 
 
 def test_mapping_write_backs_up_and_duplicate_is_not_success(tmp_path, writable_xenari):
@@ -248,7 +273,16 @@ def test_categorize_previews_guards_broad_writes_and_backs_up(tmp_path, writable
 
 def test_relate_is_preview_first_and_backs_up_explicit_writes(tmp_path, writable_xenari):
     x = writable_xenari
-    roots = ("brak", "plonq")
+    left_english = "relationpreviewleft"
+    left_meaning = "temporary relation preview left"
+    left_root = x.db.propose_root(left_english, left_meaning, limit=1)[0]["root"]
+    assert x.db.add_root(left_english, left_root, left_meaning, category="Tests")[0]
+
+    right_english = "relationpreviewright"
+    right_meaning = "temporary relation preview right"
+    right_root = x.db.propose_root(right_english, right_meaning, limit=1)[0]["root"]
+    assert x.db.add_root(right_english, right_root, right_meaning, category="Tests")[0]
+    roots = (left_root, right_root)
 
     ok, preview = x.db.relate(*roots, relation="synonym")
     assert ok

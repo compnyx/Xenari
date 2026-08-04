@@ -365,6 +365,17 @@ def test_noun_subject_auxiliaries_copulas_progressives_and_possession_keep_roles
         if not english.startswith("I "):
             assert "ka neq" not in rendered
 
+
+def test_reverse_possession_preserves_tense_and_subject_agreement(xenari):
+    cases = {
+        "ra nu brid ka vi zrenq ta xrong vi sa xo": "dog has hat",
+        "ra nu brid ka vi zrenq ha ta xrong vi sa xo": "dogs have hat",
+        "ra nu brid ka neq ta xrong vi sa xo": "I have hat",
+        "ra nu brid ka vi zrenq ta xrong vi lo xo": "dog had hat",
+    }
+    for source, expected in cases.items():
+        assert xenari.reverse(source) == expected
+
 def test_reverse_autodetects_casual_roots_english_label_and_imperatives(xenari):
     cases = {
         "stux": "ok",

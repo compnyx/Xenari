@@ -9,7 +9,7 @@ COMMANDS = [
     "help", "lookup", "inspect", "info", "validate", "doctor", "workbench",
     "review", "gaps", "compound", "speak", "gloss", "translate", "reverse",
     "llm-context", "llm-lint", "export-js", "export-json", "export-runtime", "export-md",
-    "export", "stats", "audit", "lint", "curate", "meta", "sync", "add",
+    "export", "stats", "audit", "lint", "baseline", "curate", "meta", "sync", "add",
     "remove", "search", "near", "relations", "propose-root", "coin",
     "categories", "categorize", "duplicates", "map", "parity", "relate",
     "pos", "pos-set", "pos-backfill", "benchmark", "check",
@@ -172,6 +172,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     audit = subparsers.add_parser("audit", help="audit canonical lexicon quality")
     _add_words(audit, "LIMIT")
+
+    baseline = subparsers.add_parser(
+        "baseline", help="audit source-pinned Ogden Basic English coverage"
+    )
+    baseline.add_argument("--strict", action="store_true", help="fail while any source slot remains unapproved")
+    baseline.add_argument("--format", choices=("text", "json"), default="text")
 
     lint = subparsers.add_parser("lint", help="show lexicon lint findings")
     _add_words(lint, "LIMIT")

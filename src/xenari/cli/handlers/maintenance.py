@@ -26,6 +26,7 @@ COMMANDS = frozenset(
         "stats",
         "meta",
         "audit",
+        "baseline",
         "lint",
         "sync",
     }
@@ -36,8 +37,11 @@ def _release_check_payload(x):
     """Run the checkout-local checks required before publishing Xenari."""
     doctor_ok, _ = x.doctor()
     parity_ok, _ = x.parity()
-    checks = {"doctor": doctor_ok, "parity": parity_ok}
+    ogden = x.ogden_baseline_report()
+    checks = {"doctor": doctor_ok, "parity": parity_ok, "ogden_baseline": ogden["ok"]}
     errors = {}
+    if not ogden["ok"]:
+        errors["ogden_baseline"] = "; ".join(ogden["errors"] or ogden["approved_failures"])
 
     try:
         generated = json.loads(generated_dictionary_path().read_text(encoding="utf-8"))
@@ -226,6 +230,16 @@ def handle(args, x):
                 print("Usage: audit [limit]")
                 sys.exit(1)
         print(x.db.audit(limit=limit))
+    elif args.command == "baseline":
+        if args.format == "json":
+            report = x.ogden_baseline_report(strict=args.strict)
+            print(json.dumps(report, indent=2, ensure_ascii=False))
+            ok = report["ok"]
+        else:
+            ok, rendered = x.ogden_baseline(strict=args.strict)
+            print(rendered)
+        if not ok:
+            sys.exit(1)
     elif args.command == "lint":
         limit = args.limit
         if args.args:

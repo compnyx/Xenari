@@ -287,10 +287,11 @@ class ReverseTranslationMixin:
         tense: str,
         negated: bool,
         subject: str,
+        subject_plural: bool = False,
     ) -> str:
         """Render one parsed predicate without closing over a clause loop."""
         if verb == "is":
-            plural_or_second_person = subject in {"you", "we", "they"}
+            plural_or_second_person = subject_plural or subject in {"you", "we", "they"}
             if tense == "lo":
                 copula = "were" if plural_or_second_person else "was"
                 return f"{copula} not" if negated else copula
@@ -317,6 +318,7 @@ class ReverseTranslationMixin:
                 "stop": "stopped",
                 "run": "ran",
                 "open": "opened",
+                "have": "had",
                 "bite": "bit",
                 "reverse-engineer": "reverse-engineered",
             }
@@ -334,13 +336,24 @@ class ReverseTranslationMixin:
             base = "usually " + base
         elif tense == "pe":
             base = "could " + base
+        elif (
+            tense == "sa"
+            and verb == "have"
+            and not subject_plural
+            and subject not in {"I", "you", "we", "they"}
+        ):
+            base = "has"
 
         if negated:
             if tense == "ve":
                 return "will not " + base.removeprefix("will ")
             if tense == "lo":
                 return "did not " + verb
-            auxiliary = "do not" if subject in {"I", "you", "they"} else "does not"
+            auxiliary = (
+                "do not"
+                if subject_plural or subject in {"I", "you", "we", "they"}
+                else "does not"
+            )
             return auxiliary + " " + verb
         return base
 
@@ -373,7 +386,9 @@ class ReverseTranslationMixin:
                 head = head[3:]
             return head.split()[0] if head else root
 
-        def read_phrase(tokens: List[str], start: int, role: str = "plain") -> Tuple[str, int]:
+        def read_phrase(
+            tokens: List[str], start: int, role: str = "plain"
+        ) -> Tuple[str, int, bool]:
             pieces = []
             i = start
             possessor = None
@@ -416,8 +431,10 @@ class ReverseTranslationMixin:
                     and not poss_text.endswith(("'", "'s"))
                 ):
                     poss_text = f"{poss_text}'s"
-                return f"{poss_text} {' '.join(words)}", i
-            return " ".join(words), i
+                return f"{poss_text} {' '.join(words)}", i, bool(
+                    pieces and pieces[0]["plural"]
+                )
+            return " ".join(words), i, bool(pieces and pieces[0]["plural"])
 
         for sentence in frames:
             if sentence == "prax":
@@ -440,15 +457,17 @@ class ReverseTranslationMixin:
                     clause.connector = connector_glosses[tok]
                     i += 1
                 elif tok == "ra":
-                    clause.object, i = read_phrase(tokens, i + 1, role="obj")
+                    clause.object, i, _ = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "ka":
-                    clause.subject, i = read_phrase(tokens, i + 1, role="subj")
+                    clause.subject, i, clause.subject_plural = read_phrase(
+                        tokens, i + 1, role="subj"
+                    )
                 elif tok == "na":
-                    clause.location, i = read_phrase(tokens, i + 1, role="obj")
+                    clause.location, i, _ = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "fa":
-                    clause.goal, i = read_phrase(tokens, i + 1, role="obj")
+                    clause.goal, i, _ = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "mo":
-                    clause.instrument, i = read_phrase(tokens, i + 1, role="obj")
+                    clause.instrument, i, _ = read_phrase(tokens, i + 1, role="obj")
                 elif tok == "ta":
                     j = i + 1
                     while j < len(tokens) and tokens[j] in skip_particles:
@@ -494,6 +513,7 @@ class ReverseTranslationMixin:
 
             obj = clause.object
             subj = clause.subject
+            subject_plural = clause.subject_plural
             loc = clause.location
             goal = clause.goal
             instrument = clause.instrument
@@ -548,6 +568,7 @@ class ReverseTranslationMixin:
                     tense=tense,
                     negated=negated,
                     subject=subj,
+                    subject_plural=subject_plural,
                 )
                 text = " ".join(part for part in [subj, rendered_verb, obj] if part)
             elif verb and obj and subj:
@@ -556,6 +577,7 @@ class ReverseTranslationMixin:
                     tense=tense,
                     negated=negated,
                     subject=subj,
+                    subject_plural=subject_plural,
                 )
                 text = " ".join(part for part in [subj, rendered_verb, obj] if part)
             elif verb and subj:
@@ -564,6 +586,7 @@ class ReverseTranslationMixin:
                     tense=tense,
                     negated=negated,
                     subject=subj,
+                    subject_plural=subject_plural,
                 )
                 text = " ".join(part for part in [subj, rendered_verb] if part)
             else:

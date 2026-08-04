@@ -69,6 +69,8 @@ python3 xenari_tool.py categories
 python3 xenari_tool.py pos verb --limit 20
 python3 xenari_tool.py pos --unknown --limit 20
 python3 xenari_tool.py pos --proposals --format json
+python3 xenari_tool.py baseline
+python3 xenari_tool.py baseline --strict
 ```
 
 Translate and validate model output:
@@ -149,6 +151,10 @@ the versioned Python/browser runtime contract.
   registers, particles, and derived families can legitimately share wording.
 - Treat translator fixtures as a cross-runtime contract, not examples to update
   merely to make a failing implementation green.
+- `baseline` pins Ogden's Basic English 850 source slots (852 accepted spelling
+  forms) as the common-English coverage queue. A slot is approved only after
+  its direct mapping, POS, preferred root, and sentence round-trip all agree;
+  `--strict` is the eventual zero-pending gate.
 - Add focused regressions for grammar, parser, CLI, or validator behavior.
 - Keep the LLM reference compact; use the DB or generated JSON for vocabulary.
 

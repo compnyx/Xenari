@@ -1,0 +1,6947 @@
+{
+  "schema": "xenari.ogden-basic-english.v1",
+  "source": {
+    "title": "Ogden's Basic English 850 word list",
+    "transcription_url": "https://static.hlt.bme.hu/semantics/external/pages/Ogden-lista/ogden.basic-english.org/words.html",
+    "historical_references": [
+      "https://archive.org/details/basicenglishgene0000ckog",
+      "https://books.google.com/books?id=20Se4CIlhx0C"
+    ],
+    "slot_counts": {
+      "operations": 100,
+      "things-general": 400,
+      "things-picturable": 200,
+      "qualities-general": 100,
+      "qualities-opposites": 50
+    },
+    "accepted_form_count": 852,
+    "normalized_slot_sha256": "8f9be7cf6fbbcb82b24ed5cdf38e9fa548ad74cb3b7e1119256cbc759aeaad03"
+  },
+  "policy": {
+    "default_status": "pending",
+    "approved_slots": "approvals",
+    "strict_requires_no_pending_or_unsupported_slots": true,
+    "note": "Every approved slot has an exact direct English-map sense, a POS match, and a forward/reverse sentence fixture. Pending slots are deliberate review work, never inferred coverage."
+  },
+  "groups": [
+    {
+      "id": "operations",
+      "label": "Operations",
+      "source_slot_count": 100,
+      "entries": [
+        {
+          "slot_id": "operations-001",
+          "forms": [
+            "come"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-002",
+          "forms": [
+            "get"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-003",
+          "forms": [
+            "give"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-004",
+          "forms": [
+            "go"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-005",
+          "forms": [
+            "keep"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-006",
+          "forms": [
+            "let"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-007",
+          "forms": [
+            "make"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-008",
+          "forms": [
+            "put"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-009",
+          "forms": [
+            "seem"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-010",
+          "forms": [
+            "take"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-011",
+          "forms": [
+            "be"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-012",
+          "forms": [
+            "do"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-013",
+          "forms": [
+            "have"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-014",
+          "forms": [
+            "say"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-015",
+          "forms": [
+            "see"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-016",
+          "forms": [
+            "send"
+          ],
+          "part_of_speech": "verb",
+          "grammar_role": "lexical_verb"
+        },
+        {
+          "slot_id": "operations-017",
+          "forms": [
+            "may"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "modal"
+        },
+        {
+          "slot_id": "operations-018",
+          "forms": [
+            "will"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "modal"
+        },
+        {
+          "slot_id": "operations-019",
+          "forms": [
+            "about"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-020",
+          "forms": [
+            "across"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-021",
+          "forms": [
+            "after"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-022",
+          "forms": [
+            "against"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-023",
+          "forms": [
+            "among"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-024",
+          "forms": [
+            "at"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-025",
+          "forms": [
+            "before"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-026",
+          "forms": [
+            "between"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-027",
+          "forms": [
+            "by"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-028",
+          "forms": [
+            "down"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-029",
+          "forms": [
+            "from"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-030",
+          "forms": [
+            "in"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-031",
+          "forms": [
+            "off"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-032",
+          "forms": [
+            "on"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-033",
+          "forms": [
+            "over"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-034",
+          "forms": [
+            "through"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-035",
+          "forms": [
+            "to"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-036",
+          "forms": [
+            "under"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-037",
+          "forms": [
+            "up"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-038",
+          "forms": [
+            "with"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-039",
+          "forms": [
+            "as"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-040",
+          "forms": [
+            "for"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-041",
+          "forms": [
+            "of"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-042",
+          "forms": [
+            "till"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-043",
+          "forms": [
+            "than"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "preposition_or_comparator"
+        },
+        {
+          "slot_id": "operations-044",
+          "forms": [
+            "a"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-045",
+          "forms": [
+            "the"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-046",
+          "forms": [
+            "all"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-047",
+          "forms": [
+            "any"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-048",
+          "forms": [
+            "every"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-049",
+          "forms": [
+            "little"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-050",
+          "forms": [
+            "much"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-051",
+          "forms": [
+            "no"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-052",
+          "forms": [
+            "other"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-053",
+          "forms": [
+            "some"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-054",
+          "forms": [
+            "such"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-055",
+          "forms": [
+            "that"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-056",
+          "forms": [
+            "this"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "determiner_or_quantifier"
+        },
+        {
+          "slot_id": "operations-057",
+          "forms": [
+            "i"
+          ],
+          "part_of_speech": "pronoun",
+          "grammar_role": "pronoun"
+        },
+        {
+          "slot_id": "operations-058",
+          "forms": [
+            "he"
+          ],
+          "part_of_speech": "pronoun",
+          "grammar_role": "pronoun"
+        },
+        {
+          "slot_id": "operations-059",
+          "forms": [
+            "you"
+          ],
+          "part_of_speech": "pronoun",
+          "grammar_role": "pronoun"
+        },
+        {
+          "slot_id": "operations-060",
+          "forms": [
+            "who"
+          ],
+          "part_of_speech": "pronoun",
+          "grammar_role": "pronoun"
+        },
+        {
+          "slot_id": "operations-061",
+          "forms": [
+            "and"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "conjunction"
+        },
+        {
+          "slot_id": "operations-062",
+          "forms": [
+            "because"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "conjunction"
+        },
+        {
+          "slot_id": "operations-063",
+          "forms": [
+            "but"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "conjunction"
+        },
+        {
+          "slot_id": "operations-064",
+          "forms": [
+            "or"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "conjunction"
+        },
+        {
+          "slot_id": "operations-065",
+          "forms": [
+            "if"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "conjunction"
+        },
+        {
+          "slot_id": "operations-066",
+          "forms": [
+            "though"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "conjunction"
+        },
+        {
+          "slot_id": "operations-067",
+          "forms": [
+            "while"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "conjunction"
+        },
+        {
+          "slot_id": "operations-068",
+          "forms": [
+            "how"
+          ],
+          "part_of_speech": "particle",
+          "grammar_role": "interrogative_form"
+        },
+        {
+          "slot_id": "operations-069",
+          "forms": [
+            "when"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-070",
+          "forms": [
+            "where"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-071",
+          "forms": [
+            "why"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-072",
+          "forms": [
+            "again"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-073",
+          "forms": [
+            "ever"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-074",
+          "forms": [
+            "far"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-075",
+          "forms": [
+            "forward"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-076",
+          "forms": [
+            "here"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-077",
+          "forms": [
+            "near"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-078",
+          "forms": [
+            "now"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-079",
+          "forms": [
+            "out"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-080",
+          "forms": [
+            "still"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-081",
+          "forms": [
+            "then"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-082",
+          "forms": [
+            "there"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-083",
+          "forms": [
+            "together"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-084",
+          "forms": [
+            "well"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-085",
+          "forms": [
+            "almost"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-086",
+          "forms": [
+            "enough"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-087",
+          "forms": [
+            "even"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-088",
+          "forms": [
+            "not"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-089",
+          "forms": [
+            "only"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-090",
+          "forms": [
+            "quite"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-091",
+          "forms": [
+            "so"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-092",
+          "forms": [
+            "very"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-093",
+          "forms": [
+            "tomorrow"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-094",
+          "forms": [
+            "yesterday"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-095",
+          "forms": [
+            "north"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-096",
+          "forms": [
+            "south"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-097",
+          "forms": [
+            "east"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-098",
+          "forms": [
+            "west"
+          ],
+          "part_of_speech": "adverb",
+          "grammar_role": "adverbial"
+        },
+        {
+          "slot_id": "operations-099",
+          "forms": [
+            "please"
+          ],
+          "part_of_speech": "interjection",
+          "grammar_role": "interjection"
+        },
+        {
+          "slot_id": "operations-100",
+          "forms": [
+            "yes"
+          ],
+          "part_of_speech": "interjection",
+          "grammar_role": "interjection"
+        }
+      ]
+    },
+    {
+      "id": "things-general",
+      "label": "Things — General",
+      "source_slot_count": 400,
+      "entries": [
+        {
+          "slot_id": "things-general-001",
+          "forms": [
+            "account"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-002",
+          "forms": [
+            "act"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-003",
+          "forms": [
+            "addition"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-004",
+          "forms": [
+            "adjustment"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-005",
+          "forms": [
+            "advertisement"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-006",
+          "forms": [
+            "agreement"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-007",
+          "forms": [
+            "air"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-008",
+          "forms": [
+            "amount"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-009",
+          "forms": [
+            "amusement"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-010",
+          "forms": [
+            "animal"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-011",
+          "forms": [
+            "answer"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-012",
+          "forms": [
+            "apparatus"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-013",
+          "forms": [
+            "approval"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-014",
+          "forms": [
+            "argument"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-015",
+          "forms": [
+            "art"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-016",
+          "forms": [
+            "attack"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-017",
+          "forms": [
+            "attempt"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-018",
+          "forms": [
+            "attention"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-019",
+          "forms": [
+            "attraction"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-020",
+          "forms": [
+            "authority"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-021",
+          "forms": [
+            "back"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-022",
+          "forms": [
+            "balance"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-023",
+          "forms": [
+            "base"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-024",
+          "forms": [
+            "behavior"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-025",
+          "forms": [
+            "belief"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-026",
+          "forms": [
+            "birth"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-027",
+          "forms": [
+            "bit"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-028",
+          "forms": [
+            "bite"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-029",
+          "forms": [
+            "blood"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-030",
+          "forms": [
+            "blow"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-031",
+          "forms": [
+            "body"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-032",
+          "forms": [
+            "brass"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-033",
+          "forms": [
+            "bread"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-034",
+          "forms": [
+            "breath"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-035",
+          "forms": [
+            "brother"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-036",
+          "forms": [
+            "building"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-037",
+          "forms": [
+            "burn"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-038",
+          "forms": [
+            "burst"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-039",
+          "forms": [
+            "business"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-040",
+          "forms": [
+            "butter"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-041",
+          "forms": [
+            "canvas"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-042",
+          "forms": [
+            "care"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-043",
+          "forms": [
+            "cause"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-044",
+          "forms": [
+            "chalk"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-045",
+          "forms": [
+            "chance"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-046",
+          "forms": [
+            "change"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-047",
+          "forms": [
+            "cloth"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-048",
+          "forms": [
+            "coal"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-049",
+          "forms": [
+            "color"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-050",
+          "forms": [
+            "comfort"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-051",
+          "forms": [
+            "committee"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-052",
+          "forms": [
+            "company"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-053",
+          "forms": [
+            "comparison"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-054",
+          "forms": [
+            "competition"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-055",
+          "forms": [
+            "condition"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-056",
+          "forms": [
+            "connection"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-057",
+          "forms": [
+            "control"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-058",
+          "forms": [
+            "cook"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-059",
+          "forms": [
+            "copper"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-060",
+          "forms": [
+            "copy"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-061",
+          "forms": [
+            "cork"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-062",
+          "forms": [
+            "cotton"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-063",
+          "forms": [
+            "cough"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-064",
+          "forms": [
+            "country"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-065",
+          "forms": [
+            "cover"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-066",
+          "forms": [
+            "crack"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-067",
+          "forms": [
+            "credit"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-068",
+          "forms": [
+            "crime"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-069",
+          "forms": [
+            "crush"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-070",
+          "forms": [
+            "cry"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-071",
+          "forms": [
+            "current"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-072",
+          "forms": [
+            "curve"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-073",
+          "forms": [
+            "damage"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-074",
+          "forms": [
+            "danger"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-075",
+          "forms": [
+            "daughter"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-076",
+          "forms": [
+            "day"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-077",
+          "forms": [
+            "death"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-078",
+          "forms": [
+            "debt"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-079",
+          "forms": [
+            "decision"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-080",
+          "forms": [
+            "degree"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-081",
+          "forms": [
+            "design"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-082",
+          "forms": [
+            "desire"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-083",
+          "forms": [
+            "destruction"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-084",
+          "forms": [
+            "detail"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-085",
+          "forms": [
+            "development"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-086",
+          "forms": [
+            "digestion"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-087",
+          "forms": [
+            "direction"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-088",
+          "forms": [
+            "discovery"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-089",
+          "forms": [
+            "discussion"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-090",
+          "forms": [
+            "disease"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-091",
+          "forms": [
+            "disgust"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-092",
+          "forms": [
+            "distance"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-093",
+          "forms": [
+            "distribution"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-094",
+          "forms": [
+            "division"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-095",
+          "forms": [
+            "doubt"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-096",
+          "forms": [
+            "drink"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-097",
+          "forms": [
+            "driving"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-098",
+          "forms": [
+            "dust"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-099",
+          "forms": [
+            "earth"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-100",
+          "forms": [
+            "edge"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-101",
+          "forms": [
+            "education"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-102",
+          "forms": [
+            "effect"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-103",
+          "forms": [
+            "end"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-104",
+          "forms": [
+            "error"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-105",
+          "forms": [
+            "event"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-106",
+          "forms": [
+            "example"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-107",
+          "forms": [
+            "exchange"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-108",
+          "forms": [
+            "existence"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-109",
+          "forms": [
+            "expansion"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-110",
+          "forms": [
+            "experience"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-111",
+          "forms": [
+            "expert"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-112",
+          "forms": [
+            "fact"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-113",
+          "forms": [
+            "fall"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-114",
+          "forms": [
+            "family"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-115",
+          "forms": [
+            "father"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-116",
+          "forms": [
+            "fear"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-117",
+          "forms": [
+            "feeling"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-118",
+          "forms": [
+            "fiction"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-119",
+          "forms": [
+            "field"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-120",
+          "forms": [
+            "fight"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-121",
+          "forms": [
+            "fire"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-122",
+          "forms": [
+            "flame"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-123",
+          "forms": [
+            "flight"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-124",
+          "forms": [
+            "flower"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-125",
+          "forms": [
+            "fold"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-126",
+          "forms": [
+            "food"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-127",
+          "forms": [
+            "force"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-128",
+          "forms": [
+            "form"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-129",
+          "forms": [
+            "friend"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-130",
+          "forms": [
+            "front"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-131",
+          "forms": [
+            "fruit"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-132",
+          "forms": [
+            "glass"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-133",
+          "forms": [
+            "gold"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-134",
+          "forms": [
+            "government"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-135",
+          "forms": [
+            "grain"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-136",
+          "forms": [
+            "grass"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-137",
+          "forms": [
+            "grip"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-138",
+          "forms": [
+            "group"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-139",
+          "forms": [
+            "growth"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-140",
+          "forms": [
+            "guide"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-141",
+          "forms": [
+            "harbor"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-142",
+          "forms": [
+            "harmony"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-143",
+          "forms": [
+            "hate"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-144",
+          "forms": [
+            "hearing"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-145",
+          "forms": [
+            "heat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-146",
+          "forms": [
+            "help"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-147",
+          "forms": [
+            "history"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-148",
+          "forms": [
+            "hole"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-149",
+          "forms": [
+            "hope"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-150",
+          "forms": [
+            "hour"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-151",
+          "forms": [
+            "humor"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-152",
+          "forms": [
+            "ice"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-153",
+          "forms": [
+            "idea"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-154",
+          "forms": [
+            "impulse"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-155",
+          "forms": [
+            "increase"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-156",
+          "forms": [
+            "industry"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-157",
+          "forms": [
+            "ink"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-158",
+          "forms": [
+            "insect"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-159",
+          "forms": [
+            "instrument"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-160",
+          "forms": [
+            "insurance"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-161",
+          "forms": [
+            "interest"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-162",
+          "forms": [
+            "invention"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-163",
+          "forms": [
+            "iron"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-164",
+          "forms": [
+            "jelly"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-165",
+          "forms": [
+            "join"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-166",
+          "forms": [
+            "journey"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-167",
+          "forms": [
+            "judge"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-168",
+          "forms": [
+            "jump"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-169",
+          "forms": [
+            "kick"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-170",
+          "forms": [
+            "kiss"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-171",
+          "forms": [
+            "knowledge"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-172",
+          "forms": [
+            "land"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-173",
+          "forms": [
+            "language"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-174",
+          "forms": [
+            "laugh"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-175",
+          "forms": [
+            "law"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-176",
+          "forms": [
+            "lead"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-177",
+          "forms": [
+            "learning"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-178",
+          "forms": [
+            "leather"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-179",
+          "forms": [
+            "letter"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-180",
+          "forms": [
+            "level"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-181",
+          "forms": [
+            "lift"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-182",
+          "forms": [
+            "light"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-183",
+          "forms": [
+            "limit"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-184",
+          "forms": [
+            "linen"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-185",
+          "forms": [
+            "liquid"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-186",
+          "forms": [
+            "list"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-187",
+          "forms": [
+            "look"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-188",
+          "forms": [
+            "loss"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-189",
+          "forms": [
+            "love"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-190",
+          "forms": [
+            "machine"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-191",
+          "forms": [
+            "man"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-192",
+          "forms": [
+            "manager"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-193",
+          "forms": [
+            "mark"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-194",
+          "forms": [
+            "market"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-195",
+          "forms": [
+            "mass"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-196",
+          "forms": [
+            "meal"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-197",
+          "forms": [
+            "measure"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-198",
+          "forms": [
+            "meat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-199",
+          "forms": [
+            "meeting"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-200",
+          "forms": [
+            "memory"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-201",
+          "forms": [
+            "metal"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-202",
+          "forms": [
+            "middle"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-203",
+          "forms": [
+            "milk"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-204",
+          "forms": [
+            "mind"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-205",
+          "forms": [
+            "mine"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-206",
+          "forms": [
+            "minute"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-207",
+          "forms": [
+            "mist"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-208",
+          "forms": [
+            "money"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-209",
+          "forms": [
+            "month"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-210",
+          "forms": [
+            "morning"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-211",
+          "forms": [
+            "mother"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-212",
+          "forms": [
+            "motion"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-213",
+          "forms": [
+            "mountain"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-214",
+          "forms": [
+            "move"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-215",
+          "forms": [
+            "music"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-216",
+          "forms": [
+            "name"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-217",
+          "forms": [
+            "nation"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-218",
+          "forms": [
+            "need"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-219",
+          "forms": [
+            "news"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-220",
+          "forms": [
+            "night"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-221",
+          "forms": [
+            "noise"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-222",
+          "forms": [
+            "note"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-223",
+          "forms": [
+            "number"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-224",
+          "forms": [
+            "observation"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-225",
+          "forms": [
+            "offer"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-226",
+          "forms": [
+            "oil"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-227",
+          "forms": [
+            "operation"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-228",
+          "forms": [
+            "opinion"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-229",
+          "forms": [
+            "order"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-230",
+          "forms": [
+            "organization"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-231",
+          "forms": [
+            "ornament"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-232",
+          "forms": [
+            "owner"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-233",
+          "forms": [
+            "page"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-234",
+          "forms": [
+            "pain"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-235",
+          "forms": [
+            "paint"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-236",
+          "forms": [
+            "paper"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-237",
+          "forms": [
+            "part"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-238",
+          "forms": [
+            "paste"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-239",
+          "forms": [
+            "payment"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-240",
+          "forms": [
+            "peace"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-241",
+          "forms": [
+            "person"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-242",
+          "forms": [
+            "place"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-243",
+          "forms": [
+            "plant"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-244",
+          "forms": [
+            "play"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-245",
+          "forms": [
+            "pleasure"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-246",
+          "forms": [
+            "point"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-247",
+          "forms": [
+            "poison"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-248",
+          "forms": [
+            "polish"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-249",
+          "forms": [
+            "porter"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-250",
+          "forms": [
+            "position"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-251",
+          "forms": [
+            "powder"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-252",
+          "forms": [
+            "power"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-253",
+          "forms": [
+            "price"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-254",
+          "forms": [
+            "print"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-255",
+          "forms": [
+            "process"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-256",
+          "forms": [
+            "produce"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-257",
+          "forms": [
+            "profit"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-258",
+          "forms": [
+            "property"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-259",
+          "forms": [
+            "prose"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-260",
+          "forms": [
+            "protest"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-261",
+          "forms": [
+            "pull"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-262",
+          "forms": [
+            "punishment"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-263",
+          "forms": [
+            "purpose"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-264",
+          "forms": [
+            "push"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-265",
+          "forms": [
+            "quality"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-266",
+          "forms": [
+            "question"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-267",
+          "forms": [
+            "rain"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-268",
+          "forms": [
+            "range"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-269",
+          "forms": [
+            "rate"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-270",
+          "forms": [
+            "ray"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-271",
+          "forms": [
+            "reaction"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-272",
+          "forms": [
+            "reading"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-273",
+          "forms": [
+            "reason"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-274",
+          "forms": [
+            "record"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-275",
+          "forms": [
+            "regret"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-276",
+          "forms": [
+            "relation"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-277",
+          "forms": [
+            "religion"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-278",
+          "forms": [
+            "representative"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-279",
+          "forms": [
+            "request"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-280",
+          "forms": [
+            "respect"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-281",
+          "forms": [
+            "rest"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-282",
+          "forms": [
+            "reward"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-283",
+          "forms": [
+            "rhythm"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-284",
+          "forms": [
+            "rice"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-285",
+          "forms": [
+            "river"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-286",
+          "forms": [
+            "road"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-287",
+          "forms": [
+            "roll"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-288",
+          "forms": [
+            "room"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-289",
+          "forms": [
+            "rub"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-290",
+          "forms": [
+            "rule"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-291",
+          "forms": [
+            "run"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-292",
+          "forms": [
+            "salt"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-293",
+          "forms": [
+            "sand"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-294",
+          "forms": [
+            "scale"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-295",
+          "forms": [
+            "science"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-296",
+          "forms": [
+            "sea"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-297",
+          "forms": [
+            "seat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-298",
+          "forms": [
+            "secretary"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-299",
+          "forms": [
+            "selection"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-300",
+          "forms": [
+            "self"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-301",
+          "forms": [
+            "sense"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-302",
+          "forms": [
+            "servant"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-303",
+          "forms": [
+            "sex"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-304",
+          "forms": [
+            "shade"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-305",
+          "forms": [
+            "shake"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-306",
+          "forms": [
+            "shame"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-307",
+          "forms": [
+            "shock"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-308",
+          "forms": [
+            "side"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-309",
+          "forms": [
+            "sign"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-310",
+          "forms": [
+            "silk"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-311",
+          "forms": [
+            "silver"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-312",
+          "forms": [
+            "sister"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-313",
+          "forms": [
+            "size"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-314",
+          "forms": [
+            "sky"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-315",
+          "forms": [
+            "sleep"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-316",
+          "forms": [
+            "slip"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-317",
+          "forms": [
+            "slope"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-318",
+          "forms": [
+            "smash"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-319",
+          "forms": [
+            "smell"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-320",
+          "forms": [
+            "smile"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-321",
+          "forms": [
+            "smoke"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-322",
+          "forms": [
+            "sneeze"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-323",
+          "forms": [
+            "snow"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-324",
+          "forms": [
+            "soap"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-325",
+          "forms": [
+            "society"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-326",
+          "forms": [
+            "son"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-327",
+          "forms": [
+            "song"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-328",
+          "forms": [
+            "sort"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-329",
+          "forms": [
+            "sound"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-330",
+          "forms": [
+            "soup"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-331",
+          "forms": [
+            "space"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-332",
+          "forms": [
+            "stage"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-333",
+          "forms": [
+            "start"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-334",
+          "forms": [
+            "statement"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-335",
+          "forms": [
+            "steam"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-336",
+          "forms": [
+            "steel"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-337",
+          "forms": [
+            "step"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-338",
+          "forms": [
+            "stitch"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-339",
+          "forms": [
+            "stone"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-340",
+          "forms": [
+            "stop"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-341",
+          "forms": [
+            "story"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-342",
+          "forms": [
+            "stretch"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-343",
+          "forms": [
+            "structure"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-344",
+          "forms": [
+            "substance"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-345",
+          "forms": [
+            "sugar"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-346",
+          "forms": [
+            "suggestion"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-347",
+          "forms": [
+            "summer"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-348",
+          "forms": [
+            "support"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-349",
+          "forms": [
+            "surprise"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-350",
+          "forms": [
+            "swim"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-351",
+          "forms": [
+            "system"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-352",
+          "forms": [
+            "talk"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-353",
+          "forms": [
+            "taste"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-354",
+          "forms": [
+            "tax"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-355",
+          "forms": [
+            "teaching"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-356",
+          "forms": [
+            "tendency"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-357",
+          "forms": [
+            "test"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-358",
+          "forms": [
+            "theory"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-359",
+          "forms": [
+            "thing"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-360",
+          "forms": [
+            "thought"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-361",
+          "forms": [
+            "thunder"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-362",
+          "forms": [
+            "time"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-363",
+          "forms": [
+            "tin"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-364",
+          "forms": [
+            "top"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-365",
+          "forms": [
+            "touch"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-366",
+          "forms": [
+            "trade"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-367",
+          "forms": [
+            "transport"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-368",
+          "forms": [
+            "trick"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-369",
+          "forms": [
+            "trouble"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-370",
+          "forms": [
+            "turn"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-371",
+          "forms": [
+            "twist"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-372",
+          "forms": [
+            "unit"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-373",
+          "forms": [
+            "use"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-374",
+          "forms": [
+            "value"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-375",
+          "forms": [
+            "verse"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-376",
+          "forms": [
+            "vessel"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-377",
+          "forms": [
+            "view"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-378",
+          "forms": [
+            "voice"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-379",
+          "forms": [
+            "walk"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-380",
+          "forms": [
+            "war"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-381",
+          "forms": [
+            "wash"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-382",
+          "forms": [
+            "waste"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-383",
+          "forms": [
+            "water"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-384",
+          "forms": [
+            "wave"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-385",
+          "forms": [
+            "wax"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-386",
+          "forms": [
+            "way"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-387",
+          "forms": [
+            "weather"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-388",
+          "forms": [
+            "week"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-389",
+          "forms": [
+            "weight"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-390",
+          "forms": [
+            "wind"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-391",
+          "forms": [
+            "wine"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-392",
+          "forms": [
+            "winter"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-393",
+          "forms": [
+            "woman"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-394",
+          "forms": [
+            "wood"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-395",
+          "forms": [
+            "wool"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-396",
+          "forms": [
+            "word"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-397",
+          "forms": [
+            "work"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-398",
+          "forms": [
+            "wound"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-399",
+          "forms": [
+            "writing"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-general-400",
+          "forms": [
+            "year"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        }
+      ]
+    },
+    {
+      "id": "things-picturable",
+      "label": "Things — Picturable",
+      "source_slot_count": 200,
+      "entries": [
+        {
+          "slot_id": "things-picturable-001",
+          "forms": [
+            "angle"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-002",
+          "forms": [
+            "ant"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-003",
+          "forms": [
+            "apple"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-004",
+          "forms": [
+            "arch"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-005",
+          "forms": [
+            "arm"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-006",
+          "forms": [
+            "army"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-007",
+          "forms": [
+            "baby"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-008",
+          "forms": [
+            "bag"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-009",
+          "forms": [
+            "ball"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-010",
+          "forms": [
+            "band"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-011",
+          "forms": [
+            "basin"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-012",
+          "forms": [
+            "basket"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-013",
+          "forms": [
+            "bath"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-014",
+          "forms": [
+            "bed"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-015",
+          "forms": [
+            "bee"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-016",
+          "forms": [
+            "bell"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-017",
+          "forms": [
+            "berry"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-018",
+          "forms": [
+            "bird"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-019",
+          "forms": [
+            "blade"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-020",
+          "forms": [
+            "board"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-021",
+          "forms": [
+            "boat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-022",
+          "forms": [
+            "bone"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-023",
+          "forms": [
+            "book"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-024",
+          "forms": [
+            "boot"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-025",
+          "forms": [
+            "bottle"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-026",
+          "forms": [
+            "box"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-027",
+          "forms": [
+            "boy"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-028",
+          "forms": [
+            "brain"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-029",
+          "forms": [
+            "brake"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-030",
+          "forms": [
+            "branch"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-031",
+          "forms": [
+            "brick"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-032",
+          "forms": [
+            "bridge"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-033",
+          "forms": [
+            "brush"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-034",
+          "forms": [
+            "bucket"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-035",
+          "forms": [
+            "bulb"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-036",
+          "forms": [
+            "button"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-037",
+          "forms": [
+            "cake"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-038",
+          "forms": [
+            "camera"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-039",
+          "forms": [
+            "card"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-040",
+          "forms": [
+            "cart"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-041",
+          "forms": [
+            "carriage"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-042",
+          "forms": [
+            "cat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-043",
+          "forms": [
+            "chain"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-044",
+          "forms": [
+            "cheese"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-045",
+          "forms": [
+            "chest"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-046",
+          "forms": [
+            "chin"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-047",
+          "forms": [
+            "church"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-048",
+          "forms": [
+            "circle"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-049",
+          "forms": [
+            "clock"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-050",
+          "forms": [
+            "cloud"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-051",
+          "forms": [
+            "coat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-052",
+          "forms": [
+            "collar"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-053",
+          "forms": [
+            "comb"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-054",
+          "forms": [
+            "cord"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-055",
+          "forms": [
+            "cow"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-056",
+          "forms": [
+            "cup"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-057",
+          "forms": [
+            "curtain"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-058",
+          "forms": [
+            "cushion"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-059",
+          "forms": [
+            "dog"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-060",
+          "forms": [
+            "door"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-061",
+          "forms": [
+            "drain"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-062",
+          "forms": [
+            "drawer"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-063",
+          "forms": [
+            "dress"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-064",
+          "forms": [
+            "drop"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-065",
+          "forms": [
+            "ear"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-066",
+          "forms": [
+            "egg"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-067",
+          "forms": [
+            "engine"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-068",
+          "forms": [
+            "eye"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-069",
+          "forms": [
+            "face"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-070",
+          "forms": [
+            "farm"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-071",
+          "forms": [
+            "feather"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-072",
+          "forms": [
+            "finger"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-073",
+          "forms": [
+            "fish"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-074",
+          "forms": [
+            "flag"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-075",
+          "forms": [
+            "floor"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-076",
+          "forms": [
+            "fly"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-077",
+          "forms": [
+            "foot"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-078",
+          "forms": [
+            "fork"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-079",
+          "forms": [
+            "fowl"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-080",
+          "forms": [
+            "frame"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-081",
+          "forms": [
+            "garden"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-082",
+          "forms": [
+            "girl"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-083",
+          "forms": [
+            "glove"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-084",
+          "forms": [
+            "goat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-085",
+          "forms": [
+            "gun"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-086",
+          "forms": [
+            "hair"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-087",
+          "forms": [
+            "hammer"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-088",
+          "forms": [
+            "hand"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-089",
+          "forms": [
+            "hat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-090",
+          "forms": [
+            "head"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-091",
+          "forms": [
+            "heart"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-092",
+          "forms": [
+            "hook"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-093",
+          "forms": [
+            "horn"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-094",
+          "forms": [
+            "horse"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-095",
+          "forms": [
+            "hospital"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-096",
+          "forms": [
+            "house"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-097",
+          "forms": [
+            "island"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-098",
+          "forms": [
+            "jewel"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-099",
+          "forms": [
+            "kettle"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-100",
+          "forms": [
+            "key"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-101",
+          "forms": [
+            "knee"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-102",
+          "forms": [
+            "knife"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-103",
+          "forms": [
+            "knot"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-104",
+          "forms": [
+            "leaf"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-105",
+          "forms": [
+            "leg"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-106",
+          "forms": [
+            "library"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-107",
+          "forms": [
+            "line"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-108",
+          "forms": [
+            "lip"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-109",
+          "forms": [
+            "lock"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-110",
+          "forms": [
+            "map"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-111",
+          "forms": [
+            "match"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-112",
+          "forms": [
+            "monkey"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-113",
+          "forms": [
+            "moon"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-114",
+          "forms": [
+            "mouth"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-115",
+          "forms": [
+            "muscle"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-116",
+          "forms": [
+            "nail"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-117",
+          "forms": [
+            "neck"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-118",
+          "forms": [
+            "needle"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-119",
+          "forms": [
+            "nerve"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-120",
+          "forms": [
+            "net"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-121",
+          "forms": [
+            "nose"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-122",
+          "forms": [
+            "nut"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-123",
+          "forms": [
+            "office"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-124",
+          "forms": [
+            "orange"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-125",
+          "forms": [
+            "oven"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-126",
+          "forms": [
+            "parcel"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-127",
+          "forms": [
+            "pen"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-128",
+          "forms": [
+            "pencil"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-129",
+          "forms": [
+            "picture"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-130",
+          "forms": [
+            "pig"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-131",
+          "forms": [
+            "pin"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-132",
+          "forms": [
+            "pipe"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-133",
+          "forms": [
+            "plane"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-134",
+          "forms": [
+            "plate"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-135",
+          "forms": [
+            "plough",
+            "plow"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-136",
+          "forms": [
+            "pocket"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-137",
+          "forms": [
+            "pot"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-138",
+          "forms": [
+            "potato"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-139",
+          "forms": [
+            "prison"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-140",
+          "forms": [
+            "pump"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-141",
+          "forms": [
+            "rail"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-142",
+          "forms": [
+            "rat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-143",
+          "forms": [
+            "receipt"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-144",
+          "forms": [
+            "ring"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-145",
+          "forms": [
+            "rod"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-146",
+          "forms": [
+            "roof"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-147",
+          "forms": [
+            "root"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-148",
+          "forms": [
+            "sail"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-149",
+          "forms": [
+            "school"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-150",
+          "forms": [
+            "scissors"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-151",
+          "forms": [
+            "screw"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-152",
+          "forms": [
+            "seed"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-153",
+          "forms": [
+            "sheep"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-154",
+          "forms": [
+            "shelf"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-155",
+          "forms": [
+            "ship"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-156",
+          "forms": [
+            "shirt"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-157",
+          "forms": [
+            "shoe"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-158",
+          "forms": [
+            "skin"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-159",
+          "forms": [
+            "skirt"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-160",
+          "forms": [
+            "snake"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-161",
+          "forms": [
+            "sock"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-162",
+          "forms": [
+            "spade"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-163",
+          "forms": [
+            "sponge"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-164",
+          "forms": [
+            "spoon"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-165",
+          "forms": [
+            "spring"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-166",
+          "forms": [
+            "square"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-167",
+          "forms": [
+            "stamp"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-168",
+          "forms": [
+            "star"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-169",
+          "forms": [
+            "station"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-170",
+          "forms": [
+            "stem"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-171",
+          "forms": [
+            "stick"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-172",
+          "forms": [
+            "stocking"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-173",
+          "forms": [
+            "stomach"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-174",
+          "forms": [
+            "store"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-175",
+          "forms": [
+            "street"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-176",
+          "forms": [
+            "sun"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-177",
+          "forms": [
+            "table"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-178",
+          "forms": [
+            "tail"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-179",
+          "forms": [
+            "thread"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-180",
+          "forms": [
+            "throat"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-181",
+          "forms": [
+            "thumb"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-182",
+          "forms": [
+            "ticket"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-183",
+          "forms": [
+            "toe"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-184",
+          "forms": [
+            "tongue"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-185",
+          "forms": [
+            "tooth"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-186",
+          "forms": [
+            "town"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-187",
+          "forms": [
+            "train"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-188",
+          "forms": [
+            "tray"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-189",
+          "forms": [
+            "tree"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-190",
+          "forms": [
+            "trousers"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-191",
+          "forms": [
+            "umbrella"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-192",
+          "forms": [
+            "wall"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-193",
+          "forms": [
+            "watch"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-194",
+          "forms": [
+            "wheel"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-195",
+          "forms": [
+            "whip"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-196",
+          "forms": [
+            "whistle"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-197",
+          "forms": [
+            "window"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-198",
+          "forms": [
+            "wing"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-199",
+          "forms": [
+            "wire"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        },
+        {
+          "slot_id": "things-picturable-200",
+          "forms": [
+            "worm"
+          ],
+          "part_of_speech": "noun",
+          "grammar_role": "lexical_noun"
+        }
+      ]
+    },
+    {
+      "id": "qualities-general",
+      "label": "Qualities — General",
+      "source_slot_count": 100,
+      "entries": [
+        {
+          "slot_id": "qualities-general-001",
+          "forms": [
+            "able"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-002",
+          "forms": [
+            "acid"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-003",
+          "forms": [
+            "angry"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-004",
+          "forms": [
+            "automatic"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-005",
+          "forms": [
+            "beautiful"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-006",
+          "forms": [
+            "black"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-007",
+          "forms": [
+            "boiling"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-008",
+          "forms": [
+            "bright"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-009",
+          "forms": [
+            "broken"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-010",
+          "forms": [
+            "brown"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-011",
+          "forms": [
+            "cheap"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-012",
+          "forms": [
+            "chemical"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-013",
+          "forms": [
+            "chief"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-014",
+          "forms": [
+            "clean"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-015",
+          "forms": [
+            "clear"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-016",
+          "forms": [
+            "common"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-017",
+          "forms": [
+            "complex"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-018",
+          "forms": [
+            "conscious"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-019",
+          "forms": [
+            "cut"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-020",
+          "forms": [
+            "deep"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-021",
+          "forms": [
+            "dependent"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-022",
+          "forms": [
+            "early"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-023",
+          "forms": [
+            "elastic"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-024",
+          "forms": [
+            "electric"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-025",
+          "forms": [
+            "equal"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-026",
+          "forms": [
+            "fat"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-027",
+          "forms": [
+            "fertile"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-028",
+          "forms": [
+            "first"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-029",
+          "forms": [
+            "fixed"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-030",
+          "forms": [
+            "flat"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-031",
+          "forms": [
+            "free"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-032",
+          "forms": [
+            "frequent"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-033",
+          "forms": [
+            "full"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-034",
+          "forms": [
+            "general"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-035",
+          "forms": [
+            "good"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-036",
+          "forms": [
+            "great"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-037",
+          "forms": [
+            "grey",
+            "gray"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-038",
+          "forms": [
+            "hanging"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-039",
+          "forms": [
+            "happy"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-040",
+          "forms": [
+            "hard"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-041",
+          "forms": [
+            "healthy"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-042",
+          "forms": [
+            "high"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-043",
+          "forms": [
+            "hollow"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-044",
+          "forms": [
+            "important"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-045",
+          "forms": [
+            "kind"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-046",
+          "forms": [
+            "like"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-047",
+          "forms": [
+            "living"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-048",
+          "forms": [
+            "long"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-049",
+          "forms": [
+            "male"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-050",
+          "forms": [
+            "married"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-051",
+          "forms": [
+            "material"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-052",
+          "forms": [
+            "medical"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-053",
+          "forms": [
+            "military"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-054",
+          "forms": [
+            "natural"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-055",
+          "forms": [
+            "necessary"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-056",
+          "forms": [
+            "new"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-057",
+          "forms": [
+            "normal"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-058",
+          "forms": [
+            "open"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-059",
+          "forms": [
+            "parallel"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-060",
+          "forms": [
+            "past"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-061",
+          "forms": [
+            "physical"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-062",
+          "forms": [
+            "political"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-063",
+          "forms": [
+            "poor"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-064",
+          "forms": [
+            "possible"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-065",
+          "forms": [
+            "present"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-066",
+          "forms": [
+            "private"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-067",
+          "forms": [
+            "probable"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-068",
+          "forms": [
+            "quick"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-069",
+          "forms": [
+            "quiet"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-070",
+          "forms": [
+            "ready"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-071",
+          "forms": [
+            "red"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-072",
+          "forms": [
+            "regular"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-073",
+          "forms": [
+            "responsible"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-074",
+          "forms": [
+            "right"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-075",
+          "forms": [
+            "round"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-076",
+          "forms": [
+            "same"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-077",
+          "forms": [
+            "second"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-078",
+          "forms": [
+            "separate"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-079",
+          "forms": [
+            "serious"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-080",
+          "forms": [
+            "sharp"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-081",
+          "forms": [
+            "smooth"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-082",
+          "forms": [
+            "sticky"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-083",
+          "forms": [
+            "stiff"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-084",
+          "forms": [
+            "straight"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-085",
+          "forms": [
+            "strong"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-086",
+          "forms": [
+            "sudden"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-087",
+          "forms": [
+            "sweet"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-088",
+          "forms": [
+            "tall"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-089",
+          "forms": [
+            "thick"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-090",
+          "forms": [
+            "tight"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-091",
+          "forms": [
+            "tired"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-092",
+          "forms": [
+            "true"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-093",
+          "forms": [
+            "violent"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-094",
+          "forms": [
+            "waiting"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-095",
+          "forms": [
+            "warm"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-096",
+          "forms": [
+            "wet"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-097",
+          "forms": [
+            "wide"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-098",
+          "forms": [
+            "wise"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-099",
+          "forms": [
+            "yellow"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-general-100",
+          "forms": [
+            "young"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        }
+      ]
+    },
+    {
+      "id": "qualities-opposites",
+      "label": "Qualities — Opposites",
+      "source_slot_count": 50,
+      "entries": [
+        {
+          "slot_id": "qualities-opposites-001",
+          "forms": [
+            "awake"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-002",
+          "forms": [
+            "bad"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-003",
+          "forms": [
+            "bent"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-004",
+          "forms": [
+            "bitter"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-005",
+          "forms": [
+            "blue"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-006",
+          "forms": [
+            "certain"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-007",
+          "forms": [
+            "cold"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-008",
+          "forms": [
+            "complete"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-009",
+          "forms": [
+            "cruel"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-010",
+          "forms": [
+            "dark"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-011",
+          "forms": [
+            "dead"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-012",
+          "forms": [
+            "dear"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-013",
+          "forms": [
+            "delicate"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-014",
+          "forms": [
+            "different"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-015",
+          "forms": [
+            "dirty"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-016",
+          "forms": [
+            "dry"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-017",
+          "forms": [
+            "false"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-018",
+          "forms": [
+            "feeble"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-019",
+          "forms": [
+            "female"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-020",
+          "forms": [
+            "foolish"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-021",
+          "forms": [
+            "future"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-022",
+          "forms": [
+            "green"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-023",
+          "forms": [
+            "ill"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-024",
+          "forms": [
+            "last"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-025",
+          "forms": [
+            "late"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-026",
+          "forms": [
+            "left"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-027",
+          "forms": [
+            "loose"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-028",
+          "forms": [
+            "loud"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-029",
+          "forms": [
+            "low"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-030",
+          "forms": [
+            "mixed"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-031",
+          "forms": [
+            "narrow"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-032",
+          "forms": [
+            "old"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-033",
+          "forms": [
+            "opposite"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-034",
+          "forms": [
+            "public"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-035",
+          "forms": [
+            "rough"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-036",
+          "forms": [
+            "sad"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-037",
+          "forms": [
+            "safe"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-038",
+          "forms": [
+            "secret"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-039",
+          "forms": [
+            "short"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-040",
+          "forms": [
+            "shut"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-041",
+          "forms": [
+            "simple"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-042",
+          "forms": [
+            "slow"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-043",
+          "forms": [
+            "small"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-044",
+          "forms": [
+            "soft"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-045",
+          "forms": [
+            "solid"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-046",
+          "forms": [
+            "special"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-047",
+          "forms": [
+            "strange"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-048",
+          "forms": [
+            "thin"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-049",
+          "forms": [
+            "white"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        },
+        {
+          "slot_id": "qualities-opposites-050",
+          "forms": [
+            "wrong"
+          ],
+          "part_of_speech": "adjective",
+          "grammar_role": "lexical_adjective"
+        }
+      ]
+    }
+  ],
+  "approvals": {
+    "operations-001": {
+      "root": "cling",
+      "fixture": {
+        "english": "I come.",
+        "xenari": "ka neq ta cling sa xo",
+        "reverse": "I come"
+      }
+    },
+    "operations-002": {
+      "root": "smite",
+      "fixture": {
+        "english": "I get water.",
+        "xenari": "ra nu cruq ka neq ta smite sa xo",
+        "reverse": "I get water"
+      }
+    },
+    "operations-003": {
+      "root": "flux",
+      "fixture": {
+        "english": "I give water.",
+        "xenari": "ra nu cruq ka neq ta flux sa xo",
+        "reverse": "I give water"
+      }
+    },
+    "operations-004": {
+      "root": "qeng",
+      "fixture": {
+        "english": "I go.",
+        "xenari": "ka neq ta qeng sa xo",
+        "reverse": "I go"
+      }
+    },
+    "operations-007": {
+      "root": "krux",
+      "fixture": {
+        "english": "I make water.",
+        "xenari": "ra nu cruq ka neq ta krux sa xo",
+        "reverse": "I make water"
+      }
+    },
+    "operations-010": {
+      "root": "treq",
+      "fixture": {
+        "english": "I take water.",
+        "xenari": "ra nu cruq ka neq ta treq sa xo",
+        "reverse": "I take water"
+      }
+    },
+    "operations-013": {
+      "root": "xrong",
+      "fixture": {
+        "english": "I have water.",
+        "xenari": "ra nu cruq ka neq ta xrong sa xo",
+        "reverse": "I have water"
+      }
+    },
+    "operations-014": {
+      "root": "krimp",
+      "fixture": {
+        "english": "I say hello.",
+        "xenari": "ra nu prax ka neq ta krimp sa xo",
+        "reverse": "I say hello"
+      }
+    },
+    "operations-015": {
+      "root": "toq",
+      "fixture": {
+        "english": "I see the alien.",
+        "xenari": "ra vi qex ka neq ta toq sa xo",
+        "reverse": "I see alien"
+      }
+    },
+    "operations-016": {
+      "root": "bern",
+      "fixture": {
+        "english": "I send water.",
+        "xenari": "ra nu cruq ka neq ta bern sa xo",
+        "reverse": "I send water"
+      }
+    }
+  }
+}

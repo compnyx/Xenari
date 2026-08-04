@@ -195,6 +195,29 @@ def test_canon_pos_is_exposed_by_queries_export_audit_and_doctor(xenari):
     assert "parts of speech: ok" in doctor
 
 
+def test_common_grammar_keys_do_not_resolve_through_compound_glosses(xenari):
+    expected = {
+        "to": None,
+        "of": None,
+        "in": None,
+        "into": None,
+        "through": None,
+        "has": "xrong",
+        "have": "xrong",
+        "own": "xrong",
+        "do": "trong",
+        "after": "vrem",
+        "also": "pleng",
+        "below": "srut",
+        "my": "neq",
+        "your": "mex",
+    }
+
+    for english_key, root in expected.items():
+        resolved, _meaning = xenari.lookup(english_key)
+        assert resolved == root
+
+
 def test_same_schema_open_is_stable_and_future_schema_is_rejected(tmp_path):
     path = tmp_path / "stable.db"
     _create_legacy_database(path)

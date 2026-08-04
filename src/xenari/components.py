@@ -14,6 +14,7 @@ from .services.export import ExportMixin
 from .services.health import HealthMixin
 from .services.llm import LlmMixin
 from .services.lookup import LookupMixin
+from .services.ogden import OgdenBaselineMixin
 from .translate import TranslatorMixin
 
 if TYPE_CHECKING:
@@ -50,7 +51,7 @@ class CurationService(ExportMixin, CurationMixin, BoundService):
     __slots__ = ()
 
 
-class HealthService(HealthMixin, BoundService):
+class HealthService(OgdenBaselineMixin, HealthMixin, BoundService):
     """Read-only validation, parity, audit, and review workflows."""
 
     __slots__ = ()

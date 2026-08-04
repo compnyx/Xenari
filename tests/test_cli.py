@@ -287,6 +287,8 @@ def test_structured_translation_reports_and_benchmark_are_machine_readable(run_c
         ["stats"],
         ["meta"],
         ["audit", "1"],
+        ["baseline"],
+        ["baseline", "--format", "json"],
         ["lint", "1"],
         ["workbench", "--limit", "1"],
         ["curate", "--phrases", "--limit", "1"],
@@ -322,18 +324,18 @@ def test_curate_cli_accepts_section_and_limit_flags():
         capture_output=True,
         text=True,
     )
-    assert categorize.returncode == 0
-    assert "Uncategorized -> Uncategorized" in categorize.stdout
-    assert "no suggestion" in categorize.stdout
-    assert "PREVIEW ONLY" in categorize.stdout
+    # Legacy category cleanup intentionally left no placeholder categories.
+    assert categorize.returncode == 1
+    assert "Matched placeholder rows: 0" in categorize.stdout
+    assert "No placeholder-category row found for root 'cfolmna'." in categorize.stdout
 
     relate = subprocess.run(
         [
             sys.executable,
             "xenari_tool.py",
             "relate",
-            "brak",
-            "plonq",
+            "cfolmna",
+            "fatyih",
             "--relation",
             "synonym",
             "--dry-run",
