@@ -6942,6 +6942,158 @@
         "xenari": "ra nu cruq ka neq ta bern sa xo",
         "reverse": "I send water"
       }
+    },
+    "operations-005": {
+      "root": "uz",
+      "fixture": {
+        "english": "I keep a dog.",
+        "xenari": "ra nu zrenq ka neq ta uz sa xo",
+        "reverse": "I keep dog"
+      }
+    },
+    "operations-009": {
+      "root": "miquzu",
+      "fixture": {
+        "english": "I seem dangerous.",
+        "xenari": "ra nu fatyih ka neq ta miquzu sa xo",
+        "reverse": "I seem dangerous"
+      }
+    },
+    "operations-021": {
+      "root": "vrem",
+      "fixture": {
+        "english": "After I see alien, I go.",
+        "xenari": "su vrem ra vi qex ka neq ta toq sa xo ti ka neq ta qeng sa xo",
+        "reverse": "after I see alien, I go"
+      }
+    },
+    "operations-025": {
+      "root": "prexq",
+      "fixture": {
+        "english": "Before I see alien, I go.",
+        "xenari": "su prexq ra vi qex ka neq ta toq sa xo ti ka neq ta qeng sa xo",
+        "reverse": "before I see alien, I go"
+      }
+    },
+    "operations-050": {
+      "root": "mse",
+      "fixture": {
+        "english": "I see much water.",
+        "xenari": "ra nu mse cruq ka neq ta toq sa xo",
+        "reverse": "I see much water"
+      }
+    },
+    "operations-055": {
+      "root": "zra",
+      "fixture": {
+        "english": "That is a sentence.",
+        "xenari": "ra nu hune ka nu zra ta zux nu sa xo",
+        "reverse": "that is sentence"
+      }
+    },
+    "operations-061": {
+      "root": "xen",
+      "fixture": {
+        "english": "I see alien and I go.",
+        "xenari": "ra vi qex ka neq ta toq sa xo. xen ka neq ta qeng sa xo",
+        "reverse": "I see alien. and I go"
+      }
+    },
+    "operations-062": {
+      "root": "troz",
+      "fixture": {
+        "english": "Because I see alien, I go.",
+        "xenari": "su troz ra vi qex ka neq ta toq sa xo ti ka neq ta qeng sa xo",
+        "reverse": "because I see alien, I go"
+      }
+    },
+    "operations-063": {
+      "root": "kex",
+      "fixture": {
+        "english": "I see alien but I go.",
+        "xenari": "ra vi qex ka neq ta toq sa xo. kex ka neq ta qeng sa xo",
+        "reverse": "I see alien. but I go"
+      }
+    },
+    "operations-064": {
+      "root": "noq",
+      "fixture": {
+        "english": "I see alien or I go.",
+        "xenari": "ra vi qex ka neq ta toq sa xo. noq ka neq ta qeng sa xo",
+        "reverse": "I see alien. or I go"
+      }
+    },
+    "operations-065": {
+      "root": "pevoq",
+      "fixture": {
+        "english": "If I see alien, I go.",
+        "xenari": "pevoq ra vi qex ka neq ta toq sa xo ti ka neq ta qeng sa xo",
+        "reverse": "if I see alien, then I go"
+      }
+    },
+    "operations-068": {
+      "root": "cil",
+      "fixture": {
+        "english": "How do I go?",
+        "xenari": "cil ka neq ta qeng sa xo",
+        "reverse": "how I go?"
+      }
+    },
+    "operations-070": {
+      "root": "qur",
+      "fixture": {
+        "english": "Where will you go?",
+        "xenari": "qur ka mex ta qeng ve xo",
+        "reverse": "where you will go?"
+      }
+    },
+    "operations-071": {
+      "root": "voq",
+      "fixture": {
+        "english": "Why did the elevator stop?",
+        "xenari": "voq ka nu spokta ta semax nu lo xo",
+        "reverse": "why elevator stopped?"
+      }
+    },
+    "operations-082": {
+      "root": "qroxang",
+      "fixture": {
+        "english": "Are you there?",
+        "xenari": "ra nu qroxang ka mex ta zux sa xo va",
+        "reverse": "you are there?"
+      }
+    },
+    "operations-093": {
+      "root": "glent",
+      "fixture": {
+        "english": "I will go tomorrow.",
+        "xenari": "ka neq ta qeng ve xo glent",
+        "reverse": "I will go tomorrow"
+      }
+    },
+    "operations-094": {
+      "root": "hreh",
+      "fixture": {
+        "english": "I ran yesterday.",
+        "xenari": "ka neq ta zaqa lo xo hreh",
+        "reverse": "I ran yesterday"
+      }
+    },
+    "operations-099": {
+      "root": "naxru",
+      "fixture": {
+        "english": "Please wait.",
+        "xenari": "ta trekq vi ko xo naxru",
+        "reverse": "please wait!"
+      }
+    },
+    "operations-100": {
+      "root": "naxq",
+      "fixture": {
+        "english": "Yes.",
+        "xenari": "naxq",
+        "reverse": "yes"
+      }
     }
   }
 }

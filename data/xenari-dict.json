@@ -16179,7 +16179,10 @@
     "notes": null,
     "english_keys": [
       "please"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "please": "interjection"
+    }
   },
   {
     "id": 69,
@@ -16943,7 +16946,10 @@
     "notes": null,
     "english_keys": [
       "there"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "there": "adverb"
+    }
   },
   {
     "id": 87,
@@ -24035,7 +24041,10 @@
     "notes": null,
     "english_keys": [
       "how"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "how": "particle"
+    }
   },
   {
     "id": 152,
@@ -24317,7 +24326,10 @@
     "notes": null,
     "english_keys": [
       "tomorrow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tomorrow": "adverb"
+    }
   },
   {
     "id": 246,
@@ -24404,7 +24416,10 @@
     "notes": null,
     "english_keys": [
       "yesterday"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "yesterday": "adverb"
+    }
   },
   {
     "id": 172,
@@ -24787,7 +24802,10 @@
     "english_keys": [
       "affirmation",
       "yes"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "yes": "interjection"
+    }
   },
   {
     "id": 259,
@@ -25360,7 +25378,10 @@
     "notes": null,
     "english_keys": [
       "where"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "where": "adverb"
+    }
   },
   {
     "id": 173,
@@ -25765,7 +25786,10 @@
     "notes": null,
     "english_keys": [
       "why"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "why": "adverb"
+    }
   },
   {
     "id": 2878,
@@ -26179,7 +26203,10 @@
     "notes": "Coined to split truq — concessive vs demonstrative",
     "english_keys": [
       "that"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "that": "particle"
+    }
   },
   {
     "id": 214,
@@ -76803,7 +76830,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from miquju; validator issues: invalid character 'j' at position 4",
     "english_keys": [
       "seem"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "seem": "verb"
+    }
   },
   {
     "id": 3321,
@@ -77214,7 +77244,10 @@
     "notes": null,
     "english_keys": [
       "keep"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "keep": "verb"
+    }
   },
   {
     "id": 3391,
@@ -90860,7 +90893,10 @@
     "notes": null,
     "english_keys": [
       "much"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "much": "particle"
+    }
   },
   {
     "id": 2193,

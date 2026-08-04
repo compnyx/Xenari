@@ -5,6 +5,11 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Approved 19 additional Ogden Operations slots without inventing roots or
+  changing grammar: `keep`, `seem`, reviewed temporal/subordinate connectors,
+  content-question forms, temporal adverbs, and `please`/`yes`. Curated 12
+  missing direct-map POS senses and locked every approved slot to a full
+  forward/reverse fixture; coverage is now 29 approved / 821 pending.
 - Added a source-pinned Ogden Basic English coverage gate: 850 source slots,
   852 accepted spelling forms, exact direct-map/POS verification, and
   sentence-level forward/reverse fixtures. The first ten high-frequency
