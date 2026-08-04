@@ -259,6 +259,7 @@ REVERSE_PREFERRED: Mapping[str, str] = _immutable(
         "nguq": "no",
         "vex": "maybe",
         "mse": "much",
+        "vehya": "potato",
         "shengtac": "problem",
     }
 )

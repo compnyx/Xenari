@@ -7094,6 +7094,198 @@
         "xenari": "naxq",
         "reverse": "yes"
       }
+    },
+    "things-picturable-002": {
+      "root": "klenx",
+      "fixture": {
+        "english": "I see an ant.",
+        "xenari": "ra nu klenx ka neq ta toq sa xo",
+        "reverse": "I see ant"
+      }
+    },
+    "things-picturable-007": {
+      "root": "bushuz",
+      "fixture": {
+        "english": "I see a baby.",
+        "xenari": "ra nu bushuz ka neq ta toq sa xo",
+        "reverse": "I see baby"
+      }
+    },
+    "things-picturable-012": {
+      "root": "xlon",
+      "fixture": {
+        "english": "I see a basket.",
+        "xenari": "ra nu xlon ka neq ta toq sa xo",
+        "reverse": "I see basket"
+      }
+    },
+    "things-picturable-015": {
+      "root": "zrof",
+      "fixture": {
+        "english": "I see a bee.",
+        "xenari": "ra nu zrof ka neq ta toq sa xo",
+        "reverse": "I see bee"
+      }
+    },
+    "things-picturable-031": {
+      "root": "znuqcluf",
+      "fixture": {
+        "english": "I see a brick.",
+        "xenari": "ra nu znuqcluf ka neq ta toq sa xo",
+        "reverse": "I see brick"
+      }
+    },
+    "things-picturable-037": {
+      "root": "ngik",
+      "fixture": {
+        "english": "I see a cake.",
+        "xenari": "ra nu ngik ka neq ta toq sa xo",
+        "reverse": "I see cake"
+      }
+    },
+    "things-picturable-038": {
+      "root": "skutiz",
+      "fixture": {
+        "english": "I see a camera.",
+        "xenari": "ra nu skutiz ka neq ta toq sa xo",
+        "reverse": "I see camera"
+      }
+    },
+    "things-picturable-044": {
+      "root": "hizoy",
+      "fixture": {
+        "english": "I see cheese.",
+        "xenari": "ra nu hizoy ka neq ta toq sa xo",
+        "reverse": "I see cheese"
+      }
+    },
+    "things-picturable-055": {
+      "root": "xlofk",
+      "fixture": {
+        "english": "I see a cow.",
+        "xenari": "ra nu xlofk ka neq ta toq sa xo",
+        "reverse": "I see cow"
+      }
+    },
+    "things-picturable-059": {
+      "root": "zrenq",
+      "fixture": {
+        "english": "I see a dog.",
+        "xenari": "ra vi zrenq ka neq ta toq sa xo",
+        "reverse": "I see dog"
+      }
+    },
+    "things-picturable-084": {
+      "root": "tlofk",
+      "fixture": {
+        "english": "I see a goat.",
+        "xenari": "ra nu tlofk ka neq ta toq sa xo",
+        "reverse": "I see goat"
+      }
+    },
+    "things-picturable-089": {
+      "root": "brid",
+      "fixture": {
+        "english": "I see a hat.",
+        "xenari": "ra nu brid ka neq ta toq sa xo",
+        "reverse": "I see hat"
+      }
+    },
+    "things-picturable-094": {
+      "root": "qlepx",
+      "fixture": {
+        "english": "I see a horse.",
+        "xenari": "ra nu qlepx ka neq ta toq sa xo",
+        "reverse": "I see horse"
+      }
+    },
+    "things-picturable-097": {
+      "root": "klem",
+      "fixture": {
+        "english": "I see an island.",
+        "xenari": "ra nu klem ka neq ta toq sa xo",
+        "reverse": "I see island"
+      }
+    },
+    "things-picturable-098": {
+      "root": "ahis",
+      "fixture": {
+        "english": "I see a jewel.",
+        "xenari": "ra nu ahis ka neq ta toq sa xo",
+        "reverse": "I see jewel"
+      }
+    },
+    "things-picturable-113": {
+      "root": "crunq",
+      "fixture": {
+        "english": "I see the moon.",
+        "xenari": "ra nu crunq ka neq ta toq sa xo",
+        "reverse": "I see moon"
+      }
+    },
+    "things-picturable-128": {
+      "root": "zrirxrox",
+      "fixture": {
+        "english": "I see a pencil.",
+        "xenari": "ra nu zrirxrox ka neq ta toq sa xo",
+        "reverse": "I see pencil"
+      }
+    },
+    "things-picturable-138": {
+      "root": "vehya",
+      "fixture": {
+        "english": "I see a potato.",
+        "xenari": "ra nu vehya ka neq ta toq sa xo",
+        "reverse": "I see potato"
+      }
+    },
+    "things-picturable-153": {
+      "root": "vronx",
+      "fixture": {
+        "english": "I see a sheep.",
+        "xenari": "ra nu vronx ka neq ta toq sa xo",
+        "reverse": "I see sheep"
+      }
+    },
+    "things-picturable-191": {
+      "root": "cov",
+      "fixture": {
+        "english": "I see an umbrella.",
+        "xenari": "ra nu cov ka neq ta toq sa xo",
+        "reverse": "I see umbrella"
+      }
+    },
+    "qualities-general-035": {
+      "root": "nax",
+      "fixture": {
+        "english": "The dog is good.",
+        "xenari": "ra nax ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is good"
+      }
+    },
+    "qualities-general-071": {
+      "root": "rlis",
+      "fixture": {
+        "english": "The dog is red.",
+        "xenari": "ra rlis ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is red"
+      }
+    },
+    "qualities-general-088": {
+      "root": "sump",
+      "fixture": {
+        "english": "The dog is tall.",
+        "xenari": "ra sump ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is tall"
+      }
+    },
+    "qualities-opposites-002": {
+      "root": "qez",
+      "fixture": {
+        "english": "The dog is bad.",
+        "xenari": "ra qez ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is bad"
+      }
     }
   }
 }

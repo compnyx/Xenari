@@ -135,9 +135,11 @@ def _build_default_config() -> GrammarConfig:
         "blows": "qruq",
         "blew": "qruq",
         "blown": "qruq",
-        "come": "di",
-        "comes": "di",
-        "came": "di",
+        # `cling` is the curated direct English sense for ordinary "come".
+        # Keep `di` available under its distinct `come-motion` headword.
+        "come": "cling",
+        "comes": "cling",
+        "came": "cling",
         "run": "zaqa",
         "runs": "zaqa",
         "ran": "zaqa",

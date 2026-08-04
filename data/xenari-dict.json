@@ -10403,7 +10403,10 @@
     "english_keys": [
       "ant",
       "colony-thing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ant": "noun"
+    }
   },
   {
     "id": 624,
@@ -10916,7 +10919,10 @@
     "english_keys": [
       "horse",
       "running-beast"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "horse": "noun"
+    }
   },
   {
     "id": 647,
@@ -11242,7 +11248,10 @@
     "english_keys": [
       "goat",
       "mountain-climber"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "goat": "noun"
+    }
   },
   {
     "id": 618,
@@ -11382,7 +11391,10 @@
     "english_keys": [
       "sheep",
       "wool-beast"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sheep": "noun"
+    }
   },
   {
     "id": 441,
@@ -11498,7 +11510,10 @@
     "english_keys": [
       "cow",
       "grazing-beast"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cow": "noun"
+    }
   },
   {
     "id": 609,
@@ -11952,7 +11967,10 @@
     "english_keys": [
       "dog",
       "loyal-beast"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dog": "noun"
+    }
   },
   {
     "id": 572,
@@ -11965,7 +11983,10 @@
     "english_keys": [
       "bee",
       "humming-thing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bee": "noun"
+    }
   },
   {
     "id": 657,
@@ -13502,7 +13523,10 @@
     "english_keys": [
       "bad",
       "harmful"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bad": "adjective"
+    }
   },
   {
     "id": 463,
@@ -20528,7 +20552,10 @@
     "notes": null,
     "english_keys": [
       "moon"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "moon": "noun"
+    }
   },
   {
     "id": 328,
@@ -21034,7 +21061,10 @@
     "notes": null,
     "english_keys": [
       "island"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "island": "noun"
+    }
   },
   {
     "id": 351,
@@ -23266,7 +23296,10 @@
     "english_keys": [
       "baby",
       "infant"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "baby": "noun"
+    }
   },
   {
     "id": 2116,
@@ -26781,7 +26814,10 @@
     "notes": null,
     "english_keys": [
       "jewel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "jewel": "noun"
+    }
   },
   {
     "id": 5412,
@@ -68228,7 +68264,10 @@
     "notes": null,
     "english_keys": [
       "pencil"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pencil": "noun"
+    }
   },
   {
     "id": 6651,
@@ -86706,7 +86745,10 @@
     "notes": null,
     "english_keys": [
       "cheese"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cheese": "noun"
+    }
   },
   {
     "id": 2092,
@@ -87131,7 +87173,10 @@
     "notes": null,
     "english_keys": [
       "cake"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cake": "noun"
+    }
   },
   {
     "id": 2038,
@@ -88043,7 +88088,10 @@
     "english_keys": [
       "potato",
       "tuber"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "potato": "noun"
+    }
   },
   {
     "id": 711,
@@ -90981,7 +91029,10 @@
     "english_keys": [
       "beneficial",
       "good"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "good": "adjective"
+    }
   },
   {
     "id": 9600,
@@ -93186,7 +93237,10 @@
     "notes": null,
     "english_keys": [
       "red"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "red": "adjective"
+    }
   },
   {
     "id": 983,
@@ -93575,7 +93629,10 @@
     "notes": null,
     "english_keys": [
       "tall"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tall": "adjective"
+    }
   },
   {
     "id": 2099,
@@ -103951,7 +104008,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from skutij; validator issues: invalid character 'j' at position 5",
     "english_keys": [
       "camera"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "camera": "noun"
+    }
   },
   {
     "id": 2593,
@@ -104950,7 +105010,10 @@
     "notes": null,
     "english_keys": [
       "hat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hat": "noun"
+    }
   },
   {
     "id": 802,
@@ -105147,7 +105210,10 @@
     "notes": null,
     "english_keys": [
       "umbrella"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "umbrella": "noun"
+    }
   },
   {
     "id": 2240,
@@ -107948,7 +108014,10 @@
     "notes": null,
     "english_keys": [
       "basket"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "basket": "noun"
+    }
   },
   {
     "id": 9761,
@@ -116954,7 +117023,10 @@
     "notes": null,
     "english_keys": [
       "brick"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "brick": "noun"
+    }
   },
   {
     "id": 6037,

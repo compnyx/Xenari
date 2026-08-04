@@ -5,6 +5,17 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Approved 20 concrete Ogden picturable-noun slots plus four reviewed quality
+  slots (`good`, `bad`, `red`, `tall`) using only existing selected mappings.
+  Added the 24 missing sense-level POS tags and full forward/reverse fixtures;
+  coverage is now 53 approved / 797 pending. Existing noun animacy behavior is
+  deliberately preserved rather than reclassified in this POS-only pass.
+- Aligned the browser translator with canonical reviewed mappings: ordinary
+  `come` now selects `cling`, direct POS-tagged nouns no longer inherit stale
+  browser-only animacy guesses, `mse cruq` reverses as “much water”, and
+  `vehya` has the explicit reverse headword `potato`. Added browser fixtures
+  for every approved Ogden sentence so future Python/browser drift fails the
+  release gate.
 - Approved 19 additional Ogden Operations slots without inventing roots or
   changing grammar: `keep`, `seem`, reviewed temporal/subordinate connectors,
   content-question forms, temporal adverbs, and `please`/`yes`. Curated 12

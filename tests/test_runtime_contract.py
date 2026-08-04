@@ -58,6 +58,7 @@ def test_runtime_contract_contains_the_python_translation_tables():
         root: dict(forms) for root, forms in REVERSE_PRONOUNS.items()
     }
     assert contract["reverse"]["preferred"] == dict(REVERSE_PREFERRED)
+    assert contract["reverse"]["preferred"]["vehya"] == "potato"
     assert contract["reverse"]["temporal_glosses"] == dict(TEMPORAL_GLOSSES)
     assert set(contract["part_of_speech"]["browser_codes"]) == set(
         contract["part_of_speech"]["controlled_vocabulary"]
