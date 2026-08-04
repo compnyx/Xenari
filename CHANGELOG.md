@@ -5,6 +5,7 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Corrected eight category clashes exposed by duplicate review and linked seven resulting exact-definition groups as reviewed synonyms. Fourteen remaining clashes are intentional sense distinctions and remain unlinked.
 - Linked 43 reviewed exact same-category duplicate-definition groups with explicit `synonym` relations, preserving all roots, mappings, and register distinctions. Category-clash candidates remain unlinked for manual review.
 - Completed the legacy Interstellar category cleanup: reviewed and categorized the remaining 64 entries across grammar, social, tools, nature, place/time, technology, qualities, and abstract domains. No roots or English mappings changed; no `Uncategorized` entries remain.
 - Recategorized 47 unambiguous legacy Interstellar gap-fill entries: 40 action/motion roots plus clear social, computation, crime, and cognition entries. No roots or English mappings changed.

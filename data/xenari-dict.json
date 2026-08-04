@@ -9745,6 +9745,18 @@
     ]
   },
   {
+    "id": 1229,
+    "root": "xantzuqra",
+    "meaning": "chorus",
+    "category": "Arts & Culture",
+    "source": "xenari-lexicon.md",
+    "timestamp": null,
+    "notes": null,
+    "english_keys": [
+      "chorus"
+    ]
+  },
+  {
     "id": 1248,
     "root": "xantzuqratoqxunq",
     "meaning": "comic — a many-voice-picture, sequential art (xantzuqra + toqxunq)",
@@ -11373,6 +11385,18 @@
     ]
   },
   {
+    "id": 441,
+    "root": "xlek",
+    "meaning": "burrower",
+    "category": "Beings & Creatures",
+    "source": "xenari-lexicon.md",
+    "timestamp": null,
+    "notes": null,
+    "english_keys": [
+      "burrower"
+    ]
+  },
+  {
     "id": 620,
     "root": "xlekf",
     "meaning": "flea, jumping-parasite",
@@ -11513,6 +11537,18 @@
     "english_keys": [
       "slow-thing",
       "snail"
+    ]
+  },
+  {
+    "id": 7194,
+    "root": "xqaqzgil",
+    "meaning": "fowl",
+    "category": "Beings & Creatures",
+    "source": "multi_script_gap_fill",
+    "timestamp": "2026-07-08T21:13:23.185919+00:00",
+    "notes": null,
+    "english_keys": [
+      "fowl"
     ]
   },
   {
@@ -14182,18 +14218,6 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from xaew; validator issues: vowel hiatus: ae at position 1, invalid character 'w' at position 3",
     "english_keys": [
       "shell"
-    ]
-  },
-  {
-    "id": 441,
-    "root": "xlek",
-    "meaning": "burrower",
-    "category": "Body Parts",
-    "source": "xenari-lexicon.md",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "burrower"
     ]
   },
   {
@@ -19335,6 +19359,18 @@
     ]
   },
   {
+    "id": 6298,
+    "root": "cvarzrug",
+    "meaning": "beheaded",
+    "category": "Crime & Violence",
+    "source": "multi_script_gap_fill",
+    "timestamp": "2026-07-08T21:13:23.145205+00:00",
+    "notes": null,
+    "english_keys": [
+      "beheaded"
+    ]
+  },
+  {
     "id": 2677,
     "root": "doqeg",
     "meaning": "abduction",
@@ -19943,6 +19979,18 @@
     ]
   },
   {
+    "id": 5407,
+    "root": "spuniz",
+    "meaning": "handgun",
+    "category": "Crime & Violence",
+    "source": "multi_script_gap_fill",
+    "timestamp": "2026-07-08T20:59:36.614238+00:00",
+    "notes": null,
+    "english_keys": [
+      "handgun"
+    ]
+  },
+  {
     "id": 3026,
     "root": "stuxo",
     "meaning": "to steal / to take without permission",
@@ -20348,18 +20396,6 @@
     ]
   },
   {
-    "id": 324,
-    "root": "brel",
-    "meaning": "flower",
-    "category": "Elements & Nature",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "flower"
-    ]
-  },
-  {
     "id": 325,
     "root": "bren",
     "meaning": "bay",
@@ -20701,18 +20737,6 @@
     "notes": "coined via xenari_tool coin; wolverine batch 11",
     "english_keys": [
       "grease"
-    ]
-  },
-  {
-    "id": 335,
-    "root": "fo",
-    "meaning": "justice",
-    "category": "Elements & Nature",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "justice"
     ]
   },
   {
@@ -28751,18 +28775,6 @@
     ]
   },
   {
-    "id": 5407,
-    "root": "spuniz",
-    "meaning": "handgun",
-    "category": "General",
-    "source": "multi_script_gap_fill",
-    "timestamp": "2026-07-08T20:59:36.614238+00:00",
-    "notes": null,
-    "english_keys": [
-      "handgun"
-    ]
-  },
-  {
     "id": 5545,
     "root": "sqledkes",
     "meaning": "adventure",
@@ -34714,18 +34726,6 @@
     "notes": null,
     "english_keys": [
       "espionage"
-    ]
-  },
-  {
-    "id": 6298,
-    "root": "cvarzrug",
-    "meaning": "beheaded",
-    "category": "General Vocabulary",
-    "source": "multi_script_gap_fill",
-    "timestamp": "2026-07-08T21:13:23.145205+00:00",
-    "notes": null,
-    "english_keys": [
-      "beheaded"
     ]
   },
   {
@@ -62219,18 +62219,6 @@
     ]
   },
   {
-    "id": 7194,
-    "root": "xqaqzgil",
-    "meaning": "fowl",
-    "category": "General Vocabulary",
-    "source": "multi_script_gap_fill",
-    "timestamp": "2026-07-08T21:13:23.185919+00:00",
-    "notes": null,
-    "english_keys": [
-      "fowl"
-    ]
-  },
-  {
     "id": 6836,
     "root": "xqarkla",
     "meaning": "hunting",
@@ -70311,6 +70299,18 @@
     ]
   },
   {
+    "id": 335,
+    "root": "fo",
+    "meaning": "justice",
+    "category": "Law & Justice",
+    "source": "",
+    "timestamp": null,
+    "notes": null,
+    "english_keys": [
+      "justice"
+    ]
+  },
+  {
     "id": 2965,
     "root": "frexu",
     "meaning": "to suspend / to temporarily remove from duty",
@@ -70565,6 +70565,18 @@
     "english_keys": [
       "legal sentence",
       "punishment"
+    ]
+  },
+  {
+    "id": 1027,
+    "root": "tron",
+    "meaning": "justice",
+    "category": "Law & Justice",
+    "source": "",
+    "timestamp": null,
+    "notes": null,
+    "english_keys": [
+      "justice"
     ]
   },
   {
@@ -74904,18 +74916,6 @@
     "notes": null,
     "english_keys": [
       "truth"
-    ]
-  },
-  {
-    "id": 1027,
-    "root": "tron",
-    "meaning": "justice",
-    "category": "Mental & Abstract",
-    "source": "",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "justice"
     ]
   },
   {
@@ -86329,6 +86329,18 @@
     "notes": null,
     "english_keys": [
       "grape"
+    ]
+  },
+  {
+    "id": 324,
+    "root": "brel",
+    "meaning": "flower",
+    "category": "Plants & Food",
+    "source": "",
+    "timestamp": null,
+    "notes": null,
+    "english_keys": [
+      "flower"
     ]
   },
   {
@@ -99824,18 +99836,6 @@
     "english_parts_of_speech": {
       "forbid": "verb"
     }
-  },
-  {
-    "id": 1229,
-    "root": "xantzuqra",
-    "meaning": "chorus",
-    "category": "Social & Communication",
-    "source": "xenari-lexicon.md",
-    "timestamp": null,
-    "notes": null,
-    "english_keys": [
-      "chorus"
-    ]
   },
   {
     "id": 4282,
