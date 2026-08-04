@@ -394,6 +394,20 @@ def test_qrazhel_copula_round_trips_with_its_preferred_english_mapping(xenari):
     assert xenari.speak(english, evidential="assumed") == xenari_text
     assert xenari.reverse(xenari_text) == english
 
+def test_reverse_copula_agrees_with_subject_and_tense(xenari):
+    cases = {
+        "ra fatyih ka neq ta zux sa xo": "I am dangerous",
+        "ra fatyih ka mex ta zux sa xo": "you are dangerous",
+        "ra fatyih ka req ha ta zux sa xo": "they are dangerous",
+        "ra fatyih ka mex ta zux lo xo": "you were dangerous",
+        "ra fatyih ka req ha ta zux lo xo": "they were dangerous",
+        "ra fatyih ka neq ta zux sa xo ngu": "I am not dangerous",
+        "ra fatyih ka mex ta zux sa xo ngu": "you are not dangerous",
+    }
+
+    for xenari_text, english in cases.items():
+        assert xenari.reverse(xenari_text) == english
+
 def test_coordination_and_intransitive_fuzz_is_bounded(xenari):
     fixtures = load_fixtures()
     forward = [case for case in fixtures["forward"] if case.get("loop") == 7]
