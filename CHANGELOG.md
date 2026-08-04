@@ -5,6 +5,7 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Completed the legacy Interstellar category cleanup: reviewed and categorized the remaining 64 entries across grammar, social, tools, nature, place/time, technology, qualities, and abstract domains. No roots or English mappings changed; no `Uncategorized` entries remain.
 - Recategorized 47 unambiguous legacy Interstellar gap-fill entries: 40 action/motion roots plus clear social, computation, crime, and cognition entries. No roots or English mappings changed.
 - Added `qrazhel` (“a mind that will not catch the thread”) and the English-to-Xenari mapping `retard` → `qrazhel`; preserve that mapping through copular reverse translation.
 - Recategorized 50 reviewed legacy `Uncategorized` entries from the Interstellar gap-fill era across action, place, tool, quality, social, and nature domains; regenerated canon exports without adding vocabulary.
