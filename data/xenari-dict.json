@@ -1612,6 +1612,18 @@
     ]
   },
   {
+    "id": 4716,
+    "root": "cluslzla",
+    "meaning": "English 'attempt' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.578482+00:00",
+    "notes": null,
+    "english_keys": [
+      "attempt"
+    ]
+  },
+  {
     "id": 4337,
     "root": "coqlis",
     "meaning": "strides",
@@ -1660,6 +1672,18 @@
     ]
   },
   {
+    "id": 4719,
+    "root": "esf",
+    "meaning": "English 'resume' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.578720+00:00",
+    "notes": null,
+    "english_keys": [
+      "resume"
+    ]
+  },
+  {
     "id": 4453,
     "root": "fe",
     "meaning": "install",
@@ -1681,6 +1705,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 13",
     "english_keys": [
       "congregate"
+    ]
+  },
+  {
+    "id": 4944,
+    "root": "fenvaxk",
+    "meaning": "English 'bump' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.596816+00:00",
+    "notes": null,
+    "english_keys": [
+      "bump"
     ]
   },
   {
@@ -1793,6 +1829,18 @@
     ]
   },
   {
+    "id": 4837,
+    "root": "foctscost",
+    "meaning": "English 'hike' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.588777+00:00",
+    "notes": null,
+    "english_keys": [
+      "hike"
+    ]
+  },
+  {
     "id": 4329,
     "root": "fofrit",
     "meaning": "reload",
@@ -1841,6 +1889,18 @@
     ]
   },
   {
+    "id": 4795,
+    "root": "fotzne",
+    "meaning": "English 'topples' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.585529+00:00",
+    "notes": null,
+    "english_keys": [
+      "topples"
+    ]
+  },
+  {
     "id": 4417,
     "root": "fraku",
     "meaning": "repositions",
@@ -1862,6 +1922,18 @@
     "notes": null,
     "english_keys": [
       "positioned"
+    ]
+  },
+  {
+    "id": 4774,
+    "root": "fuqktelmult",
+    "meaning": "English 'deflects' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.583534+00:00",
+    "notes": null,
+    "english_keys": [
+      "deflects"
     ]
   },
   {
@@ -1925,6 +1997,30 @@
     ]
   },
   {
+    "id": 4718,
+    "root": "hiqfe",
+    "meaning": "English 'empties' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.578656+00:00",
+    "notes": null,
+    "english_keys": [
+      "empties"
+    ]
+  },
+  {
+    "id": 4904,
+    "root": "hork",
+    "meaning": "English 'vanishes' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.593830+00:00",
+    "notes": null,
+    "english_keys": [
+      "vanishes"
+    ]
+  },
+  {
     "id": 4693,
     "root": "hqozskufm",
     "meaning": "English 'crouch' — gap fill from Interstellar script",
@@ -1934,6 +2030,18 @@
     "notes": null,
     "english_keys": [
       "crouch"
+    ]
+  },
+  {
+    "id": 4953,
+    "root": "hulsvaq",
+    "meaning": "English 'traverse' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.597365+00:00",
+    "notes": null,
+    "english_keys": [
+      "traverse"
     ]
   },
   {
@@ -1958,6 +2066,30 @@
     "notes": null,
     "english_keys": [
       "puffs"
+    ]
+  },
+  {
+    "id": 4858,
+    "root": "hza",
+    "meaning": "English 'tucks' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.590588+00:00",
+    "notes": null,
+    "english_keys": [
+      "tucks"
+    ]
+  },
+  {
+    "id": 4786,
+    "root": "inszek",
+    "meaning": "English 'crashes' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.584696+00:00",
+    "notes": null,
+    "english_keys": [
+      "crashes"
     ]
   },
   {
@@ -2093,6 +2225,18 @@
     ]
   },
   {
+    "id": 4922,
+    "root": "kevkraqlvre",
+    "meaning": "English 'maintain' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.595091+00:00",
+    "notes": null,
+    "english_keys": [
+      "maintain"
+    ]
+  },
+  {
     "id": 4360,
     "root": "kim",
     "meaning": "rebuilding",
@@ -2138,6 +2282,18 @@
     "notes": null,
     "english_keys": [
       "hugged"
+    ]
+  },
+  {
+    "id": 4785,
+    "root": "klenlcsi",
+    "meaning": "English 'adjusts' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.584603+00:00",
+    "notes": null,
+    "english_keys": [
+      "adjusts"
     ]
   },
   {
@@ -2417,6 +2573,18 @@
     ]
   },
   {
+    "id": 4723,
+    "root": "musksevfrirv",
+    "meaning": "English 'scuttles' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.578971+00:00",
+    "notes": null,
+    "english_keys": [
+      "scuttles"
+    ]
+  },
+  {
     "id": 4590,
     "root": "naclora",
     "meaning": "receding",
@@ -2486,6 +2654,18 @@
     "notes": null,
     "english_keys": [
       "compressing"
+    ]
+  },
+  {
+    "id": 4717,
+    "root": "nimxisvklo",
+    "meaning": "English 'flail' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.578594+00:00",
+    "notes": null,
+    "english_keys": [
+      "flail"
     ]
   },
   {
@@ -2621,6 +2801,18 @@
     ]
   },
   {
+    "id": 4731,
+    "root": "ozmfhiqm",
+    "meaning": "English 'scuttle' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.579647+00:00",
+    "notes": null,
+    "english_keys": [
+      "scuttle"
+    ]
+  },
+  {
     "id": 4548,
     "root": "pecvah",
     "meaning": "squeezed",
@@ -2691,6 +2883,30 @@
     "notes": "coined via xenari_tool coin; wolverine batch 9",
     "english_keys": [
       "parried"
+    ]
+  },
+  {
+    "id": 4733,
+    "root": "pharkovl",
+    "meaning": "English 'lumbers' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.579784+00:00",
+    "notes": null,
+    "english_keys": [
+      "lumbers"
+    ]
+  },
+  {
+    "id": 4918,
+    "root": "phi",
+    "meaning": "English 'surrounds' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.594794+00:00",
+    "notes": null,
+    "english_keys": [
+      "surrounds"
     ]
   },
   {
@@ -2974,6 +3190,18 @@
     ]
   },
   {
+    "id": 4898,
+    "root": "qevrzno",
+    "meaning": "English 'plunges' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.593384+00:00",
+    "notes": null,
+    "english_keys": [
+      "plunges"
+    ]
+  },
+  {
     "id": 9855,
     "root": "qlekgr",
     "meaning": "search by-touch",
@@ -3007,6 +3235,18 @@
     "notes": null,
     "english_keys": [
       "venting"
+    ]
+  },
+  {
+    "id": 4835,
+    "root": "qovf",
+    "meaning": "English 'disappear' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.588613+00:00",
+    "notes": null,
+    "english_keys": [
+      "disappear"
     ]
   },
   {
@@ -3079,6 +3319,18 @@
     "notes": "coined via xenari_tool coin; wolverine batch 10",
     "english_keys": [
       "locate"
+    ]
+  },
+  {
+    "id": 4849,
+    "root": "ralkfe",
+    "meaning": "English 'squeezes' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.589945+00:00",
+    "notes": null,
+    "english_keys": [
+      "squeezes"
     ]
   },
   {
@@ -3155,6 +3407,18 @@
     ]
   },
   {
+    "id": 4951,
+    "root": "rirt",
+    "meaning": "English 'twist' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.597241+00:00",
+    "notes": null,
+    "english_keys": [
+      "twist"
+    ]
+  },
+  {
     "id": 4600,
     "root": "rlemosmi",
     "meaning": "hurtle",
@@ -3188,6 +3452,18 @@
     "notes": null,
     "english_keys": [
       "jolted"
+    ]
+  },
+  {
+    "id": 4748,
+    "root": "rosrnonho",
+    "meaning": "English 'overrun' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.580883+00:00",
+    "notes": null,
+    "english_keys": [
+      "overrun"
     ]
   },
   {
@@ -3263,6 +3539,30 @@
     ]
   },
   {
+    "id": 4769,
+    "root": "scorl",
+    "meaning": "English 'skims' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.582869+00:00",
+    "notes": null,
+    "english_keys": [
+      "skims"
+    ]
+  },
+  {
+    "id": 4810,
+    "root": "scuzlflicm",
+    "meaning": "English 'bustle' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.586917+00:00",
+    "notes": null,
+    "english_keys": [
+      "bustle"
+    ]
+  },
+  {
     "id": 4519,
     "root": "sesil",
     "meaning": "disengage",
@@ -3335,6 +3635,18 @@
     ]
   },
   {
+    "id": 4861,
+    "root": "sniksxec",
+    "meaning": "English 'punctures' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.590813+00:00",
+    "notes": null,
+    "english_keys": [
+      "punctures"
+    ]
+  },
+  {
     "id": 4318,
     "root": "snocus",
     "meaning": "blocking",
@@ -3371,6 +3683,42 @@
     ]
   },
   {
+    "id": 4888,
+    "root": "srufs",
+    "meaning": "English 'bypass' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.592619+00:00",
+    "notes": null,
+    "english_keys": [
+      "bypass"
+    ]
+  },
+  {
+    "id": 4833,
+    "root": "suvfizl",
+    "meaning": "English 'hurls' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.588474+00:00",
+    "notes": null,
+    "english_keys": [
+      "hurls"
+    ]
+  },
+  {
+    "id": 4915,
+    "root": "tacs",
+    "meaning": "English 'fades' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.594609+00:00",
+    "notes": null,
+    "english_keys": [
+      "fades"
+    ]
+  },
+  {
     "id": 4562,
     "root": "tahali",
     "meaning": "overlaying",
@@ -3380,6 +3728,18 @@
     "notes": null,
     "english_keys": [
       "overlaying"
+    ]
+  },
+  {
+    "id": 4893,
+    "root": "tal",
+    "meaning": "English 'detach' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.592972+00:00",
+    "notes": null,
+    "english_keys": [
+      "detach"
     ]
   },
   {
@@ -3404,6 +3764,30 @@
     "notes": null,
     "english_keys": [
       "tying"
+    ]
+  },
+  {
+    "id": 4949,
+    "root": "trofnil",
+    "meaning": "English 'plucks' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.597124+00:00",
+    "notes": null,
+    "english_keys": [
+      "plucks"
+    ]
+  },
+  {
+    "id": 4937,
+    "root": "trozon",
+    "meaning": "English 'scratches' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.596350+00:00",
+    "notes": null,
+    "english_keys": [
+      "scratches"
     ]
   },
   {
@@ -3441,6 +3825,30 @@
     "english_keys": [
       "unsheath",
       "unsheathing"
+    ]
+  },
+  {
+    "id": 4793,
+    "root": "uzfu",
+    "meaning": "English 'inverts' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.585335+00:00",
+    "notes": null,
+    "english_keys": [
+      "inverts"
+    ]
+  },
+  {
+    "id": 4775,
+    "root": "vazrnazn",
+    "meaning": "English 'dips' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.583660+00:00",
+    "notes": null,
+    "english_keys": [
+      "dips"
     ]
   },
   {
@@ -3527,6 +3935,30 @@
     "notes": null,
     "english_keys": [
       "bother"
+    ]
+  },
+  {
+    "id": 4948,
+    "root": "xi",
+    "meaning": "English 'disturb' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.597062+00:00",
+    "notes": null,
+    "english_keys": [
+      "disturb"
+    ]
+  },
+  {
+    "id": 4878,
+    "root": "xirvlo",
+    "meaning": "English 'unwraps' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.591948+00:00",
+    "notes": null,
+    "english_keys": [
+      "unwraps"
     ]
   },
   {
@@ -3818,6 +4250,18 @@
     ]
   },
   {
+    "id": 4799,
+    "root": "zinho",
+    "meaning": "English 'adjust' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.585832+00:00",
+    "notes": null,
+    "english_keys": [
+      "adjust"
+    ]
+  },
+  {
     "id": 4425,
     "root": "zlevoh",
     "meaning": "ate",
@@ -3839,6 +4283,18 @@
     "notes": null,
     "english_keys": [
       "calibrate"
+    ]
+  },
+  {
+    "id": 4895,
+    "root": "zmesfsun",
+    "meaning": "English 'regain' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.593125+00:00",
+    "notes": null,
+    "english_keys": [
+      "regain"
     ]
   },
   {
@@ -3974,6 +4430,18 @@
     ]
   },
   {
+    "id": 4850,
+    "root": "zukfo",
+    "meaning": "English 'launches' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.590028+00:00",
+    "notes": null,
+    "english_keys": [
+      "launches"
+    ]
+  },
+  {
     "id": 4407,
     "root": "zulor",
     "meaning": "guard",
@@ -3983,6 +4451,18 @@
     "notes": null,
     "english_keys": [
       "guard"
+    ]
+  },
+  {
+    "id": 4909,
+    "root": "zultfliflirs",
+    "meaning": "English 'coordinates' — gap fill from Interstellar script",
+    "category": "Action & Motion",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.594187+00:00",
+    "notes": null,
+    "english_keys": [
+      "coordinates"
     ]
   },
   {
@@ -18926,6 +19406,18 @@
     "english_parts_of_speech": {
       "kidnap": "verb"
     }
+  },
+  {
+    "id": 4927,
+    "root": "loqfo",
+    "meaning": "English 'stole' — gap fill from Interstellar script",
+    "category": "Crime & Violence",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.595450+00:00",
+    "notes": null,
+    "english_keys": [
+      "stole"
+    ]
   },
   {
     "id": 2686,
@@ -70119,6 +70611,18 @@
     ]
   },
   {
+    "id": 4802,
+    "root": "eclpinh",
+    "meaning": "English 'parse' — gap fill from Interstellar script",
+    "category": "Mathematics & Computation",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.586012+00:00",
+    "notes": null,
+    "english_keys": [
+      "parse"
+    ]
+  },
+  {
     "id": 1369,
     "root": "flomt",
     "meaning": "function",
@@ -73999,6 +74503,18 @@
     "english_keys": [
       "proof",
       "trace"
+    ]
+  },
+  {
+    "id": 4811,
+    "root": "sresk",
+    "meaning": "English 'comprehend' — gap fill from Interstellar script",
+    "category": "Mental & Abstract",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.586978+00:00",
+    "notes": null,
+    "english_keys": [
+      "comprehend"
     ]
   },
   {
@@ -96100,6 +96616,30 @@
     ]
   },
   {
+    "id": 4848,
+    "root": "cmafra",
+    "meaning": "English 'respond' — gap fill from Interstellar script",
+    "category": "Social & Communication",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.589886+00:00",
+    "notes": null,
+    "english_keys": [
+      "respond"
+    ]
+  },
+  {
+    "id": 4885,
+    "root": "cmirv",
+    "meaning": "English 'translates' — gap fill from Interstellar script",
+    "category": "Social & Communication",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.592411+00:00",
+    "notes": null,
+    "english_keys": [
+      "translates"
+    ]
+  },
+  {
     "id": 1183,
     "root": "co",
     "meaning": "hide",
@@ -96775,6 +97315,18 @@
     "english_parts_of_speech": {
       "boo": "verb"
     }
+  },
+  {
+    "id": 4954,
+    "root": "kherfcmunv",
+    "meaning": "English 'interact' — gap fill from Interstellar script",
+    "category": "Social & Communication",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.597429+00:00",
+    "notes": null,
+    "english_keys": [
+      "interact"
+    ]
   },
   {
     "id": 1197,
@@ -98295,6 +98847,18 @@
     "english_keys": [
       "parade",
       "procession"
+    ]
+  },
+  {
+    "id": 4959,
+    "root": "soqtlosv",
+    "meaning": "English 'exclaims' — gap fill from Interstellar script",
+    "category": "Social & Communication",
+    "source": "interstellar_gap_fill",
+    "timestamp": "2026-07-08T20:43:53.597739+00:00",
+    "notes": null,
+    "english_keys": [
+      "exclaims"
     ]
   },
   {
@@ -107856,42 +108420,6 @@
     ]
   },
   {
-    "id": 4716,
-    "root": "cluslzla",
-    "meaning": "English 'attempt' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.578482+00:00",
-    "notes": null,
-    "english_keys": [
-      "attempt"
-    ]
-  },
-  {
-    "id": 4848,
-    "root": "cmafra",
-    "meaning": "English 'respond' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.589886+00:00",
-    "notes": null,
-    "english_keys": [
-      "respond"
-    ]
-  },
-  {
-    "id": 4885,
-    "root": "cmirv",
-    "meaning": "English 'translates' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.592411+00:00",
-    "notes": null,
-    "english_keys": [
-      "translates"
-    ]
-  },
-  {
     "id": 4884,
     "root": "cnuclort",
     "meaning": "English 'blueshift' — gap fill from Interstellar script",
@@ -107916,18 +108444,6 @@
     ]
   },
   {
-    "id": 4802,
-    "root": "eclpinh",
-    "meaning": "English 'parse' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.586012+00:00",
-    "notes": null,
-    "english_keys": [
-      "parse"
-    ]
-  },
-  {
     "id": 4807,
     "root": "efkmupca",
     "meaning": "English 'prize' — gap fill from Interstellar script",
@@ -107937,18 +108453,6 @@
     "notes": null,
     "english_keys": [
       "prize"
-    ]
-  },
-  {
-    "id": 4719,
-    "root": "esf",
-    "meaning": "English 'resume' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.578720+00:00",
-    "notes": null,
-    "english_keys": [
-      "resume"
     ]
   },
   {
@@ -107965,18 +108469,6 @@
       "in",
       "opposition",
       "to"
-    ]
-  },
-  {
-    "id": 4944,
-    "root": "fenvaxk",
-    "meaning": "English 'bump' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.596816+00:00",
-    "notes": null,
-    "english_keys": [
-      "bump"
     ]
   },
   {
@@ -108004,30 +108496,6 @@
     ]
   },
   {
-    "id": 4837,
-    "root": "foctscost",
-    "meaning": "English 'hike' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.588777+00:00",
-    "notes": null,
-    "english_keys": [
-      "hike"
-    ]
-  },
-  {
-    "id": 4795,
-    "root": "fotzne",
-    "meaning": "English 'topples' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.585529+00:00",
-    "notes": null,
-    "english_keys": [
-      "topples"
-    ]
-  },
-  {
     "id": 4805,
     "root": "fozmlu",
     "meaning": "English 'strict' — gap fill from Interstellar script",
@@ -108037,18 +108505,6 @@
     "notes": null,
     "english_keys": [
       "strict"
-    ]
-  },
-  {
-    "id": 4774,
-    "root": "fuqktelmult",
-    "meaning": "English 'deflects' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.583534+00:00",
-    "notes": null,
-    "english_keys": [
-      "deflects"
     ]
   },
   {
@@ -108100,18 +108556,6 @@
     ]
   },
   {
-    "id": 4718,
-    "root": "hiqfe",
-    "meaning": "English 'empties' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.578656+00:00",
-    "notes": null,
-    "english_keys": [
-      "empties"
-    ]
-  },
-  {
     "id": 4790,
     "root": "ho",
     "meaning": "English 'grip' — gap fill from Interstellar script",
@@ -108124,30 +108568,6 @@
     ]
   },
   {
-    "id": 4904,
-    "root": "hork",
-    "meaning": "English 'vanishes' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.593830+00:00",
-    "notes": null,
-    "english_keys": [
-      "vanishes"
-    ]
-  },
-  {
-    "id": 4953,
-    "root": "hulsvaq",
-    "meaning": "English 'traverse' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.597365+00:00",
-    "notes": null,
-    "english_keys": [
-      "traverse"
-    ]
-  },
-  {
     "id": 4852,
     "root": "hxarkpox",
     "meaning": "English 'robotlike' — gap fill from Interstellar script",
@@ -108157,30 +108577,6 @@
     "notes": null,
     "english_keys": [
       "robotlike"
-    ]
-  },
-  {
-    "id": 4858,
-    "root": "hza",
-    "meaning": "English 'tucks' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.590588+00:00",
-    "notes": null,
-    "english_keys": [
-      "tucks"
-    ]
-  },
-  {
-    "id": 4786,
-    "root": "inszek",
-    "meaning": "English 'crashes' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.584696+00:00",
-    "notes": null,
-    "english_keys": [
-      "crashes"
     ]
   },
   {
@@ -108256,42 +108652,6 @@
     ]
   },
   {
-    "id": 4922,
-    "root": "kevkraqlvre",
-    "meaning": "English 'maintain' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.595091+00:00",
-    "notes": null,
-    "english_keys": [
-      "maintain"
-    ]
-  },
-  {
-    "id": 4954,
-    "root": "kherfcmunv",
-    "meaning": "English 'interact' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.597429+00:00",
-    "notes": null,
-    "english_keys": [
-      "interact"
-    ]
-  },
-  {
-    "id": 4785,
-    "root": "klenlcsi",
-    "meaning": "English 'adjusts' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.584603+00:00",
-    "notes": null,
-    "english_keys": [
-      "adjusts"
-    ]
-  },
-  {
     "id": 4817,
     "root": "klocso",
     "meaning": "English 'insignias' — gap fill from Interstellar script",
@@ -108349,18 +108709,6 @@
     "notes": null,
     "english_keys": [
       "laboratories"
-    ]
-  },
-  {
-    "id": 4927,
-    "root": "loqfo",
-    "meaning": "English 'stole' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.595450+00:00",
-    "notes": null,
-    "english_keys": [
-      "stole"
     ]
   },
   {
@@ -108424,18 +108772,6 @@
     ]
   },
   {
-    "id": 4723,
-    "root": "musksevfrirv",
-    "meaning": "English 'scuttles' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.578971+00:00",
-    "notes": null,
-    "english_keys": [
-      "scuttles"
-    ]
-  },
-  {
     "id": 4809,
     "root": "naflpihcfo",
     "meaning": "English 'preparations' — gap fill from Interstellar script",
@@ -108481,18 +108817,6 @@
     "notes": null,
     "english_keys": [
       "massacre"
-    ]
-  },
-  {
-    "id": 4717,
-    "root": "nimxisvklo",
-    "meaning": "English 'flail' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.578594+00:00",
-    "notes": null,
-    "english_keys": [
-      "flail"
     ]
   },
   {
@@ -108604,18 +108928,6 @@
     ]
   },
   {
-    "id": 4731,
-    "root": "ozmfhiqm",
-    "meaning": "English 'scuttle' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.579647+00:00",
-    "notes": null,
-    "english_keys": [
-      "scuttle"
-    ]
-  },
-  {
     "id": 4787,
     "root": "pelnhuvksnah",
     "meaning": "English 'sideways' — gap fill from Interstellar script",
@@ -108625,30 +108937,6 @@
     "notes": null,
     "english_keys": [
       "sideways"
-    ]
-  },
-  {
-    "id": 4733,
-    "root": "pharkovl",
-    "meaning": "English 'lumbers' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.579784+00:00",
-    "notes": null,
-    "english_keys": [
-      "lumbers"
-    ]
-  },
-  {
-    "id": 4918,
-    "root": "phi",
-    "meaning": "English 'surrounds' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.594794+00:00",
-    "notes": null,
-    "english_keys": [
-      "surrounds"
     ]
   },
   {
@@ -108700,30 +108988,6 @@
     ]
   },
   {
-    "id": 4898,
-    "root": "qevrzno",
-    "meaning": "English 'plunges' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.593384+00:00",
-    "notes": null,
-    "english_keys": [
-      "plunges"
-    ]
-  },
-  {
-    "id": 4835,
-    "root": "qovf",
-    "meaning": "English 'disappear' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.588613+00:00",
-    "notes": null,
-    "english_keys": [
-      "disappear"
-    ]
-  },
-  {
     "id": 4866,
     "root": "rac",
     "meaning": "English 'bomb' — gap fill from Interstellar script",
@@ -108733,18 +108997,6 @@
     "notes": null,
     "english_keys": [
       "bomb"
-    ]
-  },
-  {
-    "id": 4849,
-    "root": "ralkfe",
-    "meaning": "English 'squeezes' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.589945+00:00",
-    "notes": null,
-    "english_keys": [
-      "squeezes"
     ]
   },
   {
@@ -108796,18 +109048,6 @@
     ]
   },
   {
-    "id": 4951,
-    "root": "rirt",
-    "meaning": "English 'twist' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.597241+00:00",
-    "notes": null,
-    "english_keys": [
-      "twist"
-    ]
-  },
-  {
     "id": 4823,
     "root": "rizn",
     "meaning": "English 'require' — gap fill from Interstellar script",
@@ -108820,18 +109060,6 @@
     ]
   },
   {
-    "id": 4748,
-    "root": "rosrnonho",
-    "meaning": "English 'overrun' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.580883+00:00",
-    "notes": null,
-    "english_keys": [
-      "overrun"
-    ]
-  },
-  {
     "id": 4936,
     "root": "rucrku",
     "meaning": "English 'harvest' — gap fill from Interstellar script",
@@ -108841,30 +109069,6 @@
     "notes": null,
     "english_keys": [
       "harvest"
-    ]
-  },
-  {
-    "id": 4769,
-    "root": "scorl",
-    "meaning": "English 'skims' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.582869+00:00",
-    "notes": null,
-    "english_keys": [
-      "skims"
-    ]
-  },
-  {
-    "id": 4810,
-    "root": "scuzlflicm",
-    "meaning": "English 'bustle' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.586917+00:00",
-    "notes": null,
-    "english_keys": [
-      "bustle"
     ]
   },
   {
@@ -108892,66 +109096,6 @@
     ]
   },
   {
-    "id": 4861,
-    "root": "sniksxec",
-    "meaning": "English 'punctures' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.590813+00:00",
-    "notes": null,
-    "english_keys": [
-      "punctures"
-    ]
-  },
-  {
-    "id": 4959,
-    "root": "soqtlosv",
-    "meaning": "English 'exclaims' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.597739+00:00",
-    "notes": null,
-    "english_keys": [
-      "exclaims"
-    ]
-  },
-  {
-    "id": 4811,
-    "root": "sresk",
-    "meaning": "English 'comprehend' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.586978+00:00",
-    "notes": null,
-    "english_keys": [
-      "comprehend"
-    ]
-  },
-  {
-    "id": 4888,
-    "root": "srufs",
-    "meaning": "English 'bypass' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.592619+00:00",
-    "notes": null,
-    "english_keys": [
-      "bypass"
-    ]
-  },
-  {
-    "id": 4833,
-    "root": "suvfizl",
-    "meaning": "English 'hurls' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.588474+00:00",
-    "notes": null,
-    "english_keys": [
-      "hurls"
-    ]
-  },
-  {
     "id": 4754,
     "root": "szu",
     "meaning": "English 'colonists' — gap fill from Interstellar script",
@@ -108961,30 +109105,6 @@
     "notes": null,
     "english_keys": [
       "colonists"
-    ]
-  },
-  {
-    "id": 4915,
-    "root": "tacs",
-    "meaning": "English 'fades' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.594609+00:00",
-    "notes": null,
-    "english_keys": [
-      "fades"
-    ]
-  },
-  {
-    "id": 4893,
-    "root": "tal",
-    "meaning": "English 'detach' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.592972+00:00",
-    "notes": null,
-    "english_keys": [
-      "detach"
     ]
   },
   {
@@ -109024,30 +109144,6 @@
     ]
   },
   {
-    "id": 4949,
-    "root": "trofnil",
-    "meaning": "English 'plucks' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.597124+00:00",
-    "notes": null,
-    "english_keys": [
-      "plucks"
-    ]
-  },
-  {
-    "id": 4937,
-    "root": "trozon",
-    "meaning": "English 'scratches' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.596350+00:00",
-    "notes": null,
-    "english_keys": [
-      "scratches"
-    ]
-  },
-  {
     "id": 4779,
     "root": "unfxeflfem",
     "meaning": "English 'lifetime' — gap fill from Interstellar script",
@@ -109060,54 +109156,6 @@
     ]
   },
   {
-    "id": 4793,
-    "root": "uzfu",
-    "meaning": "English 'inverts' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.585335+00:00",
-    "notes": null,
-    "english_keys": [
-      "inverts"
-    ]
-  },
-  {
-    "id": 4775,
-    "root": "vazrnazn",
-    "meaning": "English 'dips' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.583660+00:00",
-    "notes": null,
-    "english_keys": [
-      "dips"
-    ]
-  },
-  {
-    "id": 4948,
-    "root": "xi",
-    "meaning": "English 'disturb' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.597062+00:00",
-    "notes": null,
-    "english_keys": [
-      "disturb"
-    ]
-  },
-  {
-    "id": 4878,
-    "root": "xirvlo",
-    "meaning": "English 'unwraps' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.591948+00:00",
-    "notes": null,
-    "english_keys": [
-      "unwraps"
-    ]
-  },
-  {
     "id": 4778,
     "root": "zifmkvozne",
     "meaning": "English 'decade' — gap fill from Interstellar script",
@@ -109117,54 +109165,6 @@
     "notes": null,
     "english_keys": [
       "decade"
-    ]
-  },
-  {
-    "id": 4799,
-    "root": "zinho",
-    "meaning": "English 'adjust' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.585832+00:00",
-    "notes": null,
-    "english_keys": [
-      "adjust"
-    ]
-  },
-  {
-    "id": 4895,
-    "root": "zmesfsun",
-    "meaning": "English 'regain' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.593125+00:00",
-    "notes": null,
-    "english_keys": [
-      "regain"
-    ]
-  },
-  {
-    "id": 4850,
-    "root": "zukfo",
-    "meaning": "English 'launches' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.590028+00:00",
-    "notes": null,
-    "english_keys": [
-      "launches"
-    ]
-  },
-  {
-    "id": 4909,
-    "root": "zultfliflirs",
-    "meaning": "English 'coordinates' — gap fill from Interstellar script",
-    "category": "Uncategorized",
-    "source": "interstellar_gap_fill",
-    "timestamp": "2026-07-08T20:43:53.594187+00:00",
-    "notes": null,
-    "english_keys": [
-      "coordinates"
     ]
   },
   {

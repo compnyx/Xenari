@@ -5,6 +5,7 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Recategorized 47 unambiguous legacy Interstellar gap-fill entries: 40 action/motion roots plus clear social, computation, crime, and cognition entries. No roots or English mappings changed.
 - Added `qrazhel` (“a mind that will not catch the thread”) and the English-to-Xenari mapping `retard` → `qrazhel`; preserve that mapping through copular reverse translation.
 - Recategorized 50 reviewed legacy `Uncategorized` entries from the Interstellar gap-fill era across action, place, tool, quality, social, and nature domains; regenerated canon exports without adding vocabulary.
 - Curated Wolverine screenplay harvest batch 18: finished remaining real single-token leftovers (successful, skinhead, sidesteps, shaved, raking, accelerating, voicing, toppling, submerging, trimmed, swatted) and mapped strong/shining/writing/waking/escaped/survived/swiveling/shoving onto existing roots.
