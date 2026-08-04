@@ -7255,6 +7255,150 @@
         "reverse": "I see umbrella"
       }
     },
+    "qualities-general-001": {
+      "root": "xos",
+      "fixture": {
+        "english": "The dog is able.",
+        "xenari": "ra xos ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is able"
+      }
+    },
+    "qualities-general-003": {
+      "root": "zunyq",
+      "fixture": {
+        "english": "The dog is angry.",
+        "xenari": "ra zunyq ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is angry"
+      }
+    },
+    "qualities-general-004": {
+      "root": "toszrim",
+      "fixture": {
+        "english": "The dog is automatic.",
+        "xenari": "ra toszrim ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is automatic"
+      }
+    },
+    "qualities-general-006": {
+      "root": "trungk",
+      "fixture": {
+        "english": "The dog is black.",
+        "xenari": "ra trungk ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is black"
+      }
+    },
+    "qualities-general-008": {
+      "root": "zenyq",
+      "fixture": {
+        "english": "The dog is bright.",
+        "xenari": "ra zenyq ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is bright"
+      }
+    },
+    "qualities-general-010": {
+      "root": "gu",
+      "fixture": {
+        "english": "The dog is brown.",
+        "xenari": "ra gu ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is brown"
+      }
+    },
+    "qualities-general-011": {
+      "root": "nguthap",
+      "fixture": {
+        "english": "The dog is cheap.",
+        "xenari": "ra nguthap ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is cheap"
+      }
+    },
+    "qualities-general-014": {
+      "root": "xagxah",
+      "fixture": {
+        "english": "The dog is clean.",
+        "xenari": "ra xagxah ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is clean"
+      }
+    },
+    "qualities-general-015": {
+      "root": "trag",
+      "fixture": {
+        "english": "The dog is clear.",
+        "xenari": "ra trag ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is clear"
+      }
+    },
+    "qualities-general-017": {
+      "root": "apoh",
+      "fixture": {
+        "english": "The dog is complex.",
+        "xenari": "ra apoh ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is complex"
+      }
+    },
+    "qualities-general-026": {
+      "root": "groqo",
+      "fixture": {
+        "english": "The dog is fat.",
+        "xenari": "ra groqo ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is fat"
+      }
+    },
+    "qualities-general-027": {
+      "root": "lony",
+      "fixture": {
+        "english": "The dog is fertile.",
+        "xenari": "ra lony ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is fertile"
+      }
+    },
+    "qualities-general-029": {
+      "root": "mopume",
+      "fixture": {
+        "english": "The dog is fixed.",
+        "xenari": "ra mopume ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is fixed"
+      }
+    },
+    "qualities-general-030": {
+      "root": "zreq",
+      "fixture": {
+        "english": "The dog is flat.",
+        "xenari": "ra zreq ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is flat"
+      }
+    },
+    "qualities-general-031": {
+      "root": "rezx",
+      "fixture": {
+        "english": "The dog is free.",
+        "xenari": "ra rezx ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is free"
+      }
+    },
+    "qualities-general-037": {
+      "root": "tre",
+      "fixture": {
+        "english": "The dog is grey.",
+        "xenari": "ra tre ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is grey"
+      }
+    },
+    "qualities-general-039": {
+      "root": "qlen",
+      "fixture": {
+        "english": "The dog is happy.",
+        "xenari": "ra qlen ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is happy"
+      }
+    },
+    "qualities-general-041": {
+      "root": "naxcrom",
+      "fixture": {
+        "english": "The dog is healthy.",
+        "xenari": "ra naxcrom ka vi zrenq ta zux vi sa xo",
+        "reverse": "dog is healthy"
+      }
+    },
     "qualities-general-035": {
       "root": "nax",
       "fixture": {

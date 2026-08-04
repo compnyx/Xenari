@@ -27,6 +27,20 @@ _QUALITY_ROOTS = {
 
 
 class ModifierTranslationMixin:
+    def _quality_root(self, english_word: str):
+        """Resolve a reviewed adjective sense before legacy quality fallbacks.
+
+        Part-of-speech curation is attached to an English-key/root sense, so
+        newly approved common-English qualities must not wait for a second,
+        hand-maintained parser allowlist.  The compact fallback table keeps
+        established legacy quality frames stable until those senses receive
+        the same explicit review.
+        """
+        clean = english_word.lower().strip()
+        if self.english_part_of_speech.get(clean) == "adjective":
+            return self.english_to_root.get(clean)
+        return _QUALITY_ROOTS.get(clean)
+
     def _parse_modifier_np(self, english: str):
         """Parse one bounded possessive/quantity/modifier noun phrase.
 
@@ -78,11 +92,6 @@ class ModifierTranslationMixin:
             "some": "frox", "no": "nulxant", "few": "klog",
             "each": "cleg", "every": "cleg",
         }
-        quality_roots = {
-            "red": "rlis", "big": "nyix", "good": "nax", "bad": "qez",
-            "fast": "kag", "tall": "sump", "small": "frem",
-            "dangerous": "fatyih",
-        }
         superlative_roots = {
             "fastest": "kag", "best": "nax", "worst": "qez",
             "biggest": "nyix", "tallest": "sump", "smallest": "frem",
@@ -100,8 +109,8 @@ class ModifierTranslationMixin:
                 # `one` remains the ordinary quantifier `fqam` above. Other
                 # numerals use productive base-6 composition (`six` -> ca xang).
                 number_parts = self._base6_number_parts(value)
-            elif word in quality_roots:
-                qualities.append(quality_roots[word])
+            elif quality_root := self._quality_root(word):
+                qualities.append(quality_root)
             elif word in superlative_roots and not saw_superlative:
                 qualities.append(superlative_roots[word])
                 saw_superlative = True
@@ -302,7 +311,7 @@ class ModifierTranslationMixin:
             first, second, negation, quality_word = match.groups()
             auxiliary, subject_text = (first, second) if question else (second, first)
             subject_phrase = self._parse_modifier_np(subject_text)
-            quality_root = _QUALITY_ROOTS.get(quality_word)
+            quality_root = self._quality_root(quality_word)
             if not subject_phrase or not quality_root:
                 continue
             parts = ["ra", quality_root]

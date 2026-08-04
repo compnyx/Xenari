@@ -5,6 +5,19 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Approved 18 clear Ogden quality slots (`able`, `angry`, `automatic`,
+  `black`, `bright`, `brown`, `cheap`, `clean`, `clear`, `complex`, `fat`,
+  `fertile`, `fixed`, `flat`, `free`, `grey`, `happy`, and `healthy`) against
+  selected existing roots. Added 19 direct sense-level adjective annotations,
+  including intentional US `gray` → `tre` aliasing. Each slot now has an
+  exact English → Xenari → English fixture; coverage is 71 approved / 779
+  pending.
+- Made reviewed adjective senses drive both Python and browser quality frames
+  instead of requiring a second static parser allowlist. Browser reverse
+  selection now prefers an explicit POS-tagged headword over a legacy alias,
+  and Python reverse restores adjective-before-noun English order. Added
+  Python/browser regressions for black/gray copulas and a black-dog modifier
+  phrase.
 - Approved 20 concrete Ogden picturable-noun slots plus four reviewed quality
   slots (`good`, `bad`, `red`, `tall`) using only existing selected mappings.
   Added the 24 missing sense-level POS tags and full forward/reverse fixtures;

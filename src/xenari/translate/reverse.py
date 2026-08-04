@@ -423,7 +423,24 @@ class ReverseTranslationMixin:
                     "plural": False,
                 })
                 i += 1
-            words = [piece["text"] for piece in pieces]
+            # Modifier NPs serialize as head then quality in Xenari. Render
+            # explicit reviewed adjective senses before their noun head in
+            # English so a curated phrase round-trips in the same order as
+            # the browser translator (``zrenq trungk`` -> ``black dog``).
+            adjective_pieces = [
+                piece
+                for piece in pieces[1:]
+                if "adjective" in self.db.parts_of_speech_for_root(piece["root"])
+            ]
+            if adjective_pieces:
+                adjective_piece_ids = {id(piece) for piece in adjective_pieces}
+                words = [piece["text"] for piece in adjective_pieces]
+                words.extend(
+                    piece["text"] for piece in pieces
+                    if id(piece) not in adjective_piece_ids
+                )
+            else:
+                words = [piece["text"] for piece in pieces]
             if possessor and words:
                 poss_text = possessor["text"]
                 if (

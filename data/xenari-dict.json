@@ -22750,7 +22750,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from 'eny; validator issues: glottal stop cannot be word-initial",
     "english_keys": [
       "bright"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bright": "adjective"
+    }
   },
   {
     "id": 2620,
@@ -49493,7 +49496,10 @@
     "notes": null,
     "english_keys": [
       "free"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "free": "adjective"
+    }
   },
   {
     "id": 6786,
@@ -56886,7 +56892,10 @@
     "notes": null,
     "english_keys": [
       "automatic"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "automatic": "adjective"
+    }
   },
   {
     "id": 8165,
@@ -71564,7 +71573,10 @@
     "notes": null,
     "english_keys": [
       "healthy"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "healthy": "adjective"
+    }
   },
   {
     "id": 9926,
@@ -88753,7 +88765,10 @@
     "notes": null,
     "english_keys": [
       "complex"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "complex": "adjective"
+    }
   },
   {
     "id": 3294,
@@ -89991,7 +90006,10 @@
     "notes": null,
     "english_keys": [
       "fat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fat": "adjective"
+    }
   },
   {
     "id": 948,
@@ -90003,7 +90021,10 @@
     "notes": null,
     "english_keys": [
       "brown"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "brown": "adjective"
+    }
   },
   {
     "id": 2090,
@@ -90675,7 +90696,10 @@
     "notes": null,
     "english_keys": [
       "fertile"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fertile": "adjective"
+    }
   },
   {
     "id": 2798,
@@ -90881,7 +90905,10 @@
     "notes": null,
     "english_keys": [
       "fixed"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fixed": "adjective"
+    }
   },
   {
     "id": 3265,
@@ -92737,7 +92764,10 @@
     "notes": null,
     "english_keys": [
       "happy"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "happy": "adjective"
+    }
   },
   {
     "id": 4537,
@@ -93890,7 +93920,10 @@
     "english_keys": [
       "clear",
       "transparent"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "clear": "adjective"
+    }
   },
   {
     "id": 990,
@@ -93913,8 +93946,13 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "gray",
       "grey"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "gray": "adjective",
+      "grey": "adjective"
+    }
   },
   {
     "id": 924,
@@ -93938,7 +93976,10 @@
     "notes": null,
     "english_keys": [
       "black"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "black": "adjective"
+    }
   },
   {
     "id": 993,
@@ -94265,7 +94306,10 @@
     "english_keys": [
       "clean",
       "pure"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "clean": "adjective"
+    }
   },
   {
     "id": 4481,
@@ -94447,7 +94491,10 @@
     "notes": null,
     "english_keys": [
       "able"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "able": "adjective"
+    }
   },
   {
     "id": 916,
@@ -95249,7 +95296,10 @@
     "notes": null,
     "english_keys": [
       "flat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "flat": "adjective"
+    }
   },
   {
     "id": 4275,
@@ -95382,7 +95432,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from 'uny; validator issues: glottal stop cannot be word-initial",
     "english_keys": [
       "angry"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "angry": "adjective"
+    }
   },
   {
     "id": 4532,
@@ -108870,7 +108923,10 @@
     "english_keys": [
       "cheap",
       "inexpensive"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cheap": "adjective"
+    }
   },
   {
     "id": 4709,

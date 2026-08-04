@@ -366,6 +366,22 @@ def test_noun_subject_auxiliaries_copulas_progressives_and_possession_keep_roles
             assert "ka neq" not in rendered
 
 
+def test_curated_adjective_senses_drive_copulas_and_modifier_noun_phrases(xenari):
+    assert xenari.speak("The dog is black.", evidential="assumed") == (
+        "ra trungk ka vi zrenq ta zux vi sa xo"
+    )
+    assert xenari.reverse("ra trungk ka vi zrenq ta zux vi sa xo") == "dog is black"
+    assert xenari.speak("The dog is gray.", evidential="assumed") == (
+        "ra tre ka vi zrenq ta zux vi sa xo"
+    )
+    assert xenari.speak("The black dog is happy.", evidential="assumed") == (
+        "ra qlen ka vi zrenq trungk ta zux vi sa xo"
+    )
+    assert xenari.reverse("ra qlen ka vi zrenq trungk ta zux vi sa xo") == (
+        "black dog is happy"
+    )
+
+
 def test_reverse_possession_preserves_tense_and_subject_agreement(xenari):
     cases = {
         "ra nu brid ka vi zrenq ta xrong vi sa xo": "dog has hat",

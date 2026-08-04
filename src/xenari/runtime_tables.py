@@ -206,6 +206,7 @@ REVERSE_PREFERRED: Mapping[str, str] = _immutable(
         "qruq": "blow",
         "frig": "approach",
         "rlis": "red",
+        "tre": "grey",
         "qeng": "go",
         "qxundraz": "operate",
         "kashatyong": "job",
