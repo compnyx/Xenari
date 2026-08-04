@@ -5,6 +5,12 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Approved 19 unambiguous Ogden opposite-quality slots (`awake`, `bitter`,
+  `blue`, `certain`, `cold`, `complete`, `cruel`, `dark`, `delicate`,
+  `different`, `dirty`, `dry`, `false`, `foolish`, `green`, `last`, `late`,
+  `left`, and `loud`) using only selected existing roots. Added the matching
+  explicit adjective senses and sentence round-trips; coverage is 90 approved
+  / 760 pending.
 - Approved 18 clear Ogden quality slots (`able`, `angry`, `automatic`,
   `black`, `bright`, `brown`, `cheap`, `clean`, `clear`, `complex`, `fat`,
   `fertile`, `fixed`, `flat`, `free`, `grey`, `happy`, and `healthy`) against

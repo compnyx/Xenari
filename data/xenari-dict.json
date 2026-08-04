@@ -8948,7 +8948,10 @@
     "notes": null,
     "english_keys": [
       "loud"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "loud": "adjective"
+    }
   },
   {
     "id": 9539,
@@ -15613,7 +15616,10 @@
     "notes": null,
     "english_keys": [
       "left"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "left": "adjective"
+    }
   },
   {
     "id": 2875,
@@ -18207,7 +18213,10 @@
     "english_keys": [
       "different",
       "other"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "different": "adjective"
+    }
   },
   {
     "id": 2320,
@@ -20514,7 +20523,10 @@
       "dark",
       "hidden",
       "shadow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dark": "adjective"
+    }
   },
   {
     "id": 327,
@@ -22579,7 +22591,10 @@
     "notes": null,
     "english_keys": [
       "cold"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cold": "adjective"
+    }
   },
   {
     "id": 427,
@@ -48197,7 +48212,10 @@
     "notes": null,
     "english_keys": [
       "foolish"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "foolish": "adjective"
+    }
   },
   {
     "id": 8816,
@@ -71204,7 +71222,10 @@
     "notes": null,
     "english_keys": [
       "false"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "false": "adjective"
+    }
   },
   {
     "id": 1345,
@@ -85732,7 +85753,10 @@
     "notes": null,
     "english_keys": [
       "late"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "late": "adjective"
+    }
   },
   {
     "id": 4248,
@@ -88063,7 +88087,10 @@
     "notes": null,
     "english_keys": [
       "bitter"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bitter": "adjective"
+    }
   },
   {
     "id": 2399,
@@ -88912,7 +88939,10 @@
     "notes": null,
     "english_keys": [
       "blue"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "blue": "adjective"
+    }
   },
   {
     "id": 3286,
@@ -90956,7 +90986,10 @@
     "notes": null,
     "english_keys": [
       "cruel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cruel": "adjective"
+    }
   },
   {
     "id": 3094,
@@ -91597,7 +91630,10 @@
     "english_keys": [
       "awake",
       "conscious"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "awake": "adjective"
+    }
   },
   {
     "id": 9915,
@@ -92804,7 +92840,10 @@
     "notes": null,
     "english_keys": [
       "dry"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dry": "adjective"
+    }
   },
   {
     "id": 4339,
@@ -93935,7 +93974,10 @@
     "notes": null,
     "english_keys": [
       "green"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "green": "adjective"
+    }
   },
   {
     "id": 991,
@@ -94063,7 +94105,10 @@
     "notes": null,
     "english_keys": [
       "complete"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "complete": "adjective"
+    }
   },
   {
     "id": 2614,
@@ -94173,7 +94218,10 @@
     "notes": null,
     "english_keys": [
       "certain"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "certain": "adjective"
+    }
   },
   {
     "id": 4390,
@@ -94359,7 +94407,10 @@
     "english_keys": [
       "dirty",
       "soiled"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dirty": "adjective"
+    }
   },
   {
     "id": 913,
@@ -96120,7 +96171,10 @@
     "notes": null,
     "english_keys": [
       "delicate"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "delicate": "adjective"
+    }
   },
   {
     "id": 3539,
@@ -104631,7 +104685,10 @@
     "notes": null,
     "english_keys": [
       "last"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "last": "adjective"
+    }
   },
   {
     "id": 3351,

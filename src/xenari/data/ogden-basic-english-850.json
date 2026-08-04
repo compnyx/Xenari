@@ -7423,6 +7423,82 @@
         "reverse": "dog is tall"
       }
     },
+    "qualities-opposites-001": {
+      "root": "nolite",
+      "fixture": {"english": "The dog is awake.", "xenari": "ra nolite ka vi zrenq ta zux vi sa xo", "reverse": "dog is awake"}
+    },
+    "qualities-opposites-004": {
+      "root": "trup",
+      "fixture": {"english": "The dog is bitter.", "xenari": "ra trup ka vi zrenq ta zux vi sa xo", "reverse": "dog is bitter"}
+    },
+    "qualities-opposites-005": {
+      "root": "blig",
+      "fixture": {"english": "The dog is blue.", "xenari": "ra blig ka vi zrenq ta zux vi sa xo", "reverse": "dog is blue"}
+    },
+    "qualities-opposites-006": {
+      "root": "virol",
+      "fixture": {"english": "The dog is certain.", "xenari": "ra virol ka vi zrenq ta zux vi sa xo", "reverse": "dog is certain"}
+    },
+    "qualities-opposites-007": {
+      "root": "xru",
+      "fixture": {"english": "The dog is cold.", "xenari": "ra xru ka vi zrenq ta zux vi sa xo", "reverse": "dog is cold"}
+    },
+    "qualities-opposites-008": {
+      "root": "ug",
+      "fixture": {"english": "The dog is complete.", "xenari": "ra ug ka vi zrenq ta zux vi sa xo", "reverse": "dog is complete"}
+    },
+    "qualities-opposites-009": {
+      "root": "mris",
+      "fixture": {"english": "The dog is cruel.", "xenari": "ra mris ka vi zrenq ta zux vi sa xo", "reverse": "dog is cruel"}
+    },
+    "qualities-opposites-010": {
+      "root": "cram",
+      "fixture": {"english": "The dog is dark.", "xenari": "ra cram ka vi zrenq ta zux vi sa xo", "reverse": "dog is dark"}
+    },
+    "qualities-opposites-013": {
+      "root": "zalmti",
+      "fixture": {"english": "The dog is delicate.", "xenari": "ra zalmti ka vi zrenq ta zux vi sa xo", "reverse": "dog is delicate"}
+    },
+    "qualities-opposites-014": {
+      "root": "zlox",
+      "fixture": {"english": "The dog is different.", "xenari": "ra zlox ka vi zrenq ta zux vi sa xo", "reverse": "dog is different"}
+    },
+    "qualities-opposites-015": {
+      "root": "xitmoy",
+      "fixture": {"english": "The dog is dirty.", "xenari": "ra xitmoy ka vi zrenq ta zux vi sa xo", "reverse": "dog is dirty"}
+    },
+    "qualities-opposites-016": {
+      "root": "qluk",
+      "fixture": {"english": "The dog is dry.", "xenari": "ra qluk ka vi zrenq ta zux vi sa xo", "reverse": "dog is dry"}
+    },
+    "qualities-opposites-017": {
+      "root": "qezk",
+      "fixture": {"english": "The dog is false.", "xenari": "ra qezk ka vi zrenq ta zux vi sa xo", "reverse": "dog is false"}
+    },
+    "qualities-opposites-020": {
+      "root": "qlubqxun",
+      "fixture": {"english": "The dog is foolish.", "xenari": "ra qlubqxun ka vi zrenq ta zux vi sa xo", "reverse": "dog is foolish"}
+    },
+    "qualities-opposites-022": {
+      "root": "traq",
+      "fixture": {"english": "The dog is green.", "xenari": "ra traq ka vi zrenq ta zux vi sa xo", "reverse": "dog is green"}
+    },
+    "qualities-opposites-024": {
+      "root": "tivxod",
+      "fixture": {"english": "The dog is last.", "xenari": "ra tivxod ka vi zrenq ta zux vi sa xo", "reverse": "dog is last"}
+    },
+    "qualities-opposites-025": {
+      "root": "zluq",
+      "fixture": {"english": "The dog is late.", "xenari": "ra zluq ka vi zrenq ta zux vi sa xo", "reverse": "dog is late"}
+    },
+    "qualities-opposites-026": {
+      "root": "flenq",
+      "fixture": {"english": "The dog is left.", "xenari": "ra flenq ka vi zrenq ta zux vi sa xo", "reverse": "dog is left"}
+    },
+    "qualities-opposites-028": {
+      "root": "brepk",
+      "fixture": {"english": "The dog is loud.", "xenari": "ra brepk ka vi zrenq ta zux vi sa xo", "reverse": "dog is loud"}
+    },
     "qualities-opposites-002": {
       "root": "qez",
       "fixture": {
