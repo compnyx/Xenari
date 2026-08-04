@@ -10101,7 +10101,10 @@
     "notes": null,
     "english_keys": [
       "girl"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "girl": "noun"
+    }
   },
   {
     "id": 3063,
@@ -10250,7 +10253,10 @@
     "english_keys": [
       "buzzing-thing",
       "fly"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fly": "noun"
+    }
   },
   {
     "id": 2158,
@@ -10287,7 +10293,10 @@
     "english_keys": [
       "cat",
       "stalking-creature"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cat": "noun"
+    }
   },
   {
     "id": 631,
@@ -10601,7 +10610,10 @@
     "notes": null,
     "english_keys": [
       "boy"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "boy": "noun"
+    }
   },
   {
     "id": 639,
@@ -10773,7 +10785,10 @@
     "english_keys": [
       "fish",
       "swimming-thing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fish": "noun"
+    }
   },
   {
     "id": 644,
@@ -11094,7 +11109,10 @@
     "english_keys": [
       "bird",
       "flying-thing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bird": "noun"
+    }
   },
   {
     "id": 651,
@@ -11570,7 +11588,10 @@
     "notes": null,
     "english_keys": [
       "fowl"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fowl": "noun"
+    }
   },
   {
     "id": 615,
@@ -12433,7 +12454,10 @@
     "notes": null,
     "english_keys": [
       "hand"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hand": "noun"
+    }
   },
   {
     "id": 490,
@@ -12522,7 +12546,10 @@
     "notes": null,
     "english_keys": [
       "foot"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "foot": "noun"
+    }
   },
   {
     "id": 467,
@@ -12606,7 +12633,10 @@
     "notes": null,
     "english_keys": [
       "feather"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "feather": "noun"
+    }
   },
   {
     "id": 476,
@@ -12922,7 +12952,10 @@
     "notes": null,
     "english_keys": [
       "hair"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hair": "noun"
+    }
   },
   {
     "id": 2783,
@@ -12995,7 +13028,10 @@
     "notes": null,
     "english_keys": [
       "chin"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "chin": "noun"
+    }
   },
   {
     "id": 512,
@@ -13093,7 +13129,10 @@
     "notes": null,
     "english_keys": [
       "knee"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "knee": "noun"
+    }
   },
   {
     "id": 515,
@@ -13395,7 +13434,10 @@
     "english_keys": [
       "egg",
       "seed-body"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "egg": "noun"
+    }
   },
   {
     "id": 453,
@@ -13620,7 +13662,10 @@
     "notes": null,
     "english_keys": [
       "face"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "face": "noun"
+    }
   },
   {
     "id": 438,
@@ -13647,7 +13692,10 @@
     "notes": null,
     "english_keys": [
       "head"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "head": "noun"
+    }
   },
   {
     "id": 527,
@@ -13999,7 +14047,10 @@
     "notes": null,
     "english_keys": [
       "chest"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "chest": "noun"
+    }
   },
   {
     "id": 465,
@@ -14124,7 +14175,10 @@
     "notes": null,
     "english_keys": [
       "finger"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "finger": "noun"
+    }
   },
   {
     "id": 478,
@@ -14428,7 +14482,10 @@
     "english_keys": [
       "core",
       "heart"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "heart": "noun"
+    }
   },
   {
     "id": 448,
@@ -28826,7 +28883,10 @@
     "notes": null,
     "english_keys": [
       "card"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "card": "noun"
+    }
   },
   {
     "id": 5546,
@@ -29449,7 +29509,10 @@
     "notes": null,
     "english_keys": [
       "church"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "church": "noun"
+    }
   },
   {
     "id": 5325,
@@ -68703,7 +68766,10 @@
     "notes": null,
     "english_keys": [
       "army"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "army": "noun"
+    }
   },
   {
     "id": 9923,
@@ -69091,7 +69157,10 @@
     "notes": null,
     "english_keys": [
       "cushion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cushion": "noun"
+    }
   },
   {
     "id": 2043,
@@ -69104,7 +69173,10 @@
     "english_keys": [
       "garden",
       "yard"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "garden": "noun"
+    }
   },
   {
     "id": 2241,
@@ -69664,7 +69736,10 @@
     "notes": null,
     "english_keys": [
       "curtain"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "curtain": "noun"
+    }
   },
   {
     "id": 1511,
@@ -69969,7 +70044,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jatqu; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "farm"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "farm": "noun"
+    }
   },
   {
     "id": 2162,
@@ -71306,7 +71384,10 @@
     "notes": null,
     "english_keys": [
       "circle"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "circle": "noun"
+    }
   },
   {
     "id": 1370,
@@ -79828,7 +79909,10 @@
     "notes": null,
     "english_keys": [
       "carriage"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "carriage": "noun"
+    }
   },
   {
     "id": 5177,
@@ -82898,7 +82982,10 @@
     "notes": null,
     "english_keys": [
       "frame"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "frame": "noun"
+    }
   },
   {
     "id": 3349,
@@ -85580,7 +85667,10 @@
     "english_keys": [
       "home",
       "house"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "house": "noun"
+    }
   },
   {
     "id": 9676,
@@ -86571,7 +86661,10 @@
     "notes": null,
     "english_keys": [
       "knife"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "knife": "noun"
+    }
   },
   {
     "id": 1990,
@@ -103963,7 +104056,10 @@
     "notes": null,
     "english_keys": [
       "clock"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "clock": "noun"
+    }
   },
   {
     "id": 1402,
@@ -104537,7 +104633,10 @@
       "engine",
       "power",
       "source"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "engine": "noun"
+    }
   },
   {
     "id": 1432,
@@ -105286,7 +105385,10 @@
     "english_keys": [
       "cord",
       "thread"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cord": "noun"
+    }
   },
   {
     "id": 4353,
@@ -105399,7 +105501,10 @@
     "notes": null,
     "english_keys": [
       "collar"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "collar": "noun"
+    }
   },
   {
     "id": 4554,
@@ -105447,7 +105552,10 @@
     "notes": null,
     "english_keys": [
       "comb"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "comb": "noun"
+    }
   },
   {
     "id": 1929,
@@ -105654,7 +105762,10 @@
     "notes": null,
     "english_keys": [
       "cup"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cup": "noun"
+    }
   },
   {
     "id": 9830,
@@ -105961,7 +106072,10 @@
     "notes": null,
     "english_keys": [
       "button"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "button": "noun"
+    }
   },
   {
     "id": 4732,
@@ -106277,7 +106391,10 @@
     "notes": null,
     "english_keys": [
       "floor"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "floor": "noun"
+    }
   },
   {
     "id": 4800,
@@ -106507,7 +106624,10 @@
     "notes": null,
     "english_keys": [
       "coat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "coat": "noun"
+    }
   },
   {
     "id": 834,
@@ -106921,7 +107041,10 @@
     "notes": null,
     "english_keys": [
       "chain"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "chain": "noun"
+    }
   },
   {
     "id": 772,
@@ -107599,7 +107722,10 @@
     "notes": null,
     "english_keys": [
       "glove"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "glove": "noun"
+    }
   },
   {
     "id": 854,
@@ -107687,7 +107813,10 @@
     "notes": null,
     "english_keys": [
       "hammer"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hammer": "noun"
+    }
   },
   {
     "id": 773,
@@ -107711,7 +107840,10 @@
     "notes": null,
     "english_keys": [
       "hook"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hook": "noun"
+    }
   },
   {
     "id": 2508,
@@ -108087,7 +108219,10 @@
     "notes": null,
     "english_keys": [
       "cart"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cart": "noun"
+    }
   },
   {
     "id": 2238,
@@ -108248,7 +108383,10 @@
     "notes": null,
     "english_keys": [
       "fork"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fork": "noun"
+    }
   },
   {
     "id": 863,
@@ -108482,7 +108620,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jexe; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "gun"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "gun": "noun"
+    }
   },
   {
     "id": 9522,
@@ -108718,7 +108859,10 @@
     "english_keys": [
       "door",
       "gate"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "door": "noun"
+    }
   },
   {
     "id": 9551,
@@ -117055,7 +117199,10 @@
     "notes": null,
     "english_keys": [
       "knot"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "knot": "noun"
+    }
   },
   {
     "id": 6267,

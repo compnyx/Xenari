@@ -5,6 +5,17 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Approved 49 further unambiguous Ogden picturable nouns (`army`, `bird`,
+  `boy`, `button`, `card`, `cart`, `carriage`, `cat`, `chain`, `chest`,
+  `chin`, `church`, `circle`, `clock`, `coat`, `collar`, `comb`, `cord`,
+  `cup`, `curtain`, `cushion`, `door`, `egg`, `engine`, `face`, `farm`,
+  `feather`, `finger`, `fish`, `floor`, `fly`, `foot`, `fork`, `fowl`,
+  `frame`, `garden`, `girl`, `glove`, `gun`, `hair`, `hammer`, `hand`,
+  `head`, `heart`, `hook`, `house`, `knee`, `knife`, and `knot`) against
+  explicit selected roots. Every approved sense is noun-tagged and has a
+  forward/reverse sentence fixture; coverage is 161 approved / 689 pending.
+  The paired browser translator now derives noun animacy from the same
+  canonical root-meaning cues as Python.
 - Approved 22 unambiguous concrete Ogden picturable nouns (`angle`, `arm`,
   `bag`, `ball`, `band`, `basin`, `bath`, `bed`, `bell`, `berry`, `blade`,
   `board`, `boat`, `bone`, `book`, `boot`, `bottle`, `box`, `brain`, `brake`,
