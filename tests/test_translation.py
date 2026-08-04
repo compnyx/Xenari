@@ -111,8 +111,12 @@ def test_work_senses_and_unknown_subjects_do_not_become_fake_roots(xenari):
     )
 
 def test_kiss_and_bite_use_distinct_canon_roots(xenari):
-    assert xenari.lookup("kiss") == ("nquxe", "to kiss / to press lips together")
-    assert xenari.lookup("bite") == ("qruq'", "to bite")
+    assert xenari.lookup("kiss", part_of_speech="verb") == (
+        "nquxe", "to kiss / to press lips together"
+    )
+    assert xenari.lookup("kiss", part_of_speech="noun")[0] == "mente"
+    assert xenari.lookup("bite", part_of_speech="verb") == ("qruq'", "to bite")
+    assert xenari.lookup("bite", part_of_speech="noun")[0] == "krap"
     assert xenari.speak("I kiss you", evidential="assumed") == "ra mex ka neq ta nquxe sa xo"
     assert xenari.speak("I bite you", evidential="assumed") == "ra mex ka neq ta qruq' sa xo"
 

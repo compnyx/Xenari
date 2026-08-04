@@ -277,9 +277,6 @@ class EnglishPreprocessingMixin:
     def _known_verb_root(self, word: str):
         """Resolve a real verb root, including common English inflections."""
         clean = word.lower().strip()
-        curated_pos = self.english_part_of_speech.get(clean)
-        if curated_pos is not None:
-            return self.english_to_root.get(clean) if curated_pos == "verb" else None
         reviewed_overrides = {
             "slams": "tulo",
             "whisper": "tyequga", "whispers": "tyequga", "whispered": "tyequga",
@@ -287,6 +284,13 @@ class EnglishPreprocessingMixin:
         }
         if clean in reviewed_overrides:
             return reviewed_overrides[clean]
+        curated_pos = self.english_part_of_speech.get(clean)
+        if curated_pos is not None:
+            if curated_pos == "verb":
+                return self.english_to_root.get(clean)
+            # A homographic noun/adjective must not hide the established
+            # translator verb reading (for example kiss, bit, and broken).
+            return self.verb_map.get(clean)
         if clean in self.verb_map:
             return self.verb_map[clean]
         root, meaning = self.lookup(clean)

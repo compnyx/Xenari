@@ -165,7 +165,10 @@
     "notes": null,
     "english_keys": [
       "any"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "any": "particle"
+    }
   },
   {
     "id": 3276,
@@ -177,7 +180,10 @@
     "notes": null,
     "english_keys": [
       "level"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "level": "noun"
+    }
   },
   {
     "id": 3389,
@@ -249,7 +255,10 @@
     "notes": null,
     "english_keys": [
       "observation"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "observation": "noun"
+    }
   },
   {
     "id": 3439,
@@ -381,7 +390,10 @@
     "notes": null,
     "english_keys": [
       "all"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "all": "particle"
+    }
   },
   {
     "id": 3332,
@@ -441,7 +453,10 @@
     "notes": null,
     "english_keys": [
       "form"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "form": "noun"
+    }
   },
   {
     "id": 3443,
@@ -453,7 +468,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from je; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "family"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "family": "noun"
+    }
   },
   {
     "id": 4456,
@@ -477,7 +495,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from nujox; validator issues: invalid character 'j' at position 2",
     "english_keys": [
       "every"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "every": "particle"
+    }
   },
   {
     "id": 4602,
@@ -501,7 +522,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from nzej; validator issues: invalid character 'j' at position 3",
     "english_keys": [
       "structure"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "structure": "noun"
+    }
   },
   {
     "id": 3280,
@@ -525,7 +549,10 @@
     "notes": null,
     "english_keys": [
       "step"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "step": "noun"
+    }
   },
   {
     "id": 3122,
@@ -609,7 +636,10 @@
     "notes": null,
     "english_keys": [
       "position"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "position": "noun"
+    }
   },
   {
     "id": 3405,
@@ -669,7 +699,10 @@
     "notes": null,
     "english_keys": [
       "history"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "history": "noun"
+    }
   },
   {
     "id": 4478,
@@ -705,7 +738,10 @@
     "notes": null,
     "english_keys": [
       "destruction"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "destruction": "noun"
+    }
   },
   {
     "id": 4342,
@@ -717,7 +753,10 @@
     "notes": null,
     "english_keys": [
       "design"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "design": "noun"
+    }
   },
   {
     "id": 3243,
@@ -741,7 +780,10 @@
     "notes": null,
     "english_keys": [
       "trick"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "trick": "noun"
+    }
   },
   {
     "id": 4458,
@@ -885,7 +927,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from joj; validator issues: invalid character 'j' at position 0, invalid character 'j' at position 2",
     "english_keys": [
       "development"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "development": "noun"
+    }
   },
   {
     "id": 4472,
@@ -921,7 +966,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from julik; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "well"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "well": "adverb"
+    }
   },
   {
     "id": 4422,
@@ -1621,7 +1669,10 @@
     "notes": null,
     "english_keys": [
       "attempt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "attempt": "noun"
+    }
   },
   {
     "id": 4337,
@@ -2018,7 +2069,10 @@
     "notes": null,
     "english_keys": [
       "grip"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "grip": "noun"
+    }
   },
   {
     "id": 4904,
@@ -2919,7 +2973,10 @@
     "english_keys": [
       "insurance",
       "insure"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "insurance": "noun"
+    }
   },
   {
     "id": 9762,
@@ -2967,7 +3024,10 @@
     "notes": null,
     "english_keys": [
       "swim"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "swim": "noun"
+    }
   },
   {
     "id": 4445,
@@ -3464,7 +3524,10 @@
     "notes": null,
     "english_keys": [
       "twist"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "twist": "noun"
+    }
   },
   {
     "id": 4600,
@@ -4367,7 +4430,10 @@
     "notes": null,
     "english_keys": [
       "flight"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "flight": "noun"
+    }
   },
   {
     "id": 4419,
@@ -4823,7 +4889,10 @@
     "notes": null,
     "english_keys": [
       "test"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "test": "noun"
+    }
   },
   {
     "id": 3775,
@@ -5591,7 +5660,10 @@
     "notes": null,
     "english_keys": [
       "argument"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "argument": "noun"
+    }
   },
   {
     "id": 4831,
@@ -5893,7 +5965,10 @@
     "notes": null,
     "english_keys": [
       "married"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "married": "adjective"
+    }
   },
   {
     "id": 5317,
@@ -6121,7 +6196,10 @@
     "notes": null,
     "english_keys": [
       "responsible"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "responsible": "adjective"
+    }
   },
   {
     "id": 4194,
@@ -6277,7 +6355,10 @@
     "notes": null,
     "english_keys": [
       "animal"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "animal": "noun"
+    }
   },
   {
     "id": 4629,
@@ -6434,7 +6515,10 @@
     "english_keys": [
       "forceful",
       "violent"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "violent": "adjective"
+    }
   },
   {
     "id": 4167,
@@ -6458,7 +6542,10 @@
     "notes": null,
     "english_keys": [
       "conscious"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "conscious": "adjective"
+    }
   },
   {
     "id": 5440,
@@ -6470,7 +6557,10 @@
     "notes": null,
     "english_keys": [
       "natural"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "natural": "adjective"
+    }
   },
   {
     "id": 5273,
@@ -6482,7 +6572,10 @@
     "notes": "QC repair 2026-07-08T23:29:26: renamed from ceqowz; validator issues: invalid character 'w' at position 4",
     "english_keys": [
       "public"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "public": "adjective"
+    }
   },
   {
     "id": 4842,
@@ -6567,7 +6660,10 @@
     "notes": null,
     "english_keys": [
       "tray"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tray": "noun"
+    }
   },
   {
     "id": 3908,
@@ -7372,7 +7468,10 @@
     "notes": "QC repair 2026-07-08T23:29:26: renamed from yarwo; validator issues: invalid character 'w' at position 3",
     "english_keys": [
       "political"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "political": "adjective"
+    }
   },
   {
     "id": 4751,
@@ -7901,7 +8000,10 @@
     "notes": null,
     "english_keys": [
       "protest"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "protest": "noun"
+    }
   },
   {
     "id": 3979,
@@ -8571,7 +8673,10 @@
     "english_keys": [
       "feeble",
       "weak"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "feeble": "adjective"
+    }
   },
   {
     "id": 5008,
@@ -8782,7 +8887,10 @@
       "general",
       "overall",
       "widespread"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "general": "adjective"
+    }
   },
   {
     "id": 5138,
@@ -9067,7 +9175,10 @@
     "notes": null,
     "english_keys": [
       "verse"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "verse": "noun"
+    }
   },
   {
     "id": 1232,
@@ -9081,7 +9192,11 @@
       "art",
       "creative",
       "work"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "art": "noun",
+      "work": "noun"
+    }
   },
   {
     "id": 1270,
@@ -9129,7 +9244,10 @@
     "notes": null,
     "english_keys": [
       "quiet"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "quiet": "adjective"
+    }
   },
   {
     "id": 1289,
@@ -9230,7 +9348,10 @@
     "english_keys": [
       "platform",
       "stage"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stage": "noun"
+    }
   },
   {
     "id": 1282,
@@ -9303,7 +9424,10 @@
     "notes": null,
     "english_keys": [
       "harmony"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "harmony": "noun"
+    }
   },
   {
     "id": 1277,
@@ -9354,7 +9478,10 @@
     "notes": null,
     "english_keys": [
       "note"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "note": "noun"
+    }
   },
   {
     "id": 1254,
@@ -9429,7 +9556,10 @@
     "english_keys": [
       "performance",
       "play"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "play": "noun"
+    }
   },
   {
     "id": 3074,
@@ -9537,7 +9667,10 @@
     "notes": null,
     "english_keys": [
       "picture"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "picture": "noun"
+    }
   },
   {
     "id": 1242,
@@ -9562,7 +9695,10 @@
     "english_keys": [
       "beautiful",
       "picture"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "beautiful": "adjective"
+    }
   },
   {
     "id": 1250,
@@ -9685,7 +9821,10 @@
     "notes": null,
     "english_keys": [
       "instrument"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "instrument": "noun"
+    }
   },
   {
     "id": 1269,
@@ -9733,7 +9872,10 @@
     "notes": null,
     "english_keys": [
       "rhythm"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rhythm": "noun"
+    }
   },
   {
     "id": 1285,
@@ -9806,7 +9948,10 @@
     "notes": null,
     "english_keys": [
       "song"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "song": "noun"
+    }
   },
   {
     "id": 3053,
@@ -9830,7 +9975,10 @@
     "notes": null,
     "english_keys": [
       "music"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "music": "noun"
+    }
   },
   {
     "id": 1233,
@@ -9843,7 +9991,10 @@
     "english_keys": [
       "story",
       "tale"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "story": "noun"
+    }
   },
   {
     "id": 1247,
@@ -10228,7 +10379,10 @@
     "english_keys": [
       "climbing-creature",
       "monkey"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "monkey": "noun"
+    }
   },
   {
     "id": 629,
@@ -10368,7 +10522,10 @@
     "notes": null,
     "english_keys": [
       "person"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "person": "noun"
+    }
   },
   {
     "id": 2353,
@@ -10392,7 +10549,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from kajxibrih; validator issues: invalid character 'j' at position 2",
     "english_keys": [
       "woman"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "woman": "noun"
+    }
   },
   {
     "id": 603,
@@ -10686,7 +10846,10 @@
     "notes": null,
     "english_keys": [
       "friend"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "friend": "noun"
+    }
   },
   {
     "id": 2869,
@@ -10723,7 +10886,10 @@
     "notes": null,
     "english_keys": [
       "man"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "man": "noun"
+    }
   },
   {
     "id": 2474,
@@ -10814,6 +10980,21 @@
     "english_keys": [
       "flier-creature"
     ]
+  },
+  {
+    "id": 10141,
+    "root": "prene",
+    "meaning": "run — Ogden noun sense",
+    "category": "Beings & Creatures",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-291)",
+    "english_keys": [
+      "run"
+    ],
+    "english_parts_of_speech": {
+      "run": "noun"
+    }
   },
   {
     "id": 612,
@@ -10927,7 +11108,10 @@
     "english_keys": [
       "burrower",
       "worm"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "worm": "noun"
+    }
   },
   {
     "id": 583,
@@ -10970,7 +11154,10 @@
     "english_keys": [
       "rat",
       "scavenger"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rat": "noun"
+    }
   },
   {
     "id": 595,
@@ -11327,7 +11514,10 @@
     "english_keys": [
       "human",
       "living"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "living": "adjective"
+    }
   },
   {
     "id": 579,
@@ -11456,7 +11646,10 @@
     "english_keys": [
       "insect",
       "small-crawler"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "insect": "noun"
+    }
   },
   {
     "id": 584,
@@ -11521,7 +11714,10 @@
     "english_keys": [
       "pig",
       "rooter"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pig": "noun"
+    }
   },
   {
     "id": 591,
@@ -11577,6 +11773,21 @@
       "slow-thing",
       "snail"
     ]
+  },
+  {
+    "id": 10150,
+    "root": "xopu",
+    "meaning": "walk — Ogden noun sense",
+    "category": "Beings & Creatures",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-379)",
+    "english_keys": [
+      "walk"
+    ],
+    "english_parts_of_speech": {
+      "walk": "noun"
+    }
   },
   {
     "id": 7194,
@@ -11643,7 +11854,10 @@
     "english_keys": [
       "serpent",
       "snake"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "snake": "noun"
+    }
   },
   {
     "id": 600,
@@ -12417,7 +12631,10 @@
     "english_keys": [
       "ear",
       "hear"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ear": "noun"
+    }
   },
   {
     "id": 431,
@@ -12470,7 +12687,10 @@
     "english_keys": [
       "body",
       "flesh"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "body": "noun"
+    }
   },
   {
     "id": 473,
@@ -12497,7 +12717,10 @@
       "breath",
       "gas",
       "wind"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "air": "noun"
+    }
   },
   {
     "id": 432,
@@ -12510,7 +12733,10 @@
     "english_keys": [
       "hunger",
       "stomach"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stomach": "noun"
+    }
   },
   {
     "id": 2094,
@@ -12522,7 +12748,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from dewec; validator issues: invalid character 'w' at position 2",
     "english_keys": [
       "lip"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lip": "noun"
+    }
   },
   {
     "id": 2390,
@@ -12769,7 +12998,10 @@
     "notes": null,
     "english_keys": [
       "horn"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "horn": "noun"
+    }
   },
   {
     "id": 502,
@@ -12915,7 +13147,10 @@
     "notes": null,
     "english_keys": [
       "back"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "back": "noun"
+    }
   },
   {
     "id": 509,
@@ -12927,7 +13162,10 @@
     "notes": null,
     "english_keys": [
       "breath"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "breath": "noun"
+    }
   },
   {
     "id": 433,
@@ -13016,7 +13254,10 @@
     "english_keys": [
       "adam's",
       "apple"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "apple": "noun"
+    }
   },
   {
     "id": 474,
@@ -13043,7 +13284,10 @@
     "notes": null,
     "english_keys": [
       "toe"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "toe": "noun"
+    }
   },
   {
     "id": 464,
@@ -13349,7 +13593,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from nawel; validator issues: invalid character 'w' at position 2",
     "english_keys": [
       "throat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "throat": "noun"
+    }
   },
   {
     "id": 4933,
@@ -13373,7 +13620,10 @@
     "notes": null,
     "english_keys": [
       "neck"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "neck": "noun"
+    }
   },
   {
     "id": 518,
@@ -13421,7 +13671,10 @@
     "notes": null,
     "english_keys": [
       "muscle"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "muscle": "noun"
+    }
   },
   {
     "id": 435,
@@ -13449,7 +13702,10 @@
     "notes": null,
     "english_keys": [
       "nose"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "nose": "noun"
+    }
   },
   {
     "id": 454,
@@ -13625,7 +13881,10 @@
     "notes": null,
     "english_keys": [
       "tail"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tail": "noun"
+    }
   },
   {
     "id": 437,
@@ -13806,7 +14065,10 @@
     "notes": null,
     "english_keys": [
       "tooth"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tooth": "noun"
+    }
   },
   {
     "id": 472,
@@ -13890,7 +14152,10 @@
     "notes": null,
     "english_keys": [
       "thumb"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "thumb": "noun"
+    }
   },
   {
     "id": 4737,
@@ -13999,7 +14264,10 @@
     "notes": null,
     "english_keys": [
       "nerve"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "nerve": "noun"
+    }
   },
   {
     "id": 484,
@@ -14023,7 +14291,10 @@
     "notes": null,
     "english_keys": [
       "scale"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "scale": "noun"
+    }
   },
   {
     "id": 544,
@@ -14110,7 +14381,10 @@
     "notes": null,
     "english_keys": [
       "tongue"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tongue": "noun"
+    }
   },
   {
     "id": 548,
@@ -14138,6 +14412,7 @@
       "vision"
     ],
     "english_parts_of_speech": {
+      "eye": "noun",
       "see": "verb"
     }
   },
@@ -14151,7 +14426,10 @@
     "notes": null,
     "english_keys": [
       "warm"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "warm": "adjective"
+    }
   },
   {
     "id": 462,
@@ -14202,7 +14480,10 @@
     "notes": null,
     "english_keys": [
       "leg"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "leg": "noun"
+    }
   },
   {
     "id": 483,
@@ -14335,7 +14616,10 @@
     "notes": null,
     "english_keys": [
       "skin"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "skin": "noun"
+    }
   },
   {
     "id": 442,
@@ -14444,7 +14728,10 @@
     "notes": null,
     "english_keys": [
       "blood"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "blood": "noun"
+    }
   },
   {
     "id": 445,
@@ -14457,7 +14744,10 @@
     "english_keys": [
       "fin",
       "wing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wing": "noun"
+    }
   },
   {
     "id": 446,
@@ -14497,7 +14787,10 @@
     "notes": null,
     "english_keys": [
       "mouth"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mouth": "noun"
+    }
   },
   {
     "id": 557,
@@ -14793,7 +15086,10 @@
     "notes": null,
     "english_keys": [
       "again"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "again": "adverb"
+    }
   },
   {
     "id": 2909,
@@ -14889,7 +15185,10 @@
     "notes": null,
     "english_keys": [
       "then"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "then": "adverb"
+    }
   },
   {
     "id": 2888,
@@ -14913,7 +15212,10 @@
     "notes": null,
     "english_keys": [
       "still"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "still": "adverb"
+    }
   },
   {
     "id": 2900,
@@ -14975,7 +15277,10 @@
     "notes": null,
     "english_keys": [
       "very"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "very": "adverb"
+    }
   },
   {
     "id": 2901,
@@ -15088,7 +15393,10 @@
     "notes": null,
     "english_keys": [
       "so"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "so": "adverb"
+    }
   },
   {
     "id": 2899,
@@ -15292,6 +15600,51 @@
     ]
   },
   {
+    "id": 10116,
+    "root": "breko",
+    "meaning": "fiction — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-118)",
+    "english_keys": [
+      "fiction"
+    ],
+    "english_parts_of_speech": {
+      "fiction": "noun"
+    }
+  },
+  {
+    "id": 10114,
+    "root": "brela",
+    "meaning": "example — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-106)",
+    "english_keys": [
+      "example"
+    ],
+    "english_parts_of_speech": {
+      "example": "noun"
+    }
+  },
+  {
+    "id": 10122,
+    "root": "brose",
+    "meaning": "kick — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-169)",
+    "english_keys": [
+      "kick"
+    ],
+    "english_parts_of_speech": {
+      "kick": "noun"
+    }
+  },
+  {
     "id": 2581,
     "root": "cabozilx",
     "meaning": "stumble",
@@ -15313,7 +15666,10 @@
     "notes": null,
     "english_keys": [
       "lead"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lead": "noun"
+    }
   },
   {
     "id": 2564,
@@ -15395,7 +15751,10 @@
     "notes": null,
     "english_keys": [
       "south"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "south": "adverb"
+    }
   },
   {
     "id": 2556,
@@ -15462,7 +15821,25 @@
     "notes": null,
     "english_keys": [
       "new"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "new": "adjective"
+    }
+  },
+  {
+    "id": 10142,
+    "root": "cuqu",
+    "meaning": "selection — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-299)",
+    "english_keys": [
+      "selection"
+    ],
+    "english_parts_of_speech": {
+      "selection": "noun"
+    }
   },
   {
     "id": 123,
@@ -15499,7 +15876,10 @@
     "english_keys": [
       "part",
       "portion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "part": "noun"
+    }
   },
   {
     "id": 121,
@@ -15516,6 +15896,21 @@
     ]
   },
   {
+    "id": 10119,
+    "root": "dreno",
+    "meaning": "impulse — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-154)",
+    "english_keys": [
+      "impulse"
+    ],
+    "english_parts_of_speech": {
+      "impulse": "noun"
+    }
+  },
+  {
     "id": 125,
     "root": "drez",
     "meaning": "run-motion",
@@ -15526,6 +15921,21 @@
     "english_keys": [
       "run-motion"
     ]
+  },
+  {
+    "id": 10130,
+    "root": "drolu",
+    "meaning": "owner — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-232)",
+    "english_keys": [
+      "owner"
+    ],
+    "english_parts_of_speech": {
+      "owner": "noun"
+    }
   },
   {
     "id": 126,
@@ -15585,7 +15995,10 @@
     "notes": null,
     "english_keys": [
       "fold"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fold": "noun"
+    }
   },
   {
     "id": 2609,
@@ -15673,6 +16086,21 @@
     ],
     "english_parts_of_speech": {
       "rest": "verb"
+    }
+  },
+  {
+    "id": 10103,
+    "root": "fefa",
+    "meaning": "change — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-046)",
+    "english_keys": [
+      "change"
+    ],
+    "english_parts_of_speech": {
+      "change": "noun"
     }
   },
   {
@@ -15766,6 +16194,21 @@
     }
   },
   {
+    "id": 10135,
+    "root": "fola",
+    "meaning": "purpose — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-263)",
+    "english_keys": [
+      "purpose"
+    ],
+    "english_parts_of_speech": {
+      "purpose": "noun"
+    }
+  },
+  {
     "id": 2459,
     "root": "folcamav",
     "meaning": "look",
@@ -15775,7 +16218,25 @@
     "notes": null,
     "english_keys": [
       "look"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "look": "noun"
+    }
+  },
+  {
+    "id": 10138,
+    "root": "fotu",
+    "meaning": "representative — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-278)",
+    "english_keys": [
+      "representative"
+    ],
+    "english_parts_of_speech": {
+      "representative": "noun"
+    }
   },
   {
     "id": 6,
@@ -15788,7 +16249,25 @@
     "english_keys": [
       "little",
       "small"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "little": "particle"
+    }
+  },
+  {
+    "id": 10132,
+    "root": "fresu",
+    "meaning": "payment — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-239)",
+    "english_keys": [
+      "payment"
+    ],
+    "english_parts_of_speech": {
+      "payment": "noun"
+    }
   },
   {
     "id": 7,
@@ -15800,7 +16279,10 @@
     "notes": null,
     "english_keys": [
       "some"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "some": "particle"
+    }
   },
   {
     "id": 68,
@@ -15831,7 +16313,10 @@
     "english_keys": [
       "flank",
       "side"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "side": "noun"
+    }
   },
   {
     "id": 41,
@@ -15855,7 +16340,10 @@
     "notes": null,
     "english_keys": [
       "wash"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wash": "noun"
+    }
   },
   {
     "id": 2486,
@@ -15879,7 +16367,10 @@
     "notes": null,
     "english_keys": [
       "jump"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "jump": "noun"
+    }
   },
   {
     "id": 42,
@@ -15892,7 +16383,10 @@
     "english_keys": [
       "open",
       "unseal"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "open": "adjective"
+    }
   },
   {
     "id": 43,
@@ -15905,7 +16399,10 @@
     "english_keys": [
       "fit",
       "join"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "join": "noun"
+    }
   },
   {
     "id": 9507,
@@ -15955,6 +16452,21 @@
       "gratitude",
       "thank"
     ]
+  },
+  {
+    "id": 10102,
+    "root": "granqo",
+    "meaning": "chalk — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-044)",
+    "english_keys": [
+      "chalk"
+    ],
+    "english_parts_of_speech": {
+      "chalk": "noun"
+    }
   },
   {
     "id": 131,
@@ -16029,7 +16541,10 @@
     "notes": null,
     "english_keys": [
       "roll"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "roll": "noun"
+    }
   },
   {
     "id": 2186,
@@ -16042,7 +16557,10 @@
     "english_keys": [
       "dimension",
       "size"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "size": "noun"
+    }
   },
   {
     "id": 2381,
@@ -16118,6 +16636,21 @@
     ]
   },
   {
+    "id": 10100,
+    "root": "kesu",
+    "meaning": "brass — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-032)",
+    "english_keys": [
+      "brass"
+    ],
+    "english_parts_of_speech": {
+      "brass": "noun"
+    }
+  },
+  {
     "id": 45,
     "root": "klunt",
     "meaning": "conxruke",
@@ -16130,6 +16663,21 @@
     ]
   },
   {
+    "id": 10110,
+    "root": "krano",
+    "meaning": "crush — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-069)",
+    "english_keys": [
+      "crush"
+    ],
+    "english_parts_of_speech": {
+      "crush": "noun"
+    }
+  },
+  {
     "id": 136,
     "root": "krap",
     "meaning": "bite",
@@ -16139,7 +16687,10 @@
     "notes": null,
     "english_keys": [
       "bite"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bite": "noun"
+    }
   },
   {
     "id": 137,
@@ -16173,6 +16724,36 @@
     }
   },
   {
+    "id": 10129,
+    "root": "kulu",
+    "meaning": "ornament — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-231)",
+    "english_keys": [
+      "ornament"
+    ],
+    "english_parts_of_speech": {
+      "ornament": "noun"
+    }
+  },
+  {
+    "id": 10136,
+    "root": "leku",
+    "meaning": "relation — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-276)",
+    "english_keys": [
+      "relation"
+    ],
+    "english_parts_of_speech": {
+      "relation": "noun"
+    }
+  },
+  {
     "id": 2372,
     "root": "logi",
     "meaning": "enter",
@@ -16185,6 +16766,36 @@
     ],
     "english_parts_of_speech": {
       "enter": "verb"
+    }
+  },
+  {
+    "id": 10104,
+    "root": "lulo",
+    "meaning": "coal — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-048)",
+    "english_keys": [
+      "coal"
+    ],
+    "english_parts_of_speech": {
+      "coal": "noun"
+    }
+  },
+  {
+    "id": 10123,
+    "root": "mente",
+    "meaning": "kiss — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-170)",
+    "english_keys": [
+      "kiss"
+    ],
+    "english_parts_of_speech": {
+      "kiss": "noun"
     }
   },
   {
@@ -16212,6 +16823,36 @@
     ],
     "english_parts_of_speech": {
       "fix": "verb"
+    }
+  },
+  {
+    "id": 10148,
+    "root": "moce",
+    "meaning": "tendency — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-356)",
+    "english_keys": [
+      "tendency"
+    ],
+    "english_parts_of_speech": {
+      "tendency": "noun"
+    }
+  },
+  {
+    "id": 10121,
+    "root": "mote",
+    "meaning": "jelly — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-164)",
+    "english_keys": [
+      "jelly"
+    ],
+    "english_parts_of_speech": {
+      "jelly": "noun"
     }
   },
   {
@@ -16284,6 +16925,36 @@
     }
   },
   {
+    "id": 10106,
+    "root": "nema",
+    "meaning": "comparison — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-053)",
+    "english_keys": [
+      "comparison"
+    ],
+    "english_parts_of_speech": {
+      "comparison": "noun"
+    }
+  },
+  {
+    "id": 10146,
+    "root": "nepu",
+    "meaning": "substance — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-344)",
+    "english_keys": [
+      "substance"
+    ],
+    "english_parts_of_speech": {
+      "substance": "noun"
+    }
+  },
+  {
     "id": 69,
     "root": "nging",
     "meaning": "to hide",
@@ -16308,7 +16979,10 @@
     "notes": null,
     "english_keys": [
       "top"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "top": "noun"
+    }
   },
   {
     "id": 70,
@@ -16350,7 +17024,10 @@
     "notes": null,
     "english_keys": [
       "night"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "night": "noun"
+    }
   },
   {
     "id": 11,
@@ -16387,6 +17064,21 @@
     "english_keys": [
       "leap"
     ]
+  },
+  {
+    "id": 10149,
+    "root": "nofu",
+    "meaning": "touch — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-365)",
+    "english_keys": [
+      "touch"
+    ],
+    "english_parts_of_speech": {
+      "touch": "noun"
+    }
   },
   {
     "id": 140,
@@ -16435,7 +17127,10 @@
     "notes": null,
     "english_keys": [
       "offer"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "offer": "noun"
+    }
   },
   {
     "id": 2469,
@@ -16474,6 +17169,36 @@
     ]
   },
   {
+    "id": 10115,
+    "root": "pemo",
+    "meaning": "fall — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-113)",
+    "english_keys": [
+      "fall"
+    ],
+    "english_parts_of_speech": {
+      "fall": "noun"
+    }
+  },
+  {
+    "id": 10125,
+    "root": "pesu",
+    "meaning": "meeting — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-199)",
+    "english_keys": [
+      "meeting"
+    ],
+    "english_parts_of_speech": {
+      "meeting": "noun"
+    }
+  },
+  {
     "id": 14,
     "root": "pevoq",
     "meaning": "if / conditional",
@@ -16488,6 +17213,21 @@
     "english_parts_of_speech": {
       "conditional": "particle",
       "if": "particle"
+    }
+  },
+  {
+    "id": 10105,
+    "root": "peze",
+    "meaning": "committee — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-051)",
+    "english_keys": [
+      "committee"
+    ],
+    "english_parts_of_speech": {
+      "committee": "noun"
     }
   },
   {
@@ -16628,7 +17368,10 @@
       "passed",
       "sun",
       "sun-past"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "day": "noun"
+    }
   },
   {
     "id": 75,
@@ -16641,7 +17384,25 @@
     "english_keys": [
       "dawn",
       "morning"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "morning": "noun"
+    }
+  },
+  {
+    "id": 10113,
+    "root": "prulu",
+    "meaning": "distribution — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-093)",
+    "english_keys": [
+      "distribution"
+    ],
+    "english_parts_of_speech": {
+      "distribution": "noun"
+    }
   },
   {
     "id": 76,
@@ -16659,6 +17420,36 @@
     }
   },
   {
+    "id": 10134,
+    "root": "pruxu",
+    "meaning": "prose — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-259)",
+    "english_keys": [
+      "prose"
+    ],
+    "english_parts_of_speech": {
+      "prose": "noun"
+    }
+  },
+  {
+    "id": 10126,
+    "root": "puqu",
+    "meaning": "mine — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-205)",
+    "english_keys": [
+      "mine"
+    ],
+    "english_parts_of_speech": {
+      "mine": "noun"
+    }
+  },
+  {
     "id": 1980,
     "root": "puyshang",
     "meaning": "color, hue",
@@ -16669,7 +17460,10 @@
     "english_keys": [
       "color",
       "hue"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "color": "noun"
+    }
   },
   {
     "id": 2314,
@@ -16724,6 +17518,21 @@
     ]
   },
   {
+    "id": 10111,
+    "root": "qaxu",
+    "meaning": "cry — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-070)",
+    "english_keys": [
+      "cry"
+    ],
+    "english_parts_of_speech": {
+      "cry": "noun"
+    }
+  },
+  {
     "id": 78,
     "root": "qemx",
     "meaning": "youth, young one",
@@ -16734,7 +17543,10 @@
     "english_keys": [
       "young",
       "youth"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "young": "adjective"
+    }
   },
   {
     "id": 141,
@@ -16878,6 +17690,21 @@
     }
   },
   {
+    "id": 10133,
+    "root": "qopo",
+    "meaning": "porter — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-249)",
+    "english_keys": [
+      "porter"
+    ],
+    "english_parts_of_speech": {
+      "porter": "noun"
+    }
+  },
+  {
     "id": 2355,
     "root": "qostethez",
     "meaning": "depart",
@@ -16902,6 +17729,7 @@
       "want"
     ],
     "english_parts_of_speech": {
+      "desire": "noun",
       "want": "verb"
     }
   },
@@ -16937,6 +17765,36 @@
     }
   },
   {
+    "id": 10144,
+    "root": "qrapa",
+    "meaning": "smile — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-320)",
+    "english_keys": [
+      "smile"
+    ],
+    "english_parts_of_speech": {
+      "smile": "noun"
+    }
+  },
+  {
+    "id": 10124,
+    "root": "qrapu",
+    "meaning": "laugh — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-174)",
+    "english_keys": [
+      "laugh"
+    ],
+    "english_parts_of_speech": {
+      "laugh": "noun"
+    }
+  },
+  {
     "id": 109,
     "root": "qraq",
     "meaning": "to kill",
@@ -16961,7 +17819,10 @@
     "notes": null,
     "english_keys": [
       "old"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "old": "adjective"
+    }
   },
   {
     "id": 83,
@@ -16973,7 +17834,10 @@
     "notes": null,
     "english_keys": [
       "month"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "month": "noun"
+    }
   },
   {
     "id": 84,
@@ -16985,7 +17849,10 @@
     "notes": null,
     "english_keys": [
       "week"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "week": "noun"
+    }
   },
   {
     "id": 23,
@@ -17021,7 +17888,10 @@
     "notes": null,
     "english_keys": [
       "now"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "now": "adverb"
+    }
   },
   {
     "id": 25,
@@ -17062,7 +17932,10 @@
       "long",
       "many-many",
       "year"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "year": "noun"
+    }
   },
   {
     "id": 88,
@@ -17117,6 +17990,36 @@
     ]
   },
   {
+    "id": 10131,
+    "root": "rampo",
+    "meaning": "paste — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-238)",
+    "english_keys": [
+      "paste"
+    ],
+    "english_parts_of_speech": {
+      "paste": "noun"
+    }
+  },
+  {
+    "id": 10145,
+    "root": "renta",
+    "meaning": "stitch — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-338)",
+    "english_keys": [
+      "stitch"
+    ],
+    "english_parts_of_speech": {
+      "stitch": "noun"
+    }
+  },
+  {
     "id": 4823,
     "root": "rizn",
     "meaning": "English 'require' — gap fill from Interstellar script",
@@ -17151,7 +18054,10 @@
     "english_keys": [
       "center",
       "middle"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "middle": "noun"
+    }
   },
   {
     "id": 2599,
@@ -17164,6 +18070,36 @@
     "english_keys": [
       "tilt"
     ]
+  },
+  {
+    "id": 10108,
+    "root": "ronqa",
+    "meaning": "cook — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-058)",
+    "english_keys": [
+      "cook"
+    ],
+    "english_parts_of_speech": {
+      "cook": "noun"
+    }
+  },
+  {
+    "id": 10107,
+    "root": "rota",
+    "meaning": "competition — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-054)",
+    "english_keys": [
+      "competition"
+    ],
+    "english_parts_of_speech": {
+      "competition": "noun"
+    }
   },
   {
     "id": 2552,
@@ -17218,6 +18154,21 @@
     }
   },
   {
+    "id": 10109,
+    "root": "senqu",
+    "meaning": "cork — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-061)",
+    "english_keys": [
+      "cork"
+    ],
+    "english_parts_of_speech": {
+      "cork": "noun"
+    }
+  },
+  {
     "id": 1913,
     "root": "shuszo",
     "meaning": "amount, quantity",
@@ -17228,7 +18179,10 @@
     "english_keys": [
       "amount",
       "quantity"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "amount": "noun"
+    }
   },
   {
     "id": 143,
@@ -17265,7 +18219,10 @@
     "english_keys": [
       "almost",
       "nearly"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "almost": "adverb"
+    }
   },
   {
     "id": 51,
@@ -17278,7 +18235,10 @@
     "english_keys": [
       "carry",
       "transport"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "transport": "noun"
+    }
   },
   {
     "id": 2578,
@@ -17304,7 +18264,26 @@
       "learning",
       "place",
       "school"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "learning": "noun",
+      "school": "noun"
+    }
+  },
+  {
+    "id": 10151,
+    "root": "sraka",
+    "meaning": "wave — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-384)",
+    "english_keys": [
+      "wave"
+    ],
+    "english_parts_of_speech": {
+      "wave": "noun"
+    }
   },
   {
     "id": 52,
@@ -17317,7 +18296,10 @@
     "english_keys": [
       "cut",
       "split"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cut": "adjective"
+    }
   },
   {
     "id": 90,
@@ -17333,6 +18315,36 @@
     ],
     "english_parts_of_speech": {
       "seek": "verb"
+    }
+  },
+  {
+    "id": 10117,
+    "root": "srelu",
+    "meaning": "fight — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-120)",
+    "english_keys": [
+      "fight"
+    ],
+    "english_parts_of_speech": {
+      "fight": "noun"
+    }
+  },
+  {
+    "id": 10127,
+    "root": "srese",
+    "meaning": "need — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-218)",
+    "english_keys": [
+      "need"
+    ],
+    "english_parts_of_speech": {
+      "need": "noun"
     }
   },
   {
@@ -17362,6 +18374,21 @@
       "hold",
       "still"
     ]
+  },
+  {
+    "id": 10120,
+    "root": "srungo",
+    "meaning": "industry — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-156)",
+    "english_keys": [
+      "industry"
+    ],
+    "english_parts_of_speech": {
+      "industry": "noun"
+    }
   },
   {
     "id": 115,
@@ -17401,6 +18428,36 @@
     ]
   },
   {
+    "id": 10112,
+    "root": "tanqu",
+    "meaning": "digestion — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-086)",
+    "english_keys": [
+      "digestion"
+    ],
+    "english_parts_of_speech": {
+      "digestion": "noun"
+    }
+  },
+  {
+    "id": 10118,
+    "root": "tenqu",
+    "meaning": "hearing — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-144)",
+    "english_keys": [
+      "hearing"
+    ],
+    "english_parts_of_speech": {
+      "hearing": "noun"
+    }
+  },
+  {
     "id": 147,
     "root": "tingk",
     "meaning": "grab",
@@ -17411,6 +18468,21 @@
     "english_keys": [
       "grab"
     ]
+  },
+  {
+    "id": 10143,
+    "root": "trazo",
+    "meaning": "silk — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-310)",
+    "english_keys": [
+      "silk"
+    ],
+    "english_parts_of_speech": {
+      "silk": "noun"
+    }
   },
   {
     "id": 91,
@@ -17542,7 +18614,10 @@
     "english_keys": [
       "below",
       "down"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "down": "particle"
+    }
   },
   {
     "id": 149,
@@ -17669,7 +18744,8 @@
     ],
     "english_parts_of_speech": {
       "inscribe": "verb",
-      "write": "verb"
+      "write": "verb",
+      "writing": "noun"
     }
   },
   {
@@ -17731,7 +18807,10 @@
     "notes": null,
     "english_keys": [
       "slip"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "slip": "noun"
+    }
   },
   {
     "id": 29,
@@ -17755,7 +18834,10 @@
     "notes": null,
     "english_keys": [
       "here"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "here": "adverb"
+    }
   },
   {
     "id": 31,
@@ -17780,7 +18862,11 @@
     "english_keys": [
       "together",
       "with"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "together": "adverb",
+      "with": "particle"
+    }
   },
   {
     "id": 33,
@@ -17792,7 +18878,25 @@
     "notes": null,
     "english_keys": [
       "same"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "same": "adjective"
+    }
+  },
+  {
+    "id": 10099,
+    "root": "xapo",
+    "meaning": "blow — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-030)",
+    "english_keys": [
+      "blow"
+    ],
+    "english_parts_of_speech": {
+      "blow": "noun"
+    }
   },
   {
     "id": 2613,
@@ -17841,7 +18945,10 @@
     "english_keys": [
       "lift",
       "raise"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lift": "noun"
+    }
   },
   {
     "id": 113,
@@ -17899,7 +19006,10 @@
     "english_keys": [
       "press",
       "push"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "push": "noun"
+    }
   },
   {
     "id": 34,
@@ -17912,6 +19022,21 @@
     "english_keys": [
       "new"
     ]
+  },
+  {
+    "id": 10140,
+    "root": "xrale",
+    "meaning": "rub — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-289)",
+    "english_keys": [
+      "rub"
+    ],
+    "english_parts_of_speech": {
+      "rub": "noun"
+    }
   },
   {
     "id": 57,
@@ -17969,7 +19094,10 @@
     "notes": null,
     "english_keys": [
       "right"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "right": "adjective"
+    }
   },
   {
     "id": 150,
@@ -17982,6 +19110,21 @@
     "english_keys": [
       "pulley"
     ]
+  },
+  {
+    "id": 10098,
+    "root": "xresu",
+    "meaning": "agreement — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-006)",
+    "english_keys": [
+      "agreement"
+    ],
+    "english_parts_of_speech": {
+      "agreement": "noun"
+    }
   },
   {
     "id": 98,
@@ -18035,6 +19178,21 @@
     }
   },
   {
+    "id": 10128,
+    "root": "xunqo",
+    "meaning": "news — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-219)",
+    "english_keys": [
+      "news"
+    ],
+    "english_parts_of_speech": {
+      "news": "noun"
+    }
+  },
+  {
     "id": 2349,
     "root": "yatgi",
     "meaning": "curve",
@@ -18044,7 +19202,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from watgi; validator issues: invalid character 'w' at position 0",
     "english_keys": [
       "curve"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "curve": "noun"
+    }
   },
   {
     "id": 2438,
@@ -18083,7 +19244,25 @@
       "method",
       "path",
       "way"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "way": "noun"
+    }
+  },
+  {
+    "id": 10097,
+    "root": "yunte",
+    "meaning": "advertisement — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-005)",
+    "english_keys": [
+      "advertisement"
+    ],
+    "english_parts_of_speech": {
+      "advertisement": "noun"
+    }
   },
   {
     "id": 2576,
@@ -18107,7 +19286,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from aculoskej; validator issues: invalid character 'j' at position 8",
     "english_keys": [
       "polish"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "polish": "noun"
+    }
   },
   {
     "id": 101,
@@ -18147,7 +19329,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from artej; validator issues: invalid character 'j' at position 4",
     "english_keys": [
       "shake"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shake": "noun"
+    }
   },
   {
     "id": 2310,
@@ -18159,7 +19344,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jawu; validator issues: invalid character 'j' at position 0, invalid character 'w' at position 2",
     "english_keys": [
       "burn"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "burn": "noun"
+    }
   },
   {
     "id": 2516,
@@ -18172,6 +19360,21 @@
     "english_keys": [
       "pursue"
     ]
+  },
+  {
+    "id": 10147,
+    "root": "zela",
+    "meaning": "teaching — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-355)",
+    "english_keys": [
+      "teaching"
+    ],
+    "english_parts_of_speech": {
+      "teaching": "noun"
+    }
   },
   {
     "id": 2396,
@@ -18187,6 +19390,21 @@
     ]
   },
   {
+    "id": 10137,
+    "root": "zelo",
+    "meaning": "religion — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-277)",
+    "english_keys": [
+      "religion"
+    ],
+    "english_parts_of_speech": {
+      "religion": "noun"
+    }
+  },
+  {
     "id": 2457,
     "root": "zeqey",
     "meaning": "let",
@@ -18196,7 +19414,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from eqew; validator issues: invalid character 'w' at position 3",
     "english_keys": [
       "let"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "let": "verb"
+    }
   },
   {
     "id": 2348,
@@ -18269,7 +19490,10 @@
     "notes": null,
     "english_keys": [
       "west"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "west": "adverb"
+    }
   },
   {
     "id": 37,
@@ -18284,7 +19508,8 @@
       "other"
     ],
     "english_parts_of_speech": {
-      "different": "adjective"
+      "different": "adjective",
+      "other": "particle"
     }
   },
   {
@@ -18353,7 +19578,25 @@
     "english_keys": [
       "rotate",
       "turn"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "turn": "noun"
+    }
+  },
+  {
+    "id": 10139,
+    "root": "zresa",
+    "meaning": "rest — Ogden noun sense",
+    "category": "Core Vocabulary",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-281)",
+    "english_keys": [
+      "rest"
+    ],
+    "english_parts_of_speech": {
+      "rest": "noun"
+    }
   },
   {
     "id": 104,
@@ -18394,9 +19637,11 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "be",
       "exist"
     ],
     "english_parts_of_speech": {
+      "be": "verb",
       "exist": "verb"
     }
   },
@@ -18422,7 +19667,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from ujashis; validator issues: invalid character 'j' at position 1",
     "english_keys": [
       "drop"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "drop": "noun"
+    }
   },
   {
     "id": 2569,
@@ -18754,7 +20002,10 @@
     "english_keys": [
       "dead",
       "veil"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dead": "adjective"
+    }
   },
   {
     "id": 1485,
@@ -18951,7 +20202,10 @@
     "english_keys": [
       "existence",
       "plane"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "existence": "noun"
+    }
   },
   {
     "id": 1499,
@@ -19121,7 +20375,10 @@
     "notes": null,
     "english_keys": [
       "deep"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "deep": "adjective"
+    }
   },
   {
     "id": 4233,
@@ -19145,7 +20402,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from skijga; validator issues: invalid character 'j' at position 3",
     "english_keys": [
       "land"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "land": "noun"
+    }
   },
   {
     "id": 2566,
@@ -19169,7 +20429,10 @@
     "notes": null,
     "english_keys": [
       "space"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "space": "noun"
+    }
   },
   {
     "id": 2554,
@@ -19181,7 +20444,10 @@
     "notes": null,
     "english_keys": [
       "ship"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ship": "noun"
+    }
   },
   {
     "id": 1446,
@@ -19206,7 +20472,10 @@
     "english_keys": [
       "material",
       "plane"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "material": "adjective"
+    }
   },
   {
     "id": 2343,
@@ -20529,7 +21798,10 @@
     "english_keys": [
       "fog",
       "mist"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mist": "noun"
+    }
   },
   {
     "id": 9660,
@@ -20578,7 +21850,10 @@
     "notes": null,
     "english_keys": [
       "star"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "star": "noun"
+    }
   },
   {
     "id": 326,
@@ -20609,7 +21884,10 @@
       "hidden",
       "shadow",
       "thing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "thing": "noun"
+    }
   },
   {
     "id": 290,
@@ -20650,7 +21928,11 @@
       "flow",
       "liquid",
       "water"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "liquid": "noun",
+      "water": "noun"
+    }
   },
   {
     "id": 2414,
@@ -20770,7 +22052,10 @@
     "notes": null,
     "english_keys": [
       "noise"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "noise": "noun"
+    }
   },
   {
     "id": 331,
@@ -20806,7 +22091,10 @@
     "notes": null,
     "english_keys": [
       "winter"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "winter": "noun"
+    }
   },
   {
     "id": 334,
@@ -20818,7 +22106,10 @@
     "notes": null,
     "english_keys": [
       "snow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "snow": "noun"
+    }
   },
   {
     "id": 311,
@@ -20938,7 +22229,10 @@
     "notes": null,
     "english_keys": [
       "wax"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wax": "noun"
+    }
   },
   {
     "id": 342,
@@ -20962,7 +22256,10 @@
     "notes": null,
     "english_keys": [
       "iron"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "iron": "noun"
+    }
   },
   {
     "id": 344,
@@ -21181,7 +22478,10 @@
     "notes": null,
     "english_keys": [
       "copper"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "copper": "noun"
+    }
   },
   {
     "id": 354,
@@ -21268,7 +22568,10 @@
     "english_keys": [
       "brush",
       "thorn"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "brush": "noun"
+    }
   },
   {
     "id": 4642,
@@ -21616,7 +22919,10 @@
     "notes": null,
     "english_keys": [
       "growth"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "growth": "noun"
+    }
   },
   {
     "id": 368,
@@ -21632,7 +22938,11 @@
       "light;",
       "this",
       "this;"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "light": "noun",
+      "this": "particle"
+    }
   },
   {
     "id": 369,
@@ -21656,7 +22966,10 @@
     "notes": null,
     "english_keys": [
       "sun"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sun": "noun"
+    }
   },
   {
     "id": 371,
@@ -21741,7 +23054,10 @@
     "notes": null,
     "english_keys": [
       "ice"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ice": "noun"
+    }
   },
   {
     "id": 376,
@@ -21801,7 +23117,10 @@
     "notes": null,
     "english_keys": [
       "oil"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "oil": "noun"
+    }
   },
   {
     "id": 377,
@@ -21850,7 +23169,10 @@
     "notes": null,
     "english_keys": [
       "dust"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dust": "noun"
+    }
   },
   {
     "id": 4549,
@@ -21899,7 +23221,10 @@
     "english_keys": [
       "mountain",
       "ridge"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mountain": "noun"
+    }
   },
   {
     "id": 380,
@@ -21923,7 +23248,10 @@
     "notes": null,
     "english_keys": [
       "sand"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sand": "noun"
+    }
   },
   {
     "id": 382,
@@ -21937,7 +23265,10 @@
       "above",
       "sky",
       "upward"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sky": "noun"
+    }
   },
   {
     "id": 304,
@@ -22027,7 +23358,10 @@
     "notes": null,
     "english_keys": [
       "steam"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "steam": "noun"
+    }
   },
   {
     "id": 385,
@@ -22063,7 +23397,10 @@
     "notes": null,
     "english_keys": [
       "cloud"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cloud": "noun"
+    }
   },
   {
     "id": 386,
@@ -22087,7 +23424,10 @@
     "notes": null,
     "english_keys": [
       "silver"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "silver": "noun"
+    }
   },
   {
     "id": 388,
@@ -22147,7 +23487,10 @@
     "notes": null,
     "english_keys": [
       "smoke"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "smoke": "noun"
+    }
   },
   {
     "id": 391,
@@ -22196,7 +23539,10 @@
     "notes": null,
     "english_keys": [
       "field"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "field": "noun"
+    }
   },
   {
     "id": 393,
@@ -22232,7 +23578,10 @@
     "notes": null,
     "english_keys": [
       "summer"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "summer": "noun"
+    }
   },
   {
     "id": 394,
@@ -22318,7 +23667,10 @@
       "earth",
       "ground",
       "solid"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "earth": "noun"
+    }
   },
   {
     "id": 401,
@@ -22405,7 +23757,11 @@
       "metal",
       "stone",
       "thing;"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hard": "adjective",
+      "stone": "noun"
+    }
   },
   {
     "id": 9587,
@@ -22429,7 +23785,10 @@
     "notes": null,
     "english_keys": [
       "glass"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "glass": "noun"
+    }
   },
   {
     "id": 4262,
@@ -22455,7 +23814,11 @@
       "energy",
       "fire",
       "heat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fire": "noun",
+      "heat": "noun"
+    }
   },
   {
     "id": 406,
@@ -22491,7 +23854,10 @@
     "notes": null,
     "english_keys": [
       "spring"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "spring": "noun"
+    }
   },
   {
     "id": 408,
@@ -22503,7 +23869,10 @@
     "notes": null,
     "english_keys": [
       "river"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "river": "noun"
+    }
   },
   {
     "id": 307,
@@ -22516,7 +23885,10 @@
     "english_keys": [
       "mineral",
       "salt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "salt": "noun"
+    }
   },
   {
     "id": 409,
@@ -22528,7 +23900,10 @@
     "notes": null,
     "english_keys": [
       "metal"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "metal": "noun"
+    }
   },
   {
     "id": 9950,
@@ -22612,7 +23987,10 @@
     "notes": null,
     "english_keys": [
       "thunder"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "thunder": "noun"
+    }
   },
   {
     "id": 411,
@@ -22636,7 +24014,10 @@
     "notes": null,
     "english_keys": [
       "gold"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "gold": "noun"
+    }
   },
   {
     "id": 413,
@@ -22699,7 +24080,10 @@
     "notes": null,
     "english_keys": [
       "north"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "north": "adverb"
+    }
   },
   {
     "id": 417,
@@ -22712,7 +24096,10 @@
     "english_keys": [
       "north",
       "wind"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wind": "noun"
+    }
   },
   {
     "id": 9864,
@@ -22749,7 +24136,10 @@
     "notes": null,
     "english_keys": [
       "flame"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "flame": "noun"
+    }
   },
   {
     "id": 2413,
@@ -22822,7 +24212,10 @@
     "notes": null,
     "english_keys": [
       "rain"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rain": "noun"
+    }
   },
   {
     "id": 319,
@@ -22996,7 +24389,10 @@
       "language",
       "speech",
       "voice"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "voice": "noun"
+    }
   },
   {
     "id": 2734,
@@ -23233,7 +24629,10 @@
     "notes": null,
     "english_keys": [
       "regret"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "regret": "noun"
+    }
   },
   {
     "id": 2850,
@@ -23732,7 +25131,10 @@
     "notes": null,
     "english_keys": [
       "sister"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sister": "noun"
+    }
   },
   {
     "id": 1565,
@@ -23756,7 +25158,10 @@
     "notes": null,
     "english_keys": [
       "brother"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "brother": "noun"
+    }
   },
   {
     "id": 1576,
@@ -23927,7 +25332,10 @@
     "english_keys": [
       "cousin",
       "female"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "female": "adjective"
+    }
   },
   {
     "id": 1572,
@@ -23940,7 +25348,10 @@
     "english_keys": [
       "cousin",
       "male"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "male": "adjective"
+    }
   },
   {
     "id": 1587,
@@ -24002,7 +25413,10 @@
     "english_keys": [
       "as",
       "like"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "as": "particle"
+    }
   },
   {
     "id": 5258,
@@ -24137,7 +25551,10 @@
     "english_keys": [
       "however",
       "though"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "though": "particle"
+    }
   },
   {
     "id": 236,
@@ -24150,6 +25567,21 @@
     "english_keys": [
       "today"
     ]
+  },
+  {
+    "id": 10090,
+    "root": "bronqo",
+    "meaning": "up — Ogden particle sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English particle sense (operations-037)",
+    "english_keys": [
+      "up"
+    ],
+    "english_parts_of_speech": {
+      "up": "particle"
+    }
   },
   {
     "id": 237,
@@ -24219,7 +25651,10 @@
     "english_keys": [
       "from",
       "source"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "from": "particle"
+    }
   },
   {
     "id": 2879,
@@ -24234,7 +25669,7 @@
       "while"
     ],
     "english_parts_of_speech": {
-      "when": "particle",
+      "when": "adverb",
       "while": "particle"
     }
   },
@@ -24291,6 +25726,21 @@
     ]
   },
   {
+    "id": 10089,
+    "root": "droqe",
+    "meaning": "through — Ogden particle sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English particle sense (operations-034)",
+    "english_keys": [
+      "through"
+    ],
+    "english_parts_of_speech": {
+      "through": "particle"
+    }
+  },
+  {
     "id": 182,
     "root": "du",
     "meaning": "habitual tense",
@@ -24316,12 +25766,16 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "for",
       "goal",
-      "marker"
+      "marker",
+      "to"
     ],
     "english_parts_of_speech": {
+      "for": "particle",
       "goal": "particle",
-      "marker": "particle"
+      "marker": "particle",
+      "to": "particle"
     }
   },
   {
@@ -24336,7 +25790,10 @@
       "against",
       "foe",
       "opposition"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "against": "particle"
+    }
   },
   {
     "id": 208,
@@ -24376,7 +25833,10 @@
       "pull",
       "seductive",
       "shimmer"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pull": "noun"
+    }
   },
   {
     "id": 242,
@@ -24525,6 +25985,21 @@
     "english_keys": [
       "triple-qty"
     ]
+  },
+  {
+    "id": 10096,
+    "root": "honqa",
+    "meaning": "only — Ogden adverb sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adverb sense (operations-089)",
+    "english_keys": [
+      "only"
+    ],
+    "english_parts_of_speech": {
+      "only": "adverb"
+    }
   },
   {
     "id": 250,
@@ -24688,7 +26163,10 @@
     "english_keys": [
       "about",
       "approximate"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "about": "particle"
+    }
   },
   {
     "id": 158,
@@ -24701,7 +26179,10 @@
     "english_keys": [
       "first",
       "sequence"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "first": "adjective"
+    }
   },
   {
     "id": 252,
@@ -24725,10 +26206,14 @@
     "notes": null,
     "english_keys": [
       "3rd",
+      "he",
       "ordinal",
       "other",
       "prezreqt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "he": "pronoun"
+    }
   },
   {
     "id": 180,
@@ -24808,8 +26293,12 @@
     "english_keys": [
       "2nd",
       "addressee",
-      "ordinal"
-    ]
+      "ordinal",
+      "you"
+    ],
+    "english_parts_of_speech": {
+      "you": "pronoun"
+    }
   },
   {
     "id": 256,
@@ -24887,12 +26376,18 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "at",
+      "in",
       "location",
-      "marker"
+      "marker",
+      "on"
     ],
     "english_parts_of_speech": {
+      "at": "particle",
+      "in": "particle",
       "location": "particle",
-      "marker": "particle"
+      "marker": "particle",
+      "on": "particle"
     }
   },
   {
@@ -24949,9 +26444,13 @@
     "notes": null,
     "english_keys": [
       "1st",
+      "i",
       "ordinal",
       "speaker"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "i": "pronoun"
+    }
   },
   {
     "id": 2247,
@@ -24976,7 +26475,10 @@
     "english_keys": [
       "enough",
       "sufficient"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "enough": "adverb"
+    }
   },
   {
     "id": 221,
@@ -25017,10 +26519,12 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
-      "negation"
+      "negation",
+      "not"
     ],
     "english_parts_of_speech": {
-      "negation": "particle"
+      "negation": "particle",
+      "not": "adverb"
     }
   },
   {
@@ -25046,7 +26550,10 @@
     "english_keys": [
       "no",
       "refusal"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "no": "particle"
+    }
   },
   {
     "id": 233,
@@ -25167,11 +26674,13 @@
     "notes": null,
     "english_keys": [
       "conditional",
+      "may",
       "potential",
       "tense"
     ],
     "english_parts_of_speech": {
       "conditional": "particle",
+      "may": "particle",
       "potential": "particle",
       "tense": "particle"
     }
@@ -25242,10 +26751,27 @@
     "timestamp": null,
     "notes": null,
     "english_keys": [
+      "of",
       "possessive"
     ],
     "english_parts_of_speech": {
+      "of": "particle",
       "possessive": "particle"
+    }
+  },
+  {
+    "id": 10092,
+    "root": "pope",
+    "meaning": "a — Ogden particle sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English particle sense (operations-044)",
+    "english_keys": [
+      "a"
+    ],
+    "english_parts_of_speech": {
+      "a": "particle"
     }
   },
   {
@@ -25261,7 +26787,11 @@
       "flash",
       "light",
       "sudden"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "burst": "noun",
+      "sudden": "adjective"
+    }
   },
   {
     "id": 2880,
@@ -25365,6 +26895,21 @@
     ]
   },
   {
+    "id": 10091,
+    "root": "qeqe",
+    "meaning": "than — Ogden particle sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English particle sense (operations-043)",
+    "english_keys": [
+      "than"
+    ],
+    "english_parts_of_speech": {
+      "than": "particle"
+    }
+  },
+  {
     "id": 2877,
     "root": "qlez",
     "meaning": "so/therefore (consequential conjunction)",
@@ -25393,7 +26938,10 @@
       "collective",
       "group",
       "numeral"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "group": "noun"
+    }
   },
   {
     "id": 219,
@@ -25654,7 +27202,10 @@
     "english_keys": [
       "fairly",
       "quite"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "quite": "adverb"
+    }
   },
   {
     "id": 4668,
@@ -25683,6 +27234,21 @@
     "english_parts_of_speech": {
       "subordinate": "particle",
       "subordinator": "particle"
+    }
+  },
+  {
+    "id": 10088,
+    "root": "taxe",
+    "meaning": "off — Ogden particle sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English particle sense (operations-031)",
+    "english_keys": [
+      "off"
+    ],
+    "english_parts_of_speech": {
+      "off": "particle"
     }
   },
   {
@@ -25737,6 +27303,21 @@
     "english_keys": [
       "single-qty"
     ]
+  },
+  {
+    "id": 10094,
+    "root": "trenga",
+    "meaning": "who — Ogden pronoun sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English pronoun sense (operations-060)",
+    "english_keys": [
+      "who"
+    ],
+    "english_parts_of_speech": {
+      "who": "pronoun"
+    }
   },
   {
     "id": 211,
@@ -25820,7 +27401,10 @@
       "heaviness",
       "pact",
       "weight"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "weight": "noun"
+    }
   },
   {
     "id": 1909,
@@ -25985,7 +27569,10 @@
       "location",
       "place",
       "territory"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "place": "noun"
+    }
   },
   {
     "id": 286,
@@ -26235,7 +27822,10 @@
       "as",
       "like",
       "similarity"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "like": "adjective"
+    }
   },
   {
     "id": 2016,
@@ -26247,7 +27837,10 @@
     "notes": null,
     "english_keys": [
       "ever"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ever": "adverb"
+    }
   },
   {
     "id": 203,
@@ -26341,6 +27934,36 @@
     ],
     "english_parts_of_speech": {
       "relativizer": "particle"
+    }
+  },
+  {
+    "id": 10093,
+    "root": "zrecu",
+    "meaning": "the — Ogden particle sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English particle sense (operations-045)",
+    "english_keys": [
+      "the"
+    ],
+    "english_parts_of_speech": {
+      "the": "particle"
+    }
+  },
+  {
+    "id": 10095,
+    "root": "zrenge",
+    "meaning": "out — Ogden adverb sense",
+    "category": "Function Words & Grammar",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adverb sense (operations-079)",
+    "english_keys": [
+      "out"
+    ],
+    "english_parts_of_speech": {
+      "out": "adverb"
     }
   },
   {
@@ -26452,7 +28075,10 @@
     "notes": null,
     "english_keys": [
       "sock"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sock": "noun"
+    }
   },
   {
     "id": 2045,
@@ -26476,7 +28102,10 @@
     "notes": null,
     "english_keys": [
       "skirt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "skirt": "noun"
+    }
   },
   {
     "id": 1769,
@@ -27120,7 +28749,10 @@
     "notes": null,
     "english_keys": [
       "tin"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tin": "noun"
+    }
   },
   {
     "id": 5350,
@@ -27315,7 +28947,10 @@
       "effect",
       "output",
       "result"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "effect": "noun"
+    }
   },
   {
     "id": 5204,
@@ -28268,7 +29903,10 @@
     "notes": "QC repair 2026-07-08T23:29:26: renamed from fuac; validator issues: vowel hiatus: ua at position 1",
     "english_keys": [
       "screw"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "screw": "noun"
+    }
   },
   {
     "id": 5489,
@@ -28377,7 +30015,10 @@
     "english_keys": [
       "difficulty",
       "trouble"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "trouble": "noun"
+    }
   },
   {
     "id": 5556,
@@ -28703,7 +30344,10 @@
     "notes": null,
     "english_keys": [
       "wine"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wine": "noun"
+    }
   },
   {
     "id": 5336,
@@ -28775,7 +30419,10 @@
     "notes": null,
     "english_keys": [
       "ray"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ray": "noun"
+    }
   },
   {
     "id": 5433,
@@ -29609,7 +31256,10 @@
     "english_keys": [
       "adaptation",
       "adjustment"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "adjustment": "noun"
+    }
   },
   {
     "id": 5376,
@@ -29633,7 +31283,10 @@
     "notes": null,
     "english_keys": [
       "sort"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sort": "noun"
+    }
   },
   {
     "id": 5615,
@@ -29645,7 +31298,10 @@
     "notes": null,
     "english_keys": [
       "reward"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "reward": "noun"
+    }
   },
   {
     "id": 5396,
@@ -29806,7 +31462,10 @@
     "notes": null,
     "english_keys": [
       "whip"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "whip": "noun"
+    }
   },
   {
     "id": 5561,
@@ -30754,7 +32413,10 @@
     "notes": null,
     "english_keys": [
       "sponge"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sponge": "noun"
+    }
   },
   {
     "id": 6273,
@@ -31930,7 +33592,10 @@
     "notes": "coined via xenari_tool coin; wolverine batch 15",
     "english_keys": [
       "amusement"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "amusement": "noun"
+    }
   },
   {
     "id": 9994,
@@ -31978,7 +33643,10 @@
     "notes": "coined via xenari_tool coin; wolverine batch 15",
     "english_keys": [
       "arch"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "arch": "noun"
+    }
   },
   {
     "id": 9993,
@@ -37510,7 +39178,10 @@
     "notes": null,
     "english_keys": [
       "scissors"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "scissors": "noun"
+    }
   },
   {
     "id": 6472,
@@ -40030,7 +41701,10 @@
     "notes": null,
     "english_keys": [
       "wool"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wool": "noun"
+    }
   },
   {
     "id": 8968,
@@ -42742,7 +44416,10 @@
     "notes": null,
     "english_keys": [
       "increase"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "increase": "noun"
+    }
   },
   {
     "id": 7739,
@@ -44678,7 +46355,10 @@
     "notes": null,
     "english_keys": [
       "produce"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "produce": "noun"
+    }
   },
   {
     "id": 7330,
@@ -46178,7 +47858,10 @@
     "notes": null,
     "english_keys": [
       "discussion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "discussion": "noun"
+    }
   },
   {
     "id": 7401,
@@ -47354,7 +49037,10 @@
     "notes": null,
     "english_keys": [
       "education"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "education": "noun"
+    }
   },
   {
     "id": 7840,
@@ -47594,7 +49280,10 @@
     "notes": null,
     "english_keys": [
       "cotton"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cotton": "noun"
+    }
   },
   {
     "id": 8537,
@@ -48821,7 +50510,10 @@
     "notes": null,
     "english_keys": [
       "comfort"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "comfort": "noun"
+    }
   },
   {
     "id": 8890,
@@ -50267,7 +51959,10 @@
     "notes": null,
     "english_keys": [
       "suggestion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "suggestion": "noun"
+    }
   },
   {
     "id": 8307,
@@ -51755,7 +53450,10 @@
     "notes": null,
     "english_keys": [
       "page"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "page": "noun"
+    }
   },
   {
     "id": 6839,
@@ -53903,7 +55601,10 @@
     "notes": null,
     "english_keys": [
       "parcel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "parcel": "noun"
+    }
   },
   {
     "id": 7418,
@@ -54911,7 +56612,10 @@
     "notes": null,
     "english_keys": [
       "medical"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "medical": "adjective"
+    }
   },
   {
     "id": 8034,
@@ -55127,7 +56831,10 @@
     "notes": null,
     "english_keys": [
       "approval"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "approval": "noun"
+    }
   },
   {
     "id": 8627,
@@ -57603,7 +59310,10 @@
     "notes": null,
     "english_keys": [
       "meat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "meat": "noun"
+    }
   },
   {
     "id": 6684,
@@ -59656,7 +61366,10 @@
     "notes": null,
     "english_keys": [
       "print"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "print": "noun"
+    }
   },
   {
     "id": 6807,
@@ -59692,7 +61405,10 @@
     "notes": null,
     "english_keys": [
       "servant"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "servant": "noun"
+    }
   },
   {
     "id": 8257,
@@ -60797,7 +62513,10 @@
     "notes": null,
     "english_keys": [
       "expansion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "expansion": "noun"
+    }
   },
   {
     "id": 8885,
@@ -61373,7 +63092,10 @@
     "notes": null,
     "english_keys": [
       "butter"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "butter": "noun"
+    }
   },
   {
     "id": 7696,
@@ -62825,7 +64547,10 @@
     "notes": null,
     "english_keys": [
       "ticket"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ticket": "noun"
+    }
   },
   {
     "id": 8607,
@@ -64385,7 +66110,10 @@
     "notes": null,
     "english_keys": [
       "punishment"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "punishment": "noun"
+    }
   },
   {
     "id": 8286,
@@ -66089,7 +67817,10 @@
     "notes": null,
     "english_keys": [
       "authority"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "authority": "noun"
+    }
   },
   {
     "id": 8683,
@@ -68021,7 +69752,10 @@
     "notes": null,
     "english_keys": [
       "chief"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "chief": "adjective"
+    }
   },
   {
     "id": 3742,
@@ -68729,7 +70463,10 @@
     "english_keys": [
       "assault",
       "attack"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "attack": "noun"
+    }
   },
   {
     "id": 1991,
@@ -68848,7 +70585,10 @@
     "english_keys": [
       "country",
       "nation"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "nation": "noun"
+    }
   },
   {
     "id": 2971,
@@ -68884,7 +70624,10 @@
     "notes": null,
     "english_keys": [
       "military"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "military": "adjective"
+    }
   },
   {
     "id": 1295,
@@ -68910,7 +70653,10 @@
     "english_keys": [
       "conflict",
       "war"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "war": "noun"
+    }
   },
   {
     "id": 2972,
@@ -68971,7 +70717,10 @@
     "notes": null,
     "english_keys": [
       "operation"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "operation": "noun"
+    }
   },
   {
     "id": 2131,
@@ -68984,7 +70733,10 @@
     "english_keys": [
       "harmony",
       "peace"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "peace": "noun"
+    }
   },
   {
     "id": 2027,
@@ -69081,7 +70833,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from ajad; validator issues: invalid character 'j' at position 1",
     "english_keys": [
       "government"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "government": "noun"
+    }
   },
   {
     "id": 2195,
@@ -69094,7 +70849,10 @@
     "english_keys": [
       "community",
       "society"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "society": "noun"
+    }
   },
   {
     "id": 2198,
@@ -69445,7 +71203,10 @@
     "english_keys": [
       "closet",
       "linen"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "linen": "noun"
+    }
   },
   {
     "id": 1549,
@@ -69509,7 +71270,10 @@
     "english_keys": [
       "road",
       "street"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "street": "noun"
+    }
   },
   {
     "id": 1530,
@@ -69724,7 +71488,10 @@
     "english_keys": [
       "curtain",
       "rod"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rod": "noun"
+    }
   },
   {
     "id": 1502,
@@ -69893,7 +71660,10 @@
     "english_keys": [
       "view",
       "window"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "window": "noun"
+    }
   },
   {
     "id": 1516,
@@ -69957,7 +71727,10 @@
     "english_keys": [
       "drawer",
       "lingerie"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "drawer": "noun"
+    }
   },
   {
     "id": 1522,
@@ -70060,7 +71833,10 @@
     "english_keys": [
       "chamber",
       "room"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "room": "noun"
+    }
   },
   {
     "id": 3068,
@@ -70428,7 +72204,10 @@
     "notes": null,
     "english_keys": [
       "unit"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "unit": "noun"
+    }
   },
   {
     "id": 2701,
@@ -70796,7 +72575,10 @@
     "notes": null,
     "english_keys": [
       "judge"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "judge": "noun"
+    }
   },
   {
     "id": 2091,
@@ -71163,7 +72945,10 @@
     "notes": null,
     "english_keys": [
       "condition"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "condition": "noun"
+    }
   },
   {
     "id": 1364,
@@ -71226,7 +73011,10 @@
     "notes": null,
     "english_keys": [
       "bit"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bit": "noun"
+    }
   },
   {
     "id": 1374,
@@ -71238,7 +73026,10 @@
     "notes": null,
     "english_keys": [
       "true"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "true": "adjective"
+    }
   },
   {
     "id": 9481,
@@ -71282,7 +73073,10 @@
       "add",
       "addition",
       "plus"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "addition": "noun"
+    }
   },
   {
     "id": 1356,
@@ -71336,7 +73130,10 @@
     "notes": null,
     "english_keys": [
       "number"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "number": "noun"
+    }
   },
   {
     "id": 1358,
@@ -71348,7 +73145,10 @@
     "notes": null,
     "english_keys": [
       "point"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "point": "noun"
+    }
   },
   {
     "id": 1372,
@@ -71451,7 +73251,10 @@
     "notes": null,
     "english_keys": [
       "square"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "square": "noun"
+    }
   },
   {
     "id": 1349,
@@ -71483,7 +73286,10 @@
       "equals",
       "same as",
       "same-as"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "equal": "adjective"
+    }
   },
   {
     "id": 1357,
@@ -71495,7 +73301,10 @@
     "notes": null,
     "english_keys": [
       "line"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "line": "noun"
+    }
   },
   {
     "id": 1368,
@@ -71544,7 +73353,10 @@
     "english_keys": [
       "ill",
       "sick"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ill": "adjective"
+    }
   },
   {
     "id": 9486,
@@ -71583,7 +73395,10 @@
       "alcohol",
       "drink",
       "intoxicating"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "drink": "noun"
+    }
   },
   {
     "id": 9948,
@@ -71823,7 +73638,10 @@
       "experience",
       "trip",
       "visionary"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "experience": "noun"
+    }
   },
   {
     "id": 1338,
@@ -71923,7 +73741,10 @@
     "english_keys": [
       "cough",
       "lung-sickness"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cough": "noun"
+    }
   },
   {
     "id": 1327,
@@ -72025,7 +73846,10 @@
     "english_keys": [
       "disease",
       "sickness"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "disease": "noun"
+    }
   },
   {
     "id": 9461,
@@ -72171,7 +73995,10 @@
     "english_keys": [
       "poison",
       "toxin"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "poison": "noun"
+    }
   },
   {
     "id": 9951,
@@ -72316,7 +74143,10 @@
     "english_keys": [
       "pipe",
       "smoking-tool"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pipe": "noun"
+    }
   },
   {
     "id": 1329,
@@ -72356,6 +74186,7 @@
       "tend"
     ],
     "english_parts_of_speech": {
+      "care": "noun",
       "tend": "verb"
     }
   },
@@ -72369,7 +74200,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from tusevwuy; validator issues: invalid character 'w' at position 5",
     "english_keys": [
       "sneeze"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sneeze": "noun"
+    }
   },
   {
     "id": 2432,
@@ -72497,7 +74331,10 @@
     "english_keys": [
       "high",
       "intoxicated"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "high": "adjective"
+    }
   },
   {
     "id": 1315,
@@ -72523,7 +74360,10 @@
     "english_keys": [
       "injury",
       "wound"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wound": "noun"
+    }
   },
   {
     "id": 1341,
@@ -72644,7 +74484,10 @@
     "english_keys": [
       "perception",
       "sense"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sense": "noun"
+    }
   },
   {
     "id": 2128,
@@ -72681,7 +74524,10 @@
     "notes": null,
     "english_keys": [
       "rule"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rule": "noun"
+    }
   },
   {
     "id": 2592,
@@ -72754,7 +74600,10 @@
     "english_keys": [
       "humiliation",
       "shame"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shame": "noun"
+    }
   },
   {
     "id": 1119,
@@ -72855,7 +74704,11 @@
       "power",
       "strength",
       "strong"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "force": "noun",
+      "strong": "adjective"
+    }
   },
   {
     "id": 2331,
@@ -72976,7 +74829,10 @@
     "notes": null,
     "english_keys": [
       "science"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "science": "noun"
+    }
   },
   {
     "id": 2522,
@@ -73012,7 +74868,10 @@
     "notes": null,
     "english_keys": [
       "secret"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "secret": "adjective"
+    }
   },
   {
     "id": 1122,
@@ -73136,7 +74995,10 @@
     "notes": null,
     "english_keys": [
       "fear"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fear": "noun"
+    }
   },
   {
     "id": 1086,
@@ -73212,7 +75074,10 @@
     "notes": null,
     "english_keys": [
       "pleasure"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pleasure": "noun"
+    }
   },
   {
     "id": 1073,
@@ -73436,7 +75301,10 @@
     "notes": null,
     "english_keys": [
       "decision"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "decision": "noun"
+    }
   },
   {
     "id": 2123,
@@ -73449,7 +75317,10 @@
     "english_keys": [
       "opinion",
       "view"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "opinion": "noun"
+    }
   },
   {
     "id": 2562,
@@ -73692,7 +75563,10 @@
     "notes": null,
     "english_keys": [
       "discovery"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "discovery": "noun"
+    }
   },
   {
     "id": 1105,
@@ -73716,7 +75590,10 @@
     "notes": null,
     "english_keys": [
       "birth"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "birth": "noun"
+    }
   },
   {
     "id": 2059,
@@ -73853,7 +75730,10 @@
     "english_keys": [
       "inquiry",
       "question"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "question": "noun"
+    }
   },
   {
     "id": 1131,
@@ -74134,7 +76014,10 @@
     "notes": null,
     "english_keys": [
       "fact"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fact": "noun"
+    }
   },
   {
     "id": 2441,
@@ -74146,7 +76029,10 @@
     "notes": null,
     "english_keys": [
       "invention"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "invention": "noun"
+    }
   },
   {
     "id": 2361,
@@ -74247,7 +76133,10 @@
     "english_keys": [
       "order",
       "sequence"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "order": "noun"
+    }
   },
   {
     "id": 1132,
@@ -74272,7 +76161,10 @@
     "english_keys": [
       "logic",
       "reason"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "reason": "noun"
+    }
   },
   {
     "id": 1104,
@@ -74438,7 +76330,10 @@
     "notes": null,
     "english_keys": [
       "pain"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pain": "noun"
+    }
   },
   {
     "id": 1080,
@@ -74644,7 +76539,10 @@
     "notes": null,
     "english_keys": [
       "smell"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "smell": "noun"
+    }
   },
   {
     "id": 1049,
@@ -74682,7 +76580,10 @@
     "english_keys": [
       "danger",
       "risk"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "danger": "noun"
+    }
   },
   {
     "id": 10087,
@@ -74758,7 +76659,10 @@
     "notes": "coined via xenari_tool coin; wolverine batch 14",
     "english_keys": [
       "attraction"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "attraction": "noun"
+    }
   },
   {
     "id": 1036,
@@ -74786,7 +76690,10 @@
     "english_keys": [
       "error",
       "mismatch"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "error": "noun"
+    }
   },
   {
     "id": 1136,
@@ -74811,7 +76718,10 @@
     "english_keys": [
       "expectation",
       "hope"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hope": "noun"
+    }
   },
   {
     "id": 2138,
@@ -74924,7 +76834,10 @@
     "english_keys": [
       "knowledge",
       "learning"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "knowledge": "noun"
+    }
   },
   {
     "id": 1938,
@@ -74937,7 +76850,10 @@
     "english_keys": [
       "belief",
       "conviction"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "belief": "noun"
+    }
   },
   {
     "id": 2166,
@@ -74963,7 +76879,10 @@
     "english_keys": [
       "hypothesis",
       "theory"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "theory": "noun"
+    }
   },
   {
     "id": 2430,
@@ -75062,7 +76981,10 @@
     "english_keys": [
       "idea",
       "thought"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "idea": "noun"
+    }
   },
   {
     "id": 1139,
@@ -75123,7 +77045,10 @@
     "english_keys": [
       "determination",
       "will"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "will": "particle"
+    }
   },
   {
     "id": 1010,
@@ -75172,7 +77097,10 @@
     "notes": null,
     "english_keys": [
       "serious"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "serious": "adjective"
+    }
   },
   {
     "id": 2375,
@@ -75257,7 +77185,10 @@
     "english_keys": [
       "feeling",
       "sensation"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "feeling": "noun"
+    }
   },
   {
     "id": 2357,
@@ -75330,7 +77261,10 @@
     "english_keys": [
       "distinction",
       "division"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "division": "noun"
+    }
   },
   {
     "id": 1013,
@@ -75356,7 +77290,11 @@
       "mind",
       "reason",
       "thought"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mind": "noun",
+      "thought": "noun"
+    }
   },
   {
     "id": 9743,
@@ -75405,7 +77343,10 @@
     "notes": null,
     "english_keys": [
       "attention"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "attention": "noun"
+    }
   },
   {
     "id": 1014,
@@ -75444,7 +77385,10 @@
     "notes": null,
     "english_keys": [
       "memory"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "memory": "noun"
+    }
   },
   {
     "id": 1055,
@@ -75606,7 +77550,10 @@
     "notes": null,
     "english_keys": [
       "chance"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "chance": "noun"
+    }
   },
   {
     "id": 2407,
@@ -75680,7 +77627,11 @@
     "english_keys": [
       "measure",
       "value"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "measure": "noun",
+      "value": "noun"
+    }
   },
   {
     "id": 1019,
@@ -75692,7 +77643,10 @@
     "notes": null,
     "english_keys": [
       "cause"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cause": "noun"
+    }
   },
   {
     "id": 1145,
@@ -75717,7 +77671,10 @@
     "english_keys": [
       "disgust",
       "revulsion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "disgust": "noun"
+    }
   },
   {
     "id": 1030,
@@ -75754,7 +77711,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from oqjarn; validator issues: invalid character 'j' at position 2",
     "english_keys": [
       "balance"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "balance": "noun"
+    }
   },
   {
     "id": 2555,
@@ -75791,7 +77751,10 @@
     "english_keys": [
       "astonishment",
       "surprise"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "surprise": "noun"
+    }
   },
   {
     "id": 1056,
@@ -75803,7 +77766,10 @@
     "notes": null,
     "english_keys": [
       "doubt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "doubt": "noun"
+    }
   },
   {
     "id": 1112,
@@ -75877,7 +77843,10 @@
       "identity",
       "label",
       "name"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "name": "noun"
+    }
   },
   {
     "id": 2333,
@@ -76488,7 +78457,10 @@
     "english_keys": [
       "drives",
       "driving"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "driving": "noun"
+    }
   },
   {
     "id": 3245,
@@ -76644,7 +78616,10 @@
     "notes": null,
     "english_keys": [
       "shut"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shut": "adjective"
+    }
   },
   {
     "id": 3175,
@@ -76728,7 +78703,10 @@
     "notes": null,
     "english_keys": [
       "use"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "use": "noun"
+    }
   },
   {
     "id": 3141,
@@ -76968,7 +78946,10 @@
     "notes": null,
     "english_keys": [
       "stretch"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stretch": "noun"
+    }
   },
   {
     "id": 3297,
@@ -77190,7 +79171,10 @@
     "notes": null,
     "english_keys": [
       "put"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "put": "verb"
+    }
   },
   {
     "id": 3234,
@@ -77250,7 +79234,10 @@
     "notes": null,
     "english_keys": [
       "move"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "move": "noun"
+    }
   },
   {
     "id": 3442,
@@ -77370,7 +79357,10 @@
     "notes": null,
     "english_keys": [
       "reading"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "reading": "noun"
+    }
   },
   {
     "id": 3118,
@@ -77685,7 +79675,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from uju; validator issues: invalid character 'j' at position 1",
     "english_keys": [
       "crack"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "crack": "noun"
+    }
   },
   {
     "id": 2776,
@@ -77843,7 +79836,10 @@
     "notes": null,
     "english_keys": [
       "weather"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "weather": "noun"
+    }
   },
   {
     "id": 3543,
@@ -77879,7 +79875,10 @@
     "notes": null,
     "english_keys": [
       "chemical"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "chemical": "adjective"
+    }
   },
   {
     "id": 3603,
@@ -78180,7 +80179,10 @@
     "notes": null,
     "english_keys": [
       "steel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "steel": "noun"
+    }
   },
   {
     "id": 3630,
@@ -78252,7 +80254,10 @@
     "notes": null,
     "english_keys": [
       "mass"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mass": "noun"
+    }
   },
   {
     "id": 3687,
@@ -78577,7 +80582,10 @@
     "notes": null,
     "english_keys": [
       "train"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "train": "noun"
+    }
   },
   {
     "id": 4205,
@@ -78589,7 +80597,10 @@
     "notes": null,
     "english_keys": [
       "mother"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mother": "noun"
+    }
   },
   {
     "id": 4163,
@@ -78994,7 +81005,10 @@
     "notes": null,
     "english_keys": [
       "harbor"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "harbor": "noun"
+    }
   },
   {
     "id": 5466,
@@ -79434,7 +81448,10 @@
     "notes": null,
     "english_keys": [
       "sound"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sound": "noun"
+    }
   },
   {
     "id": 5328,
@@ -80260,7 +82277,10 @@
     "notes": null,
     "english_keys": [
       "degree"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "degree": "noun"
+    }
   },
   {
     "id": 3900,
@@ -80272,7 +82292,10 @@
     "notes": null,
     "english_keys": [
       "match"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "match": "noun"
+    }
   },
   {
     "id": 4130,
@@ -80678,7 +82701,10 @@
     "notes": null,
     "english_keys": [
       "library"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "library": "noun"
+    }
   },
   {
     "id": 3885,
@@ -80802,7 +82828,10 @@
     "notes": null,
     "english_keys": [
       "self"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "self": "noun"
+    }
   },
   {
     "id": 4158,
@@ -80838,7 +82867,10 @@
     "notes": null,
     "english_keys": [
       "behavior"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "behavior": "noun"
+    }
   },
   {
     "id": 5408,
@@ -81153,7 +83185,10 @@
       "country",
       "land",
       "nation"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "country": "noun"
+    }
   },
   {
     "id": 5508,
@@ -81298,7 +83333,10 @@
     "english_keys": [
       "market",
       "marketplace"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "market": "noun"
+    }
   },
   {
     "id": 4006,
@@ -81346,7 +83384,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from toanz; validator issues: vowel hiatus: oa at position 1",
     "english_keys": [
       "interest"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "interest": "noun"
+    }
   },
   {
     "id": 4065,
@@ -81550,7 +83591,10 @@
     "notes": null,
     "english_keys": [
       "slope"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "slope": "noun"
+    }
   },
   {
     "id": 3973,
@@ -82199,7 +84243,10 @@
     "english_keys": [
       "shade",
       "shadow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shade": "noun"
+    }
   },
   {
     "id": 5081,
@@ -82211,7 +84258,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from fluuz; validator issues: vowel hiatus: uu at position 2",
     "english_keys": [
       "hospital"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hospital": "noun"
+    }
   },
   {
     "id": 4978,
@@ -82632,7 +84682,10 @@
     "english_keys": [
       "by",
       "per"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "by": "particle"
+    }
   },
   {
     "id": 5091,
@@ -82669,7 +84722,10 @@
     "notes": null,
     "english_keys": [
       "detail"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "detail": "noun"
+    }
   },
   {
     "id": 5148,
@@ -82709,7 +84765,10 @@
       "connection",
       "link",
       "linkage"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "connection": "noun"
+    }
   },
   {
     "id": 5158,
@@ -83878,7 +85937,10 @@
     "notes": null,
     "english_keys": [
       "son"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "son": "noun"
+    }
   },
   {
     "id": 3298,
@@ -83926,7 +85988,10 @@
     "notes": null,
     "english_keys": [
       "daughter"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "daughter": "noun"
+    }
   },
   {
     "id": 4304,
@@ -84278,7 +86343,10 @@
     "notes": null,
     "english_keys": [
       "minute"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "minute": "noun"
+    }
   },
   {
     "id": 4824,
@@ -84375,7 +86443,11 @@
     "english_keys": [
       "end",
       "limit"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "end": "noun",
+      "limit": "noun"
+    }
   },
   {
     "id": 4702,
@@ -84483,7 +86555,10 @@
     "notes": null,
     "english_keys": [
       "direction"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "direction": "noun"
+    }
   },
   {
     "id": 9717,
@@ -84556,7 +86631,11 @@
     "english_keys": [
       "among",
       "between"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "among": "particle",
+      "between": "particle"
+    }
   },
   {
     "id": 4873,
@@ -84604,7 +86683,10 @@
     "notes": null,
     "english_keys": [
       "base"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "base": "noun"
+    }
   },
   {
     "id": 2475,
@@ -84665,7 +86747,10 @@
     "notes": null,
     "english_keys": [
       "current"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "current": "noun"
+    }
   },
   {
     "id": 2315,
@@ -84689,7 +86774,10 @@
     "notes": null,
     "english_keys": [
       "prison"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "prison": "noun"
+    }
   },
   {
     "id": 2365,
@@ -84729,7 +86817,8 @@
       "start"
     ],
     "english_parts_of_speech": {
-      "begin": "verb"
+      "begin": "verb",
+      "start": "noun"
     }
   },
   {
@@ -84766,7 +86855,10 @@
     "notes": null,
     "english_keys": [
       "journey"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "journey": "noun"
+    }
   },
   {
     "id": 2579,
@@ -84778,7 +86870,10 @@
     "notes": null,
     "english_keys": [
       "station"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "station": "noun"
+    }
   },
   {
     "id": 4418,
@@ -84802,7 +86897,10 @@
     "notes": null,
     "english_keys": [
       "hour"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hour": "noun"
+    }
   },
   {
     "id": 2207,
@@ -85052,7 +87150,10 @@
     "english_keys": [
       "border",
       "edge"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "edge": "noun"
+    }
   },
   {
     "id": 897,
@@ -85066,7 +87167,10 @@
       "duration",
       "moment",
       "time"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "time": "noun"
+    }
   },
   {
     "id": 882,
@@ -85091,7 +87195,10 @@
     "english_keys": [
       "path",
       "road"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "road": "noun"
+    }
   },
   {
     "id": 9518,
@@ -85408,7 +87515,10 @@
     "notes": null,
     "english_keys": [
       "far"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "far": "adverb"
+    }
   },
   {
     "id": 886,
@@ -85423,7 +87533,8 @@
       "under"
     ],
     "english_parts_of_speech": {
-      "below": "particle"
+      "below": "particle",
+      "under": "particle"
     }
   },
   {
@@ -85436,7 +87547,10 @@
     "notes": null,
     "english_keys": [
       "second"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "second": "adjective"
+    }
   },
   {
     "id": 2290,
@@ -85487,6 +87601,21 @@
     ]
   },
   {
+    "id": 10101,
+    "root": "tonte",
+    "meaning": "building — Ogden noun sense",
+    "category": "Place & Time",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-general-036)",
+    "english_keys": [
+      "building"
+    ],
+    "english_parts_of_speech": {
+      "building": "noun"
+    }
+  },
+  {
     "id": 887,
     "root": "tra'",
     "meaning": "near",
@@ -85496,7 +87625,10 @@
     "notes": null,
     "english_keys": [
       "near"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "near": "adverb"
+    }
   },
   {
     "id": 2937,
@@ -85520,7 +87652,10 @@
     "notes": null,
     "english_keys": [
       "distance"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "distance": "noun"
+    }
   },
   {
     "id": 2602,
@@ -85629,7 +87764,10 @@
     "notes": "coined via xenari_tool coin; wolverine batch 2",
     "english_keys": [
       "across"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "across": "particle"
+    }
   },
   {
     "id": 10012,
@@ -85654,7 +87792,10 @@
     "english_keys": [
       "above",
       "over"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "over": "particle"
+    }
   },
   {
     "id": 894,
@@ -85742,7 +87883,10 @@
     "notes": null,
     "english_keys": [
       "early"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "early": "adjective"
+    }
   },
   {
     "id": 96,
@@ -85755,7 +87899,10 @@
     "english_keys": [
       "east",
       "sunrise-direction"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "east": "adverb"
+    }
   },
   {
     "id": 2557,
@@ -85831,7 +87978,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from zijegob; validator issues: invalid character 'j' at position 2",
     "english_keys": [
       "town"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "town": "noun"
+    }
   },
   {
     "id": 890,
@@ -85858,7 +88008,10 @@
     "english_keys": [
       "before",
       "front"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "front": "noun"
+    }
   },
   {
     "id": 892,
@@ -85995,7 +88148,10 @@
     "notes": null,
     "english_keys": [
       "opposite"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "opposite": "adjective"
+    }
   },
   {
     "id": 3081,
@@ -86190,7 +88346,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from rej; validator issues: invalid character 'j' at position 2",
     "english_keys": [
       "forward"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "forward": "adverb"
+    }
   },
   {
     "id": 3207,
@@ -86370,7 +88529,10 @@
     "notes": null,
     "english_keys": [
       "office"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "office": "noun"
+    }
   },
   {
     "id": 3236,
@@ -86442,7 +88604,10 @@
     "notes": null,
     "english_keys": [
       "sea"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sea": "noun"
+    }
   },
   {
     "id": 3347,
@@ -86540,7 +88705,10 @@
     "notes": null,
     "english_keys": [
       "oven"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "oven": "noun"
+    }
   },
   {
     "id": 2048,
@@ -86564,7 +88732,10 @@
     "notes": null,
     "english_keys": [
       "flower"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "flower": "noun"
+    }
   },
   {
     "id": 693,
@@ -86600,7 +88771,10 @@
     "notes": null,
     "english_keys": [
       "seed"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "seed": "noun"
+    }
   },
   {
     "id": 9849,
@@ -86625,7 +88799,10 @@
     "english_keys": [
       "sugar",
       "sweetness"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sugar": "noun"
+    }
   },
   {
     "id": 691,
@@ -86832,7 +89009,10 @@
     "notes": null,
     "english_keys": [
       "grass"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "grass": "noun"
+    }
   },
   {
     "id": 692,
@@ -86991,7 +89171,10 @@
     "notes": null,
     "english_keys": [
       "taste"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "taste": "noun"
+    }
   },
   {
     "id": 713,
@@ -87027,7 +89210,10 @@
     "notes": null,
     "english_keys": [
       "fruit"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fruit": "noun"
+    }
   },
   {
     "id": 722,
@@ -87174,7 +89360,10 @@
     "notes": null,
     "english_keys": [
       "root"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "root": "noun"
+    }
   },
   {
     "id": 729,
@@ -87263,7 +89452,10 @@
     "notes": null,
     "english_keys": [
       "sweet"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sweet": "adjective"
+    }
   },
   {
     "id": 3058,
@@ -87287,7 +89479,10 @@
     "notes": null,
     "english_keys": [
       "spoon"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "spoon": "noun"
+    }
   },
   {
     "id": 730,
@@ -87386,7 +89581,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from noe; validator issues: vowel hiatus: oe at position 1",
     "english_keys": [
       "tree"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tree": "noun"
+    }
   },
   {
     "id": 9984,
@@ -87472,7 +89670,10 @@
     "english_keys": [
       "plant",
       "plants"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "plant": "noun"
+    }
   },
   {
     "id": 9564,
@@ -87653,7 +89854,10 @@
     "notes": null,
     "english_keys": [
       "plate"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "plate": "noun"
+    }
   },
   {
     "id": 732,
@@ -87886,7 +90090,10 @@
     "notes": null,
     "english_keys": [
       "leaf"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "leaf": "noun"
+    }
   },
   {
     "id": 707,
@@ -87959,7 +90166,10 @@
     "notes": null,
     "english_keys": [
       "milk"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "milk": "noun"
+    }
   },
   {
     "id": 1935,
@@ -88139,7 +90349,10 @@
     "notes": null,
     "english_keys": [
       "pot"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pot": "noun"
+    }
   },
   {
     "id": 677,
@@ -88152,7 +90365,10 @@
     "english_keys": [
       "hard-seed",
       "nut"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "nut": "noun"
+    }
   },
   {
     "id": 676,
@@ -88189,7 +90405,10 @@
     "notes": null,
     "english_keys": [
       "leather"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "leather": "noun"
+    }
   },
   {
     "id": 743,
@@ -88292,7 +90511,10 @@
     "notes": null,
     "english_keys": [
       "meal"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "meal": "noun"
+    }
   },
   {
     "id": 2955,
@@ -88388,7 +90610,10 @@
     "notes": null,
     "english_keys": [
       "food"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "food": "noun"
+    }
   },
   {
     "id": 1963,
@@ -88451,7 +90676,10 @@
     "notes": null,
     "english_keys": [
       "death"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "death": "noun"
+    }
   },
   {
     "id": 678,
@@ -88464,7 +90692,10 @@
     "english_keys": [
       "cereal-plant",
       "grain"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "grain": "noun"
+    }
   },
   {
     "id": 666,
@@ -88575,7 +90806,10 @@
     "english_keys": [
       "stalk",
       "stem"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stem": "noun"
+    }
   },
   {
     "id": 2959,
@@ -88625,7 +90859,10 @@
     "english_keys": [
       "grain",
       "rice"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rice": "noun"
+    }
   },
   {
     "id": 1943,
@@ -88674,7 +90911,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from aigmeng; validator issues: vowel hiatus: ai at position 0",
     "english_keys": [
       "bread"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bread": "noun"
+    }
   },
   {
     "id": 2201,
@@ -88686,7 +90926,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jegi; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "soup"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "soup": "noun"
+    }
   },
   {
     "id": 751,
@@ -89008,7 +91251,10 @@
     "notes": null,
     "english_keys": [
       "small"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "small": "adjective"
+    }
   },
   {
     "id": 928,
@@ -89096,7 +91342,10 @@
     "english_keys": [
       "hate",
       "hated"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hate": "noun"
+    }
   },
   {
     "id": 934,
@@ -89172,7 +91421,10 @@
     "notes": null,
     "english_keys": [
       "long"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "long": "adjective"
+    }
   },
   {
     "id": 3009,
@@ -89425,7 +91677,10 @@
     "notes": null,
     "english_keys": [
       "thick"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "thick": "adjective"
+    }
   },
   {
     "id": 2011,
@@ -89621,7 +91876,10 @@
     "notes": null,
     "english_keys": [
       "wrong"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wrong": "adjective"
+    }
   },
   {
     "id": 1956,
@@ -90120,7 +92378,10 @@
     "notes": null,
     "english_keys": [
       "wet"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wet": "adjective"
+    }
   },
   {
     "id": 2289,
@@ -90248,7 +92509,10 @@
     "english_keys": [
       "important",
       "significant"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "important": "adjective"
+    }
   },
   {
     "id": 2172,
@@ -90334,7 +92598,10 @@
     "notes": null,
     "english_keys": [
       "round"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "round": "adjective"
+    }
   },
   {
     "id": 954,
@@ -90346,7 +92613,10 @@
     "notes": null,
     "english_keys": [
       "crime"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "crime": "noun"
+    }
   },
   {
     "id": 2062,
@@ -90371,7 +92641,10 @@
     "notes": null,
     "english_keys": [
       "white"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "white": "adjective"
+    }
   },
   {
     "id": 2185,
@@ -90602,7 +92875,10 @@
     "notes": null,
     "english_keys": [
       "sad"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sad": "adjective"
+    }
   },
   {
     "id": 4299,
@@ -90651,6 +92927,21 @@
     "english_keys": [
       "completely"
     ]
+  },
+  {
+    "id": 10166,
+    "root": "kompo",
+    "meaning": "waiting — Ogden adjective sense",
+    "category": "Qualities",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adjective sense (qualities-general-094)",
+    "english_keys": [
+      "waiting"
+    ],
+    "english_parts_of_speech": {
+      "waiting": "adjective"
+    }
   },
   {
     "id": 4345,
@@ -90710,7 +93001,10 @@
     "notes": null,
     "english_keys": [
       "quick"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "quick": "adjective"
+    }
   },
   {
     "id": 3414,
@@ -90834,7 +93128,40 @@
     "english_keys": [
       "common",
       "ordinary"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "common": "adjective"
+    }
+  },
+  {
+    "id": 10164,
+    "root": "lole",
+    "meaning": "frequent — Ogden adjective sense",
+    "category": "Qualities",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adjective sense (qualities-general-032)",
+    "english_keys": [
+      "frequent"
+    ],
+    "english_parts_of_speech": {
+      "frequent": "adjective"
+    }
+  },
+  {
+    "id": 10160,
+    "root": "lonqa",
+    "meaning": "acid — Ogden adjective sense",
+    "category": "Qualities",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adjective sense (qualities-general-002)",
+    "english_keys": [
+      "acid"
+    ],
+    "english_parts_of_speech": {
+      "acid": "adjective"
+    }
   },
   {
     "id": 958,
@@ -90946,7 +93273,10 @@
     "english_keys": [
       "soft",
       "yielding"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "soft": "adjective"
+    }
   },
   {
     "id": 9891,
@@ -90982,7 +93312,10 @@
     "notes": null,
     "english_keys": [
       "straight"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "straight": "adjective"
+    }
   },
   {
     "id": 4572,
@@ -91043,7 +93376,10 @@
     "notes": null,
     "english_keys": [
       "such"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "such": "particle"
+    }
   },
   {
     "id": 4783,
@@ -91082,7 +93418,10 @@
     "notes": null,
     "english_keys": [
       "tight"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tight": "adjective"
+    }
   },
   {
     "id": 4384,
@@ -91196,7 +93535,10 @@
     "notes": null,
     "english_keys": [
       "private"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "private": "adjective"
+    }
   },
   {
     "id": 2480,
@@ -91208,7 +93550,10 @@
     "notes": null,
     "english_keys": [
       "necessary"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "necessary": "adjective"
+    }
   },
   {
     "id": 965,
@@ -91664,7 +94009,10 @@
     "english_keys": [
       "normal",
       "usual"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "normal": "adjective"
+    }
   },
   {
     "id": 4902,
@@ -91712,7 +94060,10 @@
     "notes": null,
     "english_keys": [
       "orange"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "orange": "noun"
+    }
   },
   {
     "id": 968,
@@ -92042,7 +94393,10 @@
     "notes": null,
     "english_keys": [
       "kind"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "kind": "adjective"
+    }
   },
   {
     "id": 976,
@@ -92067,7 +94421,10 @@
     "english_keys": [
       "destitute",
       "poor"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "poor": "adjective"
+    }
   },
   {
     "id": 977,
@@ -92677,7 +95034,10 @@
     "notes": null,
     "english_keys": [
       "hollow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hollow": "adjective"
+    }
   },
   {
     "id": 9753,
@@ -92713,7 +95073,10 @@
     "notes": null,
     "english_keys": [
       "full"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "full": "adjective"
+    }
   },
   {
     "id": 4714,
@@ -92850,6 +95213,21 @@
     ]
   },
   {
+    "id": 10162,
+    "root": "qemo",
+    "meaning": "dependent — Ogden adjective sense",
+    "category": "Qualities",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adjective sense (qualities-general-021)",
+    "english_keys": [
+      "dependent"
+    ],
+    "english_parts_of_speech": {
+      "dependent": "adjective"
+    }
+  },
+  {
     "id": 9930,
     "root": "qenct",
     "meaning": "twisted out-of-shape",
@@ -92960,7 +95338,10 @@
     "english_keys": [
       "reliable",
       "solid"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "solid": "adjective"
+    }
   },
   {
     "id": 904,
@@ -93000,7 +95381,10 @@
     "english_keys": [
       "fine",
       "thin"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "thin": "adjective"
+    }
   },
   {
     "id": 3448,
@@ -93073,7 +95457,10 @@
     "notes": null,
     "english_keys": [
       "wide"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wide": "adjective"
+    }
   },
   {
     "id": 2108,
@@ -93183,7 +95570,10 @@
     "notes": null,
     "english_keys": [
       "short"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "short": "adjective"
+    }
   },
   {
     "id": 9558,
@@ -93306,7 +95696,10 @@
     "english_keys": [
       "rigid",
       "stiff"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stiff": "adjective"
+    }
   },
   {
     "id": 9576,
@@ -93513,7 +95906,10 @@
     "notes": null,
     "english_keys": [
       "low"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "low": "adjective"
+    }
   },
   {
     "id": 984,
@@ -93525,7 +95921,10 @@
     "notes": null,
     "english_keys": [
       "yellow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "yellow": "adjective"
+    }
   },
   {
     "id": 2230,
@@ -93550,7 +95949,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from sajerq; validator issues: invalid character 'j' at position 2",
     "english_keys": [
       "simple"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "simple": "adjective"
+    }
   },
   {
     "id": 1910,
@@ -93600,7 +96002,10 @@
     "english_keys": [
       "blended",
       "mixed"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mixed": "adjective"
+    }
   },
   {
     "id": 2142,
@@ -93626,7 +96031,10 @@
     "english_keys": [
       "cutting",
       "sharp"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sharp": "adjective"
+    }
   },
   {
     "id": 3003,
@@ -93734,7 +96142,10 @@
     "notes": null,
     "english_keys": [
       "humor"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "humor": "noun"
+    }
   },
   {
     "id": 4457,
@@ -93758,7 +96169,10 @@
     "notes": null,
     "english_keys": [
       "smooth"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "smooth": "adjective"
+    }
   },
   {
     "id": 4436,
@@ -93795,6 +96209,21 @@
     "english_keys": [
       "guilty"
     ]
+  },
+  {
+    "id": 10165,
+    "root": "srase",
+    "meaning": "probable — Ogden adjective sense",
+    "category": "Qualities",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adjective sense (qualities-general-067)",
+    "english_keys": [
+      "probable"
+    ],
+    "english_parts_of_speech": {
+      "probable": "adjective"
+    }
   },
   {
     "id": 911,
@@ -93932,7 +96361,10 @@
     "english_keys": [
       "tired",
       "weary"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tired": "adjective"
+    }
   },
   {
     "id": 4496,
@@ -94264,7 +96696,10 @@
     "notes": null,
     "english_keys": [
       "special"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "special": "adjective"
+    }
   },
   {
     "id": 2020,
@@ -94314,7 +96749,10 @@
     "english_keys": [
       "sagely",
       "wise"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wise": "adjective"
+    }
   },
   {
     "id": 4544,
@@ -94516,6 +96954,21 @@
     ]
   },
   {
+    "id": 10163,
+    "root": "xelo",
+    "meaning": "elastic — Ogden adjective sense",
+    "category": "Qualities",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adjective sense (qualities-general-023)",
+    "english_keys": [
+      "elastic"
+    ],
+    "english_parts_of_speech": {
+      "elastic": "adjective"
+    }
+  },
+  {
     "id": 2179,
     "root": "xishadeh",
     "meaning": "shiny, reflective",
@@ -94554,7 +97007,10 @@
     "notes": null,
     "english_keys": [
       "narrow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "narrow": "adjective"
+    }
   },
   {
     "id": 914,
@@ -94822,7 +97278,10 @@
     "notes": null,
     "english_keys": [
       "slow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "slow": "adjective"
+    }
   },
   {
     "id": 918,
@@ -94834,7 +97293,10 @@
     "notes": null,
     "english_keys": [
       "rough"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rough": "adjective"
+    }
   },
   {
     "id": 1989,
@@ -95018,6 +97480,21 @@
     ]
   },
   {
+    "id": 10161,
+    "root": "yempo",
+    "meaning": "boiling — Ogden adjective sense",
+    "category": "Qualities",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English adjective sense (qualities-general-007)",
+    "english_keys": [
+      "boiling"
+    ],
+    "english_parts_of_speech": {
+      "boiling": "adjective"
+    }
+  },
+  {
     "id": 2006,
     "root": "yeshaz",
     "meaning": "disgusting, repulsive",
@@ -95067,7 +97544,10 @@
     "english_keys": [
       "adhering",
       "sticky"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sticky": "adjective"
+    }
   },
   {
     "id": 2061,
@@ -95230,7 +97710,10 @@
       "electric",
       "electric charged",
       "electrified"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "electric": "adjective"
+    }
   },
   {
     "id": 9893,
@@ -95338,7 +97821,10 @@
     "notes": null,
     "english_keys": [
       "loose"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "loose": "adjective"
+    }
   },
   {
     "id": 4349,
@@ -95389,7 +97875,10 @@
     "english_keys": [
       "odd",
       "strange"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "strange": "adjective"
+    }
   },
   {
     "id": 2147,
@@ -95679,7 +98168,10 @@
     "english_keys": [
       "prepared",
       "ready"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ready": "adjective"
+    }
   },
   {
     "id": 3723,
@@ -95787,7 +98279,10 @@
     "notes": null,
     "english_keys": [
       "separate"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "separate": "adjective"
+    }
   },
   {
     "id": 3471,
@@ -95823,7 +98318,10 @@
     "notes": null,
     "english_keys": [
       "damage"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "damage": "noun"
+    }
   },
   {
     "id": 3659,
@@ -96039,7 +98537,10 @@
     "notes": null,
     "english_keys": [
       "possible"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "possible": "adjective"
+    }
   },
   {
     "id": 3739,
@@ -97035,7 +99536,10 @@
     "english_keys": [
       "feeding",
       "sex"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sex": "noun"
+    }
   },
   {
     "id": 1827,
@@ -97115,7 +99619,10 @@
     "english_keys": [
       "climaxing",
       "love"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "love": "noun"
+    }
   },
   {
     "id": 1828,
@@ -97588,7 +100095,10 @@
     "notes": null,
     "english_keys": [
       "shock"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shock": "noun"
+    }
   },
   {
     "id": 1184,
@@ -97652,7 +100162,10 @@
     "notes": null,
     "english_keys": [
       "word"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "word": "noun"
+    }
   },
   {
     "id": 2047,
@@ -98253,7 +100766,10 @@
     "english_keys": [
       "law",
       "norm"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "law": "noun"
+    }
   },
   {
     "id": 1153,
@@ -98290,7 +100806,10 @@
     "notes": null,
     "english_keys": [
       "copy"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "copy": "noun"
+    }
   },
   {
     "id": 4817,
@@ -98524,7 +101043,10 @@
     "notes": null,
     "english_keys": [
       "talk"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "talk": "noun"
+    }
   },
   {
     "id": 1227,
@@ -98818,7 +101340,10 @@
     "notes": null,
     "english_keys": [
       "dear"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dear": "adjective"
+    }
   },
   {
     "id": 9709,
@@ -98881,7 +101406,10 @@
     "notes": "coined via xenari_tool coin; wolverine batch 12",
     "english_keys": [
       "expert"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "expert": "noun"
+    }
   },
   {
     "id": 9764,
@@ -98906,7 +101434,10 @@
     "english_keys": [
       "answer",
       "response"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "answer": "noun"
+    }
   },
   {
     "id": 1171,
@@ -99001,7 +101532,8 @@
       "request"
     ],
     "english_parts_of_speech": {
-      "ask": "verb"
+      "ask": "verb",
+      "request": "noun"
     }
   },
   {
@@ -99559,7 +102091,10 @@
     "notes": null,
     "english_keys": [
       "respect"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "respect": "noun"
+    }
   },
   {
     "id": 4958,
@@ -99795,7 +102330,10 @@
     "english_keys": [
       "mark",
       "sign"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sign": "noun"
+    }
   },
   {
     "id": 2125,
@@ -100001,7 +102539,10 @@
     "notes": null,
     "english_keys": [
       "debt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "debt": "noun"
+    }
   },
   {
     "id": 1160,
@@ -100014,7 +102555,11 @@
     "english_keys": [
       "exchange",
       "trade"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "exchange": "noun",
+      "trade": "noun"
+    }
   },
   {
     "id": 9903,
@@ -100205,7 +102750,10 @@
     "english_keys": [
       "guide",
       "leader"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "guide": "noun"
+    }
   },
   {
     "id": 3487,
@@ -100887,7 +103435,10 @@
     "notes": null,
     "english_keys": [
       "event"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "event": "noun"
+    }
   },
   {
     "id": 3076,
@@ -100899,7 +103450,10 @@
     "notes": null,
     "english_keys": [
       "hole"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hole": "noun"
+    }
   },
   {
     "id": 9499,
@@ -101299,7 +103853,10 @@
       "being's",
       "left",
       "mark"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mark": "noun"
+    }
   },
   {
     "id": 1693,
@@ -101707,7 +104264,10 @@
     "english_keys": [
       "property",
       "soul-fast-food-adjacent"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "property": "noun"
+    }
   },
   {
     "id": 1686,
@@ -101802,7 +104362,10 @@
     "english_keys": [
       "manager",
       "soul-fast-food"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "manager": "noun"
+    }
   },
   {
     "id": 1667,
@@ -101969,7 +104532,10 @@
     "english_keys": [
       "intervention",
       "sleep"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sleep": "noun"
+    }
   },
   {
     "id": 1708,
@@ -102165,7 +104731,10 @@
       "manifest",
       "physical",
       "take"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "physical": "adjective"
+    }
   },
   {
     "id": 1633,
@@ -102386,7 +104955,10 @@
     "english_keys": [
       "great",
       "sex"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "great": "adjective"
+    }
   },
   {
     "id": 1725,
@@ -102424,7 +104996,10 @@
     "english_keys": [
       "orgy",
       "regular"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "regular": "adjective"
+    }
   },
   {
     "id": 1748,
@@ -102567,7 +105142,10 @@
       "qrunq",
       "stop",
       "unlimited"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stop": "noun"
+    }
   },
   {
     "id": 1642,
@@ -102745,7 +105323,10 @@
     "english_keys": [
       "fasting",
       "safe"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "safe": "adjective"
+    }
   },
   {
     "id": 1707,
@@ -102836,7 +105417,10 @@
       "changing",
       "corruption",
       "process"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "process": "noun"
+    }
   },
   {
     "id": 1660,
@@ -103654,7 +106238,10 @@
     "english_keys": [
       "apparatus",
       "device"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "apparatus": "noun"
+    }
   },
   {
     "id": 1427,
@@ -103763,7 +106350,10 @@
     "notes": null,
     "english_keys": [
       "wheel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wheel": "noun"
+    }
   },
   {
     "id": 1416,
@@ -103862,7 +106452,10 @@
     "english_keys": [
       "control",
       "remote"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "control": "noun"
+    }
   },
   {
     "id": 1387,
@@ -103914,7 +106507,10 @@
       "timepiece",
       "watch",
       "wheel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "watch": "noun"
+    }
   },
   {
     "id": 1439,
@@ -104085,7 +106681,10 @@
     "english_keys": [
       "past",
       "time"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "past": "adjective"
+    }
   },
   {
     "id": 1403,
@@ -104124,7 +106723,10 @@
     "english_keys": [
       "broken",
       "clock"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "broken": "adjective"
+    }
   },
   {
     "id": 1407,
@@ -104137,7 +106739,10 @@
     "english_keys": [
       "future",
       "time"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "future": "adjective"
+    }
   },
   {
     "id": 1404,
@@ -104163,7 +106768,10 @@
     "english_keys": [
       "moment",
       "present"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "present": "adjective"
+    }
   },
   {
     "id": 1414,
@@ -104265,7 +106873,10 @@
     "notes": null,
     "english_keys": [
       "system"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "system": "noun"
+    }
   },
   {
     "id": 1435,
@@ -104294,7 +106905,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from suw; validator issues: invalid character 'w' at position 2",
     "english_keys": [
       "wire"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wire": "noun"
+    }
   },
   {
     "id": 2473,
@@ -104430,7 +107044,10 @@
       "language",
       "large",
       "model"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "language": "noun"
+    }
   },
   {
     "id": 1428,
@@ -104715,7 +107332,11 @@
       "leak",
       "power",
       "xluq"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "drain": "noun",
+      "power": "noun"
+    }
   },
   {
     "id": 1408,
@@ -104838,7 +107459,10 @@
     "notes": null,
     "english_keys": [
       "till"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "till": "particle"
+    }
   },
   {
     "id": 3138,
@@ -104934,7 +107558,10 @@
     "notes": null,
     "english_keys": [
       "range"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "range": "noun"
+    }
   },
   {
     "id": 3821,
@@ -105090,7 +107717,10 @@
     "notes": null,
     "english_keys": [
       "rate"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rate": "noun"
+    }
   },
   {
     "id": 3826,
@@ -105102,7 +107732,10 @@
     "notes": null,
     "english_keys": [
       "motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "motion": "noun"
+    }
   },
   {
     "id": 3761,
@@ -105359,7 +107992,10 @@
     "english_keys": [
       "ring",
       "wheel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ring": "noun"
+    }
   },
   {
     "id": 753,
@@ -105372,7 +108008,10 @@
     "english_keys": [
       "cover",
       "shelter"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cover": "noun"
+    }
   },
   {
     "id": 754,
@@ -105519,6 +108158,21 @@
     ]
   },
   {
+    "id": 10157,
+    "root": "cula",
+    "meaning": "stamp — Ogden noun sense",
+    "category": "Tools & Objects",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-picturable-167)",
+    "english_keys": [
+      "stamp"
+    ],
+    "english_parts_of_speech": {
+      "stamp": "noun"
+    }
+  },
+  {
     "id": 4608,
     "root": "cuno",
     "meaning": "shovel",
@@ -105579,7 +108233,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from diwi; validator issues: invalid character 'w' at position 2",
     "english_keys": [
       "paper"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "paper": "noun"
+    }
   },
   {
     "id": 804,
@@ -105615,7 +108272,10 @@
     "notes": null,
     "english_keys": [
       "soap"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "soap": "noun"
+    }
   },
   {
     "id": 1988,
@@ -105628,6 +108288,23 @@
     "english_keys": [
       "crate"
     ]
+  },
+  {
+    "id": 10154,
+    "root": "drenqa",
+    "meaning": "plough — Ogden noun sense",
+    "category": "Tools & Objects",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-picturable-135)",
+    "english_keys": [
+      "plough",
+      "plow"
+    ],
+    "english_parts_of_speech": {
+      "plough": "noun",
+      "plow": "noun"
+    }
   },
   {
     "id": 806,
@@ -105738,7 +108415,10 @@
     "notes": null,
     "english_keys": [
       "canvas"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "canvas": "noun"
+    }
   },
   {
     "id": 808,
@@ -105828,7 +108508,10 @@
     "notes": null,
     "english_keys": [
       "wall"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wall": "noun"
+    }
   },
   {
     "id": 2830,
@@ -105866,7 +108549,10 @@
     "english_keys": [
       "vessel",
       "xontainer"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "vessel": "noun"
+    }
   },
   {
     "id": 756,
@@ -105879,7 +108565,10 @@
     "english_keys": [
       "platform",
       "seat"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "seat": "noun"
+    }
   },
   {
     "id": 4403,
@@ -105892,6 +108581,21 @@
     "english_keys": [
       "centrifuge"
     ]
+  },
+  {
+    "id": 10156,
+    "root": "grala",
+    "meaning": "spade — Ogden noun sense",
+    "category": "Tools & Objects",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-picturable-162)",
+    "english_keys": [
+      "spade"
+    ],
+    "english_parts_of_speech": {
+      "spade": "noun"
+    }
   },
   {
     "id": 812,
@@ -105916,7 +108620,10 @@
     "english_keys": [
       "cache",
       "store"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "store": "noun"
+    }
   },
   {
     "id": 4237,
@@ -106012,7 +108719,10 @@
     "notes": null,
     "english_keys": [
       "lock"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lock": "noun"
+    }
   },
   {
     "id": 2087,
@@ -106160,7 +108870,10 @@
     "notes": null,
     "english_keys": [
       "whistle"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "whistle": "noun"
+    }
   },
   {
     "id": 816,
@@ -106184,7 +108897,10 @@
     "notes": null,
     "english_keys": [
       "pin"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pin": "noun"
+    }
   },
   {
     "id": 818,
@@ -106418,7 +109134,10 @@
     "notes": null,
     "english_keys": [
       "paint"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "paint": "noun"
+    }
   },
   {
     "id": 827,
@@ -106442,7 +109161,10 @@
     "notes": null,
     "english_keys": [
       "sail"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sail": "noun"
+    }
   },
   {
     "id": 829,
@@ -106663,7 +109385,10 @@
     "notes": null,
     "english_keys": [
       "pen"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pen": "noun"
+    }
   },
   {
     "id": 4623,
@@ -106715,6 +109440,21 @@
     "english_keys": [
       "truck"
     ]
+  },
+  {
+    "id": 10153,
+    "root": "peke",
+    "meaning": "bulb — Ogden noun sense",
+    "category": "Tools & Objects",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-picturable-035)",
+    "english_keys": [
+      "bulb"
+    ],
+    "english_parts_of_speech": {
+      "bulb": "noun"
+    }
   },
   {
     "id": 10046,
@@ -106798,7 +109538,10 @@
     "notes": null,
     "english_keys": [
       "cloth"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cloth": "noun"
+    }
   },
   {
     "id": 9982,
@@ -106967,7 +109710,10 @@
     "notes": null,
     "english_keys": [
       "wood"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wood": "noun"
+    }
   },
   {
     "id": 9654,
@@ -107057,7 +109803,10 @@
     "english_keys": [
       "boot",
       "shoe"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shoe": "noun"
+    }
   },
   {
     "id": 4244,
@@ -107167,7 +109916,10 @@
     "english_keys": [
       "map",
       "plane"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "plane": "noun"
+    }
   },
   {
     "id": 9549,
@@ -107216,7 +109968,10 @@
     "notes": "coined via xenari_tool coin; wolverine batch 10",
     "english_keys": [
       "kettle"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "kettle": "noun"
+    }
   },
   {
     "id": 4616,
@@ -107231,6 +109986,21 @@
     ]
   },
   {
+    "id": 10152,
+    "root": "qofo",
+    "meaning": "bucket — Ogden noun sense",
+    "category": "Tools & Objects",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-picturable-034)",
+    "english_keys": [
+      "bucket"
+    ],
+    "english_parts_of_speech": {
+      "bucket": "noun"
+    }
+  },
+  {
     "id": 760,
     "root": "qont",
     "meaning": "machine/engine",
@@ -107241,7 +110011,10 @@
     "english_keys": [
       "engine",
       "machine"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "machine": "noun"
+    }
   },
   {
     "id": 9823,
@@ -107301,7 +110074,10 @@
     "notes": null,
     "english_keys": [
       "powder"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "powder": "noun"
+    }
   },
   {
     "id": 762,
@@ -107329,6 +110105,21 @@
     ],
     "english_parts_of_speech": {
       "know": "verb"
+    }
+  },
+  {
+    "id": 10155,
+    "root": "qure",
+    "meaning": "receipt — Ogden noun sense",
+    "category": "Tools & Objects",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-picturable-143)",
+    "english_keys": [
+      "receipt"
+    ],
+    "english_parts_of_speech": {
+      "receipt": "noun"
     }
   },
   {
@@ -107469,7 +110260,10 @@
     "notes": null,
     "english_keys": [
       "table"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "table": "noun"
+    }
   },
   {
     "id": 789,
@@ -107698,7 +110492,10 @@
     "notes": null,
     "english_keys": [
       "roof"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "roof": "noun"
+    }
   },
   {
     "id": 2443,
@@ -107749,7 +110546,10 @@
     "notes": null,
     "english_keys": [
       "thread"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "thread": "noun"
+    }
   },
   {
     "id": 856,
@@ -107789,7 +110589,10 @@
     "english_keys": [
       "map",
       "view"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "view": "noun"
+    }
   },
   {
     "id": 2831,
@@ -107819,6 +110622,21 @@
     }
   },
   {
+    "id": 10159,
+    "root": "treca",
+    "meaning": "trousers — Ogden noun sense",
+    "category": "Tools & Objects",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-picturable-190)",
+    "english_keys": [
+      "trousers"
+    ],
+    "english_parts_of_speech": {
+      "trousers": "noun"
+    }
+  },
+  {
     "id": 773,
     "root": "trexq",
     "meaning": "shirt",
@@ -107828,7 +110646,10 @@
     "notes": null,
     "english_keys": [
       "shirt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shirt": "noun"
+    }
   },
   {
     "id": 763,
@@ -107855,7 +110676,10 @@
     "notes": null,
     "english_keys": [
       "pocket"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pocket": "noun"
+    }
   },
   {
     "id": 4644,
@@ -107940,7 +110764,10 @@
     "notes": null,
     "english_keys": [
       "dress"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dress": "noun"
+    }
   },
   {
     "id": 775,
@@ -107964,7 +110791,10 @@
     "notes": null,
     "english_keys": [
       "flag"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "flag": "noun"
+    }
   },
   {
     "id": 4591,
@@ -108012,7 +110842,10 @@
     "notes": null,
     "english_keys": [
       "map"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "map": "noun"
+    }
   },
   {
     "id": 780,
@@ -108283,7 +111116,10 @@
     "english_keys": [
       "mesh",
       "net"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "net": "noun"
+    }
   },
   {
     "id": 860,
@@ -108347,7 +111183,10 @@
     "english_keys": [
       "needle",
       "probe"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "needle": "noun"
+    }
   },
   {
     "id": 4515,
@@ -108459,7 +111298,10 @@
     "english_keys": [
       "key",
       "xontrol"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "key": "noun"
+    }
   },
   {
     "id": 4354,
@@ -108498,7 +111340,10 @@
       "record",
       "surface",
       "tablet"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "record": "noun"
+    }
   },
   {
     "id": 9974,
@@ -108558,7 +111403,25 @@
     "notes": null,
     "english_keys": [
       "ink"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ink": "noun"
+    }
+  },
+  {
+    "id": 10158,
+    "root": "zake",
+    "meaning": "stocking — Ogden noun sense",
+    "category": "Tools & Objects",
+    "source": "ogden-850-curation",
+    "timestamp": "2026-08-04 22:03",
+    "notes": "Canonical Ogden Basic English noun sense (things-picturable-172)",
+    "english_keys": [
+      "stocking"
+    ],
+    "english_parts_of_speech": {
+      "stocking": "noun"
+    }
   },
   {
     "id": 768,
@@ -108659,7 +111522,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from ejqengoc; validator issues: invalid character 'j' at position 1",
     "english_keys": [
       "stick"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stick": "noun"
+    }
   },
   {
     "id": 4476,
@@ -108822,7 +111688,10 @@
     "notes": null,
     "english_keys": [
       "nail"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "nail": "noun"
+    }
   },
   {
     "id": 9927,
@@ -108934,7 +111803,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from zuxuwu; validator issues: invalid character 'w' at position 4",
     "english_keys": [
       "letter"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "letter": "noun"
+    }
   },
   {
     "id": 2260,
@@ -109113,7 +111985,10 @@
     "notes": null,
     "english_keys": [
       "credit"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "credit": "noun"
+    }
   },
   {
     "id": 3039,
@@ -109125,7 +112000,10 @@
     "notes": null,
     "english_keys": [
       "account"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "account": "noun"
+    }
   },
   {
     "id": 2018,
@@ -109227,7 +112105,10 @@
     "english_keys": [
       "price",
       "value"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "price": "noun"
+    }
   },
   {
     "id": 2931,
@@ -109309,7 +112190,10 @@
     "english_keys": [
       "gain",
       "profit"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "profit": "noun"
+    }
   },
   {
     "id": 9965,
@@ -109358,7 +112242,10 @@
     "english_keys": [
       "levy",
       "tax"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tax": "noun"
+    }
   },
   {
     "id": 2369,
@@ -109383,7 +112270,10 @@
     "english_keys": [
       "business",
       "commerce"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "business": "noun"
+    }
   },
   {
     "id": 1983,
@@ -109396,7 +112286,10 @@
     "english_keys": [
       "company",
       "firm"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "company": "noun"
+    }
   },
   {
     "id": 3033,
@@ -109472,7 +112365,10 @@
     "english_keys": [
       "currency",
       "money"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "money": "noun"
+    }
   },
   {
     "id": 2096,
@@ -109485,7 +112381,10 @@
     "english_keys": [
       "deficit",
       "loss"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "loss": "noun"
+    }
   },
   {
     "id": 2137,
@@ -111153,7 +114052,10 @@
     "notes": null,
     "english_keys": [
       "act"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "act": "noun"
+    }
   },
   {
     "id": 4112,
@@ -111648,7 +114550,10 @@
     "notes": null,
     "english_keys": [
       "hanging"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hanging": "adjective"
+    }
   },
   {
     "id": 3944,
@@ -112368,7 +115273,10 @@
     "notes": null,
     "english_keys": [
       "smash"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "smash": "noun"
+    }
   },
   {
     "id": 4224,
@@ -112428,7 +115336,10 @@
     "notes": null,
     "english_keys": [
       "support"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "support": "noun"
+    }
   },
   {
     "id": 4088,
@@ -113827,7 +116738,10 @@
     "english_keys": [
       "even",
       "stranger\""
-    ]
+    ],
+    "english_parts_of_speech": {
+      "even": "adverb"
+    }
   },
   {
     "id": 1784,
@@ -114526,7 +117440,10 @@
     "english_keys": [
       "bent",
       "crooked"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bent": "adjective"
+    }
   },
   {
     "id": 5771,
@@ -116215,7 +119132,10 @@
     "notes": null,
     "english_keys": [
       "parallel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "parallel": "adjective"
+    }
   },
   {
     "id": 5971,
@@ -116671,7 +119591,10 @@
     "notes": null,
     "english_keys": [
       "reaction"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "reaction": "noun"
+    }
   },
   {
     "id": 5997,
@@ -116923,7 +119846,10 @@
     "notes": null,
     "english_keys": [
       "pump"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pump": "noun"
+    }
   },
   {
     "id": 6246,
@@ -117900,7 +120826,10 @@
     "notes": null,
     "english_keys": [
       "secretary"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "secretary": "noun"
+    }
   },
   {
     "id": 6184,
@@ -118242,7 +121171,10 @@
     "notes": null,
     "english_keys": [
       "list"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "list": "noun"
+    }
   },
   {
     "id": 6021,
@@ -118290,7 +121222,10 @@
     "notes": null,
     "english_keys": [
       "shelf"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shelf": "noun"
+    }
   },
   {
     "id": 5876,
@@ -118547,7 +121482,10 @@
     "notes": null,
     "english_keys": [
       "quality"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "quality": "noun"
+    }
   },
   {
     "id": 5631,
@@ -119034,7 +121972,10 @@
     "english_keys": [
       "rail",
       "track"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rail": "noun"
+    }
   },
   {
     "id": 5704,
@@ -119192,7 +122133,10 @@
     "english_keys": [
       "arrangement",
       "organization"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "organization": "noun"
+    }
   },
   {
     "id": 5865,
@@ -119597,7 +122541,10 @@
     "english_keys": [
       "refuse",
       "waste"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "waste": "noun"
+    }
   },
   {
     "id": 5917,
@@ -119635,7 +122582,10 @@
       "aid",
       "assistance",
       "help"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "help": "noun"
+    }
   },
   {
     "id": 6202,
@@ -119845,7 +122795,10 @@
       "father",
       "lord",
       "sire"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "father": "noun"
+    }
   },
   {
     "id": 5848,
@@ -120162,7 +123115,10 @@
     "english_keys": [
       "declaration",
       "statement"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "statement": "noun"
+    }
   },
   {
     "id": 5843,

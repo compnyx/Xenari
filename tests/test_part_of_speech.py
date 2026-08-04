@@ -185,7 +185,7 @@ def test_canon_pos_is_exposed_by_queries_export_audit_and_doctor(xenari):
 
     exported = {row["root"]: row for row in json.loads(xenari.db.export_json())}
     assert exported["toq"]["english_parts_of_speech"]["see"] == "verb"
-    assert "eye" not in exported["toq"]["english_parts_of_speech"]
+    assert exported["toq"]["english_parts_of_speech"]["eye"] == "noun"
 
     audit = xenari.db.audit(limit=0)
     assert "POS schema present: yes" in audit
@@ -197,11 +197,11 @@ def test_canon_pos_is_exposed_by_queries_export_audit_and_doctor(xenari):
 
 def test_common_grammar_keys_do_not_resolve_through_compound_glosses(xenari):
     expected = {
-        "to": None,
-        "of": None,
-        "in": None,
+        "to": "fa",
+        "of": "po",
+        "in": "na",
         "into": None,
-        "through": None,
+        "through": "droqe",
         "has": "xrong",
         "have": "xrong",
         "own": "xrong",
@@ -216,6 +216,13 @@ def test_common_grammar_keys_do_not_resolve_through_compound_glosses(xenari):
     for english_key, root in expected.items():
         resolved, _meaning = xenari.lookup(english_key)
         assert resolved == root
+
+
+def test_pos_aware_lookup_preserves_homographic_ogden_senses(xenari):
+    assert xenari.lookup("bite", part_of_speech="verb")[0] == "qruq'"
+    assert xenari.lookup("bite", part_of_speech="noun")[0] == "krap"
+    assert xenari.lookup("mine", part_of_speech="pronoun")[0] == "neq"
+    assert xenari.lookup("mine", part_of_speech="noun")[0] == "puqu"
 
 
 def test_same_schema_open_is_stable_and_future_schema_is_rejected(tmp_path):

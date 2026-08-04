@@ -119,7 +119,8 @@ class Xenari:
         )
         for row in self.db.conn.execute(
             f"""SELECT english_key, root, context_note, {pos_column}
-                FROM english_map JOIN roots ON roots.id = english_map.root_id"""
+                FROM english_map JOIN roots ON roots.id = english_map.root_id
+                ORDER BY english_map.id"""
         ):
             key = row["english_key"].lower()
             if key not in self.english_to_root:

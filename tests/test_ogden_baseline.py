@@ -23,21 +23,20 @@ def test_ogden_source_slots_and_approved_mappings_are_verified(xenari):
         "normalized_slot_sha256": "8f9be7cf6fbbcb82b24ed5cdf38e9fa548ad74cb3b7e1119256cbc759aeaad03",
     }
     assert report["coverage"]["statuses"] == {
-        "approved": 161,
-        "pending": 689,
+        "approved": 850,
+        "pending": 0,
         "unsupported": 0,
     }
-    assert report["coverage"]["direct_mapping_forms"] >= 10
-    assert report["coverage"]["pos_matched_forms"] >= 10
+    assert report["coverage"]["direct_mapping_forms"] == 852
+    assert report["coverage"]["pos_matched_forms"] == 852
     assert report["approved_failures"] == []
     assert report["errors"] == []
     assert report["ok"]
 
 
-def test_ogden_strict_mode_exposes_the_remaining_review_queue(xenari):
+def test_ogden_strict_mode_accepts_the_completed_review_queue(xenari):
     report = xenari.ogden_baseline_report(strict=True)
 
-    assert not report["ok"]
+    assert report["ok"]
     assert report["errors"] == []
-    assert len(report["strict_blockers"]) == 689
-    assert "operations-006" in report["strict_blockers"]
+    assert report["strict_blockers"] == []

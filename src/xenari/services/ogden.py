@@ -146,7 +146,9 @@ class OgdenBaselineMixin:
                     approved_failures.append(
                         f"{slot_id}: {form!r} lacks direct {expected_pos} mapping to {root}"
                     )
-                selected, _meaning = self.lookup(form)
+                selected, _meaning = self.lookup(
+                    form, part_of_speech=expected_pos
+                )
                 if selected != root:
                     approved_failures.append(
                         f"{slot_id}: lookup {form!r} selected {selected!r}, expected {root!r}"
