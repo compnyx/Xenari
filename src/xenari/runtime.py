@@ -16,16 +16,21 @@ from .runtime_tables import (
     BASE6_PLACE_ROOT,
     ENGLISH_CONTRACTIONS,
     ENGLISH_MATH_OPERATORS,
-    FORWARD_PREFERRED_BY_PART_OF_SPEECH,
+    FORWARD_PREFERRED,
+    LOOKUP_PREFERRED_BY_PART_OF_SPEECH,
     MATH_OPERATOR_ROOTS,
+    REVERSE_PLURAL_NOUN_ROOTS,
     REVERSE_PREFERRED,
+    REVERSE_PREFERRED_BY_PART_OF_SPEECH,
     REVERSE_PRONOUNS,
+    REVERSE_VERB_INFLECTIONS,
     SENTENCE_FINAL_TEMPORALS,
     TEMPORAL_GLOSSES,
+    TRANSLATION_PREFERRED_BY_PART_OF_SPEECH,
 )
 
 RUNTIME_SCHEMA = "xenari-runtime"
-RUNTIME_SCHEMA_VERSION = 2
+RUNTIME_SCHEMA_VERSION = 4
 PACKAGED_RUNTIME = files("xenari").joinpath("data").joinpath("xenari-runtime.json")
 
 PART_OF_SPEECH_BROWSER_CODES = {
@@ -65,15 +70,33 @@ def build_runtime_contract(grammar: GrammarConfig = DEFAULT_GRAMMAR) -> dict[str
             "sentence_final_temporals": dict(sorted(SENTENCE_FINAL_TEMPORALS.items())),
         },
         "forward": {
-            "preferred_by_part_of_speech": {
+            "preferred": dict(sorted(FORWARD_PREFERRED.items())),
+            "lookup_preferred_by_part_of_speech": {
                 part_of_speech: dict(sorted(preferences.items()))
                 for part_of_speech, preferences in sorted(
-                    FORWARD_PREFERRED_BY_PART_OF_SPEECH.items()
+                    LOOKUP_PREFERRED_BY_PART_OF_SPEECH.items()
+                )
+            },
+            "translation_preferred_by_part_of_speech": {
+                part_of_speech: dict(sorted(preferences.items()))
+                for part_of_speech, preferences in sorted(
+                    TRANSLATION_PREFERRED_BY_PART_OF_SPEECH.items()
                 )
             },
         },
         "reverse": {
             "preferred": dict(sorted(REVERSE_PREFERRED.items())),
+            "preferred_by_part_of_speech": {
+                part_of_speech: dict(sorted(preferences.items()))
+                for part_of_speech, preferences in sorted(
+                    REVERSE_PREFERRED_BY_PART_OF_SPEECH.items()
+                )
+            },
+            "plural_noun_roots": sorted(REVERSE_PLURAL_NOUN_ROOTS),
+            "verb_inflections": {
+                root: dict(sorted(forms.items()))
+                for root, forms in sorted(REVERSE_VERB_INFLECTIONS.items())
+            },
             "pronouns": {
                 root: dict(sorted(forms.items()))
                 for root, forms in sorted(REVERSE_PRONOUNS.items())

@@ -5,8 +5,8 @@ from typing import List, Tuple
 
 from ..runtime_tables import (
     ENGLISH_CONTRACTIONS,
-    FORWARD_PREFERRED_BY_PART_OF_SPEECH,
     SENTENCE_FINAL_TEMPORALS,
+    TRANSLATION_PREFERRED_BY_PART_OF_SPEECH,
 )
 
 
@@ -281,7 +281,7 @@ class EnglishPreprocessingMixin:
     def _known_verb_root(self, word: str):
         """Resolve a real verb root, including common English inflections."""
         clean = word.lower().strip()
-        preferred = FORWARD_PREFERRED_BY_PART_OF_SPEECH["verb"].get(clean)
+        preferred = TRANSLATION_PREFERRED_BY_PART_OF_SPEECH["verb"].get(clean)
         if preferred:
             return preferred
         reviewed_overrides = {

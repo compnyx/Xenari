@@ -109,11 +109,11 @@ class ModifierTranslationMixin:
                 # `one` remains the ordinary quantifier `fqam` above. Other
                 # numerals use productive base-6 composition (`six` -> ca xang).
                 number_parts = self._base6_number_parts(value)
-            elif quality_root := self._quality_root(word):
-                qualities.append(quality_root)
             elif word in superlative_roots and not saw_superlative:
                 qualities.append(superlative_roots[word])
                 saw_superlative = True
+            elif quality_root := self._quality_root(word):
+                qualities.append(quality_root)
             else:
                 return None
 

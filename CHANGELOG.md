@@ -5,25 +5,50 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Completed the common-English mapping review by resolving all 9,325 remaining
+  untyped mappings: 8,468 received reviewed sense-level POS tags, 347 malformed
+  or fragmentary mappings were replaced with whole concepts, and 510 invalid
+  mappings were deleted. The atomic batch also added 341 deliberate mappings:
+  two outputs required by split replacements, 133 reviewed runtime mappings,
+  132 curated unique aliases for raw matching shortages, and 48 sense aliases
+  required to preserve established default choices while giving every root a
+  forward-owned reverse head, plus 25 aliases required by the pinned legacy POS
+  selector and the narrower `living human` alias.
+- The canon now contains 9,990 roots and 11,630 English mappings. Every mapping
+  has an explicit part of speech, and all 9,888 mapped roots participate in the
+  verified English → Xenari → English lexical reversibility contract.
+- Promoted the shared Python/browser runtime contract to schema v4. Default
+  lookup, POS-specific lookup, translation-role selection, and preferred
+  reverse heads are now independent reviewed choices, so POS classifies a sense
+  without accidentally changing canonical or grammatical priority. All 10,061
+  canonical root/POS groups now also have a shared reverse-role surface; verb
+  roles use reviewed lemmas or finite `be` phrases, while 853 reviewed plural
+  noun/proper-noun heads make the explicit plural marker idempotent. The same
+  contract now carries exact third-person and past phrases for all 2,388 verb
+  roots, replacing divergent Python/browser heuristics and correcting 309 past
+  forms plus three third-person forms against independently reviewed
+  LemmInflect and UniMorph evidence.
 - Reviewed all 1,028 structurally bijective, previously untyped mappings in
   nine legacy noun/adjective/verb category variants. Added 1,000 intentional
   sense-level annotations (516 nouns, 267 verbs, 189 adjectives, 23 adverbs,
   four numerals, and one particle) and recorded 28 exact semantic deferrals;
-  the untyped queue is now 9,325. The packaged v3 review fixture pins the
-  selection hash, category/POS totals, overrides, and deferral reasons.
+  this intermediate pass reduced the untyped queue from 10,325 to 9,325. The
+  packaged v3 review fixture pins the selection hash, category/POS totals,
+  overrides, and deferral reasons.
 - Added an atomic mapping-level POS batch API with one pre-mutation backup,
   one transaction, exact row-count verification, and rollback on mismatch.
   Added 16 shared POS-specific forward preferences so POS classifies each
   canonical sense while Python and browser sentence translation deliberately
-  retain the established verb root. Runtime contract schema v2 now carries
-  those preferences and rejects malformed or unknown POS tables.
+  retains the established verb root. This intermediate schema-v2 preference
+  contract is superseded by the schema-v4 selection model above.
 - Completed a mapping-level review of all 199 English senses in ten legacy
   POS-labelled categories. Added 140 safe sense annotations, retained 13
   established annotations, and recorded 46 exact deferrals where a bare gloss,
-  homograph, or competing canonical root still needs more context; the untyped
-  queue is now 10,325. Added 12 shared reverse-preferred headwords that are
-  themselves POS-tagged and resolve back to the same root, keeping Python and
-  browser reversals intentional instead of allowing shortest-alias drift.
+  homograph, or competing canonical root needed more context; this pass reduced
+  the untyped queue from 10,465 to 10,325. Added 12 shared reverse-preferred
+  headwords that are themselves POS-tagged and resolve back to the same root,
+  keeping Python and browser reversals intentional instead of allowing
+  shortest-alias drift.
 - Approved 49 further unambiguous Ogden picturable nouns (`army`, `bird`,
   `boy`, `button`, `card`, `cart`, `carriage`, `cat`, `chain`, `chest`,
   `chin`, `church`, `circle`, `clock`, `coat`, `collar`, `comb`, `cord`,

@@ -2,7 +2,7 @@
 
 import re
 from collections import Counter
-from typing import Iterable, Optional
+from typing import Iterable, Mapping, Optional
 
 from ..grammar import DEFAULT_GRAMMAR
 
@@ -414,6 +414,317 @@ class PartOfSpeechMixin:
             "applied": applied,
             "unchanged": unchanged,
             "backup": str(backup_path) if backup_path is not None else None,
+        }
+
+    def apply_mapping_curation_batch(
+        self,
+        actions: Iterable[Mapping[str, object]],
+        *,
+        operation: str = "mapping-curation-batch",
+    ) -> dict[str, object]:
+        """Atomically apply exact mapping-level POS curation actions.
+
+        The batch deliberately operates on ``english_map`` rows only; roots
+        are never deleted or rewritten. Every mutation names the exact source
+        English key, root, and expected current POS (``None`` by default).
+        Supported action names are:
+
+        - ``tag`` / ``tag_primary``
+        - ``delete`` / ``delete_mapping``
+        - ``rename_and_tag`` / ``rename_mapping_and_tag``
+        - ``merge``, ``normalize``, or ``refine`` (the same exact rename+tag)
+        - ``add_mapping`` / ``add_split_mapping`` (requires an exact
+          ``source_english_key``)
+
+        Rename actions use ``new_english_key`` (``replacement_english_key``
+        is accepted for fixture manifests). Split actions add a separately
+        tagged mapping to an existing root. Its source row is a snapshot
+        anchor and may itself be tagged, renamed, or removed by the same
+        atomic batch; the root is never removed.
+        The complete plan is validated both before the backup and again under
+        ``BEGIN IMMEDIATE``; any mismatch or SQLite error rolls back the whole
+        transaction.
+        """
+        if self.read_only:
+            raise RuntimeError("cannot curate mappings on a read-only database")
+        if not self._has_part_of_speech_column():
+            raise RuntimeError("part-of-speech schema is missing")
+
+        aliases = {
+            "tag": "tag",
+            "tag_mapping": "tag",
+            "tag_primary": "tag",
+            "delete": "delete",
+            "delete_mapping": "delete",
+            "rename_and_tag": "rename",
+            "rename_mapping_and_tag": "rename",
+            "merge": "rename",
+            "merge_mapping": "rename",
+            "normalize": "rename",
+            "normalize_mapping": "rename",
+            "refine": "rename",
+            "refine_mapping": "rename",
+            "replace": "rename",
+            "replace_mapping": "rename",
+            "add_mapping": "split",
+            "add_split_mapping": "split",
+            "split_mapping": "split",
+        }
+
+        def clean_key(value: object, field: str) -> str:
+            if not isinstance(value, str):
+                raise ValueError(f"mapping curation {field} must be a string")
+            cleaned = value.lower().strip()
+            if not cleaned:
+                raise ValueError(f"mapping curation {field} cannot be empty")
+            return cleaned
+
+        def clean_root(value: object) -> str:
+            if not isinstance(value, str):
+                raise ValueError("mapping curation root must be a string")
+            cleaned = value.strip()
+            if not cleaned:
+                raise ValueError("mapping curation root cannot be empty")
+            return cleaned
+
+        def clean_pos(
+            value: object, field: str, *, allow_none: bool = False
+        ) -> Optional[str]:
+            if value is None:
+                if allow_none:
+                    return None
+                raise ValueError(f"mapping curation {field} cannot be unknown")
+            if not isinstance(value, str):
+                raise ValueError(
+                    f"mapping curation {field} must be a string or null"
+                )
+            normalized = normalize_part_of_speech(value)
+            if normalized is None and not allow_none:
+                raise ValueError(f"mapping curation {field} cannot be unknown")
+            return normalized
+
+        normalized_actions: list[dict[str, object]] = []
+        for index, raw in enumerate(actions):
+            if not isinstance(raw, Mapping):
+                raise ValueError(
+                    f"mapping curation action {index} must be a mapping"
+                )
+            requested = raw.get("action")
+            if not isinstance(requested, str) or requested not in aliases:
+                raise ValueError(
+                    f"unknown mapping curation action {requested!r} at index {index}"
+                )
+            kind = aliases[requested]
+            root = clean_root(raw.get("root"))
+            expected = clean_pos(
+                raw.get("expected_part_of_speech"),
+                "expected_part_of_speech",
+                allow_none=True,
+            )
+
+            if kind == "split":
+                source_key = clean_key(
+                    raw.get("source_english_key"), "source_english_key"
+                )
+                target_value = raw.get("new_english_key", raw.get("english_key"))
+                target_key = clean_key(target_value, "new_english_key")
+                part_of_speech = clean_pos(
+                    raw.get(
+                        "part_of_speech",
+                        raw.get("replacement_pos", raw.get("pos")),
+                    ),
+                    "part_of_speech",
+                )
+                context_note = raw.get("context_note")
+                if context_note is not None and not isinstance(context_note, str):
+                    raise ValueError(
+                        "mapping curation context_note must be a string or null"
+                    )
+                normalized_actions.append(
+                    {
+                        "kind": kind,
+                        "requested_action": requested,
+                        "root": root,
+                        "source_key": source_key,
+                        "target_key": target_key,
+                        "part_of_speech": part_of_speech,
+                        "expected": expected,
+                        "context_note": context_note,
+                    }
+                )
+                continue
+
+            source_key = clean_key(raw.get("english_key"), "english_key")
+            item: dict[str, object] = {
+                "kind": kind,
+                "requested_action": requested,
+                "root": root,
+                "source_key": source_key,
+                "expected": expected,
+            }
+            if kind in {"tag", "rename"}:
+                part_of_speech = clean_pos(
+                    raw.get(
+                        "part_of_speech",
+                        raw.get("replacement_pos", raw.get("pos")),
+                    ),
+                    "part_of_speech",
+                )
+                item["part_of_speech"] = part_of_speech
+                if kind == "tag" and expected == part_of_speech:
+                    raise ValueError(
+                        f"mapping curation tag is a no-op: {source_key!r} -> {root!r}"
+                    )
+            if kind == "rename":
+                target_value = raw.get(
+                    "new_english_key", raw.get("replacement_english_key")
+                )
+                target_key = clean_key(target_value, "new_english_key")
+                if target_key == source_key:
+                    raise ValueError(
+                        f"mapping curation rename is a no-op: {source_key!r} -> {root!r}"
+                    )
+                item["target_key"] = target_key
+            normalized_actions.append(item)
+
+        if not normalized_actions:
+            return {
+                "action_count": 0,
+                "applied": 0,
+                "changed_rows": 0,
+                "counts": {},
+                "backup": None,
+            }
+
+        def resolve_plan() -> list[dict[str, object]]:
+            plan: list[dict[str, object]] = []
+            mutated_sources: dict[tuple[str, str], str] = {}
+            created_targets: set[tuple[str, str]] = set()
+            for item in normalized_actions:
+                root = str(item["root"])
+                source_key = str(item["source_key"])
+                root_row = self.conn.execute(
+                    "SELECT id FROM roots WHERE root = ?", (root,)
+                ).fetchone()
+                if root_row is None:
+                    raise ValueError(f"missing mapping curation root: {root!r}")
+                root_id = root_row["id"]
+                source = self.conn.execute(
+                    """SELECT id, part_of_speech FROM english_map
+                       WHERE english_key = ? AND root_id = ?""",
+                    (source_key, root_id),
+                ).fetchone()
+                if source is None:
+                    raise ValueError(
+                        f"missing mapping curation source: {source_key!r} -> {root!r}"
+                    )
+                expected = item["expected"]
+                if source["part_of_speech"] != expected:
+                    raise ValueError(
+                        f"mapping curation source mismatch: {source_key!r} -> {root!r} "
+                        f"is {source['part_of_speech']!r}, expected {expected!r}"
+                    )
+
+                planned = dict(item)
+                planned["root_id"] = root_id
+                planned["source_id"] = source["id"]
+                source_pair = (source_key, root)
+                if item["kind"] == "split":
+                    # A split only needs the source to establish the exact
+                    # root and pre-batch POS. The source row may have its own
+                    # terminal decision in this transaction.
+                    pass
+                else:
+                    if source_pair in mutated_sources:
+                        raise ValueError(
+                            f"duplicate mapping curation source: {source_key!r} -> {root!r}"
+                        )
+                    mutated_sources[source_pair] = str(item["kind"])
+
+                if item["kind"] in {"rename", "split"}:
+                    target_key = str(item["target_key"])
+                    target_pair = (target_key, root)
+                    if target_pair in created_targets:
+                        raise ValueError(
+                            f"duplicate mapping curation target: {target_key!r} -> {root!r}"
+                        )
+                    created_targets.add(target_pair)
+                    existing = self.conn.execute(
+                        """SELECT id FROM english_map
+                           WHERE english_key = ? AND root_id = ?""",
+                        (target_key, root_id),
+                    ).fetchone()
+                    if existing is not None:
+                        raise ValueError(
+                            f"conflicting mapping curation target already exists: "
+                            f"{target_key!r} -> {root!r}"
+                        )
+                plan.append(planned)
+            return plan
+
+        # Fail cheaply before producing a backup, then repeat the exact checks
+        # under a write lock so another connection cannot invalidate the plan.
+        resolve_plan()
+        backup_path = self._backup_before_mutation(operation)
+        before_changes = self.conn.total_changes
+        try:
+            self.conn.execute("BEGIN IMMEDIATE")
+            plan = resolve_plan()
+            for item in plan:
+                kind = item["kind"]
+                if kind == "tag":
+                    cursor = self.conn.execute(
+                        "UPDATE english_map SET part_of_speech = ? WHERE id = ?",
+                        (item["part_of_speech"], item["source_id"]),
+                    )
+                elif kind == "delete":
+                    cursor = self.conn.execute(
+                        "DELETE FROM english_map WHERE id = ?", (item["source_id"],)
+                    )
+                elif kind == "rename":
+                    cursor = self.conn.execute(
+                        """UPDATE english_map
+                           SET english_key = ?, part_of_speech = ?
+                           WHERE id = ?""",
+                        (
+                            item["target_key"],
+                            item["part_of_speech"],
+                            item["source_id"],
+                        ),
+                    )
+                else:
+                    cursor = self.conn.execute(
+                        """INSERT INTO english_map
+                           (english_key, root_id, context_note, part_of_speech)
+                           VALUES (?, ?, ?, ?)""",
+                        (
+                            item["target_key"],
+                            item["root_id"],
+                            item["context_note"],
+                            item["part_of_speech"],
+                        ),
+                    )
+                if cursor.rowcount != 1:
+                    raise RuntimeError(
+                        f"mapping curation {kind} changed {cursor.rowcount} rows; expected 1"
+                    )
+            changed_rows = self.conn.total_changes - before_changes
+            if changed_rows != len(plan):
+                raise RuntimeError(
+                    f"mapping curation changed {changed_rows} rows; expected {len(plan)}"
+                )
+            self.conn.commit()
+        except Exception:
+            self.conn.rollback()
+            raise
+
+        counts = Counter(str(item["kind"]) for item in normalized_actions)
+        return {
+            "action_count": len(normalized_actions),
+            "applied": len(normalized_actions),
+            "changed_rows": changed_rows,
+            "counts": dict(sorted(counts.items())),
+            "backup": str(backup_path),
         }
 
     def parts_of_speech_for_root(self, root: str) -> list[str]:

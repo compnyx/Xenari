@@ -34,7 +34,7 @@ where = ["src"]
 version = {attr = "xenari._version.__version__"}
 
 [tool.setuptools.package-data]
-xenari = ["data/xenari.db", "data/translator-fixtures.json", "data/xenari-runtime.json", "data/ogden-basic-english-850.json", "data/core-vocabulary-pos-v1.json", "data/common-english-pos-v2.json", "data/common-english-pos-v3.json"]
+xenari = ["data/xenari.db", "data/translator-fixtures.json", "data/xenari-runtime.json", "data/ogden-basic-english-850.json", "data/core-vocabulary-pos-v1.json", "data/common-english-pos-v2.json", "data/common-english-pos-v3.json", "data/common-english-pos-v4.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

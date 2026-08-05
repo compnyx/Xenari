@@ -5,6 +5,7 @@ from importlib.resources import files
 from xenari.paths import (
     COMMON_ENGLISH_POS_V2,
     COMMON_ENGLISH_POS_V3,
+    COMMON_ENGLISH_POS_V4,
     CORE_VOCABULARY_POS,
     OGDEN_BASIC_ENGLISH,
     RUNTIME_CONTRACT,
@@ -67,6 +68,17 @@ def test_common_english_pos_v3_fixture_is_available_as_package_data():
     assert fixture["scope"]["deferred_mapping_count"] == 28
 
 
+def test_common_english_pos_v4_fixture_is_available_as_package_data():
+    assert COMMON_ENGLISH_POS_V4.is_file()
+    fixture = json.loads(COMMON_ENGLISH_POS_V4.read_text(encoding="utf-8"))
+    assert fixture["schema"] == "xenari.common-english-pos.v4"
+    assert fixture["scope"]["source_mapping_count"] == 9325
+    assert fixture["verification"]["unknown_part_of_speech"] == 0
+    assert fixture["verification"]["reversible_mapped_roots"] == fixture[
+        "verification"
+    ]["mapped_roots"]
+
+
 def test_packaged_canon_contains_migrated_part_of_speech_metadata():
     resource = files("xenari").joinpath("data", "xenari.db")
 
@@ -76,7 +88,11 @@ def test_packaged_canon_contains_migrated_part_of_speech_metadata():
         annotated = conn.execute(
             "SELECT COUNT(*) FROM english_map WHERE part_of_speech IS NOT NULL"
         ).fetchone()[0]
+        unknown = conn.execute(
+            "SELECT COUNT(*) FROM english_map WHERE part_of_speech IS NULL"
+        ).fetchone()[0]
         assert annotated > 0
+        assert unknown == 0
 
 
 def test_repository_outputs_are_resolved_explicitly():

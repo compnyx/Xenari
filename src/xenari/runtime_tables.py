@@ -5,6 +5,8 @@ maintain hand-copied versions.  Read-only mappings make accidental mutation
 during a translation impossible while preserving ordinary mapping semantics.
 """
 
+import json
+from importlib.resources import files
 from types import MappingProxyType
 from typing import Mapping, TypeVar
 
@@ -16,6 +18,62 @@ BASE6_PLACE_ROOT = "xang"
 
 def _immutable(values: Mapping[_K, _V]) -> Mapping[_K, _V]:
     return MappingProxyType(dict(values))
+
+
+def _load_v4_preferences() -> dict[str, object]:
+    """Load the generated full-lexicon preference layer when packaged."""
+    resource = files("xenari").joinpath("data").joinpath("common-english-pos-v4.json")
+    try:
+        payload = json.loads(resource.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        # The source tree can build the runtime architecture before the final
+        # atomic curation fixture is generated. Packaging tests require the
+        # resource once v4 ships.
+        return {}
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"cannot load common-English POS v4 preferences: {exc}") from exc
+    if payload.get("schema") != "xenari.common-english-pos.v4":
+        raise RuntimeError("common-English POS v4 fixture has an unsupported schema")
+    preferences = payload.get("preferences")
+    if not isinstance(preferences, dict):
+        raise RuntimeError("common-English POS v4 fixture is missing preferences")
+    return preferences
+
+
+def _string_map(value: object, label: str) -> dict[str, str]:
+    if not isinstance(value, dict):
+        raise RuntimeError(f"common-English POS v4 {label} must be an object")
+    if any(
+        not isinstance(key, str)
+        or not key
+        or not isinstance(item, str)
+        or not item
+        for key, item in value.items()
+    ):
+        raise RuntimeError(
+            f"common-English POS v4 {label} must map non-empty strings"
+        )
+    return dict(value)
+
+
+def _nested_string_maps(value: object, label: str) -> dict[str, dict[str, str]]:
+    if not isinstance(value, dict):
+        raise RuntimeError(f"common-English POS v4 {label} must be an object")
+    return {
+        key: _string_map(item, f"{label}.{key}") for key, item in value.items()
+    }
+
+
+def _string_list(value: object, label: str) -> list[str]:
+    if not isinstance(value, list) or any(
+        not isinstance(item, str) or not item for item in value
+    ):
+        raise RuntimeError(
+            f"common-English POS v4 {label} must be an array of non-empty strings"
+        )
+    if len(value) != len(set(value)):
+        raise RuntimeError(f"common-English POS v4 {label} must not contain duplicates")
+    return list(value)
 
 
 BASE6_DIGIT_ROOTS: Mapping[int, str] = _immutable(
@@ -176,11 +234,28 @@ TEMPORAL_GLOSSES: Mapping[str, str] = _immutable(
     }
 )
 
+# Default lexical selection is independent of POS.  Every colliding English
+# key can name several intentional senses, while ordinary context-free lookup
+# still needs one deterministic root.
+FORWARD_PREFERRED: Mapping[str, str] = _immutable(
+    {
+        "language": "zuqra",
+    }
+)
+
+# POS-aware lexical selection resolves collisions within one reviewed part of
+# speech.  Values are populated by the complete common-English curation
+# fixture; keeping this table distinct prevents translation-role preferences
+# from pretending that a mapping exists on the selected root.
+LOOKUP_PREFERRED_BY_PART_OF_SPEECH: Mapping[str, Mapping[str, str]] = (
+    MappingProxyType({})
+)
+
 # English keys can name an intentional canonical sense without being the
 # translator's unmarked reading.  Keep selection separate from POS: POS says
 # that ``clutching -> roqni`` is a verb sense, while this table preserves the
 # established sentence-translation root ``xrics`` for bare "clutching".
-FORWARD_PREFERRED_BY_PART_OF_SPEECH: Mapping[str, Mapping[str, str]] = (
+TRANSLATION_PREFERRED_BY_PART_OF_SPEECH: Mapping[str, Mapping[str, str]] = (
     MappingProxyType(
         {
             "verb": _immutable(
@@ -206,6 +281,10 @@ FORWARD_PREFERRED_BY_PART_OF_SPEECH: Mapping[str, Mapping[str, str]] = (
         }
     )
 )
+
+# Compatibility name for callers of the schema-v2 runtime table.  New code
+# should say whether it wants lexical or translation-role selection.
+FORWARD_PREFERRED_BY_PART_OF_SPEECH = TRANSLATION_PREFERRED_BY_PART_OF_SPEECH
 
 REVERSE_PRONOUNS: Mapping[str, Mapping[str, str]] = MappingProxyType(
     {
@@ -307,3 +386,109 @@ REVERSE_PREFERRED: Mapping[str, str] = _immutable(
         "zukaqop": "disconnects",
     }
 )
+
+# Raw reverse preferences preserve the bijective display key. Grammatical
+# slots select a separately reviewed surface for the root's requested POS;
+# verbs, for example, use a lemma while nouns retain intentional lexical
+# number. The v4 fixture replaces this empty bootstrap table in releases.
+REVERSE_PREFERRED_BY_PART_OF_SPEECH: Mapping[str, Mapping[str, str]] = (
+    MappingProxyType({})
+)
+
+# Noun role heads that already carry plural or invariant number. An explicit
+# Xenari `ha` is idempotent for these roots instead of producing `facilitieses`.
+REVERSE_PLURAL_NOUN_ROOTS: frozenset[str] = frozenset()
+
+# Full reviewed finite phrases for every v4 verb-role root. Keeping these in
+# the shared contract prevents Python and browser runtimes from maintaining
+# separate heuristic English conjugators.
+REVERSE_VERB_INFLECTIONS: Mapping[str, Mapping[str, str]] = MappingProxyType({})
+
+
+_V4_PREFERENCES = _load_v4_preferences()
+if _V4_PREFERENCES:
+    _v4_forward = _V4_PREFERENCES.get("forward")
+    _v4_reverse = _V4_PREFERENCES.get("reverse")
+    if not isinstance(_v4_forward, dict) or not isinstance(_v4_reverse, dict):
+        raise RuntimeError(
+            "common-English POS v4 preferences require forward and reverse objects"
+        )
+
+    FORWARD_PREFERRED = _immutable(
+        {
+            **FORWARD_PREFERRED,
+            **_string_map(_v4_forward.get("preferred"), "forward.preferred"),
+        }
+    )
+
+    _lookup_preferences = _nested_string_maps(
+        _v4_forward.get("lookup_preferred_by_part_of_speech"),
+        "forward.lookup_preferred_by_part_of_speech",
+    )
+    LOOKUP_PREFERRED_BY_PART_OF_SPEECH = MappingProxyType(
+        {
+            part_of_speech: _immutable(preferences)
+            for part_of_speech, preferences in _lookup_preferences.items()
+        }
+    )
+
+    _translation_preferences = {
+        part_of_speech: dict(preferences)
+        for part_of_speech, preferences in (
+            TRANSLATION_PREFERRED_BY_PART_OF_SPEECH.items()
+        )
+    }
+    for part_of_speech, preferences in _nested_string_maps(
+        _v4_forward.get("translation_preferred_by_part_of_speech"),
+        "forward.translation_preferred_by_part_of_speech",
+    ).items():
+        _translation_preferences.setdefault(part_of_speech, {}).update(preferences)
+    TRANSLATION_PREFERRED_BY_PART_OF_SPEECH = MappingProxyType(
+        {
+            part_of_speech: _immutable(preferences)
+            for part_of_speech, preferences in _translation_preferences.items()
+        }
+    )
+
+    REVERSE_PREFERRED = _immutable(
+        {
+            **REVERSE_PREFERRED,
+            **_string_map(_v4_reverse.get("preferred"), "reverse.preferred"),
+        }
+    )
+
+    _reverse_role_preferences = _nested_string_maps(
+        _v4_reverse.get("preferred_by_part_of_speech"),
+        "reverse.preferred_by_part_of_speech",
+    )
+    REVERSE_PREFERRED_BY_PART_OF_SPEECH = MappingProxyType(
+        {
+            part_of_speech: _immutable(preferences)
+            for part_of_speech, preferences in _reverse_role_preferences.items()
+        }
+    )
+    REVERSE_PLURAL_NOUN_ROOTS = frozenset(
+        _string_list(
+            _v4_reverse.get("plural_noun_roots"),
+            "reverse.plural_noun_roots",
+        )
+    )
+    _reverse_verb_inflections = _nested_string_maps(
+        _v4_reverse.get("verb_inflections"),
+        "reverse.verb_inflections",
+    )
+    for root, forms in _reverse_verb_inflections.items():
+        if set(forms) != {"past", "third_person"}:
+            raise RuntimeError(
+                f"common-English POS v4 reverse.verb_inflections.{root} "
+                "must contain exactly past and third_person"
+            )
+    REVERSE_VERB_INFLECTIONS = MappingProxyType(
+        {
+            root: _immutable(forms)
+            for root, forms in _reverse_verb_inflections.items()
+        }
+    )
+
+# Compatibility name must follow the optional v4 merge.
+FORWARD_PREFERRED_BY_PART_OF_SPEECH = TRANSLATION_PREFERRED_BY_PART_OF_SPEECH

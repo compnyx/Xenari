@@ -1,5 +1,10 @@
 """Focused Xenari behavior tests."""
 
+from xenari.runtime_tables import (
+    REVERSE_PREFERRED_BY_PART_OF_SPEECH,
+    REVERSE_VERB_INFLECTIONS,
+)
+
 from .support import load_fixtures
 
 
@@ -415,6 +420,18 @@ def test_curated_adjective_senses_drive_copulas_and_modifier_noun_phrases(xenari
     )
 
 
+def test_reverse_modifier_roles_mirror_browser_pos_priority(xenari):
+    assert xenari.reverse("ra nu mse cruq ka neq ta toq sa xo") == (
+        "I see much water"
+    )
+    assert xenari.reverse("ra nu zrenq qant ka neq ta toq sa xo") == (
+        "I see many dog"
+    )
+    assert xenari.reverse("ra nu zrenq qront ka neq ta toq sa xo") == (
+        "I see above dog"
+    )
+
+
 def test_reverse_possession_preserves_tense_and_subject_agreement(xenari):
     cases = {
         "ra nu brid ka vi zrenq ta xrong vi sa xo": "dog has hat",
@@ -424,6 +441,157 @@ def test_reverse_possession_preserves_tense_and_subject_agreement(xenari):
     }
     for source, expected in cases.items():
         assert xenari.reverse(source) == expected
+
+
+def test_reverse_possession_preserves_modified_and_plural_owner_phrases(xenari):
+    cases = {
+        "ra vi zrenq trungk po brid ka neq ta toq sa xo": (
+            "I see black dog's hat"
+        ),
+        "ra vi zrenq ha po brid ka neq ta toq sa xo": "I see dogs' hat",
+        "ra vi habdazluc ha po brid ka neq ta toq sa xo": (
+            "I see people's hat"
+        ),
+        "ra vi xuqha po brid ka neq ta toq sa xo": "I see children's hat",
+        "ra vi xuqha ha po brid ka neq ta toq sa xo": "I see children's hat",
+        "ra nu anmqu po brid ka neq ta toq sa xo": "I see facilities' hat",
+        "ra nu anmqu ha po brid ka neq ta toq sa xo": "I see facilities' hat",
+    }
+    for source, expected in cases.items():
+        assert xenari.reverse(source) == expected
+
+
+def test_reverse_normalizes_reviewed_surface_heads_before_inflection(xenari):
+    cases = {
+        "ka leq ta tyequga sa xo": "he/she/it rustles",
+        "ka leq ta tyequga du xo": "he/she/it usually rustles",
+        "ka neq ta tyequga lo xo": "I rustled",
+        "ka neq ta tyequga sa xo ngu": "I do not rustle",
+        "ka neq ta tyequga pe xo ngu": "I could not rustle",
+        "ka neq ta vru lo xo": "I tried",
+        "ka neq ta vru sa xo ngu": "I do not try",
+        "ka neq ta beg lo xo": "I made a choice",
+        "ka neq ta smofznib lo xo": "I managed affairs",
+        "ka neq ta snob lo xo": "I eventually stepped",
+        "ka neq ta hulsvaq lo xo": "I traveled across",
+        "ka neq ta zax lo xo": "I extended as far as",
+        "ta tyequga vi ko xo": "rustle!",
+        "ta tyequga vi ko xo ngu": "don't rustle!",
+    }
+    for source, expected in cases.items():
+        assert xenari.reverse(source) == expected
+
+
+def test_reverse_conjugates_reviewed_be_state_and_passive_role_heads(xenari):
+    cases = {
+        "ka neq ta hakar sa xo": "I am born",
+        "ka leq ta hakar sa xo": "he/she/it is born",
+        "ka leq ha ta envqapzi lo xo": "they were unarmed",
+        "ka neq ta pane ve xo": "I will be atomized",
+        "ka leq ta qno pe xo ngu": "he/she/it could not be unmoved",
+        "ka leq ta krelqngu sa xo ngu": (
+            "he/she/it is not unable to get laid"
+        ),
+        "ta shufmefh vi ko xo": "be untouched!",
+    }
+    for source, expected in cases.items():
+        assert xenari.reverse(source) == expected
+
+
+def test_every_reviewed_verb_role_uses_lemma_safe_auxiliary_paths(xenari):
+    render = xenari.translator._render_english_verb
+
+    assert set(REVERSE_VERB_INFLECTIONS) == set(
+        REVERSE_PREFERRED_BY_PART_OF_SPEECH["verb"]
+    )
+    for root, verb in REVERSE_PREFERRED_BY_PART_OF_SPEECH["verb"].items():
+        forms = REVERSE_VERB_INFLECTIONS[root]
+        present = render(
+            verb, root=root, tense="sa", negated=False, subject="I"
+        )
+        third_person = render(
+            verb, root=root, tense="sa", negated=False, subject="he/she/it"
+        )
+        past = render(verb, root=root, tense="lo", negated=False, subject="I")
+        past_negative = render(
+            verb, root=root, tense="lo", negated=True, subject="I"
+        )
+        future = render(
+            verb, root=root, tense="ve", negated=False, subject="I"
+        )
+        potential_negative = render(
+            verb,
+            root=root,
+            tense="pe",
+            negated=True,
+            subject="he/she/it",
+        )
+        command = render(
+            verb, root=root, tense="ko", negated=False, subject=""
+        )
+
+        assert third_person == forms["third_person"]
+        assert past == forms["past"]
+
+        if verb == "be" or verb.startswith("be "):
+            complement = "" if verb == "be" else verb.removeprefix("be ")
+            suffix = f" {complement}" if complement else ""
+            assert present == f"am{suffix}"
+            assert past_negative == f"was not{suffix}"
+            assert future == f"will be{suffix}"
+            assert potential_negative == f"could not be{suffix}"
+            assert command == verb
+        else:
+            assert present == verb
+            assert past_negative == f"did not {verb}"
+            assert future == f"will {verb}"
+            assert potential_negative == f"could not {verb}"
+            assert command == verb
+        assert "does not be " not in " ".join(
+            [present, past_negative, future, potential_negative, command]
+        )
+
+
+def test_reviewed_verb_inflections_replace_known_heuristic_failures(xenari):
+    cases = {
+        "ka leq ta cvernrok sa xo": "he/she/it plans",
+        "ka neq ta cvernrok lo xo": "I planned",
+        "ka neq ta hevu lo xo": "I jammed",
+        "ka neq ta ciksaqu lo xo": "I cut",
+        "ka neq ta cram lo xo": "I hid",
+        "ka neq ta koqarc lo xo": "I read",
+        "ka neq ta kanq lo xo": "I sought",
+        "ka leq ta slismunxat sa xo": "he/she/it whizzes",
+        "ka leq ta ketoh sa xo": "he/she/it boos",
+        "ka neq ta espek lo xo": "I shone",
+        "ka neq ta lon lo xo": "I hung",
+        "ka neq ta prelo lo xo": "I bid",
+        "ka neq ta clitqlap lo xo": "I lay",
+        "ka neq ta tasmqvofl lo xo": "I lied",
+        "ka neq ta qengtal lo xo": "I tailslid",
+        "ka neq ta qloxxrong lo xo": "I veil-bound",
+    }
+    for source, expected in cases.items():
+        assert xenari.reverse(source) == expected
+
+
+def test_reverse_plural_marker_is_idempotent_for_plural_preferred_heads(xenari):
+    assert xenari.reverse("ra nu anmqu ka neq ta toq sa xo") == (
+        "I see facilities"
+    )
+    assert xenari.reverse("ra nu anmqu ha ka neq ta toq sa xo") == (
+        "I see facilities"
+    )
+    assert xenari.reverse("ra nu cvipkib ha ka neq ta toq sa xo") == (
+        "I see californians"
+    )
+    assert xenari.reverse("ra nu buztora ha ka neq ta toq sa xo") == "I see buses"
+    assert xenari.reverse("ra nu kreng ha ka neq ta toq sa xo") == "I see lenses"
+    assert xenari.reverse("ra nu fuvlal ha ka neq ta toq sa xo") == "I see analyses"
+    assert xenari.reverse("ra nu qonhun ha ka neq ta toq sa xo") == "I see axes"
+    assert xenari.reverse("ra vi habdazluc ha ka neq ta toq sa xo") == "I see people"
+    assert xenari.reverse("ra nu brak ha ka neq ta toq sa xo") == "I see upper limbs"
+
 
 def test_reverse_autodetects_casual_roots_english_label_and_imperatives(xenari):
     cases = {

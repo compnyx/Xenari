@@ -81,6 +81,7 @@ class ReverseClause:
     goal: str = ""
     instrument: str = ""
     verb: str = ""
+    verb_root: str = ""
     interrogative: str = ""
     tense: str = "sa"
     negated: bool = False

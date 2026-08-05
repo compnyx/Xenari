@@ -1,6 +1,8 @@
 import re
 from typing import List, Optional, Tuple
 
+from ..runtime_tables import LOOKUP_PREFERRED_BY_PART_OF_SPEECH
+
 
 class LookupMixin:
     def lookup(
@@ -26,12 +28,19 @@ class LookupMixin:
                 (key, requested_pos),
             ).fetchall()
             if rows:
-                row = max(
-                    rows,
-                    key=lambda item: self.db._lookup_score(
-                        key, item["meaning"], item["context_note"]
-                    ),
+                preferred_root = LOOKUP_PREFERRED_BY_PART_OF_SPEECH.get(
+                    requested_pos, {}
+                ).get(key)
+                row = next(
+                    (item for item in rows if item["root"] == preferred_root), None
                 )
+                if row is None:
+                    row = max(
+                        rows,
+                        key=lambda item: self.db._lookup_score(
+                            key, item["meaning"], item["context_note"]
+                        ),
+                    )
                 return row["root"], self.lexicon.get(row["root"], "")
 
             # POS-aware callers use this path to resolve a particular sense,

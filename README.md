@@ -143,6 +143,9 @@ pytest -q
 `sync --site` resolves the site checkout from `--site-root`, then
 `XENARI_SITE_ROOT`, then `~/nyx-site`. It refreshes both the dictionary and
 the versioned Python/browser runtime contract.
+Runtime schema v4 exports raw lexical reverse heads separately from exhaustive
+POS-role surfaces and reviewed plural-NP metadata, so both runtimes make the
+same grammatical choice without changing the bijective lexical preference.
 
 ## Canon And Quality Rules
 
@@ -154,7 +157,7 @@ the versioned Python/browser runtime contract.
 - `baseline` pins Ogden's Basic English 850 source slots (852 accepted spelling
   forms) as the common-English coverage queue. A slot is approved only after
   its direct mapping, POS, preferred root, and sentence round-trip all agree;
-  `--strict` is the eventual zero-pending gate.
+  `--strict` enforces the completed zero-pending baseline.
 - Add focused regressions for grammar, parser, CLI, or validator behavior.
 - Keep the LLM reference compact; use the DB or generated JSON for vocabulary.
 

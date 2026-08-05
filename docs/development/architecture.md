@@ -10,6 +10,8 @@ canon. Generated dictionary JSON is derived and must not be edited by hand.
 - `src/xenari/data/xenari.db`: canonical vocabulary and metadata.
 - `src/xenari/data/translator-fixtures.json`: packaged Python/browser contract.
 - `src/xenari/data/xenari-runtime.json`: generated, packaged runtime tables.
+- `src/xenari/data/common-english-pos-v4.json`: reviewed mapping decisions and
+  lexical preference proof for the completed common-English POS pass.
 - `src/xenari/db`: database connection, schema, queries, and canon mutation.
 - `src/xenari/translate`: forward and reverse translation behavior.
 - `src/xenari/services`: focused lookup, health, export, curation, LLM, and gap workflows.
@@ -45,18 +47,26 @@ not falsely declared type-clean. Ruff, tests, parity, and coverage continue to
 cover the full package.
 
 - Python and browser translation use separate parsers but consume one generated
-  grammar/runtime contract. Packaged fixtures define the behavior both runtimes
-  promise.
-- The lexicon stores conservative part-of-speech metadata on individual English
-  mapping senses. Unknown and genuinely ambiguous senses remain unannotated and
-  use legacy browser inference; curator review expands coverage safely.
+  grammar/runtime contract. Runtime schema v4 keeps context-free lookup,
+  POS-specific lookup, translation-role selection, raw reverse headwords, and
+  POS-specific grammatical reverse surfaces as separate reviewed choices. Its
+  plural-NP metadata makes already-plural noun and proper-noun heads idempotent
+  under `ha`; its exhaustive root-keyed verb inflection table supplies identical
+  third-person and past phrases to both renderers. Packaged fixtures define the
+  behavior both runtimes promise.
+- The lexicon stores reviewed part-of-speech metadata on every individual
+  English mapping sense. Ambiguous homographs remain separate tagged mappings;
+  shared lexical preference tables select the context-free and POS-specific
+  readings without using POS itself as a priority signal. Legacy browser
+  inference exists only for loading older external dictionaries.
 - Generic forward translation is strongest for simple, pronoun-led clauses.
   Unsupported or ambiguous structures must remain explicit partial results.
 - `xenari.translation_report.v1` exposes those explicit markers as structured
   status/confidence diagnostics for API and CLI consumers; it does not elevate
   the deterministic translator into a semantic authority.
-- Reverse translation is a readable heuristic, not proof of semantic
-  round-trip fidelity.
+- Every mapped root has a verified lexical round trip through a unique preferred
+  English headword. Sentence reverse translation remains a readable heuristic,
+  not proof of semantic round-trip fidelity.
 - `benchmark` records representative local lookup, search, forward, and reverse
   timings without enforcing hardware-dependent pass/fail thresholds.
 - `check` is the checkout-local release gate for doctor, parity, dictionary

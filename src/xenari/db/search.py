@@ -2,6 +2,8 @@ import hashlib
 import re
 from typing import Dict, List, Optional, Tuple
 
+from ..runtime_tables import FORWARD_PREFERRED
+
 
 class SearchMixin:
     def lookup(self, english: str) -> Optional[Tuple[str, str]]:
@@ -14,6 +16,13 @@ class SearchMixin:
         ).fetchall()
         if not rows:
             return None
+        preferred_root = FORWARD_PREFERRED.get(key)
+        if preferred_root:
+            preferred = next(
+                (row for row in rows if row["root"] == preferred_root), None
+            )
+            if preferred is not None:
+                return preferred["root"], preferred["meaning"]
         row = max(rows, key=lambda r: self._lookup_score(key, r["meaning"], r["context_note"]))
         return (row["root"], row["meaning"]) if row else None
 

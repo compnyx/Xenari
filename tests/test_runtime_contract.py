@@ -18,12 +18,17 @@ from xenari.runtime_tables import (
     BASE6_NUMBER_WORDS,
     BASE6_PLACE_ROOT,
     ENGLISH_CONTRACTIONS,
-    FORWARD_PREFERRED_BY_PART_OF_SPEECH,
+    FORWARD_PREFERRED,
+    LOOKUP_PREFERRED_BY_PART_OF_SPEECH,
     MATH_OPERATOR_ROOTS,
+    REVERSE_PLURAL_NOUN_ROOTS,
     REVERSE_PREFERRED,
+    REVERSE_PREFERRED_BY_PART_OF_SPEECH,
     REVERSE_PRONOUNS,
+    REVERSE_VERB_INFLECTIONS,
     SENTENCE_FINAL_TEMPORALS,
     TEMPORAL_GLOSSES,
+    TRANSLATION_PREFERRED_BY_PART_OF_SPEECH,
 )
 
 from .support import REPO
@@ -55,15 +60,43 @@ def test_runtime_contract_contains_the_python_translation_tables():
     assert contract["normalization"]["sentence_final_temporals"] == dict(
         SENTENCE_FINAL_TEMPORALS
     )
-    assert contract["forward"]["preferred_by_part_of_speech"] == {
+    assert contract["forward"]["preferred"] == dict(FORWARD_PREFERRED)
+    assert contract["forward"]["lookup_preferred_by_part_of_speech"] == {
         part_of_speech: dict(preferences)
-        for part_of_speech, preferences in FORWARD_PREFERRED_BY_PART_OF_SPEECH.items()
+        for part_of_speech, preferences in LOOKUP_PREFERRED_BY_PART_OF_SPEECH.items()
     }
-    assert contract["forward"]["preferred_by_part_of_speech"]["verb"]["sent"] == "bern"
+    assert contract["forward"]["translation_preferred_by_part_of_speech"] == {
+        part_of_speech: dict(preferences)
+        for part_of_speech, preferences in TRANSLATION_PREFERRED_BY_PART_OF_SPEECH.items()
+    }
+    assert contract["forward"]["translation_preferred_by_part_of_speech"]["verb"]["sent"] == "bern"
     assert contract["reverse"]["pronouns"] == {
         root: dict(forms) for root, forms in REVERSE_PRONOUNS.items()
     }
     assert contract["reverse"]["preferred"] == dict(REVERSE_PREFERRED)
+    assert contract["reverse"]["preferred_by_part_of_speech"] == {
+        part_of_speech: dict(preferences)
+        for part_of_speech, preferences in (
+            REVERSE_PREFERRED_BY_PART_OF_SPEECH.items()
+        )
+    }
+    assert contract["reverse"]["plural_noun_roots"] == sorted(
+        REVERSE_PLURAL_NOUN_ROOTS
+    )
+    assert contract["reverse"]["verb_inflections"] == {
+        root: dict(forms) for root, forms in REVERSE_VERB_INFLECTIONS.items()
+    }
+    assert len(contract["reverse"]["verb_inflections"]) == 2388
+    assert contract["reverse"]["verb_inflections"]["tyequga"] == {
+        "past": "rustled",
+        "third_person": "rustles",
+    }
+    assert contract["reverse"]["preferred_by_part_of_speech"]["verb"]["tyequga"] == (
+        "rustle"
+    )
+    assert contract["reverse"]["preferred_by_part_of_speech"]["noun"]["anmqu"] == (
+        "facilities"
+    )
     assert contract["reverse"]["preferred"]["vehya"] == "potato"
     reviewed_reverse_preferences = {
         "calar": "decreasing",

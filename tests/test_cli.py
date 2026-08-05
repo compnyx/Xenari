@@ -208,6 +208,7 @@ def test_part_of_speech_cli_reports_senses_and_previews_without_writing(run_cli)
     payload = json.loads(report.stdout)
     assert payload["schema_present"] is True
     assert payload["annotated"] > 0
+    assert payload["unknown"] == 0
 
     verbs = run_cli("pos", "verb", "--limit", "2", "--format", "json", check=True)
     verb_rows = json.loads(verbs.stdout)
@@ -223,11 +224,10 @@ def test_part_of_speech_cli_reports_senses_and_previews_without_writing(run_cli)
 
     unknown = run_cli("pos", "--unknown", "--limit", "2", "--format", "json", check=True)
     unknown_rows = json.loads(unknown.stdout)
-    assert len(unknown_rows) == 2
-    assert all("english_key" in row and "root" in row for row in unknown_rows)
+    assert unknown_rows == []
 
     proposals = run_cli("pos", "--proposals", "--format", "json", check=True)
-    assert isinstance(json.loads(proposals.stdout), list)
+    assert json.loads(proposals.stdout) == []
 
 
 def test_structured_translation_reports_and_benchmark_are_machine_readable(run_cli):

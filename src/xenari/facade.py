@@ -14,6 +14,7 @@ from .components import (
 from .db import XenariDB
 from .grammar import DEFAULT_GRAMMAR, GrammarConfig, PronounSpec
 from .paths import resolve_site_root
+from .runtime_tables import FORWARD_PREFERRED
 
 
 class Xenari:
@@ -117,12 +118,14 @@ class Xenari:
             if self.db._has_part_of_speech_column()
             else "NULL AS part_of_speech"
         )
+        mapping_parts_of_speech: Dict[tuple[str, str], Optional[str]] = {}
         for row in self.db.conn.execute(
             f"""SELECT english_key, root, context_note, {pos_column}
                 FROM english_map JOIN roots ON roots.id = english_map.root_id
                 ORDER BY english_map.id"""
         ):
             key = row["english_key"].lower()
+            mapping_parts_of_speech[(key, row["root"])] = row["part_of_speech"]
             if key not in self.english_to_root:
                 self.english_to_root[key] = row["root"]
                 if row["part_of_speech"]:
@@ -137,13 +140,17 @@ class Xenari:
                         self.english_part_of_speech[key] = row["part_of_speech"]
                     else:
                         self.english_part_of_speech.pop(key, None)
-        preferred = {
-            "language": "zuqra",
-        }
-        for key, root in preferred.items():
-            if root in self.lexicon:
+        for key, root in FORWARD_PREFERRED.items():
+            # A preference chooses among real mappings; it must never invent
+            # an English key on a root when an older/custom database lacks the
+            # reviewed pair but happens to contain that root.
+            if (key, root) in mapping_parts_of_speech:
                 self.english_to_root[key] = root
-                self.english_part_of_speech.pop(key, None)
+                part_of_speech = mapping_parts_of_speech.get((key, root))
+                if part_of_speech:
+                    self.english_part_of_speech[key] = part_of_speech
+                else:
+                    self.english_part_of_speech.pop(key, None)
         self._meaning_synonym_index: Dict[str, tuple[str, int]] = {}
         for root, meaning in self.lexicon.items():
             keys = self._meaning_keys(meaning)

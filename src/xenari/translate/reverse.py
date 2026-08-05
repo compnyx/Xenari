@@ -1,11 +1,62 @@
 import re
 from typing import List, Tuple
 
-from ..runtime_tables import REVERSE_PREFERRED, REVERSE_PRONOUNS, TEMPORAL_GLOSSES
+from ..runtime_tables import (
+    REVERSE_PLURAL_NOUN_ROOTS,
+    REVERSE_PREFERRED,
+    REVERSE_PREFERRED_BY_PART_OF_SPEECH,
+    REVERSE_PRONOUNS,
+    REVERSE_VERB_INFLECTIONS,
+    TEMPORAL_GLOSSES,
+)
 from .models import ReverseClause, ReverseRequest, ReverseSegments, TranslationMatch
 
 
 class ReverseTranslationMixin:
+    @staticmethod
+    def _reverse_head_is_already_plural(root: str, text: str) -> bool:
+        """Return whether a preferred noun head already carries plural number.
+
+        Preferred reverse heads are exact reviewed English mapping keys. Some
+        of those keys are lexical plurals (for example ``facilities``), so an
+        explicit Xenari ``ha`` must not blindly pluralize them a second time.
+        The suffix exclusions retain ordinary singulars such as ``bus``,
+        ``access``, ``bias``, and ``analysis`` for productive pluralization.
+        """
+        noun_roles = REVERSE_PREFERRED_BY_PART_OF_SPEECH.get("noun", {})
+        proper_noun_roles = REVERSE_PREFERRED_BY_PART_OF_SPEECH.get(
+            "proper_noun", {}
+        )
+        if root in noun_roles or root in proper_noun_roles:
+            return root in REVERSE_PLURAL_NOUN_ROOTS
+
+        # Compatibility fallback for a caller-provided database whose roots
+        # are not represented by the packaged full-canon role metadata.
+        final_word = text.rsplit(" ", 1)[-1].casefold()
+        if final_word in {
+            "children",
+            "data",
+            "deer",
+            "feet",
+            "fish",
+            "geese",
+            "men",
+            "mice",
+            "oxen",
+            "people",
+            "series",
+            "sheep",
+            "species",
+            "teeth",
+            "women",
+        }:
+            return True
+        if final_word in {"cosmos", "lens", "yes"}:
+            return False
+        return final_word.endswith("s") and not final_word.endswith(
+            ("ss", "us", "as", "is")
+        )
+
     @staticmethod
     def _reverse_plural_form(root: str, text: str, role: str) -> str:
         """Render ``ha`` on the noun/pronoun it follows instead of dropping it."""
@@ -17,11 +68,40 @@ class ReverseTranslationMixin:
             return {"subj": "they", "obj": "them", "poss": "their"}.get(role, "they")
         if root == "seq":
             return "strangers'" if role == "poss" else "strangers"
-        if text == "person":
-            return "people's" if role == "poss" else "people"
         if role == "poss":
             base = ReverseTranslationMixin._reverse_plural_form(root, text, "plain")
-            return base if base.endswith("'") else f"{base}'"
+            if base.endswith(("'", "'s")):
+                return base
+            return f"{base}'" if base.endswith("s") else f"{base}'s"
+        if ReverseTranslationMixin._reverse_head_is_already_plural(root, text):
+            return text
+        irregular_plurals = {
+            "analysis": "analyses",
+            "axis": "axes",
+            "basis": "bases",
+            "catharsis": "catharses",
+            "child": "children",
+            "crisis": "crises",
+            "diagnosis": "diagnoses",
+            "foot": "feet",
+            "goose": "geese",
+            "hypothesis": "hypotheses",
+            "louse": "lice",
+            "man": "men",
+            "metamorphosis": "metamorphoses",
+            "mouse": "mice",
+            "oasis": "oases",
+            "ox": "oxen",
+            "person": "people",
+            "photosynthesis": "photosyntheses",
+            "thesis": "theses",
+            "tooth": "teeth",
+            "woman": "women",
+        }
+        prefix, separator, final_word = text.rpartition(" ")
+        if final_word in irregular_plurals:
+            plural = irregular_plurals[final_word]
+            return f"{prefix}{separator}{plural}" if separator else plural
         if text.endswith(("s", "x", "z", "ch", "sh")):
             return f"{text}es"
         if len(text) > 1 and text.endswith("y") and text[-2] not in "aeiou":
@@ -281,9 +361,183 @@ class ReverseTranslationMixin:
         )
 
     @staticmethod
+    def _reverse_verb_phrase_parts(verb: str) -> tuple[list[str], int]:
+        """Return the finite-token position in a reviewed verb-role lemma.
+
+        POS-role heads are shared runtime data and already contain their
+        reviewed lemma. Agreement belongs on the first lexical verb token,
+        after any leading ``-ly`` adverb, never on the phrase's final word.
+        """
+        tokens = verb.split()
+        if not tokens:
+            return [], 0
+        verb_index = 0
+        while verb_index + 1 < len(tokens) and tokens[verb_index].casefold().endswith(
+            "ly"
+        ):
+            verb_index += 1
+        return tokens, verb_index
+
+    @staticmethod
+    def _reverse_third_person_form(lemma: str) -> str:
+        """Compatibility fallback for a verb absent from packaged role metadata."""
+        prefix, separator, final = lemma.rpartition("-")
+        if separator:
+            return prefix + separator + ReverseTranslationMixin._reverse_third_person_form(
+                final
+            )
+        irregular = {"be": "is", "do": "does", "go": "goes", "have": "has"}
+        if lemma in irregular:
+            return irregular[lemma]
+        if len(lemma) > 1 and lemma.endswith("y") and lemma[-2] not in "aeiou":
+            return lemma[:-1] + "ies"
+        if lemma.endswith(("s", "x", "z", "ch", "sh", "o")):
+            return lemma + "es"
+        return lemma + "s"
+
+    @staticmethod
+    def _reverse_past_form(lemma: str) -> str:
+        """Compatibility fallback for a verb absent from packaged role metadata."""
+        prefix, separator, final = lemma.rpartition("-")
+        if separator:
+            return prefix + separator + ReverseTranslationMixin._reverse_past_form(
+                final
+            )
+        irregular_past = {
+            "arise": "arose",
+            "awake": "awoke",
+            "bear": "bore",
+            "become": "became",
+            "begin": "began",
+            "bend": "bent",
+            "bite": "bit",
+            "bleed": "bled",
+            "blow": "blew",
+            "break": "broke",
+            "bring": "brought",
+            "build": "built",
+            "buy": "bought",
+            "catch": "caught",
+            "choose": "chose",
+            "come": "came",
+            "deal": "dealt",
+            "dig": "dug",
+            "do": "did",
+            "draw": "drew",
+            "dream": "dreamed",
+            "drink": "drank",
+            "drive": "drove",
+            "eat": "ate",
+            "fall": "fell",
+            "feed": "fed",
+            "feel": "felt",
+            "fight": "fought",
+            "find": "found",
+            "fly": "flew",
+            "forget": "forgot",
+            "forgive": "forgave",
+            "freeze": "froze",
+            "get": "got",
+            "give": "gave",
+            "go": "went",
+            "grow": "grew",
+            "hear": "heard",
+            "hold": "held",
+            "have": "had",
+            "keep": "kept",
+            "know": "knew",
+            "lay": "laid",
+            "lead": "led",
+            "leave": "left",
+            "lend": "lent",
+            "lie": "lay",
+            "lose": "lost",
+            "make": "made",
+            "mean": "meant",
+            "meet": "met",
+            "mow": "mowed",
+            "open": "opened",
+            "pay": "paid",
+            "prove": "proved",
+            "ride": "rode",
+            "rise": "rose",
+            "run": "ran",
+            "say": "said",
+            "see": "saw",
+            "sell": "sold",
+            "send": "sent",
+            "shake": "shook",
+            "shoot": "shot",
+            "sing": "sang",
+            "sit": "sat",
+            "sleep": "slept",
+            "sling": "slung",
+            "slam": "slammed",
+            "smite": "smote",
+            "speak": "spoke",
+            "spin": "spun",
+            "stand": "stood",
+            "steal": "stole",
+            "step": "stepped",
+            "stick": "stuck",
+            "string": "strung",
+            "strike": "struck",
+            "stop": "stopped",
+            "strew": "strewed",
+            "sweep": "swept",
+            "swim": "swam",
+            "take": "took",
+            "teach": "taught",
+            "tell": "told",
+            "think": "thought",
+            "throw": "threw",
+            "understand": "understood",
+            "wake": "woke",
+            "wear": "wore",
+            "weep": "wept",
+            "win": "won",
+            "write": "wrote",
+        }
+        if lemma in irregular_past:
+            return irregular_past[lemma]
+        if lemma.endswith("e"):
+            return lemma + "d"
+        if (
+            len(lemma) > 1
+            and lemma.endswith("y")
+            and lemma[-2].casefold() not in "aeiou"
+        ):
+            return lemma[:-1] + "ied"
+        return lemma + "ed"
+
+    @staticmethod
+    def _render_english_copula(
+        *, tense: str, negated: bool, subject: str, subject_plural: bool
+    ) -> str:
+        """Render finite ``be`` for copulas and reviewed passive/state heads."""
+        plural_or_second_person = subject_plural or subject in {"you", "we", "they"}
+        if tense == "lo":
+            copula = "were" if plural_or_second_person else "was"
+        elif tense == "ve":
+            return "will not be" if negated else "will be"
+        elif tense == "pe":
+            return "could not be" if negated else "could be"
+        elif tense == "ko":
+            return "not be" if negated else "be"
+        elif subject == "I":
+            copula = "am"
+        elif plural_or_second_person:
+            copula = "are"
+        else:
+            copula = "is"
+        rendered = f"{copula} not" if negated else copula
+        return f"usually {rendered}" if tense == "du" else rendered
+
+    @staticmethod
     def _render_english_verb(
         verb: str,
         *,
+        root: str | None = None,
         tense: str,
         negated: bool,
         subject: str,
@@ -291,70 +545,90 @@ class ReverseTranslationMixin:
     ) -> str:
         """Render one parsed predicate without closing over a clause loop."""
         if verb == "is":
-            plural_or_second_person = subject_plural or subject in {"you", "we", "they"}
-            if tense == "lo":
-                copula = "were" if plural_or_second_person else "was"
-                return f"{copula} not" if negated else copula
-            if tense == "ve":
-                return "will not be" if negated else "will be"
-            if subject == "I":
-                return "am not" if negated else "am"
-            if plural_or_second_person:
-                return "are not" if negated else "are"
-            if negated:
-                return "is not"
-            return "is"
+            return ReverseTranslationMixin._render_english_copula(
+                tense=tense,
+                negated=negated,
+                subject=subject,
+                subject_plural=subject_plural,
+            )
 
-        base = verb
+        lemma_tokens, verb_index = ReverseTranslationMixin._reverse_verb_phrase_parts(
+            verb
+        )
+        if not lemma_tokens:
+            return verb
+        if lemma_tokens[verb_index] == "be":
+            finite = ReverseTranslationMixin._render_english_copula(
+                tense=tense,
+                negated=negated,
+                subject=subject,
+                subject_plural=subject_plural,
+            )
+            return " ".join([
+                *lemma_tokens[:verb_index],
+                finite,
+                *lemma_tokens[verb_index + 1 :],
+            ])
+
+        lemma = " ".join(lemma_tokens)
+        # Canonical roots always take their audited full-phrase forms from the
+        # shared runtime contract. The token heuristics below remain only for
+        # caller-provided/legacy databases whose roots are not in that canon.
+        reviewed_inflections = REVERSE_VERB_INFLECTIONS.get(root, {})
+        base_tokens = list(lemma_tokens)
+        third_person = not subject_plural and subject not in {"I", "you", "we", "they"}
         if tense == "lo":
-            irregular_past = {
-                "get": "got",
-                "go": "went",
-                "throw": "threw",
-                "build": "built",
-                "say": "said",
-                "break": "broke",
-                "slam": "slammed",
-                "stop": "stopped",
-                "run": "ran",
-                "open": "opened",
-                "have": "had",
-                "bite": "bit",
-                "reverse-engineer": "reverse-engineered",
-            }
-            if base in irregular_past:
-                base = irregular_past[base]
-            elif base.endswith("e"):
-                base += "d"
-            elif base.endswith("y"):
-                base = base[:-1] + "ied"
+            if reviewed_inflections:
+                base = reviewed_inflections["past"]
             else:
-                base += "ed"
+                base_tokens[verb_index] = ReverseTranslationMixin._reverse_past_form(
+                    base_tokens[verb_index]
+                )
+                base = " ".join(base_tokens)
         elif tense == "ve":
-            base = "will " + base
+            base = "will " + lemma
         elif tense == "du":
-            base = "usually " + base
+            if third_person:
+                finite_phrase = reviewed_inflections.get("third_person")
+                if finite_phrase is None:
+                    base_tokens[verb_index] = (
+                        ReverseTranslationMixin._reverse_third_person_form(
+                            base_tokens[verb_index]
+                        )
+                    )
+                    finite_phrase = " ".join(base_tokens)
+            else:
+                finite_phrase = lemma
+            base = "usually " + finite_phrase
         elif tense == "pe":
-            base = "could " + base
-        elif (
-            tense == "sa"
-            and verb == "have"
-            and not subject_plural
-            and subject not in {"I", "you", "we", "they"}
-        ):
-            base = "has"
+            base = "could " + lemma
+        elif tense == "sa" and third_person:
+            base = reviewed_inflections.get("third_person", "")
+            if not base:
+                base_tokens[verb_index] = (
+                    ReverseTranslationMixin._reverse_third_person_form(
+                        base_tokens[verb_index]
+                    )
+                )
+                base = " ".join(base_tokens)
+        else:
+            base = lemma
 
         if negated:
             if tense == "ve":
                 return "will not " + base.removeprefix("will ")
             if tense == "lo":
-                return "did not " + verb
+                return "did not " + lemma
+            if tense == "pe":
+                return "could not " + lemma
             auxiliary = (
                 "do not"
                 if subject_plural or subject in {"I", "you", "we", "they"}
                 else "does not"
             )
-            return auxiliary + " " + verb
+            if tense == "du":
+                return auxiliary + " usually " + lemma
+            return auxiliary + " " + lemma
         return base
 
     def _render_reverse_segments(self, segments: ReverseSegments) -> str:
@@ -371,25 +645,61 @@ class ReverseTranslationMixin:
             case_particles | skip_particles | {"ngu", "va", "po"}
             | set(connector_glosses) | set(interrogative_glosses)
         )
-
-        def root_english(root: str, verb: bool = False, role: str = "plain") -> str:
+        def root_english(
+            root: str,
+            part_of_speech: str | None = None,
+            role: str = "plain",
+        ) -> str:
             if root in REVERSE_PRONOUNS:
                 forms = REVERSE_PRONOUNS[root]
                 return forms.get(role, forms["subj"])
+            if part_of_speech is not None:
+                role_preferences = REVERSE_PREFERRED_BY_PART_OF_SPEECH.get(
+                    part_of_speech, {}
+                )
+                if root in role_preferences:
+                    return role_preferences[root]
             if root in REVERSE_PREFERRED:
                 return REVERSE_PREFERRED[root]
             meaning = self.lexicon.get(root)
             if meaning is None:
                 return f"[unknown: {root}]"
             head = self.db._audit_headword(meaning)
-            if verb and head.startswith("to "):
+            if part_of_speech == "verb" and head.startswith("to "):
                 head = head[3:]
             return head.split()[0] if head else root
 
+        def ordered_piece_texts(
+            pieces: List[dict[str, object]],
+            pre_head_pieces: List[dict[str, object]],
+        ) -> List[str]:
+            if not pieces:
+                return [str(piece["text"]) for piece in pre_head_pieces]
+            preposed = [
+                str(piece["text"])
+                for piece in pieces[1:]
+                if piece.get("prepose")
+            ]
+            postposed = [
+                str(piece["text"])
+                for piece in pieces[1:]
+                if not piece.get("prepose")
+            ]
+            return [
+                *(str(piece["text"]) for piece in pre_head_pieces),
+                *preposed,
+                str(pieces[0]["text"]),
+                *postposed,
+            ]
+
         def read_phrase(
-            tokens: List[str], start: int, role: str = "plain"
+            tokens: List[str],
+            start: int,
+            role: str = "plain",
+            head_part_of_speech: str | None = None,
         ) -> Tuple[str, int, bool]:
             pieces = []
+            pre_head_pieces = []
             i = start
             possessor = None
             while i < len(tokens) and tokens[i] not in case_particles:
@@ -406,48 +716,120 @@ class ReverseTranslationMixin:
                     i += 1
                     continue
                 if tok == "po":
-                    possessor = pieces.pop() if pieces else None
-                    if possessor:
-                        possessor_text = root_english(possessor["root"], role="poss")
-                        possessor["text"] = (
-                            self._reverse_plural_form(
-                                possessor["root"], possessor_text, "poss",
-                            )
-                            if possessor.get("plural") else possessor_text
+                    possessor_pieces = pieces
+                    pieces = []
+                    if possessor_pieces:
+                        possessor_head = possessor_pieces[0]
+                        possessor_text = root_english(
+                            possessor_head["root"],
+                            part_of_speech=possessor_head["part_of_speech"],
+                            role="poss",
                         )
+                        possessor_text = (
+                            self._reverse_plural_form(
+                                possessor_head["root"], possessor_text, "poss",
+                            )
+                            if possessor_head.get("plural") else possessor_text
+                        )
+                        owner_pieces = [dict(piece) for piece in possessor_pieces]
+                        owner_pieces[0]["text"] = possessor_text
+                        possessor = {
+                            **possessor_head,
+                            "text": " ".join(
+                                ordered_piece_texts(owner_pieces, pre_head_pieces)
+                            ),
+                        }
+                    pre_head_pieces = []
                     i += 1
                     continue
-                pieces.append({
-                    "root": tok,
-                    "text": root_english(tok, role=role),
-                    "plural": False,
-                })
-                i += 1
-            # Modifier NPs serialize as head then quality in Xenari. Render
-            # explicit reviewed adjective senses before their noun head in
-            # English so a curated phrase round-trips in the same order as
-            # the browser translator (``zrenq trungk`` -> ``black dog``).
-            adjective_pieces = [
-                piece
-                for piece in pieces[1:]
-                if "adjective" in self.db.parts_of_speech_for_root(piece["root"])
-            ]
-            if adjective_pieces:
-                adjective_piece_ids = {id(piece) for piece in adjective_pieces}
-                words = [piece["text"] for piece in adjective_pieces]
-                words.extend(
-                    piece["text"] for piece in pieces
-                    if id(piece) not in adjective_piece_ids
+                reviewed_parts_of_speech = set(
+                    self.db.parts_of_speech_for_root(tok)
                 )
-            else:
-                words = [piece["text"] for piece in pieces]
+                if (
+                    not pieces
+                    and head_part_of_speech not in reviewed_parts_of_speech
+                    and "particle" in reviewed_parts_of_speech
+                    and not reviewed_parts_of_speech.intersection(
+                        {"noun", "proper_noun", "pronoun"}
+                    )
+                ):
+                    pre_head_pieces.append({
+                        "root": tok,
+                        "text": root_english(tok),
+                        "part_of_speech": None,
+                        "plural": False,
+                        "prepose": True,
+                    })
+                    i += 1
+                    continue
+                if pieces:
+                    raw_surface = root_english(tok)
+                    raw_roles = {
+                        candidate
+                        for candidate in reviewed_parts_of_speech
+                        if REVERSE_PREFERRED_BY_PART_OF_SPEECH.get(
+                            candidate, {}
+                        ).get(tok) == raw_surface
+                    }
+                    if "adjective" in reviewed_parts_of_speech:
+                        requested_part_of_speech = (
+                            None
+                            if raw_roles.intersection({"particle", "pronoun"})
+                            else "adjective"
+                        )
+                        prepose = True
+                    elif {
+                        "noun", "numeral"
+                    } <= reviewed_parts_of_speech:
+                        requested_part_of_speech = "numeral"
+                        prepose = True
+                    elif {"noun", "adverb"} <= reviewed_parts_of_speech:
+                        requested_part_of_speech = "adverb"
+                        prepose = True
+                    else:
+                        requested_part_of_speech = None
+                        prepose = False
+                elif (
+                    head_part_of_speech is not None
+                    and head_part_of_speech in reviewed_parts_of_speech
+                ):
+                    requested_part_of_speech = head_part_of_speech
+                    prepose = False
+                else:
+                    requested_part_of_speech = None
+                    prepose = False
+                piece = {
+                    "root": tok,
+                    "text": root_english(
+                        tok,
+                        part_of_speech=requested_part_of_speech,
+                        role=role,
+                    ),
+                    "part_of_speech": requested_part_of_speech,
+                    "plural": False,
+                    "prepose": prepose,
+                }
+                pieces.append(piece)
+                i += 1
+            # Xenari noun phrases can contain pre-head function words, a head,
+            # preposed English qualities, and deliberately postposed lexical
+            # material. Preserve those distinct slots rather than reversing
+            # every root following the first one.
+            words = ordered_piece_texts(pieces, pre_head_pieces)
             if possessor and words:
                 poss_text = possessor["text"]
                 if (
                     possessor["root"] not in REVERSE_PRONOUNS
                     and not poss_text.endswith(("'", "'s"))
                 ):
-                    poss_text = f"{poss_text}'s"
+                    poss_text = (
+                        f"{poss_text}'"
+                        if (
+                            possessor["root"] in REVERSE_PLURAL_NOUN_ROOTS
+                            and poss_text.endswith("s")
+                        )
+                        else f"{poss_text}'s"
+                    )
                 return f"{poss_text} {' '.join(words)}", i, bool(
                     pieces and pieces[0]["plural"]
                 )
@@ -459,6 +841,19 @@ class ReverseTranslationMixin:
                 continue
 
             tokens = sentence.split()
+            copular_predicate = False
+            for marker_index, token in enumerate(tokens):
+                if token != "ta":
+                    continue
+                verb_index = marker_index + 1
+                while (
+                    verb_index < len(tokens)
+                    and tokens[verb_index] in skip_particles
+                ):
+                    verb_index += 1
+                if verb_index < len(tokens) and tokens[verb_index] == "zux":
+                    copular_predicate = True
+                    break
             clause = ReverseClause()
             counts = {particle: tokens.count(particle) for particle in case_particles}
             unknown_roots = [
@@ -474,7 +869,14 @@ class ReverseTranslationMixin:
                     clause.connector = connector_glosses[tok]
                     i += 1
                 elif tok == "ra":
-                    clause.object, i, _ = read_phrase(tokens, i + 1, role="obj")
+                    clause.object, i, _ = read_phrase(
+                        tokens,
+                        i + 1,
+                        role="obj",
+                        head_part_of_speech=(
+                            "adjective" if copular_predicate else None
+                        ),
+                    )
                 elif tok == "ka":
                     clause.subject, i, clause.subject_plural = read_phrase(
                         tokens, i + 1, role="subj"
@@ -489,7 +891,12 @@ class ReverseTranslationMixin:
                     j = i + 1
                     while j < len(tokens) and tokens[j] in skip_particles:
                         j += 1
-                    clause.verb = root_english(tokens[j], verb=True) if j < len(tokens) else ""
+                    clause.verb = (
+                        root_english(tokens[j], part_of_speech="verb")
+                        if j < len(tokens)
+                        else ""
+                    )
+                    clause.verb_root = tokens[j] if j < len(tokens) else ""
                     i = j + 1
                 elif tok in {"sa", "lo", "ve", "du", "pe", "ko"}:
                     clause.tense = tok
@@ -535,6 +942,7 @@ class ReverseTranslationMixin:
             goal = clause.goal
             instrument = clause.instrument
             verb = clause.verb
+            verb_root = clause.verb_root
             interrogative = clause.interrogative
             tense = clause.tense
             negated = clause.negated
@@ -546,7 +954,14 @@ class ReverseTranslationMixin:
             loose = clause.loose_fragments
 
             if tense == "ko" and verb and not subj:
-                command_parts = [verb]
+                command_verb = self._render_english_verb(
+                    verb,
+                    root=verb_root,
+                    tense=tense,
+                    negated=False,
+                    subject="",
+                )
+                command_parts = [command_verb]
                 if obj:
                     command_parts.append(obj)
                 if loc:
@@ -582,6 +997,7 @@ class ReverseTranslationMixin:
             if verb == "is":
                 rendered_verb = self._render_english_verb(
                     verb,
+                    root=verb_root,
                     tense=tense,
                     negated=negated,
                     subject=subj,
@@ -591,6 +1007,7 @@ class ReverseTranslationMixin:
             elif verb and obj and subj:
                 rendered_verb = self._render_english_verb(
                     verb,
+                    root=verb_root,
                     tense=tense,
                     negated=negated,
                     subject=subj,
@@ -600,6 +1017,7 @@ class ReverseTranslationMixin:
             elif verb and subj:
                 rendered_verb = self._render_english_verb(
                     verb,
+                    root=verb_root,
                     tense=tense,
                     negated=negated,
                     subject=subj,

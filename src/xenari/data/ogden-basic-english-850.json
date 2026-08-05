@@ -7020,7 +7020,7 @@
       "fixture": {
         "english": "I go across house.",
         "xenari": "ra nu vlexra xangq ka neq ta qeng sa xo",
-        "reverse": "I go transverse house"
+        "reverse": "I go across house"
       }
     },
     "operations-021": {
@@ -7036,7 +7036,7 @@
       "fixture": {
         "english": "I go against house.",
         "xenari": "ra nu faqzra xangq ka neq ta qeng sa xo",
-        "reverse": "I go in house"
+        "reverse": "I go against house"
       }
     },
     "operations-023": {
@@ -7228,7 +7228,7 @@
       "fixture": {
         "english": "I see all dog.",
         "xenari": "ra vi zrenq qrunq ka neq ta toq sa xo",
-        "reverse": "I see dog all"
+        "reverse": "I see dog whole"
       }
     },
     "operations-047": {
@@ -7244,7 +7244,7 @@
       "fixture": {
         "english": "I see every dog.",
         "xenari": "ra vi zrenq cleg ka neq ta toq sa xo",
-        "reverse": "I see dog each"
+        "reverse": "I see dog each individual"
       }
     },
     "operations-049": {
@@ -7252,7 +7252,7 @@
       "fixture": {
         "english": "I see little dog.",
         "xenari": "ra nu frem zrenq ka neq ta toq sa xo",
-        "reverse": "I see small dog"
+        "reverse": "I see little dog"
       }
     },
     "operations-050": {
@@ -7268,7 +7268,7 @@
       "fixture": {
         "english": "I see no dog.",
         "xenari": "ra vi zrenq nulxant ka neq ta toq sa xo",
-        "reverse": "I see dog none"
+        "reverse": "I see none dog"
       }
     },
     "operations-052": {
@@ -7324,7 +7324,7 @@
       "fixture": {
         "english": "He sees dog.",
         "xenari": "ra vi zrenq ka leq ta toq sa xo",
-        "reverse": "he/she/it see dog"
+        "reverse": "he/she/it sees dog"
       }
     },
     "operations-059": {
@@ -7556,7 +7556,7 @@
       "fixture": {
         "english": "I go even.",
         "xenari": "ra vi qexngu ka neq ta qeng sa xo",
-        "reverse": "I go not"
+        "reverse": "I go even"
       }
     },
     "operations-088": {
@@ -7692,7 +7692,7 @@
       "fixture": {
         "english": "I see an adjustment.",
         "xenari": "ra nu zahis ka neq ta toq sa xo",
-        "reverse": "I see small"
+        "reverse": "I see adaptation"
       }
     },
     "things-general-005": {
@@ -7716,7 +7716,7 @@
       "fixture": {
         "english": "I see an air.",
         "xenari": "ra nu cuq ka neq ta toq sa xo",
-        "reverse": "I see wind"
+        "reverse": "I see air"
       }
     },
     "things-general-008": {
@@ -7732,7 +7732,7 @@
       "fixture": {
         "english": "I see an amusement.",
         "xenari": "ra nu cakma ka neq ta toq sa xo",
-        "reverse": "I see light"
+        "reverse": "I see amusement"
       }
     },
     "things-general-010": {
@@ -7740,7 +7740,7 @@
       "fixture": {
         "english": "I see an animal.",
         "xenari": "ra vi ike ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see animal"
       }
     },
     "things-general-011": {
@@ -7772,7 +7772,7 @@
       "fixture": {
         "english": "I see an argument.",
         "xenari": "ra nu altpi ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see argument"
       }
     },
     "things-general-015": {
@@ -7796,7 +7796,7 @@
       "fixture": {
         "english": "I see an attempt.",
         "xenari": "ra nu cluslzla ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see attempt"
       }
     },
     "things-general-018": {
@@ -7812,7 +7812,7 @@
       "fixture": {
         "english": "I see an attraction.",
         "xenari": "ra nu qrozat ka neq ta toq sa xo",
-        "reverse": "I see pulling"
+        "reverse": "I see attraction"
       }
     },
     "things-general-020": {
@@ -7852,7 +7852,7 @@
       "fixture": {
         "english": "I see a behavior.",
         "xenari": "ra nu sfurfa ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see behavior"
       }
     },
     "things-general-025": {
@@ -8116,7 +8116,7 @@
       "fixture": {
         "english": "I see a control.",
         "xenari": "ra nu qontxrent ka neq ta toq sa xo",
-        "reverse": "I see remote"
+        "reverse": "I see control"
       }
     },
     "things-general-058": {
@@ -8292,7 +8292,7 @@
       "fixture": {
         "english": "I see a decision.",
         "xenari": "ra nu hezlfri ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see decision"
       }
     },
     "things-general-080": {
@@ -8332,7 +8332,7 @@
       "fixture": {
         "english": "I see a detail.",
         "xenari": "ra nu vapatnuz ka neq ta toq sa xo",
-        "reverse": "I see small"
+        "reverse": "I see detail"
       }
     },
     "things-general-085": {
@@ -8436,7 +8436,7 @@
       "fixture": {
         "english": "I see a driving.",
         "xenari": "ra nu vneqvnav ka neq ta toq sa xo",
-        "reverse": "I see operate"
+        "reverse": "I see drives"
       }
     },
     "things-general-098": {
@@ -8524,7 +8524,7 @@
       "fixture": {
         "english": "I see an existence.",
         "xenari": "ra nu qloxxang ka neq ta toq sa xo",
-        "reverse": "I see plane"
+        "reverse": "I see existence"
       }
     },
     "things-general-109": {
@@ -8548,7 +8548,7 @@
       "fixture": {
         "english": "I see an expert.",
         "xenari": "ra vi pelex ka neq ta toq sa xo",
-        "reverse": "I see highly"
+        "reverse": "I see expert"
       }
     },
     "things-general-112": {
@@ -8644,7 +8644,7 @@
       "fixture": {
         "english": "I see a flight.",
         "xenari": "ra nu zmovnha ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see flight"
       }
     },
     "things-general-124": {
@@ -8700,7 +8700,7 @@
       "fixture": {
         "english": "I see a front.",
         "xenari": "ra nu zlug ka neq ta toq sa xo",
-        "reverse": "I see before"
+        "reverse": "I see front"
       }
     },
     "things-general-131": {
@@ -8756,7 +8756,7 @@
       "fixture": {
         "english": "I see a grip.",
         "xenari": "ra nu ho ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see grip"
       }
     },
     "things-general-138": {
@@ -8764,7 +8764,7 @@
       "fixture": {
         "english": "I see a group.",
         "xenari": "ra nu qlot ka neq ta toq sa xo",
-        "reverse": "I see collective"
+        "reverse": "I see collective numeral group"
       }
     },
     "things-general-139": {
@@ -8780,7 +8780,7 @@
       "fixture": {
         "english": "I see a guide.",
         "xenari": "ra nu xlag ka neq ta toq sa xo",
-        "reverse": "I see leader"
+        "reverse": "I see guide"
       }
     },
     "things-general-141": {
@@ -8940,7 +8940,7 @@
       "fixture": {
         "english": "I see an insurance.",
         "xenari": "ra nu perin ka neq ta toq sa xo",
-        "reverse": "I see protect"
+        "reverse": "I see insurance"
       }
     },
     "things-general-161": {
@@ -8996,7 +8996,7 @@
       "fixture": {
         "english": "I see a judge.",
         "xenari": "ra nu vuhu ka neq ta toq sa xo",
-        "reverse": "I see one"
+        "reverse": "I see judge"
       }
     },
     "things-general-168": {
@@ -9124,7 +9124,7 @@
       "fixture": {
         "english": "I see a limit.",
         "xenari": "ra nu clu' ka neq ta toq sa xo",
-        "reverse": "I see end"
+        "reverse": "I see limit"
       }
     },
     "things-general-184": {
@@ -9196,7 +9196,7 @@
       "fixture": {
         "english": "I see a manager.",
         "xenari": "ra vi ngolxlofxlag ka neq ta toq sa xo",
-        "reverse": "I see soul"
+        "reverse": "I see manager"
       }
     },
     "things-general-193": {
@@ -9604,7 +9604,7 @@
       "fixture": {
         "english": "I see a plant.",
         "xenari": "ra vi noqepla ka neq ta toq sa xo",
-        "reverse": "I see living"
+        "reverse": "I see plant"
       }
     },
     "things-general-244": {
@@ -9724,7 +9724,7 @@
       "fixture": {
         "english": "I see a property.",
         "xenari": "ra vi ngolxlofxangxangreq ka neq ta toq sa xo",
-        "reverse": "I see soul"
+        "reverse": "I see property"
       }
     },
     "things-general-259": {
@@ -10092,7 +10092,7 @@
       "fixture": {
         "english": "I see a shade.",
         "xenari": "ra nu fluha ka neq ta toq sa xo",
-        "reverse": "I see shadow"
+        "reverse": "I see shade"
       }
     },
     "things-general-305": {
@@ -10460,7 +10460,7 @@
       "fixture": {
         "english": "I see a swim.",
         "xenari": "ra nu phozrmhu ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see swim"
       }
     },
     "things-general-351": {
@@ -10596,7 +10596,7 @@
       "fixture": {
         "english": "I see a transport.",
         "xenari": "ra nu sonq ka neq ta toq sa xo",
-        "reverse": "I see carry"
+        "reverse": "I see transport"
       }
     },
     "things-general-368": {
@@ -10628,7 +10628,7 @@
       "fixture": {
         "english": "I see a twist.",
         "xenari": "ra nu rirt ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see twist"
       }
     },
     "things-general-372": {
@@ -10772,7 +10772,7 @@
       "fixture": {
         "english": "I see a weight.",
         "xenari": "ra nu tungqu ka neq ta toq sa xo",
-        "reverse": "I see binding"
+        "reverse": "I see binding weight"
       }
     },
     "things-general-390": {
@@ -10780,7 +10780,7 @@
       "fixture": {
         "english": "I see a wind.",
         "xenari": "ra nu xruqzuq' ka neq ta toq sa xo",
-        "reverse": "I see north"
+        "reverse": "I see north wind"
       }
     },
     "things-general-391": {
@@ -10884,7 +10884,7 @@
       "fixture": {
         "english": "I see an apple.",
         "xenari": "ra nu klomq ka neq ta toq sa xo",
-        "reverse": "I see adam's"
+        "reverse": "I see adam's apple"
       }
     },
     "things-picturable-004": {
@@ -10892,7 +10892,7 @@
       "fixture": {
         "english": "I see an arch.",
         "xenari": "ra nu caksa ka neq ta toq sa xo",
-        "reverse": "I see curved"
+        "reverse": "I see arch"
       }
     },
     "things-picturable-005": {
@@ -11124,7 +11124,7 @@
       "fixture": {
         "english": "I see a brush.",
         "xenari": "ra nu kug ka neq ta toq sa xo",
-        "reverse": "I see thorn"
+        "reverse": "I see brush"
       }
     },
     "things-picturable-034": {
@@ -11356,7 +11356,7 @@
       "fixture": {
         "english": "I see a drawer.",
         "xenari": "ra nu xontploxgung ka neq ta toq sa xo",
-        "reverse": "I see lingerie"
+        "reverse": "I see drawer"
       }
     },
     "things-picturable-063": {
@@ -11452,7 +11452,7 @@
       "fixture": {
         "english": "I see a flag.",
         "xenari": "ra nu vuqlusr ka neq ta toq sa xo",
-        "reverse": "I see english"
+        "reverse": "I see flag"
       }
     },
     "things-picturable-075": {
@@ -11620,7 +11620,7 @@
       "fixture": {
         "english": "I see a hospital.",
         "xenari": "ra nu fluquz ka neq ta toq sa xo",
-        "reverse": "I see medical"
+        "reverse": "I see hospital"
       }
     },
     "things-picturable-096": {
@@ -11652,7 +11652,7 @@
       "fixture": {
         "english": "I see a kettle.",
         "xenari": "ra nu qlupket ka neq ta toq sa xo",
-        "reverse": "I see boiling"
+        "reverse": "I see kettle"
       }
     },
     "things-picturable-100": {
@@ -12012,7 +12012,7 @@
       "fixture": {
         "english": "I see a ring.",
         "xenari": "ra nu clag ka neq ta toq sa xo",
-        "reverse": "I see wheel"
+        "reverse": "I see ring"
       }
     },
     "things-picturable-145": {
@@ -12020,7 +12020,7 @@
       "fixture": {
         "english": "I see a rod.",
         "xenari": "ra nu xlonqplemp ka neq ta toq sa xo",
-        "reverse": "I see curtain"
+        "reverse": "I see curtain rod"
       }
     },
     "things-picturable-146": {
@@ -12308,7 +12308,7 @@
       "fixture": {
         "english": "I see a thumb.",
         "xenari": "ra nu ronznenx ka neq ta toq sa xo",
-        "reverse": "I see opposable"
+        "reverse": "I see thumb"
       }
     },
     "things-picturable-182": {
@@ -12604,7 +12604,7 @@
       "fixture": {
         "english": "The dog is conscious.",
         "xenari": "ra ksax ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is english"
+        "reverse": "dog is conscious"
       }
     },
     "qualities-general-019": {
@@ -12660,7 +12660,7 @@
       "fixture": {
         "english": "The dog is equal.",
         "xenari": "ra zlem ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is equals"
+        "reverse": "dog is equal"
       }
     },
     "qualities-general-026": {
@@ -12732,7 +12732,7 @@
       "fixture": {
         "english": "The dog is general.",
         "xenari": "ra yolez ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is common"
+        "reverse": "dog is general"
       }
     },
     "qualities-general-035": {
@@ -12780,7 +12780,7 @@
       "fixture": {
         "english": "The dog is hard.",
         "xenari": "ra xloq ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is stone"
+        "reverse": "dog is hard"
       }
     },
     "qualities-general-041": {
@@ -12828,7 +12828,7 @@
       "fixture": {
         "english": "The dog is like.",
         "xenari": "ra xut ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is similarity"
+        "reverse": "dog is like"
       }
     },
     "qualities-general-047": {
@@ -12948,7 +12948,7 @@
       "fixture": {
         "english": "The dog is physical.",
         "xenari": "ra prang ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is manifest"
+        "reverse": "dog is physical"
       }
     },
     "qualities-general-062": {
@@ -13004,7 +13004,7 @@
       "fixture": {
         "english": "The dog is quick.",
         "xenari": "ra ksockpers ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is english"
+        "reverse": "dog is quick"
       }
     },
     "qualities-general-069": {
@@ -13140,7 +13140,7 @@
       "fixture": {
         "english": "The dog is strong.",
         "xenari": "ra cra' ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is strength"
+        "reverse": "dog is strong"
       }
     },
     "qualities-general-086": {
@@ -13260,7 +13260,7 @@
       "fixture": {
         "english": "The dog is young.",
         "xenari": "ra qemx ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is youth"
+        "reverse": "dog is young"
       }
     },
     "qualities-opposites-001": {
@@ -13356,7 +13356,7 @@
       "fixture": {
         "english": "The dog is dear.",
         "xenari": "ra oqze ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is english"
+        "reverse": "dog is dear"
       }
     },
     "qualities-opposites-013": {
@@ -13404,7 +13404,7 @@
       "fixture": {
         "english": "The dog is feeble.",
         "xenari": "ra prequmus ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is weak"
+        "reverse": "dog is feeble"
       }
     },
     "qualities-opposites-019": {
@@ -13476,7 +13476,7 @@
       "fixture": {
         "english": "The dog is loose.",
         "xenari": "ra zlo ka vi zrenq ta zux vi sa xo",
-        "reverse": "dog is english"
+        "reverse": "dog is loose"
       }
     },
     "qualities-opposites-028": {

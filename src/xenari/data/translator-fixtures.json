@@ -921,11 +921,11 @@
     },
     {
       "xenari": "ra vi loco po brid ka vi cuq ta qruq vi sa xo",
-      "english": "wind blow figure's hat"
+      "english": "air blows figure's hat"
     },
     {
       "xenari": "ra neq po brid ka vi cuq ta qruq vi sa xo",
-      "english": "wind blow my hat"
+      "english": "air blows my hat"
     },
     {
       "xenari": "ka nu spokta ta qxundraz nu lo xo ngu",
@@ -1063,7 +1063,7 @@
     },
     {
       "xenari": "ka leq ta tyequga lo xo",
-      "english": "he/she/it whispered",
+      "english": "he/she/it rustled",
       "loop": 5,
       "family": "quote"
     },
