@@ -1,0 +1,68 @@
+{
+  "schema": "xenari.core-vocabulary-pos.v1",
+  "scope": {
+    "category": "Core Vocabulary",
+    "selection": "Common English senses manually reviewed at mapping level; category labels elsewhere are not used as POS evidence."
+  },
+  "mappings": {
+    "verb": [
+      ["abrade", "trent"], ["advance", "clox"], ["bend", "usrem"], ["bind", "kax"],
+      ["blink", "sxarq"], ["bounce", "agudo"], ["capture", "rabnel"], ["carry", "sonq"],
+      ["carry-motion", "hleq"], ["carve", "zocoge"], ["cast", "qunq"], ["catch", "radruz"],
+      ["catch-motion", "glez"], ["come-motion", "di"], ["crawl", "bihimef"], ["create", "krux"],
+      ["cruise", "zezeflu"], ["dash", "ingo"], ["depart", "qostethez"], ["descend", "nonq"],
+      ["dive", "slent"], ["drag", "mozfuka"], ["draw", "xram"], ["drive", "visinka"],
+      ["drop-motion", "pog"], ["escape", "blal"], ["escaped", "blal"], ["examine", "itpit"],
+      ["exit", "zipay"], ["explode", "iflo"], ["explore", "mimo"], ["extend", "qlax"],
+      ["fasten", "kax"], ["feel", "exuco"], ["fill", "ugru"], ["fit", "glaq"],
+      ["float", "hrig"], ["forge", "zelesqe"], ["freeze", "uthemi"], ["gather", "asinx"],
+      ["glance", "ivitheh"], ["glide", "crut"], ["glimpse", "zezu"], ["go", "clox"],
+      ["go-motion", "sloz"], ["grab", "tingk"], ["inspect", "yetpecu"], ["kneel", "ulkax"],
+      ["lead-motion", "dak"], ["lean", "aboh"], ["leap", "nkib"], ["leave", "qahi"],
+      ["lower", "pla'"], ["lurch", "eqhefe"], ["melt", "azap"], ["miss", "okvobrux"],
+      ["mold", "ovlo"], ["notice", "vrargeza"], ["observe", "gemren"], ["overtake", "pipdokgab"],
+      ["park", "roxu"], ["pile", "trux"], ["pour", "emef"], ["press", "xlom"],
+      ["punch", "epruhet"], ["pursue", "zayxad"], ["raise", "xlang"], ["receive", "voho"],
+      ["release", "gaq"], ["release-motion", "dunt"], ["remove", "tux"], ["rise", "ocgult"],
+      ["rotate", "zreg"], ["run-motion", "drez"], ["scatter", "ongasli"], ["scrape", "trent"],
+      ["scrub", "esepli"], ["seal", "qrak"], ["search", "srelq"], ["share", "roviz"],
+      ["shine", "espek"], ["shoot", "comunqo"], ["slice", "xrol"], ["slide", "crut"],
+      ["sneak", "cige"], ["split", "sran"], ["sprint", "napuh"], ["squint", "vaqa"],
+      ["stagger", "zabereq"], ["stare", "spidalqa"], ["stir", "froxq"], ["strike", "zleq"],
+      ["stumble", "cabozilx"], ["sweep", "iholx"], ["swerve", "xirhere"], ["swim-motion", "druf"],
+      ["swing", "yidpi"], ["take", "tux"], ["tempest", "selq"], ["thank", "gral"],
+      ["throw", "qunq"], ["tilt", "rogaf"], ["tip", "zoza"], ["tow", "abin"],
+      ["tremble", "enifec"], ["turn-motion", "qen"], ["unlock", "xarqa"], ["unseal", "glag"],
+      ["waking", "froxq"], ["wander", "ugle"], ["weld", "zizunim"], ["wink", "saxa"],
+      ["wrap", "zuyur"]
+    ],
+    "noun": [
+      ["apology", "qezxol"], ["bottom", "voto"], ["center", "robo"], ["center", "ube"],
+      ["dawn", "preqx"], ["dimension", "ifa"], ["dusk", "cramx"], ["elder", "zant"],
+      ["evening", "cramx"], ["flank", "fulyakqud"], ["forgery", "zelesqe"], ["gratitude", "gral"],
+      ["hue", "puyshang"], ["impact", "zleq"], ["inspection", "yetpecu"], ["instructor", "qler"],
+      ["learner", "vreth"], ["mate", "plexq"], ["method", "yolsov"], ["parent", "qli'"],
+      ["partner", "plexq"], ["path", "yolsov"], ["point", "ube"], ["portion", "digo"],
+      ["pulley", "xrep"], ["quantity", "shuszo"], ["race", "edatib"], ["student", "vreth"],
+      ["sun", "preqlo"], ["teacher", "qler"], ["torpor", "froxq"], ["youth", "qemx"]
+    ],
+    "adjective": [
+      ["bonded", "plexq"], ["boring", "dren"], ["dull", "dren"],
+      ["long", "qroxant"], ["new", "xluq"], ["respected", "zant"], ["shining", "espek"],
+      ["small", "frem"], ["tedious", "dren"]
+    ],
+    "adverb": [
+      ["always", "xantdu"], ["later", "qrolo"], ["later", "qrove"], ["maybe", "floq"],
+      ["nearly", "smol"], ["never", "nguxant"], ["perhaps", "floq"], ["there", "xangreq"]
+    ],
+    "particle": [
+      ["all", "qantvi"], ["although", "streng"], ["below", "tungq"], ["despite", "streng"],
+      ["every", "qantvi"], ["without", "nguxantu"]
+    ],
+    "interjection": [
+      ["farewell", "qlox'"], ["goodbye", "qlox'"], ["greetings", "prax"], ["hello", "prax"],
+      ["sorry", "qezxol"]
+    ],
+    "proper_noun": [["english", "gledru"], ["xenari", "xenari"]]
+  }
+}

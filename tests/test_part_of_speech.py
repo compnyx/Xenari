@@ -7,6 +7,7 @@ import pytest
 
 from xenari.db import PARTS_OF_SPEECH, XenariDB, normalize_part_of_speech
 from xenari.db.pos import infer_mapping_part_of_speech
+from xenari.paths import CORE_VOCABULARY_POS
 
 
 def _create_legacy_database(path, *, schema_version="legacy"):
@@ -193,6 +194,30 @@ def test_canon_pos_is_exposed_by_queries_export_audit_and_doctor(xenari):
     ok, doctor = xenari.doctor()
     assert ok
     assert "parts of speech: ok" in doctor
+
+
+def test_core_vocabulary_pos_fixture_is_exact_and_exported(xenari):
+    fixture = json.loads(CORE_VOCABULARY_POS.read_text(encoding="utf-8"))
+    assert fixture["scope"]["category"] == "Core Vocabulary"
+
+    exported = {row["root"]: row for row in json.loads(xenari.db.export_json())}
+    reviewed = 0
+    for part_of_speech, mappings in fixture["mappings"].items():
+        assert part_of_speech in PARTS_OF_SPEECH
+        for english_key, root in mappings:
+            row = xenari.db.conn.execute(
+                """SELECT r.category, e.part_of_speech
+                   FROM english_map e JOIN roots r ON r.id = e.root_id
+                   WHERE e.english_key = ? AND r.root = ?""",
+                (english_key, root),
+            ).fetchone()
+            assert row is not None
+            assert row["category"] == "Core Vocabulary"
+            assert row["part_of_speech"] == part_of_speech
+            assert exported[root]["english_parts_of_speech"][english_key] == part_of_speech
+            reviewed += 1
+
+    assert reviewed == 175
 
 
 def test_common_grammar_keys_do_not_resolve_through_compound_glosses(xenari):

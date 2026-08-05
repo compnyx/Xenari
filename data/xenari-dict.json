@@ -15482,7 +15482,10 @@
     "notes": null,
     "english_keys": [
       "tow"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tow": "verb"
+    }
   },
   {
     "id": 2453,
@@ -15494,7 +15497,10 @@
     "notes": null,
     "english_keys": [
       "lean"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lean": "verb"
+    }
   },
   {
     "id": 2502,
@@ -15518,7 +15524,10 @@
     "notes": null,
     "english_keys": [
       "bounce"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bounce": "verb"
+    }
   },
   {
     "id": 2406,
@@ -15530,7 +15539,10 @@
     "notes": null,
     "english_keys": [
       "gather"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "gather": "verb"
+    }
   },
   {
     "id": 2464,
@@ -15542,7 +15554,10 @@
     "notes": null,
     "english_keys": [
       "melt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "melt": "verb"
+    }
   },
   {
     "id": 2549,
@@ -15584,7 +15599,10 @@
     "notes": null,
     "english_keys": [
       "crawl"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "crawl": "verb"
+    }
   },
   {
     "id": 122,
@@ -15597,7 +15615,11 @@
     "english_keys": [
       "escape",
       "escaped"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "escape": "verb",
+      "escaped": "verb"
+    }
   },
   {
     "id": 10116,
@@ -15654,7 +15676,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from cabojilx; validator issues: invalid character 'j' at position 4",
     "english_keys": [
       "stumble"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stumble": "verb"
+    }
   },
   {
     "id": 2452,
@@ -15681,7 +15706,10 @@
     "notes": null,
     "english_keys": [
       "sneak"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sneak": "verb"
+    }
   },
   {
     "id": 2577,
@@ -15739,7 +15767,11 @@
     "english_keys": [
       "advance",
       "go"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "advance": "verb",
+      "go": "verb"
+    }
   },
   {
     "id": 62,
@@ -15766,7 +15798,10 @@
     "notes": null,
     "english_keys": [
       "shoot"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shoot": "verb"
+    }
   },
   {
     "id": 63,
@@ -15779,7 +15814,11 @@
     "english_keys": [
       "dusk",
       "evening"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dusk": "noun",
+      "evening": "noun"
+    }
   },
   {
     "id": 64,
@@ -15809,7 +15848,11 @@
     "english_keys": [
       "glide",
       "slide"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "glide": "verb",
+      "slide": "verb"
+    }
   },
   {
     "id": 3,
@@ -15851,7 +15894,10 @@
     "notes": null,
     "english_keys": [
       "lead-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lead-motion": "verb"
+    }
   },
   {
     "id": 124,
@@ -15863,7 +15909,10 @@
     "notes": null,
     "english_keys": [
       "come-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "come-motion": "verb"
+    }
   },
   {
     "id": 2126,
@@ -15878,7 +15927,8 @@
       "portion"
     ],
     "english_parts_of_speech": {
-      "part": "noun"
+      "part": "noun",
+      "portion": "noun"
     }
   },
   {
@@ -15893,7 +15943,12 @@
       "boring",
       "dull",
       "tedious"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "boring": "adjective",
+      "dull": "adjective",
+      "tedious": "adjective"
+    }
   },
   {
     "id": 10119,
@@ -15920,7 +15975,10 @@
     "notes": null,
     "english_keys": [
       "run-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "run-motion": "verb"
+    }
   },
   {
     "id": 10130,
@@ -15947,7 +16005,10 @@
     "notes": null,
     "english_keys": [
       "swim-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "swim-motion": "verb"
+    }
   },
   {
     "id": 127,
@@ -15959,7 +16020,10 @@
     "notes": null,
     "english_keys": [
       "release-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "release-motion": "verb"
+    }
   },
   {
     "id": 2517,
@@ -15971,7 +16035,10 @@
     "notes": null,
     "english_keys": [
       "race"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "race": "noun"
+    }
   },
   {
     "id": 2513,
@@ -15983,7 +16050,10 @@
     "notes": null,
     "english_keys": [
       "pour"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pour": "verb"
+    }
   },
   {
     "id": 2395,
@@ -16010,7 +16080,10 @@
     "notes": null,
     "english_keys": [
       "tremble"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tremble": "verb"
+    }
   },
   {
     "id": 2515,
@@ -16022,7 +16095,10 @@
     "notes": null,
     "english_keys": [
       "punch"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "punch": "verb"
+    }
   },
   {
     "id": 2461,
@@ -16034,7 +16110,10 @@
     "notes": null,
     "english_keys": [
       "lurch"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lurch": "verb"
+    }
   },
   {
     "id": 2546,
@@ -16046,7 +16125,10 @@
     "notes": null,
     "english_keys": [
       "scrub"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "scrub": "verb"
+    }
   },
   {
     "id": 2553,
@@ -16059,7 +16141,11 @@
     "english_keys": [
       "shine",
       "shining"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shine": "verb",
+      "shining": "adjective"
+    }
   },
   {
     "id": 2389,
@@ -16071,7 +16157,10 @@
     "notes": null,
     "english_keys": [
       "feel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "feel": "verb"
+    }
   },
   {
     "id": 2527,
@@ -16146,7 +16235,11 @@
     "english_keys": [
       "maybe",
       "perhaps"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "maybe": "adverb",
+      "perhaps": "adverb"
+    }
   },
   {
     "id": 66,
@@ -16251,7 +16344,8 @@
       "small"
     ],
     "english_parts_of_speech": {
-      "little": "particle"
+      "little": "particle",
+      "small": "adjective"
     }
   },
   {
@@ -16299,7 +16393,10 @@
       "waking"
     ],
     "english_parts_of_speech": {
-      "wake": "verb"
+      "stir": "verb",
+      "torpor": "noun",
+      "wake": "verb",
+      "waking": "verb"
     }
   },
   {
@@ -16315,6 +16412,7 @@
       "side"
     ],
     "english_parts_of_speech": {
+      "flank": "noun",
       "side": "noun"
     }
   },
@@ -16328,7 +16426,10 @@
     "notes": null,
     "english_keys": [
       "release"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "release": "verb"
+    }
   },
   {
     "id": 2624,
@@ -16355,7 +16456,10 @@
     "notes": null,
     "english_keys": [
       "observe"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "observe": "verb"
+    }
   },
   {
     "id": 128,
@@ -16385,7 +16489,8 @@
       "unseal"
     ],
     "english_parts_of_speech": {
-      "open": "adjective"
+      "open": "adjective",
+      "unseal": "verb"
     }
   },
   {
@@ -16401,6 +16506,7 @@
       "join"
     ],
     "english_parts_of_speech": {
+      "fit": "verb",
       "join": "noun"
     }
   },
@@ -16414,7 +16520,10 @@
     "notes": "coined via xenari_tool coin",
     "english_keys": [
       "english"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "english": "proper_noun"
+    }
   },
   {
     "id": 129,
@@ -16426,7 +16535,10 @@
     "notes": null,
     "english_keys": [
       "catch-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "catch-motion": "verb"
+    }
   },
   {
     "id": 130,
@@ -16451,7 +16563,11 @@
     "english_keys": [
       "gratitude",
       "thank"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "gratitude": "noun",
+      "thank": "verb"
+    }
   },
   {
     "id": 10102,
@@ -16490,7 +16606,10 @@
     "notes": null,
     "english_keys": [
       "carry-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "carry-motion": "verb"
+    }
   },
   {
     "id": 133,
@@ -16514,7 +16633,10 @@
     "notes": null,
     "english_keys": [
       "float"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "float": "verb"
+    }
   },
   {
     "id": 135,
@@ -16559,6 +16681,7 @@
       "size"
     ],
     "english_parts_of_speech": {
+      "dimension": "noun",
       "size": "noun"
     }
   },
@@ -16572,7 +16695,10 @@
     "notes": null,
     "english_keys": [
       "explode"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "explode": "verb"
+    }
   },
   {
     "id": 2589,
@@ -16584,7 +16710,10 @@
     "notes": null,
     "english_keys": [
       "sweep"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sweep": "verb"
+    }
   },
   {
     "id": 2350,
@@ -16596,7 +16725,10 @@
     "notes": null,
     "english_keys": [
       "dash"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dash": "verb"
+    }
   },
   {
     "id": 2376,
@@ -16608,7 +16740,10 @@
     "notes": null,
     "english_keys": [
       "examine"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "examine": "verb"
+    }
   },
   {
     "id": 2410,
@@ -16620,7 +16755,10 @@
     "notes": null,
     "english_keys": [
       "glance"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "glance": "verb"
+    }
   },
   {
     "id": 44,
@@ -16633,7 +16771,11 @@
     "english_keys": [
       "bind",
       "fasten"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bind": "verb",
+      "fasten": "verb"
+    }
   },
   {
     "id": 10100,
@@ -16720,6 +16862,7 @@
       "make"
     ],
     "english_parts_of_speech": {
+      "create": "verb",
       "make": "verb"
     }
   },
@@ -16808,7 +16951,10 @@
     "notes": null,
     "english_keys": [
       "explore"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "explore": "verb"
+    }
   },
   {
     "id": 138,
@@ -16865,7 +17011,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from mojfuka; validator issues: invalid character 'j' at position 2",
     "english_keys": [
       "drag"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "drag": "verb"
+    }
   },
   {
     "id": 139,
@@ -16907,7 +17056,10 @@
     "notes": null,
     "english_keys": [
       "sprint"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sprint": "verb"
+    }
   },
   {
     "id": 10,
@@ -17039,7 +17191,10 @@
     "notes": null,
     "english_keys": [
       "never"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "never": "adverb"
+    }
   },
   {
     "id": 12,
@@ -17051,7 +17206,10 @@
     "notes": null,
     "english_keys": [
       "without"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "without": "particle"
+    }
   },
   {
     "id": 2454,
@@ -17063,7 +17221,10 @@
     "notes": null,
     "english_keys": [
       "leap"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "leap": "verb"
+    }
   },
   {
     "id": 10149,
@@ -17090,7 +17251,10 @@
     "notes": null,
     "english_keys": [
       "descend"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "descend": "verb"
+    }
   },
   {
     "id": 13,
@@ -17115,7 +17279,10 @@
     "notes": null,
     "english_keys": [
       "rise"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rise": "verb"
+    }
   },
   {
     "id": 2488,
@@ -17142,7 +17309,10 @@
     "notes": null,
     "english_keys": [
       "miss"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "miss": "verb"
+    }
   },
   {
     "id": 2542,
@@ -17154,7 +17324,10 @@
     "notes": null,
     "english_keys": [
       "scatter"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "scatter": "verb"
+    }
   },
   {
     "id": 2472,
@@ -17166,7 +17339,10 @@
     "notes": null,
     "english_keys": [
       "mold"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mold": "verb"
+    }
   },
   {
     "id": 10115,
@@ -17240,7 +17416,10 @@
     "notes": null,
     "english_keys": [
       "overtake"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "overtake": "verb"
+    }
   },
   {
     "id": 46,
@@ -17253,7 +17432,10 @@
     "english_keys": [
       "lower",
       "sink"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lower": "verb"
+    }
   },
   {
     "id": 73,
@@ -17267,7 +17449,12 @@
       "bonded",
       "mate",
       "partner"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bonded": "adjective",
+      "mate": "noun",
+      "partner": "noun"
+    }
   },
   {
     "id": 110,
@@ -17324,7 +17511,10 @@
     "notes": null,
     "english_keys": [
       "drop-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "drop-motion": "verb"
+    }
   },
   {
     "id": 106,
@@ -17352,7 +17542,11 @@
     "english_keys": [
       "greetings",
       "hello"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "greetings": "interjection",
+      "hello": "interjection"
+    }
   },
   {
     "id": 74,
@@ -17370,7 +17564,8 @@
       "sun-past"
     ],
     "english_parts_of_speech": {
-      "day": "noun"
+      "day": "noun",
+      "sun": "noun"
     }
   },
   {
@@ -17386,6 +17581,7 @@
       "morning"
     ],
     "english_parts_of_speech": {
+      "dawn": "noun",
       "morning": "noun"
     }
   },
@@ -17462,7 +17658,8 @@
       "hue"
     ],
     "english_parts_of_speech": {
-      "color": "noun"
+      "color": "noun",
+      "hue": "noun"
     }
   },
   {
@@ -17502,7 +17699,10 @@
     "notes": null,
     "english_keys": [
       "leave"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "leave": "verb"
+    }
   },
   {
     "id": 17,
@@ -17515,7 +17715,11 @@
     "english_keys": [
       "all",
       "every"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "all": "particle",
+      "every": "particle"
+    }
   },
   {
     "id": 10111,
@@ -17545,7 +17749,8 @@
       "youth"
     ],
     "english_parts_of_speech": {
-      "young": "adjective"
+      "young": "adjective",
+      "youth": "noun"
     }
   },
   {
@@ -17558,7 +17763,10 @@
     "notes": null,
     "english_keys": [
       "turn-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "turn-motion": "verb"
+    }
   },
   {
     "id": 18,
@@ -17601,7 +17809,11 @@
     "english_keys": [
       "apology",
       "sorry"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "apology": "noun",
+      "sorry": "interjection"
+    }
   },
   {
     "id": 47,
@@ -17616,6 +17828,7 @@
       "grow"
     ],
     "english_parts_of_speech": {
+      "extend": "verb",
       "grow": "verb"
     }
   },
@@ -17647,7 +17860,11 @@
     "english_keys": [
       "instructor",
       "teacher"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "instructor": "noun",
+      "teacher": "noun"
+    }
   },
   {
     "id": 80,
@@ -17659,7 +17876,10 @@
     "notes": null,
     "english_keys": [
       "parent"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "parent": "noun"
+    }
   },
   {
     "id": 20,
@@ -17672,7 +17892,11 @@
     "english_keys": [
       "farewell",
       "goodbye"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "farewell": "interjection",
+      "goodbye": "interjection"
+    }
   },
   {
     "id": 81,
@@ -17714,7 +17938,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from qostethej; validator issues: invalid character 'j' at position 8",
     "english_keys": [
       "depart"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "depart": "verb"
+    }
   },
   {
     "id": 21,
@@ -17746,7 +17973,8 @@
       "seal"
     ],
     "english_parts_of_speech": {
-      "close": "verb"
+      "close": "verb",
+      "seal": "verb"
     }
   },
   {
@@ -17864,7 +18092,10 @@
     "notes": null,
     "english_keys": [
       "later"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "later": "adverb"
+    }
   },
   {
     "id": 86,
@@ -17903,7 +18134,10 @@
     "notes": null,
     "english_keys": [
       "later"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "later": "adverb"
+    }
   },
   {
     "id": 26,
@@ -17934,6 +18168,7 @@
       "year"
     ],
     "english_parts_of_speech": {
+      "long": "adjective",
       "year": "noun"
     }
   },
@@ -17963,7 +18198,11 @@
     "english_keys": [
       "cast",
       "throw"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cast": "verb",
+      "throw": "verb"
+    }
   },
   {
     "id": 2318,
@@ -17975,7 +18214,10 @@
     "notes": null,
     "english_keys": [
       "capture"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "capture": "verb"
+    }
   },
   {
     "id": 2321,
@@ -17987,7 +18229,10 @@
     "notes": null,
     "english_keys": [
       "catch"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "catch": "verb"
+    }
   },
   {
     "id": 10131,
@@ -18056,6 +18301,7 @@
       "middle"
     ],
     "english_parts_of_speech": {
+      "center": "noun",
       "middle": "noun"
     }
   },
@@ -18069,7 +18315,10 @@
     "notes": null,
     "english_keys": [
       "tilt"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tilt": "verb"
+    }
   },
   {
     "id": 10108,
@@ -18111,7 +18360,10 @@
     "notes": null,
     "english_keys": [
       "share"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "share": "verb"
+    }
   },
   {
     "id": 2495,
@@ -18123,7 +18375,10 @@
     "notes": null,
     "english_keys": [
       "park"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "park": "verb"
+    }
   },
   {
     "id": 2629,
@@ -18135,7 +18390,10 @@
     "notes": null,
     "english_keys": [
       "wink"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wink": "verb"
+    }
   },
   {
     "id": 89,
@@ -18150,7 +18408,8 @@
       "tempest"
     ],
     "english_parts_of_speech": {
-      "storm": "verb"
+      "storm": "verb",
+      "tempest": "verb"
     }
   },
   {
@@ -18181,7 +18440,8 @@
       "quantity"
     ],
     "english_parts_of_speech": {
-      "amount": "noun"
+      "amount": "noun",
+      "quantity": "noun"
     }
   },
   {
@@ -18194,7 +18454,10 @@
     "notes": null,
     "english_keys": [
       "dive"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dive": "verb"
+    }
   },
   {
     "id": 144,
@@ -18206,7 +18469,10 @@
     "notes": null,
     "english_keys": [
       "go-motion"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "go-motion": "verb"
+    }
   },
   {
     "id": 116,
@@ -18221,7 +18487,8 @@
       "nearly"
     ],
     "english_parts_of_speech": {
-      "almost": "adverb"
+      "almost": "adverb",
+      "nearly": "adverb"
     }
   },
   {
@@ -18237,6 +18504,7 @@
       "transport"
     ],
     "english_parts_of_speech": {
+      "carry": "verb",
       "transport": "noun"
     }
   },
@@ -18250,7 +18518,10 @@
     "notes": null,
     "english_keys": [
       "stare"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stare": "verb"
+    }
   },
   {
     "id": 119,
@@ -18298,7 +18569,8 @@
       "split"
     ],
     "english_parts_of_speech": {
-      "cut": "adjective"
+      "cut": "adjective",
+      "split": "verb"
     }
   },
   {
@@ -18314,6 +18586,7 @@
       "seek"
     ],
     "english_parts_of_speech": {
+      "search": "verb",
       "seek": "verb"
     }
   },
@@ -18401,7 +18674,11 @@
     "english_keys": [
       "although",
       "despite"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "although": "particle",
+      "despite": "particle"
+    }
   },
   {
     "id": 2299,
@@ -18413,7 +18690,10 @@
     "notes": null,
     "english_keys": [
       "blink"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "blink": "verb"
+    }
   },
   {
     "id": 146,
@@ -18467,7 +18747,10 @@
     "notes": null,
     "english_keys": [
       "grab"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "grab": "verb"
+    }
   },
   {
     "id": 10143,
@@ -18525,7 +18808,11 @@
     "english_keys": [
       "abrade",
       "scrape"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "abrade": "verb",
+      "scrape": "verb"
+    }
   },
   {
     "id": 27,
@@ -18600,6 +18887,7 @@
       "stack"
     ],
     "english_parts_of_speech": {
+      "pile": "verb",
       "stack": "verb"
     }
   },
@@ -18616,6 +18904,7 @@
       "down"
     ],
     "english_parts_of_speech": {
+      "below": "particle",
       "down": "particle"
     }
   },
@@ -18630,7 +18919,11 @@
     "english_keys": [
       "remove",
       "take"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "remove": "verb",
+      "take": "verb"
+    }
   },
   {
     "id": 1964,
@@ -18643,7 +18936,11 @@
     "english_keys": [
       "center",
       "point"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "center": "noun",
+      "point": "noun"
+    }
   },
   {
     "id": 2622,
@@ -18655,7 +18952,10 @@
     "notes": null,
     "english_keys": [
       "wander"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wander": "verb"
+    }
   },
   {
     "id": 2392,
@@ -18667,7 +18967,10 @@
     "notes": null,
     "english_keys": [
       "fill"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fill": "verb"
+    }
   },
   {
     "id": 2447,
@@ -18679,7 +18982,10 @@
     "notes": null,
     "english_keys": [
       "kneel"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "kneel": "verb"
+    }
   },
   {
     "id": 2297,
@@ -18691,7 +18997,10 @@
     "notes": null,
     "english_keys": [
       "bend"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bend": "verb"
+    }
   },
   {
     "id": 2397,
@@ -18703,7 +19012,10 @@
     "notes": null,
     "english_keys": [
       "freeze"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "freeze": "verb"
+    }
   },
   {
     "id": 2575,
@@ -18715,7 +19027,10 @@
     "notes": null,
     "english_keys": [
       "squint"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "squint": "verb"
+    }
   },
   {
     "id": 2367,
@@ -18727,7 +19042,10 @@
     "notes": null,
     "english_keys": [
       "drive"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "drive": "verb"
+    }
   },
   {
     "id": 120,
@@ -18758,7 +19076,10 @@
     "notes": null,
     "english_keys": [
       "receive"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "receive": "verb"
+    }
   },
   {
     "id": 1948,
@@ -18770,7 +19091,10 @@
     "notes": null,
     "english_keys": [
       "bottom"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "bottom": "noun"
+    }
   },
   {
     "id": 2485,
@@ -18782,7 +19106,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from vrargeja; validator issues: invalid character 'j' at position 6",
     "english_keys": [
       "notice"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "notice": "verb"
+    }
   },
   {
     "id": 117,
@@ -18795,7 +19122,11 @@
     "english_keys": [
       "learner",
       "student"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "learner": "noun",
+      "student": "noun"
+    }
   },
   {
     "id": 2563,
@@ -18822,7 +19153,10 @@
     "notes": null,
     "english_keys": [
       "there"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "there": "adverb"
+    }
   },
   {
     "id": 30,
@@ -18849,7 +19183,10 @@
     "notes": null,
     "english_keys": [
       "always"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "always": "adverb"
+    }
   },
   {
     "id": 32,
@@ -18908,7 +19245,10 @@
     "notes": null,
     "english_keys": [
       "unlock"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "unlock": "verb"
+    }
   },
   {
     "id": 1,
@@ -18920,7 +19260,10 @@
     "notes": null,
     "english_keys": [
       "xenari"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "xenari": "proper_noun"
+    }
   },
   {
     "id": 2590,
@@ -18932,7 +19275,10 @@
     "notes": null,
     "english_keys": [
       "swerve"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "swerve": "verb"
+    }
   },
   {
     "id": 55,
@@ -18947,7 +19293,8 @@
       "raise"
     ],
     "english_parts_of_speech": {
-      "lift": "noun"
+      "lift": "noun",
+      "raise": "verb"
     }
   },
   {
@@ -19008,6 +19355,7 @@
       "push"
     ],
     "english_parts_of_speech": {
+      "press": "verb",
       "push": "noun"
     }
   },
@@ -19021,7 +19369,10 @@
     "notes": null,
     "english_keys": [
       "new"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "new": "adjective"
+    }
   },
   {
     "id": 10140,
@@ -19051,6 +19402,7 @@
       "pull"
     ],
     "english_parts_of_speech": {
+      "draw": "verb",
       "pull": "verb"
     }
   },
@@ -19109,7 +19461,10 @@
     "notes": null,
     "english_keys": [
       "pulley"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pulley": "noun"
+    }
   },
   {
     "id": 10098,
@@ -19154,7 +19509,8 @@
       "slice"
     ],
     "english_parts_of_speech": {
-      "cut": "verb"
+      "cut": "verb",
+      "slice": "verb"
     }
   },
   {
@@ -19218,7 +19574,11 @@
     "english_keys": [
       "inspect",
       "inspection"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "inspect": "verb",
+      "inspection": "noun"
+    }
   },
   {
     "id": 2591,
@@ -19230,7 +19590,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from widpi; validator issues: invalid character 'w' at position 0",
     "english_keys": [
       "swing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "swing": "verb"
+    }
   },
   {
     "id": 2258,
@@ -19246,6 +19609,8 @@
       "way"
     ],
     "english_parts_of_speech": {
+      "method": "noun",
+      "path": "noun",
       "way": "noun"
     }
   },
@@ -19274,7 +19639,10 @@
     "notes": null,
     "english_keys": [
       "stagger"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "stagger": "verb"
+    }
   },
   {
     "id": 2510,
@@ -19302,7 +19670,11 @@
     "english_keys": [
       "elder",
       "respected"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "elder": "noun",
+      "respected": "adjective"
+    }
   },
   {
     "id": 2537,
@@ -19359,7 +19731,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from awxad; validator issues: invalid character 'w' at position 1",
     "english_keys": [
       "pursue"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "pursue": "verb"
+    }
   },
   {
     "id": 10147,
@@ -19387,7 +19762,11 @@
     "english_keys": [
       "forge",
       "forgery"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "forge": "verb",
+      "forgery": "noun"
+    }
   },
   {
     "id": 10137,
@@ -19429,7 +19808,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from ejeflu; validator issues: invalid character 'j' at position 1",
     "english_keys": [
       "cruise"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "cruise": "verb"
+    }
   },
   {
     "id": 2412,
@@ -19441,7 +19823,10 @@
     "notes": null,
     "english_keys": [
       "glimpse"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "glimpse": "verb"
+    }
   },
   {
     "id": 2378,
@@ -19453,7 +19838,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from ipaw; validator issues: invalid character 'w' at position 3",
     "english_keys": [
       "exit"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "exit": "verb"
+    }
   },
   {
     "id": 2626,
@@ -19465,7 +19853,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from ijunim; validator issues: invalid character 'j' at position 1",
     "english_keys": [
       "weld"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "weld": "verb"
+    }
   },
   {
     "id": 58,
@@ -19478,7 +19869,11 @@
     "english_keys": [
       "impact",
       "strike"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "impact": "noun",
+      "strike": "verb"
+    }
   },
   {
     "id": 102,
@@ -19522,7 +19917,10 @@
     "notes": null,
     "english_keys": [
       "carve"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "carve": "verb"
+    }
   },
   {
     "id": 59,
@@ -19550,7 +19948,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from joza; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "tip"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tip": "verb"
+    }
   },
   {
     "id": 103,
@@ -19580,6 +19981,7 @@
       "turn"
     ],
     "english_parts_of_speech": {
+      "rotate": "verb",
       "turn": "noun"
     }
   },
@@ -19655,7 +20057,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from uwur; validator issues: invalid character 'w' at position 1",
     "english_keys": [
       "wrap"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "wrap": "verb"
+    }
   },
   {
     "id": 2368,

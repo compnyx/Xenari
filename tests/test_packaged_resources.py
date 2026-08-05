@@ -3,6 +3,7 @@ import sqlite3
 from importlib.resources import files
 
 from xenari.paths import (
+    CORE_VOCABULARY_POS,
     OGDEN_BASIC_ENGLISH,
     RUNTIME_CONTRACT,
     TRANSLATOR_FIXTURES,
@@ -35,6 +36,13 @@ def test_ogden_baseline_is_available_as_package_data():
     baseline = json.loads(OGDEN_BASIC_ENGLISH.read_text(encoding="utf-8"))
     assert baseline["schema"] == "xenari.ogden-basic-english.v1"
     assert baseline["source"]["accepted_form_count"] == 852
+
+
+def test_core_vocabulary_pos_fixture_is_available_as_package_data():
+    assert CORE_VOCABULARY_POS.is_file()
+    fixture = json.loads(CORE_VOCABULARY_POS.read_text(encoding="utf-8"))
+    assert fixture["schema"] == "xenari.core-vocabulary-pos.v1"
+    assert sum(len(rows) for rows in fixture["mappings"].values()) == 175
 
 
 def test_packaged_canon_contains_migrated_part_of_speech_metadata():

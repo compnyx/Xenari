@@ -10,6 +10,7 @@ CANON_DB = PACKAGE_ROOT / "data" / "xenari.db"
 TRANSLATOR_FIXTURES = files("xenari").joinpath("data", "translator-fixtures.json")
 RUNTIME_CONTRACT = files("xenari").joinpath("data", "xenari-runtime.json")
 OGDEN_BASIC_ENGLISH = files("xenari").joinpath("data", "ogden-basic-english-850.json")
+CORE_VOCABULARY_POS = files("xenari").joinpath("data", "core-vocabulary-pos-v1.json")
 
 
 def resolve_repo_root() -> Optional[Path]:
