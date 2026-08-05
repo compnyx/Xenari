@@ -4,6 +4,7 @@ from importlib.resources import files
 
 from xenari.paths import (
     COMMON_ENGLISH_POS_V2,
+    COMMON_ENGLISH_POS_V3,
     CORE_VOCABULARY_POS,
     OGDEN_BASIC_ENGLISH,
     RUNTIME_CONTRACT,
@@ -12,6 +13,7 @@ from xenari.paths import (
     generated_runtime_path,
     resolve_repo_root,
 )
+from xenari.runtime import RUNTIME_SCHEMA_VERSION
 
 
 def test_translator_fixtures_are_available_as_package_data():
@@ -29,7 +31,7 @@ def test_runtime_contract_is_available_as_package_data():
     assert RUNTIME_CONTRACT.is_file()
     contract = json.loads(RUNTIME_CONTRACT.read_text(encoding="utf-8"))
     assert contract["schema"] == "xenari-runtime"
-    assert contract["schema_version"] == 1
+    assert contract["schema_version"] == RUNTIME_SCHEMA_VERSION
 
 
 def test_ogden_baseline_is_available_as_package_data():
@@ -54,6 +56,15 @@ def test_common_english_pos_v2_fixture_is_available_as_package_data():
     assert fixture["scope"]["tagged_mapping_count"] == 153
     assert fixture["scope"]["newly_tagged_count"] == 140
     assert fixture["scope"]["deferred_mapping_count"] == 46
+
+
+def test_common_english_pos_v3_fixture_is_available_as_package_data():
+    assert COMMON_ENGLISH_POS_V3.is_file()
+    fixture = json.loads(COMMON_ENGLISH_POS_V3.read_text(encoding="utf-8"))
+    assert fixture["schema"] == "xenari.common-english-pos.v3"
+    assert fixture["scope"]["mapping_count"] == 1028
+    assert fixture["scope"]["newly_tagged_count"] == 1000
+    assert fixture["scope"]["deferred_mapping_count"] == 28
 
 
 def test_packaged_canon_contains_migrated_part_of_speech_metadata():

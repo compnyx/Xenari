@@ -176,6 +176,37 @@ TEMPORAL_GLOSSES: Mapping[str, str] = _immutable(
     }
 )
 
+# English keys can name an intentional canonical sense without being the
+# translator's unmarked reading.  Keep selection separate from POS: POS says
+# that ``clutching -> roqni`` is a verb sense, while this table preserves the
+# established sentence-translation root ``xrics`` for bare "clutching".
+FORWARD_PREFERRED_BY_PART_OF_SPEECH: Mapping[str, Mapping[str, str]] = (
+    MappingProxyType(
+        {
+            "verb": _immutable(
+                {
+                    "clutching": "xrics",
+                    "colliding": "pyeqesit",
+                    "deserves": "znunz",
+                    "digging": "sfeksixm",
+                    "dragging": "mozfuka",
+                    "flexing": "funx",
+                    "gaining": "smite",
+                    "grabbing": "tingk",
+                    "kicked": "kite",
+                    "kicking": "kite",
+                    "mounting": "rurics",
+                    "operating": "qxundraz",
+                    "proceeds": "norklamz",
+                    "sent": "bern",
+                    "translating": "nrotm",
+                    "wrapping": "zuyur",
+                }
+            ),
+        }
+    )
+)
+
 REVERSE_PRONOUNS: Mapping[str, Mapping[str, str]] = MappingProxyType(
     {
         "neq": _immutable({"subj": "I", "obj": "me", "poss": "my"}),

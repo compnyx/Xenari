@@ -12,6 +12,7 @@ RUNTIME_CONTRACT = files("xenari").joinpath("data", "xenari-runtime.json")
 OGDEN_BASIC_ENGLISH = files("xenari").joinpath("data", "ogden-basic-english-850.json")
 CORE_VOCABULARY_POS = files("xenari").joinpath("data", "core-vocabulary-pos-v1.json")
 COMMON_ENGLISH_POS_V2 = files("xenari").joinpath("data", "common-english-pos-v2.json")
+COMMON_ENGLISH_POS_V3 = files("xenari").joinpath("data", "common-english-pos-v3.json")
 
 
 def resolve_repo_root() -> Optional[Path]:

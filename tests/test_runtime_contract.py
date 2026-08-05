@@ -18,6 +18,7 @@ from xenari.runtime_tables import (
     BASE6_NUMBER_WORDS,
     BASE6_PLACE_ROOT,
     ENGLISH_CONTRACTIONS,
+    FORWARD_PREFERRED_BY_PART_OF_SPEECH,
     MATH_OPERATOR_ROOTS,
     REVERSE_PREFERRED,
     REVERSE_PRONOUNS,
@@ -54,6 +55,11 @@ def test_runtime_contract_contains_the_python_translation_tables():
     assert contract["normalization"]["sentence_final_temporals"] == dict(
         SENTENCE_FINAL_TEMPORALS
     )
+    assert contract["forward"]["preferred_by_part_of_speech"] == {
+        part_of_speech: dict(preferences)
+        for part_of_speech, preferences in FORWARD_PREFERRED_BY_PART_OF_SPEECH.items()
+    }
+    assert contract["forward"]["preferred_by_part_of_speech"]["verb"]["sent"] == "bern"
     assert contract["reverse"]["pronouns"] == {
         root: dict(forms) for root, forms in REVERSE_PRONOUNS.items()
     }

@@ -5,6 +5,18 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Reviewed all 1,028 structurally bijective, previously untyped mappings in
+  nine legacy noun/adjective/verb category variants. Added 1,000 intentional
+  sense-level annotations (516 nouns, 267 verbs, 189 adjectives, 23 adverbs,
+  four numerals, and one particle) and recorded 28 exact semantic deferrals;
+  the untyped queue is now 9,325. The packaged v3 review fixture pins the
+  selection hash, category/POS totals, overrides, and deferral reasons.
+- Added an atomic mapping-level POS batch API with one pre-mutation backup,
+  one transaction, exact row-count verification, and rollback on mismatch.
+  Added 16 shared POS-specific forward preferences so POS classifies each
+  canonical sense while Python and browser sentence translation deliberately
+  retain the established verb root. Runtime contract schema v2 now carries
+  those preferences and rejects malformed or unknown POS tables.
 - Completed a mapping-level review of all 199 English senses in ten legacy
   POS-labelled categories. Added 140 safe sense annotations, retained 13
   established annotations, and recorded 46 exact deferrals where a bare gloss,

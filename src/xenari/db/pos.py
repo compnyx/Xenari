@@ -2,7 +2,7 @@
 
 import re
 from collections import Counter
-from typing import Optional
+from typing import Iterable, Optional
 
 from ..grammar import DEFAULT_GRAMMAR
 
@@ -343,6 +343,78 @@ class PartOfSpeechMixin:
         )
         self.conn.commit()
         return cursor.rowcount == 1
+
+    def set_mapping_parts_of_speech(
+        self,
+        mappings: Iterable[tuple[str, str, str]],
+        *,
+        operation: str = "pos-batch",
+    ) -> dict[str, object]:
+        """Atomically apply a reviewed POS batch with one canonical backup."""
+        if self.read_only:
+            raise RuntimeError("cannot set part of speech on a read-only database")
+
+        resolved: list[tuple[str, int]] = []
+        unchanged = 0
+        seen: set[tuple[str, str]] = set()
+        for english_key, root, part_of_speech in mappings:
+            key = english_key.lower().strip()
+            canonical_root = root.strip()
+            pair = (key, canonical_root)
+            if pair in seen:
+                raise ValueError(f"duplicate POS batch mapping: {key!r} -> {canonical_root!r}")
+            seen.add(pair)
+            normalized = normalize_part_of_speech(part_of_speech)
+            if normalized is None:
+                raise ValueError(f"POS batch mapping cannot be unknown: {key!r} -> {canonical_root!r}")
+            row = self.conn.execute(
+                """SELECT e.id, e.part_of_speech
+                   FROM english_map e JOIN roots r ON r.id = e.root_id
+                   WHERE e.english_key = ? AND r.root = ?""",
+                pair,
+            ).fetchone()
+            if row is None:
+                raise ValueError(f"missing POS batch mapping: {key!r} -> {canonical_root!r}")
+            current = row["part_of_speech"]
+            if current is not None and current != normalized:
+                raise ValueError(
+                    f"conflicting POS batch mapping: {key!r} -> {canonical_root!r} "
+                    f"is already {current!r}, not {normalized!r}"
+                )
+            if current == normalized:
+                unchanged += 1
+            else:
+                resolved.append((normalized, row["id"]))
+
+        backup_path = None
+        if resolved:
+            backup_path = self._backup_before_mutation(operation)
+            before_changes = self.conn.total_changes
+            try:
+                self.conn.execute("BEGIN IMMEDIATE")
+                self.conn.executemany(
+                    """UPDATE english_map SET part_of_speech = ?
+                       WHERE id = ? AND part_of_speech IS NULL""",
+                    resolved,
+                )
+                applied = self.conn.total_changes - before_changes
+                if applied != len(resolved):
+                    raise RuntimeError(
+                        f"POS batch changed {applied} rows; expected {len(resolved)}"
+                    )
+                self.conn.commit()
+            except Exception:
+                self.conn.rollback()
+                raise
+        else:
+            applied = 0
+
+        return {
+            "mapping_count": len(seen),
+            "applied": applied,
+            "unchanged": unchanged,
+            "backup": str(backup_path) if backup_path is not None else None,
+        }
 
     def parts_of_speech_for_root(self, root: str) -> list[str]:
         """Return the curated POS union for a potentially polysemous root."""

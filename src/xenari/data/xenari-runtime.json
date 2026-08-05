@@ -1,4 +1,26 @@
 {
+  "forward": {
+    "preferred_by_part_of_speech": {
+      "verb": {
+        "clutching": "xrics",
+        "colliding": "pyeqesit",
+        "deserves": "znunz",
+        "digging": "sfeksixm",
+        "dragging": "mozfuka",
+        "flexing": "funx",
+        "gaining": "smite",
+        "grabbing": "tingk",
+        "kicked": "kite",
+        "kicking": "kite",
+        "mounting": "rurics",
+        "operating": "qxundraz",
+        "proceeds": "norklamz",
+        "sent": "bern",
+        "translating": "nrotm",
+        "wrapping": "zuyur"
+      }
+    }
+  },
   "grammar": {
     "copula_words": [
       "am",
@@ -729,6 +751,6 @@
     }
   },
   "schema": "xenari-runtime",
-  "schema_version": 1,
+  "schema_version": 2,
   "xenari_version": "0.6.0"
 }

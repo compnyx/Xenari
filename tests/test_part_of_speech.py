@@ -1,14 +1,20 @@
 """Additive, conservative sense-level part-of-speech canon tests."""
 
+import hashlib
 import json
 import sqlite3
+from collections import Counter
 
 import pytest
 
 from xenari.db import PARTS_OF_SPEECH, XenariDB, normalize_part_of_speech
 from xenari.db.pos import infer_mapping_part_of_speech
-from xenari.paths import COMMON_ENGLISH_POS_V2, CORE_VOCABULARY_POS
-from xenari.runtime_tables import REVERSE_PREFERRED
+from xenari.paths import (
+    COMMON_ENGLISH_POS_V2,
+    COMMON_ENGLISH_POS_V3,
+    CORE_VOCABULARY_POS,
+)
+from xenari.runtime_tables import FORWARD_PREFERRED_BY_PART_OF_SPEECH, REVERSE_PREFERRED
 
 
 def _create_legacy_database(path, *, schema_version="legacy"):
@@ -161,6 +167,28 @@ def test_pos_is_mapping_level_and_preserves_polysemy(writable_db):
     assert "unknown part of speech" in messages[0]
 
 
+def test_pos_batch_is_atomic_and_creates_one_backup(writable_db, tmp_path):
+    report = writable_db.set_mapping_parts_of_speech(
+        [("humble", "oqmxa", "adjective"), ("yak", "takltoq", "noun")],
+        operation="test-pos-batch",
+    )
+    assert report["mapping_count"] == 2
+    assert report["applied"] == 2
+    assert report["unchanged"] == 0
+    assert report["backup"] is not None
+    assert len(list(tmp_path.glob("xenari.db.*.test-pos-batch.bak"))) == 1
+    assert _mapping_pos(writable_db, "humble", "oqmxa") == "adjective"
+    assert _mapping_pos(writable_db, "yak", "takltoq") == "noun"
+
+    with pytest.raises(ValueError, match="duplicate POS batch mapping"):
+        writable_db.set_mapping_parts_of_speech(
+            [("humble", "oqmxa", "adjective"), ("humble", "oqmxa", "adjective")]
+        )
+    with pytest.raises(ValueError, match="conflicting POS batch mapping"):
+        writable_db.set_mapping_parts_of_speech([("humble", "oqmxa", "verb")])
+    assert _mapping_pos(writable_db, "humble", "oqmxa") == "adjective"
+
+
 def test_explicit_infinitive_mapping_is_a_high_confidence_verb():
     assert infer_mapping_part_of_speech(
         "to arrive", "fliq", "to arrive", "Core Vocabulary"
@@ -305,6 +333,85 @@ def test_common_english_pos_v2_fixture_is_complete_and_exported(xenari):
         assert REVERSE_PREFERRED[root] == english_key
         assert xenari.lookup(english_key, part_of_speech=part_of_speech)[0] == root
         assert xenari.translator._reverse_head_gloss(root) == english_key
+
+
+def test_common_english_pos_v3_fixture_is_exact_bijective_and_exported(xenari):
+    fixture = json.loads(COMMON_ENGLISH_POS_V3.read_text(encoding="utf-8"))
+    categories = fixture["selection"]["categories"]
+    placeholders = ", ".join("?" for _category in categories)
+    rows = xenari.db.conn.execute(
+        f"""SELECT e.english_key, r.root, r.category, e.part_of_speech
+            FROM english_map e JOIN roots r ON r.id = e.root_id
+            WHERE r.category IN ({placeholders})
+              AND (SELECT COUNT(DISTINCT ee.root_id)
+                   FROM english_map ee
+                   WHERE ee.english_key = e.english_key) = 1
+              AND (SELECT COUNT(*) FROM english_map ee WHERE ee.root_id = r.id) = 1
+            ORDER BY e.english_key, r.root""",
+        categories,
+    ).fetchall()
+    exported = {row["root"]: row for row in json.loads(xenari.db.export_json())}
+    preexisting = {
+        (english_key, root): part_of_speech
+        for english_key, root, part_of_speech in fixture["preexisting_mappings"]
+    }
+    actual = {(row["english_key"], row["root"]): row for row in rows}
+    assert set(preexisting).issubset(actual)
+    for pair, part_of_speech in preexisting.items():
+        assert actual[pair]["part_of_speech"] == part_of_speech
+
+    reviewed = {pair: row for pair, row in actual.items() if pair not in preexisting}
+    digest_source = "\n".join(
+        f"{english_key}\t{root}" for english_key, root in sorted(reviewed)
+    )
+    assert hashlib.sha256(digest_source.encode()).hexdigest() == fixture["scope"][
+        "selection_sha256"
+    ]
+
+    overrides = {
+        (english_key, root): part_of_speech
+        for english_key, root, part_of_speech in fixture["overrides"]
+    }
+    deferred = {
+        (english_key, root): reason
+        for english_key, root, reason in fixture["deferred"]
+    }
+    assert set(overrides).issubset(reviewed)
+    assert set(deferred).issubset(reviewed)
+    assert not set(overrides) & set(deferred)
+
+    tagged_by_category = Counter()
+    tagged_by_part_of_speech = Counter()
+    tagged = 0
+    for pair, row in reviewed.items():
+        english_key, root = pair
+        if pair in deferred:
+            assert row["part_of_speech"] is None
+            continue
+        expected = overrides.get(
+            pair, fixture["default_parts_of_speech"][row["category"]]
+        )
+        assert row["part_of_speech"] == expected
+        assert exported[root]["english_parts_of_speech"][english_key] == expected
+        assert xenari.lookup(english_key, part_of_speech=expected)[0] == root
+        tagged_by_category[row["category"]] += 1
+        tagged_by_part_of_speech[expected] += 1
+        tagged += 1
+
+    assert len(reviewed) == fixture["scope"]["mapping_count"] == 1028
+    assert tagged == fixture["scope"]["newly_tagged_count"] == 1000
+    assert len(deferred) == fixture["scope"]["deferred_mapping_count"] == 28
+    assert dict(tagged_by_category) == fixture["expected_tagged_by_category"]
+    assert dict(tagged_by_part_of_speech) == fixture[
+        "expected_tagged_by_part_of_speech"
+    ]
+    assert {
+        english_key: preferred_root
+        for english_key, _mapping_root, preferred_root in fixture["forward_preferences"]
+    } == dict(FORWARD_PREFERRED_BY_PART_OF_SPEECH["verb"])
+    for english_key, mapping_root, preferred_root in fixture["forward_preferences"]:
+        assert xenari.lookup(english_key, part_of_speech="verb")[0] == mapping_root
+        assert xenari._known_verb_root(english_key) == preferred_root
 
 
 def test_common_grammar_keys_do_not_resolve_through_compound_glosses(xenari):

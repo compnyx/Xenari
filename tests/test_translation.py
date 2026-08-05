@@ -164,8 +164,37 @@ def test_everyday_verb_overrides_use_established_roots(xenari):
         "sit": "bezli",
         "stand": "cirku",
         "running": "zaqa",
+        "clutching": "xrics",
+        "colliding": "pyeqesit",
+        "deserves": "znunz",
+        "digging": "sfeksixm",
+        "dragging": "mozfuka",
+        "flexing": "funx",
+        "gaining": "smite",
+        "grabbing": "tingk",
+        "kicked": "kite",
+        "kicking": "kite",
+        "mounting": "rurics",
+        "operating": "qxundraz",
+        "proceeds": "norklamz",
+        "translating": "nrotm",
+        "wrapping": "zuyur",
+        "reads": "zinl",
+        "shifting": "specxe",
+        "tumbling": "snik",
+        "whirled": "cutxut",
     }.items():
         assert xenari._known_verb_root(form) == root
+
+    for nonverb_form in (
+        "dashes",
+        "flexes",
+        "frightened",
+        "satisfying",
+        "tipping",
+        "written",
+    ):
+        assert xenari._known_verb_root(nonverb_form) is None
 
 def test_casual_phrase_registry_precedes_structural_fallbacks(xenari):
     cases = {

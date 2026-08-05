@@ -16,6 +16,7 @@ from .runtime_tables import (
     BASE6_PLACE_ROOT,
     ENGLISH_CONTRACTIONS,
     ENGLISH_MATH_OPERATORS,
+    FORWARD_PREFERRED_BY_PART_OF_SPEECH,
     MATH_OPERATOR_ROOTS,
     REVERSE_PREFERRED,
     REVERSE_PRONOUNS,
@@ -24,7 +25,7 @@ from .runtime_tables import (
 )
 
 RUNTIME_SCHEMA = "xenari-runtime"
-RUNTIME_SCHEMA_VERSION = 1
+RUNTIME_SCHEMA_VERSION = 2
 PACKAGED_RUNTIME = files("xenari").joinpath("data").joinpath("xenari-runtime.json")
 
 PART_OF_SPEECH_BROWSER_CODES = {
@@ -62,6 +63,14 @@ def build_runtime_contract(grammar: GrammarConfig = DEFAULT_GRAMMAR) -> dict[str
         "normalization": {
             "contractions": dict(sorted(ENGLISH_CONTRACTIONS.items())),
             "sentence_final_temporals": dict(sorted(SENTENCE_FINAL_TEMPORALS.items())),
+        },
+        "forward": {
+            "preferred_by_part_of_speech": {
+                part_of_speech: dict(sorted(preferences.items()))
+                for part_of_speech, preferences in sorted(
+                    FORWARD_PREFERRED_BY_PART_OF_SPEECH.items()
+                )
+            },
         },
         "reverse": {
             "preferred": dict(sorted(REVERSE_PREFERRED.items())),
