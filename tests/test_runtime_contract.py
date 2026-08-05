@@ -59,6 +59,24 @@ def test_runtime_contract_contains_the_python_translation_tables():
     }
     assert contract["reverse"]["preferred"] == dict(REVERSE_PREFERRED)
     assert contract["reverse"]["preferred"]["vehya"] == "potato"
+    reviewed_reverse_preferences = {
+        "calar": "decreasing",
+        "hevu": "jammed",
+        "kloxi": "inflated",
+        "sfupzhaq": "momentarily",
+        "shicey": "increasing",
+        "sisolse": "mimicking",
+        "trala": "intended",
+        "verun": "authored",
+        "xoqom": "whirling",
+        "zeyor": "hovers",
+        "zoqevel": "constructed",
+        "zukaqop": "disconnects",
+    }
+    assert {
+        root: contract["reverse"]["preferred"][root]
+        for root in reviewed_reverse_preferences
+    } == reviewed_reverse_preferences
     assert contract["reverse"]["temporal_glosses"] == dict(TEMPORAL_GLOSSES)
     assert set(contract["part_of_speech"]["browser_codes"]) == set(
         contract["part_of_speech"]["controlled_vocabulary"]

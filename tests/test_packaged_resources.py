@@ -3,6 +3,7 @@ import sqlite3
 from importlib.resources import files
 
 from xenari.paths import (
+    COMMON_ENGLISH_POS_V2,
     CORE_VOCABULARY_POS,
     OGDEN_BASIC_ENGLISH,
     RUNTIME_CONTRACT,
@@ -43,6 +44,16 @@ def test_core_vocabulary_pos_fixture_is_available_as_package_data():
     fixture = json.loads(CORE_VOCABULARY_POS.read_text(encoding="utf-8"))
     assert fixture["schema"] == "xenari.core-vocabulary-pos.v1"
     assert sum(len(rows) for rows in fixture["mappings"].values()) == 175
+
+
+def test_common_english_pos_v2_fixture_is_available_as_package_data():
+    assert COMMON_ENGLISH_POS_V2.is_file()
+    fixture = json.loads(COMMON_ENGLISH_POS_V2.read_text(encoding="utf-8"))
+    assert fixture["schema"] == "xenari.common-english-pos.v2"
+    assert fixture["scope"]["mapping_count"] == 199
+    assert fixture["scope"]["tagged_mapping_count"] == 153
+    assert fixture["scope"]["newly_tagged_count"] == 140
+    assert fixture["scope"]["deferred_mapping_count"] == 46
 
 
 def test_packaged_canon_contains_migrated_part_of_speech_metadata():

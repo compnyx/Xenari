@@ -7,7 +7,8 @@ import pytest
 
 from xenari.db import PARTS_OF_SPEECH, XenariDB, normalize_part_of_speech
 from xenari.db.pos import infer_mapping_part_of_speech
-from xenari.paths import CORE_VOCABULARY_POS
+from xenari.paths import COMMON_ENGLISH_POS_V2, CORE_VOCABULARY_POS
+from xenari.runtime_tables import REVERSE_PREFERRED
 
 
 def _create_legacy_database(path, *, schema_version="legacy"):
@@ -218,6 +219,92 @@ def test_core_vocabulary_pos_fixture_is_exact_and_exported(xenari):
             reviewed += 1
 
     assert reviewed == 175
+
+
+def test_common_english_pos_v2_fixture_is_complete_and_exported(xenari):
+    fixture = json.loads(COMMON_ENGLISH_POS_V2.read_text(encoding="utf-8"))
+    exported = {row["root"]: row for row in json.loads(xenari.db.export_json())}
+    reviewed = 0
+    tagged = 0
+    deferred = 0
+
+    for review in fixture["category_reviews"]:
+        rows = xenari.db.conn.execute(
+            """SELECT e.english_key, r.root, e.part_of_speech
+               FROM english_map e JOIN roots r ON r.id = e.root_id
+               WHERE r.category = ?
+               ORDER BY e.english_key, r.root""",
+            (review["category"],),
+        ).fetchall()
+        assert len(rows) == review["expected_mapping_count"]
+
+        explicit = {
+            (english_key, root): part_of_speech
+            for english_key, root, part_of_speech in review.get("mappings", [])
+        }
+        explicit.update(
+            {
+                (english_key, root): part_of_speech
+                for english_key, root, part_of_speech in review.get("exceptions", [])
+            }
+        )
+        deferred_pairs = {
+            (english_key, root)
+            for english_key, root, _reason in review.get("deferred", [])
+        }
+        actual_pairs = {(row["english_key"], row["root"]) for row in rows}
+        assert set(explicit).issubset(actual_pairs)
+        assert deferred_pairs.issubset(actual_pairs)
+
+        for row in rows:
+            pair = (row["english_key"], row["root"])
+            if pair in deferred_pairs:
+                assert row["part_of_speech"] is None
+                deferred += 1
+                reviewed += 1
+                continue
+            expected = explicit.get(pair, review.get("default_part_of_speech"))
+            assert expected in PARTS_OF_SPEECH
+            assert row["part_of_speech"] == expected
+            assert exported[row["root"]]["english_parts_of_speech"][row["english_key"]] == expected
+            tagged += 1
+            reviewed += 1
+
+    assert reviewed == fixture["scope"]["mapping_count"] == 199
+    assert tagged == fixture["scope"]["tagged_mapping_count"] == 153
+    assert deferred == fixture["scope"]["deferred_mapping_count"] == 46
+    assert fixture["collision_resolutions"] == [
+        {
+            "english_key": "solving",
+            "root": "pyoquqab",
+            "part_of_speech": "verb",
+            "reason": "Retained because Python and browser phrase fixtures already assert this exact root and round trip.",
+        }
+    ]
+    assert xenari.lookup("solving", part_of_speech="verb")[0] == "pyoquqab"
+
+    expected_reverse_preferences = {
+        "calar": ("decreasing", "verb"),
+        "hevu": ("jammed", "verb"),
+        "kloxi": ("inflated", "verb"),
+        "sfupzhaq": ("momentarily", "adverb"),
+        "shicey": ("increasing", "verb"),
+        "sisolse": ("mimicking", "verb"),
+        "trala": ("intended", "verb"),
+        "verun": ("authored", "verb"),
+        "xoqom": ("whirling", "verb"),
+        "zeyor": ("hovers", "verb"),
+        "zoqevel": ("constructed", "verb"),
+        "zukaqop": ("disconnects", "verb"),
+    }
+    assert {
+        root: (english_key, part_of_speech)
+        for root, english_key, part_of_speech in fixture["reverse_preferences"]
+    } == expected_reverse_preferences
+    for root, (english_key, part_of_speech) in expected_reverse_preferences.items():
+        assert REVERSE_PREFERRED[root] == english_key
+        assert xenari.lookup(english_key, part_of_speech=part_of_speech)[0] == root
+        assert xenari.translator._reverse_head_gloss(root) == english_key
 
 
 def test_common_grammar_keys_do_not_resolve_through_compound_glosses(xenari):

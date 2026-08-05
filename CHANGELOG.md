@@ -5,6 +5,13 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Completed a mapping-level review of all 199 English senses in ten legacy
+  POS-labelled categories. Added 140 safe sense annotations, retained 13
+  established annotations, and recorded 46 exact deferrals where a bare gloss,
+  homograph, or competing canonical root still needs more context; the untyped
+  queue is now 10,325. Added 12 shared reverse-preferred headwords that are
+  themselves POS-tagged and resolve back to the same root, keeping Python and
+  browser reversals intentional instead of allowing shortest-alias drift.
 - Approved 49 further unambiguous Ogden picturable nouns (`army`, `bird`,
   `boy`, `button`, `card`, `cart`, `carriage`, `cat`, `chain`, `chest`,
   `chin`, `church`, `circle`, `clock`, `coat`, `collar`, `comb`, `cord`,

@@ -8996,7 +8996,10 @@
     "notes": null,
     "english_keys": [
       "automatically"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "automatically": "adverb"
+    }
   },
   {
     "id": 4066,
@@ -9020,7 +9023,10 @@
     "notes": null,
     "english_keys": [
       "luckily"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "luckily": "adverb"
+    }
   },
   {
     "id": 3872,
@@ -9032,7 +9038,10 @@
     "notes": null,
     "english_keys": [
       "unfortunately"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "unfortunately": "adverb"
+    }
   },
   {
     "id": 1281,
@@ -25792,7 +25801,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from ije; validator issues: invalid character 'j' at position 1",
     "english_keys": [
       "myself"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "myself": "pronoun"
+    }
   },
   {
     "id": 5268,
@@ -25847,7 +25859,10 @@
     "notes": null,
     "english_keys": [
       "ninety"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ninety": "numeral"
+    }
   },
   {
     "id": 4584,
@@ -25859,7 +25874,10 @@
     "notes": null,
     "english_keys": [
       "yourselves"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "yourselves": "pronoun"
+    }
   },
   {
     "id": 4571,
@@ -25871,7 +25889,10 @@
     "notes": null,
     "english_keys": [
       "becomes"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "becomes": "verb"
+    }
   },
   {
     "id": 4314,
@@ -25883,7 +25904,10 @@
     "notes": null,
     "english_keys": [
       "possibly"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "possibly": "adverb"
+    }
   },
   {
     "id": 4287,
@@ -25895,7 +25919,10 @@
     "notes": null,
     "english_keys": [
       "evidently"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "evidently": "adverb"
+    }
   },
   {
     "id": 4415,
@@ -25907,7 +25934,10 @@
     "notes": null,
     "english_keys": [
       "ideally"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ideally": "adverb"
+    }
   },
   {
     "id": 4426,
@@ -73124,7 +73154,10 @@
     "notes": "QC repair 2026-07-08T23:29:26: renamed from baosk; validator issues: vowel hiatus: ao at position 1 | Legacy numeral alias for nine; prefer productive base-6 `ca xang prit`.",
     "english_keys": [
       "nine"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "nine": "numeral"
+    }
   },
   {
     "id": 5993,
@@ -73136,7 +73169,10 @@
     "notes": "Legacy numeral alias for twelve; prefer productive base-6 `vriq xang`.",
     "english_keys": [
       "twelve"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "twelve": "numeral"
+    }
   },
   {
     "id": 3369,
@@ -73148,7 +73184,10 @@
     "notes": "Legacy numeral alias for eight; prefer productive base-6 `ca xang vriq`.",
     "english_keys": [
       "eight"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "eight": "numeral"
+    }
   },
   {
     "id": 3330,
@@ -73160,7 +73199,10 @@
     "notes": "Legacy numeral alias for ten; prefer productive base-6 `ca xang qang`.",
     "english_keys": [
       "ten"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "ten": "numeral"
+    }
   },
   {
     "id": 6357,
@@ -73172,7 +73214,10 @@
     "notes": "Legacy numeral alias for eleven; prefer productive base-6 `ca xang cum`.",
     "english_keys": [
       "eleven"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "eleven": "numeral"
+    }
   },
   {
     "id": 3397,
@@ -73184,7 +73229,10 @@
     "notes": "Legacy numeral alias for seven; prefer productive base-6 `ca xang ca`.",
     "english_keys": [
       "seven"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "seven": "numeral"
+    }
   },
   {
     "id": 9449,
@@ -85347,7 +85395,10 @@
     "notes": null,
     "english_keys": [
       "percent"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "percent": "numeral"
+    }
   },
   {
     "id": 3075,
@@ -85374,7 +85425,10 @@
     "notes": null,
     "english_keys": [
       "thousand"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "thousand": "numeral"
+    }
   },
   {
     "id": 3162,
@@ -85386,7 +85440,10 @@
     "notes": null,
     "english_keys": [
       "fifty"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fifty": "numeral"
+    }
   },
   {
     "id": 3320,
@@ -85398,7 +85455,10 @@
     "notes": null,
     "english_keys": [
       "forty"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "forty": "numeral"
+    }
   },
   {
     "id": 3164,
@@ -85410,7 +85470,10 @@
     "notes": null,
     "english_keys": [
       "thirty"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "thirty": "numeral"
+    }
   },
   {
     "id": 3133,
@@ -85422,7 +85485,10 @@
     "notes": null,
     "english_keys": [
       "hundred"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hundred": "numeral"
+    }
   },
   {
     "id": 3312,
@@ -85434,7 +85500,10 @@
     "notes": null,
     "english_keys": [
       "twenty"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "twenty": "numeral"
+    }
   },
   {
     "id": 3274,
@@ -91485,7 +91554,10 @@
     "notes": null,
     "english_keys": [
       "themselves"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "themselves": "pronoun"
+    }
   },
   {
     "id": 3218,
@@ -91497,7 +91569,10 @@
     "notes": null,
     "english_keys": [
       "herself"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "herself": "pronoun"
+    }
   },
   {
     "id": 3087,
@@ -91509,7 +91584,10 @@
     "notes": null,
     "english_keys": [
       "himself"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "himself": "pronoun"
+    }
   },
   {
     "id": 3126,
@@ -91521,7 +91599,10 @@
     "notes": null,
     "english_keys": [
       "itself"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "itself": "pronoun"
+    }
   },
   {
     "id": 2458,
@@ -116049,7 +116130,10 @@
     "english_keys": [
       "enveloping",
       "surrounding"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "enveloping": "verb"
+    }
   },
   {
     "id": 5043,
@@ -116063,7 +116147,12 @@
       "included",
       "incorporated",
       "integrated"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "included": "verb",
+      "incorporated": "verb",
+      "integrated": "verb"
+    }
   },
   {
     "id": 5105,
@@ -116076,7 +116165,11 @@
     "english_keys": [
       "strains",
       "struggles"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "strains": "verb",
+      "struggles": "verb"
+    }
   },
   {
     "id": 5159,
@@ -116088,7 +116181,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from boasi; validator issues: vowel hiatus: oa at position 1",
     "english_keys": [
       "click"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "click": "noun"
+    }
   },
   {
     "id": 5049,
@@ -116100,7 +116196,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from boi; validator issues: vowel hiatus: oi at position 1",
     "english_keys": [
       "tweak"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "tweak": "verb"
+    }
   },
   {
     "id": 5013,
@@ -116113,7 +116212,11 @@
     "english_keys": [
       "flaring",
       "spreading"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "flaring": "verb",
+      "spreading": "verb"
+    }
   },
   {
     "id": 5074,
@@ -116127,7 +116230,11 @@
       "decreasing",
       "dwindling",
       "fading"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "decreasing": "verb",
+      "dwindling": "verb"
+    }
   },
   {
     "id": 5079,
@@ -116139,7 +116246,10 @@
     "notes": null,
     "english_keys": [
       "howl"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "howl": "noun"
+    }
   },
   {
     "id": 5012,
@@ -116151,7 +116261,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from chaow; validator issues: vowel hiatus: ao at position 2, invalid character 'w' at position 4",
     "english_keys": [
       "unbuckles"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "unbuckles": "verb"
+    }
   },
   {
     "id": 5062,
@@ -116163,7 +116276,10 @@
     "notes": null,
     "english_keys": [
       "plowing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "plowing": "verb"
+    }
   },
   {
     "id": 4984,
@@ -116176,7 +116292,11 @@
     "english_keys": [
       "catalogued",
       "indexed"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "catalogued": "verb",
+      "indexed": "verb"
+    }
   },
   {
     "id": 5021,
@@ -116201,7 +116321,10 @@
     "notes": null,
     "english_keys": [
       "framed"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "framed": "verb"
+    }
   },
   {
     "id": 5048,
@@ -116214,7 +116337,11 @@
     "english_keys": [
       "absorbed",
       "engrossed"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "absorbed": "verb",
+      "engrossed": "verb"
+    }
   },
   {
     "id": 4969,
@@ -116227,7 +116354,11 @@
     "english_keys": [
       "rearranging",
       "reordering"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rearranging": "verb",
+      "reordering": "verb"
+    }
   },
   {
     "id": 5092,
@@ -116239,7 +116370,10 @@
     "notes": null,
     "english_keys": [
       "sprinkled"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sprinkled": "verb"
+    }
   },
   {
     "id": 4999,
@@ -116252,7 +116386,11 @@
     "english_keys": [
       "interrupted",
       "punctuated"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "interrupted": "verb",
+      "punctuated": "verb"
+    }
   },
   {
     "id": 5103,
@@ -116264,7 +116402,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from frelue; validator issues: vowel hiatus: ue at position 4",
     "english_keys": [
       "teetering"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "teetering": "verb"
+    }
   },
   {
     "id": 5003,
@@ -116306,7 +116447,10 @@
     "english_keys": [
       "emptied",
       "gutted"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "gutted": "verb"
+    }
   },
   {
     "id": 4997,
@@ -116338,7 +116482,10 @@
       "blocked",
       "jammed",
       "stuck"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "jammed": "verb"
+    }
   },
   {
     "id": 5015,
@@ -116350,7 +116497,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from hejujo; validator issues: invalid character 'j' at position 2, invalid character 'j' at position 4",
     "english_keys": [
       "flares"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "flares": "noun"
+    }
   },
   {
     "id": 5042,
@@ -116363,7 +116513,11 @@
     "english_keys": [
       "looting",
       "plundering"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "looting": "verb",
+      "plundering": "verb"
+    }
   },
   {
     "id": 5149,
@@ -116376,7 +116530,11 @@
     "english_keys": [
       "rearranges",
       "shuffles"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rearranges": "verb",
+      "shuffles": "verb"
+    }
   },
   {
     "id": 5031,
@@ -116389,7 +116547,10 @@
     "english_keys": [
       "blown",
       "inflated"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "inflated": "verb"
+    }
   },
   {
     "id": 5016,
@@ -116401,7 +116562,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from kwe; validator issues: invalid character 'w' at position 1",
     "english_keys": [
       "annihilating"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "annihilating": "verb"
+    }
   },
   {
     "id": 5104,
@@ -116413,7 +116577,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from kwo; validator issues: invalid character 'w' at position 1",
     "english_keys": [
       "widening"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "widening": "verb"
+    }
   },
   {
     "id": 5128,
@@ -116447,7 +116614,8 @@
     ],
     "english_parts_of_speech": {
       "decipher": "verb",
-      "decode": "verb"
+      "decode": "verb",
+      "decrypt": "verb"
     }
   },
   {
@@ -116462,7 +116630,12 @@
       "guarding",
       "protecting",
       "shielding"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "guarding": "verb",
+      "protecting": "verb",
+      "shielding": "verb"
+    }
   },
   {
     "id": 5141,
@@ -116475,7 +116648,11 @@
     "english_keys": [
       "guiding",
       "steering"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "guiding": "verb",
+      "steering": "verb"
+    }
   },
   {
     "id": 5115,
@@ -116489,7 +116666,12 @@
       "directed",
       "instructed",
       "ordered"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "directed": "verb",
+      "instructed": "verb",
+      "ordered": "verb"
+    }
   },
   {
     "id": 5020,
@@ -116501,7 +116683,10 @@
     "notes": null,
     "english_keys": [
       "atomized"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "atomized": "verb"
+    }
   },
   {
     "id": 5050,
@@ -116513,7 +116698,10 @@
     "notes": null,
     "english_keys": [
       "decryption"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "decryption": "noun"
+    }
   },
   {
     "id": 4962,
@@ -116546,7 +116734,8 @@
       "solving"
     ],
     "english_parts_of_speech": {
-      "resolve": "verb"
+      "resolve": "verb",
+      "solving": "verb"
     }
   },
   {
@@ -116574,7 +116763,12 @@
       "appointed",
       "assigned",
       "designated"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "appointed": "verb",
+      "assigned": "verb",
+      "designated": "verb"
+    }
   },
   {
     "id": 5133,
@@ -116586,7 +116780,10 @@
     "notes": null,
     "english_keys": [
       "lay"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "lay": "verb"
+    }
   },
   {
     "id": 5014,
@@ -116623,7 +116820,12 @@
       "declines",
       "decreases",
       "refuses"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "declines": "verb",
+      "decreases": "verb",
+      "refuses": "verb"
+    }
   },
   {
     "id": 4983,
@@ -116636,7 +116838,10 @@
     "english_keys": [
       "growing",
       "increasing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "increasing": "verb"
+    }
   },
   {
     "id": 4966,
@@ -116649,7 +116854,10 @@
     "english_keys": [
       "imitating",
       "mimicking"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "mimicking": "verb"
+    }
   },
   {
     "id": 4976,
@@ -116661,7 +116869,10 @@
     "notes": null,
     "english_keys": [
       "decompresses"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "decompresses": "verb"
+    }
   },
   {
     "id": 5022,
@@ -116673,7 +116884,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from spiwuh; validator issues: invalid character 'w' at position 3",
     "english_keys": [
       "hurling"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hurling": "verb"
+    }
   },
   {
     "id": 5153,
@@ -116687,7 +116901,12 @@
       "confirmed",
       "established",
       "verified"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "confirmed": "verb",
+      "established": "verb",
+      "verified": "verb"
+    }
   },
   {
     "id": 5161,
@@ -116700,7 +116919,11 @@
     "english_keys": [
       "beckons",
       "summons"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "beckons": "verb",
+      "summons": "verb"
+    }
   },
   {
     "id": 5078,
@@ -116714,7 +116937,10 @@
       "intended",
       "meant",
       "planned"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "intended": "verb"
+    }
   },
   {
     "id": 5082,
@@ -116726,7 +116952,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from tweuga; validator issues: vowel hiatus: eu at position 2, invalid character 'w' at position 1",
     "english_keys": [
       "rustles"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "rustles": "verb"
+    }
   },
   {
     "id": 5005,
@@ -116740,7 +116969,11 @@
       "containing",
       "enclosing",
       "holding"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "enclosing": "verb",
+      "holding": "verb"
+    }
   },
   {
     "id": 5139,
@@ -116754,7 +116987,10 @@
       "authored",
       "inscribed",
       "wrote"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "authored": "verb"
+    }
   },
   {
     "id": 5017,
@@ -116768,7 +117004,12 @@
       "diminishes",
       "lessens",
       "subsides"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "diminishes": "verb",
+      "lessens": "verb",
+      "subsides": "verb"
+    }
   },
   {
     "id": 5000,
@@ -116781,7 +117022,10 @@
     "english_keys": [
       "controlled",
       "dominated"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "dominated": "verb"
+    }
   },
   {
     "id": 4963,
@@ -116794,7 +117038,10 @@
     "english_keys": [
       "spinning",
       "whirling"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "whirling": "verb"
+    }
   },
   {
     "id": 4971,
@@ -116822,7 +117069,10 @@
     "notes": null,
     "english_keys": [
       "grazing"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "grazing": "verb"
+    }
   },
   {
     "id": 5132,
@@ -116836,7 +117086,11 @@
       "enumerated",
       "listed",
       "recorded"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "enumerated": "verb",
+      "listed": "verb"
+    }
   },
   {
     "id": 5007,
@@ -116865,7 +117119,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from wugived; validator issues: invalid character 'w' at position 0",
     "english_keys": [
       "implodes"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "implodes": "verb"
+    }
   },
   {
     "id": 5095,
@@ -116878,7 +117135,11 @@
     "english_keys": [
       "labored",
       "strained"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "labored": "verb",
+      "strained": "verb"
+    }
   },
   {
     "id": 5098,
@@ -116891,7 +117152,10 @@
     "english_keys": [
       "floats",
       "hovers"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hovers": "verb"
+    }
   },
   {
     "id": 5121,
@@ -116903,7 +117167,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from jiva; validator issues: invalid character 'j' at position 0",
     "english_keys": [
       "elected"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "elected": "verb"
+    }
   },
   {
     "id": 4993,
@@ -116917,7 +117184,10 @@
       "built",
       "constructed",
       "erected"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "constructed": "verb"
+    }
   },
   {
     "id": 4990,
@@ -116930,7 +117200,11 @@
     "english_keys": [
       "accelerated",
       "sped"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "accelerated": "verb",
+      "sped": "verb"
+    }
   },
   {
     "id": 4964,
@@ -116944,7 +117218,11 @@
       "disconnects",
       "disengages",
       "releases"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "disconnects": "verb",
+      "disengages": "verb"
+    }
   },
   {
     "id": 5073,
@@ -116956,7 +117234,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from uacom; validator issues: vowel hiatus: ua at position 0",
     "english_keys": [
       "shatters"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "shatters": "verb"
+    }
   },
   {
     "id": 4974,
@@ -116968,7 +117249,10 @@
     "notes": "QC repair 2026-07-09T18:08:23: renamed from juwotap; validator issues: invalid character 'j' at position 0, invalid character 'w' at position 2",
     "english_keys": [
       "skimming"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "skimming": "verb"
+    }
   },
   {
     "id": 3069,
@@ -118431,7 +118715,10 @@
     "notes": null,
     "english_keys": [
       "painfully"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "painfully": "adverb"
+    }
   },
   {
     "id": 5755,
@@ -118443,7 +118730,10 @@
     "notes": null,
     "english_keys": [
       "impatiently"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "impatiently": "adverb"
+    }
   },
   {
     "id": 5695,
@@ -118455,7 +118745,10 @@
     "notes": null,
     "english_keys": [
       "hysterically"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "hysterically": "adverb"
+    }
   },
   {
     "id": 5756,
@@ -118468,7 +118761,10 @@
     "english_keys": [
       "briefly",
       "momentarily"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "momentarily": "adverb"
+    }
   },
   {
     "id": 5836,
@@ -118481,7 +118777,11 @@
     "english_keys": [
       "broadly",
       "widely"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "broadly": "adverb",
+      "widely": "adverb"
+    }
   },
   {
     "id": 5747,
@@ -118493,7 +118793,10 @@
     "notes": null,
     "english_keys": [
       "evermore"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "evermore": "adverb"
+    }
   },
   {
     "id": 5827,
@@ -118505,7 +118808,10 @@
     "notes": null,
     "english_keys": [
       "sarcastically"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sarcastically": "adverb"
+    }
   },
   {
     "id": 5650,
@@ -118517,7 +118823,10 @@
     "notes": null,
     "english_keys": [
       "gracefully"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "gracefully": "adverb"
+    }
   },
   {
     "id": 6064,
@@ -118529,7 +118838,10 @@
     "notes": null,
     "english_keys": [
       "nonchalantly"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "nonchalantly": "adverb"
+    }
   },
   {
     "id": 6234,
@@ -118541,7 +118853,10 @@
     "notes": null,
     "english_keys": [
       "casually"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "casually": "adverb"
+    }
   },
   {
     "id": 6197,
@@ -118553,7 +118868,10 @@
     "notes": null,
     "english_keys": [
       "uncomfortably"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "uncomfortably": "adverb"
+    }
   },
   {
     "id": 6198,
@@ -118565,7 +118883,10 @@
     "notes": null,
     "english_keys": [
       "especially"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "especially": "adverb"
+    }
   },
   {
     "id": 6191,
@@ -118577,7 +118898,10 @@
     "notes": null,
     "english_keys": [
       "merely"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "merely": "adverb"
+    }
   },
   {
     "id": 5956,
@@ -118589,7 +118913,10 @@
     "notes": null,
     "english_keys": [
       "gleefully"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "gleefully": "adverb"
+    }
   },
   {
     "id": 6117,
@@ -118601,7 +118928,10 @@
     "notes": null,
     "english_keys": [
       "formerly"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "formerly": "adverb"
+    }
   },
   {
     "id": 5946,
@@ -118613,7 +118943,10 @@
     "notes": null,
     "english_keys": [
       "holy"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "holy": "adjective"
+    }
   },
   {
     "id": 5952,
@@ -118625,7 +118958,10 @@
     "notes": null,
     "english_keys": [
       "overly"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "overly": "adverb"
+    }
   },
   {
     "id": 6044,
@@ -118637,7 +118973,10 @@
     "notes": null,
     "english_keys": [
       "merrily"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "merrily": "adverb"
+    }
   },
   {
     "id": 6072,
@@ -118649,7 +118988,10 @@
     "notes": null,
     "english_keys": [
       "eerily"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "eerily": "adverb"
+    }
   },
   {
     "id": 6045,
@@ -118661,7 +119003,10 @@
     "notes": null,
     "english_keys": [
       "fondly"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "fondly": "adverb"
+    }
   },
   {
     "id": 6120,
@@ -118673,7 +119018,10 @@
     "notes": null,
     "english_keys": [
       "benevolently"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "benevolently": "adverb"
+    }
   },
   {
     "id": 6015,
@@ -118685,7 +119033,10 @@
     "notes": null,
     "english_keys": [
       "angrily"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "angrily": "adverb"
+    }
   },
   {
     "id": 5998,
@@ -124060,7 +124411,10 @@
     "notes": null,
     "english_keys": [
       "sixty"
-    ]
+    ],
+    "english_parts_of_speech": {
+      "sixty": "numeral"
+    }
   },
   {
     "id": 5885,

@@ -1,0 +1,159 @@
+{
+  "schema": "xenari.common-english-pos.v2",
+  "scope": {
+    "selection": "Complete mapping-level review of ten legacy categories whose names encode intended English POS, including explicit corrections where the imported category was wrong.",
+    "mapping_count": 199,
+    "tagged_mapping_count": 153,
+    "newly_tagged_count": 140,
+    "deferred_mapping_count": 46
+  },
+  "collision_resolutions": [
+    {
+      "english_key": "solving",
+      "root": "pyoquqab",
+      "part_of_speech": "verb",
+      "reason": "Retained because Python and browser phrase fixtures already assert this exact root and round trip."
+    }
+  ],
+  "reverse_preferences": [
+    ["calar", "decreasing", "verb"],
+    ["hevu", "jammed", "verb"],
+    ["kloxi", "inflated", "verb"],
+    ["sfupzhaq", "momentarily", "adverb"],
+    ["shicey", "increasing", "verb"],
+    ["sisolse", "mimicking", "verb"],
+    ["trala", "intended", "verb"],
+    ["verun", "authored", "verb"],
+    ["xoqom", "whirling", "verb"],
+    ["zeyor", "hovers", "verb"],
+    ["zoqevel", "constructed", "verb"],
+    ["zukaqop", "disconnects", "verb"]
+  ],
+  "category_reviews": [
+    {
+      "category": "Verbs",
+      "expected_mapping_count": 143,
+      "default_part_of_speech": "verb",
+      "exceptions": [
+        ["click", "boqasi", "noun"],
+        ["decryption", "plufa", "noun"],
+        ["flares", "hezuzo", "noun"],
+        ["howl", "casehi", "noun"]
+      ],
+      "deferred": [
+        ["accomplish", "giqutnom", "Would change the reviewed reverse headword for complete."],
+        ["applied", "rola", "Shares a root with the unresolved adjective relevant."],
+        ["blocked", "hevu", "Competes with an unresolved English-key homograph."],
+        ["blown", "kloxi", "Would displace the established grammar verb root."],
+        ["built", "zoqevel", "Would displace the browser grammar root asserted by regression tests."],
+        ["collides", "coxey", "Would displace the established grammar verb root."],
+        ["compress", "yates", "Competes with an unresolved same-POS synonym root."],
+        ["containing", "tyoyeg", "Competes with an unresolved particle/preposition sense."],
+        ["controlled", "xecoy", "Competes with an unresolved same-key mapping."],
+        ["determination", "yoxalda", "Competes with an unresolved noun root and shares a verbal root."],
+        ["emptied", "gaqa", "Competes with an unresolved same-POS synonym root."],
+        ["enroll", "nacuc", "Would change the reviewed reverse headword for register."],
+        ["erected", "zoqevel", "Competes with an unresolved same-key mapping."],
+        ["fading", "calar", "Competes with an unresolved nominal decay sense."],
+        ["floats", "zeyor", "Would displace the established grammar verb root."],
+        ["fulfill", "giqutnom", "Would change the reviewed reverse headword for complete."],
+        ["growing", "shicey", "Would displace the established grammar verb root."],
+        ["halt", "semax", "Would change the reviewed reverse headword for stop."],
+        ["halted", "semax", "Would change the reviewed reverse headword for stop."],
+        ["halting", "semax", "Would change the reviewed reverse headword for stop."],
+        ["imitating", "sisolse", "Competes with an unresolved same-POS synonym root."],
+        ["inscribed", "verun", "Would displace the established grammar verb root."],
+        ["join", "nacuc", "Competes with an existing reviewed noun homograph."],
+        ["meant", "trala", "Competes with an unresolved same-key mapping."],
+        ["planned", "trala", "Competes with an unresolved same-key mapping."],
+        ["prosper", "fuqoqod", "Would change the reviewed reverse headword for flourish."],
+        ["recorded", "yocosek", "Competes with an unresolved attributive timestamp sense."],
+        ["releases", "zukaqop", "Would displace the established grammar verb root."],
+        ["relevant", "rola", "Shares a root with the unresolved verb applied."],
+        ["resolve", "yoxalda", "Competes with the existing reviewed verb root pyoquqab."],
+        ["satisfy", "giqutnom", "Would change the reviewed reverse headword for complete."],
+        ["solve", "pyoquqab", "Would change the reviewed reverse headword for resolve."],
+        ["solved", "pyoquqab", "Would change the reviewed reverse headword for resolve."],
+        ["solves", "pyoquqab", "Would change the reviewed reverse headword for resolve."],
+        ["spinning", "xoqom", "Competes with an unresolved same-key mapping."],
+        ["stopping", "semax", "Would change the reviewed reverse headword for stop."],
+        ["strikes", "coxey", "Would displace the established grammar verb root."],
+        ["stuck", "hevu", "Competes with an unresolved same-key mapping."],
+        ["surrounding", "ayum", "Competes with an unresolved same-POS synonym root."],
+        ["thrive", "fuqoqod", "Would change the reviewed reverse headword for flourish."],
+        ["tweaking", "gadok", "Would displace the established grammar verb root."],
+        ["wrote", "verun", "Would displace the established grammar verb root."]
+      ]
+    },
+    {
+      "category": "Adverb",
+      "expected_mapping_count": 4,
+      "default_part_of_speech": "adverb",
+      "exceptions": [],
+      "deferred": [
+        ["onward", "puma", "Competes with an unresolved same-key mapping."]
+      ]
+    },
+    {
+      "category": "adverb",
+      "expected_mapping_count": 14,
+      "default_part_of_speech": "adverb",
+      "exceptions": [["holy", "snar", "adjective"]]
+    },
+    {
+      "category": "adv",
+      "expected_mapping_count": 10,
+      "default_part_of_speech": "adverb",
+      "exceptions": [],
+      "deferred": [
+        ["briefly", "sfupzhaq", "Competes with an unresolved same-POS synonym root."]
+      ]
+    },
+    {
+      "category": "Numeral",
+      "expected_mapping_count": 8,
+      "default_part_of_speech": "numeral",
+      "exceptions": []
+    },
+    {
+      "category": "num",
+      "expected_mapping_count": 1,
+      "default_part_of_speech": "numeral",
+      "exceptions": []
+    },
+    {
+      "category": "Legacy Numeral Aliases",
+      "expected_mapping_count": 6,
+      "default_part_of_speech": "numeral",
+      "exceptions": []
+    },
+    {
+      "category": "Pronoun/Reflexive",
+      "expected_mapping_count": 4,
+      "default_part_of_speech": "pronoun",
+      "exceptions": []
+    },
+    {
+      "category": "Function",
+      "expected_mapping_count": 1,
+      "default_part_of_speech": "pronoun",
+      "exceptions": []
+    },
+    {
+      "category": "Function Words",
+      "expected_mapping_count": 8,
+      "mappings": [
+        ["becomes", "rohli", "verb"],
+        ["evidently", "vitri", "adverb"],
+        ["ideally", "vlukuq", "adverb"],
+        ["ninety", "clutfri", "numeral"],
+        ["possibly", "romacma", "adverb"],
+        ["yourselves", "hufomel", "pronoun"]
+      ],
+      "deferred": [
+        ["assuming", "xorcus", "Bare gloss does not distinguish conjunction/particle from verb."],
+        ["helping", "zivuh", "Bare gloss does not distinguish gerund noun from verb."]
+      ]
+    }
+  ]
+}

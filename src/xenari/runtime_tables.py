@@ -262,5 +262,17 @@ REVERSE_PREFERRED: Mapping[str, str] = _immutable(
         "mse": "much",
         "vehya": "potato",
         "shengtac": "problem",
+        "calar": "decreasing",
+        "hevu": "jammed",
+        "kloxi": "inflated",
+        "sfupzhaq": "momentarily",
+        "shicey": "increasing",
+        "sisolse": "mimicking",
+        "trala": "intended",
+        "verun": "authored",
+        "xoqom": "whirling",
+        "zeyor": "hovers",
+        "zoqevel": "constructed",
+        "zukaqop": "disconnects",
     }
 )
