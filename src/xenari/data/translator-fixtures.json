@@ -864,6 +864,42 @@
       "xenari": "vriq vlox cum",
       "family": "math",
       "loop": 10
+    },
+    {
+      "english": "the aeral is a birdbrain",
+      "xenari": "ra vi qronkqrep ka vi qrontzlonq ta zux vi sa xo",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "english": "the lithren is a rockhead",
+      "xenari": "ra vi qubihqrap ka vi xloqngrox ta zux vi sa xo",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "english": "the thalren is a fishface",
+      "xenari": "ra vi plenkfrek ka vi xrompuyshang ta zux vi sa xo",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "english": "the khezh is a bugface",
+      "xenari": "ra vi xlekqfrek ka vi zokaxaqey ta zux vi sa xo",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "english": "the succubus is a bloodsucker",
+      "xenari": "ra vi zlekkroxzal ka vi ngolxroqvi ta zux vi sa xo",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "english": "the human is a meatbag",
+      "xenari": "ra vi tuputlor ka vi trelqvi ta zux vi sa xo",
+      "family": "species-slur",
+      "loop": 11
     }
   ],
   "reverse": [
@@ -1144,6 +1180,42 @@
       "english": "2 less than 5",
       "family": "math",
       "loop": 10
+    },
+    {
+      "xenari": "ra vi qronkqrep ka vi qrontzlonq ta zux vi sa xo",
+      "english": "aeral is birdbrain",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "xenari": "ra vi qubihqrap ka vi xloqngrox ta zux vi sa xo",
+      "english": "lithren is rockhead",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "xenari": "ra vi plenkfrek ka vi xrompuyshang ta zux vi sa xo",
+      "english": "thalren is fishface",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "xenari": "ra vi xlekqfrek ka vi zokaxaqey ta zux vi sa xo",
+      "english": "khezh is bugface",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "xenari": "ra vi zlekkroxzal ka vi ngolxroqvi ta zux vi sa xo",
+      "english": "succubus is bloodsucker",
+      "family": "species-slur",
+      "loop": 11
+    },
+    {
+      "xenari": "ra vi tuputlor ka vi trelqvi ta zux vi sa xo",
+      "english": "human is meatbag",
+      "family": "species-slur",
+      "loop": 11
     }
   ],
   "hardening": {

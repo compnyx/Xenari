@@ -879,7 +879,10 @@ class ReverseTranslationMixin:
                     )
                 elif tok == "ka":
                     clause.subject, i, clause.subject_plural = read_phrase(
-                        tokens, i + 1, role="subj"
+                        tokens,
+                        i + 1,
+                        role="subj",
+                        head_part_of_speech=("noun" if copular_predicate else None),
                     )
                 elif tok == "na":
                     clause.location, i, _ = read_phrase(tokens, i + 1, role="obj")

@@ -1,0 +1,72 @@
+{
+  "schema": "xenari.post-v4-lexicon.v1",
+  "description": "Reviewed lexical preferences added after the frozen common-English POS v4 provenance snapshot.",
+  "mappings": [
+    {
+      "english_key": "aeral",
+      "root": "qrontzlonq",
+      "part_of_speech": "noun",
+      "kind": "neutral_species"
+    },
+    {
+      "english_key": "lithren",
+      "root": "xloqngrox",
+      "part_of_speech": "noun",
+      "kind": "neutral_species"
+    },
+    {
+      "english_key": "thalren",
+      "root": "xrompuyshang",
+      "part_of_speech": "noun",
+      "kind": "neutral_species"
+    },
+    {
+      "english_key": "khezh",
+      "root": "zokaxaqey",
+      "part_of_speech": "noun",
+      "kind": "neutral_species"
+    },
+    {
+      "english_key": "succubus",
+      "root": "ngolxroqvi",
+      "part_of_speech": "noun",
+      "kind": "neutral_species"
+    },
+    {
+      "english_key": "birdbrain",
+      "root": "qronkqrep",
+      "part_of_speech": "noun",
+      "kind": "species_slur"
+    },
+    {
+      "english_key": "rockhead",
+      "root": "qubihqrap",
+      "part_of_speech": "noun",
+      "kind": "species_slur"
+    },
+    {
+      "english_key": "fishface",
+      "root": "plenkfrek",
+      "part_of_speech": "noun",
+      "kind": "species_slur"
+    },
+    {
+      "english_key": "bugface",
+      "root": "xlekqfrek",
+      "part_of_speech": "noun",
+      "kind": "species_slur"
+    },
+    {
+      "english_key": "bloodsucker",
+      "root": "zlekkroxzal",
+      "part_of_speech": "noun",
+      "kind": "species_slur"
+    },
+    {
+      "english_key": "meatbag",
+      "root": "tuputlor",
+      "part_of_speech": "noun",
+      "kind": "species_slur"
+    }
+  ]
+}

@@ -5,6 +5,21 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.7.0 - 2026-08-07
+
+- Added five named sapient peoples to the public canon: the aerial Aeral,
+  subterranean Lithren, oceanic Thalren, hexapodal Khezh, and Veilborn
+  succubi. Humans retain the existing `trelqvi` root.
+- Added six explicitly derogatory species-directed nouns with reversible,
+  broadly usable English surfaces: `birdbrain` (Aeral), `rockhead` (Lithren),
+  `fishface` (Thalren), `bugface` (Khezh), `bloodsucker` (succubus), and
+  `meatbag` (human). Each is related to, but deliberately distinct from, its
+  neutral species name.
+- Added reviewed post-v4 lexical preferences so new canon can extend the
+  frozen common-English v4 provenance snapshot without rewriting history.
+  Added noun-predicate copulas in Python and the browser, including exact
+  forward/reverse species-slur fixtures and a regression preventing
+  progressive verbs from being misread as nouns.
 - Added a packaged real-text round-trip corpus using five human-supplied samples
   that stress passive chains, proper nouns, date ranges, relative clauses,
   purpose, historical settings, contrast, and ellipsis.

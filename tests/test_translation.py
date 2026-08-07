@@ -622,6 +622,35 @@ def test_qrazhel_copula_round_trips_with_its_preferred_english_mapping(xenari):
     assert xenari.speak(english, evidential="assumed") == xenari_text
     assert xenari.reverse(xenari_text) == english
 
+
+def test_species_slurs_use_nominal_copulas_and_round_trip(xenari):
+    cases = {
+        "the aeral is a birdbrain": (
+            "ra vi qronkqrep ka vi qrontzlonq ta zux vi sa xo"
+        ),
+        "the lithren is a rockhead": (
+            "ra vi qubihqrap ka vi xloqngrox ta zux vi sa xo"
+        ),
+        "the thalren is a fishface": (
+            "ra vi plenkfrek ka vi xrompuyshang ta zux vi sa xo"
+        ),
+        "the khezh is a bugface": (
+            "ra vi xlekqfrek ka vi zokaxaqey ta zux vi sa xo"
+        ),
+        "the succubus is a bloodsucker": (
+            "ra vi zlekkroxzal ka vi ngolxroqvi ta zux vi sa xo"
+        ),
+        "the human is a meatbag": (
+            "ra vi tuputlor ka vi trelqvi ta zux vi sa xo"
+        ),
+    }
+
+    for english, xenari_text in cases.items():
+        assert xenari.speak(english, evidential="assumed") == xenari_text
+        assert xenari.reverse(xenari_text) == english.removeprefix("the ").replace(
+            " is a ", " is "
+        )
+
 def test_reverse_copula_agrees_with_subject_and_tense(xenari):
     cases = {
         "ra fatyih ka neq ta zux sa xo": "I am dangerous",

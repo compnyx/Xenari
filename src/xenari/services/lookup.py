@@ -95,7 +95,7 @@ class LookupMixin:
             "person", "being", "creature", "animal", "stranger", "speaker",
             "addressee", "parent", "child", "sibling", "partner", "friend",
             "enemy", "student", "teacher", "worker", "thief", "robber",
-            "demon", "succubus", "human", "body", "soul", "living"
+            "demon", "succubus", "human", "sapient", "body", "soul", "living"
         )
         return (
             self.p["anim"]

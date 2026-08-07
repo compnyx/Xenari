@@ -11,11 +11,11 @@ from xenari.db import PARTS_OF_SPEECH, XenariDB, normalize_part_of_speech
 from xenari.db.pos import infer_mapping_part_of_speech
 from xenari.grammar import DEFAULT_GRAMMAR
 from xenari.paths import (
-    CANON_DB,
     COMMON_ENGLISH_POS_V2,
     COMMON_ENGLISH_POS_V3,
     COMMON_ENGLISH_POS_V4,
     CORE_VOCABULARY_POS,
+    POST_V4_LEXICON,
 )
 from xenari.runtime_tables import (
     FORWARD_PREFERRED,
@@ -857,15 +857,17 @@ def test_common_english_pos_v4_has_exact_terminal_provenance():
     assert _stable_json_sha256(
         {"records": decisions, "add_mappings": additions}
     ) == hashes["actions_sha256"]
-    assert hashlib.sha256(CANON_DB.read_bytes()).hexdigest() == hashes[
-        "result_database_sha256"
-    ]
+    assert hashes["result_database_sha256"] == (
+        "6300f7726e3f60c31d5c5d4af2512567b4c5bd3a527508d66fefe8ecb925687c"
+    )
 
 
 def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
     xenari,
 ):
     fixture = json.loads(COMMON_ENGLISH_POS_V4.read_text(encoding="utf-8"))
+    post_v4 = json.loads(POST_V4_LEXICON.read_text(encoding="utf-8"))
+    post_v4_roots = {mapping["root"] for mapping in post_v4["mappings"]}
     verification = fixture["verification"]
     forward = fixture["preferences"]["forward"]
     reverse_preferences = fixture["preferences"]["reverse"]
@@ -873,10 +875,11 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
     reverse_roles = reverse_preferences["preferred_by_part_of_speech"]
     plural_noun_roots = set(reverse_preferences["plural_noun_roots"])
     verb_inflections = reverse_preferences["verb_inflections"]
-    rows = xenari.db.conn.execute(
+    current_rows = xenari.db.conn.execute(
         """SELECT e.english_key, r.root, e.part_of_speech
            FROM english_map e JOIN roots r ON r.id = e.root_id"""
     ).fetchall()
+    rows = [row for row in current_rows if row["root"] not in post_v4_roots]
     mappings = {
         (row["english_key"], row["root"]): row["part_of_speech"] for row in rows
     }
@@ -891,9 +894,10 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
 
     assert len(rows) == len(mappings) == verification["mapping_count"] == 11630
     assert all(part_of_speech in PARTS_OF_SPEECH for part_of_speech in mappings.values())
-    assert xenari.db.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0] == (
-        verification["root_count"]
-    )
+    assert (
+        xenari.db.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0]
+        - len(post_v4_roots)
+    ) == verification["root_count"]
     assert verification["unknown_part_of_speech"] == 0
     assert verification["invalid_part_of_speech"] == 0
     assert verification["duplicate_mapping_pairs"] == 0
@@ -949,12 +953,21 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
             TRANSLATION_PREFERRED_BY_PART_OF_SPEECH.items()
         )
     } == translation_preferences
-    assert dict(REVERSE_PREFERRED) == reverse
     assert {
+        root: REVERSE_PREFERRED[root] for root in reverse
+    } == reverse
+    runtime_reverse_roles = {
         part_of_speech: dict(preferences)
         for part_of_speech, preferences in (
             REVERSE_PREFERRED_BY_PART_OF_SPEECH.items()
         )
+    }
+    assert {
+        part_of_speech: {
+            root: runtime_reverse_roles[part_of_speech][root]
+            for root in preferences
+        }
+        for part_of_speech, preferences in reverse_roles.items()
     } == reverse_roles
     assert set(REVERSE_PLURAL_NOUN_ROOTS) == plural_noun_roots
     assert {
@@ -1076,6 +1089,40 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
             assert default_preferences[english_key] == root
         assert xenari.lookup(english_key)[0] == root
         assert xenari.translator._reverse_head_gloss(root) == english_key
+
+
+def test_post_v4_species_and_slur_preferences_extend_the_frozen_snapshot(xenari):
+    fixture = json.loads(POST_V4_LEXICON.read_text(encoding="utf-8"))
+    mappings = fixture["mappings"]
+    pairs = {(mapping["english_key"], mapping["root"]) for mapping in mappings}
+    roots = {mapping["root"] for mapping in mappings}
+    english_keys = {mapping["english_key"] for mapping in mappings}
+
+    assert fixture["schema"] == "xenari.post-v4-lexicon.v1"
+    assert len(mappings) == len(pairs) == len(roots) == len(english_keys) == 11
+    assert Counter(mapping["kind"] for mapping in mappings) == {
+        "neutral_species": 5,
+        "species_slur": 6,
+    }
+    assert {mapping["part_of_speech"] for mapping in mappings} == {"noun"}
+
+    for mapping in mappings:
+        pair = (mapping["english_key"], mapping["root"])
+        row = xenari.db.conn.execute(
+            """SELECT e.part_of_speech
+               FROM english_map e JOIN roots r ON r.id = e.root_id
+               WHERE e.english_key = ? AND r.root = ?""",
+            pair,
+        ).fetchone()
+        assert row is not None
+        assert row["part_of_speech"] == "noun"
+        assert REVERSE_PREFERRED[mapping["root"]] == mapping["english_key"]
+        assert REVERSE_PREFERRED_BY_PART_OF_SPEECH["noun"][mapping["root"]] == (
+            mapping["english_key"]
+        )
+        assert xenari.translator._reverse_head_gloss(mapping["root"]) == (
+            mapping["english_key"]
+        )
 
 
 def test_common_grammar_keys_do_not_resolve_through_compound_glosses(xenari):

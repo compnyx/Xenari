@@ -15,6 +15,7 @@ CORE_VOCABULARY_POS = files("xenari").joinpath("data", "core-vocabulary-pos-v1.j
 COMMON_ENGLISH_POS_V2 = files("xenari").joinpath("data", "common-english-pos-v2.json")
 COMMON_ENGLISH_POS_V3 = files("xenari").joinpath("data", "common-english-pos-v3.json")
 COMMON_ENGLISH_POS_V4 = files("xenari").joinpath("data", "common-english-pos-v4.json")
+POST_V4_LEXICON = files("xenari").joinpath("data", "post-v4-lexicon-v1.json")
 
 
 def resolve_repo_root() -> Optional[Path]:

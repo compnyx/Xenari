@@ -8,6 +8,7 @@ from xenari.paths import (
     COMMON_ENGLISH_POS_V4,
     CORE_VOCABULARY_POS,
     OGDEN_BASIC_ENGLISH,
+    POST_V4_LEXICON,
     RUNTIME_CONTRACT,
     TRANSLATION_CORPUS,
     TRANSLATOR_FIXTURES,
@@ -44,6 +45,13 @@ def test_runtime_contract_is_available_as_package_data():
     contract = json.loads(RUNTIME_CONTRACT.read_text(encoding="utf-8"))
     assert contract["schema"] == "xenari-runtime"
     assert contract["schema_version"] == RUNTIME_SCHEMA_VERSION
+
+
+def test_post_v4_lexicon_preferences_are_available_as_package_data():
+    assert POST_V4_LEXICON.is_file()
+    fixture = json.loads(POST_V4_LEXICON.read_text(encoding="utf-8"))
+    assert fixture["schema"] == "xenari.post-v4-lexicon.v1"
+    assert len(fixture["mappings"]) == 11
 
 
 def test_ogden_baseline_is_available_as_package_data():

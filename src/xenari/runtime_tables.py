@@ -40,6 +40,53 @@ def _load_v4_preferences() -> dict[str, object]:
     return preferences
 
 
+def _load_post_v4_mappings() -> list[dict[str, str]]:
+    """Load reviewed lexical preferences added after the frozen v4 pass."""
+    resource = files("xenari").joinpath("data").joinpath("post-v4-lexicon-v1.json")
+    try:
+        payload = json.loads(resource.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return []
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"cannot load post-v4 lexical preferences: {exc}") from exc
+    if payload.get("schema") != "xenari.post-v4-lexicon.v1":
+        raise RuntimeError("post-v4 lexicon fixture has an unsupported schema")
+    mappings = payload.get("mappings")
+    if not isinstance(mappings, list):
+        raise RuntimeError("post-v4 lexicon fixture is missing mappings")
+    reviewed = []
+    seen_roots = set()
+    seen_keys = set()
+    for index, mapping in enumerate(mappings):
+        if not isinstance(mapping, dict):
+            raise RuntimeError(f"post-v4 mapping {index} must be an object")
+        english_key = mapping.get("english_key")
+        root = mapping.get("root")
+        part_of_speech = mapping.get("part_of_speech")
+        kind = mapping.get("kind")
+        if any(not isinstance(value, str) or not value for value in (
+            english_key, root, part_of_speech, kind
+        )):
+            raise RuntimeError(
+                f"post-v4 mapping {index} requires non-empty string fields"
+            )
+        if part_of_speech != "noun":
+            raise RuntimeError(
+                f"post-v4 mapping {english_key!r} has unsupported POS {part_of_speech!r}"
+            )
+        if root in seen_roots or english_key in seen_keys:
+            raise RuntimeError("post-v4 lexical preferences must be one-to-one")
+        seen_roots.add(root)
+        seen_keys.add(english_key)
+        reviewed.append({
+            "english_key": english_key,
+            "root": root,
+            "part_of_speech": part_of_speech,
+            "kind": kind,
+        })
+    return reviewed
+
+
 def _string_map(value: object, label: str) -> dict[str, str]:
     if not isinstance(value, dict):
         raise RuntimeError(f"common-English POS v4 {label} must be an object")
@@ -487,6 +534,41 @@ if _V4_PREFERENCES:
         {
             root: _immutable(forms)
             for root, forms in _reverse_verb_inflections.items()
+        }
+    )
+
+
+_POST_V4_MAPPINGS = _load_post_v4_mappings()
+if _POST_V4_MAPPINGS:
+    _post_v4_reverse = dict(REVERSE_PREFERRED)
+    _post_v4_reverse_roles = {
+        part_of_speech: dict(preferences)
+        for part_of_speech, preferences in REVERSE_PREFERRED_BY_PART_OF_SPEECH.items()
+    }
+    for mapping in _POST_V4_MAPPINGS:
+        english_key = mapping["english_key"]
+        root = mapping["root"]
+        part_of_speech = mapping["part_of_speech"]
+        existing = _post_v4_reverse.get(root)
+        if existing is not None and existing != english_key:
+            raise RuntimeError(
+                f"post-v4 reverse preference conflicts for {root!r}: "
+                f"{existing!r} != {english_key!r}"
+            )
+        role_preferences = _post_v4_reverse_roles.setdefault(part_of_speech, {})
+        existing_role = role_preferences.get(root)
+        if existing_role is not None and existing_role != english_key:
+            raise RuntimeError(
+                f"post-v4 reverse role preference conflicts for {root!r}: "
+                f"{existing_role!r} != {english_key!r}"
+            )
+        _post_v4_reverse[root] = english_key
+        role_preferences[root] = english_key
+    REVERSE_PREFERRED = _immutable(_post_v4_reverse)
+    REVERSE_PREFERRED_BY_PART_OF_SPEECH = MappingProxyType(
+        {
+            part_of_speech: _immutable(preferences)
+            for part_of_speech, preferences in _post_v4_reverse_roles.items()
         }
     )
 

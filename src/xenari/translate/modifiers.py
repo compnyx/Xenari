@@ -330,6 +330,45 @@ class ModifierTranslationMixin:
             return " ".join(parts)
         return None
 
+    def _parse_copular_nominal_clause(self, clean: str, evidence_root: str):
+        """Parse identity/classification copulas with a noun-phrase predicate."""
+        patterns = (
+            (r"(is|are|was|were)\s+(.+?)\s+(not\s+)?(.+)", True),
+            (r"(.+?)\s+(is|are|was|were)\s+(not\s+)?(.+)", False),
+        )
+        for pattern, question in patterns:
+            match = re.fullmatch(pattern, clean)
+            if not match:
+                continue
+            first, second, negation, predicate_text = match.groups()
+            auxiliary, subject_text = (first, second) if question else (second, first)
+            predicate_head = re.sub(
+                r"^(?:the|a|an)\s+", "", predicate_text.strip().lower()
+            ).split()[-1]
+            if self.english_part_of_speech.get(predicate_head) not in {
+                "noun", "proper_noun", "pronoun",
+            }:
+                continue
+            subject_phrase = self._parse_modifier_np(subject_text)
+            predicate_phrase = self._parse_modifier_np(predicate_text)
+            if not subject_phrase or not predicate_phrase:
+                continue
+            parts = self._render_modifier_np(predicate_phrase, "ra")
+            parts.extend(self._render_modifier_np(subject_phrase, "ka"))
+            parts.extend(["ta", "zux"])
+            if not subject_phrase["inherent_animacy"]:
+                parts.append(subject_phrase["animacy"])
+            parts.extend([
+                "lo" if auxiliary in {"was", "were"} else "sa",
+                evidence_root,
+            ])
+            if question:
+                parts.append(self.p["q"])
+            if negation:
+                parts.append(self.p["neg"])
+            return " ".join(parts)
+        return None
+
     def _parse_modifier_clause(self, english: str, evidence_root: str, require_feature=True):
         """Parse a simple clause only when reviewed modifier semantics are present."""
         clean = re.sub(r"\s+", " ", english.strip().lower())
@@ -476,6 +515,10 @@ class ModifierTranslationMixin:
         copular_quality = self._parse_copular_quality_clause(clean, evidence_root)
         if copular_quality is not None:
             return copular_quality
+
+        copular_nominal = self._parse_copular_nominal_clause(clean, evidence_root)
+        if copular_nominal is not None:
+            return copular_nominal
 
         purpose = re.fullmatch(
             r"(i|you|he|she|we)\s+(opened|built|touched)\s+(.+?)\s+to\s+"

@@ -169,6 +169,34 @@ ka nu vlaq
 the file / an inert stored file
 ```
 
+## Sapient Species And Derogatory Register
+
+Xenari is used across several sapient peoples. Use the neutral species nouns
+for ordinary reference:
+
+- `qrontzlonq` = Aeral, high-atmosphere membrane gliders
+- `xloqngrox` = Lithren, subterranean silicate-plated people
+- `xrompuyshang` = Thalren, amphibious oceanic people
+- `zokaxaqey` = Khezh, chitin-plated hexapodal people
+- `ngolxroqvi` = succubus, a Veilborn resonance feeder
+- `trelqvi` = human
+
+The following are species-directed insults, never neutral names:
+
+- `qronkqrep` = birdbrain, aimed at an Aeral
+- `qubihqrap` = rockhead, aimed at a Lithren
+- `plenkfrek` = fishface, aimed at a Thalren
+- `xlekqfrek` = bugface, aimed at a Khezh
+- `zlekkroxzal` = bloodsucker, aimed at a succubus
+- `tuputlor` = meatbag, aimed at a human
+
+Noun predicates use the copula with the predicate in the `ra` slot:
+
+```text
+ra vi qronkqrep ka vi qrontzlonq ta zux vi sa xo
+The Aeral is a birdbrain.
+```
+
 ## Tense And Evidentiality
 
 Finite verbs take tense, then evidential.

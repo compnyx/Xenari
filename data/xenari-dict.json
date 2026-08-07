@@ -26352,6 +26352,96 @@
     }
   },
   {
+    "id": 10174,
+    "root": "plenkfrek",
+    "meaning": "derogatory term for a Thalren person; literally fish-face",
+    "category": "Derogatory Language",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:08",
+    "notes": "Species-directed slur targeting Thalren sapients. Never the neutral species name.",
+    "english_keys": [
+      "fishface"
+    ],
+    "english_parts_of_speech": {
+      "fishface": "noun"
+    }
+  },
+  {
+    "id": 10172,
+    "root": "qronkqrep",
+    "meaning": "derogatory term for an Aeral person; literally bird-brain",
+    "category": "Derogatory Language",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:08",
+    "notes": "Species-directed slur targeting Aeral sapients. Never the neutral species name.",
+    "english_keys": [
+      "birdbrain"
+    ],
+    "english_parts_of_speech": {
+      "birdbrain": "noun"
+    }
+  },
+  {
+    "id": 10173,
+    "root": "qubihqrap",
+    "meaning": "derogatory term for a Lithren person; literally rock-head",
+    "category": "Derogatory Language",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:08",
+    "notes": "Species-directed slur targeting Lithren sapients. Never the neutral species name.",
+    "english_keys": [
+      "rockhead"
+    ],
+    "english_parts_of_speech": {
+      "rockhead": "noun"
+    }
+  },
+  {
+    "id": 10177,
+    "root": "tuputlor",
+    "meaning": "derogatory term for a human person; literally meat-bag",
+    "category": "Derogatory Language",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:09",
+    "notes": "Species-directed slur targeting humans. Never the neutral species name.",
+    "english_keys": [
+      "meatbag"
+    ],
+    "english_parts_of_speech": {
+      "meatbag": "noun"
+    }
+  },
+  {
+    "id": 10175,
+    "root": "xlekqfrek",
+    "meaning": "derogatory term for a Khezh person; literally insect-face",
+    "category": "Derogatory Language",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:09",
+    "notes": "Species-directed slur targeting Khezh sapients. Never the neutral species name.",
+    "english_keys": [
+      "bugface"
+    ],
+    "english_parts_of_speech": {
+      "bugface": "noun"
+    }
+  },
+  {
+    "id": 10176,
+    "root": "zlekkroxzal",
+    "meaning": "derogatory term for a succubus or other Veilborn feeder; literally blood-sucker",
+    "category": "Derogatory Language",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:09",
+    "notes": "Species-directed slur targeting Veilborn succubi. Never the neutral species name.",
+    "english_keys": [
+      "bloodsucker"
+    ],
+    "english_parts_of_speech": {
+      "bloodsucker": "noun"
+    }
+  },
+  {
     "id": 2561,
     "root": "avob",
     "meaning": "sizzle",
@@ -121232,6 +121322,81 @@
     ],
     "english_parts_of_speech": {
       "millions": "numeral"
+    }
+  },
+  {
+    "id": 10171,
+    "root": "ngolxroqvi",
+    "meaning": "Veilborn succubus; resonance-feeding sapient able to manifest through the Veil",
+    "category": "Sapient Species",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:08",
+    "notes": "Neutral species name. Literally soul-feed-animate; Veilborn feed on resonance or vitality and are not inherently predatory or malicious.",
+    "english_keys": [
+      "succubus"
+    ],
+    "english_parts_of_speech": {
+      "succubus": "noun"
+    }
+  },
+  {
+    "id": 10167,
+    "root": "qrontzlonq",
+    "meaning": "Aeral sapient species; high-atmosphere gliders with membrane sails and communal navigation culture",
+    "category": "Sapient Species",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:08",
+    "notes": "Neutral species name. Native to dense-atmosphere worlds; navigates by communal wind-song.",
+    "english_keys": [
+      "aeral"
+    ],
+    "english_parts_of_speech": {
+      "aeral": "noun"
+    }
+  },
+  {
+    "id": 10168,
+    "root": "xloqngrox",
+    "meaning": "Lithren sapient species; subterranean silicate-plated people who sense vibration through stone",
+    "category": "Sapient Species",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:08",
+    "notes": "Neutral species name. Native to cavern worlds; communal memory is encoded as vibration in shaped stone.",
+    "english_keys": [
+      "lithren"
+    ],
+    "english_parts_of_speech": {
+      "lithren": "noun"
+    }
+  },
+  {
+    "id": 10169,
+    "root": "xrompuyshang",
+    "meaning": "Thalren sapient species; amphibious oceanic people who combine voice with chromatophore color",
+    "category": "Sapient Species",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:08",
+    "notes": "Neutral species name. Native to ocean worlds; speech combines sound with skin-color grammar.",
+    "english_keys": [
+      "thalren"
+    ],
+    "english_parts_of_speech": {
+      "thalren": "noun"
+    }
+  },
+  {
+    "id": 10170,
+    "root": "zokaxaqey",
+    "meaning": "Khezh sapient species; chitin-plated hexapodal people descended from colony organisms",
+    "category": "Sapient Species",
+    "source": "tool",
+    "timestamp": "2026-08-07 19:08",
+    "notes": "Neutral species name. Individual sapients retain strong communal sensory instincts without a hive mind.",
+    "english_keys": [
+      "khezh"
+    ],
+    "english_parts_of_speech": {
+      "khezh": "noun"
     }
   },
   {
