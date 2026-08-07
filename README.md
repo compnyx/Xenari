@@ -104,6 +104,8 @@ python3 xenari_tool.py relate brak plonq --relation synonym --dry-run
 python3 xenari_tool.py duplicates --confidence high --kind possible_synonym --limit 20
 python3 xenari_tool.py pos-set ear cromq noun --dry-run
 python3 xenari_tool.py benchmark --iterations 100 --format json
+python3 xenari_tool.py corpus-benchmark --format json
+python3 xenari_tool.py corpus-benchmark --case simplewiki-data-breach
 python3 xenari_tool.py check --format json
 ```
 
@@ -159,6 +161,10 @@ same grammatical choice without changing the bijective lexical preference.
   its direct mapping, POS, preferred root, and sentence round-trip all agree;
   `--strict` enforces the completed zero-pending baseline.
 - Add focused regressions for grammar, parser, CLI, or validator behavior.
+- Run `corpus-benchmark` for real-paragraph English → Xenari → English
+  retention. Its human-curated meaning and grammar units ignore diagnostic
+  echoes, compare against a non-regression baseline, and expose `--strict` for
+  the eventual all-cases-complete gate.
 - Keep the LLM reference compact; use the DB or generated JSON for vocabulary.
 
 The browser and Python translators share the fixture contract. Run

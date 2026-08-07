@@ -9,6 +9,7 @@ from xenari.paths import (
     CORE_VOCABULARY_POS,
     OGDEN_BASIC_ENGLISH,
     RUNTIME_CONTRACT,
+    TRANSLATION_CORPUS,
     TRANSLATOR_FIXTURES,
     generated_dictionary_path,
     generated_runtime_path,
@@ -26,6 +27,16 @@ def test_translator_fixtures_are_available_as_package_data():
     fixtures = json.loads(resource.read_text(encoding="utf-8"))
     assert fixtures["forward"]
     assert fixtures["reverse"]
+
+
+def test_translation_corpus_is_available_as_package_data():
+    resource = files("xenari").joinpath("data", "translation-corpus.json")
+
+    assert resource.is_file()
+    assert TRANSLATION_CORPUS == resource
+    corpus = json.loads(resource.read_text(encoding="utf-8"))
+    assert corpus["schema"] == "xenari.translation-corpus.v1"
+    assert len(corpus["cases"]) == 5
 
 
 def test_runtime_contract_is_available_as_package_data():

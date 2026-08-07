@@ -8,6 +8,7 @@ from typing import Optional, Union
 PACKAGE_ROOT = Path(__file__).resolve().parent
 CANON_DB = PACKAGE_ROOT / "data" / "xenari.db"
 TRANSLATOR_FIXTURES = files("xenari").joinpath("data", "translator-fixtures.json")
+TRANSLATION_CORPUS = files("xenari").joinpath("data", "translation-corpus.json")
 RUNTIME_CONTRACT = files("xenari").joinpath("data", "xenari-runtime.json")
 OGDEN_BASIC_ENGLISH = files("xenari").joinpath("data", "ogden-basic-english-850.json")
 CORE_VOCABULARY_POS = files("xenari").joinpath("data", "core-vocabulary-pos-v1.json")

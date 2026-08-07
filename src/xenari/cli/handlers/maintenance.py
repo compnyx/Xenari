@@ -5,6 +5,7 @@ import sys
 import time
 from pathlib import Path
 
+from ...corpus import render_translation_corpus, run_translation_corpus
 from ...paths import generated_dictionary_path
 from ...runtime import check_runtime_export, runtime_json
 from ...services.gap import GapHarvester
@@ -14,6 +15,7 @@ COMMANDS = frozenset(
         "doctor",
         "check",
         "benchmark",
+        "corpus-benchmark",
         "parity",
         "workbench",
         "review",
@@ -42,6 +44,13 @@ def _release_check_payload(x):
     errors = {}
     if not ogden["ok"]:
         errors["ogden_baseline"] = "; ".join(ogden["errors"] or ogden["approved_failures"])
+
+    corpus = run_translation_corpus(x)
+    checks["translation_corpus"] = corpus["ok"]
+    if not corpus["ok"]:
+        errors["translation_corpus"] = "baseline regression(s): " + ", ".join(
+            corpus["baseline_regressions"]
+        )
 
     try:
         generated = json.loads(generated_dictionary_path().read_text(encoding="utf-8"))
@@ -108,6 +117,18 @@ def handle(args, x):
             print(f"Xenari benchmark ({iterations} iterations)")
             for name, elapsed in timings.items():
                 print(f"{name}: {elapsed:.4f} ms/op")
+    elif args.command == "corpus-benchmark":
+        try:
+            payload = run_translation_corpus(x, args.case)
+        except ValueError as exc:
+            print(f"corpus-benchmark: {exc}")
+            sys.exit(1)
+        if args.format == "json":
+            print(json.dumps(payload, indent=2, ensure_ascii=False))
+        else:
+            print(render_translation_corpus(payload))
+        if not payload["ok"] or (args.strict and not payload["strict_pass"]):
+            sys.exit(1)
     elif args.command == "parity":
         ok, report = x.parity()
         print(report)

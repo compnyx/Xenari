@@ -255,11 +255,22 @@ def test_structured_translation_reports_and_benchmark_are_machine_readable(run_c
     }
     assert all(value >= 0 for value in benchmark["milliseconds_per_operation"].values())
 
+    corpus = json.loads(run_cli("corpus-benchmark", "--format", "json", check=True).stdout)
+    assert corpus["schema"] == "xenari.translation-corpus-report.v1"
+    assert corpus["case_count"] == 5
+    assert corpus["ok"] is True
+    assert corpus["strict_pass"] is False
+
+    strict_corpus = run_cli("corpus-benchmark", "--strict", "--format", "json")
+    assert strict_corpus.returncode == 1
+    assert json.loads(strict_corpus.stdout)["strict_failures"]
+
     release_check = json.loads(run_cli("check", "--format", "json", check=True).stdout)
     assert release_check["schema"] == "xenari.release_check.v1"
     assert release_check["ok"] is True
     assert release_check["errors"] == {}
     assert all(release_check["checks"].values())
+    assert release_check["checks"]["translation_corpus"] is True
 
 
 @pytest.mark.parametrize(
@@ -294,6 +305,7 @@ def test_structured_translation_reports_and_benchmark_are_machine_readable(run_c
         ["curate", "--phrases", "--limit", "1"],
         ["duplicates", "--limit", "1", "--format", "json"],
         ["benchmark", "--iterations", "1", "--format", "json"],
+        ["corpus-benchmark", "--case", "simplewiki-data-breach", "--format", "json"],
         ["check", "--format", "json"],
     ],
 )

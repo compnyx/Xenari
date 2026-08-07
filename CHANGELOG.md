@@ -5,6 +5,12 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Added a packaged real-text round-trip corpus using five human-supplied samples
+  that stress passive chains, proper nouns, date ranges, relative clauses,
+  purpose, historical settings, contrast, and ellipsis.
+- Added `corpus-benchmark` with JSON/text reports, per-case meaning and grammar
+  retention, diagnostic-safe scoring, baseline regression detection, case
+  filtering, and an opt-in strict gate.
 - Completed the common-English mapping review by resolving all 9,325 remaining
   untyped mappings: 8,468 received reviewed sense-level POS tags, 347 malformed
   or fragmentary mappings were replaced with whole concepts, and 510 invalid

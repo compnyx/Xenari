@@ -1,0 +1,117 @@
+{
+  "schema": "xenari.translation-corpus.v1",
+  "description": "Human-supplied paragraph torture tests for English to Xenari to English fidelity.",
+  "scoring": {
+    "method": "A unit passes only when every required term group survives in translated, diagnostic-free round-trip text.",
+    "warning": "This is a deterministic retention benchmark, not a general semantic-equivalence judge."
+  },
+  "cases": [
+    {
+      "id": "simplewiki-data-breach",
+      "source_type": "Simple English Wikipedia extract supplied by a user",
+      "english": "A data breach is a security violation. It causes all sensitive, protected or confidential data to be copied, transmitted, viewed, stolen or used by an unauthorized person or organisation.",
+      "tags": ["definition", "causation", "passive", "coordination", "modifier-scope"],
+      "meaning_units": [
+        {"id": "data-breach", "terms": [["data breach"]]},
+        {"id": "security-violation", "terms": [["security violation"]]},
+        {"id": "sensitive-data", "terms": [["sensitive"], ["data"]]},
+        {"id": "protected-or-confidential", "terms": [["protected"], ["confidential"]]},
+        {"id": "copied", "terms": [["copied", "copy"]]},
+        {"id": "transmitted", "terms": [["transmitted", "transmit"]]},
+        {"id": "viewed", "terms": [["viewed", "view"]]},
+        {"id": "stolen", "terms": [["stolen", "steal"]]},
+        {"id": "used", "terms": [["used", "use"]]},
+        {"id": "unauthorized-agent", "terms": [["unauthorized"], ["person"], ["organisation", "organization"]]}
+      ],
+      "grammar_units": [
+        {"id": "definition-copula", "terms": [["is"]]},
+        {"id": "cause-link", "terms": [["causes", "cause"]]},
+        {"id": "passive-agent", "terms": [["by"], ["person"]]},
+        {"id": "alternative-scope", "terms": [["protected"], ["or"], ["confidential"]]}
+      ],
+      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 6}
+    },
+    {
+      "id": "simplewiki-nikola-pilic",
+      "source_type": "Simple English Wikipedia extract supplied by a user",
+      "english": "Nikola Pilić (27 August 1939 – 22 September 2025), also known as Niki Pilić, was a Croatian professional tennis player. He played for SFR Yugoslavia.",
+      "tags": ["proper-nouns", "date-range", "alias", "past-tense", "historical-state"],
+      "meaning_units": [
+        {"id": "nikola-pilic", "terms": [["nikola pilic"]]},
+        {"id": "birth-date", "terms": [["27 august 1939"]]},
+        {"id": "death-date", "terms": [["22 september 2025"]]},
+        {"id": "niki-alias", "terms": [["niki pilic"]]},
+        {"id": "croatian", "terms": [["croatian"]]},
+        {"id": "professional-tennis-player", "terms": [["professional"], ["tennis"], ["player"]]},
+        {"id": "sfr-yugoslavia", "terms": [["sfr yugoslavia"]]}
+      ],
+      "grammar_units": [
+        {"id": "date-range", "terms": [["27 august 1939"], ["22 september 2025"]]},
+        {"id": "alias-construction", "terms": [["known as"], ["niki pilic"]]},
+        {"id": "past-copula", "terms": [["was"]]},
+        {"id": "past-play", "terms": [["played"], ["for"]]}
+      ],
+      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 6}
+    },
+    {
+      "id": "simplewiki-titans-horizon",
+      "source_type": "Simple English Wikipedia extract supplied by a user",
+      "english": "The Titans have different homes for the three sports that they play but the Horizon League does not.",
+      "tags": ["proper-nouns", "possession", "relative-clause", "contrast", "ellipsis"],
+      "meaning_units": [
+        {"id": "titans", "terms": [["titans"]]},
+        {"id": "different-homes", "terms": [["different"], ["homes", "home"]]},
+        {"id": "three-sports", "terms": [["three"], ["sports", "sport"]]},
+        {"id": "titans-play", "terms": [["titans"], ["play"]]},
+        {"id": "horizon-league", "terms": [["horizon league"]]}
+      ],
+      "grammar_units": [
+        {"id": "possession", "terms": [["titans"], ["have"]]},
+        {"id": "relative-clause", "terms": [["sports", "sport"], ["that"], ["they"], ["play"]]},
+        {"id": "contrast", "terms": [["but"], ["horizon league"]]},
+        {"id": "negative-ellipsis", "terms": [["does not"]]}
+      ],
+      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 1}
+    },
+    {
+      "id": "simplewiki-wolf-shinobi",
+      "source_type": "Simple English Wikipedia extract supplied by a user",
+      "english": "The player plays as Wolf, a shinobi who is on a quest to rescue his lord. The game is set in Japan during the Sengoku period.",
+      "tags": ["proper-nouns", "role", "relative-clause", "purpose", "historical-setting"],
+      "meaning_units": [
+        {"id": "player-as-wolf", "terms": [["player"], ["plays as", "play as"], ["wolf"]]},
+        {"id": "wolf-is-shinobi", "terms": [["wolf"], ["shinobi"]]},
+        {"id": "quest", "terms": [["quest"]]},
+        {"id": "rescue-lord", "terms": [["rescue"], ["lord"]]},
+        {"id": "game", "terms": [["game"]]},
+        {"id": "japan", "terms": [["japan"]]},
+        {"id": "sengoku-period", "terms": [["sengoku period"]]}
+      ],
+      "grammar_units": [
+        {"id": "shinobi-relative", "terms": [["shinobi"], ["who"]]},
+        {"id": "purpose", "terms": [["to rescue"], ["lord"]]},
+        {"id": "possessive", "terms": [["his lord"]]},
+        {"id": "historical-setting", "terms": [["set in"], ["during"], ["sengoku period"]]}
+      ],
+      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 3}
+    },
+    {
+      "id": "colloquial-football-date",
+      "source_type": "Colloquial sentence supplied by a user",
+      "english": "I'm a retard who's going to the football game on Wednesday the 3rd of February.",
+      "tags": ["colloquial", "self-description", "relative-clause", "future-plan", "calendar-date"],
+      "meaning_units": [
+        {"id": "self-description", "terms": [["i am", "i'm"], ["retard"]]},
+        {"id": "football-game", "terms": [["football game"]]},
+        {"id": "wednesday", "terms": [["wednesday"]]},
+        {"id": "third-february", "terms": [["3rd of february", "third of february"]]}
+      ],
+      "grammar_units": [
+        {"id": "relative-who", "terms": [["who"]]},
+        {"id": "future-plan", "terms": [["going to"], ["football game"]]},
+        {"id": "dated-event", "terms": [["on"], ["wednesday"], ["3rd of february", "third of february"]]}
+      ],
+      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 1}
+    }
+  ]
+}

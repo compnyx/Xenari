@@ -12,7 +12,7 @@ COMMANDS = [
     "export", "stats", "audit", "lint", "baseline", "curate", "meta", "sync", "add",
     "remove", "search", "near", "relations", "propose-root", "coin",
     "categories", "categorize", "duplicates", "map", "parity", "relate",
-    "pos", "pos-set", "pos-backfill", "benchmark", "check",
+    "pos", "pos-set", "pos-backfill", "benchmark", "corpus-benchmark", "check",
 ]
 
 TENSES = ("auto", "past", "future", "habitual", "potential", "imperative")
@@ -107,6 +107,15 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark = subparsers.add_parser("benchmark", help="measure representative local operations")
     benchmark.add_argument("--iterations", type=int, default=25)
     benchmark.add_argument("--format", choices=("text", "json"), default="text")
+
+    corpus_benchmark = subparsers.add_parser(
+        "corpus-benchmark", help="score real-text English/Xenari/English round trips"
+    )
+    corpus_benchmark.add_argument("--case", action="append", default=[], help="run one case ID")
+    corpus_benchmark.add_argument(
+        "--strict", action="store_true", help="fail unless every unit survives"
+    )
+    corpus_benchmark.add_argument("--format", choices=("text", "json"), default="text")
 
     check = subparsers.add_parser("check", help="run the local release-readiness gate")
     check.add_argument("--format", choices=("text", "json"), default="text")
