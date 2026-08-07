@@ -5,6 +5,17 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.8.1 - 2026-08-07
+
+- Replaced the six sanitized species-slur translator heads with direct
+  real-English analogues: `polack`, `bohunk`, `chink`, `gook`, `kike`, and
+  `nigger`. The former `birdbrain`, `rockhead`, `fishface`, `bugface`,
+  `bloodsucker`, and `meatbag` surfaces remain only as literal etymological
+  glosses in register metadata and are no longer translator mappings.
+- Updated forward/reverse fixtures, pragmatic-force metadata, browser warnings,
+  tests, and public lore so translation output preserves the hostile register
+  instead of reducing it to a playground insult.
+
 ## 0.8.0 - 2026-08-07
 
 - Added first-class sociolinguistic register metadata for six species-directed

@@ -625,22 +625,22 @@ def test_qrazhel_copula_round_trips_with_its_preferred_english_mapping(xenari):
 
 def test_species_slurs_use_nominal_copulas_and_round_trip(xenari):
     cases = {
-        "the aeral is a birdbrain": (
+        "the aeral is a polack": (
             "ra vi qronkqrep ka vi qrontzlonq ta zux vi sa xo"
         ),
-        "the lithren is a rockhead": (
+        "the lithren is a bohunk": (
             "ra vi qubihqrap ka vi xloqngrox ta zux vi sa xo"
         ),
-        "the thalren is a fishface": (
+        "the thalren is a chink": (
             "ra vi plenkfrek ka vi xrompuyshang ta zux vi sa xo"
         ),
-        "the khezh is a bugface": (
+        "the khezh is a gook": (
             "ra vi xlekqfrek ka vi zokaxaqey ta zux vi sa xo"
         ),
-        "the succubus is a bloodsucker": (
+        "the succubus is a kike": (
             "ra vi zlekkroxzal ka vi ngolxroqvi ta zux vi sa xo"
         ),
-        "the human is a meatbag": (
+        "the human is a nigger": (
             "ra vi tuputlor ka vi trelqvi ta zux vi sa xo"
         ),
     }

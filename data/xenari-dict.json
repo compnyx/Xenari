@@ -26360,10 +26360,10 @@
     "timestamp": "2026-08-07 19:08",
     "notes": "Species-directed slur targeting Thalren sapients. Never the neutral species name.",
     "english_keys": [
-      "fishface"
+      "chink"
     ],
     "english_parts_of_speech": {
-      "fishface": "noun"
+      "chink": "noun"
     },
     "sociolinguistic_register": {
       "register_class": "racial_slur",
@@ -26372,7 +26372,7 @@
       "severity": 3,
       "taboo_level": "severe",
       "historical_basis": "Segregated surface ports treated visible gills and chromatophore patterns as racial markers. The term reduces Thalren identity to features used to exclude them.",
-      "pragmatic_force": "Comparable to racial insults based on stereotyped physical features: explicitly prejudicial because the target's body and species are the insult.",
+      "pragmatic_force": "Direct English translator head: 'chink'. It is an anti-Thalren racial slur attacking marked physical features; the literal Xenari etymology is fish-face.",
       "usage_note": "Anti-Thalren racial slur. Quotation and historical discussion do not make it a neutral descriptor."
     }
   },
@@ -26385,10 +26385,10 @@
     "timestamp": "2026-08-07 19:08",
     "notes": "Species-directed slur targeting Aeral sapients. Never the neutral species name.",
     "english_keys": [
-      "birdbrain"
+      "polack"
     ],
     "english_parts_of_speech": {
-      "birdbrain": "noun"
+      "polack": "noun"
     },
     "sociolinguistic_register": {
       "register_class": "ethnic_slur",
@@ -26397,7 +26397,7 @@
       "severity": 2,
       "taboo_level": "offensive",
       "historical_basis": "After lowland accounts portrayed Aeral wind-song and distributed navigation as incoherent thinking, the calque became a stereotype that Aeral are flighty and unintelligent.",
-      "pragmatic_force": "Roughly 'dumb Polack' territory when aimed at an Aeral: an offensive ethnic stereotype, but below the most socially radioactive slur tier.",
+      "pragmatic_force": "Direct English translator head: 'polack'. It is an anti-Aeral ethnic slur built on a group stereotype of stupidity; the literal Xenari etymology is bird-brain.",
       "usage_note": "Anti-Aeral ethnic slur. The literal calque is not a neutral synonym for Aeral."
     }
   },
@@ -26410,10 +26410,10 @@
     "timestamp": "2026-08-07 19:08",
     "notes": "Species-directed slur targeting Lithren sapients. Never the neutral species name.",
     "english_keys": [
-      "rockhead"
+      "bohunk"
     ],
     "english_parts_of_speech": {
-      "rockhead": "noun"
+      "bohunk": "noun"
     },
     "sociolinguistic_register": {
       "register_class": "ethnic_slur",
@@ -26422,7 +26422,7 @@
       "severity": 2,
       "taboo_level": "offensive",
       "historical_basis": "Extraction states framed Lithren refusal to surrender ancestral stone archives as mental rigidity and stupidity. The stereotype survived after the treaties ended.",
-      "pragmatic_force": "Comparable to derogatory nationality nicknames built around an ethnic stereotype of stupidity or backwardness.",
+      "pragmatic_force": "Direct English translator head: 'bohunk'. It is an anti-Lithren ethnic slur built on stereotypes of stupidity, rigidity, and exploited stone labor; the literal Xenari etymology is rock-head.",
       "usage_note": "Anti-Lithren ethnic slur. Never the neutral species name."
     }
   },
@@ -26435,10 +26435,10 @@
     "timestamp": "2026-08-07 19:09",
     "notes": "Species-directed slur targeting humans. Never the neutral species name.",
     "english_keys": [
-      "meatbag"
+      "nigger"
     ],
     "english_parts_of_speech": {
-      "meatbag": "noun"
+      "nigger": "noun"
     },
     "sociolinguistic_register": {
       "register_class": "racial_slur",
@@ -26447,7 +26447,7 @@
       "severity": 5,
       "taboo_level": "extreme",
       "historical_basis": "During the Flesh Levy, conquered humans were denied personhood, inventoried by usable body mass, and treated as consumable biological stock. Tuputlor began as an official caste term and remained the canonical anti-human slur after emancipation.",
-      "pragmatic_force": "Strongest socially radioactive tier, comparable in cultural register to the N-word because it is inseparable from severe species-based oppression. Outside that history its literal calque would carry only dehumanizing 'ape', 'animal', or 'subhuman' force.",
+      "pragmatic_force": "Direct English translator head: 'nigger'. It is the strongest anti-human racial slur and is inseparable from the Flesh Levy's denial of personhood; the literal Xenari etymology is meat-bag.",
       "usage_note": "Extreme anti-human racial slur tied to the Flesh Levy. Never a neutral word for human."
     }
   },
@@ -26460,10 +26460,10 @@
     "timestamp": "2026-08-07 19:09",
     "notes": "Species-directed slur targeting Khezh sapients. Never the neutral species name.",
     "english_keys": [
-      "bugface"
+      "gook"
     ],
     "english_parts_of_speech": {
-      "bugface": "noun"
+      "gook": "noun"
     },
     "sociolinguistic_register": {
       "register_class": "racial_slur",
@@ -26472,7 +26472,7 @@
       "severity": 4,
       "taboo_level": "severe",
       "historical_basis": "Colonial extermination campaigns called Khezh settlements infestations and paid bounties for cleared colonies. The term carries that pest-eradication rhetoric.",
-      "pragmatic_force": "Comparable to calling an ethnic people roaches or vermin: dehumanizing language that rhetorically reduces a population to pests.",
+      "pragmatic_force": "Direct English translator head: 'gook'. It is an anti-Khezh wartime racial slur inseparable from colonial extermination and vermin rhetoric; the literal Xenari etymology is bug-face.",
       "usage_note": "Severe anti-Khezh racial slur associated with extermination rhetoric."
     }
   },
@@ -26485,10 +26485,10 @@
     "timestamp": "2026-08-07 19:09",
     "notes": "Species-directed slur targeting Veilborn succubi. Never the neutral species name.",
     "english_keys": [
-      "bloodsucker"
+      "kike"
     ],
     "english_parts_of_speech": {
-      "bloodsucker": "noun"
+      "kike": "noun"
     },
     "sociolinguistic_register": {
       "register_class": "racial_slur",
@@ -26497,7 +26497,7 @@
       "severity": 4,
       "taboo_level": "severe",
       "historical_basis": "Post-Pact panics recast all resonance feeding as secret predation, greed, and covert exploitation. The term became an established group slur rather than a description of an individual act.",
-      "pragmatic_force": "Comparable in severity to 'kike' where Veilborn are stereotyped as parasitic, predatory, greedy, or secretly exploiting other peoples.",
+      "pragmatic_force": "Direct English translator head: 'kike'. It is an anti-Veilborn racial slur invoking secret predation, greed, and exploitation; the literal Xenari etymology is blood-sucker.",
       "usage_note": "Severe anti-Veilborn racial slur. It does not neutrally mean succubus or feeder."
     }
   },

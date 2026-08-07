@@ -181,30 +181,30 @@ for ordinary reference:
 - `ngolxroqvi` = succubus, a Veilborn resonance feeder
 - `trelqvi` = human
 
-The following are species-directed slurs, never neutral names. The English
-headword is the literal translation; register metadata carries the social
-force that a literal calque cannot express by itself.
+The following are species-directed slurs, never neutral names. Their direct
+English translator heads preserve real-world pragmatic force. The old calques
+survive only as literal Xenari etymology in register metadata.
 
-- `qronkqrep` = birdbrain, aimed at Aeral; ethnic slur, severity 2/5. Lowland
+- `qronkqrep` = `polack`, aimed at Aeral; ethnic slur, severity 2/5. Lowland
   caricatures treated wind-song and distributed navigation as incoherence,
-  producing a stereotype of Aeral stupidity. Roughly “dumb Polack” territory.
-- `qubihqrap` = rockhead, aimed at Lithren; ethnic slur, severity 2/5.
+  producing a stereotype of Aeral stupidity. Literal etymology: bird-brain.
+- `qubihqrap` = `bohunk`, aimed at Lithren; ethnic slur, severity 2/5.
   Extraction states recast Lithren refusal to surrender stone archives as
-  stupidity and mental rigidity.
-- `plenkfrek` = fishface, aimed at Thalren; racial slur, severity 3/5. It comes
+  stupidity and mental rigidity. Literal etymology: rock-head.
+- `plenkfrek` = `chink`, aimed at Thalren; racial slur, severity 3/5. It comes
   from segregated surface ports that made gills and chromatophores into racial
-  markers.
-- `xlekqfrek` = bugface, aimed at Khezh; racial slur, severity 4/5. Colonial
+  markers. Literal etymology: fish-face.
+- `xlekqfrek` = `gook`, aimed at Khezh; racial slur, severity 4/5. Colonial
   extermination campaigns called Khezh settlements infestations and paid
-  bounties, giving the word the force of calling a people roaches or vermin.
-- `zlekkroxzal` = bloodsucker, aimed at Veilborn/succubi; racial slur, severity
-  4/5. Post-Pact panics portrayed all resonance feeding as secret predation,
-  greed, and exploitation; its social severity is comparable to `kike`.
-- `tuputlor` = meatbag, aimed at humans; racial slur, severity 5/5, extreme.
+  bounties. Literal etymology: bug-face.
+- `zlekkroxzal` = `kike`, aimed at Veilborn/succubi; racial slur, severity 4/5.
+  Post-Pact panics portrayed all resonance feeding as secret predation, greed,
+  and exploitation. Literal etymology: blood-sucker.
+- `tuputlor` = `nigger`, aimed at humans; racial slur, severity 5/5, extreme.
   During the Flesh Levy humans were denied personhood, inventoried by usable
   body mass, and treated as consumable biological stock. The former caste term
-  became the canonical anti-human slur after emancipation and occupies the
-  strongest, N-word-tier cultural register.
+  became the canonical anti-human slur after emancipation. Literal etymology:
+  meat-bag.
 
 `qrazhel` is separate from the species register: it is an ableist slur,
 severity 4/5, literally “a mind that will not catch the thread,” and maps
@@ -214,7 +214,7 @@ Noun predicates use the copula with the predicate in the `ra` slot:
 
 ```text
 ra vi qronkqrep ka vi qrontzlonq ta zux vi sa xo
-The Aeral is a birdbrain.
+The Aeral is a polack.
 ```
 
 ## Tense And Evidentiality

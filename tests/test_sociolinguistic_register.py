@@ -12,6 +12,15 @@ REGISTER_ROOTS = {
     "tuputlor",
 }
 
+DIRECT_SPECIES_SLUR_HEADS = {
+    "qronkqrep": ("polack", "bird-brain"),
+    "qubihqrap": ("bohunk", "rock-head"),
+    "plenkfrek": ("chink", "fish-face"),
+    "xlekqfrek": ("gook", "bug-face"),
+    "zlekkroxzal": ("kike", "blood-sucker"),
+    "tuputlor": ("nigger", "meat-bag"),
+}
+
 
 def test_canon_exports_reviewed_register_metadata(xenari):
     exported = {row["root"]: row for row in json.loads(xenari.export_json())}
@@ -19,6 +28,12 @@ def test_canon_exports_reviewed_register_metadata(xenari):
     assert {
         root for root, row in exported.items() if "sociolinguistic_register" in row
     } == REGISTER_ROOTS
+    for root, (direct_head, literal_gloss) in DIRECT_SPECIES_SLUR_HEADS.items():
+        assert exported[root]["english_keys"] == [direct_head]
+        assert (
+            exported[root]["sociolinguistic_register"]["literal_gloss"]
+            == literal_gloss
+        )
     aeral = exported["qronkqrep"]["sociolinguistic_register"]
     assert aeral["register_class"] == "ethnic_slur"
     assert aeral["target_group"] == "Aeral people"
@@ -26,13 +41,13 @@ def test_canon_exports_reviewed_register_metadata(xenari):
     assert aeral["severity"] == 2
     assert aeral["taboo_level"] == "offensive"
     assert "wind-song" in aeral["historical_basis"]
-    assert "dumb Polack" in aeral["pragmatic_force"]
+    assert "translator head: 'polack'" in aeral["pragmatic_force"]
     assert "not a neutral synonym" in aeral["usage_note"]
     human = exported["tuputlor"]["sociolinguistic_register"]
     assert human["severity"] == 5
     assert human["taboo_level"] == "extreme"
     assert "Flesh Levy" in human["historical_basis"]
-    assert "N-word" in human["pragmatic_force"]
+    assert "translator head: 'nigger'" in human["pragmatic_force"]
 
 
 def test_register_batch_is_guarded_and_atomic(writable_xenari):
@@ -59,7 +74,7 @@ def test_register_batch_is_guarded_and_atomic(writable_xenari):
 
 
 def test_python_gloss_and_inspection_expose_register_force(xenari):
-    gloss = xenari.gloss("The Aeral is a birdbrain", evidential="assumed")
+    gloss = xenari.gloss("The Aeral is a polack", evidential="assumed")
     assert "ethnic slur targeting Aeral people" in gloss
     assert "severity 2/5, offensive" in gloss
     assert "literal bird-brain" in gloss
@@ -67,4 +82,4 @@ def test_python_gloss_and_inspection_expose_register_force(xenari):
     inspected = xenari.inspect_term("tuputlor")
     assert "racial slur, severity 5/5, extreme" in inspected
     assert "History:" in inspected and "Flesh Levy" in inspected
-    assert "Pragmatic force:" in inspected and "N-word" in inspected
+    assert "Pragmatic force:" in inspected and "translator head: 'nigger'" in inspected
