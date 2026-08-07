@@ -7,8 +7,9 @@ from collections import Counter
 
 import pytest
 
+from xenari import Xenari
 from xenari.db import PARTS_OF_SPEECH, XenariDB, normalize_part_of_speech
-from xenari.db.pos import infer_mapping_part_of_speech
+from xenari.db.pos import POS_SCHEMA_VERSION, infer_mapping_part_of_speech
 from xenari.grammar import DEFAULT_GRAMMAR
 from xenari.paths import (
     COMMON_ENGLISH_POS_V2,
@@ -153,6 +154,10 @@ def test_read_only_legacy_database_exposes_unknown_pos_without_mutating(tmp_path
         assert report["schema_present"] is False
         assert report["unknown"] == 5
         assert "POS schema present: no" in db.audit(limit=0)
+        assert db.register_metadata("qrazhel") is None
+
+    with Xenari(path, read_only=True) as facade:
+        assert facade.sociolinguistic_register == {}
 
     conn = sqlite3.connect(path)
     assert "part_of_speech" not in {
@@ -183,7 +188,7 @@ def test_writable_open_migrates_and_backfill_only_sets_high_confidence_senses(tm
         assert _mapping_pos(db, "mystery", "xoz") is None
         assert db.conn.execute(
             "SELECT value FROM tool_meta WHERE key = 'schema_version'"
-        ).fetchone()[0] == "2026-07-18.2"
+        ).fetchone()[0] == POS_SCHEMA_VERSION
         assert db.conn.execute(
             "SELECT value FROM tool_meta WHERE key = 'pos_backfill_version'"
         ).fetchone()[0] == "2026-07-18.3"

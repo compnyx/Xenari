@@ -33178,5 +33178,5 @@
   },
   "schema": "xenari-runtime",
   "schema_version": 4,
-  "xenari_version": "0.7.0"
+  "xenari_version": "0.8.0"
 }

@@ -1,8 +1,114 @@
 import sqlite3
-from typing import Tuple
+from typing import Iterable, Mapping, Tuple
+
+REGISTER_CLASSES = frozenset({"ableist_slur", "ethnic_slur", "racial_slur"})
+TABOO_LEVELS = frozenset({"offensive", "severe", "extreme"})
 
 
 class RelationsMixin:
+    def register_metadata(self, root: str):
+        """Return structured sociolinguistic register metadata for one root."""
+        try:
+            row = self.conn.execute(
+                "SELECT * FROM sociolinguistic_register WHERE root = ?", (root,)
+            ).fetchone()
+        except sqlite3.OperationalError as exc:
+            if "no such table" not in str(exc):
+                raise
+            return None
+        return dict(row) if row else None
+
+    def set_register_metadata_batch(
+        self,
+        records: Iterable[Mapping[str, object]],
+        *,
+        yes: bool = False,
+    ) -> Tuple[bool, str]:
+        """Preview or atomically upsert reviewed sociolinguistic metadata."""
+        required = {
+            "root", "register_class", "target_group", "literal_gloss",
+            "severity", "taboo_level", "historical_basis", "pragmatic_force",
+            "usage_note",
+        }
+        reviewed = []
+        seen = set()
+        for index, raw in enumerate(records):
+            missing = required - set(raw)
+            if missing:
+                return False, (
+                    f"register record {index} is missing: {', '.join(sorted(missing))}"
+                )
+            record = {key: raw[key] for key in required}
+            root = record["root"]
+            if not isinstance(root, str) or not root.strip():
+                return False, f"register record {index} requires a root"
+            if root in seen:
+                return False, f"duplicate register root: {root}"
+            seen.add(root)
+            if self.lookup_root(root) is None:
+                return False, f"unknown register root: {root}"
+            register_class = record["register_class"]
+            if register_class not in REGISTER_CLASSES:
+                return False, f"invalid register class for {root}: {register_class}"
+            taboo_level = record["taboo_level"]
+            if taboo_level not in TABOO_LEVELS:
+                return False, f"invalid taboo level for {root}: {taboo_level}"
+            severity = record["severity"]
+            if (
+                not isinstance(severity, int)
+                or isinstance(severity, bool)
+                or not 1 <= severity <= 5
+            ):
+                return False, f"severity for {root} must be an integer from 1 to 5"
+            for field in required - {"root", "severity"}:
+                value = record[field]
+                if not isinstance(value, str) or not value.strip():
+                    return False, f"{field} for {root} must be a non-empty string"
+                record[field] = value.strip()
+            reviewed.append(record)
+
+        lines = [f"Sociolinguistic register batch: {len(reviewed)} record(s)"]
+        for record in reviewed:
+            lines.append(
+                f"  - {record['root']}: {record['register_class']}, "
+                f"severity {record['severity']}/5, {record['taboo_level']}, "
+                f"target={record['target_group']}"
+            )
+        if not yes:
+            lines.append("PREVIEW ONLY: no database write. Re-run with yes=True to apply.")
+            return True, "\n".join(lines)
+
+        backup_path = self._backup_before_mutation("register-batch")
+        try:
+            with self.conn:
+                for record in reviewed:
+                    self.conn.execute(
+                        """INSERT INTO sociolinguistic_register
+                           (root, register_class, target_group, literal_gloss,
+                            severity, taboo_level, historical_basis,
+                            pragmatic_force, usage_note)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                           ON CONFLICT(root) DO UPDATE SET
+                             register_class = excluded.register_class,
+                             target_group = excluded.target_group,
+                             literal_gloss = excluded.literal_gloss,
+                             severity = excluded.severity,
+                             taboo_level = excluded.taboo_level,
+                             historical_basis = excluded.historical_basis,
+                             pragmatic_force = excluded.pragmatic_force,
+                             usage_note = excluded.usage_note""",
+                        tuple(record[key] for key in (
+                            "root", "register_class", "target_group", "literal_gloss",
+                            "severity", "taboo_level", "historical_basis",
+                            "pragmatic_force", "usage_note",
+                        )),
+                    )
+        except sqlite3.Error as exc:
+            return False, f"register metadata write failed: {exc}"
+        lines.append(f"Backup: {backup_path}")
+        lines.append(f"Wrote {len(reviewed)} sociolinguistic register record(s).")
+        return True, "\n".join(lines)
+
     def add_compound(self, compound_root: str, components: list) -> bool:
         """Register a compound root's component parts.
         components: list of (root, position) tuples or just list of roots."""

@@ -2,6 +2,7 @@ import datetime
 import json
 import re
 import shlex
+import sqlite3
 from pathlib import Path
 from typing import Dict
 
@@ -348,6 +349,24 @@ class AuditMixin:
                 ] = mapping["part_of_speech"]
 
         roots = []
+        try:
+            register_rows = self.conn.execute(
+                "SELECT * FROM sociolinguistic_register ORDER BY root"
+            )
+        except sqlite3.OperationalError as exc:
+            if "no such table" not in str(exc):
+                raise
+            register_rows = []
+        register_by_root = {
+            row["root"]: {
+                key: row[key]
+                for key in (
+                    "register_class", "target_group", "literal_gloss", "severity",
+                    "taboo_level", "historical_basis", "pragmatic_force", "usage_note",
+                )
+            }
+            for row in register_rows
+        }
         for r in self.conn.execute("SELECT * FROM roots ORDER BY category, root"):
             row = dict(r)
             row["english_keys"] = keys_by_root.get(r["id"], [])
@@ -357,6 +376,9 @@ class AuditMixin:
                 # English senses, and roots without annotations need no empty
                 # object or redundant root-level union.
                 row["english_parts_of_speech"] = sense_pos
+            register = register_by_root.get(r["root"])
+            if register:
+                row["sociolinguistic_register"] = register
             roots.append(row)
         return json.dumps(roots, ensure_ascii=False, indent=2)
 

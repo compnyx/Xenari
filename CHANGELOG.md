@@ -5,6 +5,20 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.8.0 - 2026-08-07
+
+- Added first-class sociolinguistic register metadata for six species-directed
+  slurs and the established ableist `qrazhel`: target group, literal calque,
+  class, five-point severity, taboo level, historical basis, pragmatic force,
+  and usage guidance. Literal English mappings remain unchanged for faithful,
+  reversible translation.
+- Canonized the histories that give the terms their actual social force,
+  including anti-Khezh extermination rhetoric, anti-Veilborn post-Pact panic,
+  and the anti-human Flesh Levy. `tuputlor` is therefore an extreme slur in
+  the strongest real-world register rather than a playground insult.
+- Added a guarded atomic batch-curation API, schema validation, JSON export,
+  Python gloss/inspection output, and browser translator register warnings.
+
 ## 0.7.0 - 2026-08-07
 
 - Added five named sapient peoples to the public canon: the aerial Aeral,

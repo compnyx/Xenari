@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Thin compatibility facade over explicit Xenari service components."""
 
+import sqlite3
 from pathlib import Path
-from typing import Any, Dict, Mapping, Optional
+from typing import Any, Dict, Iterable, Mapping, Optional
 
 from .components import (
     COMPATIBILITY_ROUTES,
@@ -39,6 +40,7 @@ class Xenari:
         self.lexicon: Dict[str, str] = {}          # root -> meaning
         self.english_to_root: Dict[str, str] = {}  # english -> root
         self.english_part_of_speech: Dict[str, str] = {}
+        self.sociolinguistic_register: Dict[str, Dict[str, Any]] = {}
         # ``lexicon`` is an established public dictionary, so the explicit
         # lexicon component uses the unambiguous ``lookup_service`` name.
         self.lexicon_service = LexiconService(self)
@@ -111,8 +113,20 @@ class Xenari:
         self.lexicon.clear()
         self.english_to_root.clear()
         self.english_part_of_speech.clear()
+        self.sociolinguistic_register.clear()
         for row in self.db.conn.execute("SELECT root, meaning FROM roots"):
             self.lexicon[row["root"]] = row["meaning"].lower()
+        register_rows: Iterable[Any]
+        try:
+            register_rows = self.db.conn.execute("SELECT * FROM sociolinguistic_register")
+        except sqlite3.OperationalError as exc:
+            if "no such table" not in str(exc):
+                raise
+            register_rows = []
+        for row in register_rows:
+            record = dict(row)
+            root = record.pop("root")
+            self.sociolinguistic_register[root] = record
         pos_column = (
             "english_map.part_of_speech"
             if self.db._has_part_of_speech_column()

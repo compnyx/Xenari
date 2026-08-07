@@ -477,7 +477,18 @@ class TranslatorMixin(
     def gloss(self, english: str, tense: str = "auto", evidential: str = "auto") -> str:
         """Return Xenari + rough English gloss."""
         xen = self.speak(english, tense, evidential)
-        return f"{xen}\n  (rough) {english}"
+        lines = [xen, f"  (rough) {english}"]
+        for root in dict.fromkeys(xen.split()):
+            register = self.sociolinguistic_register.get(root)
+            if not register:
+                continue
+            lines.append(
+                "  (register) "
+                f"{register['register_class'].replace('_', ' ')} targeting "
+                f"{register['target_group']}; severity {register['severity']}/5, "
+                f"{register['taboo_level']}; literal {register['literal_gloss']}"
+            )
+        return "\n".join(lines)
 
     def translate(self, text: str, tense: str = "auto", evidential: str = "auto") -> str:
         """Auto-direction translation wrapper."""
@@ -493,6 +504,16 @@ class TranslatorMixin(
         root_row = self.db.lookup_root(query)
         if root_row:
             lines.append(f"Root: {root_row['root']} — {root_row['meaning']} [{root_row['category']}]")
+            register = self.sociolinguistic_register.get(root_row["root"])
+            if register:
+                lines.append(
+                    "Register: "
+                    f"{register['register_class'].replace('_', ' ')}, "
+                    f"severity {register['severity']}/5, {register['taboo_level']}, "
+                    f"target={register['target_group']}"
+                )
+                lines.append(f"History: {register['historical_basis']}")
+                lines.append(f"Pragmatic force: {register['pragmatic_force']}")
             ok, relations = self.db.relations_report(query)
             if ok:
                 rel_lines = relations.splitlines()[1:]

@@ -93,6 +93,15 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin, PartOfSpeechMixin):
             # Schema changes are real mutations too. Preserve a consistent
             # legacy copy before ALTER TABLE so migrations remain recoverable.
             self._backup_before_mutation("schema-pos-v2")
+        has_roots = self.conn.execute(
+            "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'roots'"
+        ).fetchone()
+        has_register_metadata = self.conn.execute(
+            """SELECT 1 FROM sqlite_master
+               WHERE type = 'table' AND name = 'sociolinguistic_register'"""
+        ).fetchone()
+        if has_roots is not None and has_register_metadata is None:
+            self._backup_before_mutation("schema-register-v1")
         self.conn.executescript("""
             CREATE TABLE IF NOT EXISTS roots (
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -146,6 +155,28 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin, PartOfSpeechMixin):
 
             CREATE INDEX IF NOT EXISTS idx_rel_a ON semantic_relations(root_a);
             CREATE INDEX IF NOT EXISTS idx_rel_b ON semantic_relations(root_b);
+
+            CREATE TABLE IF NOT EXISTS sociolinguistic_register (
+                root             TEXT PRIMARY KEY,
+                register_class   TEXT NOT NULL CHECK (
+                    register_class IN ('ableist_slur', 'ethnic_slur', 'racial_slur')
+                ),
+                target_group     TEXT NOT NULL,
+                literal_gloss    TEXT NOT NULL,
+                severity         INTEGER NOT NULL CHECK (severity BETWEEN 1 AND 5),
+                taboo_level      TEXT NOT NULL CHECK (
+                    taboo_level IN ('offensive', 'severe', 'extreme')
+                ),
+                historical_basis TEXT NOT NULL,
+                pragmatic_force  TEXT NOT NULL,
+                usage_note       TEXT NOT NULL,
+                FOREIGN KEY (root) REFERENCES roots(root) ON DELETE CASCADE
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_register_class
+                ON sociolinguistic_register(register_class);
+            CREATE INDEX IF NOT EXISTS idx_register_target
+                ON sociolinguistic_register(target_group);
 
             CREATE TABLE IF NOT EXISTS tool_meta (
                 key         TEXT PRIMARY KEY,

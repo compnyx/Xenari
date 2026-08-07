@@ -24,7 +24,7 @@ def test_database_json_export_uses_bounded_queries(fresh_xenari):
 
     selects = [statement for statement in statements if statement.lstrip().upper().startswith("SELECT")]
     assert json.loads(exported)
-    assert len(selects) == 2
+    assert len(selects) == 3
 
 def test_export_js_uses_json_escaping_and_is_valid_javascript(tmp_path, fresh_xenari):
     x = fresh_xenari

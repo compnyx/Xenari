@@ -181,14 +181,34 @@ for ordinary reference:
 - `ngolxroqvi` = succubus, a Veilborn resonance feeder
 - `trelqvi` = human
 
-The following are species-directed insults, never neutral names:
+The following are species-directed slurs, never neutral names. The English
+headword is the literal translation; register metadata carries the social
+force that a literal calque cannot express by itself.
 
-- `qronkqrep` = birdbrain, aimed at an Aeral
-- `qubihqrap` = rockhead, aimed at a Lithren
-- `plenkfrek` = fishface, aimed at a Thalren
-- `xlekqfrek` = bugface, aimed at a Khezh
-- `zlekkroxzal` = bloodsucker, aimed at a succubus
-- `tuputlor` = meatbag, aimed at a human
+- `qronkqrep` = birdbrain, aimed at Aeral; ethnic slur, severity 2/5. Lowland
+  caricatures treated wind-song and distributed navigation as incoherence,
+  producing a stereotype of Aeral stupidity. Roughly “dumb Polack” territory.
+- `qubihqrap` = rockhead, aimed at Lithren; ethnic slur, severity 2/5.
+  Extraction states recast Lithren refusal to surrender stone archives as
+  stupidity and mental rigidity.
+- `plenkfrek` = fishface, aimed at Thalren; racial slur, severity 3/5. It comes
+  from segregated surface ports that made gills and chromatophores into racial
+  markers.
+- `xlekqfrek` = bugface, aimed at Khezh; racial slur, severity 4/5. Colonial
+  extermination campaigns called Khezh settlements infestations and paid
+  bounties, giving the word the force of calling a people roaches or vermin.
+- `zlekkroxzal` = bloodsucker, aimed at Veilborn/succubi; racial slur, severity
+  4/5. Post-Pact panics portrayed all resonance feeding as secret predation,
+  greed, and exploitation; its social severity is comparable to `kike`.
+- `tuputlor` = meatbag, aimed at humans; racial slur, severity 5/5, extreme.
+  During the Flesh Levy humans were denied personhood, inventoried by usable
+  body mass, and treated as consumable biological stock. The former caste term
+  became the canonical anti-human slur after emancipation and occupies the
+  strongest, N-word-tier cultural register.
+
+`qrazhel` is separate from the species register: it is an ableist slur,
+severity 4/5, literally “a mind that will not catch the thread,” and maps
+directly to English `retard`. It is never a clinical or neutral description.
 
 Noun predicates use the copula with the predicate in the `ra` slot:
 

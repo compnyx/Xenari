@@ -21,7 +21,7 @@ PARTS_OF_SPEECH = frozenset(
     }
 )
 
-POS_SCHEMA_VERSION = "2026-07-18.2"
+POS_SCHEMA_VERSION = "2026-08-07.1"
 POS_BACKFILL_VERSION = "2026-07-18.3"
 
 # Particle evidence must be sense-specific.  Several grammar roots are also

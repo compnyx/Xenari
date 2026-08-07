@@ -26364,6 +26364,16 @@
     ],
     "english_parts_of_speech": {
       "fishface": "noun"
+    },
+    "sociolinguistic_register": {
+      "register_class": "racial_slur",
+      "target_group": "Thalren people",
+      "literal_gloss": "fish-face",
+      "severity": 3,
+      "taboo_level": "severe",
+      "historical_basis": "Segregated surface ports treated visible gills and chromatophore patterns as racial markers. The term reduces Thalren identity to features used to exclude them.",
+      "pragmatic_force": "Comparable to racial insults based on stereotyped physical features: explicitly prejudicial because the target's body and species are the insult.",
+      "usage_note": "Anti-Thalren racial slur. Quotation and historical discussion do not make it a neutral descriptor."
     }
   },
   {
@@ -26379,6 +26389,16 @@
     ],
     "english_parts_of_speech": {
       "birdbrain": "noun"
+    },
+    "sociolinguistic_register": {
+      "register_class": "ethnic_slur",
+      "target_group": "Aeral people",
+      "literal_gloss": "bird-brain",
+      "severity": 2,
+      "taboo_level": "offensive",
+      "historical_basis": "After lowland accounts portrayed Aeral wind-song and distributed navigation as incoherent thinking, the calque became a stereotype that Aeral are flighty and unintelligent.",
+      "pragmatic_force": "Roughly 'dumb Polack' territory when aimed at an Aeral: an offensive ethnic stereotype, but below the most socially radioactive slur tier.",
+      "usage_note": "Anti-Aeral ethnic slur. The literal calque is not a neutral synonym for Aeral."
     }
   },
   {
@@ -26394,6 +26414,16 @@
     ],
     "english_parts_of_speech": {
       "rockhead": "noun"
+    },
+    "sociolinguistic_register": {
+      "register_class": "ethnic_slur",
+      "target_group": "Lithren people",
+      "literal_gloss": "rock-head",
+      "severity": 2,
+      "taboo_level": "offensive",
+      "historical_basis": "Extraction states framed Lithren refusal to surrender ancestral stone archives as mental rigidity and stupidity. The stereotype survived after the treaties ended.",
+      "pragmatic_force": "Comparable to derogatory nationality nicknames built around an ethnic stereotype of stupidity or backwardness.",
+      "usage_note": "Anti-Lithren ethnic slur. Never the neutral species name."
     }
   },
   {
@@ -26409,6 +26439,16 @@
     ],
     "english_parts_of_speech": {
       "meatbag": "noun"
+    },
+    "sociolinguistic_register": {
+      "register_class": "racial_slur",
+      "target_group": "human people",
+      "literal_gloss": "meat-bag",
+      "severity": 5,
+      "taboo_level": "extreme",
+      "historical_basis": "During the Flesh Levy, conquered humans were denied personhood, inventoried by usable body mass, and treated as consumable biological stock. Tuputlor began as an official caste term and remained the canonical anti-human slur after emancipation.",
+      "pragmatic_force": "Strongest socially radioactive tier, comparable in cultural register to the N-word because it is inseparable from severe species-based oppression. Outside that history its literal calque would carry only dehumanizing 'ape', 'animal', or 'subhuman' force.",
+      "usage_note": "Extreme anti-human racial slur tied to the Flesh Levy. Never a neutral word for human."
     }
   },
   {
@@ -26424,6 +26464,16 @@
     ],
     "english_parts_of_speech": {
       "bugface": "noun"
+    },
+    "sociolinguistic_register": {
+      "register_class": "racial_slur",
+      "target_group": "Khezh people",
+      "literal_gloss": "bug-face",
+      "severity": 4,
+      "taboo_level": "severe",
+      "historical_basis": "Colonial extermination campaigns called Khezh settlements infestations and paid bounties for cleared colonies. The term carries that pest-eradication rhetoric.",
+      "pragmatic_force": "Comparable to calling an ethnic people roaches or vermin: dehumanizing language that rhetorically reduces a population to pests.",
+      "usage_note": "Severe anti-Khezh racial slur associated with extermination rhetoric."
     }
   },
   {
@@ -26439,6 +26489,16 @@
     ],
     "english_parts_of_speech": {
       "bloodsucker": "noun"
+    },
+    "sociolinguistic_register": {
+      "register_class": "racial_slur",
+      "target_group": "Veilborn and succubi",
+      "literal_gloss": "blood-sucker",
+      "severity": 4,
+      "taboo_level": "severe",
+      "historical_basis": "Post-Pact panics recast all resonance feeding as secret predation, greed, and covert exploitation. The term became an established group slur rather than a description of an individual act.",
+      "pragmatic_force": "Comparable in severity to 'kike' where Veilborn are stereotyped as parasitic, predatory, greedy, or secretly exploiting other peoples.",
+      "usage_note": "Severe anti-Veilborn racial slur. It does not neutrally mean succubus or feeder."
     }
   },
   {
@@ -93868,6 +93928,16 @@
     ],
     "english_parts_of_speech": {
       "retard": "noun"
+    },
+    "sociolinguistic_register": {
+      "register_class": "ableist_slur",
+      "target_group": "people perceived as intellectually disabled or cognitively deficient",
+      "literal_gloss": "a mind that will not catch the thread",
+      "severity": 4,
+      "taboo_level": "severe",
+      "historical_basis": "The thread metaphor began in tests of whether a listener could follow communal reasoning. It became a noun for people judged unable to understand and then an ableist insult.",
+      "pragmatic_force": "Direct English equivalent: retard. The mapping preserves the established lexical meaning rather than replacing it with a generic warning label.",
+      "usage_note": "Ableist slur. Never a clinical or neutral description."
     }
   },
   {
