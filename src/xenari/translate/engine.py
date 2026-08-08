@@ -41,6 +41,22 @@ class TranslatorMixin(
             "yet": self.p["but"],
         }
         protected_english = self._protect_borrowed_spans(english)
+        whole_evidential = (
+            "assumed" if evidential == "auto" else evidential
+        )
+        whole_evidence_root = self.evidential_map.get(
+            whole_evidential, self.evidential_map["assumed"]
+        )
+        biographical_profile = self._speak_biographical_profile(
+            protected_english, whole_evidence_root,
+        )
+        if biographical_profile is not None:
+            return biographical_profile
+        future_relative_event = self._speak_future_relative_event(
+            protected_english, whole_evidence_root,
+        )
+        if future_relative_event is not None:
+            return future_relative_event
         contrastive_ellipsis = self._speak_contrastive_ellipsis(protected_english)
         if contrastive_ellipsis is not None:
             return contrastive_ellipsis

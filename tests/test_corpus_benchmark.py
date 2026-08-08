@@ -40,12 +40,12 @@ def test_corpus_scores_only_clean_round_trip_content_and_locks_progress(xenari):
 
     assert report["schema"] == "xenari.translation-corpus-report.v1"
     assert report["case_count"] == 5
-    assert report["status_counts"] == {"complete": 4, "partial": 0, "unsupported": 1}
-    assert report["meaning"]["retained"] == 31
-    assert report["grammar"]["retained"] == 15
-    assert report["overall_score"] == 88.5
+    assert report["status_counts"] == {"complete": 5, "partial": 0, "unsupported": 0}
+    assert report["meaning"]["retained"] == 33
+    assert report["grammar"]["retained"] == 19
+    assert report["overall_score"] == 100.0
     assert report["ok"] is True
-    assert report["strict_pass"] is False
+    assert report["strict_pass"] is True
     assert report["baseline_regressions"] == []
     assert all(case["baseline_ok"] for case in report["cases"])
     data_breach = next(
@@ -68,10 +68,18 @@ def test_corpus_scores_only_clean_round_trip_content_and_locks_progress(xenari):
     assert wolf["meaning"]["score"] == 100
     assert wolf["grammar"]["score"] == 100
     assert wolf["diagnostic_count"] == 0
+    biography = next(
+        case for case in report["cases"] if case["id"] == "simplewiki-nikola-pilic"
+    )
+    assert biography["status"] == "complete"
+    assert biography["meaning"]["score"] == 100
+    assert biography["grammar"]["score"] == 100
+    assert biography["diagnostic_count"] == 0
     colloquial = next(
         case for case in report["cases"] if case["id"] == "colloquial-football-date"
     )
     assert colloquial["meaning"]["score"] == 100
+    assert colloquial["grammar"]["score"] == 100
     assert colloquial["diagnostic_count"] == 0
 
 

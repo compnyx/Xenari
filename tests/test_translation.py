@@ -949,3 +949,42 @@ def test_role_appositive_purpose_and_historical_setting_round_trip(xenari):
 
     assert xenari.speak(english, evidential="assumed") == expected_xenari
     assert xenari.reverse(expected_xenari) == expected_reverse
+
+
+def test_biographical_profile_preserves_lifespan_alias_identity_and_affiliation(xenari):
+    english = (
+        "Nikola Pilić (27 August 1939 – 22 September 2025), also known as "
+        "Niki Pilić, was a Croatian professional tennis player. He played for "
+        "SFR Yugoslavia."
+    )
+    expected_xenari = (
+        "zuq‹Nikola·Pilić›. qro‹27·August·1939·–·22·September·2025›. "
+        "zuq zuq‹Niki·Pilić›. "
+        "ra vi lurc zuq‹Croatian› coye krura ka vi zuq‹Nikola·Pilić› "
+        "ta zux vi lo xo. "
+        "fa vi zuq‹SFR·Yugoslavia› ka vi zuq‹Nikola·Pilić› "
+        "ta gluzto vi lo xo"
+    )
+    expected_reverse = english.rstrip(".")
+
+    assert xenari.speak(english, evidential="assumed") == expected_xenari
+    assert xenari.reverse(expected_xenari) == expected_reverse
+
+
+def test_future_relative_event_keeps_goal_and_calendar_scope(xenari):
+    english = (
+        "I'm a retard who's going to the football game on Wednesday the 3rd "
+        "of February."
+    )
+    expected_xenari = (
+        "ra nu qrazhel su zre fa nu qlapz xsasxvizqpilc "
+        "na nu qro‹Wednesday·the·3rd·of·February› "
+        "ta qeng vi ve xo ti ka neq ta zux sa xo"
+    )
+    expected_reverse = (
+        "I am a retard who is going to the football game on Wednesday the 3rd "
+        "of February"
+    )
+
+    assert xenari.speak(english, evidential="assumed") == expected_xenari
+    assert xenari.reverse(expected_xenari) == expected_reverse

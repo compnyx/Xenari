@@ -220,6 +220,18 @@
       "root": "folamaheh",
       "part_of_speech": "noun",
       "kind": "narrative_vocabulary"
+    },
+    {
+      "english_key": "professional",
+      "root": "coye",
+      "part_of_speech": "adjective",
+      "kind": "biographical_vocabulary"
+    },
+    {
+      "english_key": "tennis",
+      "root": "krura",
+      "part_of_speech": "noun",
+      "kind": "biographical_vocabulary"
     }
   ]
 }

@@ -8,6 +8,121 @@ from .models import CommonPatternRequest, TranslationMatch
 class ForwardFrameMixin:
     """Render explicitly supported clause and target-language frames."""
 
+    def _speak_biographical_profile(self, english: str, evidence_root: str):
+        """Render a compact historical biography without losing apposition.
+
+        This frame keeps the name, lifespan, alias, nationality, profession,
+        sport, and represented organization as independent, reversible pieces.
+        Nationalities and organization names remain explicit borrowings rather
+        than being presented as native Xenari roots.
+        """
+        clean = self._expand_english_contractions(english)
+        clean = re.sub(r"\s+", " ", clean.strip())
+        match = re.fullmatch(
+            r"(xqborrown[a-p]+)\s+\((xqborrowd[a-p]+)\),\s+"
+            r"(?:also\s+)?known\s+as\s+(xqborrown[a-p]+),\s+"
+            r"was\s+(?:a|an)\s+([a-z][a-z'-]*)\s+"
+            r"([a-z][a-z'-]*)\s+([a-z][a-z'-]*)\s+([a-z][a-z'-]*)\.\s+"
+            r"(?:he|she|they)\s+played\s+for\s+(xqborrown[a-p]+)\.?",
+            clean,
+        )
+        if not match:
+            return None
+        (
+            person_sentinel,
+            date_sentinel,
+            alias_sentinel,
+            nationality,
+            professional_word,
+            sport_word,
+            player_word,
+            organization_sentinel,
+        ) = match.groups()
+        person = self._decode_borrowed_sentinel(person_sentinel)
+        date_range = self._decode_borrowed_sentinel(date_sentinel)
+        alias = self._decode_borrowed_sentinel(alias_sentinel)
+        organization = self._decode_borrowed_sentinel(organization_sentinel)
+        professional_root = self.lookup(
+            professional_word, part_of_speech="adjective"
+        )[0]
+        sport_root = self.lookup(sport_word, part_of_speech="noun")[0]
+        player_root = self.lookup(player_word, part_of_speech="noun")[0]
+        play_root = self.lookup("play", part_of_speech="verb")[0]
+        if not all([
+            person,
+            date_range,
+            alias,
+            organization,
+            professional_root,
+            sport_root,
+            player_root,
+            play_root,
+        ]):
+            return None
+
+        person_root = self._borrowed_literal(*person)
+        date_root = self._borrowed_literal(*date_range)
+        alias_root = self._borrowed_literal(*alias)
+        nationality_root = self._borrowed_literal("name", nationality.title())
+        organization_root = self._borrowed_literal(*organization)
+        identity = " ".join([
+            "ra", "vi", player_root, nationality_root, professional_root,
+            sport_root, "ka", "vi", person_root, "ta", "zux", "vi", "lo",
+            evidence_root,
+        ])
+        affiliation = " ".join([
+            "fa", "vi", organization_root, "ka", "vi", person_root, "ta",
+            play_root, "vi", "lo", evidence_root,
+        ])
+        return ". ".join([
+            person_root,
+            date_root,
+            f"zuq {alias_root}",
+            identity,
+            affiliation,
+        ])
+
+    def _speak_future_relative_event(self, english: str, evidence_root: str):
+        """Render ``I am X who is going to EVENT on DATE`` with full scope."""
+        clean = self._expand_english_contractions(english)
+        clean = re.sub(r"\s+", " ", clean.strip())
+        match = re.fullmatch(
+            r"i\s+am\s+(?:a|an)\s+([a-z][a-z'-]*)\s+who\s+is\s+going\s+to\s+"
+            r"(?:the\s+)?([a-z][a-z'-]*)\s+([a-z][a-z'-]*)\s+on\s+"
+            r"(xqborrowd[a-p]+)\.?",
+            clean,
+        )
+        if not match:
+            return None
+        predicate_word, event_modifier_word, event_head_word, date_sentinel = (
+            match.groups()
+        )
+        predicate_root = self.lookup(predicate_word, part_of_speech="noun")[0]
+        event_modifier_root = self.lookup(
+            event_modifier_word, part_of_speech="noun"
+        )[0]
+        event_head_root = self.lookup(event_head_word, part_of_speech="noun")[0]
+        date = self._decode_borrowed_sentinel(date_sentinel)
+        go_root = self.lookup("go", part_of_speech="verb")[0]
+        if not all([
+            predicate_root,
+            event_modifier_root,
+            event_head_root,
+            date,
+            go_root,
+        ]):
+            return None
+        relative = [
+            "fa", "nu", event_modifier_root, event_head_root,
+            "na", "nu", self._borrowed_literal(*date),
+            "ta", go_root, "vi", "ve", evidence_root,
+        ]
+        return " ".join([
+            "ra", "nu", predicate_root,
+            "su", "zre", *relative, "ti",
+            "ka", "neq", "ta", "zux", "sa", evidence_root,
+        ])
+
     def _render_simple_frame(
         self,
         subject_root: str,

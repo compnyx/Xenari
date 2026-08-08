@@ -51,7 +51,7 @@ def test_post_v4_lexicon_preferences_are_available_as_package_data():
     assert POST_V4_LEXICON.is_file()
     fixture = json.loads(POST_V4_LEXICON.read_text(encoding="utf-8"))
     assert fixture["schema"] == "xenari.post-v4-lexicon.v1"
-    assert len(fixture["mappings"]) == 27
+    assert len(fixture["mappings"]) == 29
     assert len(fixture["aliases"]) == 5
 
 

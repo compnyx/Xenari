@@ -5,6 +5,19 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.8.6 - 2026-08-08
+
+- Added reversible historical-biography structure for a lifespan, alias,
+  nationality, profession, sport, and represented organization. Gregorian
+  dates and external identities remain visibly borrowed while the clause
+  relations remain native Xenari grammar.
+- Added reviewed roots `coye` (professional) and `krura` (tennis), plus an
+  explicit future subject-relative event frame that keeps its goal and
+  calendar adjunct in scope.
+- Raised the five-case real-text torture corpus from 88.5% to 100%: all 33
+  meaning units and all 19 grammar units now survive clean Python and browser
+  round trips with zero diagnostics.
+
 ## 0.8.5 - 2026-08-08
 
 - Added reversible role complements, appositive subject relatives, purpose

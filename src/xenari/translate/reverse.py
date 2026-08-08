@@ -13,6 +13,92 @@ from .models import ReverseClause, ReverseRequest, ReverseSegments, TranslationM
 
 
 class ReverseTranslationMixin:
+    def _reverse_biographical_profile(self, clean: str):
+        """Reverse the explicit lifespan/alias/profession biography frame."""
+        match = re.fullmatch(
+            r"(zuq‹[^›]+›)\.\s+(qro‹[^›]+›)\.\s+zuq\s+(zuq‹[^›]+›)\.\s+"
+            r"ra vi ([a-z']+) (zuq‹[^›]+›) ([a-z']+) ([a-z']+) "
+            r"ka vi \1 ta zux vi lo (?:xa|xe|xi|xo|zu)\.\s+"
+            r"fa vi (zuq‹[^›]+›) ka vi \1 ta ([a-z']+) vi lo "
+            r"(?:xa|xe|xi|xo|zu)",
+            clean,
+            flags=re.IGNORECASE,
+        )
+        if not match:
+            return None
+        (
+            person_literal,
+            date_literal,
+            alias_literal,
+            player_root,
+            nationality_literal,
+            professional_root,
+            sport_root,
+            organization_literal,
+            play_root,
+        ) = match.groups()
+        borrowed = [
+            self._parse_borrowed_literal(token)
+            for token in (
+                person_literal,
+                date_literal,
+                alias_literal,
+                nationality_literal,
+                organization_literal,
+            )
+        ]
+        if not all(borrowed):
+            return None
+        person, date_range, alias, nationality, organization = (
+            item[1] for item in borrowed
+        )
+        player = self._reverse_head_gloss(player_root.lower())
+        professional = (
+            "professional"
+            if self.lookup("professional", part_of_speech="adjective")[0]
+            == professional_root.lower()
+            else self._reverse_head_gloss(professional_root.lower())
+        )
+        sport = (
+            "tennis"
+            if self.lookup("tennis", part_of_speech="noun")[0]
+            == sport_root.lower()
+            else self._reverse_head_gloss(sport_root.lower())
+        )
+        play = self._reverse_head_gloss(play_root.lower())
+        if play != "play":
+            return None
+        return (
+            f"{person} ({date_range}), also known as {alias}, was a "
+            f"{nationality} {professional} {sport} {player}. "
+            f"He played for {organization}"
+        )
+
+    def _reverse_future_relative_event(self, clean: str):
+        """Reverse the explicit future event relative and calendar adjunct."""
+        match = re.fullmatch(
+            r"ra nu ([a-z']+) su zre fa nu ([a-z']+) ([a-z']+) "
+            r"na nu (qro‹[^›]+›) ta qeng vi ve (?:xa|xe|xi|xo|zu) ti "
+            r"ka neq ta zux sa (?:xa|xe|xi|xo|zu)",
+            clean,
+            flags=re.IGNORECASE,
+        )
+        if not match:
+            return None
+        predicate_root, event_modifier_root, event_head_root, date_literal = (
+            match.groups()
+        )
+        date = self._parse_borrowed_literal(date_literal)
+        if not date:
+            return None
+        predicate = self._reverse_head_gloss(predicate_root.lower())
+        event_modifier = self._reverse_head_gloss(event_modifier_root.lower())
+        event_head = self._reverse_head_gloss(event_head_root.lower())
+        return (
+            f"I am a {predicate} who is going to the {event_modifier} "
+            f"{event_head} on {date[1]}"
+        )
+
     @staticmethod
     def _reverse_head_is_already_plural(root: str, text: str) -> bool:
         """Return whether a preferred noun head already carries plural number.
@@ -388,6 +474,9 @@ class ReverseTranslationMixin:
     def _reverse_structured_frame(self, xenari: str):
         """Read the shared condition, temporal, and relative frames first."""
         clean = re.sub(r"\s+", " ", xenari.strip())
+        future_relative_event = self._reverse_future_relative_event(clean)
+        if future_relative_event:
+            return future_relative_event
         role_complement = self._reverse_role_complement(clean)
         if role_complement:
             return role_complement
@@ -527,6 +616,11 @@ class ReverseTranslationMixin:
 
     def reverse(self, xenari: str) -> str:
         """Best-effort Xenari → English through explicit bounded stages."""
+        biographical_profile = self._reverse_biographical_profile(
+            re.sub(r"\s+", " ", xenari.strip().strip(".!?"))
+        )
+        if biographical_profile:
+            return biographical_profile
         sentences = [
             sentence.strip()
             for sentence in re.split(r"[.!?]+", xenari.strip())

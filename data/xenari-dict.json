@@ -11609,6 +11609,21 @@
     }
   },
   {
+    "id": 10192,
+    "root": "krura",
+    "meaning": "racket-and-net ball sport",
+    "category": "Arts & Culture",
+    "source": "tool",
+    "timestamp": "2026-08-08 17:11",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "tennis"
+    ],
+    "english_parts_of_speech": {
+      "tennis": "noun"
+    }
+  },
+  {
     "id": 2205,
     "root": "loshfeznguk",
     "meaning": "stage, platform",
@@ -105458,6 +105473,21 @@
     ],
     "english_parts_of_speech": {
       "shinobi": "noun"
+    }
+  },
+  {
+    "id": 10191,
+    "root": "coye",
+    "meaning": "paid or expert in an occupation",
+    "category": "People/Roles",
+    "source": "tool",
+    "timestamp": "2026-08-08 17:11",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "professional"
+    ],
+    "english_parts_of_speech": {
+      "professional": "adjective"
     }
   },
   {

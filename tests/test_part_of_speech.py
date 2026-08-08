@@ -1148,14 +1148,15 @@ def test_post_v4_lexical_preferences_extend_the_frozen_snapshot(xenari):
     english_keys = {mapping["english_key"] for mapping in mappings}
 
     assert fixture["schema"] == "xenari.post-v4-lexicon.v1"
-    assert len(mappings) == len(pairs) == len(english_keys) == 27
-    assert len(roots) == 26
+    assert len(mappings) == len(pairs) == len(english_keys) == 29
+    assert len(roots) == 28
     assert Counter(mapping["kind"] for mapping in mappings) == {
         "neutral_species": 5,
         "species_slur": 6,
         "core_vocabulary": 3,
         "information_security": 9,
         "narrative_vocabulary": 4,
+        "biographical_vocabulary": 2,
     }
     assert {mapping["part_of_speech"] for mapping in mappings} == {
         "adjective", "noun", "verb",

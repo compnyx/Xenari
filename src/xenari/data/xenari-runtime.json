@@ -1112,6 +1112,7 @@
       "adjective": {
         "confidential": "glepo",
         "little": "frem",
+        "professional": "coye",
         "sensitive": "cresa",
         "small": "bim",
         "unauthorized": "srefo"
@@ -1141,6 +1142,7 @@
         "shinobi": "clexcuzuzifo",
         "storm": "selq",
         "succubus": "ngolxroqvi",
+        "tennis": "krura",
         "thalren": "xrompuyshang",
         "there": "qroxang",
         "visual inspection": "kezro",
@@ -4367,6 +4369,7 @@
       "coti": "dresser",
       "cov": "umbrella",
       "coxey": "collides",
+      "coye": "professional",
       "coyeg": "towel",
       "coyzsnurz": "gay",
       "coz": "scurry",
@@ -6476,6 +6479,7 @@
       "krunqo": "account",
       "krup": "sour",
       "kruqo": "kidnap",
+      "krura": "tennis",
       "krurk": "rioters",
       "krut": "minus",
       "krux": "make",
@@ -13655,6 +13659,7 @@
         "copmu": "grimy",
         "cors": "muffled",
         "cosh": "worse",
+        "coye": "professional",
         "coyzsnurz": "gay",
         "cra": "anonymous",
         "cra'": "strong",
@@ -17030,6 +17035,7 @@
         "krunkme": "nature",
         "krunqo": "account",
         "krup": "sour",
+        "krura": "tennis",
         "krurk": "rioters",
         "krut": "subtraction",
         "kruxce": "changer",
@@ -33257,5 +33263,5 @@
   },
   "schema": "xenari-runtime",
   "schema_version": 4,
-  "xenari_version": "0.8.5"
+  "xenari_version": "0.8.6"
 }
