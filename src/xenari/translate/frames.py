@@ -314,10 +314,138 @@ class ForwardFrameMixin:
             return f"{left}. {self.p['but']} {right}"
         return None
 
+    @staticmethod
+    def _coordinated_english_items(text: str):
+        """Return items with the connector that introduces each later item."""
+        chunks = re.split(r"\s*(,|\bor\b|\band\b)\s*", text.strip())
+        items = []
+        pending = None
+        for chunk in chunks:
+            chunk = chunk.strip()
+            if not chunk:
+                continue
+            if chunk in {",", "or", "and"}:
+                pending = "or" if chunk == "or" else "and"
+                continue
+            items.append((pending, chunk))
+            pending = None
+        return items
+
+    def _passive_participle_root(self, word: str):
+        irregular = {"stolen": "steal", "used": "use"}
+        clean = word.lower().strip()
+        base = irregular.get(clean)
+        if base is None and clean.endswith("ied"):
+            base = clean[:-3] + "y"
+        if base is None and clean.endswith("ed"):
+            stem = clean[:-2]
+            candidates = [stem, clean[:-1]]
+            if len(stem) > 2 and stem[-1] == stem[-2]:
+                candidates.insert(0, stem[:-1])
+            for candidate in candidates:
+                if self._known_verb_root(candidate):
+                    base = candidate
+                    break
+        return self._known_verb_root(base or clean)
+
+    def _render_coordinated_passive_patient(self, text: str):
+        """Render ``all A, B or C N`` while preserving alternative scope."""
+        clean = re.sub(r"^(?:the|a|an)\s+", "", text.strip().lower())
+        words = clean.split()
+        if len(words) < 2:
+            return None
+        head_word = words[-1]
+        head_root = self.lookup(head_word, part_of_speech="noun")[0]
+        if not head_root:
+            return None
+        modifier_text = clean[: -len(head_word)].strip()
+        quantifier_root = None
+        if modifier_text.startswith("all "):
+            quantifier_root = "qrunq"
+            modifier_text = modifier_text[4:].strip()
+
+        rendered_modifiers = []
+        for connector, modifier in self._coordinated_english_items(modifier_text):
+            if connector:
+                rendered_modifiers.append(self.p["or"] if connector == "or" else self.p["and"])
+            participle_root = self._passive_participle_root(modifier)
+            if participle_root:
+                rendered_modifiers.extend(["mel", participle_root])
+                continue
+            adjective_root = self.lookup(modifier, part_of_speech="adjective")[0]
+            if not adjective_root:
+                return None
+            rendered_modifiers.append(adjective_root)
+
+        parts = [head_root]
+        if quantifier_root:
+            parts.append(quantifier_root)
+        parts.extend(rendered_modifiers)
+        return parts
+
+    def _speak_causative_passive_coordination(
+        self,
+        english: str,
+        evidence_root: str,
+    ):
+        """Render ``X causes Y to be A, B or C by Z`` compositionally.
+
+        ``kra tro`` scopes over one coordinated verb complex.  Each later
+        predicate inherits the same patient, causer, tense, evidential, and
+        optional agent phrase, so English ellipsis is not discarded.
+        """
+        clean = re.sub(r"[.!?]+$", "", english.strip().lower())
+        clean = re.sub(r"\s+", " ", clean)
+        match = re.fullmatch(
+            r"(.+?)\s+(cause|causes|caused)\s+(.+?)\s+to be\s+"
+            r"(.+?)(?:\s+by\s+(.+))?",
+            clean,
+        )
+        if not match:
+            return None
+        causer_text, cause_form, patient_text, predicate_text, agent_text = match.groups()
+        causer_phrase = self._parse_modifier_np(causer_text)
+        patient_parts = self._render_coordinated_passive_patient(patient_text)
+        if not causer_phrase or not patient_parts:
+            return None
+
+        predicate_parts = []
+        for connector, predicate in self._coordinated_english_items(predicate_text):
+            root = self._passive_participle_root(predicate)
+            if not root:
+                return None
+            if connector:
+                predicate_parts.append(self.p["or"] if connector == "or" else self.p["and"])
+            predicate_parts.append(root)
+        if not predicate_parts:
+            return None
+
+        agent_parts = []
+        if agent_text:
+            for connector, agent in self._coordinated_english_items(agent_text):
+                phrase = self._parse_modifier_np(agent)
+                if not phrase:
+                    return None
+                if connector:
+                    agent_parts.append(self.p["or"] if connector == "or" else self.p["and"])
+                agent_parts.extend(self._render_modifier_np(phrase, "mo"))
+
+        tense_root = "lo" if cause_form == "caused" else "sa"
+        parts = ["ra", self.p["inan"], *patient_parts, *agent_parts]
+        parts.extend(self._render_modifier_np(causer_phrase, "ka"))
+        parts.extend(["kra", "tro", "ta", *predicate_parts, self.p["inan"], tense_root, evidence_root])
+        return " ".join(parts)
+
     def _speak_clause_frame(self, english: str, evidence_root: str):
         """Translate reviewed clause relations without claiming general coverage."""
         clean = re.sub(r"[.!?]+$", "", english.strip().lower())
         clean = re.sub(r"\s+", " ", clean)
+
+        causative_passive = self._speak_causative_passive_coordination(
+            clean, evidence_root,
+        )
+        if causative_passive:
+            return causative_passive
 
         # Canon conditionals: pevoq [condition] ti [main].
         conditional = re.fullmatch(r"if\s+(.+?),\s*(.+)", clean)

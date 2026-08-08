@@ -1110,8 +1110,11 @@
     },
     "translation_preferred_by_part_of_speech": {
       "adjective": {
+        "confidential": "glepo",
         "little": "frem",
-        "small": "bim"
+        "sensitive": "cresa",
+        "small": "bim",
+        "unauthorized": "srefo"
       },
       "adverb": {
         "always": "xantdu",
@@ -1121,9 +1124,23 @@
         "usually": "kuxmxo"
       },
       "noun": {
+        "aeral": "qrontzlonq",
+        "bohunk": "qubihqrap",
         "child": "qli'xuq",
+        "chink": "plenkfrek",
+        "data breach": "dat'peqof",
+        "gook": "xlekqfrek",
+        "khezh": "zokaxaqey",
+        "kike": "zlekkroxzal",
+        "lithren": "xloqngrox",
+        "nigger": "tuputlor",
+        "polack": "qronkqrep",
+        "security violation": "kahfol'lukmcuzc",
         "storm": "selq",
+        "succubus": "ngolxroqvi",
+        "thalren": "xrompuyshang",
         "there": "qroxang",
+        "visual inspection": "kezro",
         "wind": "xruqzuq'"
       },
       "particle": {
@@ -1263,6 +1280,7 @@
         "catch-motion": "glez",
         "catches": "radruz",
         "caught": "sko",
+        "cause": "cracru",
         "celebrate": "hangrunqon",
         "change": "xreq",
         "charmed": "xaq",
@@ -1316,6 +1334,7 @@
         "cook": "krol",
         "cooked": "krol",
         "cooperate": "clirx",
+        "copy": "socu",
         "crawl": "bihimef",
         "crawled": "bihimef",
         "crazed": "zvuzslox",
@@ -1715,6 +1734,7 @@
         "pile": "trux",
         "pinned": "xraml",
         "planning": "sromznof",
+        "play": "gluzto",
         "plowing": "cilesib",
         "plundering": "horek",
         "poring": "zacm",
@@ -2034,6 +2054,7 @@
         "translated": "nrotm",
         "translates": "nrotm",
         "translating": "nrotm",
+        "transmit": "hecro",
         "traveled": "arpsot",
         "travels": "xarq",
         "traverse": "yoqamz",
@@ -2063,9 +2084,11 @@
         "unseal": "glag",
         "unshaved": "elvsxo",
         "untouched": "shufmefh",
+        "use": "ceku",
         "ushered": "coni",
         "veers": "frins",
         "verified": "squxi",
+        "view": "kezro",
         "visit": "ucni",
         "volunteer": "pidhetza",
         "volunteered": "pidhetza",
@@ -4071,6 +4094,7 @@
       "ceki": "shove",
       "ceklu": "impressed",
       "ceknxuc": "strands",
+      "ceku": "use",
       "cekxqez": "stink",
       "cel": "due",
       "cels": "simply",
@@ -4344,6 +4368,7 @@
       "cpetux": "jet",
       "cra": "anonymous",
       "cra'": "strength",
+      "cracru": "cause",
       "craczmid": "persian",
       "cradcraf": "bracket",
       "crafvmaq": "shrewish",
@@ -4389,6 +4414,7 @@
       "crenq": "zreqsor organ",
       "crep": "pan",
       "creq": "westerner",
+      "cresa": "sensitive",
       "crescrimpruv": "soulfully",
       "crevgrem": "pudgy",
       "crevniz": "chocolate",
@@ -4644,6 +4670,7 @@
       "darznon": "testimonies",
       "dasci": "crumb",
       "dat": "data",
+      "dat'peqof": "data breach",
       "davifzfa": "bandaged",
       "daxmel": "payload",
       "de": "attorney",
@@ -5506,6 +5533,7 @@
       "glemp": "desire",
       "glemq": "instrumental",
       "glent": "tomorrow",
+      "glepo": "confidential",
       "glet": "geometry",
       "glex": "go after",
       "glexq": "of course",
@@ -5724,6 +5752,7 @@
       "hebvsivznac": "def",
       "hecat": "furniture",
       "heclkava": "huddle",
+      "hecro": "transmit",
       "hecvmeg": "sly",
       "heczren": "pivots",
       "hedronke": "luv",
@@ -5991,6 +6020,7 @@
       "kag": "fast",
       "kah": "pennant",
       "kahfol": "security",
+      "kahfol'lukmcuzc": "security violation",
       "kahglo": "demotion",
       "kakarz": "negotiate",
       "kal": "button",
@@ -6107,6 +6137,7 @@
       "kexis": "globes",
       "keyx": "inn",
       "kezla": "unfolds",
+      "kezro": "view",
       "kfodom": "turrets",
       "kharnqu": "murky",
       "kherfcmunv": "interact",
@@ -10024,6 +10055,7 @@
       "so": "projection",
       "socnzavk": "heaving",
       "socstub": "bakers",
+      "socu": "copy",
       "sofcopla": "burger",
       "sofemc": "pops",
       "sog": "sign",
@@ -10280,6 +10312,7 @@
       "srebfuc": "windmill",
       "srecvlux": "heeey",
       "sref": "decapitates",
+      "srefo": "unauthorized",
       "srefohexp": "indeed",
       "srefxravflos": "karate",
       "srefzger": "dangerfield",
@@ -13625,6 +13658,7 @@
         "cransvez": "friggin",
         "crazpkuso": "stubby",
         "creltiz": "unwitting",
+        "cresa": "sensitive",
         "crevgrem": "pudgy",
         "crifs": "multiple",
         "crik": "girly",
@@ -13814,6 +13848,7 @@
         "glag": "open",
         "glemk": "quiet",
         "glemq": "instrumental",
+        "glepo": "confidential",
         "gli": "bored",
         "glize": "astonished",
         "glu": "excited",
@@ -14578,6 +14613,7 @@
         "srakdaz": "slower",
         "sran": "cut",
         "srase": "probable",
+        "srefo": "unauthorized",
         "srenp": "boolean",
         "srertroc": "romantic",
         "srezxros": "corporate",
@@ -16062,6 +16098,7 @@
         "darznon": "testimonies",
         "dasci": "crumb",
         "dat": "data",
+        "dat'peqof": "data breach",
         "daxmel": "payload",
         "de": "attorney",
         "decspup": "hag",
@@ -16736,6 +16773,7 @@
         "kaduq": "duty",
         "kah": "pennant",
         "kahfol": "security",
+        "kahfol'lukmcuzc": "security violation",
         "kahglo": "demotion",
         "kakarz": "negotiation",
         "kal": "button",
@@ -16796,6 +16834,7 @@
         "keveq": "floors",
         "kexis": "globes",
         "keyx": "inn",
+        "kezro": "visual inspection",
         "kfodom": "turrets",
         "khizta": "representation",
         "kimlap": "camp",
@@ -21320,6 +21359,7 @@
         "carntonf": "drag",
         "cazclas": "relight",
         "ceki": "shove",
+        "ceku": "use",
         "cekxqez": "stink",
         "cemfraq": "outgun",
         "cenkta": "intercept",
@@ -21395,6 +21435,7 @@
         "cosaz": "index",
         "coxey": "collide",
         "coz": "scurry",
+        "cracru": "cause",
         "cram": "hide",
         "cramq": "decorate",
         "cranqkun": "cock",
@@ -21745,6 +21786,7 @@
         "hazsev": "come",
         "hcazn": "translate",
         "heclkava": "huddle",
+        "hecro": "transmit",
         "heczren": "pivot",
         "hefu": "respond",
         "hefzud": "perspire",
@@ -21854,6 +21896,7 @@
         "kevkraqlvre": "maintain",
         "kexinl": "sputter",
         "kezla": "unfold",
+        "kezro": "view",
         "kherfcmunv": "interact",
         "ki": "invent",
         "kicftlu": "knock",
@@ -22774,6 +22817,7 @@
         "snuvur": "perplex",
         "snuxugla": "withstand",
         "socnzavk": "heave",
+        "socu": "copy",
         "sofemc": "pop",
         "sog": "mark",
         "solahq": "wrestle",
@@ -24133,6 +24177,10 @@
         "past": "shoved",
         "third_person": "shoves"
       },
+      "ceku": {
+        "past": "used",
+        "third_person": "uses"
+      },
       "cekxqez": {
         "past": "stank",
         "third_person": "stinks"
@@ -24432,6 +24480,10 @@
       "coz": {
         "past": "scurried",
         "third_person": "scurries"
+      },
+      "cracru": {
+        "past": "caused",
+        "third_person": "causes"
       },
       "cram": {
         "past": "hid",
@@ -25833,6 +25885,10 @@
         "past": "huddled",
         "third_person": "huddles"
       },
+      "hecro": {
+        "past": "transmitted",
+        "third_person": "transmits"
+      },
       "heczren": {
         "past": "pivoted",
         "third_person": "pivots"
@@ -26268,6 +26324,10 @@
       "kezla": {
         "past": "unfolded",
         "third_person": "unfolds"
+      },
+      "kezro": {
+        "past": "viewed",
+        "third_person": "views"
       },
       "kherfcmunv": {
         "past": "interacted",
@@ -29949,6 +30009,10 @@
         "past": "heaved",
         "third_person": "heaves"
       },
+      "socu": {
+        "past": "copied",
+        "third_person": "copies"
+      },
       "sofemc": {
         "past": "popped",
         "third_person": "pops"
@@ -33185,5 +33249,5 @@
   },
   "schema": "xenari-runtime",
   "schema_version": 4,
-  "xenari_version": "0.8.3"
+  "xenari_version": "0.8.4"
 }

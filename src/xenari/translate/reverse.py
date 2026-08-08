@@ -154,9 +154,151 @@ class ReverseTranslationMixin:
         head = self.db._audit_headword(meaning)
         return head.split()[0] if head else root
 
+    @staticmethod
+    def _join_reviewed_coordination(items: list[tuple[str | None, str]]) -> str:
+        """Render reviewed ``and``/``or`` links without losing final scope."""
+        if not items:
+            return ""
+        text = items[0][1]
+        for index, (connector, item) in enumerate(items[1:], start=1):
+            if connector == "or":
+                text += f" or {item}"
+            elif index == len(items) - 1 and len(items) == 2:
+                text += f" and {item}"
+            else:
+                text += f", {item}"
+        return text
+
+    def _reverse_passive_participle(self, root: str) -> str:
+        lemma = REVERSE_PREFERRED_BY_PART_OF_SPEECH.get("verb", {}).get(
+            root, self._reverse_head_gloss(root)
+        )
+        irregular = {
+            "be": "been", "break": "broken", "do": "done",
+            "eat": "eaten", "give": "given", "see": "seen",
+            "steal": "stolen", "take": "taken", "write": "written",
+        }
+        if lemma in irregular:
+            return irregular[lemma]
+        if lemma.endswith("e"):
+            return lemma + "d"
+        if lemma.endswith("y") and len(lemma) > 1 and lemma[-2] not in "aeiou":
+            return lemma[:-1] + "ied"
+        if (
+            len(lemma) >= 3
+            and lemma[-1] not in "aeiouwxy"
+            and lemma[-2] in "aeiou"
+            and lemma[-3] not in "aeiou"
+        ):
+            return lemma + lemma[-1] + "ed"
+        return lemma + "ed"
+
+    def _reverse_security_patient(self, tokens: list[str]) -> str | None:
+        if not tokens:
+            return None
+        head = self._reverse_head_gloss(tokens[0])
+        index = 1
+        quantifier = ""
+        if index < len(tokens) and tokens[index] == "qrunq":
+            quantifier = "all "
+            index += 1
+        modifiers: list[tuple[str | None, str]] = []
+        connector = None
+        while index < len(tokens):
+            token = tokens[index]
+            if token in {"xen", "noq"}:
+                connector = "or" if token == "noq" else "and"
+                index += 1
+                continue
+            if token == "mel" and index + 1 < len(tokens):
+                text = self._reverse_passive_participle(tokens[index + 1])
+                index += 2
+            else:
+                text = REVERSE_PREFERRED_BY_PART_OF_SPEECH.get(
+                    "adjective", {}
+                ).get(token, self._reverse_head_gloss(token))
+                index += 1
+            modifiers.append((connector, text))
+            connector = None
+        modifier_text = self._join_reviewed_coordination(modifiers)
+        return f"{quantifier}{modifier_text} {head}".strip()
+
+    def _reverse_security_agents(self, text: str) -> str | None:
+        chunks = re.split(r"\s+(xen|noq)\s+(?=mo\s)", text.strip())
+        agents: list[tuple[str | None, str]] = []
+        connector = None
+        for chunk in chunks:
+            if chunk in {"xen", "noq"}:
+                connector = "or" if chunk == "noq" else "and"
+                continue
+            tokens = chunk.split()
+            if not tokens or tokens[0] != "mo":
+                return None
+            tokens = tokens[1:]
+            if tokens and tokens[0] in {"vi", "nu"}:
+                tokens = tokens[1:]
+            if not tokens:
+                return None
+            head = {
+                "habdazluc": "person",
+                "qrolk": "organization",
+            }.get(tokens[0], self._reverse_head_gloss(tokens[0]))
+            adjectives = [
+                REVERSE_PREFERRED_BY_PART_OF_SPEECH.get("adjective", {}).get(
+                    token, self._reverse_head_gloss(token)
+                )
+                for token in tokens[1:]
+            ]
+            phrase = " ".join([*adjectives, head])
+            if adjectives and head == "person":
+                phrase = "an " + phrase
+            agents.append((connector, phrase))
+            connector = None
+        return self._join_reviewed_coordination(agents)
+
+    def _reverse_causative_passive_coordination(self, clean: str):
+        match = re.fullmatch(
+            r"ra nu (.+?) (mo .+?) ka (.+?) kra tro ta (.+?) "
+            r"(?:vi|nu) (sa|lo|ve|du|pe) (?:xa|xe|xi|xo|zu)",
+            clean,
+        )
+        if not match:
+            return None
+        patient_text, agent_text, causer_text, predicate_text, tense = match.groups()
+        patient = self._reverse_security_patient(patient_text.split())
+        agents = self._reverse_security_agents(agent_text)
+        if not patient or not agents:
+            return None
+
+        causer_tokens = [token for token in causer_text.split() if token not in {"vi", "nu", "ha"}]
+        if causer_tokens == ["leq"]:
+            causer = "it"
+        elif causer_tokens and causer_tokens[0] in REVERSE_PRONOUNS:
+            causer = REVERSE_PRONOUNS[causer_tokens[0]]["subj"]
+        elif causer_tokens:
+            causer = self._reverse_head_gloss(causer_tokens[0])
+        else:
+            return None
+
+        predicate_tokens = predicate_text.split()
+        predicates: list[tuple[str | None, str]] = []
+        connector = None
+        for token in predicate_tokens:
+            if token in {"xen", "noq"}:
+                connector = "or" if token == "noq" else "and"
+                continue
+            predicates.append((connector, self._reverse_passive_participle(token)))
+            connector = None
+        predicate_list = self._join_reviewed_coordination(predicates)
+        cause = "caused" if tense == "lo" else "causes"
+        return f"{causer} {cause} {patient} to be {predicate_list} by {agents}"
+
     def _reverse_structured_frame(self, xenari: str):
         """Read the shared condition, temporal, and relative frames first."""
         clean = re.sub(r"\s+", " ", xenari.strip())
+        causative_passive = self._reverse_causative_passive_coordination(clean)
+        if causative_passive:
+            return causative_passive
         if clean.startswith("pevoq ") and " ti " in clean:
             condition, main = clean.removeprefix("pevoq ").split(" ti ", 1)
             condition_en = self._polish_structured_english(self.reverse(condition))

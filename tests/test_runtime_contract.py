@@ -86,7 +86,7 @@ def test_runtime_contract_contains_the_python_translation_tables():
     assert contract["reverse"]["verb_inflections"] == {
         root: dict(forms) for root, forms in REVERSE_VERB_INFLECTIONS.items()
     }
-    assert len(contract["reverse"]["verb_inflections"]) == 2389
+    assert len(contract["reverse"]["verb_inflections"]) == 2394
     assert contract["reverse"]["verb_inflections"]["gluzto"] == {
         "past": "played",
         "third_person": "plays",

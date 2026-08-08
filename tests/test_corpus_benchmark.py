@@ -40,10 +40,10 @@ def test_corpus_scores_only_clean_round_trip_content_and_locks_progress(xenari):
 
     assert report["schema"] == "xenari.translation-corpus-report.v1"
     assert report["case_count"] == 5
-    assert report["status_counts"] == {"complete": 2, "partial": 0, "unsupported": 3}
-    assert report["meaning"]["retained"] == 14
-    assert report["grammar"]["retained"] == 7
-    assert report["overall_score"] == 40.4
+    assert report["status_counts"] == {"complete": 3, "partial": 0, "unsupported": 2}
+    assert report["meaning"]["retained"] == 24
+    assert report["grammar"]["retained"] == 11
+    assert report["overall_score"] == 67.3
     assert report["ok"] is True
     assert report["strict_pass"] is False
     assert report["baseline_regressions"] == []
@@ -51,7 +51,10 @@ def test_corpus_scores_only_clean_round_trip_content_and_locks_progress(xenari):
     data_breach = next(
         case for case in report["cases"] if case["id"] == "simplewiki-data-breach"
     )
-    assert data_breach["round_trip"] == ""
+    assert data_breach["status"] == "complete"
+    assert data_breach["meaning"]["score"] == 100
+    assert data_breach["grammar"]["score"] == 100
+    assert data_breach["diagnostic_count"] == 0
     titans = next(
         case for case in report["cases"] if case["id"] == "simplewiki-titans-horizon"
     )

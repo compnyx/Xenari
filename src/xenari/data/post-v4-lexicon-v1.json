@@ -1,6 +1,33 @@
 {
   "schema": "xenari.post-v4-lexicon.v1",
   "description": "Reviewed lexical preferences added after the frozen common-English POS v4 provenance snapshot.",
+  "aliases": [
+    {
+      "english_key": "play a sport",
+      "root": "gluzto",
+      "part_of_speech": "verb"
+    },
+    {
+      "english_key": "make happen",
+      "root": "cracru",
+      "part_of_speech": "verb"
+    },
+    {
+      "english_key": "duplicate action",
+      "root": "socu",
+      "part_of_speech": "verb"
+    },
+    {
+      "english_key": "employ function",
+      "root": "ceku",
+      "part_of_speech": "verb"
+    },
+    {
+      "english_key": "organisation",
+      "root": "qrolk",
+      "part_of_speech": "noun"
+    }
+  ],
   "mappings": [
     {
       "english_key": "aeral",
@@ -76,6 +103,92 @@
       "inflections": {
         "past": "played",
         "third_person": "plays"
+      }
+    },
+    {
+      "english_key": "data breach",
+      "root": "dat'peqof",
+      "part_of_speech": "noun",
+      "kind": "information_security"
+    },
+    {
+      "english_key": "security violation",
+      "root": "kahfol'lukmcuzc",
+      "part_of_speech": "noun",
+      "kind": "information_security"
+    },
+    {
+      "english_key": "sensitive",
+      "root": "cresa",
+      "part_of_speech": "adjective",
+      "kind": "information_security"
+    },
+    {
+      "english_key": "confidential",
+      "root": "glepo",
+      "part_of_speech": "adjective",
+      "kind": "information_security"
+    },
+    {
+      "english_key": "unauthorized",
+      "root": "srefo",
+      "part_of_speech": "adjective",
+      "kind": "information_security"
+    },
+    {
+      "english_key": "cause",
+      "root": "cracru",
+      "part_of_speech": "verb",
+      "kind": "core_vocabulary",
+      "inflections": {
+        "past": "caused",
+        "third_person": "causes"
+      }
+    },
+    {
+      "english_key": "copy",
+      "root": "socu",
+      "part_of_speech": "verb",
+      "kind": "information_security",
+      "inflections": {
+        "past": "copied",
+        "third_person": "copies"
+      }
+    },
+    {
+      "english_key": "transmit",
+      "root": "hecro",
+      "part_of_speech": "verb",
+      "kind": "information_security",
+      "inflections": {
+        "past": "transmitted",
+        "third_person": "transmits"
+      }
+    },
+    {
+      "english_key": "view",
+      "root": "kezro",
+      "part_of_speech": "verb",
+      "kind": "information_security",
+      "inflections": {
+        "past": "viewed",
+        "third_person": "views"
+      }
+    },
+    {
+      "english_key": "visual inspection",
+      "root": "kezro",
+      "part_of_speech": "noun",
+      "kind": "information_security"
+    },
+    {
+      "english_key": "use",
+      "root": "ceku",
+      "part_of_speech": "verb",
+      "kind": "core_vocabulary",
+      "inflections": {
+        "past": "used",
+        "third_person": "uses"
       }
     }
   ]

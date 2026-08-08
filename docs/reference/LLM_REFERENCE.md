@@ -192,6 +192,26 @@ contrastive *do* (“A has X, but B does not”), Xenari repeats the full predic
 and adds `ngu` to the second clause. This preserves the omitted meaning and
 reverses to grammatical English without introducing an opaque pro-verb.
 
+## Causative Passive Coordination
+
+Use `kra tro` after the causer to scope one causative relation over a
+coordinated passive predicate. The patient is introduced once with `ra`; an
+optional passive agent uses `mo`. Predicate roots joined by `xen` or `noq`
+inherit the same patient, causer, agent, tense, and evidential:
+
+```text
+ra nu dat qrunq cresa xen mel ninfqre noq glepo
+mo vi habdazluc srefo noq mo nu qrolk
+ka leq kra tro ta socu xen hecro xen kezro xen stuxo noq ceku nu sa xo
+
+it causes all sensitive, protected or confidential data to be copied,
+transmitted, viewed, stolen or used by an unauthorized person or organization
+```
+
+`mel` marks a participial modifier inside the patient phrase; it does not
+create a second clause. Do not repeat or infer the omitted English passive
+auxiliary for each coordinated verb.
+
 ## Animacy
 
 Animacy marks current agency/state, not permanent essence.

@@ -5,6 +5,21 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.8.4 - 2026-08-08
+
+- Added a compositional causative-passive coordination frame for constructions
+  such as “it causes all sensitive, protected or confidential data to be
+  copied, transmitted, viewed, stolen or used by an unauthorized person or
+  organization.” One patient, causer, tense, evidential, and agent scope over
+  the full coordinated predicate instead of being silently dropped.
+- Added reviewed noun, adjective, and verb senses required by the data-breach
+  sample, including distinct roots for `data breach`, `security violation`,
+  `sensitive`, `confidential`, `unauthorized`, `cause`, `copy`, `transmit`,
+  `view`, and `use`.
+- Raised the five-case real-text corpus baseline from 40.4% to 67.3% overall.
+  The data-breach sample now retains 100% of its meaning and grammar units with
+  zero diagnostics.
+
 ## 0.8.3 - 2026-08-08
 
 - Added the distinct verb `gluzto`, “to play/participate in a sport or game,”

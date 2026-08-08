@@ -5842,6 +5842,23 @@
     }
   },
   {
+    "id": 10184,
+    "root": "kezro",
+    "meaning": "visual inspection",
+    "category": "Action & Perception",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:36",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "view",
+      "visual inspection"
+    ],
+    "english_parts_of_speech": {
+      "view": "verb",
+      "visual inspection": "noun"
+    }
+  },
+  {
     "id": 3755,
     "root": "kilqskixsqvu",
     "meaning": "hurries",
@@ -88764,6 +88781,21 @@
     }
   },
   {
+    "id": 10180,
+    "root": "kahfol'lukmcuzc",
+    "meaning": "security violation",
+    "category": "Law & Justice",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:35",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "security violation"
+    ],
+    "english_parts_of_speech": {
+      "security violation": "noun"
+    }
+  },
+  {
     "id": 2842,
     "root": "lpaqsi",
     "meaning": "to bring legal charges",
@@ -88996,6 +89028,21 @@
     "english_parts_of_speech": {
       "legal sentence": "noun",
       "punishment": "noun"
+    }
+  },
+  {
+    "id": 10185,
+    "root": "srefo",
+    "meaning": "unauthorized",
+    "category": "Law & Justice",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:36",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "unauthorized"
+    ],
+    "english_parts_of_speech": {
+      "unauthorized": "adjective"
     }
   },
   {
@@ -112641,6 +112688,21 @@
     }
   },
   {
+    "id": 10181,
+    "root": "cresa",
+    "meaning": "sensitive",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:35",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "sensitive"
+    ],
+    "english_parts_of_speech": {
+      "sensitive": "adjective"
+    }
+  },
+  {
     "id": 940,
     "root": "cuk",
     "meaning": "confused",
@@ -113321,6 +113383,21 @@
     ],
     "english_parts_of_speech": {
       "brave": "adjective"
+    }
+  },
+  {
+    "id": 10182,
+    "root": "glepo",
+    "meaning": "confidential",
+    "category": "Qualities",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:35",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "confidential"
+    ],
+    "english_parts_of_speech": {
+      "confidential": "adjective"
     }
   },
   {
@@ -123197,6 +123274,21 @@
     }
   },
   {
+    "id": 10183,
+    "root": "hecro",
+    "meaning": "transmit",
+    "category": "Social & Communication",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:36",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "transmit"
+    ],
+    "english_parts_of_speech": {
+      "transmit": "verb"
+    }
+  },
+  {
     "id": 4291,
     "root": "hefu",
     "meaning": "responds",
@@ -129733,6 +129825,21 @@
     ],
     "english_parts_of_speech": {
       "cyclical clock": "noun"
+    }
+  },
+  {
+    "id": 10179,
+    "root": "dat'peqof",
+    "meaning": "data breach",
+    "category": "Technology & Devices",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:35",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "data breach"
+    ],
+    "english_parts_of_speech": {
+      "data breach": "noun"
     }
   },
   {
@@ -137708,6 +137815,23 @@
     }
   },
   {
+    "id": 10188,
+    "root": "ceku",
+    "meaning": "employ function",
+    "category": "Verb",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:42",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "employ function",
+      "use"
+    ],
+    "english_parts_of_speech": {
+      "employ function": "verb",
+      "use": "verb"
+    }
+  },
+  {
     "id": 4176,
     "root": "cenkta",
     "meaning": "intercepts",
@@ -137855,6 +137979,23 @@
     ],
     "english_parts_of_speech": {
       "ushered": "verb"
+    }
+  },
+  {
+    "id": 10186,
+    "root": "cracru",
+    "meaning": "make happen",
+    "category": "Verb",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:36",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "cause",
+      "make happen"
+    ],
+    "english_parts_of_speech": {
+      "cause": "verb",
+      "make happen": "verb"
     }
   },
   {
@@ -140474,6 +140615,23 @@
     ],
     "english_parts_of_speech": {
       "heaving": "verb"
+    }
+  },
+  {
+    "id": 10187,
+    "root": "socu",
+    "meaning": "copy action",
+    "category": "Verb",
+    "source": "tool",
+    "timestamp": "2026-08-08 12:41",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "copy",
+      "duplicate action"
+    ],
+    "english_parts_of_speech": {
+      "copy": "verb",
+      "duplicate action": "verb"
     }
   },
   {
@@ -149550,10 +149708,12 @@
     "notes": null,
     "english_keys": [
       "arrangement",
+      "organisation",
       "organization"
     ],
     "english_parts_of_speech": {
       "arrangement": "noun",
+      "organisation": "noun",
       "organization": "noun"
     }
   },

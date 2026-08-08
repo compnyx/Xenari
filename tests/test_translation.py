@@ -905,3 +905,25 @@ def test_productive_base6_numbers_work_inside_quantity_noun_phrases(xenari):
     assert xenari.speak("I have 12 dicks", evidential="assumed") == (
         "ra nu kroxvi vriq xang ka neq ta xrong sa xo"
     )
+
+
+def test_causative_passive_coordination_preserves_shared_scope(xenari):
+    english = (
+        "A data breach is a security violation. It causes all sensitive, "
+        "protected or confidential data to be copied, transmitted, viewed, "
+        "stolen or used by an unauthorized person or organisation."
+    )
+    expected_xenari = (
+        "ra nu kahfol'lukmcuzc ka nu dat'peqof ta zux nu sa xo. "
+        "ra nu dat qrunq cresa xen mel ninfqre noq glepo "
+        "mo vi habdazluc srefo noq mo nu qrolk ka leq "
+        "kra tro ta socu xen hecro xen kezro xen stuxo noq ceku nu sa xo"
+    )
+    expected_reverse = (
+        "data breach is security violation. it causes all sensitive, "
+        "protected or confidential data to be copied, transmitted, viewed, "
+        "stolen or used by an unauthorized person or organization"
+    )
+
+    assert xenari.speak(english, evidential="assumed") == expected_xenari
+    assert xenari.reverse(expected_xenari) == expected_reverse

@@ -65,6 +65,23 @@ class ModifierTranslationMixin:
                 "superlative": False,
             }
 
+        # Attested multiword noun keys are lexical units, not accidental
+        # adjective+noun phrases.  Resolve them before modifier parsing so
+        # compounds such as ``data breach`` and ``security violation`` keep
+        # their reviewed root and reverse head intact.
+        if " " in clean:
+            direct_root, _ = self.lookup(clean, part_of_speech="noun")
+            if direct_root:
+                return {
+                    "roots": [direct_root],
+                    "head_root": direct_root,
+                    "animacy": self._reviewed_animacy(clean, direct_root),
+                    "inherent_animacy": self._is_pronoun_root(direct_root),
+                    "plural": False,
+                    "featured": True,
+                    "superlative": False,
+                }
+
         possessor_root = None
         possessor_plural = False
         possessive_pronouns = {

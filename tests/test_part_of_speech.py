@@ -873,6 +873,10 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
     fixture = json.loads(COMMON_ENGLISH_POS_V4.read_text(encoding="utf-8"))
     post_v4 = json.loads(POST_V4_LEXICON.read_text(encoding="utf-8"))
     post_v4_roots = {mapping["root"] for mapping in post_v4["mappings"]}
+    post_v4_pairs = {
+        (mapping["english_key"], mapping["root"])
+        for mapping in [*post_v4["mappings"], *post_v4["aliases"]]
+    }
     verification = fixture["verification"]
     forward = fixture["preferences"]["forward"]
     reverse_preferences = fixture["preferences"]["reverse"]
@@ -884,7 +888,10 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
         """SELECT e.english_key, r.root, e.part_of_speech
            FROM english_map e JOIN roots r ON r.id = e.root_id"""
     ).fetchall()
-    rows = [row for row in current_rows if row["root"] not in post_v4_roots]
+    rows = [
+        row for row in current_rows
+        if (row["english_key"], row["root"]) not in post_v4_pairs
+    ]
     mappings = {
         (row["english_key"], row["root"]): row["part_of_speech"] for row in rows
     }
@@ -952,12 +959,17 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
         part_of_speech: dict(preferences)
         for part_of_speech, preferences in LOOKUP_PREFERRED_BY_PART_OF_SPEECH.items()
     } == lookup_preferences
-    assert {
+    runtime_translation_preferences = {
         part_of_speech: dict(preferences)
         for part_of_speech, preferences in (
             TRANSLATION_PREFERRED_BY_PART_OF_SPEECH.items()
         )
-    } == translation_preferences
+    }
+    for mapping in post_v4["mappings"]:
+        runtime_translation_preferences[mapping["part_of_speech"]].pop(
+            mapping["english_key"], None,
+        )
+    assert runtime_translation_preferences == translation_preferences
     assert {
         root: REVERSE_PREFERRED[root] for root in reverse
     } == reverse
@@ -1106,13 +1118,17 @@ def test_post_v4_lexical_preferences_extend_the_frozen_snapshot(xenari):
     english_keys = {mapping["english_key"] for mapping in mappings}
 
     assert fixture["schema"] == "xenari.post-v4-lexicon.v1"
-    assert len(mappings) == len(pairs) == len(roots) == len(english_keys) == 12
+    assert len(mappings) == len(pairs) == len(english_keys) == 23
+    assert len(roots) == 22
     assert Counter(mapping["kind"] for mapping in mappings) == {
         "neutral_species": 5,
         "species_slur": 6,
-        "core_vocabulary": 1,
+        "core_vocabulary": 3,
+        "information_security": 9,
     }
-    assert {mapping["part_of_speech"] for mapping in mappings} == {"noun", "verb"}
+    assert {mapping["part_of_speech"] for mapping in mappings} == {
+        "adjective", "noun", "verb",
+    }
 
     for mapping in mappings:
         pair = (mapping["english_key"], mapping["root"])
@@ -1124,15 +1140,22 @@ def test_post_v4_lexical_preferences_extend_the_frozen_snapshot(xenari):
         ).fetchone()
         assert row is not None
         assert row["part_of_speech"] == mapping["part_of_speech"]
-        assert REVERSE_PREFERRED[mapping["root"]] == mapping["english_key"]
         assert REVERSE_PREFERRED_BY_PART_OF_SPEECH[
             mapping["part_of_speech"]
         ][mapping["root"]] == (
             mapping["english_key"]
         )
-        assert xenari.translator._reverse_head_gloss(mapping["root"]) == (
-            mapping["english_key"]
-        )
+        assert REVERSE_PREFERRED[mapping["root"]] in english_keys
+
+    for alias in fixture["aliases"]:
+        row = xenari.db.conn.execute(
+            """SELECT e.part_of_speech
+               FROM english_map e JOIN roots r ON r.id = e.root_id
+               WHERE e.english_key = ? AND r.root = ?""",
+            (alias["english_key"], alias["root"]),
+        ).fetchone()
+        assert row is not None
+        assert row["part_of_speech"] == alias["part_of_speech"]
 
 
 def test_common_grammar_keys_do_not_resolve_through_compound_glosses(xenari):

@@ -8,7 +8,7 @@ during a translation impossible while preserving ordinary mapping semantics.
 import json
 from importlib.resources import files
 from types import MappingProxyType
-from typing import Mapping, TypeVar
+from typing import Mapping, TypeVar, cast
 
 _K = TypeVar("_K")
 _V = TypeVar("_V")
@@ -55,7 +55,7 @@ def _load_post_v4_mappings() -> list[dict[str, object]]:
     if not isinstance(mappings, list):
         raise RuntimeError("post-v4 lexicon fixture is missing mappings")
     reviewed = []
-    seen_roots = set()
+    seen_root_roles = set()
     seen_keys = set()
     for index, mapping in enumerate(mappings):
         if not isinstance(mapping, dict):
@@ -70,7 +70,7 @@ def _load_post_v4_mappings() -> list[dict[str, object]]:
             raise RuntimeError(
                 f"post-v4 mapping {index} requires non-empty string fields"
             )
-        if part_of_speech not in {"noun", "verb"}:
+        if part_of_speech not in {"adjective", "noun", "verb"}:
             raise RuntimeError(
                 f"post-v4 mapping {english_key!r} has unsupported POS {part_of_speech!r}"
             )
@@ -86,9 +86,12 @@ def _load_post_v4_mappings() -> list[dict[str, object]]:
             raise RuntimeError(
                 f"post-v4 verb mapping {english_key!r} requires reviewed inflections"
             )
-        if root in seen_roots or english_key in seen_keys:
-            raise RuntimeError("post-v4 lexical preferences must be one-to-one")
-        seen_roots.add(root)
+        root_role = (root, part_of_speech)
+        if root_role in seen_root_roles or english_key in seen_keys:
+            raise RuntimeError(
+                "post-v4 lexical preferences must be one-to-one per POS role"
+            )
+        seen_root_roles.add(root_role)
         seen_keys.add(english_key)
         reviewed_mapping = {
             "english_key": english_key,
@@ -556,6 +559,10 @@ if _V4_PREFERENCES:
 
 _POST_V4_MAPPINGS = _load_post_v4_mappings()
 if _POST_V4_MAPPINGS:
+    _post_v4_translation_roles = {
+        part_of_speech: dict(preferences)
+        for part_of_speech, preferences in TRANSLATION_PREFERRED_BY_PART_OF_SPEECH.items()
+    }
     _post_v4_reverse = dict(REVERSE_PREFERRED)
     _post_v4_reverse_roles = {
         part_of_speech: dict(preferences)
@@ -565,15 +572,20 @@ if _POST_V4_MAPPINGS:
         root: dict(forms) for root, forms in REVERSE_VERB_INFLECTIONS.items()
     }
     for mapping in _POST_V4_MAPPINGS:
-        english_key = mapping["english_key"]
-        root = mapping["root"]
-        part_of_speech = mapping["part_of_speech"]
-        existing = _post_v4_reverse.get(root)
-        if existing is not None and existing != english_key:
+        english_key = cast(str, mapping["english_key"])
+        root = cast(str, mapping["root"])
+        part_of_speech = cast(str, mapping["part_of_speech"])
+        translation_preferences = _post_v4_translation_roles.setdefault(
+            part_of_speech, {}
+        )
+        existing_translation = translation_preferences.get(english_key)
+        if existing_translation is not None and existing_translation != root:
             raise RuntimeError(
-                f"post-v4 reverse preference conflicts for {root!r}: "
-                f"{existing!r} != {english_key!r}"
+                f"post-v4 translation preference conflicts for {english_key!r}: "
+                f"{existing_translation!r} != {root!r}"
             )
+        translation_preferences[english_key] = root
+        existing = _post_v4_reverse.get(root)
         role_preferences = _post_v4_reverse_roles.setdefault(part_of_speech, {})
         existing_role = role_preferences.get(root)
         if existing_role is not None and existing_role != english_key:
@@ -581,16 +593,23 @@ if _POST_V4_MAPPINGS:
                 f"post-v4 reverse role preference conflicts for {root!r}: "
                 f"{existing_role!r} != {english_key!r}"
             )
-        _post_v4_reverse[root] = english_key
+        if existing is None:
+            _post_v4_reverse[root] = english_key
         role_preferences[root] = english_key
         if part_of_speech == "verb":
-            inflections = mapping["inflections"]
+            inflections = cast(dict[str, str], mapping["inflections"])
             existing_inflections = _post_v4_verb_inflections.get(root)
             if existing_inflections is not None and existing_inflections != inflections:
                 raise RuntimeError(
                     f"post-v4 verb inflections conflict for {root!r}"
                 )
             _post_v4_verb_inflections[root] = dict(inflections)
+    TRANSLATION_PREFERRED_BY_PART_OF_SPEECH = MappingProxyType(
+        {
+            part_of_speech: _immutable(preferences)
+            for part_of_speech, preferences in _post_v4_translation_roles.items()
+        }
+    )
     REVERSE_PREFERRED = _immutable(_post_v4_reverse)
     REVERSE_PREFERRED_BY_PART_OF_SPEECH = MappingProxyType(
         {

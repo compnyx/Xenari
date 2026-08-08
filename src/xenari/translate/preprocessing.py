@@ -232,6 +232,11 @@ class EnglishPreprocessingMixin:
                 sentence,
             ) and "," in sentence:
                 comma_parts = [sentence]
+            elif re.search(r"\bcauses?\b.+\bto be\b", sentence):
+                # Commas inside a coordinated passive complement are not
+                # independent-clause seams.  Preserve the whole sentence for
+                # the reviewed causative/passive frame.
+                comma_parts = [sentence]
             else:
                 comma_parts = [
                     part.strip() for part in re.split(r"\s*[,;]\s*", sentence) if part.strip()
