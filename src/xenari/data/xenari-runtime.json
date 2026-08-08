@@ -2616,6 +2616,7 @@
       "we've": "we have",
       "weren't": "were not",
       "what's": "what is",
+      "who's": "who is",
       "won't": "will not",
       "wouldn't": "would not",
       "y'all": "you all",
@@ -33178,5 +33179,5 @@
   },
   "schema": "xenari-runtime",
   "schema_version": 4,
-  "xenari_version": "0.8.1"
+  "xenari_version": "0.8.2"
 }

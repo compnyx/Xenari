@@ -80,6 +80,15 @@ def test_llm_candidate_linter_understands_structured_clause_boundaries(xenari):
     assert malformed_gap["ok"] is False
     assert any("missing ka subject marker" in error for error in malformed_gap["errors"])
 
+def test_llm_candidate_linter_accepts_explicit_borrowed_literals(xenari):
+    candidate = "ka vi zuq‹Nikola·Pilić› ta zux vi lo xo qro‹27·August·1939›"
+    report = xenari.lint_xenari_candidate(candidate)
+
+    assert report["ok"] is True
+    assert report["unknown_tokens"] == []
+    assert "zuq‹nikola·pilić›" in report["tokens"]
+    assert "qro‹27·august·1939›" in report["tokens"]
+
 def test_llm_cli_context_and_lint_json_contracts(run_cli):
     context = run_cli("llm-context", "I love you", check=True)
     context_payload = json.loads(context.stdout)

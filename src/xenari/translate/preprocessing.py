@@ -1,6 +1,7 @@
 """English normalization and phrase helpers for forward translation."""
 
 import re
+import unicodedata
 from typing import List, Tuple
 
 from ..runtime_tables import (
@@ -14,6 +15,145 @@ class EnglishPreprocessingMixin:
     """Prepare bounded English clauses and resolve reviewed phrase forms."""
 
     _sentence_final_temporals = SENTENCE_FINAL_TEMPORALS
+
+    _borrowed_literal_re = re.compile(r"^(zuq|qro)‹([^›]+)›$")
+    _borrowed_sentinel_re = re.compile(r"^xqborrow([nd])([a-p]+)$")
+    _calendar_months = (
+        "january|february|march|april|may|june|july|august|"
+        "september|october|november|december"
+    )
+    _weekdays = "monday|tuesday|wednesday|thursday|friday|saturday|sunday"
+
+    @staticmethod
+    def _borrowed_payload(text: str) -> str:
+        """Make one readable, whitespace-free payload for a borrowed span."""
+        clean = re.sub(r"\s+", " ", unicodedata.normalize("NFC", text).strip())
+        return clean.replace("·", "··").replace(" ", "·")
+
+    @staticmethod
+    def _unborrowed_payload(payload: str) -> str:
+        placeholder = "\0"
+        return payload.replace("··", placeholder).replace("·", " ").replace(
+            placeholder, "·"
+        )
+
+    def _borrowed_literal(self, kind: str, text: str) -> str:
+        marker = "qro" if kind in {"d", "date"} else "zuq"
+        return f"{marker}‹{self._borrowed_payload(text)}›"
+
+    def _parse_borrowed_literal(self, token: str):
+        match = self._borrowed_literal_re.fullmatch(token)
+        if not match:
+            return None
+        marker, payload = match.groups()
+        return ("date" if marker == "qro" else "name"), self._unborrowed_payload(payload)
+
+    @staticmethod
+    def _borrowed_sentinel(kind: str, text: str) -> str:
+        payload = unicodedata.normalize("NFC", text).encode("utf-8").hex().translate(
+            str.maketrans("0123456789abcdef", "abcdefghijklmnop")
+        )
+        return f"xqborrow{kind}{payload}"
+
+    def _decode_borrowed_sentinel(self, token: str):
+        match = self._borrowed_sentinel_re.fullmatch(token)
+        if not match:
+            return None
+        kind, payload = match.groups()
+        try:
+            hexadecimal = payload.translate(
+                str.maketrans("abcdefghijklmnop", "0123456789abcdef")
+            )
+            return kind, bytes.fromhex(hexadecimal).decode("utf-8")
+        except (UnicodeDecodeError, ValueError):
+            return None
+
+    def _protect_borrowed_spans(self, text: str) -> str:
+        """Protect dates and clearly marked proper names before lowercasing.
+
+        Xenari quotes borrowed names with ``zuq‹...›`` and Gregorian date
+        strings with ``qro‹...›``.  The readable payload is not claimed as
+        a native root; it survives an exact reverse translation instead.
+        """
+        month = self._calendar_months
+        weekday = self._weekdays
+        date_atom = rf"\d{{1,4}}(?:st|nd|rd|th)?(?:\s+of)?\s+(?:{month})(?:\s+\d{{1,4}})?"
+        weekday_date = rf"(?:{weekday})(?:\s+the)?\s+{date_atom}"
+        date_range = rf"{date_atom}\s*[–—-]\s*{date_atom}"
+
+        def date_replacement(match):
+            return self._borrowed_sentinel("d", match.group(0))
+
+        protected = re.sub(date_range, date_replacement, text, flags=re.IGNORECASE)
+        protected = re.sub(
+            weekday_date, date_replacement, protected, flags=re.IGNORECASE
+        )
+        protected = re.sub(date_atom, date_replacement, protected, flags=re.IGNORECASE)
+
+        capital_word = r"[A-ZÀ-ÖØ-Þ][\w'’.-]*"
+        multi_name = rf"\b({capital_word}(?:\s+{capital_word})+)\b"
+
+        def named_article_replacement(match):
+            article, name = match.groups()
+            if " " not in name and self.lookup(name.casefold())[0]:
+                return match.group(0)
+            return f"{article} {self._borrowed_sentinel('n', name)}"
+
+        protected = re.sub(
+            rf"\b([Tt]he)\s+({capital_word}(?:\s+{capital_word})*)\b",
+            named_article_replacement,
+            protected,
+        )
+
+        def name_replacement(match):
+            name = match.group(1)
+            if name.startswith("The "):
+                return "The " + self._borrowed_sentinel("n", name[4:])
+            if "..." in name:
+                return name
+            grammar_words = {
+                "a", "an", "i", "you", "he", "she", "it", "we", "they",
+                "if", "when", "once", "after", "before", "while", "because",
+                "although", "even",
+            }
+            if any(word.casefold() in grammar_words for word in name.split()):
+                return name
+            words = name.split()
+            has_acronym = any(len(word) > 1 and word.isupper() for word in words)
+            if not has_acronym and any(
+                self.lookup(word.casefold())[0] for word in words
+            ):
+                return name
+            return self._borrowed_sentinel("n", name)
+
+        protected = re.sub(multi_name, name_replacement, protected)
+
+        # Single-token names are only protected in a few high-confidence
+        # contexts.  This avoids treating ordinary sentence-initial words as
+        # names while covering places, named roles, and named periods.
+        protected = re.sub(
+            rf"\b(as|in)\s+({capital_word})\b",
+            lambda match: (
+                f"{match.group(1)} "
+                f"{self._borrowed_sentinel('n', match.group(2))}"
+            ),
+            protected,
+        )
+        protected = re.sub(
+            rf"\b({capital_word})(?=\s+period\b)",
+            lambda match: self._borrowed_sentinel("n", match.group(1)),
+            protected,
+        )
+        return protected
+
+    def _display_protected_source(self, text: str) -> str:
+        """Replace internal sentinels before exposing a diagnostic to users."""
+
+        def replacement(match):
+            decoded = self._decode_borrowed_sentinel(match.group(0))
+            return self._borrowed_literal(*decoded) if decoded else match.group(0)
+
+        return re.sub(r"xqborrow[nd][a-p]+", replacement, text)
 
     def _split_sentence_final_temporal(self, english: str):
         """Detach one reviewed trailing time word without discarding it."""
@@ -184,13 +324,17 @@ class EnglishPreprocessingMixin:
         return clauses
 
     def _untranslated_fragment(self, english: str, unknown: List[str]) -> str:
-        clean = re.sub(r"\s+", " ", english.strip().strip(".,!?;"))
+        clean = re.sub(
+            r"\s+", " ", self._display_protected_source(english).strip().strip(".,!?;")
+        )
         missing = ", ".join(dict.fromkeys(unknown))
         return f"[untranslated: {clean}; no Xenari root for: {missing}]"
 
     def _unsupported_fragment(self, english: str, reason: str) -> str:
         """Keep unsupported grammar readable instead of dropping its meaning."""
-        clean = re.sub(r"\s+", " ", english.strip().strip(".,!?;"))
+        clean = re.sub(
+            r"\s+", " ", self._display_protected_source(english).strip().strip(".,!?;")
+        )
         return f"[untranslated: {clean}; unsupported grammar: {reason}]"
 
     def _phrase_key(self, english: str) -> str:

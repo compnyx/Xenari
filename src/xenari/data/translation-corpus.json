@@ -51,7 +51,7 @@
         {"id": "past-copula", "terms": [["was"]]},
         {"id": "past-play", "terms": [["played"], ["for"]]}
       ],
-      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 6}
+      "baseline": {"status": "unsupported", "minimum_meaning_score": 71.4, "minimum_grammar_score": 50.0, "maximum_diagnostics": 2}
     },
     {
       "id": "simplewiki-titans-horizon",
@@ -71,7 +71,7 @@
         {"id": "contrast", "terms": [["but"], ["horizon league"]]},
         {"id": "negative-ellipsis", "terms": [["does not"]]}
       ],
-      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 1}
+      "baseline": {"status": "partial", "minimum_meaning_score": 40.0, "minimum_grammar_score": 25.0, "maximum_diagnostics": 1}
     },
     {
       "id": "simplewiki-wolf-shinobi",
@@ -111,7 +111,7 @@
         {"id": "future-plan", "terms": [["going to"], ["football game"]]},
         {"id": "dated-event", "terms": [["on"], ["wednesday"], ["3rd of february", "third of february"]]}
       ],
-      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 1}
+      "baseline": {"status": "complete", "minimum_meaning_score": 100.0, "minimum_grammar_score": 33.3, "maximum_diagnostics": 0}
     }
   ]
 }

@@ -5,6 +5,22 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.8.2 - 2026-08-08
+
+- Added explicit, reversible borrowing notation for material that should not
+  become a native root: `zuq‹Nikola·Pilić›` for proper names and
+  `qro‹27·August·1939›` for Gregorian dates. Borrowed spans retain Unicode,
+  remain visibly distinct from Xenari roots, work inside clause frames, and
+  are accepted by the hard-canon LLM linter.
+- Added conservative proper-name and calendar-span protection before English
+  normalization, including multiword names, acronyms, named roles/places,
+  weekday dates, and date ranges. Supported spans now survive even when the
+  surrounding clause remains explicitly partial.
+- Raised the five-case real-text corpus baseline from 0% to 28.8% overall:
+  11/33 meaning units and 4/19 grammar units survive clean round trips. The
+  colloquial football/date sample now retains 100% of its meaning units with
+  zero diagnostics.
+
 ## 0.8.1 - 2026-08-07
 
 - Replaced the six sanitized species-slur translator heads with direct

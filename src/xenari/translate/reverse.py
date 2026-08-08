@@ -219,6 +219,14 @@ class ReverseTranslationMixin:
     def _reverse_fast_path(self, request: ReverseRequest) -> TranslationMatch | None:
         """Resolve exact, numeric, command, and structured reverse frames."""
         clean = request.clean
+        borrowed_alias = re.fullmatch(r"zuq\s+(zuq‹[^›]+›)", clean)
+        if borrowed_alias:
+            borrowed = self._parse_borrowed_literal(borrowed_alias.group(1))
+            return TranslationMatch("borrowed-alias", f"known as {borrowed[1]}")
+        borrowed = self._parse_borrowed_literal(clean)
+        if borrowed:
+            _kind, payload = borrowed
+            return TranslationMatch("borrowed-literal", payload)
         who_question = re.fullmatch(r"qan vi (.+)", clean)
         if who_question and " ta " in who_question.group(1):
             body = who_question.group(1)
@@ -650,6 +658,9 @@ class ReverseTranslationMixin:
             part_of_speech: str | None = None,
             role: str = "plain",
         ) -> str:
+            borrowed = self._parse_borrowed_literal(root)
+            if borrowed:
+                return borrowed[1]
             if root in REVERSE_PRONOUNS:
                 forms = REVERSE_PRONOUNS[root]
                 return forms.get(role, forms["subj"])
@@ -839,6 +850,22 @@ class ReverseTranslationMixin:
             if sentence == "prax":
                 rendered.append("hello")
                 continue
+            borrowed_alias = re.fullmatch(r"zuq\s+(zuq‹[^›]+›)", sentence)
+            if borrowed_alias:
+                borrowed = self._parse_borrowed_literal(borrowed_alias.group(1))
+                rendered.append(f"known as {borrowed[1]}")
+                continue
+            borrowed_frame = re.fullmatch(
+                r"(?:(kex|xen|noq)\s+)?((?:zuq|qro)‹[^›]+›)", sentence
+            )
+            if borrowed_frame:
+                connector_root, borrowed_token = borrowed_frame.groups()
+                borrowed = self._parse_borrowed_literal(borrowed_token)
+                connector = {"kex": "but", "xen": "and", "noq": "or"}.get(
+                    connector_root or "", ""
+                )
+                rendered.append(" ".join(part for part in [connector, borrowed[1]] if part))
+                continue
 
             tokens = sentence.split()
             copular_predicate = False
@@ -861,6 +888,7 @@ class ReverseTranslationMixin:
                 if token not in grammar_particles
                 and token not in REVERSE_PRONOUNS
                 and token not in self.lexicon
+                and not self._parse_borrowed_literal(token)
             ]
             i = 0
             while i < len(tokens):
@@ -1063,6 +1091,8 @@ class ReverseTranslationMixin:
 
     def looks_xenari(self, text: str) -> bool:
         """Heuristic direction detector for translate."""
+        if self._parse_borrowed_literal(text.strip().strip(".!?")):
+            return True
         tokens = re.findall(r"[a-z']+", text.lower())
         if not tokens:
             return False

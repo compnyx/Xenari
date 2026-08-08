@@ -232,6 +232,7 @@ ENGLISH_CONTRACTIONS: Mapping[str, str] = _immutable(
         "he'd": "he would",
         "she'd": "she would",
         "what's": "what is",
+        "who's": "who is",
         "how's": "how is",
         "how're": "how are",
         "isn't": "is not",

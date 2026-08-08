@@ -32,7 +32,7 @@ class LlmMixin:
         return particles
 
     def _llm_tokenize_xenari(self, text: str) -> List[str]:
-        return re.findall(r"[a-z']+", text.lower())
+        return re.findall(r"(?:zuq|qro)‹[^›]+›|[a-z']+", text.lower())
 
     def _llm_attested_verb_roots(self):
         """Return roots with explicit verb evidence in reviewed canon data."""
@@ -153,6 +153,10 @@ class LlmMixin:
             elif token in self.lexicon:
                 kind = "root"
                 meaning = self.lexicon[token]
+            elif self._parse_borrowed_literal(token):
+                borrowed_kind, borrowed_text = self._parse_borrowed_literal(token)
+                kind = f"borrowed_{borrowed_kind}"
+                meaning = borrowed_text
             else:
                 kind = "unknown"
                 meaning = ""
@@ -177,6 +181,7 @@ class LlmMixin:
         unknown = sorted({
             token for token in tokens
             if token not in particles and token not in self.lexicon
+            and not self._parse_borrowed_literal(token)
         })
         errors = []
         warnings = []

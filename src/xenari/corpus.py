@@ -45,7 +45,10 @@ def _strip_diagnostics(text: str) -> str:
         output.append(text[index])
         index += 1
     cleaned = re.sub(r"\s+", " ", "".join(output))
-    cleaned = re.sub(r"(?:^|\s)[.;]+(?=\s|$)", " ", cleaned)
+    # A diagnostic may occupy an entire clause, but the punctuation after it
+    # still separates any supported material on either side.  Preserve that
+    # boundary; deleting it can fuse two valid borrowed spans into nonsense.
+    cleaned = re.sub(r"(?:\s*[.;]){2,}", ".", cleaned)
     return re.sub(r"\s+", " ", cleaned).strip(" .;:")
 
 

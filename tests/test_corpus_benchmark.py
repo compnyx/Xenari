@@ -35,20 +35,28 @@ def test_unit_scorer_requires_every_group_but_allows_explicit_alternatives():
     assert report["missing_units"] == ["missing"]
 
 
-def test_corpus_echoed_diagnostics_never_count_as_retained_meaning(xenari):
+def test_corpus_scores_only_clean_round_trip_content_and_locks_progress(xenari):
     report = run_translation_corpus(xenari)
 
     assert report["schema"] == "xenari.translation-corpus-report.v1"
     assert report["case_count"] == 5
-    assert report["status_counts"] == {"complete": 0, "partial": 0, "unsupported": 5}
-    assert report["meaning"]["retained"] == 0
-    assert report["grammar"]["retained"] == 0
-    assert report["overall_score"] == 0
+    assert report["status_counts"] == {"complete": 1, "partial": 1, "unsupported": 3}
+    assert report["meaning"]["retained"] == 11
+    assert report["grammar"]["retained"] == 4
+    assert report["overall_score"] == 28.8
     assert report["ok"] is True
     assert report["strict_pass"] is False
     assert report["baseline_regressions"] == []
     assert all(case["baseline_ok"] for case in report["cases"])
-    assert all(case["round_trip"] in {"", "but"} for case in report["cases"])
+    data_breach = next(
+        case for case in report["cases"] if case["id"] == "simplewiki-data-breach"
+    )
+    assert data_breach["round_trip"] == ""
+    colloquial = next(
+        case for case in report["cases"] if case["id"] == "colloquial-football-date"
+    )
+    assert colloquial["meaning"]["score"] == 100
+    assert colloquial["diagnostic_count"] == 0
 
 
 def test_corpus_case_filter_is_exact_and_rejects_typos(xenari):

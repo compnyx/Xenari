@@ -152,6 +152,29 @@ ca xang flopq vriq
 6 divided by 2
 ```
 
+## Borrowed Names And Gregorian Dates
+
+Do not coin a native Xenari root merely to preserve an external proper name or
+Gregorian date. Quote that material visibly after the semantic marker instead:
+
+- `zuq‹Nikola·Pilić›` = the borrowed proper name “Nikola Pilić”
+- `qro‹27·August·1939›` = the Gregorian date “27 August 1939”
+
+Within a quoted payload, `·` represents a space. The payload retains its
+original spelling and Unicode and reverses exactly. It is not a Xenari root and
+must not be subjected to Xenari phonotactics or silently added to the lexicon.
+The marker provides the type: `zuq` is name/identity and `qro` is time.
+
+Borrowed literals can occupy ordinary noun-phrase slots:
+
+```text
+ka vi zuq‹Nikola·Pilić› ta zux vi lo xo qro‹27·August·1939›
+```
+
+Use this notation only for genuine names and externally formatted calendar
+material. Ordinary unknown English words still require a canon root or an
+explicit partial/untranslated diagnostic.
+
 ## Animacy
 
 Animacy marks current agency/state, not permanent essence.

@@ -40,7 +40,8 @@ class TranslatorMixin(
             "so": "qlez",
             "yet": self.p["but"],
         }
-        for clause, connector in self._split_english_clauses(english):
+        protected_english = self._protect_borrowed_spans(english)
+        for clause, connector in self._split_english_clauses(protected_english):
             clause, temporal_root = self._split_sentence_final_temporal(clause)
             xenari = self._speak_clause(clause, tense=tense, evidential=evidential)
             if not xenari:
@@ -121,6 +122,14 @@ class TranslatorMixin(
         casual_phrase = self._casual_phrase(english)
         if casual_phrase is not None:
             return TranslationMatch("casual-phrase", casual_phrase)
+        alias = re.fullmatch(r"(?:also\s+)?known\s+as\s+(xqborrown[a-p]+)", normalized)
+        if alias:
+            borrowed = self._decode_borrowed_sentinel(alias.group(1))
+            if borrowed:
+                return TranslationMatch(
+                    "borrowed-alias",
+                    f"zuq {self._borrowed_literal(*borrowed)}",
+                )
         content_question = self._speak_compositional_content_question(
             normalized,
             evidence_root,
@@ -249,6 +258,26 @@ class TranslatorMixin(
             "what": "qan", "which": "qan", "where": "qur", "how": "cil", "why": "voq",
         }
         for index, token in enumerate(tokens):
+            borrowed = self._decode_borrowed_sentinel(token)
+            if borrowed:
+                kind, payload = borrowed
+                root = self._borrowed_literal(kind, payload)
+                if state.subject is not None and state.verb is not None:
+                    if state.object is None:
+                        state.object = root
+                    else:
+                        state.object_roots.append(root)
+                elif state.subject is not None and state.verb is None:
+                    if state.object is None:
+                        state.object = root
+                    else:
+                        state.object_roots.append(root)
+                elif state.object is None:
+                    state.object = root
+                else:
+                    state.object_roots.append(root)
+                continue
+
             if token in self.en_pronouns:
                 pronoun = self.en_pronouns[token]
                 ordinal = pronoun[0]
@@ -386,6 +415,16 @@ class TranslatorMixin(
         unknown_words = state.unknown_words
 
         if unknown_words:
+            borrowed_roots = [
+                root for root in [obj, *obj_tokens]
+                if root and self._parse_borrowed_literal(root)
+            ]
+            if borrowed_roots:
+                return self._partial_frame(
+                    " ".join(borrowed_roots),
+                    "borrowed span retained; no Xenari root for: "
+                    + ", ".join(dict.fromkeys(unknown_words)),
+                )
             return self._untranslated_fragment(english, unknown_words)
 
         # Handle copula: "X is Y" → Y OBJ X SUBJ [copula fallback]
@@ -399,6 +438,15 @@ class TranslatorMixin(
             return " ".join(fragment)
 
         if subj is None and (verb or copula):
+            borrowed_roots = [
+                root for root in [obj, *obj_tokens]
+                if root and self._parse_borrowed_literal(root)
+            ]
+            if borrowed_roots:
+                return self._partial_frame(
+                    " ".join(borrowed_roots),
+                    "borrowed span retained; clause subject could not be established safely",
+                )
             return self._unsupported_fragment(
                 english,
                 "clause subject could not be established safely",

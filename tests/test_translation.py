@@ -115,6 +115,32 @@ def test_work_senses_and_unknown_subjects_do_not_become_fake_roots(xenari):
         "[untranslated: the turbolift was not working;"
     )
 
+def test_borrowed_names_and_gregorian_dates_are_explicit_and_reversible(xenari):
+    name = "zuq‹Nikola·Pilić›"
+    date_range = "qro‹27·August·1939·–·22·September·2025›"
+
+    assert xenari.speak("Nikola Pilić", evidential="assumed") == name
+    assert xenari.reverse(name) == "Nikola Pilić"
+    assert xenari.translate(name) == "Nikola Pilić"
+    assert xenari.speak(
+        "27 August 1939 – 22 September 2025", evidential="assumed"
+    ) == date_range
+    assert xenari.reverse(date_range) == "27 August 1939 – 22 September 2025"
+    assert xenari.speak("also known as Niki Pilić", evidential="assumed") == (
+        "zuq zuq‹Niki·Pilić›"
+    )
+    assert xenari.reverse("zuq zuq‹Niki·Pilić›") == "known as Niki Pilić"
+
+def test_borrowed_spans_survive_partial_real_text_without_becoming_roots(xenari):
+    rendered = xenari.speak(
+        "The Titans have different homes but the Horizon League does not.",
+        evidential="assumed",
+    )
+
+    assert rendered.startswith("zuq‹Titans› [partial:")
+    assert ". kex zuq‹Horizon·League›" in rendered
+    assert xenari.db.lookup_root("zuq‹Titans›") is None
+
 def test_kiss_and_bite_use_distinct_canon_roots(xenari):
     assert xenari.lookup("kiss", part_of_speech="verb") == (
         "nquxe", "to kiss / to press lips together"
