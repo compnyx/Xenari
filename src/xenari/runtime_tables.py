@@ -40,7 +40,7 @@ def _load_v4_preferences() -> dict[str, object]:
     return preferences
 
 
-def _load_post_v4_mappings() -> list[dict[str, str]]:
+def _load_post_v4_mappings() -> list[dict[str, object]]:
     """Load reviewed lexical preferences added after the frozen v4 pass."""
     resource = files("xenari").joinpath("data").joinpath("post-v4-lexicon-v1.json")
     try:
@@ -70,20 +70,35 @@ def _load_post_v4_mappings() -> list[dict[str, str]]:
             raise RuntimeError(
                 f"post-v4 mapping {index} requires non-empty string fields"
             )
-        if part_of_speech != "noun":
+        if part_of_speech not in {"noun", "verb"}:
             raise RuntimeError(
                 f"post-v4 mapping {english_key!r} has unsupported POS {part_of_speech!r}"
+            )
+        inflections = mapping.get("inflections")
+        if part_of_speech == "verb" and (
+            not isinstance(inflections, dict)
+            or any(
+                not isinstance(inflections.get(key), str)
+                or not inflections.get(key)
+                for key in ("past", "third_person")
+            )
+        ):
+            raise RuntimeError(
+                f"post-v4 verb mapping {english_key!r} requires reviewed inflections"
             )
         if root in seen_roots or english_key in seen_keys:
             raise RuntimeError("post-v4 lexical preferences must be one-to-one")
         seen_roots.add(root)
         seen_keys.add(english_key)
-        reviewed.append({
+        reviewed_mapping = {
             "english_key": english_key,
             "root": root,
             "part_of_speech": part_of_speech,
             "kind": kind,
-        })
+        }
+        if inflections is not None:
+            reviewed_mapping["inflections"] = dict(inflections)
+        reviewed.append(reviewed_mapping)
     return reviewed
 
 
@@ -546,6 +561,9 @@ if _POST_V4_MAPPINGS:
         part_of_speech: dict(preferences)
         for part_of_speech, preferences in REVERSE_PREFERRED_BY_PART_OF_SPEECH.items()
     }
+    _post_v4_verb_inflections = {
+        root: dict(forms) for root, forms in REVERSE_VERB_INFLECTIONS.items()
+    }
     for mapping in _POST_V4_MAPPINGS:
         english_key = mapping["english_key"]
         root = mapping["root"]
@@ -565,11 +583,25 @@ if _POST_V4_MAPPINGS:
             )
         _post_v4_reverse[root] = english_key
         role_preferences[root] = english_key
+        if part_of_speech == "verb":
+            inflections = mapping["inflections"]
+            existing_inflections = _post_v4_verb_inflections.get(root)
+            if existing_inflections is not None and existing_inflections != inflections:
+                raise RuntimeError(
+                    f"post-v4 verb inflections conflict for {root!r}"
+                )
+            _post_v4_verb_inflections[root] = dict(inflections)
     REVERSE_PREFERRED = _immutable(_post_v4_reverse)
     REVERSE_PREFERRED_BY_PART_OF_SPEECH = MappingProxyType(
         {
             part_of_speech: _immutable(preferences)
             for part_of_speech, preferences in _post_v4_reverse_roles.items()
+        }
+    )
+    REVERSE_VERB_INFLECTIONS = MappingProxyType(
+        {
+            root: _immutable(forms)
+            for root, forms in _post_v4_verb_inflections.items()
         }
     )
 

@@ -71,7 +71,7 @@
         {"id": "contrast", "terms": [["but"], ["horizon league"]]},
         {"id": "negative-ellipsis", "terms": [["does not"]]}
       ],
-      "baseline": {"status": "partial", "minimum_meaning_score": 40.0, "minimum_grammar_score": 25.0, "maximum_diagnostics": 1}
+      "baseline": {"status": "complete", "minimum_meaning_score": 100.0, "minimum_grammar_score": 100.0, "maximum_diagnostics": 0}
     },
     {
       "id": "simplewiki-wolf-shinobi",

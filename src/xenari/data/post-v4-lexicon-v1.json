@@ -67,6 +67,16 @@
       "root": "tuputlor",
       "part_of_speech": "noun",
       "kind": "species_slur"
+    },
+    {
+      "english_key": "play",
+      "root": "gluzto",
+      "part_of_speech": "verb",
+      "kind": "core_vocabulary",
+      "inflections": {
+        "past": "played",
+        "third_person": "plays"
+      }
     }
   ]
 }

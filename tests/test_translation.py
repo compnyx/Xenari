@@ -131,15 +131,29 @@ def test_borrowed_names_and_gregorian_dates_are_explicit_and_reversible(xenari):
     )
     assert xenari.reverse("zuq zuq‹Niki·Pilić›") == "known as Niki Pilić"
 
-def test_borrowed_spans_survive_partial_real_text_without_becoming_roots(xenari):
+def test_borrowed_names_support_relative_possession_and_contrastive_ellipsis(xenari):
     rendered = xenari.speak(
-        "The Titans have different homes but the Horizon League does not.",
+        "The Titans have different homes for the three sports that they play "
+        "but the Horizon League does not.",
         evidential="assumed",
     )
 
-    assert rendered.startswith("zuq‹Titans› [partial:")
-    assert ". kex zuq‹Horizon·League›" in rendered
+    assert "zuq‹Titans›" in rendered
+    assert "tupkpast prit su vro ka req ha ta gluzto sa xo ti" in rendered
+    assert ". kex " in rendered
+    assert rendered.endswith("zuq‹Horizon·League› ta xrong nu sa xo ngu")
+    assert xenari.reverse(rendered) == (
+        "Titans have different homes for the three sports that they play. "
+        "but Horizon League does not have different homes for the three sports "
+        "that they play"
+    )
     assert xenari.db.lookup_root("zuq‹Titans›") is None
+
+def test_play_keeps_distinct_noun_and_sport_verb_senses(xenari):
+    assert xenari.lookup("play", part_of_speech="noun")[0] == "recbi"
+    assert xenari.lookup("play", part_of_speech="verb") == (
+        "gluzto", "to participate in a sport or game"
+    )
 
 def test_kiss_and_bite_use_distinct_canon_roots(xenari):
     assert xenari.lookup("kiss", part_of_speech="verb") == (

@@ -441,7 +441,9 @@ class EnglishPreprocessingMixin:
                 return self.english_to_root.get(clean)
             # A homographic noun/adjective must not hide the established
             # translator verb reading (for example kiss, bit, and broken).
-            return self.verb_map.get(clean)
+            return self.verb_map.get(clean) or self.lookup(
+                clean, part_of_speech="verb"
+            )[0]
         if clean in self.verb_map:
             return self.verb_map[clean]
         root, meaning = self.lookup(clean)

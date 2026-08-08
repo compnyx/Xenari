@@ -5,6 +5,20 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.8.3 - 2026-08-08
+
+- Added the distinct verb `gluzto`, “to play/participate in a sport or game,”
+  while retaining `recbi` for the noun “play/performance.”
+- Borrowed proper names can now occupy reviewed noun-phrase roles instead of
+  falling out of possession frames.
+- Added a reversible object-gap relative and contrastive-ellipsis frame for
+  constructions such as “the three sports that they play” and “A has X, but B
+  does not.” Xenari repeats the omitted predicate internally so its meaning is
+  preserved rather than depending on an English-only pro-verb.
+- Raised the five-case corpus baseline from 28.8% to 40.4% overall. The Titans
+  and Horizon League sample now retains 100% of its meaning and grammar units
+  with zero diagnostics.
+
 ## 0.8.2 - 2026-08-08
 
 - Added explicit, reversible borrowing notation for material that should not

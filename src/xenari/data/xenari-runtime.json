@@ -5532,6 +5532,7 @@
       "glun": "wet",
       "gluq": "repair",
       "glutzake": "centrifuge",
+      "gluzto": "play",
       "go": "movement",
       "gob": "clippity",
       "gobrerzlah": "raaah",
@@ -21699,6 +21700,7 @@
         "glihgrir": "squirt",
         "glismom": "improvise",
         "gluk": "swallow down",
+        "gluzto": "play",
         "goc": "hear",
         "got": "upset",
         "gotdux": "slant",
@@ -25650,6 +25652,10 @@
       "gluk": {
         "past": "swallowed down",
         "third_person": "swallows down"
+      },
+      "gluzto": {
+        "past": "played",
+        "third_person": "plays"
       },
       "goc": {
         "past": "heard",
@@ -33179,5 +33185,5 @@
   },
   "schema": "xenari-runtime",
   "schema_version": 4,
-  "xenari_version": "0.8.2"
+  "xenari_version": "0.8.3"
 }

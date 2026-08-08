@@ -40,10 +40,10 @@ def test_corpus_scores_only_clean_round_trip_content_and_locks_progress(xenari):
 
     assert report["schema"] == "xenari.translation-corpus-report.v1"
     assert report["case_count"] == 5
-    assert report["status_counts"] == {"complete": 1, "partial": 1, "unsupported": 3}
-    assert report["meaning"]["retained"] == 11
-    assert report["grammar"]["retained"] == 4
-    assert report["overall_score"] == 28.8
+    assert report["status_counts"] == {"complete": 2, "partial": 0, "unsupported": 3}
+    assert report["meaning"]["retained"] == 14
+    assert report["grammar"]["retained"] == 7
+    assert report["overall_score"] == 40.4
     assert report["ok"] is True
     assert report["strict_pass"] is False
     assert report["baseline_regressions"] == []
@@ -52,6 +52,12 @@ def test_corpus_scores_only_clean_round_trip_content_and_locks_progress(xenari):
         case for case in report["cases"] if case["id"] == "simplewiki-data-breach"
     )
     assert data_breach["round_trip"] == ""
+    titans = next(
+        case for case in report["cases"] if case["id"] == "simplewiki-titans-horizon"
+    )
+    assert titans["meaning"]["score"] == 100
+    assert titans["grammar"]["score"] == 100
+    assert titans["diagnostic_count"] == 0
     colloquial = next(
         case for case in report["cases"] if case["id"] == "colloquial-football-date"
     )

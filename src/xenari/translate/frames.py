@@ -194,6 +194,126 @@ class ForwardFrameMixin:
         marker = f"[partial: {reason}]"
         return f"{rendered} {marker}" if rendered else marker
 
+    def _render_possession_with_relative_goal(
+        self,
+        subject_phrase,
+        object_phrase,
+        goal_phrase,
+        relative_subject_phrase,
+        relative_verb: str,
+        evidence_root: str,
+        *,
+        tense_root: str = "sa",
+        negated: bool = False,
+    ):
+        """Render ``have X for Y that they VERB`` without English ellipsis.
+
+        The relative clause has an explicit subject and an object gap whose
+        antecedent is the immediately preceding goal NP.  Repeating this full
+        frame for a contrastive ``does not`` preserves the omitted English
+        predicate semantically instead of inventing an opaque pro-verb.
+        """
+        have_root = self._known_verb_root("have")
+        relative_verb_root = self._known_verb_root(relative_verb)
+        if not all([
+            subject_phrase,
+            object_phrase,
+            goal_phrase,
+            relative_subject_phrase,
+            have_root,
+            relative_verb_root,
+        ]):
+            return None
+
+        relative_parts = self._render_modifier_np(relative_subject_phrase, "ka")
+        relative_parts.extend(["ta", relative_verb_root])
+        if not relative_subject_phrase["inherent_animacy"]:
+            relative_parts.append(relative_subject_phrase["animacy"])
+        relative_parts.extend(["sa", evidence_root])
+
+        parts = self._render_modifier_np(object_phrase, "ra")
+        parts.extend(self._render_modifier_np(goal_phrase, "fa"))
+        parts.extend(["su", "vro", *relative_parts, "ti"])
+        parts.extend(self._render_modifier_np(subject_phrase, "ka"))
+        parts.extend(["ta", have_root])
+        if not subject_phrase["inherent_animacy"]:
+            parts.append(subject_phrase["animacy"])
+        parts.extend([tense_root, evidence_root])
+        if negated:
+            parts.append(self.p["neg"])
+        return " ".join(parts)
+
+    def _speak_contrastive_ellipsis(self, english: str, evidence_root: str = "xo"):
+        """Expand a bounded ``A has X ... but B does not`` construction."""
+        clean = re.sub(r"[.!?]+$", "", english.strip().lower())
+        clean = re.sub(r"\s+", " ", clean)
+        contrast = re.fullmatch(
+            r"(.+?)\s+(has|have|had)\s+(.+?)\s+but\s+"
+            r"(.+?)\s+(do|does|did)\s+not",
+            clean,
+        )
+        if not contrast:
+            return None
+        left_subject_text, have_form, complement_text, right_subject_text, auxiliary = contrast.groups()
+        left_subject = self._parse_modifier_np(left_subject_text)
+        right_subject = self._parse_modifier_np(right_subject_text)
+        if not left_subject or not right_subject:
+            return None
+
+        relative_goal = re.fullmatch(
+            r"(.+?)\s+for\s+(.+?)\s+(?:that|which)\s+"
+            r"(i|you|he|she|we|they)\s+([a-z][a-z'-]*)",
+            complement_text,
+        )
+        tense_root = "lo" if have_form == "had" else "sa"
+        negative_tense = "lo" if auxiliary == "did" else tense_root
+
+        if relative_goal:
+            object_text, goal_text, relative_subject_text, relative_verb = relative_goal.groups()
+            object_phrase = self._parse_modifier_np(object_text)
+            goal_phrase = self._parse_modifier_np(goal_text)
+            relative_subject = self._parse_modifier_np(relative_subject_text)
+            left = self._render_possession_with_relative_goal(
+                left_subject,
+                object_phrase,
+                goal_phrase,
+                relative_subject,
+                relative_verb,
+                evidence_root,
+                tense_root=tense_root,
+            )
+            right = self._render_possession_with_relative_goal(
+                right_subject,
+                object_phrase,
+                goal_phrase,
+                relative_subject,
+                relative_verb,
+                evidence_root,
+                tense_root=negative_tense,
+                negated=True,
+            )
+        else:
+            object_phrase = self._parse_modifier_np(complement_text)
+            left = self._render_modifier_clause(
+                left_subject,
+                "have",
+                object_phrase=object_phrase,
+                evidence_root=evidence_root,
+                tense_root=tense_root,
+            ) if object_phrase else None
+            right = self._render_modifier_clause(
+                right_subject,
+                "have",
+                object_phrase=object_phrase,
+                evidence_root=evidence_root,
+                tense_root=negative_tense,
+                negated=True,
+            ) if object_phrase else None
+
+        if left and right:
+            return f"{left}. {self.p['but']} {right}"
+        return None
+
     def _speak_clause_frame(self, english: str, evidence_root: str):
         """Translate reviewed clause relations without claiming general coverage."""
         clean = re.sub(r"[.!?]+$", "", english.strip().lower())

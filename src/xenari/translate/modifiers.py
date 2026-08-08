@@ -52,6 +52,19 @@ class ModifierTranslationMixin:
         if not clean:
             return None
 
+        borrowed = self._decode_borrowed_sentinel(clean)
+        if borrowed:
+            root = self._borrowed_literal(*borrowed)
+            return {
+                "roots": [root],
+                "head_root": root,
+                "animacy": self.p["inan"],
+                "inherent_animacy": False,
+                "plural": False,
+                "featured": True,
+                "superlative": False,
+            }
+
         possessor_root = None
         possessor_plural = False
         possessive_pronouns = {

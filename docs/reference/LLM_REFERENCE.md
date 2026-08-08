@@ -175,6 +175,23 @@ Use this notation only for genuine names and externally formatted calendar
 material. Ordinary unknown English words still require a canon root or an
 explicit partial/untranslated diagnostic.
 
+## Object-Gap Relatives And Contrastive Ellipsis
+
+An inanimate object-gap relative can follow its antecedent with `su vro ... ti`.
+The relative body keeps its explicit subject while the missing object is read
+from the preceding noun phrase:
+
+```text
+fa nu tupkpast prit su vro ka req ha ta gluzto sa xo ti
+for the three sports that they play
+```
+
+`gluzto` is the verb “play/participate in a sport or game”; `recbi` remains the
+noun “play/performance.” When English omits a repeated predicate after
+contrastive *do* (“A has X, but B does not”), Xenari repeats the full predicate
+and adds `ngu` to the second clause. This preserves the omitted meaning and
+reverses to grammatical English without introducing an opaque pro-verb.
+
 ## Animacy
 
 Animacy marks current agency/state, not permanent essence.

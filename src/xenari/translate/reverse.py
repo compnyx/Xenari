@@ -179,6 +179,67 @@ class ReverseTranslationMixin:
             main_en = self._polish_structured_english(self.reverse(main))
             return f"{marker_en} {subordinate_en}, {main_en}"
 
+        relative_possession = re.fullmatch(
+            r"(.+?) su vro (.+) ti (.+)", clean,
+        )
+        if relative_possession:
+            matrix_prefix, relative_body, matrix_suffix = relative_possession.groups()
+            prefix_tokens = matrix_prefix.split()
+            suffix_tokens = matrix_suffix.split()
+            if (
+                "fa" in prefix_tokens
+                and "gluzto" in relative_body.split()
+                and "xrong" in suffix_tokens
+            ):
+                connector = ""
+                if prefix_tokens and prefix_tokens[0] == "kex":
+                    connector = "but "
+                    prefix_tokens = prefix_tokens[1:]
+                goal_index = prefix_tokens.index("fa")
+                object_tokens = prefix_tokens[:goal_index]
+                goal_tokens = [
+                    token for token in prefix_tokens[goal_index + 1:]
+                    if token not in {"vi", "nu", "ha", "po"}
+                ]
+                object_en = self.reverse(" ".join(object_tokens)).split(
+                    " [warning:", 1
+                )[0]
+                if "xangq" in object_tokens:
+                    object_en = re.sub(r"\bhouses?\b", "homes", object_en)
+                goal_head = self._reverse_head_gloss(goal_tokens[0]) if goal_tokens else ""
+                goal_modifiers = [
+                    self._reverse_head_gloss(token) for token in goal_tokens[1:]
+                ]
+                goal_en = " ".join([*goal_modifiers, goal_head]).strip()
+                relative_en = self.reverse(relative_body)
+                relative_en = re.sub(r"\bparticipate\b", "play", relative_en)
+
+                subject_tokens = suffix_tokens[:suffix_tokens.index("ta")]
+                borrowed_subject = next(
+                    (
+                        self._parse_borrowed_literal(token)
+                        for token in subject_tokens
+                        if self._parse_borrowed_literal(token)
+                    ),
+                    None,
+                )
+                if borrowed_subject:
+                    subject_en = borrowed_subject[1]
+                else:
+                    subject_en = self.reverse(" ".join(subject_tokens)).split(
+                        " [warning:", 1
+                    )[0]
+                negated = "ngu" in suffix_tokens
+                plural_subject = subject_en.lower().endswith("s")
+                if negated:
+                    have_en = "do not have" if plural_subject else "does not have"
+                else:
+                    have_en = "have" if plural_subject else "has"
+                return (
+                    f"{connector}{subject_en} {have_en} {object_en} for the "
+                    f"{goal_en} that {relative_en}"
+                )
+
         relative = re.fullmatch(r"(.+?) su (zre|vro) (.+) ti (.+)", clean)
         if relative:
             matrix_prefix, relativizer, relative_body, matrix_suffix = relative.groups()
@@ -189,14 +250,31 @@ class ReverseTranslationMixin:
             if "ta" not in body_tokens:
                 return None
             verb_index = body_tokens.index("ta")
-            relative_with_subject = " ".join([
-                *body_tokens[:verb_index], "ka", "leq", *body_tokens[verb_index:],
-            ])
+            if "ka" in body_tokens[:verb_index]:
+                relative_with_subject = relative_body
+            else:
+                relative_with_subject = " ".join([
+                    *body_tokens[:verb_index], "ka", "leq", *body_tokens[verb_index:],
+                ])
             relative_en = self.reverse(relative_with_subject)
             relative_en = re.sub(r"^he/she/it\s+", "", relative_en)
             prefix_tokens = matrix_prefix.split()
             particles = {"ra", "ka", "fa", "na", "mo", "vi", "nu", "ha", "po"}
-            head_root = next((token for token in reversed(prefix_tokens) if token not in particles), "")
+            case_indexes = [
+                index for index, token in enumerate(prefix_tokens)
+                if token in {"ra", "ka", "fa", "na", "mo"}
+            ]
+            head_root = ""
+            if case_indexes:
+                for token in prefix_tokens[case_indexes[-1] + 1:]:
+                    if token not in particles:
+                        head_root = token
+                        break
+            if not head_root:
+                head_root = next(
+                    (token for token in reversed(prefix_tokens) if token not in particles),
+                    "",
+                )
             head_en = self._reverse_head_gloss(head_root)
             relative_word = "who" if relativizer == "zre" else "that"
             expanded_head = f"{head_en} {relative_word} {relative_en}"
@@ -206,6 +284,13 @@ class ReverseTranslationMixin:
 
     def reverse(self, xenari: str) -> str:
         """Best-effort Xenari → English through explicit bounded stages."""
+        sentences = [
+            sentence.strip()
+            for sentence in re.split(r"[.!?]+", xenari.strip())
+            if sentence.strip()
+        ]
+        if len(sentences) > 1:
+            return ". ".join(self.reverse(sentence) for sentence in sentences)
         request = ReverseRequest(
             source=xenari,
             clean=re.sub(r"\s+", " ", xenari.strip().strip(".!?")),

@@ -976,7 +976,9 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
     } == reverse_roles
     assert set(REVERSE_PLURAL_NOUN_ROOTS) == plural_noun_roots
     assert {
-        root: dict(forms) for root, forms in REVERSE_VERB_INFLECTIONS.items()
+        root: dict(forms)
+        for root, forms in REVERSE_VERB_INFLECTIONS.items()
+        if root not in post_v4_roots
     } == verb_inflections
 
     canonical_role_groups = {
@@ -1096,7 +1098,7 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
         assert xenari.translator._reverse_head_gloss(root) == english_key
 
 
-def test_post_v4_species_and_slur_preferences_extend_the_frozen_snapshot(xenari):
+def test_post_v4_lexical_preferences_extend_the_frozen_snapshot(xenari):
     fixture = json.loads(POST_V4_LEXICON.read_text(encoding="utf-8"))
     mappings = fixture["mappings"]
     pairs = {(mapping["english_key"], mapping["root"]) for mapping in mappings}
@@ -1104,12 +1106,13 @@ def test_post_v4_species_and_slur_preferences_extend_the_frozen_snapshot(xenari)
     english_keys = {mapping["english_key"] for mapping in mappings}
 
     assert fixture["schema"] == "xenari.post-v4-lexicon.v1"
-    assert len(mappings) == len(pairs) == len(roots) == len(english_keys) == 11
+    assert len(mappings) == len(pairs) == len(roots) == len(english_keys) == 12
     assert Counter(mapping["kind"] for mapping in mappings) == {
         "neutral_species": 5,
         "species_slur": 6,
+        "core_vocabulary": 1,
     }
-    assert {mapping["part_of_speech"] for mapping in mappings} == {"noun"}
+    assert {mapping["part_of_speech"] for mapping in mappings} == {"noun", "verb"}
 
     for mapping in mappings:
         pair = (mapping["english_key"], mapping["root"])
@@ -1120,9 +1123,11 @@ def test_post_v4_species_and_slur_preferences_extend_the_frozen_snapshot(xenari)
             pair,
         ).fetchone()
         assert row is not None
-        assert row["part_of_speech"] == "noun"
+        assert row["part_of_speech"] == mapping["part_of_speech"]
         assert REVERSE_PREFERRED[mapping["root"]] == mapping["english_key"]
-        assert REVERSE_PREFERRED_BY_PART_OF_SPEECH["noun"][mapping["root"]] == (
+        assert REVERSE_PREFERRED_BY_PART_OF_SPEECH[
+            mapping["part_of_speech"]
+        ][mapping["root"]] == (
             mapping["english_key"]
         )
         assert xenari.translator._reverse_head_gloss(mapping["root"]) == (

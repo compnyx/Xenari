@@ -20217,6 +20217,23 @@
     }
   },
   {
+    "id": 10178,
+    "root": "gluzto",
+    "meaning": "to participate in a sport or game",
+    "category": "Core Vocabulary",
+    "source": "tool",
+    "timestamp": "2026-08-08 11:27",
+    "notes": "coined via xenari_tool coin",
+    "english_keys": [
+      "play",
+      "play a sport"
+    ],
+    "english_parts_of_speech": {
+      "play": "verb",
+      "play a sport": "verb"
+    }
+  },
+  {
     "id": 114,
     "root": "gral",
     "meaning": "thank, gratitude",

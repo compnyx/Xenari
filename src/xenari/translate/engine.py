@@ -41,6 +41,9 @@ class TranslatorMixin(
             "yet": self.p["but"],
         }
         protected_english = self._protect_borrowed_spans(english)
+        contrastive_ellipsis = self._speak_contrastive_ellipsis(protected_english)
+        if contrastive_ellipsis is not None:
+            return contrastive_ellipsis
         for clause, connector in self._split_english_clauses(protected_english):
             clause, temporal_root = self._split_sentence_final_temporal(clause)
             xenari = self._speak_clause(clause, tense=tense, evidential=evidential)
