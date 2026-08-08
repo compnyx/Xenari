@@ -175,6 +175,28 @@ Use this notation only for genuine names and externally formatted calendar
 material. Ordinary unknown English words still require a canon root or an
 explicit partial/untranslated diagnostic.
 
+## Role Appositives, Purpose, And Historical Settings
+
+Use `madblok` after a role name for “as/in the role of.” A following
+appositive subject relative uses `su zre ... ti`; purpose uses `frex`. This
+keeps the named role as the relative-clause subject instead of treating the
+appositive as a disconnected sentence:
+
+```text
+ra vi zuq‹Wolf› madblok ka vi lurc ta frez vi sa xo
+ra vi clexcuzuzifo su zre na nu folamaheh ta zux vi sa xo
+frex ra leq xrontq po squfs ka leq ta zuse ti
+ka vi zuq‹Wolf› ta zux vi sa xo
+```
+
+For a passive historical setting, put the location and `muhq` duration phrase
+before the patient, then use the ordinary passive marker `tro`:
+
+```text
+na nu zuq‹Japan› muhq nu narqloq zuq‹Sengoku›
+ka nu xsasxvizqpilc tro ta kuspi nu sa xo
+```
+
 ## Object-Gap Relatives And Contrastive Ellipsis
 
 An inanimate object-gap relative can follow its antecedent with `su vro ... ti`.

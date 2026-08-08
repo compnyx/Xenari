@@ -293,9 +293,110 @@ class ReverseTranslationMixin:
         cause = "caused" if tense == "lo" else "causes"
         return f"{causer} {cause} {patient} to be {predicate_list} by {agents}"
 
+    def _reverse_role_complement(self, clean: str):
+        """Reverse a named ``play as`` role without weakening it to roleplay."""
+        match = re.fullmatch(
+            r"ra vi ((?:zuq|qro)‹[^›]+›) madblok ka vi ([a-z']+) "
+            r"ta frez vi (sa|lo) (?:xa|xe|xi|xo|zu)",
+            clean,
+        )
+        if not match:
+            return None
+        role_literal, subject_root, tense = match.groups()
+        borrowed = self._parse_borrowed_literal(role_literal)
+        if not borrowed:
+            return None
+        subject = self._reverse_head_gloss(subject_root)
+        verb = "played as" if tense == "lo" else "plays as"
+        return f"{subject} {verb} {borrowed[1]}"
+
+    def _reverse_role_appositive_purpose(self, clean: str):
+        """Reverse the appositive relative/purpose half of a role frame."""
+        match = re.fullmatch(
+            r"ra vi ([a-z']+) su zre na nu ([a-z']+) "
+            r"ta zux vi (?:sa|lo) (?:xa|xe|xi|xo|zu) frex "
+            r"ra ([a-z']+)(?: (xrontq|vlexq))? po ([a-z']+) "
+            r"ka ([a-z']+) ta ([a-z']+) ti "
+            r"ka vi ((?:zuq|qro)‹[^›]+›) ta zux vi "
+            r"(?:sa|lo) (?:xa|xe|xi|xo|zu)",
+            clean,
+        )
+        if not match:
+            return None
+        (
+            role_root,
+            quest_root,
+            possessor_root,
+            gender_marker,
+            possessed_root,
+            purpose_subject,
+            purpose_root,
+            name_literal,
+        ) = match.groups()
+        if purpose_subject != possessor_root:
+            return None
+        borrowed = self._parse_borrowed_literal(name_literal)
+        if not borrowed:
+            return None
+        if possessor_root == "req":
+            possessive = "their"
+        elif gender_marker == "xrontq":
+            possessive = "his"
+        elif gender_marker == "vlexq":
+            possessive = "her"
+        else:
+            possessive = REVERSE_PRONOUNS.get(possessor_root, {}).get(
+                "poss", "their"
+            )
+        role = self._reverse_head_gloss(role_root)
+        quest = self._reverse_head_gloss(quest_root)
+        purpose = self._reverse_head_gloss(purpose_root)
+        possessed = {"squfs": "lord"}.get(
+            possessed_root, self._reverse_head_gloss(possessed_root)
+        )
+        return (
+            f"{borrowed[1]} is a {role} who is on a {quest} "
+            f"to {purpose} {possessive} {possessed}"
+        )
+
+    def _reverse_historical_setting(self, clean: str):
+        """Reverse one named place plus named historical-period adjunct."""
+        match = re.fullmatch(
+            r"na nu ((?:zuq|qro)‹[^›]+›) muhq nu ([a-z']+) "
+            r"((?:zuq|qro)‹[^›]+›) ka nu ([a-z']+) tro ta ([a-z']+) "
+            r"nu (sa|lo) (?:xa|xe|xi|xo|zu)",
+            clean,
+        )
+        if not match:
+            return None
+        place_literal, period_root, period_literal, subject_root, verb_root, tense = (
+            match.groups()
+        )
+        place = self._parse_borrowed_literal(place_literal)
+        period_name = self._parse_borrowed_literal(period_literal)
+        if not place or not period_name:
+            return None
+        subject = self._reverse_head_gloss(subject_root)
+        verb = self._reverse_head_gloss(verb_root)
+        period = self._reverse_head_gloss(period_root)
+        auxiliary = "was" if tense == "lo" else "is"
+        return (
+            f"{subject} {auxiliary} {verb} in {place[1]} during the "
+            f"{period_name[1]} {period}"
+        )
+
     def _reverse_structured_frame(self, xenari: str):
         """Read the shared condition, temporal, and relative frames first."""
         clean = re.sub(r"\s+", " ", xenari.strip())
+        role_complement = self._reverse_role_complement(clean)
+        if role_complement:
+            return role_complement
+        role_appositive = self._reverse_role_appositive_purpose(clean)
+        if role_appositive:
+            return role_appositive
+        historical_setting = self._reverse_historical_setting(clean)
+        if historical_setting:
+            return historical_setting
         causative_passive = self._reverse_causative_passive_coordination(clean)
         if causative_passive:
             return causative_passive

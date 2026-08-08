@@ -73,7 +73,8 @@ class ForwardFrameMixin:
 
     def _reviewed_animacy(self, english_word: str, root: str) -> str:
         animate_words = {
-            "alien", "dog", "human", "people", "person", "stranger", "woman",
+            "alien", "dog", "human", "people", "person", "player", "shinobi",
+            "stranger", "woman",
         }
         if english_word.lower() in animate_words:
             return self.p["anim"]
@@ -436,6 +437,123 @@ class ForwardFrameMixin:
         parts.extend(["kra", "tro", "ta", *predicate_parts, self.p["inan"], tense_root, evidence_root])
         return " ".join(parts)
 
+    def _speak_role_appositive_purpose(self, english: str, evidence_root: str):
+        """Render a named role plus an appositive subject-gap relative.
+
+        The bounded English shape is ``PLAYER plays as NAME, a ROLE who is on
+        a QUEST to VERB POSSESSIVE OBJECT``.  Xenari marks the role complement
+        with ``madblok`` ("as / in the role of"), attaches the relative to the
+        appositive noun with ``su zre ... ti``, and keeps the purpose clause
+        inside that relative so neither attachment is inferred on reverse.
+        """
+        clean = re.sub(r"[.!?]+$", "", english.strip().lower())
+        clean = re.sub(r"\s+", " ", clean)
+        match = re.fullmatch(
+            r"(?:the\s+)?(.+?)\s+(play|plays|played)\s+as\s+"
+            r"(xqborrown[a-p]+),\s+(?:a|an)\s+([a-z][a-z'-]*)\s+"
+            r"who\s+is\s+on\s+(?:a|an)\s+([a-z][a-z'-]*)\s+to\s+"
+            r"([a-z][a-z'-]*)\s+(his|her|their)\s+([a-z][a-z'-]*)",
+            clean,
+        )
+        if not match:
+            return None
+        (
+            player_text,
+            play_form,
+            borrowed_sentinel,
+            role_word,
+            quest_word,
+            purpose_verb,
+            possessive,
+            possessed_word,
+        ) = match.groups()
+        borrowed = self._decode_borrowed_sentinel(borrowed_sentinel)
+        player_phrase = self._parse_modifier_np(player_text)
+        role_root = self.lookup(role_word, part_of_speech="noun")[0]
+        quest_root = self.lookup(quest_word, part_of_speech="noun")[0]
+        play_as_root = self.lookup("play as", part_of_speech="verb")[0]
+        purpose_root = self._known_verb_root(purpose_verb)
+        possessed_root = self.lookup(possessed_word, part_of_speech="noun")[0]
+        as_root = self.lookup("as", part_of_speech="particle")[0] or self.lookup("as")[0]
+        if not all([
+            borrowed,
+            player_phrase,
+            role_root,
+            quest_root,
+            play_as_root,
+            purpose_root,
+            possessed_root,
+            as_root,
+        ]):
+            return None
+
+        name_root = self._borrowed_literal(*borrowed)
+        role_tense = "lo" if play_form == "played" else "sa"
+        role_clause = ["ra", "vi", name_root, as_root]
+        role_clause.extend(self._render_modifier_np(player_phrase, "ka"))
+        role_clause.extend(["ta", play_as_root, "vi", role_tense, evidence_root])
+
+        possessor_root = "req" if possessive == "their" else "leq"
+        gender_marker = {
+            "his": "xrontq",
+            "her": "vlexq",
+        }.get(possessive)
+        possessed_parts = ["ra", possessor_root]
+        if gender_marker:
+            possessed_parts.append(gender_marker)
+        possessed_parts.extend(["po", possessed_root])
+
+        appositive_clause = [
+            "ra", "vi", role_root,
+            "su", "zre",
+            "na", "nu", quest_root,
+            "ta", "zux", "vi", "sa", evidence_root,
+            "frex", *possessed_parts,
+            "ka", possessor_root,
+            "ta", purpose_root,
+            "ti",
+            "ka", "vi", name_root,
+            "ta", "zux", "vi", "sa", evidence_root,
+        ]
+        return f"{' '.join(role_clause)}. {' '.join(appositive_clause)}"
+
+    def _speak_historical_setting(self, english: str, evidence_root: str):
+        """Render ``X is set in PLACE during the NAME period``."""
+        clean = re.sub(r"[.!?]+$", "", english.strip().lower())
+        clean = re.sub(r"\s+", " ", clean)
+        match = re.fullmatch(
+            r"(?:the\s+)?(.+?)\s+(is|was)\s+set\s+in\s+"
+            r"(xqborrown[a-p]+)\s+during\s+(?:the\s+)?"
+            r"(xqborrown[a-p]+)\s+period",
+            clean,
+        )
+        if not match:
+            return None
+        subject_text, auxiliary, place_sentinel, period_sentinel = match.groups()
+        subject_phrase = self._parse_modifier_np(subject_text)
+        place = self._decode_borrowed_sentinel(place_sentinel)
+        period_name = self._decode_borrowed_sentinel(period_sentinel)
+        set_root = self._known_verb_root("set")
+        period_root = self.lookup("period", part_of_speech="noun")[0]
+        during_root = self.lookup("during", part_of_speech="particle")[0] or self.lookup("during")[0]
+        if not all([
+            subject_phrase,
+            place,
+            period_name,
+            set_root,
+            period_root,
+            during_root,
+        ]):
+            return None
+        tense_root = "lo" if auxiliary == "was" else "sa"
+        parts = [
+            "na", "nu", self._borrowed_literal(*place),
+            during_root, "nu", period_root, self._borrowed_literal(*period_name),
+        ]
+        parts.extend(self._render_modifier_np(subject_phrase, "ka"))
+        parts.extend(["tro", "ta", set_root, "nu", tense_root, evidence_root])
+        return " ".join(parts)
+
     def _speak_clause_frame(self, english: str, evidence_root: str):
         """Translate reviewed clause relations without claiming general coverage."""
         clean = re.sub(r"[.!?]+$", "", english.strip().lower())
@@ -446,6 +564,14 @@ class ForwardFrameMixin:
         )
         if causative_passive:
             return causative_passive
+
+        role_appositive = self._speak_role_appositive_purpose(clean, evidence_root)
+        if role_appositive:
+            return role_appositive
+
+        historical_setting = self._speak_historical_setting(clean, evidence_root)
+        if historical_setting:
+            return historical_setting
 
         # Canon conditionals: pevoq [condition] ti [main].
         conditional = re.fullmatch(r"if\s+(.+?),\s*(.+)", clean)

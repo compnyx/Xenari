@@ -64,6 +64,7 @@ def _load_post_v4_mappings() -> list[dict[str, object]]:
         root = mapping.get("root")
         part_of_speech = mapping.get("part_of_speech")
         kind = mapping.get("kind")
+        overrides_reverse_head = mapping.get("overrides_reverse_head", False)
         if any(not isinstance(value, str) or not value for value in (
             english_key, root, part_of_speech, kind
         )):
@@ -73,6 +74,11 @@ def _load_post_v4_mappings() -> list[dict[str, object]]:
         if part_of_speech not in {"adjective", "noun", "verb"}:
             raise RuntimeError(
                 f"post-v4 mapping {english_key!r} has unsupported POS {part_of_speech!r}"
+            )
+        if not isinstance(overrides_reverse_head, bool):
+            raise RuntimeError(
+                f"post-v4 mapping {english_key!r} has a non-boolean "
+                "overrides_reverse_head flag"
             )
         inflections = mapping.get("inflections")
         if part_of_speech == "verb" and (
@@ -98,6 +104,7 @@ def _load_post_v4_mappings() -> list[dict[str, object]]:
             "root": root,
             "part_of_speech": part_of_speech,
             "kind": kind,
+            "overrides_reverse_head": overrides_reverse_head,
         }
         if inflections is not None:
             reviewed_mapping["inflections"] = dict(inflections)
@@ -575,6 +582,7 @@ if _POST_V4_MAPPINGS:
         english_key = cast(str, mapping["english_key"])
         root = cast(str, mapping["root"])
         part_of_speech = cast(str, mapping["part_of_speech"])
+        overrides_reverse_head = cast(bool, mapping["overrides_reverse_head"])
         translation_preferences = _post_v4_translation_roles.setdefault(
             part_of_speech, {}
         )
@@ -588,18 +596,26 @@ if _POST_V4_MAPPINGS:
         existing = _post_v4_reverse.get(root)
         role_preferences = _post_v4_reverse_roles.setdefault(part_of_speech, {})
         existing_role = role_preferences.get(root)
-        if existing_role is not None and existing_role != english_key:
+        if (
+            existing_role is not None
+            and existing_role != english_key
+            and not overrides_reverse_head
+        ):
             raise RuntimeError(
                 f"post-v4 reverse role preference conflicts for {root!r}: "
                 f"{existing_role!r} != {english_key!r}"
             )
-        if existing is None:
+        if existing is None or overrides_reverse_head:
             _post_v4_reverse[root] = english_key
         role_preferences[root] = english_key
         if part_of_speech == "verb":
             inflections = cast(dict[str, str], mapping["inflections"])
             existing_inflections = _post_v4_verb_inflections.get(root)
-            if existing_inflections is not None and existing_inflections != inflections:
+            if (
+                existing_inflections is not None
+                and existing_inflections != inflections
+                and not overrides_reverse_head
+            ):
                 raise RuntimeError(
                     f"post-v4 verb inflections conflict for {root!r}"
                 )

@@ -93,7 +93,7 @@
         {"id": "possessive", "terms": [["his lord"]]},
         {"id": "historical-setting", "terms": [["set in"], ["during"], ["sengoku period"]]}
       ],
-      "baseline": {"status": "unsupported", "minimum_meaning_score": 0, "minimum_grammar_score": 0, "maximum_diagnostics": 3}
+      "baseline": {"status": "complete", "minimum_meaning_score": 100.0, "minimum_grammar_score": 100.0, "maximum_diagnostics": 0}
     },
     {
       "id": "colloquial-football-date",

@@ -190,6 +190,36 @@
         "past": "used",
         "third_person": "uses"
       }
+    },
+    {
+      "english_key": "player",
+      "root": "lurc",
+      "part_of_speech": "noun",
+      "kind": "narrative_vocabulary",
+      "overrides_reverse_head": true
+    },
+    {
+      "english_key": "play as",
+      "root": "frez",
+      "part_of_speech": "verb",
+      "kind": "narrative_vocabulary",
+      "overrides_reverse_head": true,
+      "inflections": {
+        "past": "played as",
+        "third_person": "plays as"
+      }
+    },
+    {
+      "english_key": "shinobi",
+      "root": "clexcuzuzifo",
+      "part_of_speech": "noun",
+      "kind": "narrative_vocabulary"
+    },
+    {
+      "english_key": "quest",
+      "root": "folamaheh",
+      "part_of_speech": "noun",
+      "kind": "narrative_vocabulary"
     }
   ]
 }

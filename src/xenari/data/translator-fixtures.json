@@ -900,6 +900,12 @@
       "xenari": "ra vi tuputlor ka vi trelqvi ta zux vi sa xo",
       "family": "species-slur",
       "loop": 11
+    },
+    {
+      "english": "The player plays as Wolf, a shinobi who is on a quest to rescue his lord. The game is set in Japan during the Sengoku period.",
+      "xenari": "ra vi zuq‹Wolf› madblok ka vi lurc ta frez vi sa xo. ra vi clexcuzuzifo su zre na nu folamaheh ta zux vi sa xo frex ra leq xrontq po squfs ka leq ta zuse ti ka vi zuq‹Wolf› ta zux vi sa xo. na nu zuq‹Japan› muhq nu narqloq zuq‹Sengoku› ka nu xsasxvizqpilc tro ta kuspi nu sa xo",
+      "family": "narrative-structure",
+      "loop": 12
     }
   ],
   "reverse": [
@@ -1216,6 +1222,12 @@
       "english": "human is nigger",
       "family": "species-slur",
       "loop": 11
+    },
+    {
+      "xenari": "ra vi zuq‹Wolf› madblok ka vi lurc ta frez vi sa xo. ra vi clexcuzuzifo su zre na nu folamaheh ta zux vi sa xo frex ra leq xrontq po squfs ka leq ta zuse ti ka vi zuq‹Wolf› ta zux vi sa xo. na nu zuq‹Japan› muhq nu narqloq zuq‹Sengoku› ka nu xsasxvizqpilc tro ta kuspi nu sa xo",
+      "english": "player plays as Wolf. Wolf is a shinobi who is on a quest to rescue his lord. game is set in Japan during the Sengoku period",
+      "family": "narrative-structure",
+      "loop": 12
     }
   ],
   "hardening": {

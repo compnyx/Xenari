@@ -873,9 +873,15 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
     fixture = json.loads(COMMON_ENGLISH_POS_V4.read_text(encoding="utf-8"))
     post_v4 = json.loads(POST_V4_LEXICON.read_text(encoding="utf-8"))
     post_v4_roots = {mapping["root"] for mapping in post_v4["mappings"]}
+    post_v4_added_roots = {
+        mapping["root"]
+        for mapping in post_v4["mappings"]
+        if not mapping.get("overrides_reverse_head", False)
+    }
     post_v4_pairs = {
         (mapping["english_key"], mapping["root"])
         for mapping in [*post_v4["mappings"], *post_v4["aliases"]]
+        if not mapping.get("existing_canon_mapping", False)
     }
     verification = fixture["verification"]
     forward = fixture["preferences"]["forward"]
@@ -908,7 +914,7 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
     assert all(part_of_speech in PARTS_OF_SPEECH for part_of_speech in mappings.values())
     assert (
         xenari.db.conn.execute("SELECT COUNT(*) FROM roots").fetchone()[0]
-        - len(post_v4_roots)
+        - len(post_v4_added_roots)
     ) == verification["root_count"]
     assert verification["unknown_part_of_speech"] == 0
     assert verification["invalid_part_of_speech"] == 0
@@ -970,9 +976,20 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
             mapping["english_key"], None,
         )
     assert runtime_translation_preferences == translation_preferences
+    post_v4_overridden_roots = {
+        mapping["root"]
+        for mapping in post_v4["mappings"]
+        if mapping.get("overrides_reverse_head", False)
+    }
     assert {
-        root: REVERSE_PREFERRED[root] for root in reverse
-    } == reverse
+        root: REVERSE_PREFERRED[root]
+        for root in reverse
+        if root not in post_v4_overridden_roots
+    } == {
+        root: english_key
+        for root, english_key in reverse.items()
+        if root not in post_v4_overridden_roots
+    }
     runtime_reverse_roles = {
         part_of_speech: dict(preferences)
         for part_of_speech, preferences in (
@@ -983,15 +1000,27 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
         part_of_speech: {
             root: runtime_reverse_roles[part_of_speech][root]
             for root in preferences
+            if root not in post_v4_overridden_roots
         }
         for part_of_speech, preferences in reverse_roles.items()
-    } == reverse_roles
+    } == {
+        part_of_speech: {
+            root: english_key
+            for root, english_key in preferences.items()
+            if root not in post_v4_overridden_roots
+        }
+        for part_of_speech, preferences in reverse_roles.items()
+    }
     assert set(REVERSE_PLURAL_NOUN_ROOTS) == plural_noun_roots
     assert {
         root: dict(forms)
         for root, forms in REVERSE_VERB_INFLECTIONS.items()
         if root not in post_v4_roots
-    } == verb_inflections
+    } == {
+        root: forms
+        for root, forms in verb_inflections.items()
+        if root not in post_v4_overridden_roots
+    }
 
     canonical_role_groups = {
         (part_of_speech, root)
@@ -1107,7 +1136,8 @@ def test_common_english_pos_v4_canon_preferences_and_roundtrips_are_complete(
         if len(roots_by_key[english_key]) > 1:
             assert default_preferences[english_key] == root
         assert xenari.lookup(english_key)[0] == root
-        assert xenari.translator._reverse_head_gloss(root) == english_key
+        if root not in post_v4_overridden_roots:
+            assert xenari.translator._reverse_head_gloss(root) == english_key
 
 
 def test_post_v4_lexical_preferences_extend_the_frozen_snapshot(xenari):
@@ -1118,17 +1148,23 @@ def test_post_v4_lexical_preferences_extend_the_frozen_snapshot(xenari):
     english_keys = {mapping["english_key"] for mapping in mappings}
 
     assert fixture["schema"] == "xenari.post-v4-lexicon.v1"
-    assert len(mappings) == len(pairs) == len(english_keys) == 23
-    assert len(roots) == 22
+    assert len(mappings) == len(pairs) == len(english_keys) == 27
+    assert len(roots) == 26
     assert Counter(mapping["kind"] for mapping in mappings) == {
         "neutral_species": 5,
         "species_slur": 6,
         "core_vocabulary": 3,
         "information_security": 9,
+        "narrative_vocabulary": 4,
     }
     assert {mapping["part_of_speech"] for mapping in mappings} == {
         "adjective", "noun", "verb",
     }
+    assert {
+        mapping["english_key"]
+        for mapping in mappings
+        if mapping.get("overrides_reverse_head", False)
+    } == {"player", "play as"}
 
     for mapping in mappings:
         pair = (mapping["english_key"], mapping["root"])

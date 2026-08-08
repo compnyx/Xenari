@@ -927,3 +927,25 @@ def test_causative_passive_coordination_preserves_shared_scope(xenari):
 
     assert xenari.speak(english, evidential="assumed") == expected_xenari
     assert xenari.reverse(expected_xenari) == expected_reverse
+
+
+def test_role_appositive_purpose_and_historical_setting_round_trip(xenari):
+    english = (
+        "The player plays as Wolf, a shinobi who is on a quest to rescue his "
+        "lord. The game is set in Japan during the Sengoku period."
+    )
+    expected_xenari = (
+        "ra vi zuq‹Wolf› madblok ka vi lurc ta frez vi sa xo. "
+        "ra vi clexcuzuzifo su zre na nu folamaheh ta zux vi sa xo "
+        "frex ra leq xrontq po squfs ka leq ta zuse ti "
+        "ka vi zuq‹Wolf› ta zux vi sa xo. "
+        "na nu zuq‹Japan› muhq nu narqloq zuq‹Sengoku› "
+        "ka nu xsasxvizqpilc tro ta kuspi nu sa xo"
+    )
+    expected_reverse = (
+        "player plays as Wolf. Wolf is a shinobi who is on a quest to rescue "
+        "his lord. game is set in Japan during the Sengoku period"
+    )
+
+    assert xenari.speak(english, evidential="assumed") == expected_xenari
+    assert xenari.reverse(expected_xenari) == expected_reverse

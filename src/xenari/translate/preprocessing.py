@@ -232,6 +232,14 @@ class EnglishPreprocessingMixin:
                 sentence,
             ) and "," in sentence:
                 comma_parts = [sentence]
+            elif re.search(
+                r"\bplays?\s+as\b.+,\s+(?:a|an)\s+.+\bwho\b",
+                sentence,
+            ):
+                # The comma introduces an appositive role whose relative and
+                # purpose clauses describe the named character.  Preserve the
+                # sentence for the reviewed role/apposition frame.
+                comma_parts = [sentence]
             elif re.search(r"\bcauses?\b.+\bto be\b", sentence):
                 # Commas inside a coordinated passive complement are not
                 # independent-clause seams.  Preserve the whole sentence for

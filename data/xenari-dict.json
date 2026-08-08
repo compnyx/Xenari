@@ -100373,9 +100373,11 @@
     "timestamp": "2026-07-08T22:35:30.663382",
     "notes": null,
     "english_keys": [
+      "player",
       "players"
     ],
     "english_parts_of_speech": {
+      "player": "noun",
       "players": "noun"
     }
   },
@@ -105444,6 +105446,21 @@
     }
   },
   {
+    "id": 10189,
+    "root": "clexcuzuzifo",
+    "meaning": "covert warrior trained in stealth and infiltration",
+    "category": "People/Roles",
+    "source": "tool",
+    "timestamp": "2026-08-08 15:14",
+    "notes": null,
+    "english_keys": [
+      "shinobi"
+    ],
+    "english_parts_of_speech": {
+      "shinobi": "noun"
+    }
+  },
+  {
     "id": 3130,
     "root": "gez",
     "meaning": "administrator",
@@ -106351,6 +106368,21 @@
     ],
     "english_parts_of_speech": {
       "seaside": "noun"
+    }
+  },
+  {
+    "id": 10190,
+    "root": "folamaheh",
+    "meaning": "purpose-bound journey or mission",
+    "category": "Place & Time",
+    "source": "tool",
+    "timestamp": "2026-08-08 15:14",
+    "notes": null,
+    "english_keys": [
+      "quest"
+    ],
+    "english_parts_of_speech": {
+      "quest": "noun"
     }
   },
   {
@@ -127496,11 +127528,13 @@
     "notes": null,
     "english_keys": [
       "perform a role",
+      "play as",
       "pretend",
       "roleplay"
     ],
     "english_parts_of_speech": {
       "perform a role": "verb",
+      "play as": "verb",
       "pretend": "verb",
       "roleplay": "verb"
     }

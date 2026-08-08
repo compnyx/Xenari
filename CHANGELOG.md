@@ -5,6 +5,19 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+## 0.8.5 - 2026-08-08
+
+- Added reversible role complements, appositive subject relatives, purpose
+  clauses, and historical-setting frames for constructions such as “the player
+  plays as Wolf, a shinobi who is on a quest to rescue his lord” and “the game
+  is set in Japan during the Sengoku period.”
+- Added reviewed narrative vocabulary for `player`, `play as`, `shinobi`, and
+  `quest`. Post-v4 canon can now explicitly and audibly replace an older
+  reverse head without permitting accidental preference drift.
+- Raised the five-case real-text corpus baseline from 67.3% to 88.5% overall.
+  The Wolf/shinobi sample now retains 100% of its meaning and grammar units
+  with zero diagnostics.
+
 ## 0.8.4 - 2026-08-08
 
 - Added a compositional causative-passive coordination frame for constructions
