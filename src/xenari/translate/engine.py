@@ -126,7 +126,8 @@ class TranslatorMixin(
         if number_math is not None:
             return TranslationMatch("number-or-math", number_math)
         infinitive_complement = re.fullmatch(
-            r"(i|you|he|she|we|they)\s+(want|wants|wanted|need|needs|needed)\s+to\s+(.+)",
+            r"(i|you|he|she|we|they)\s+"
+            r"(want|wants|wanted|need|needs|needed|have|has|had)\s+to\s+(.+)",
             normalized,
         )
         if infinitive_complement:

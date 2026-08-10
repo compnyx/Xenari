@@ -859,10 +859,17 @@ def test_translator_preserves_plural_forms_questions_evidence_and_complements(xe
     assert xenari.speak("You love me?", evidential="assumed").endswith(" va")
     assert not xenari.speak("You love me.", evidential="assumed").endswith(" va")
     assert xenari.speak("Do you not love me?", evidential="assumed").endswith("ngu va")
-    for sentence in ("I want to eat food", "I need to go"):
+    for sentence in ("I want to eat food", "I need to go", "I have to take a shit"):
         rendered = xenari.speak(sentence, evidential="assumed")
         assert rendered.startswith("[partial:")
         assert "infinitive complement retained" in rendered
+    assert xenari.speak("Fuck me", evidential="assumed") == "ra neq ta qroz vi ko xo"
+    assert xenari.speak(
+        "Fuck me, I have to take a shit", evidential="assumed"
+    ) == (
+        "ra neq ta qroz vi ko xo. "
+        "[partial: unsupported infinitive complement retained: i have to take a shit]"
+    )
 
 def test_reverse_imperatives_keep_verb_and_goal_meaning(xenari):
     assert xenari.reverse("ta trekq vi ko xo") == "wait!"

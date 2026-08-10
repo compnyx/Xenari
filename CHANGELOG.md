@@ -5,6 +5,12 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Treat English `have to` infinitive complements as explicitly unsupported
+  instead of silently discarding their obligation semantics and emitting an
+  apparently complete but false clause.
+- Added the reviewed imperative phrase `fuck me` and regressions for the
+  multi-clause failure report “Fuck me, I have to take a shit.”
+
 ## 0.8.6 - 2026-08-08
 
 - Added reversible historical-biography structure for a lifespan, alias,

@@ -425,6 +425,7 @@ class EnglishPreprocessingMixin:
             "maybe later": "vex qrolo",
             "anyway": "qzecmru",
             "english": "bivuzqa uqel po zuqra",
+            "fuck me": "ra neq ta qroz vi ko xo",
         }
         return phrases.get(key)
 
