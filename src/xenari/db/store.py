@@ -40,10 +40,9 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin, PartOfSpeechMixin):
         bundled resource is rejected; callers should copy the canon and pass
         that destination explicitly instead.
 
-        Read-only opens intentionally use SQLite's ``mode=ro`` and
-        ``immutable=1`` URI flags.  Besides making the contract explicit, this
-        prevents read commands from creating WAL/SHM sidecars or
-        opportunistically initializing a schema.
+        Read-only opens use SQLite's ``mode=ro`` without initializing a schema.
+        Do not declare the file immutable: curated databases can change, and
+        SQLite must observe committed WAL records and invalidate cached pages.
         """
         if read_only is None:
             read_only = db_path is None
@@ -56,7 +55,7 @@ class XenariDB(SearchMixin, MutationMixin, AuditMixin, PartOfSpeechMixin):
         self.db_path = Path(db_path or DB_PATH)
         self.read_only = read_only
         if read_only:
-            uri = f"{self.db_path.resolve().as_uri()}?mode=ro&immutable=1"
+            uri = f"{self.db_path.resolve().as_uri()}?mode=ro"
             self.conn = sqlite3.connect(uri, uri=True)
         else:
             self.conn = sqlite3.connect(str(self.db_path))

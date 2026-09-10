@@ -1,6 +1,18 @@
 {
   "forward": [
     {
+      "english": "-5",
+      "xenari": "[untranslated: -5; unsupported grammar: unsupported numeric expression]"
+    },
+    {
+      "english": "1.5",
+      "xenari": "[untranslated: 1.5; unsupported grammar: unsupported numeric expression]"
+    },
+    {
+      "english": "2.5 + 3",
+      "xenari": "[untranslated: 2.5 + 3; unsupported grammar: unsupported numeric expression]"
+    },
+    {
       "english": "hello",
       "xenari": "prax"
     },

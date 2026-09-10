@@ -296,6 +296,20 @@ class AuditMixin:
         """Generate a clean markdown lexicon from the DB at an explicit path."""
         out_path = Path(path)
         cats = self.categories()
+        # Batch mappings and roots once. A per-category join can repeatedly
+        # scan the entire mapping table and loses NULL-category roots.
+        pos_by_root = {}
+        pos_column = "part_of_speech" if self._has_part_of_speech_column() else "NULL"
+        for row in self.conn.execute(
+            f"SELECT root_id, {pos_column} AS part_of_speech FROM english_map"
+        ):
+            if row["part_of_speech"]:
+                pos_by_root.setdefault(row["root_id"], set()).add(row["part_of_speech"])
+        roots_by_category = {}
+        for row in self.conn.execute(
+            "SELECT id, root, meaning, category, source FROM roots ORDER BY root"
+        ):
+            roots_by_category.setdefault(row["category"], []).append(row)
 
         lines = [
             "# XENARI — Full Dictionary",
@@ -308,24 +322,13 @@ class AuditMixin:
         ]
 
         for cat_name, _count in cats:
-            lines.append(f"## {cat_name}")
+            lines.append(f"## {cat_name or 'Uncategorized'}")
             lines.append("")
             lines.append("| Root | Meaning | Part of speech | Source |")
             lines.append("|---|---|---|---|")
-            pos_column = (
-                "GROUP_CONCAT(DISTINCT e.part_of_speech) AS parts_of_speech"
-                if self._has_part_of_speech_column()
-                else "NULL AS parts_of_speech"
-            )
-            rows = self.conn.execute(
-                f"""SELECT r.root, r.meaning, {pos_column}, r.source
-                    FROM roots r LEFT JOIN english_map e ON e.root_id = r.id
-                    WHERE r.category = ? GROUP BY r.id ORDER BY r.root""",
-                (cat_name,),
-            ).fetchall()
-            for r in rows:
+            for r in roots_by_category.get(cat_name, []):
                 src = r["source"] or ""
-                pos = r["parts_of_speech"] or ""
+                pos = ",".join(sorted(pos_by_root.get(r["id"], set())))
                 lines.append(f"| `{r['root']}` | {r['meaning']} | {pos} | {src} |")
             lines.append("")
 

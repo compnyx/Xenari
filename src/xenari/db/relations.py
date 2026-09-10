@@ -117,25 +117,35 @@ class RelationsMixin:
             print(f"compound root '{compound_root}' not found in DB")
             return False
 
-        # Clear existing compound parts for this root
-        self.conn.execute("DELETE FROM compounds WHERE compound_root = ?", (compound_root,))
-
+        # Validate the entire replacement before touching the original parts.
+        resolved = []
+        positions = set()
         for i, comp in enumerate(components):
             if isinstance(comp, tuple):
+                if len(comp) != 2:
+                    print("compound components need (root, position) pairs")
+                    return False
                 comp_root, pos = comp
             else:
                 comp_root, pos = comp, i
+            if not isinstance(comp_root, str) or type(pos) is not int or pos < 0 or pos in positions:
+                print("compound positions must be unique non-negative integers")
+                return False
             # verify component exists
             comp_row = self.conn.execute("SELECT 1 FROM roots WHERE root = ?", (comp_root,)).fetchone()
             if not comp_row:
-                print(f"component root '{comp_root}' not found, skipping")
-                continue
-            self.conn.execute(
-                "INSERT INTO compounds (compound_root, component_root, position) VALUES (?, ?, ?)",
-                (compound_root, comp_root, pos)
-            )
+                print(f"component root '{comp_root}' not found")
+                return False
+            positions.add(pos)
+            resolved.append((compound_root, comp_root, pos))
 
-        self.conn.commit()
+        self._backup_before_mutation("compound")
+        with self.conn:
+            self.conn.execute("DELETE FROM compounds WHERE compound_root = ?", (compound_root,))
+            self.conn.executemany(
+                "INSERT INTO compounds (compound_root, component_root, position) VALUES (?, ?, ?)",
+                resolved,
+            )
         return True
 
     def get_compound_parts(self, compound_root: str) -> list:

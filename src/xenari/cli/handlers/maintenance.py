@@ -155,16 +155,20 @@ def handle(args, x):
             print("Usage: gaps <script-file> [more-script-files...] [--output report.md] [--format markdown|json]")
             sys.exit(1)
         paths = [Path(value) for value in args.args]
-        missing = [str(path) for path in paths if not path.exists()]
+        missing = [str(path) for path in paths if not path.is_file()]
         if missing:
-            print("missing input file(s): " + ", ".join(missing))
+            print("missing or non-file input(s): " + ", ".join(missing))
             sys.exit(1)
         harvester = GapHarvester(x)
-        report = harvester.harvest_paths(
-            paths,
-            phrase_min_count=max(args.phrase_min_count, 1),
-            max_phrase_words=max(args.max_phrase_words, 2),
-        )
+        try:
+            report = harvester.harvest_paths(
+                paths,
+                phrase_min_count=max(args.phrase_min_count, 1),
+                max_phrase_words=max(args.max_phrase_words, 2),
+            )
+        except OSError as exc:
+            print(f"gaps: failed to read input: {exc}")
+            sys.exit(1)
         rendered = (
             harvester.render_json(report)
             if args.format == "json"

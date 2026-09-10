@@ -133,23 +133,27 @@ class Xenari:
             else "NULL AS part_of_speech"
         )
         mapping_parts_of_speech: Dict[tuple[str, str], Optional[str]] = {}
+        mapping_scores: Dict[str, int] = {}
         for row in self.db.conn.execute(
             f"""SELECT english_key, root, context_note, {pos_column}
                 FROM english_map JOIN roots ON roots.id = english_map.root_id
                 ORDER BY english_map.id"""
         ):
             key = row["english_key"].lower()
+            candidate_score = self.db._lookup_score(
+                key, self.lexicon.get(row["root"], ""), row["context_note"]
+            )
             mapping_parts_of_speech[(key, row["root"])] = row["part_of_speech"]
             if key not in self.english_to_root:
                 self.english_to_root[key] = row["root"]
+                mapping_scores[key] = candidate_score
                 if row["part_of_speech"]:
                     self.english_part_of_speech[key] = row["part_of_speech"]
             else:
-                current = self.english_to_root[key]
-                current_score = self.db._lookup_score(key, self.lexicon.get(current, ""))
-                candidate_score = self.db._lookup_score(key, self.lexicon.get(row["root"], ""), row["context_note"])
+                current_score = mapping_scores[key]
                 if candidate_score > current_score:
                     self.english_to_root[key] = row["root"]
+                    mapping_scores[key] = candidate_score
                     if row["part_of_speech"]:
                         self.english_part_of_speech[key] = row["part_of_speech"]
                     else:

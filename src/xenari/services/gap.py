@@ -531,6 +531,11 @@ class GapHarvester:
                     window = sentence_tokens[start:start + size]
                     if len(window) != size:
                         continue
+                    if any(
+                        right.token_index != left.token_index + 1
+                        for left, right in zip(window, window[1:], strict=False)
+                    ):
+                        continue
                     words = [token.norm for token in window]
                     if all(self._known(word) or self._covered_by_grammar(word) for word in words):
                         continue

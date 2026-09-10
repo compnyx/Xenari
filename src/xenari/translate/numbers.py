@@ -27,10 +27,10 @@ class NumberTranslationMixin:
         return ENGLISH_MATH_OPERATORS[root]
 
     def _parse_english_number_value(self, text: str):
-        clean = re.sub(r"[\s_-]+", " ", text.lower().strip())
-        clean = clean.strip(".,!?;:")
+        clean = text.lower().strip().rstrip(".,!?;:")
         if re.fullmatch(r"\d+", clean):
             return int(clean)
+        clean = re.sub(r"[\s_-]+", " ", clean)
         return self._base6_number_words().get(clean)
 
     def _base6_number_parts(self, value: int):
@@ -86,7 +86,9 @@ class NumberTranslationMixin:
         raw = english.strip()
         if not raw:
             return None
-        clean = self._phrase_key(raw)
+        # Phrase normalization removes signs and decimal points. Parse numbers
+        # from the original text so unsupported values cannot become other values.
+        clean = raw.lower().rstrip(".!?;:")
         operator_roots = self._math_operator_roots()
 
         symbol_match = re.fullmatch(r"(.+?)\s*([+\-*/=<>×])\s*(.+)", raw.strip())
@@ -122,6 +124,11 @@ class NumberTranslationMixin:
         value = self._parse_english_number_value(clean)
         if value is not None:
             return " ".join(self._base6_number_parts(value))
+        if re.search(r"(?<!\w)(?:[+−-]\d+|\d+\.\d+)", raw) or (
+            re.search(r"[0-9]", raw)
+            and re.fullmatch(r"[0-9\s.,+*/=<>×−_%()eE!?;:\-]+", raw)
+        ):
+            return self._unsupported_fragment(raw, "unsupported numeric expression")
         return None
 
     def _reverse_number_or_math(self, xenari: str):

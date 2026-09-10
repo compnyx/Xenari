@@ -5,6 +5,22 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Fixed transaction rollback for failed root additions/removals and mapping
+  writes; reject blank keys/meanings and validate compound replacements before
+  deleting their previous parts, with a backup and atomic replacement.
+- Read-only databases now observe committed WAL data instead of treating mutable
+  lexicons as immutable files. Search preserves all aliases and POS senses, and
+  facade lookup retains context-note ranking and respects requested pronoun POS.
+- Preserve unsupported numeric expressions (including negative and decimal
+  inputs) instead of silently changing values. Explicit tense overrides now
+  apply to recognized finite-clause frames, including `--tense present`.
+- Gap harvesting no longer invents phrases across filtered names/noise; unreadable
+  or directory inputs produce a clean CLI error. Translation reports recognize
+  empty/unsupported results and distinguish partial success from total failure.
+- Markdown export batches roots and POS mappings instead of repeatedly joining
+  them per category, and includes uncategorized roots. Alias search keeps its
+  full-sense results without quadratic mapping-table rescans.
+
 - Treat English `have to` infinitive complements as explicitly unsupported
   instead of silently discarding their obligation semantics and emitting an
   apparently complete but false clause.

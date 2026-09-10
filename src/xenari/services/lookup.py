@@ -52,6 +52,9 @@ class LookupMixin:
             root = self.pronouns[self.en_pronouns[key][0]]
             return root, self.lexicon.get(root, "")
 
+        if requested_pos:
+            return None, None
+
         if key in self.english_to_root:
             root = self.english_to_root[key]
             return root, self.lexicon.get(root, "")

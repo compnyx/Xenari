@@ -18,6 +18,8 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
         """Add a root + english mapping. Returns (success, messages)."""
         key = english.lower().strip()
         msgs = []
+        if not key or not meaning.strip():
+            return False, ["BLOCKED: English key and meaning must not be blank"]
         try:
             normalized_pos = normalize_part_of_speech(part_of_speech)
         except ValueError as exc:
@@ -129,8 +131,12 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
             return True, msgs
 
         except sqlite3.IntegrityError as e:
+            self.conn.rollback()
             msgs.append(f"DB error: {e}")
             return False, msgs
+        except Exception:
+            self.conn.rollback()
+            raise
 
     def remove_root(self, root: str) -> bool:
         """Remove a root and all its english mappings."""
@@ -139,11 +145,11 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
             print(f"root '{root}' not found")
             return False
         self._backup_before_mutation("remove-root")
-        self.conn.execute("DELETE FROM compounds WHERE compound_root = ? OR component_root = ?", (root, root))
-        self.conn.execute("DELETE FROM semantic_relations WHERE root_a = ? OR root_b = ?", (root, root))
-        self.conn.execute("DELETE FROM english_map WHERE root_id = ?", (row["id"],))
-        self.conn.execute("DELETE FROM roots WHERE id = ?", (row["id"],))
-        self.conn.commit()
+        with self.conn:
+            self.conn.execute("DELETE FROM compounds WHERE compound_root = ? OR component_root = ?", (root, root))
+            self.conn.execute("DELETE FROM semantic_relations WHERE root_a = ? OR root_b = ?", (root, root))
+            self.conn.execute("DELETE FROM english_map WHERE root_id = ?", (row["id"],))
+            self.conn.execute("DELETE FROM roots WHERE id = ?", (row["id"],))
         print(f"Removed: {root} ({row['meaning']})")
         return True
 
@@ -211,6 +217,8 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
         if not row:
             return False, f"root '{root}' not found"
         key = english_key.lower().strip()
+        if not key:
+            return False, "BLOCKED: English key must not be blank"
         try:
             normalized_pos = normalize_part_of_speech(part_of_speech)
         except ValueError as exc:
@@ -254,6 +262,9 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
             print(f"root '{root}' not found")
             return False
         key = english_key.lower().strip()
+        if not key:
+            print("BLOCKED: English key must not be blank")
+            return False
         normalized_pos = normalize_part_of_speech(part_of_speech)
         if normalized_pos is None:
             inferred = infer_mapping_part_of_speech(
@@ -278,8 +289,12 @@ class MutationMixin(CategorizationMixin, RelationsMixin):
             print(f"Mapped: {key} → {root}")
             return True
         except sqlite3.IntegrityError:
+            self.conn.rollback()
             print(f"'{key}' is already mapped")
             return False
+        except Exception:
+            self.conn.rollback()
+            raise
 
     def _backup_before_mutation(self, operation: str) -> Path:
         """Create a consistent SQLite backup immediately before a curated write."""

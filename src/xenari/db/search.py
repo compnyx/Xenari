@@ -87,7 +87,9 @@ class SearchMixin:
                       GROUP_CONCAT(e.english_key, ', ') as english_keys
                FROM roots r
                LEFT JOIN english_map e ON e.root_id = r.id
-               WHERE r.root LIKE ? OR r.meaning LIKE ? OR e.english_key LIKE ?
+               WHERE r.root LIKE ? OR r.meaning LIKE ? OR r.id IN (
+                   SELECT root_id FROM english_map WHERE english_key LIKE ?
+               )
                GROUP BY r.id""", (q, q, q)
         ).fetchall()
         results = []

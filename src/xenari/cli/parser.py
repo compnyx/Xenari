@@ -15,7 +15,7 @@ COMMANDS = [
     "pos", "pos-set", "pos-backfill", "benchmark", "corpus-benchmark", "check",
 ]
 
-TENSES = ("auto", "past", "future", "habitual", "potential", "imperative")
+TENSES = ("auto", "present", "past", "future", "habitual", "potential", "imperative")
 EVIDENTIALS = ("auto", "witnessed", "inferred", "reported", "assumed", "mirative")
 
 

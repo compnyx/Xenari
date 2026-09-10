@@ -18,6 +18,20 @@ class TranslatorMixin(
     ReverseTranslationMixin,
 ):
     def speak(self, english: str, tense: str = "auto", evidential: str = "auto") -> str:
+        """Translate, applying explicit tense consistently to all finite clauses."""
+        rendered = self._speak_text(english, tense, evidential)
+        forced_tense = self.tense_map.get(tense) if tense != "auto" else None
+        if forced_tense:
+            # Only grammatical tense immediately before evidence is replaced.
+            # Borrowed literals and diagnostic text are opaque payloads.
+            rendered = re.sub(
+                r"([a-z]+‹[^›]*›|\[[^\]]*\])|\b(?:sa|lo|ve|du|pe|ko)(?= (?:xa|xe|xi|xo|zu)\b)",
+                lambda match: match.group(1) or forced_tense,
+                rendered,
+            )
+        return rendered
+
+    def _speak_text(self, english: str, tense: str = "auto", evidential: str = "auto") -> str:
         """Translate English as a sequence of bounded clauses.
 
         The compact clause translator below is intentionally conservative.  It

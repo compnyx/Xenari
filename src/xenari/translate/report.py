@@ -19,14 +19,16 @@ class TranslationReport(TypedDict):
 
 
 _DIAGNOSTIC_RE = re.compile(
-    r"\[(?:untranslated|partial|warning|fragment|unknown):[^\]]+\]"
+    r"\[(?:untranslated|unsupported|partial|warning|fragment|unknown):[^\]]+\]"
 )
 
 
 def build_translation_report(*, source: str, direction: str, output: str) -> TranslationReport:
     """Classify explicit translator markers without pretending to judge semantics."""
     diagnostics = _DIAGNOSTIC_RE.findall(output)
-    if "[untranslated:" in output or "[unknown:" in output:
+    remaining = _DIAGNOSTIC_RE.sub("", output).strip(" .!?;,\n\t")
+    failed = any(marker in output for marker in ("[untranslated:", "[unsupported:", "[unknown:"))
+    if not output.strip() or (failed and not remaining):
         status: TranslationStatus = "unsupported"
         confidence: Literal["high", "medium", "low"] = "low"
     elif diagnostics:

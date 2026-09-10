@@ -175,6 +175,12 @@ structured report distinguishes complete, partial, and unsupported deterministic
 output by reading explicit translator diagnostics; it is not a claim of semantic
 certainty.
 
+Numeric translation supports non-negative whole numbers and simple binary
+arithmetic. Unsupported numeric expressions retain the source in a diagnostic;
+negative signs and decimal points are never silently discarded. An explicit
+`--tense present|past|future|habitual|potential|imperative` overrides finite-clause
+tense consistently; `auto` uses the source wording.
+
 ## Further Documentation
 
 - [Architecture](docs/development/architecture.md)
