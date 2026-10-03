@@ -5,6 +5,8 @@ commands, packaged data schema, and shared translator fixtures.
 
 ## Unreleased
 
+- Treat `%`, `_`, and `!` as literal text in substring searches of roots,
+  meanings, English aliases, and categories.
 - Fixed transaction rollback for failed root additions/removals and mapping
   writes; reject blank keys/meanings and validate compound replacements before
   deleting their previous parts, with a backup and atomic replacement.

@@ -5,6 +5,11 @@ from typing import Dict, List, Optional, Tuple
 from ..runtime_tables import FORWARD_PREFERRED
 
 
+def _escape_like(value: str) -> str:
+    """Escape user text for a substring query using SQLite's ! escape marker."""
+    return value.replace("!", "!!").replace("%", "!%").replace("_", "!_")
+
+
 class SearchMixin:
     def lookup(self, english: str) -> Optional[Tuple[str, str]]:
         """english word → (root, meaning)"""
@@ -76,7 +81,7 @@ class SearchMixin:
     def search(self, query: str, limit: int = 20) -> List[Dict]:
         """Ranked search across roots, meanings, and english keys."""
         clean = query.lower().strip()
-        q = f"%{clean}%"
+        q = f"%{_escape_like(clean)}%"
         pos_column = (
             "GROUP_CONCAT(DISTINCT e.part_of_speech) AS parts_of_speech"
             if self._has_part_of_speech_column()
@@ -87,8 +92,8 @@ class SearchMixin:
                       GROUP_CONCAT(e.english_key, ', ') as english_keys
                FROM roots r
                LEFT JOIN english_map e ON e.root_id = r.id
-               WHERE r.root LIKE ? OR r.meaning LIKE ? OR r.id IN (
-                   SELECT root_id FROM english_map WHERE english_key LIKE ?
+               WHERE r.root LIKE ? ESCAPE '!' OR r.meaning LIKE ? ESCAPE '!' OR r.id IN (
+                   SELECT root_id FROM english_map WHERE english_key LIKE ? ESCAPE '!'
                )
                GROUP BY r.id""", (q, q, q)
         ).fetchall()
@@ -234,8 +239,8 @@ class SearchMixin:
     def search_category(self, category: str) -> List[Dict]:
         """Get all roots in a category."""
         rows = self.conn.execute(
-            "SELECT * FROM roots WHERE category LIKE ? ORDER BY root",
-            (f"%{category}%",)
+            "SELECT * FROM roots WHERE category LIKE ? ESCAPE '!' ORDER BY root",
+            (f"%{_escape_like(category)}%",)
         ).fetchall()
         return [dict(r) for r in rows]
 

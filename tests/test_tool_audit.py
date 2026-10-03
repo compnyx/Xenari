@@ -70,6 +70,19 @@ def test_search_keeps_all_senses_when_one_alias_matches(tiny_db):
     assert set(result["parts_of_speech"].split(",")) == {"noun", "verb"}
 
 
+def test_search_treats_sql_like_metacharacters_as_literal_text(tiny_db):
+    tiny_db.add_english_mapping("100% sure", "xaz")
+    tiny_db.add_english_mapping("snake_case", "fatyih")
+    tiny_db.add_english_mapping("wow!", "xaz")
+    tiny_db.conn.execute("UPDATE roots SET category = 'Story_%' WHERE root = 'xaz'")
+    tiny_db.conn.commit()
+
+    assert [row["root"] for row in tiny_db.search("%")] == ["xaz"]
+    assert [row["root"] for row in tiny_db.search("_")] == ["fatyih"]
+    assert [row["root"] for row in tiny_db.search("!")] == ["xaz"]
+    assert [row["root"] for row in tiny_db.search_category("_%")] == ["xaz"]
+
+
 def test_alias_search_does_not_rescan_all_mappings_for_every_root(tiny_db):
     tiny_db.conn.executemany(
         "INSERT INTO roots (root, meaning) VALUES (?, ?)",
